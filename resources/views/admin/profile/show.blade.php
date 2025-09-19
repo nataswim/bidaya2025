@@ -1,25 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Mon profil')
 
 @section('content')
-<div class="container">
-    <h1>Mon profil</h1>
+    <h1 class="text-2xl font-bold mb-6">Mon profil</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    <div class="bg-white p-6 rounded shadow-md space-y-4">
+        <p><strong>Nom :</strong> {{ $user->name }}</p>
+        <p><strong>Email :</strong> {{ $user->email }}</p>
+        <p><strong>Date de création :</strong> {{ $user->created_at->format('d/m/Y H:i') }}</p>
+    </div>
 
-    <table class="table table-bordered">
-        <tr><th>Nom complet</th><td>{{ $user->first_name }} {{ $user->last_name }}</td></tr>
-        <tr><th>Nom d'utilisateur</th><td>{{ $user->username }}</td></tr>
-        <tr><th>Email</th><td>{{ $user->email }}</td></tr>
-        <tr><th>Rôle</th><td>{{ $user->role->display_name ?? '-' }}</td></tr>
-        <tr><th>Bio</th><td>{{ $user->bio }}</td></tr>
-        <tr><th>Téléphone</th><td>{{ $user->phone }}</td></tr>
-        <tr><th>Date de naissance</th><td>{{ $user->date_of_birth }}</td></tr>
-        <tr><th>Langue</th><td>{{ $user->locale }}</td></tr>
-        <tr><th>Fuseau horaire</th><td>{{ $user->timezone }}</td></tr>
-    </table>
-
-    <a href="{{ route('profile.edit') }}" class="btn btn-warning">Modifier</a>
-</div>
+    <div class="mt-6">
+        <a href="{{ route('admin.profile.edit') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Modifier mon profil
+        </a>
+    </div>
 @endsection

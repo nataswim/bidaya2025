@@ -9,34 +9,36 @@ use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
-    /**
-     * Affiche le profil de l'utilisateur connecté.
-     */
+    private function checkAdminAccess()
+    {
+        if (!auth()->user()->hasRole('admin')) {
+            abort(403, 'Accès non autorisé');
+        }
+    }
+
     public function show()
     {
+        $this->checkAdminAccess();
+        
         $user = Auth::user()->load('role');
-        return view('profile.show', compact('user'));
+        return view('admin.profile.show', compact('user'));
     }
 
-    /**
-     * Affiche le formulaire d'édition du profil.
-     */
     public function edit()
     {
+        $this->checkAdminAccess();
+        
         $user = Auth::user()->load('role');
-        return view('profile.edit', compact('user'));
+        return view('admin.profile.edit', compact('user'));
     }
 
-    /**
-     * Met à jour le profil de l'utilisateur connecté.
-     */
     public function update(UpdateProfileRequest $request)
     {
+        $this->checkAdminAccess();
+        
         $user = Auth::user();
-
         $data = $request->validated();
 
-        // Si le mot de passe est rempli, on le met à jour
         if (!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         } else {
@@ -45,19 +47,17 @@ class ProfileController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('profile.show')
+        return redirect()->route('admin.profile.show')
             ->with('success', 'Profil mis à jour avec succès.');
     }
 
-    /**
-     * Supprime le compte de l'utilisateur connecté.
-     */
     public function destroy(Request $request)
     {
+        $this->checkAdminAccess();
+        
         $user = Auth::user();
 
         Auth::logout();
-
         $user->delete();
 
         $request->session()->invalidate();

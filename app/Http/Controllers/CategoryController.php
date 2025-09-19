@@ -9,13 +9,18 @@ use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
-    /**
-     * Affiche la liste des catégories avec pagination et recherche.
-     */
+    private function checkAdminAccess()
+    {
+        if (!auth()->user()->hasRole('admin')) {
+            abort(403, 'Accès non autorisé');
+        }
+    }
+
     public function index(Request $request)
     {
+        $this->checkAdminAccess();
+        
         $search = $request->input('search');
-
         $query = Category::query();
 
         if ($search) {
@@ -24,63 +29,67 @@ class CategoryController extends Controller
 
         $categories = $query->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('categories.index', compact('categories', 'search'));
+        return view('admin.categories.index', compact('categories', 'search'));
     }
 
-    /**
-     * Affiche le formulaire de création.
-     */
     public function create()
     {
-        return view('categories.create');
+        $this->checkAdminAccess();
+        
+        return view('admin.categories.create');
     }
 
-    /**
-     * Enregistre une nouvelle catégorie.
-     */
     public function store(StoreCategoryRequest $request)
     {
-        Category::create($request->validated());
+        $this->checkAdminAccess();
+        
+        $data = $request->validated();
+        $data['created_by'] = auth()->id();
+        Category::create($data);
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
             ->with('success', 'Catégorie créée avec succès.');
     }
 
-    /**
-     * Affiche une catégorie spécifique.
-     */
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        $this->checkAdminAccess();
+        
+        return view('admin.categories.show', compact('category'));
     }
 
-    /**
-     * Affiche le formulaire d’édition.
-     */
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        $this->checkAdminAccess();
+        
+        return view('admin.categories.edit', compact('category'));
     }
 
-    /**
-     * Met à jour une catégorie existante.
-     */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category->update($request->validated());
+        $this->checkAdminAccess();
+        
+        $data = $request->validated();
+        $data['updated_by'] = auth()->id();
+        $category->update($data);
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
             ->with('success', 'Catégorie mise à jour avec succès.');
     }
 
-    /**
-     * Supprime une catégorie.
-     */
     public function destroy(Category $category)
     {
+        $this->checkAdminAccess();
+        
+        if ($category->posts()->count() > 0) {
+            return redirect()->route('admin.categories.index')
+                ->with('error', 'Impossible de supprimer une catégorie avec des articles.');
+        }
+        
+        $category->update(['deleted_by' => auth()->id()]);
         $category->delete();
 
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
             ->with('success', 'Catégorie supprimée avec succès.');
     }
 }

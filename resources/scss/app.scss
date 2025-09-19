@@ -1,0 +1,16 @@
+// Variables Bootstrap personnalisées
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// CoreUI pour l'admin
+@import '~@coreui/coreui/scss/coreui';
+
+// FontAwesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Styles personnalisés
+@import 'custom';

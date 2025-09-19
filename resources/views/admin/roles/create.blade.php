@@ -1,13 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Créer un rôle')
 
 @section('content')
-<div class="container">
-    <h1>Créer un rôle</h1>
+    <h1 class="text-2xl font-bold mb-6">Créer un nouveau rôle</h1>
 
-    <form action="{{ route('roles.store') }}" method="POST">
-        @csrf
-        @include('roles.partials.form', ['role' => null])
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <form action="{{ route('roles.store') }}" method="POST" class="bg-white p-6 rounded shadow-md">
+        @include('admin.roles.form', ['submitLabel' => 'Créer'])
     </form>
-</div>
 @endsection

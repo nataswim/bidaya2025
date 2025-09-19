@@ -1,97 +1,44 @@
-<div class="mb-3">
-    <label class="form-label">Nom d'utilisateur</label>
-    <input type="text" name="username" class="form-control" value="{{ old('username', $user->username ?? '') }}">
-    @error('username') <div class="text-danger">{{ $message }}</div> @enderror
+@csrf
+
+<div class="mb-4">
+    <x-input-label for="name" :value="__('Nom')" />
+    <x-text-input id="name" name="name" type="text" class="block mt-1 w-full"
+                  :value="old('name', $user->name ?? '')" required autofocus />
+    <x-input-error :messages="$errors->get('name')" class="mt-2" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Prénom</label>
-    <input type="text" name="first_name" class="form-control" value="{{ old('first_name', $user->first_name ?? '') }}">
-    @error('first_name') <div class="text-danger">{{ $message }}</div> @enderror
+<div class="mb-4">
+    <x-input-label for="email" :value="__('Email')" />
+    <x-text-input id="email" name="email" type="email" class="block mt-1 w-full"
+                  :value="old('email', $user->email ?? '')" required />
+    <x-input-error :messages="$errors->get('email')" class="mt-2" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Nom</label>
-    <input type="text" name="last_name" class="form-control" value="{{ old('last_name', $user->last_name ?? '') }}">
-    @error('last_name') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
+@if(!isset($user))
+    <div class="mb-4">
+        <x-input-label for="password" :value="__('Mot de passe')" />
+        <x-text-input id="password" name="password" type="password" class="block mt-1 w-full" required />
+        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+    </div>
 
-<div class="mb-3">
-    <label class="form-label">Nom complet</label>
-    <input type="text" name="name" class="form-control" value="{{ old('name', $user->name ?? '') }}">
-    @error('name') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
+    <div class="mb-4">
+        <x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')" />
+        <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="block mt-1 w-full" required />
+        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+    </div>
+@endif
 
-<div class="mb-3">
-    <label class="form-label">Email</label>
-    <input type="email" name="email" class="form-control" value="{{ old('email', $user->email ?? '') }}">
-    @error('email') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Mot de passe @if(isset($user)) (laisser vide pour ne pas changer) @endif</label>
-    <input type="password" name="password" class="form-control">
-    @error('password') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Confirmer le mot de passe</label>
-    <input type="password" name="password_confirmation" class="form-control">
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Rôle</label>
-    <select name="role_id" class="form-select">
-        @foreach($roles as $role)
-            <option value="{{ $role->id }}" {{ old('role_id', $user->role_id ?? '') == $role->id ? 'selected' : '' }}>
-                {{ $role->display_name ?? $role->name }}
-            </option>
-        @endforeach
+<div class="mb-4">
+    <x-input-label for="role" :value="__('Rôle')" />
+    <select id="role" name="role" class="border-gray-300 rounded-md shadow-sm w-full">
+        <option value="user" @selected(old('role', $user->role ?? '') === 'user')>Utilisateur</option>
+        <option value="admin" @selected(old('role', $user->role ?? '') === 'admin')>Administrateur</option>
     </select>
-    @error('role_id') <div class="text-danger">{{ $message }}</div> @enderror
+    <x-input-error :messages="$errors->get('role')" class="mt-2" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Avatar (URL)</label>
-    <input type="text" name="avatar" class="form-control" value="{{ old('avatar', $user->avatar ?? '') }}">
-    @error('avatar') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Bio</label>
-    <textarea name="bio" class="form-control">{{ old('bio', $user->bio ?? '') }}</textarea>
-    @error('bio') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Téléphone</label>
-    <input type="text" name="phone" class="form-control" value="{{ old('phone', $user->phone ?? '') }}">
-    @error('phone') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Date de naissance</label>
-    <input type="date" name="date_of_birth" class="form-control" value="{{ old('date_of_birth', $user->date_of_birth ?? '') }}">
-    @error('date_of_birth') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Statut</label>
-    <select name="status" class="form-select">
-        <option value="active" {{ old('status', $user->status ?? '') == 'active' ? 'selected' : '' }}>Actif</option>
-        <option value="inactive" {{ old('status', $user->status ?? '') == 'inactive' ? 'selected' : '' }}>Inactif</option>
-    </select>
-    @error('status') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Langue</label>
-    <input type="text" name="locale" class="form-control" value="{{ old('locale', $user->locale ?? '') }}">
-    @error('locale') <div class="text-danger">{{ $message }}</div> @enderror
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Fuseau horaire</label>
-    <input type="text" name="timezone" class="form-control" value="{{ old('timezone', $user->timezone ?? '') }}">
-    @error('timezone') <div class="text-danger">{{ $message }}</div> @enderror
+<div class="flex justify-end">
+    <x-primary-button>
+        {{ $submitLabel ?? 'Enregistrer' }}
+    </x-primary-button>
 </div>

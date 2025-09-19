@@ -1,0 +1,240 @@
+// Animations et transitions
+.hover-lift {
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+}
+
+.hover-bg-light:hover {
+    background-color: var(--bs-light) !important;
+}
+
+// Boutons personnalisés
+.btn-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    border: none;
+    color: white;
+    
+    &:hover {
+        background: linear-gradient(135deg, #0284c7, #2563eb);
+        color: white;
+    }
+}
+
+// Cards avec effet
+.card-hover {
+    transition: all 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+}
+
+// Sidebar admin responsive
+@media (max-width: 991.98px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1050;
+        width: 280px;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        
+        &.show {
+            transform: translateX(0);
+        }
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1040;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        
+        &.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+// Typographie
+.text-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Loading spinner
+.spinner-border-aqua {
+    border-color: rgba(14, 165, 233, 0.25);
+    border-top-color: #0ea5e9;
+}
+
+// Progress bars aquatiques
+.progress-aqua {
+    background-color: rgba(14, 165, 233, 0.1);
+    
+    .progress-bar {
+        background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+    }
+}
+
+// Badges personnalisés
+.badge-aqua {
+    background-color: #0ea5e9;
+    color: white;
+}
+
+.badge-wave {
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    color: white;
+}
+
+// Tables responsives améliorées
+.table-responsive-stack {
+    @media (max-width: 767.98px) {
+        .table {
+            thead {
+                display: none;
+            }
+            
+            tbody tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #dee2e6;
+                border-radius: 0.375rem;
+                padding: 1rem;
+                
+                td {
+                    display: block;
+                    border: none;
+                    padding: 0.25rem 0;
+                    
+                    &:before {
+                        content: attr(data-label) ": ";
+                        font-weight: 600;
+                        color: #6c757d;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Alertes personnalisées
+.alert-aqua {
+    background-color: rgba(14, 165, 233, 0.1);
+    border-color: rgba(14, 165, 233, 0.2);
+    color: #0c4a6e;
+}
+
+// Navigation active states
+.nav-link.active {
+    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    color: white !important;
+    border-radius: 0.5rem;
+}
+
+// Form controls améliorés
+.form-control:focus,
+.form-select:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.25);
+}
+
+// Breadcrumbs aquatiques
+.breadcrumb-item.active {
+    color: #0ea5e9;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #0ea5e9;
+}
+
+// Pagination personnalisée
+.page-link {
+    color: #0ea5e9;
+    
+    &:hover {
+        background-color: rgba(14, 165, 233, 0.1);
+        border-color: #0ea5e9;
+    }
+}
+
+.page-item.active .page-link {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+// Utilitaires
+.min-vh-75 { min-height: 75vh; }
+.min-vh-50 { min-height: 50vh; }
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+}
+
+// Animations keyframes
+@keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-200px); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+// Dark mode support (préparation)
+@media (prefers-color-scheme: dark) {
+    .auto-dark {
+        .card {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+        
+        .text-muted {
+            color: #9ca3af !important;
+        }
+    }
+}
+
+// Print styles
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #dee2e6 !important;
+        box-shadow: none !important;
+    }
+}

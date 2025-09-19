@@ -1,18 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Détails de la permission')
 
 @section('content')
-<div class="container">
-    <h1>Détails de la permission</h1>
+    <h1 class="text-2xl font-bold mb-6">Détails de la permission</h1>
 
-    <table class="table table-bordered">
-        @foreach($permission->getAttributes() as $field => $value)
-            <tr>
-                <th>{{ ucfirst(str_replace('_', ' ', $field)) }}</th>
-                <td>{{ $value }}</td>
-            </tr>
-        @endforeach
-    </table>
+    <div class="bg-white p-6 rounded shadow-md">
+        <p><strong>Nom :</strong> {{ $permission->name }}</p>
+        <p><strong>Description :</strong> {{ $permission->description }}</p>
+        <p><strong>Date de création :</strong> {{ $permission->created_at->format('d/m/Y H:i') }}</p>
+    </div>
 
-    <a href="{{ route('permissions.index') }}" class="btn btn-secondary">Retour</a>
-</div>
+    <div class="mt-6 flex space-x-4">
+        <a href="{{ route('permissions.edit', $permission) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+            Modifier
+        </a>
+        <a href="{{ route('permissions.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Retour
+        </a>
+    </div>
 @endsection

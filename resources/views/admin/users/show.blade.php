@@ -1,30 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Détails utilisateur')
 
 @section('content')
-<div class="container">
-    <h1>Détails de l'utilisateur</h1>
+    <h1 class="text-2xl font-bold mb-6">Détails de l’utilisateur</h1>
 
-    <table class="table table-bordered">
-        <tr><th>Nom</th><td>{{ $user->name }}</td></tr>
-        <tr><th>Email</th><td>{{ $user->email }}</td></tr>
-        <tr><th>Rôle</th><td>{{ $user->role->display_name ?? '-' }}</td></tr>
-        <tr><th>Statut</th><td>{{ $user->status }}</td></tr>
-        <tr><th>Bio</th><td>{{ $user->bio }}</td></tr>
-        <tr><th>Téléphone</th><td>{{ $user->phone }}</td></tr>
-               <tr><th>Date de naissance</th><td>{{ $user->date_of_birth }}</td></tr>
-        <tr><th>Langue</th><td>{{ $user->locale }}</td></tr>
-        <tr><th>Fuseau horaire</th><td>{{ $user->timezone }}</td></tr>
-        <tr><th>Avatar</th>
-            <td>
-                @if($user->avatar)
-                    <img src="{{ $user->avatar }}" alt="Avatar" style="max-height:80px;">
-                @else
-                    -
-                @endif
-            </td>
-        </tr>
-    </table>
+    <div class="bg-white p-6 rounded shadow-md">
+        <p><strong>Nom :</strong> {{ $user->name }}</p>
+        <p><strong>Email :</strong> {{ $user->email }}</p>
+        <p><strong>Rôle :</strong> {{ ucfirst($user->role) }}</p>
+        <p><strong>Date de création :</strong> {{ $user->created_at->format('d/m/Y H:i') }}</p>
+    </div>
 
-    <a href="{{ route('users.index') }}" class="btn btn-secondary">Retour</a>
-</div>
+    <div class="mt-6 flex space-x-4">
+        <a href="{{ route('users.edit', $user) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+            Modifier
+        </a>
+        <a href="{{ route('users.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Retour
+        </a>
+    </div>
 @endsection

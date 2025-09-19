@@ -10,12 +10,12 @@ class Role extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'slug',
-        'display_name',
-        'description',
-        'level',
-        'is_default',
+        'name', 'slug', 'display_name', 'description', 'level', 'is_default',
+    ];
+
+    protected $casts = [
+        'level' => 'integer',
+        'is_default' => 'boolean',
     ];
 
     public function permissions()

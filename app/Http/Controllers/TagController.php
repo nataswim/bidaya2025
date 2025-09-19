@@ -9,57 +9,92 @@ use App\Http\Requests\UpdateTagRequest;
 
 class TagController extends Controller
 {
+    private function checkAdminAccess()
+    {
+        if (!auth()->user()->hasRole('admin')) {
+            abort(403, 'Accès non autorisé');
+        }
+    }
+
     public function index(Request $request)
     {
+        $this->checkAdminAccess();
+        
         $search = $request->input('search');
-
         $query = Tag::query();
 
         if ($search) {
-            $query->where('name', 'like', "%{$search}%");
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('group_name', 'like', "%{$search}%");
+            });
         }
 
         $tags = $query->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('tags.index', compact('tags', 'search'));
+        return view('admin.tags.index', compact('tags', 'search'));
     }
 
     public function create()
     {
-        return view('tags.create');
+        $this->checkAdminAccess();
+        
+        return view('admin.tags.create');
     }
 
     public function store(StoreTagRequest $request)
     {
-        Tag::create($request->validated());
+        $this->checkAdminAccess();
+        
+        $data = $request->validated();
+        $data['created_by'] = auth()->id();
+        Tag::create($data);
 
-        return redirect()->route('tags.index')
+        return redirect()->route('admin.tags.index')
             ->with('success', 'Tag créé avec succès.');
     }
 
     public function show(Tag $tag)
     {
-        return view('tags.show', compact('tag'));
+        $this->checkAdminAccess();
+        
+        $tag->load('posts');
+        return view('admin.tags.show', compact('tag'));
     }
 
     public function edit(Tag $tag)
     {
-        return view('tags.edit', compact('tag'));
+        $this->checkAdminAccess();
+        
+        return view('admin.tags.edit', compact('tag'));
     }
 
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        $tag->update($request->validated());
+        $this->checkAdminAccess();
+        
+        $data = $request->validated();
+        $data['updated_by'] = auth()->id();
+        $tag->update($data);
 
-        return redirect()->route('tags.index')
+        return redirect()->route('admin.tags.index')
             ->with('success', 'Tag mis à jour avec succès.');
     }
 
     public function destroy(Tag $tag)
     {
+        $this->checkAdminAccess();
+        
+        // Vérifier les dépendances avec les posts
+        if ($tag->posts()->count() > 0) {
+            return redirect()->route('admin.tags.index')
+                ->with('error', 'Impossible de supprimer un tag utilisé par des articles.');
+        }
+        
+        $tag->update(['deleted_by' => auth()->id()]);
         $tag->delete();
 
-        return redirect()->route('tags.index')
+        return redirect()->route('admin.tags.index')
             ->with('success', 'Tag supprimé avec succès.');
     }
 }

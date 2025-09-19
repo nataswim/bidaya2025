@@ -1,30 +1,28 @@
-<div class="mb-3">
-    <label class="form-label">Nom</label>
-    <input type="text" name="name" class="form-control" value="{{ old('name', $category->name ?? '') }}">
-    @error('name') <div class="text-danger">{{ $message }}</div> @enderror
+@csrf
+
+<div class="mb-4">
+    <x-input-label for="name" :value="__('Nom de la catégorie')" />
+    <x-text-input id="name" name="name" type="text" class="block mt-1 w-full"
+                  :value="old('name', $category->name ?? '')" required autofocus />
+    <x-input-error :messages="$errors->get('name')" class="mt-2" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Slug</label>
-    <input type="text" name="slug" class="form-control" value="{{ old('slug', $category->slug ?? '') }}">
-    @error('slug') <div class="text-danger">{{ $message }}</div> @enderror
+<div class="mb-4">
+    <x-input-label for="slug" :value="__('Slug')" />
+    <x-text-input id="slug" name="slug" type="text" class="block mt-1 w-full"
+                  :value="old('slug', $category->slug ?? '')" required />
+    <x-input-error :messages="$errors->get('slug')" class="mt-2" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Description</label>
-    <textarea name="description" class="form-control">{{ old('description', $category->description ?? '') }}</textarea>
-    @error('description') <div class="text-danger">{{ $message }}</div> @enderror
+<div class="mb-4">
+    <x-input-label for="description" :value="__('Description')" />
+    <textarea id="description" name="description" rows="3"
+              class="border-gray-300 rounded-md shadow-sm w-full">{{ old('description', $category->description ?? '') }}</textarea>
+    <x-input-error :messages="$errors->get('description')" class="mt-2" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Parent</label>
-    <select name="parent_id" class="form-select">
-        <option value="">-- Aucun --</option>
-        @foreach($categories ?? [] as $cat)
-            <option value="{{ $cat->id }}" {{ old('parent_id', $category->parent_id ?? '') == $cat->id ? 'selected' : '' }}>
-                {{ $cat->name }}
-            </option>
-        @endforeach
-    </select>
-    @error('parent_id') <div class="text-danger">{{ $message }}</div> @enderror
+<div class="flex justify-end">
+    <x-primary-button>
+        {{ $submitLabel ?? 'Enregistrer' }}
+    </x-primary-button>
 </div>

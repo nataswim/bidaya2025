@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Modifier un rôle')
 
 @section('content')
-<div class="container">
-    <h1>Modifier le rôle</h1>
+    <h1 class="text-2xl font-bold mb-6">Modifier le rôle : {{ $role->name }}</h1>
 
-    <form action="{{ route('roles.update', $role) }}" method="POST">
-        @csrf @method('PUT')
-        @include('roles.partials.form', ['role' => $role])
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    <form action="{{ route('roles.update', $role) }}" method="POST" class="bg-white p-6 rounded shadow-md">
+        @method('PUT')
+        @include('admin.roles.form', ['submitLabel' => 'Mettre à jour', 'role' => $role])
     </form>
-</div>
 @endsection
