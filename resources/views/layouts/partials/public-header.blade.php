@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0f5c78;border-top: 20px solid #0f5c78;">
     <div class="container-lg">
         <!-- Logo avec style aquatique -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
@@ -17,25 +17,25 @@
             <!-- Navigation principale -->
             <ul class="navbar-nav me-auto ms-lg-4">
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 rounded-pill {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('home') }}">
                         <i class="fas fa-home me-2"></i>Accueil
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 rounded-pill {{ request()->routeIs('public.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.index') }}">
                         <i class="fas fa-newspaper me-2"></i>Articles
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 rounded-pill {{ request()->routeIs('about') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('about') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('about') }}">
                         <i class="fas fa-info-circle me-2"></i>À propos
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 rounded-pill {{ request()->routeIs('contact') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('contact') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('contact') }}">
                         <i class="fas fa-envelope me-2"></i>Contact
                     </a>
@@ -89,10 +89,10 @@
                     </div>
                 @else
                     <div class="d-flex gap-2">
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary rounded-pill px-4">
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary px-4">
                             Se connecter
                         </a>
-                        <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">
+                        <a href="{{ route('register') }}" class="btn btn-primary px-4">
                             S'inscrire
                         </a>
                     </div>

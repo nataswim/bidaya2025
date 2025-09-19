@@ -1,4 +1,5 @@
-<footer class="bg-dark text-light">
+<footer class="text-light" style="border-left: 20px solid #0f5c78;border-right: 20px solid #0f5c78;background-color:#006170 !important;border-bottom: 20px solid #f9f5f3;border-top: 20px solid #f9f5f3;">
+
     <!-- Contenu principal du footer -->
     <div class="py-5">
         <div class="container-lg">
@@ -108,7 +109,7 @@
     </div>
 
     <!-- Barre de copyright -->
-    <div class="border-top border-secondary bg-dark">
+<div style="border-top: 2px solid #ffffff; background-color:#0f5c78;">
         <div class="container-lg py-4">
             <div class="row align-items-center">
                 <div class="col-md-6">

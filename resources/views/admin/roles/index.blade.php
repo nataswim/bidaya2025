@@ -10,82 +10,156 @@
         <!-- Liste des rôles -->
         <div class="col-lg-8">
             <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white border-bottom p-4">
+                <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Rôles du système</h5>
-                        <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">
-                            <i class="fas fa-user-shield me-2"></i>Nouveau rôle
+                        <div>
+                            <h5 class="mb-1">
+                                <i class="fas fa-user-shield me-2"></i>Rôles du système
+                            </h5>
+                            <small class="opacity-75">{{ $roles->count() }} rôle(s) configuré(s)</small>
+                        </div>
+                        <a href="{{ route('admin.roles.create') }}" class="btn btn-light">
+                            <i class="fas fa-plus me-2"></i>Nouveau rôle
                         </a>
                     </div>
                 </div>
                 
                 <div class="card-body p-0">
                     @forelse($roles as $role)
-                        <div class="border-bottom p-4">
+                        <div class="border-bottom p-4 hover-bg">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
                                     <div class="d-flex align-items-center">
-                                        <div class="bg-{{ $role->name === 'admin' ? 'danger' : ($role->name === 'user' ? 'primary' : 'info') }} bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                             style="width: 50px; height: 50px;">
-                                            <i class="fas fa-{{ $role->name === 'admin' ? 'crown' : ($role->name === 'user' ? 'user' : 'user-shield') }} text-{{ $role->name === 'admin' ? 'danger' : ($role->name === 'user' ? 'primary' : 'info') }}"></i>
+                                        <div class="position-relative me-3">
+                                            <div class="bg-{{ $role->name === 'admin' ? 'danger' : ($role->name === 'user' ? 'primary' : 'info') }} bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" 
+                                                 style="width: 55px; height: 55px;">
+                                                <i class="fas fa-{{ $role->name === 'admin' ? 'crown' : ($role->name === 'user' ? 'user' : 'user-shield') }} text-{{ $role->name === 'admin' ? 'danger' : ($role->name === 'user' ? 'primary' : 'info') }} fs-5"></i>
+                                            </div>
+                                            @if($role->is_default ?? false)
+                                                <span class="position-absolute top-0 start-100 translate-middle badge bg-warning">
+                                                    <i class="fas fa-star" style="font-size: 8px;"></i>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div>
-                                            <h6 class="mb-1">{{ $role->display_name }}</h6>
-                                            <small class="text-muted">{{ $role->name }}</small>
+                                            <h6 class="mb-1">{{ $role->display_name ?? $role->name }}</h6>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <small class="text-muted">{{ $role->name }}</small>
+                                                @if($role->level ?? false)
+                                                    <span class="badge bg-secondary-subtle text-secondary small">
+                                                        Niveau {{ $role->level }}
+                                                    </span>
+                                                @endif
+                                            </div>
                                             @if($role->description)
-                                                <br><small class="text-muted">{{ $role->description }}</small>
+                                                <small class="text-muted d-block mt-1">{{ Str::limit($role->description, 80) }}</small>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-3">
                                     <div class="text-center">
-                                        <h5 class="mb-1">{{ $role->users()->count() }}</h5>
-                                        <small class="text-muted">Utilisateurs</small>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <h5 class="mb-1 text-primary">{{ $role->users()->count() }}</h5>
+                                            <small class="text-muted">Utilisateurs</small>
+                                            @if($role->users()->count() > 0)
+                                                <a href="{{ route('admin.users.index', ['role' => $role->id]) }}" 
+                                                   class="small text-decoration-none">
+                                                    Voir la liste
+                                                </a>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-3 text-end">
-                                    <div class="btn-group">
-                                        <a href="{{ route('admin.roles.show', $role) }}" class="btn btn-sm btn-outline-info">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        @if($role->name !== 'admin' && $role->name !== 'user')
-                                            <form method="POST" action="{{ route('admin.roles.destroy', $role) }}" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" 
-                                                        class="btn btn-sm btn-outline-danger"
-                                                        data-confirm="delete">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        @endif
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary border-0" 
+                                                data-bs-toggle="dropdown" 
+                                                aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center" 
+                                                   href="{{ route('admin.roles.show', $role) }}">
+                                                    <i class="fas fa-eye me-2 text-info"></i>Voir détails
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center" 
+                                                   href="{{ route('admin.roles.edit', $role) }}">
+                                                    <i class="fas fa-edit me-2 text-primary"></i>Modifier
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center" 
+                                                   href="{{ route('admin.users.index', ['role' => $role->id]) }}">
+                                                    <i class="fas fa-users me-2 text-success"></i>Utilisateurs ({{ $role->users()->count() }})
+                                                </a>
+                                            </li>
+                                            @if($role->name !== 'admin' && $role->name !== 'user')
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li>
+                                                    <form method="POST" 
+                                                          action="{{ route('admin.roles.destroy', $role) }}" 
+                                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Les utilisateurs assignés perdront leurs permissions.')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" 
+                                                                class="dropdown-item d-flex align-items-center text-danger">
+                                                            <i class="fas fa-trash me-2"></i>Supprimer
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            @endif
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Permissions du rôle -->
-                            @if($role->permissions->count() > 0)
+                            @if($role->permissions()->count() > 0)
                                 <div class="mt-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <small class="text-muted me-2">
+                                            <i class="fas fa-key me-1"></i>Permissions :
+                                        </small>
+                                        <span class="badge bg-success-subtle text-success">
+                                            {{ $role->permissions()->count() }} autorisations
+                                        </span>
+                                    </div>
                                     <div class="d-flex flex-wrap gap-1">
-                                        @foreach($role->permissions->take(5) as $permission)
-                                            <span class="badge bg-secondary-subtle text-secondary">{{ $permission->display_name }}</span>
+                                        @foreach($role->permissions()->limit(6)->get() as $permission)
+                                            <span class="badge bg-secondary-subtle text-secondary small">
+                                                {{ $permission->name }}
+                                            </span>
                                         @endforeach
-                                        @if($role->permissions->count() > 5)
-                                            <span class="badge bg-light text-dark">+{{ $role->permissions->count() - 5 }} autres</span>
+                                        @if($role->permissions()->count() > 6)
+                                            <span class="badge bg-light text-dark small">
+                                                +{{ $role->permissions()->count() - 6 }} autres
+                                            </span>
                                         @endif
                                     </div>
+                                </div>
+                            @else
+                                <div class="mt-3">
+                                    <small class="text-warning">
+                                        <i class="fas fa-exclamation-triangle me-1"></i>
+                                        Aucune permission assignée
+                                    </small>
                                 </div>
                             @endif
                         </div>
                     @empty
                         <div class="text-center py-5">
-                            <i class="fas fa-user-shield fa-3x text-muted mb-3"></i>
+                            <i class="fas fa-user-shield fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucun rôle configuré</h5>
-                            <p class="text-muted">Créez des rôles pour organiser les permissions utilisateurs</p>
+                            <p class="text-muted mb-3">Créez des rôles pour organiser les permissions utilisateurs</p>
+                            <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>Créer un rôle
+                            </a>
                         </div>
                     @endforelse
                 </div>
@@ -96,67 +170,102 @@
         <div class="col-lg-4">
             <!-- Statistiques -->
             <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white border-bottom p-4">
+                <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-chart-pie me-2 text-primary"></i>Répartition des utilisateurs
+                        <i class="fas fa-chart-pie me-2"></i>Répartition des utilisateurs
                     </h6>
                 </div>
-                <div class="card-body p-4">
+                <div class="card-body p-3">
                     @php
                         $usersByRole = \App\Models\User::selectRaw('role_id, count(*) as count')
+                            ->whereNotNull('role_id')
                             ->groupBy('role_id')
                             ->with('role')
                             ->get();
                         $totalUsers = \App\Models\User::count();
+                        $usersWithoutRole = \App\Models\User::whereNull('role_id')->count();
                     @endphp
                     
-                    @foreach($usersByRole as $stat)
-                        @php $percentage = $totalUsers > 0 ? round(($stat->count / $totalUsers) * 100, 1) : 0; @endphp
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div>
-                                <span class="fw-semibold">{{ $stat->role->display_name ?? 'Sans rôle' }}</span>
-                                <br><small class="text-muted">{{ $stat->count }} utilisateurs</small>
-                            </div>
-                            <div class="text-end">
-                                <div class="fw-bold">{{ $percentage }}%</div>
-                                <div class="progress" style="width: 60px; height: 4px;">
-                                    <div class="progress-bar bg-primary" style="width: {{ $percentage }}%"></div>
+                    @if($totalUsers > 0)
+                        @foreach($usersByRole as $stat)
+                            @php $percentage = round(($stat->count / $totalUsers) * 100, 1); @endphp
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div>
+                                    <span class="fw-semibold">{{ $stat->role->display_name ?? $stat->role->name ?? 'Rôle inconnu' }}</span>
+                                    <br><small class="text-muted">{{ $stat->count }} utilisateurs</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">{{ $percentage }}%</div>
+                                    <div class="progress" style="width: 60px; height: 4px;">
+                                        <div class="progress-bar bg-primary" style="width: {{ $percentage }}%"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                        
+                        @if($usersWithoutRole > 0)
+                            @php $percentage = round(($usersWithoutRole / $totalUsers) * 100, 1); @endphp
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div>
+                                    <span class="fw-semibold text-warning">Sans rôle</span>
+                                    <br><small class="text-muted">{{ $usersWithoutRole }} utilisateurs</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-warning">{{ $percentage }}%</div>
+                                    <div class="progress" style="width: 60px; height: 4px;">
+                                        <div class="progress-bar bg-warning" style="width: {{ $percentage }}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        <p class="text-muted mb-0">Aucun utilisateur dans le système</p>
+                    @endif
                 </div>
             </div>
 
             <!-- Permissions système -->
             <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white border-bottom p-4">
+                <div class="card-header bg-gradient-warning text-white p-3">
                     <div class="d-flex align-items-center justify-content-between">
                         <h6 class="mb-0">
-                            <i class="fas fa-key me-2 text-warning"></i>Permissions système
+                            <i class="fas fa-key me-2"></i>Permissions système
                         </h6>
-                        <a href="{{ route('admin.permissions.index') }}" class="btn btn-sm btn-outline-warning">
+                        <a href="{{ route('admin.permissions.index') }}" class="btn btn-sm btn-light">
                             Gérer
                         </a>
                     </div>
                 </div>
-                <div class="card-body p-4">
+                <div class="card-body p-3">
                     @php
-                        $permissionGroups = \App\Models\Permission::selectRaw('SUBSTRING_INDEX(name, ".", 1) as group_name, count(*) as count')
-                            ->groupBy('group_name')
+                        $totalPermissions = \App\Models\Permission::count();
+                        $permissionGroups = \App\Models\Permission::selectRaw('`group`, count(*) as count')
+                            ->groupBy('group')
+                            ->orderBy('count', 'desc')
                             ->get();
                     @endphp
                     
-                    @foreach($permissionGroups as $group)
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <span class="text-capitalize">{{ str_replace('_', ' ', $group->group_name) }}</span>
-                            <span class="badge bg-light text-dark">{{ $group->count }}</span>
-                        </div>
-                    @endforeach
+                    @if($permissionGroups->count() > 0)
+                        @foreach($permissionGroups->take(5) as $group)
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="text-capitalize">{{ str_replace('_', ' ', $group->group ?: 'Général') }}</span>
+                                <span class="badge bg-warning-subtle text-warning">{{ $group->count }}</span>
+                            </div>
+                        @endforeach
+                        
+                        @if($permissionGroups->count() > 5)
+                            <div class="text-center mt-2">
+                                <small class="text-muted">{{ $permissionGroups->count() - 5 }} autres groupes...</small>
+                            </div>
+                        @endif
+                    @else
+                        <p class="text-muted mb-0">Aucune permission configurée</p>
+                    @endif
                     
                     <div class="mt-3 pt-3 border-top">
                         <small class="text-muted">
-                            Total: {{ \App\Models\Permission::count() }} permissions
+                            <i class="fas fa-info-circle me-1"></i>
+                            Total: {{ $totalPermissions }} permissions
                         </small>
                     </div>
                 </div>
@@ -164,22 +273,27 @@
 
             <!-- Actions rapides -->
             <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white border-bottom p-4">
+                <div class="card-header bg-gradient-info text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-tools me-2 text-info"></i>Actions rapides
+                        <i class="fas fa-tools me-2"></i>Actions rapides
                     </h6>
                 </div>
-                <div class="card-body p-4">
+                <div class="card-body p-3">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-outline-primary" onclick="syncPermissions()">
-                            <i class="fas fa-sync me-2"></i>Synchroniser les permissions
-                        </button>
-                        <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#assignRoleModal">
-                            <i class="fas fa-user-plus me-2"></i>Assigner un rôle
-                        </button>
-                        <button class="btn btn-outline-success" onclick="exportRoles()">
-                            <i class="fas fa-download me-2"></i>Exporter la configuration
-                        </button>
+                        <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Nouveau rôle
+                        </a>
+                        <a href="{{ route('admin.permissions.index') }}" class="btn btn-outline-warning">
+                            <i class="fas fa-key me-2"></i>Gérer les permissions
+                        </a>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-outline-info">
+                            <i class="fas fa-users me-2"></i>Voir les utilisateurs
+                        </a>
+                        @if($usersWithoutRole > 0)
+                            <button class="btn btn-outline-warning" onclick="showAssignRoleHelper()">
+                                <i class="fas fa-exclamation-triangle me-2"></i>{{ $usersWithoutRole }} sans rôle
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -187,75 +301,102 @@
     </div>
 </div>
 
-<!-- Modal assignation rôle -->
-<div class="modal fade" id="assignRoleModal" tabindex="-1">
+<!-- Modal d'aide pour assignation -->
+<div class="modal fade" id="assignRoleHelperModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
-                    <i class="fas fa-user-plus me-2"></i>Assigner un rôle
+                    <i class="fas fa-question-circle me-2"></i>Utilisateurs sans rôle
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form method="POST" action="{{ route('admin.users.assign-role') }}">
-                @csrf
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label fw-semibold">Utilisateur</label>
-                        <select name="user_id" id="user_id" class="form-select" required>
-                            <option value="">Sélectionner un utilisateur</option>
-                            @foreach(\App\Models\User::orderBy('name')->get() as $user)
-                                <option value="{{ $user->id }}">
-                                    {{ $user->name }} ({{ $user->email }})
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="role_id" class="form-label fw-semibold">Rôle</label>
-                        <select name="role_id" id="role_id" class="form-select" required>
-                            <option value="">Sélectionner un rôle</option>
-                            @foreach($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->display_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-check me-2"></i>Assigner
-                    </button>
-                </div>
-            </form>
+            <div class="modal-body">
+                <p>Il y a <strong>{{ $usersWithoutRole }}</strong> utilisateur(s) sans rôle assigné.</p>
+                <p>Ces utilisateurs ont un accès très limité au système. Vous pouvez :</p>
+                <ul>
+                    <li>Assigner des rôles individuellement depuis la <a href="{{ route('admin.users.index') }}">liste des utilisateurs</a></li>
+                    <li>Créer un <a href="{{ route('admin.roles.create') }}">nouveau rôle</a> si nécessaire</li>
+                    <li>Configurer un <a href="{{ route('admin.roles.index') }}">rôle par défaut</a> pour les nouveaux utilisateurs</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
+                    <i class="fas fa-users me-2"></i>Gérer les utilisateurs
+                </a>
+            </div>
         </div>
     </div>
 </div>
 @endsection
 
-@push('scripts')
-<script>
-function syncPermissions() {
-    if (confirm('Synchroniser les permissions avec le code source ?')) {
-        fetch('{{ route("admin.permissions.sync") }}', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(`${data.created} permissions créées, ${data.updated} mises à jour`);
-                location.reload();
-            }
-        });
-    }
+@push('styles')
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
 }
 
-function exportRoles() {
-    window.open('{{ route("admin.roles.export") }}', '_blank');
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
 }
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+}
+
+.hover-bg:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-menu {
+    border: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.progress {
+    background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .col-md-3 {
+        margin-top: 1rem;
+    }
+}
+</style>
+@endpush
+
+@push('scripts')
+<script>
+function showAssignRoleHelper() {
+    new bootstrap.Modal(document.getElementById('assignRoleHelperModal')).show();
+}
+
+// Confirmation pour suppression des rôles critiques
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('button[type="submit"]');
+    deleteButtons.forEach(button => {
+        if (button.textContent.includes('Supprimer')) {
+            button.addEventListener('click', function(e) {
+                const form = this.closest('form');
+                if (form && form.action.includes('/destroy')) {
+                    e.preventDefault();
+                    const confirmed = confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Cette action est irréversible et les utilisateurs assignés perdront leurs permissions.');
+                    if (confirmed) {
+                        form.submit();
+                    }
+                }
+            });
+        }
+    });
+});
 </script>
 @endpush

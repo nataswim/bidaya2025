@@ -37,12 +37,12 @@
                 <div class="mb-5">
                     <!-- Métadonnées -->
                     <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
-                        <span class="badge bg-primary rounded-pill px-3 py-2">
+                        <span class="badge bg-primary px-3 py-2">
                             {{ $post->category->name ?? 'Non catégorisé' }}
                         </span>
                         
                         @if($post->is_featured)
-                            <span class="badge bg-warning text-dark rounded-pill px-3 py-2">
+                            <span class="badge bg-warning text-dark px-3 py-2">
                                 <i class="fas fa-star me-1"></i>Article mis en avant
                             </span>
                         @endif

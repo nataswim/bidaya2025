@@ -144,10 +144,11 @@
 
 // Navigation active states
 .nav-link.active {
-    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-    color: white !important;
-    border-radius: 0.5rem;
+  background: linear-gradient(135deg, #0f5c78, #1c7ca0);
+  color: white !important;
+  box-shadow: 0 0 0.25rem rgba(15, 92, 120, 0.5);
 }
+
 
 // Form controls améliorés
 .form-control:focus,
@@ -185,12 +186,22 @@
 .min-vh-50 { min-height: 50vh; }
 
 .bg-gradient-primary {
-    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  background: linear-gradient(135deg, #0f5c78, #1c7ca0);
 }
 
+
 .bg-gradient-secondary {
-    background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  background: linear-gradient(135deg, #6c8fa0, #0f5c78);
 }
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #d0e6ed, #6c8fa0);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #093b4d, #0f5c78);
+}
+
 
 // Animations keyframes
 @keyframes wave {

@@ -6,7 +6,7 @@
 <!-- Hero Section Aquatique -->
 <section class="hero-section position-relative overflow-hidden">
     <div class="position-absolute top-0 start-0 w-100 h-100" 
-         style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #1e40af 100%);"></div>
+         style="background: linear-gradient(135deg, #00a3a0 0%, #006170 50%, #003f42 100%);"></div>
     
     <!-- Vagues animées en arrière-plan -->
     <div class="position-absolute bottom-0 start-0 w-100" style="height: 100px; overflow: hidden;">
@@ -30,10 +30,10 @@
                         Une plateforme moderne pour développeurs passionnés.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="{{ route('public.index') }}" class="btn btn-light btn-lg rounded-pill px-5">
+                        <a href="{{ route('public.index') }}" class="btn btn-light btn-lg px-5">
                             <i class="fas fa-book-open me-2"></i>Explorer les articles
                         </a>
-                        <a href="{{ route('about') }}" class="btn btn-outline-light btn-lg rounded-pill px-5">
+                        <a href="{{ route('about') }}" class="btn btn-outline-light btn-lg px-5">
                             <i class="fas fa-info-circle me-2"></i>En savoir plus
                         </a>
                     </div>
@@ -117,7 +117,7 @@
                                 <img src="{{ $post->image }}" class="card-img-top" alt="{{ $post->name }}" 
                                      style="height: 220px; object-fit: cover;">
                                 <div class="position-absolute top-3 start-3">
-                                    <span class="badge bg-primary rounded-pill px-3 py-2">
+                                    <span class="badge bg-primary px-3 py-2">
                                         {{ $post->category->name ?? 'Tech' }}
                                     </span>
                                 </div>
@@ -171,7 +171,7 @@
         </div>
 
         <div class="text-center mt-5">
-            <a href="{{ route('public.index') }}" class="btn btn-primary btn-lg rounded-pill px-5">
+            <a href="{{ route('public.index') }}" class="btn btn-primary btn-lg px-5">
                 <i class="fas fa-th-large me-2"></i>Voir tous les articles
             </a>
         </div>
@@ -204,15 +204,15 @@
                             
                             @guest
                                 <div class="d-flex flex-wrap gap-3 justify-content-center">
-                                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg rounded-pill px-5">
+                                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5">
                                         <i class="fas fa-user-plus me-2"></i>Créer un compte
                                     </a>
-                                    <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg rounded-pill px-5">
+                                    <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-5">
                                         <i class="fas fa-sign-in-alt me-2"></i>Se connecter
                                     </a>
                                 </div>
                             @else
-                                <div class="alert alert-success d-inline-flex align-items-center rounded-pill px-4 py-3">
+                                <div class="alert alert-success d-inline-flex align-items-center px-4 py-3">
                                     <i class="fas fa-check-circle me-2"></i>
                                     <span class="fw-medium">Bienvenue dans la communauté, {{ auth()->user()->first_name ?: auth()->user()->name }} !</span>
                                 </div>
@@ -244,7 +244,7 @@
 .min-vh-75 { min-height: 75vh; }
 
 .bg-gradient-primary {
-    background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    background: linear-gradient(135deg, #00a3a0 0%, #006170 50%, #003f42 100%);
 }
 </style>
 @endpush

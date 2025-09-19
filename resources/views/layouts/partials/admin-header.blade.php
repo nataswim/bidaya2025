@@ -13,7 +13,7 @@
         <div class="d-flex align-items-center gap-3">
             <!-- Recherche rapide -->
             <div class="position-relative d-none d-md-block">
-                <input type="text" class="form-control rounded-pill ps-4" 
+                <input type="text" class="form-control ps-4" 
                        placeholder="Recherche rapide..." style="width: 250px;">
                 <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
             </div>
@@ -24,7 +24,7 @@
                         style="width: 40px; height: 40px;" 
                         data-bs-toggle="dropdown">
                     <i class="fas fa-bell"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">
                         3
                     </span>
                 </button>
