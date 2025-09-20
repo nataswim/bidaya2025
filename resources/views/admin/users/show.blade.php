@@ -262,56 +262,101 @@
                 </div>
             </div>
 
-            <!-- Actions -->
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-3">
-                    <div class="d-grid gap-2">
-                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary">
-                            <i class="fas fa-edit me-2"></i>Modifier le profil
-                        </a>
-                        
-                        @if($user->id !== auth()->id())
-                            @if($user->status === 'active')
-                                <form method="POST" action="{{ route('admin.users.toggle-status', $user) }}">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-outline-warning w-100">
-                                        <i class="fas fa-pause me-2"></i>Désactiver le compte
-                                    </button>
-                                </form>
-                            @else
-                                <form method="POST" action="{{ route('admin.users.toggle-status', $user) }}">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-outline-success w-100">
-                                        <i class="fas fa-play me-2"></i>Activer le compte
-                                    </button>
-                                </form>
-                            @endif
-                        @endif
 
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour à la liste
-                        </a>
-                    </div>
-                    
-                    @if($user->id !== auth()->id())
-                        <hr class="my-3">
-                        
-                        <form method="POST" action="{{ route('admin.users.destroy', $user) }}" 
-                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce compte utilisateur ? Cette action est irréversible.')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger w-100">
-                                <i class="fas fa-trash me-2"></i>Supprimer le compte
-                            </button>
-                        </form>
-                    @endif
+
+
+<!-- Actions -->
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-3">
+        <div class="d-grid gap-2">
+            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary">
+                <i class="fas fa-edit me-2"></i>Modifier le profil
+            </a>
+            
+            @if($user->id !== auth()->id())
+                <div class="btn-group w-100">
+                    <button type="button" class="btn btn-outline-{{ $user->status === 'active' ? 'warning' : 'success' }}" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#toggleStatusModal">
+                        <i class="fas fa-{{ $user->status === 'active' ? 'pause' : 'play' }} me-2"></i>
+                        {{ $user->status === 'active' ? 'Désactiver' : 'Activer' }} le compte
+                    </button>
                 </div>
+            @endif
+
+            <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+            </a>
+        </div>
+        
+        @if($user->id !== auth()->id())
+            <hr class="my-3">
+            
+            <form method="POST" action="{{ route('admin.users.destroy', $user) }}" 
+                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce compte utilisateur ? Cette action est irréversible.')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger w-100">
+                    <i class="fas fa-trash me-2"></i>Supprimer le compte
+                </button>
+            </form>
+        @endif
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal de confirmation toggle status -->
+<div class="modal fade" id="toggleStatusModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                    Modifier le statut du compte
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir <strong>{{ $user->status === 'active' ? 'désactiver' : 'activer' }}</strong> le compte de <strong>{{ $user->name }}</strong> ?</p>
+                @if($user->status === 'active')
+                    <div class="alert alert-warning">
+                        <i class="fas fa-info-circle me-2"></i>
+                        L'utilisateur ne pourra plus se connecter une fois le compte désactivé.
+                    </div>
+                @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <form method="POST" action="{{ route('admin.users.update', $user) }}" class="d-inline">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="name" value="{{ $user->name }}">
+                    <input type="hidden" name="email" value="{{ $user->email }}">
+                    <input type="hidden" name="role_id" value="{{ $user->role_id }}">
+                    <input type="hidden" name="status" value="{{ $user->status === 'active' ? 'inactive' : 'active' }}">
+                    <button type="submit" class="btn btn-{{ $user->status === 'active' ? 'warning' : 'success' }}">
+                        <i class="fas fa-{{ $user->status === 'active' ? 'pause' : 'play' }} me-2"></i>
+                        {{ $user->status === 'active' ? 'Désactiver' : 'Activer' }}
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
 
 @push('styles')

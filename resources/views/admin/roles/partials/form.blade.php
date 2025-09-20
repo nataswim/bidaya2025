@@ -72,113 +72,117 @@
                     @enderror
                 </div>
 
+                <!-- Permissions -->
+                <div class="border-top pt-4">
+                    <h6 class="fw-semibold mb-3 text-primary">
+                        <i class="fas fa-key me-2"></i>Permissions
+                    </h6>
+                    
+                    @php
+                        // Récupération sécurisée des permissions
+                        try {
+                            $allPermissions = \App\Models\Permission::orderBy('group')->orderBy('name')->get();
+                            $permissionsExist = $allPermissions->count() > 0;
+                            
+                            // Récupération des permissions actuelles du rôle
+                            $currentPermissions = [];
+                            if (isset($role) && $role && method_exists($role, 'permissions')) {
+                                try {
+                                    $currentPermissions = $role->permissions()->pluck('permissions.id')->toArray();
+                                } catch (\Exception $e) {
+                                    $currentPermissions = [];
+                                }
+                            }
+                        } catch (\Exception $e) {
+                            $allPermissions = collect();
+                            $permissionsExist = false;
+                            $currentPermissions = [];
+                        }
+                    @endphp
 
+                    @if($permissionsExist)
+                        <div class="row g-3">
+                            @php
+                                $groupedPermissions = [];
+                                foreach ($allPermissions as $permission) {
+                                    $group = $permission->group ?? 'general';
+                                    if (!isset($groupedPermissions[$group])) {
+                                        $groupedPermissions[$group] = [];
+                                    }
+                                    $groupedPermissions[$group][] = $permission;
+                                }
+                            @endphp
 
+                            @foreach($groupedPermissions as $groupName => $permissions)
+                                <div class="col-md-6">
+                                    <div class="card border">
+                                        <div class="card-header bg-light p-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="mb-0 text-capitalize">
+                                                    <i class="fas fa-folder me-2 text-info"></i>
+                                                    {{ str_replace(['_', '-'], ' ', $groupName) }}
+                                                </h6>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" 
+                                                           type="checkbox" 
+                                                           id="toggle_{{ Str::slug($groupName) }}"
+                                                           onchange="toggleGroup('{{ Str::slug($groupName) }}')">
+                                                    <label class="form-check-label small" for="toggle_{{ Str::slug($groupName) }}">
+                                                        Tout
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-3" style="max-height: 300px; overflow-y: auto;">
+                                            @foreach($permissions as $permission)
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input permission-checkbox" 
+                                                           type="checkbox" 
+                                                           name="permissions[]" 
+                                                           value="{{ $permission->id }}" 
+                                                           id="permission_{{ $permission->id }}"
+                                                           data-group="{{ Str::slug($groupName) }}"
+                                                           {{ in_array($permission->id, old('permissions', $currentPermissions)) ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="permission_{{ $permission->id }}">
+                                                        <strong class="d-block">{{ $permission->name }}</strong>
+                                                        @if($permission->description)
+                                                            <small class="text-muted">{{ Str::limit($permission->description, 60) }}</small>
+                                                        @endif
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        @error('permissions')
+                            <div class="text-danger mt-2">
+                                <i class="fas fa-exclamation-triangle me-1"></i>{{ $message }}
+                            </div>
+                        @enderror
 
-
-
-<!-- Permissions -->
-<div class="border-top pt-4">
-    <h6 class="fw-semibold mb-3 text-primary">
-        <i class="fas fa-key me-2"></i>Permissions
-    </h6>
-    
-    @php
-        // Récupérer les permissions directement si pas déjà passées
-        if (!isset($permissions) || !$permissions || $permissions->isEmpty()) {
-            $permissions = \App\Models\Permission::all();
-        }
-        
-        // Vérifier que $permissions est bien une collection
-        if ($permissions && $permissions->count() > 0) {
-            // Grouper les permissions par groupe
-            $permissionGroups = $permissions->groupBy(function($item) {
-                return $item->group ?? 'general';
-            });
-            
-            // Récupérer les permissions du rôle actuel
-            $rolePermissions = [];
-            if (isset($role) && $role && $role->permissions) {
-                $rolePermissions = $role->permissions->pluck('id')->toArray();
-            }
-        } else {
-            $permissionGroups = collect();
-            $rolePermissions = [];
-        }
-    @endphp
-
-    @if($permissionGroups->count() > 0)
-        <div class="row g-3">
-            @foreach($permissionGroups as $groupName => $groupPermissions)
-                <div class="col-md-6">
-                    <div class="card border">
-                        <div class="card-header bg-light p-3">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="mb-0 text-capitalize">
-                                    <i class="fas fa-folder me-2 text-info"></i>
-                                    {{ str_replace(['_', '-'], ' ', $groupName) }}
-                                </h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" 
-                                           type="checkbox" 
-                                           id="toggle_{{ $groupName }}"
-                                           onclick="toggleGroup('{{ $groupName }}')">
-                                    <label class="form-check-label small" for="toggle_{{ $groupName }}">
-                                        Tout sélectionner
-                                    </label>
+                        <!-- Résumé des permissions sélectionnées -->
+                        <div class="mt-3">
+                            <div class="alert alert-light border">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle text-primary me-2"></i>
+                                    <span id="permissions-summary">
+                                        <span id="selected-count">0</span> permission(s) sélectionnée(s)
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-3">
-                            @foreach($groupPermissions as $permission)
-                                @if($permission && isset($permission->id) && isset($permission->name))
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input permission-checkbox" 
-                                               type="checkbox" 
-                                               name="permissions[]" 
-                                               value="{{ $permission->id }}" 
-                                               id="permission_{{ $permission->id }}"
-                                               data-group="{{ $groupName }}"
-                                               {{ in_array($permission->id, old('permissions', $rolePermissions)) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="permission_{{ $permission->id }}">
-                                            <strong>{{ $permission->name }}</strong>
-                                            @if(isset($permission->description) && $permission->description)
-                                                <br><small class="text-muted">{{ $permission->description }}</small>
-                                            @endif
-                                        </label>
-                                    </div>
-                                @endif
-                            @endforeach
+                    @else
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Aucune permission disponible</strong><br>
+                            Aucune permission n'a été créée dans le système. 
+                            <a href="{{ route('admin.permissions.create') }}" class="alert-link">Créer des permissions</a> d'abord.
                         </div>
-                    </div>
+                    @endif
                 </div>
-            @endforeach
-        </div>
-        
-        @error('permissions')
-            <div class="text-danger mt-2">{{ $message }}</div>
-        @enderror
-    @else
-        <div class="alert alert-warning">
-            <i class="fas fa-exclamation-triangle me-2"></i>
-            <strong>Aucune permission disponible</strong><br>
-            @if(\App\Models\Permission::count() == 0)
-                Aucune permission n'a été créée dans le système. 
-                <a href="{{ route('admin.permissions.create') }}" class="alert-link">Créer des permissions</a> d'abord.
-            @else
-                Impossible de charger les permissions. Veuillez vérifier la configuration.
-            @endif
-        </div>
-    @endif
-</div>
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -226,7 +230,7 @@
         </div>
 
         <!-- Statistiques (en édition) -->
-        @if(isset($role))
+        @if(isset($role) && $role->exists)
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-info text-white p-4">
                     <h6 class="mb-0">
@@ -248,6 +252,15 @@
                             </div>
                         </div>
                     </div>
+                    
+                    @if($role->users()->count() > 0)
+                        <div class="mt-3">
+                            <a href="{{ route('admin.users.index', ['role' => $role->id]) }}" 
+                               class="btn btn-sm btn-outline-info w-100">
+                                <i class="fas fa-users me-2"></i>Voir les utilisateurs
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endif
@@ -287,3 +300,132 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+}
+
+.permission-checkbox:checked + label {
+    background-color: #f0f9ff;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+</style>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser le compteur
+    updatePermissionsCount();
+    updateSelectedPermissions();
+    
+    // Auto-génération du slug et display_name
+    const nameInput = document.getElementById('name');
+    const slugInput = document.getElementById('slug');
+    const displayNameInput = document.getElementById('display_name');
+    
+    if (nameInput) {
+        nameInput.addEventListener('input', function() {
+            if (slugInput && (!slugInput.value || slugInput.dataset.autoGenerated)) {
+                const slug = this.value
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+                slugInput.value = slug;
+                slugInput.dataset.autoGenerated = 'true';
+            }
+            
+            if (displayNameInput && (!displayNameInput.value || displayNameInput.dataset.autoGenerated)) {
+                const displayName = this.value
+                    .split(/[-_]/)
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+                displayNameInput.value = displayName;
+                displayNameInput.dataset.autoGenerated = 'true';
+            }
+        });
+    }
+    
+    if (slugInput) {
+        slugInput.addEventListener('input', function() {
+            this.dataset.autoGenerated = '';
+        });
+    }
+    
+    if (displayNameInput) {
+        displayNameInput.addEventListener('input', function() {
+            this.dataset.autoGenerated = '';
+        });
+    }
+});
+
+function toggleGroup(group) {
+    const checkbox = document.getElementById('toggle_' + group);
+    const groupCheckboxes = document.querySelectorAll(`input[data-group="${group}"]`);
+    
+    if (checkbox && groupCheckboxes.length > 0) {
+        groupCheckboxes.forEach(cb => {
+            cb.checked = checkbox.checked;
+        });
+        updatePermissionsCount();
+        updateSelectedPermissions();
+    }
+}
+
+function updatePermissionsCount() {
+    const selectedCheckboxes = document.querySelectorAll('input[name="permissions[]"]:checked');
+    const countElement = document.getElementById('selected-count');
+    if (countElement) {
+        countElement.textContent = selectedCheckboxes.length;
+    }
+}
+
+function updateSelectedPermissions() {
+    const selectedCheckboxes = document.querySelectorAll('input[name="permissions[]"]:checked');
+    const container = document.getElementById('selected-permissions');
+    
+    if (!container) return;
+    
+    if (selectedCheckboxes.length === 0) {
+        container.innerHTML = '<small class="text-muted">Aucune permission sélectionnée</small>';
+    } else {
+        let html = `<div class="fw-bold text-primary mb-2">${selectedCheckboxes.length} permission(s)</div>`;
+        const badges = Array.from(selectedCheckboxes).slice(0, 8).map(cb => {
+            const label = cb.nextElementSibling?.querySelector('strong')?.textContent || 'Permission';
+            return `<span class="badge bg-primary-subtle text-primary me-1 mb-1 small">${label}</span>`;
+        }).join('');
+        
+        html += `<div>${badges}</div>`;
+        
+        if (selectedCheckboxes.length > 8) {
+            html += `<small class="text-muted">et ${selectedCheckboxes.length - 8} autres...</small>`;
+        }
+        
+        container.innerHTML = html;
+    }
+}
+
+// Écouter les changements sur les checkboxes de permissions
+document.addEventListener('change', function(e) {
+    if (e.target.classList.contains('permission-checkbox')) {
+        updatePermissionsCount();
+        updateSelectedPermissions();
+    }
+});
+</script>
+@endpush

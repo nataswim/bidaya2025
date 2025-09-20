@@ -30,6 +30,14 @@ class User extends Authenticatable
         'preferences' => 'array',
     ];
 
+    // Définir des valeurs par défaut
+    protected $attributes = [
+        'status' => 'active',
+        'locale' => 'fr',
+        'timezone' => 'Europe/Paris',
+        'login_count' => 0,
+    ];
+
     public function role()
     {
         return $this->belongsTo(Role::class);

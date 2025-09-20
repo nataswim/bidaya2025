@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- En-tête de section -->
-<section class="bg-primary text-white py-5">
+<section class="bg-gradient-primary text-white py-5">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8">
@@ -25,7 +25,7 @@
 <section class="py-4 bg-white border-bottom">
     <div class="container-lg">
         <form method="GET" class="row g-3 align-items-center">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-text bg-light">
                         <i class="fas fa-search text-muted"></i>
@@ -42,17 +42,29 @@
                     <option value="">Toutes les catégories</option>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->slug }}" {{ $category === $cat->slug ? 'selected' : '' }}>
-                            {{ $cat->name }}
+                            {{ $cat->name }} ({{ $cat->posts_count ?? 0 }})
                         </option>
                     @endforeach
                 </select>
             </div>
+            @if(isset($tags) && $tags->count() > 0)
+                <div class="col-md-2">
+                    <select name="tag" class="form-select">
+                        <option value="">Tous les tags</option>
+                        @foreach($tags as $tagItem)
+                            <option value="{{ $tagItem->slug }}" {{ ($tag ?? '') === $tagItem->slug ? 'selected' : '' }}>
+                                {{ $tagItem->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
             <div class="col-md-3">
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary flex-fill">
-                        Filtrer
+                        <i class="fas fa-filter me-2"></i>Filtrer
                     </button>
-                    @if($search || $category)
+                    @if($search || $category || ($tag ?? ''))
                         <a href="{{ route('public.index') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-times"></i>
                         </a>
@@ -67,31 +79,63 @@
 <section class="py-5 bg-light">
     <div class="container-lg">
         @if($posts->count() > 0)
+            <!-- Statistiques de recherche -->
+            @if($search || $category || ($tag ?? ''))
+                <div class="mb-4">
+                    <div class="alert alert-info border-0">
+                        <i class="fas fa-info-circle me-2"></i>
+                        {{ $posts->total() }} résultat(s) trouvé(s)
+                        @if($search)
+                            pour "<strong>{{ $search }}</strong>"
+                        @endif
+                        @if($category)
+                            dans la catégorie "<strong>{{ $categories->where('slug', $category)->first()->name ?? $category }}</strong>"
+                        @endif
+                    </div>
+                </div>
+            @endif
+
             <div class="row g-4">
                 @foreach($posts as $post)
                     <div class="col-lg-4 col-md-6">
                         <article class="card border-0 shadow-sm h-100 hover-lift">
-                            @if($post->image)
-                                <div class="position-relative">
+                            <!-- Image et badges -->
+                            <div class="position-relative">
+                                @if($post->image)
                                     <img src="{{ $post->image }}" class="card-img-top" alt="{{ $post->name }}" 
                                          style="height: 220px; object-fit: cover;">
-                                    @if($post->is_featured)
-                                        <div class="position-absolute top-3 end-3">
-                                            <span class="badge bg-warning text-dark">
-                                                <i class="fas fa-star me-1"></i>Featured
-                                            </span>
+                                @else
+                                    <div class="bg-gradient-secondary d-flex align-items-center justify-content-center text-white" 
+                                         style="height: 220px;">
+                                        <div class="text-center">
+                                            <i class="fas fa-file-alt fa-3x opacity-50 mb-3"></i>
+                                            <div>{{ $post->category->name ?? 'Article' }}</div>
                                         </div>
+                                    </div>
+                                @endif
+                                
+                                <!-- Badges en overlay -->
+                                <div class="position-absolute top-0 end-0 p-3">
+                                    @if($post->is_featured)
+                                        <span class="badge bg-warning text-dark mb-2 d-block">
+                                            <i class="fas fa-star me-1"></i>À la une
+                                        </span>
+                                    @endif
+                                    
+                                    @if($post->visibility === 'authenticated')
+                                        <span class="badge bg-info d-block">
+                                            <i class="fas fa-lock me-1"></i>Membre
+                                        </span>
                                     @endif
                                 </div>
-                            @else
-                                <div class="bg-gradient-primary d-flex align-items-center justify-content-center text-white" 
-                                     style="height: 220px;">
-                                    <div class="text-center">
-                                        <i class="fas fa-file-alt fa-3x opacity-50 mb-3"></i>
-                                        <div>{{ $post->category->name ?? 'Article' }}</div>
-                                    </div>
+
+                                <!-- Indicateur de temps de lecture -->
+                                <div class="position-absolute bottom-0 start-0 p-3">
+                                    <span class="badge bg-dark bg-opacity-75">
+                                        <i class="fas fa-clock me-1"></i>{{ $post->reading_time ?? 5 }} min
+                                    </span>
                                 </div>
-                            @endif
+                            </div>
                             
                             <div class="card-body d-flex flex-column p-4">
                                 <!-- Métadonnées -->
@@ -102,7 +146,7 @@
                                         </span>
                                         <small class="text-muted d-flex align-items-center">
                                             <i class="fas fa-calendar me-1"></i>
-                                            {{ $post->created_at?->format('d M Y') ?? 'Non daté' }}
+                                            {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') ?? 'Non daté' }}
                                         </small>
                                     </div>
                                 </div>
@@ -115,23 +159,32 @@
                                     </a>
                                 </h5>
                                 
-                                <!-- Intro -->
+                                <!-- Intro (toujours visible) -->
                                 @if($post->intro)
                                     <p class="card-text text-muted flex-grow-1 mb-3">
                                         {{ Str::limit($post->intro, 120) }}
                                     </p>
                                 @endif
                                 
-                                <!-- Footer -->
+                                <!-- Footer avec informations de visibilité -->
                                 <div class="mt-auto">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-eye me-1"></i>
-                                            <span>{{ $post->hits }}</span>
+                                            <span>{{ number_format($post->hits) }}</span>
                                         </div>
-                                        <div class="text-primary fw-medium">
-                                            Lire la suite
-                                            <i class="fas fa-arrow-right ms-1"></i>
+                                        
+                                        <div class="d-flex align-items-center gap-2">
+                                            @if($post->visibility === 'authenticated' && auth()->guest())
+                                                <small class="text-warning">
+                                                    <i class="fas fa-lock me-1"></i>Connexion requise
+                                                </small>
+                                            @else
+                                                <div class="text-primary fw-medium">
+                                                    Lire l'article
+                                                    <i class="fas fa-arrow-right ms-1"></i>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -156,19 +209,71 @@
                 </div>
                 <h3 class="fw-bold mb-3">Aucun article trouvé</h3>
                 <p class="text-muted mb-4">
-                    @if($search || $category)
+                    @if($search || $category || ($tag ?? ''))
                         Aucun résultat ne correspond à vos critères de recherche.
                     @else
                         Il n'y a pas encore d'articles publiés.
                     @endif
                 </p>
-                @if($search || $category)
+                @if($search || $category || ($tag ?? ''))
                     <a href="{{ route('public.index') }}" class="btn btn-primary">
-                        Voir tous les articles
+                        <i class="fas fa-arrow-left me-2"></i>Voir tous les articles
                     </a>
                 @endif
             </div>
         @endif
     </div>
 </section>
+
+<!-- Call-to-action pour les visiteurs -->
+@guest
+    <section class="py-5 bg-gradient-primary text-white">
+        <div class="container-lg text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-3">Accédez à tous nos contenus</h2>
+                    <p class="lead mb-4">
+                        Rejoignez notre communauté pour débloquer les articles exclusifs et bénéficier de contenus premium.
+                    </p>
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                        <a href="{{ route('register') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Créer un compte gratuit
+                        </a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endguest
 @endsection
+
+@push('styles')
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.hover-lift {
+    transition: transform 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+}
+</style>
+@endpush

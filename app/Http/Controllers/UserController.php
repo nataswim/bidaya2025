@@ -46,22 +46,53 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request)
-    {
-        $this->checkAdminAccess();
-        
-        $data = $request->validated();
-        $data['password'] = Hash::make($data['password']);
+{
+    $this->checkAdminAccess();
+    
+    $data = $request->validated();
+    $data['password'] = Hash::make($data['password']);
 
-        if (!isset($data['role_id'])) {
-            $defaultRole = Role::where('is_default', true)->first();
-            $data['role_id'] = $defaultRole?->id;
-        }
+    // Définir des valeurs par défaut pour les champs obligatoires
+    $data = array_merge([
+        'locale' => 'fr',
+        'timezone' => 'Europe/Paris',
+        'status' => 'active',
+    ], $data);
 
-        User::create($data);
-
-        return redirect()->route('admin.users.index')
-            ->with('success', 'Utilisateur créé avec succès.');
+    // Nettoyer les valeurs vides qui peuvent poser problème
+    if (empty($data['locale'])) {
+        $data['locale'] = 'fr';
     }
+    
+    if (empty($data['timezone'])) {
+        $data['timezone'] = 'Europe/Paris';
+    }
+    
+    if (empty($data['status'])) {
+        $data['status'] = 'active';
+    }
+
+    // Assigner le rôle par défaut si aucun rôle n'est spécifié
+    if (empty($data['role_id'])) {
+        $defaultRole = Role::where('is_default', true)->first();
+        $data['role_id'] = $defaultRole?->id;
+    }
+
+    // Nettoyer les champs optionnels vides
+    $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
+    foreach ($optionalFields as $field) {
+        if (isset($data[$field]) && empty($data[$field])) {
+            $data[$field] = null;
+        }
+    }
+
+    User::create($data);
+
+    return redirect()->route('admin.users.index')
+        ->with('success', 'Utilisateur créé avec succès.');
+}
+
+
 
     public function show(User $user)
     {
@@ -80,22 +111,44 @@ class UserController extends Controller
     }
 
     public function update(UpdateUserRequest $request, User $user)
-    {
-        $this->checkAdminAccess();
-        
-        $data = $request->validated();
+{
+    $this->checkAdminAccess();
+    
+    $data = $request->validated();
 
-        if (!empty($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
-        } else {
-            unset($data['password']);
-        }
-
-        $user->update($data);
-
-        return redirect()->route('admin.users.index')
-            ->with('success', 'Utilisateur mis à jour avec succès.');
+    // Gestion du mot de passe
+    if (!empty($data['password'])) {
+        $data['password'] = Hash::make($data['password']);
+    } else {
+        unset($data['password']);
     }
+
+    // Définir des valeurs par défaut pour les champs obligatoires
+    if (empty($data['locale'])) {
+        $data['locale'] = 'fr';
+    }
+    
+    if (empty($data['timezone'])) {
+        $data['timezone'] = 'Europe/Paris';
+    }
+    
+    if (empty($data['status'])) {
+        $data['status'] = 'active';
+    }
+
+    // Nettoyer les champs optionnels vides
+    $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
+    foreach ($optionalFields as $field) {
+        if (isset($data[$field]) && empty($data[$field])) {
+            $data[$field] = null;
+        }
+    }
+
+    $user->update($data);
+
+    return redirect()->route('admin.users.index')
+        ->with('success', 'Utilisateur mis à jour avec succès.');
+}
 
     public function destroy(User $user)
     {
