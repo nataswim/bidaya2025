@@ -156,7 +156,7 @@
                         </h6>
                     </div>
                     <div class="card-body p-4">
-                        <input type="url" 
+                        <input type="text" 
                                name="image" 
                                value="{{ old('image') }}"
                                class="form-control"

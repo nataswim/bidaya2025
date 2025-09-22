@@ -170,33 +170,71 @@
             </div>
         </div>
 
+
+
+
+
+
+
+
         <!-- Image -->
-        <div class="card border-0 shadow-sm">
-            <div class="card-header bg-gradient-primary text-white p-4">
-                <h6 class="mb-0">
-                    <i class="fas fa-image me-2"></i>Image d'illustration
-                </h6>
-            </div>
-            <div class="card-body p-4">
-                <input type="url" 
-                       name="image" 
-                       value="{{ old('image', $category->image ?? '') }}"
-                       class="form-control @error('image') is-invalid @enderror"
-                       placeholder="https://example.com/image.jpg">
-                <div class="form-text">URL de l'image d'illustration de la catégorie</div>
-                @error('image')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-                
-                @if(isset($category) && $category->image)
-                    <div class="mt-3">
-                        <img src="{{ $category->image }}" alt="Aperçu" class="img-fluid rounded" style="max-height: 150px;">
-                    </div>
-                @endif
-            </div>
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-gradient-primary text-white p-4">
+        <h6 class="mb-0">
+            <i class="fas fa-image me-2"></i>Image d'illustration
+        </h6>
+    </div>
+    <div class="card-body p-4">
+        <div class="input-group">
+            <input type="text" 
+       name="image" 
+       id="categoryImage"
+       value="{{ old('image', $category->image ?? '') }}"
+       class="form-control @error('image') is-invalid @enderror"
+       placeholder="https://example.com/image.jpg ou /storage/media/image.jpg">
+            <button type="button" 
+                    class="btn btn-outline-primary"
+                    onclick="openMediaSelector('categoryImage', 'categoryImagePreview')">
+                <i class="fas fa-images"></i>
+            </button>
         </div>
+        <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
+        @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        
+        @if(isset($category) && $category->image)
+            <div class="mt-3">
+                <img src="{{ $category->image }}" 
+                     id="categoryImagePreview"
+                     alt="Aperçu" 
+                     class="img-fluid rounded" 
+                     style="max-height: 150px;">
+            </div>
+        @else
+            <div class="mt-3 d-none">
+                <img id="categoryImagePreview"
+                     alt="Aperçu" 
+                     class="img-fluid rounded" 
+                     style="max-height: 150px;">
+            </div>
+        @endif
     </div>
 </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
 
 <!-- Actions -->
 <div class="row mt-4">

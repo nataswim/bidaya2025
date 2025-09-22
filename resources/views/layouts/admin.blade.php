@@ -17,6 +17,7 @@
     <!-- Quill.js CSS - UNE SEULE FOIS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="{{ asset('css/quill-advanced.css') }}" rel="stylesheet">
+<link href="{{ asset('css/media-selector.css') }}" rel="stylesheet">
 
     @stack('styles')
 </head>
@@ -54,6 +55,9 @@
     <!-- Quill.js - UNE SEULE FOIS -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="{{ asset('js/quill-advanced.js') }}"></script>
+<!-- Sélecteur de médias -->
+<script src="{{ asset('js/media-selector.js') }}"></script>
+
 
     @stack('scripts')
 </body>

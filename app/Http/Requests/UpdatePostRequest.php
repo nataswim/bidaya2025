@@ -23,12 +23,12 @@ class UpdatePostRequest extends FormRequest
             'tags'              => 'nullable|array',
             'tags.*'            => 'exists:tags,id',
             'is_featured'       => 'nullable|boolean',
-            'image'             => 'nullable|url',
+            'image'             => 'nullable|string|max:2048',
             'meta_title'        => 'nullable|string|max:255',
             'meta_keywords'     => 'nullable|string|max:255',
             'meta_description'  => 'nullable|string|max:500',
-            'meta_og_image'     => 'nullable|url',
-            'meta_og_url'       => 'nullable|url',
+            'meta_og_image'     => 'nullable|string|max:2048',
+            'meta_og_url'       => 'nullable|string|max:2048',
             'order'             => 'nullable|integer|min:0',
             'status'            => 'required|string|in:draft,published',
             'visibility'        => 'required|string|in:public,authenticated',
@@ -37,24 +37,24 @@ class UpdatePostRequest extends FormRequest
     }
 
     public function messages(): array
-    {
-        return [
-            'name.required' => 'Le titre de l\'article est obligatoire.',
-            'content.required' => 'Le contenu de l\'article est obligatoire.',
-            'category_id.required' => 'La catégorie est obligatoire.',
-            'category_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
-            'status.required' => 'Le statut est obligatoire.',
-            'status.in' => 'Le statut doit être "brouillon" ou "publié".',
-            'visibility.required' => 'La visibilité est obligatoire.',
-            'visibility.in' => 'La visibilité doit être "public" ou "authenticated".',
-            'type.required' => 'Le type d\'article est obligatoire.',
-            'type.in' => 'Le type d\'article n\'est pas valide.',
-            'tags.*.exists' => 'Un ou plusieurs tags sélectionnés n\'existent pas.',
-            'image.url' => 'L\'URL de l\'image n\'est pas valide.',
-            'meta_og_image.url' => 'L\'URL de l\'image Open Graph n\'est pas valide.',
-            'meta_og_url.url' => 'L\'URL Open Graph n\'est pas valide.',
-        ];
-    }
+{
+    return [
+        'name.required' => 'Le titre de l\'article est obligatoire.',
+        'content.required' => 'Le contenu de l\'article est obligatoire.',
+        'category_id.required' => 'La catégorie est obligatoire.',
+        'category_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
+        'status.required' => 'Le statut est obligatoire.',
+        'status.in' => 'Le statut doit être "brouillon" ou "publié".',
+        'visibility.required' => 'La visibilité est obligatoire.',
+        'visibility.in' => 'La visibilité doit être "public" ou "authenticated".',
+        'type.required' => 'Le type d\'article est obligatoire.',
+        'type.in' => 'Le type d\'article n\'est pas valide.',
+        'tags.*.exists' => 'Un ou plusieurs tags sélectionnés n\'existent pas.',
+        'image.string' => 'L\'image doit être une chaîne de caractères valide.', // ← CHANGÉ
+        'meta_og_image.string' => 'L\'image Open Graph doit être une chaîne de caractères valide.', // ← CHANGÉ
+        'meta_og_url.string' => 'L\'URL Open Graph doit être une chaîne de caractères valide.', // ← CHANGÉ
+    ];
+}
 
     protected function prepareForValidation()
     {

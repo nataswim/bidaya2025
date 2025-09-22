@@ -378,57 +378,68 @@
             </div>
         </div>
 
-        <!-- Image -->
-        <div class="card border-0 shadow-sm mb-4">
-            <div class="card-header bg-gradient-info text-white p-4">
-                <h6 class="mb-0">
-                    <i class="fas fa-image me-2"></i>Image à la une
-                </h6>
-            </div>
-            <div class="card-body p-4">
-                <div class="mb-3">
-                    <label for="image" class="form-label fw-semibold">URL de l'image</label>
-                    <div class="input-group">
-                        <input type="url" 
-                               name="image" 
-                               id="image" 
-                               value="{{ old('image', isset($post) ? $post->image : '') }}"
-                               class="form-control @error('image') is-invalid @enderror"
-                               placeholder="https://exemple.com/image.jpg">
-                        <button type="button" 
-                                class="btn btn-outline-primary"
-                                onclick="openMediaSelectorForImageField()">
-                            <i class="fas fa-images"></i>
-                        </button>
-                    </div>
-                    <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
-                    @error('image')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
 
-                @if(isset($post) && $post->image)
-                    <div class="mt-3" id="currentImagePreview">
-                        <small class="text-muted d-block mb-2">Aperçu actuel :</small>
-                        <img src="{{ $post->image }}" 
-                             class="img-fluid rounded shadow-sm" 
-                             style="max-height: 150px; object-fit: cover;"
-                             alt="Image actuelle">
-                    </div>
-                @endif
-                
-                <!-- Aperçu de l'image sélectionnée -->
-                <div class="mt-3 d-none" id="newImagePreview">
-                    <small class="text-muted d-block mb-2">Nouvel aperçu :</small>
-                    <img id="previewImg" 
-                         class="img-fluid rounded shadow-sm" 
-                         style="max-height: 150px; object-fit: cover;"
-                         alt="Aperçu">
-                </div>
+
+
+
+        
+<!-- Image -->
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-header bg-gradient-info text-white p-4">
+        <h6 class="mb-0">
+            <i class="fas fa-image me-2"></i>Image à la une
+        </h6>
+    </div>
+    <div class="card-body p-4">
+        <div class="mb-3">
+            <label for="image" class="form-label fw-semibold">URL de l'image</label>
+            <div class="input-group">
+                <input type="text" 
+       name="image" 
+       id="image" 
+       value="{{ old('image', isset($post) ? $post->image : '') }}"
+       class="form-control @error('image') is-invalid @enderror"
+       placeholder="https://exemple.com/image.jpg ou /storage/media/image.jpg">
+                <button type="button" 
+                        class="btn btn-outline-primary"
+                        onclick="openMediaSelector('image', 'imagePreview')">
+                    <i class="fas fa-images"></i>
+                </button>
             </div>
+            <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
+            @error('image')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
+
+        @if(isset($post) && $post->image)
+            <div class="mt-3" id="currentImagePreview">
+                <small class="text-muted d-block mb-2">Aperçu actuel :</small>
+                <img src="{{ $post->image }}" 
+                     id="imagePreview"
+                     class="img-fluid rounded shadow-sm" 
+                     style="max-height: 150px; object-fit: cover;"
+                     alt="Image actuelle">
+            </div>
+        @else
+            <div class="mt-3 d-none" id="currentImagePreview">
+                <small class="text-muted d-block mb-2">Aperçu :</small>
+                <img id="imagePreview"
+                     class="img-fluid rounded shadow-sm" 
+                     style="max-height: 150px; object-fit: cover;"
+                     alt="Aperçu">
+            </div>
+        @endif
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 <!-- Actions -->
 <div class="row mt-4">

@@ -183,32 +183,64 @@
             </div>
         </div>
 
-        <!-- Image d'illustration -->
-        <div class="card border-0 shadow-sm">
-            <div class="card-header bg-gradient-primary text-white p-4">
-                <h6 class="mb-0">
-                    <i class="fas fa-image me-2"></i>Image d'illustration
-                </h6>
-            </div>
-            <div class="card-body p-4">
-                <input type="url" 
-                       name="image" 
-                       value="{{ old('image', isset($tag) ? $tag->image : '') }}"
-                       class="form-control @error('image') is-invalid @enderror"
-                       placeholder="https://example.com/tag-image.jpg">
-                <div class="form-text">URL de l'image d'illustration du tag</div>
-                @error('image')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-                
-                @if(isset($tag) && $tag->image)
-                    <div class="mt-3 text-center">
-                        <img src="{{ $tag->image }}" alt="Aperçu" class="img-fluid rounded" style="max-height: 120px;">
-                        <div class="small text-muted mt-1">Image actuelle</div>
-                    </div>
-                @endif
-            </div>
+
+
+
+
+
+
+
+
+<!-- Image d'illustration -->
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-gradient-primary text-white p-4">
+        <h6 class="mb-0">
+            <i class="fas fa-image me-2"></i>Image d'illustration
+        </h6>
+    </div>
+    <div class="card-body p-4">
+        <div class="input-group">
+            <input type="text" 
+       name="image" 
+       id="tagImage"
+       value="{{ old('image', isset($tag) ? $tag->image : '') }}"
+       class="form-control @error('image') is-invalid @enderror"
+       placeholder="https://example.com/tag-image.jpg ou /storage/media/image.jpg">
+            <button type="button" 
+                    class="btn btn-outline-primary"
+                    onclick="openMediaSelector('tagImage', 'tagImagePreview')">
+                <i class="fas fa-images"></i>
+            </button>
         </div>
+        <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
+        @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        
+        @if(isset($tag) && $tag->image)
+            <div class="mt-3 text-center">
+                <img src="{{ $tag->image }}" 
+                     id="tagImagePreview"
+                     alt="Aperçu" 
+                     class="img-fluid rounded" 
+                     style="max-height: 120px;">
+                <div class="small text-muted mt-1">Image actuelle</div>
+            </div>
+        @else
+            <div class="mt-3 text-center d-none">
+                <img id="tagImagePreview"
+                     alt="Aperçu" 
+                     class="img-fluid rounded" 
+                     style="max-height: 120px;">
+                <div class="small text-muted mt-1">Aperçu</div>
+            </div>
+        @endif
+    </div>
+</div>
+
+
+
+
     </div>
 </div>
 

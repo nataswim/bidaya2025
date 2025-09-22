@@ -257,7 +257,7 @@
                 </h6>
             </div>
             <div class="card-body p-4">
-                <input type="url" 
+                <input type="text" 
                        name="avatar" 
                        value="{{ old('avatar', isset($user) ? $user->avatar : '') }}"
                        class="form-control @error('avatar') is-invalid @enderror"

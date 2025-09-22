@@ -188,7 +188,7 @@
 
                             <div class="col-12">
                                 <label for="avatar" class="form-label fw-semibold">Avatar (URL)</label>
-                                <input type="url" 
+                                <input type="text" 
                                        name="avatar" 
                                        id="avatar" 
                                        value="{{ old('avatar', auth()->user()->avatar) }}"
