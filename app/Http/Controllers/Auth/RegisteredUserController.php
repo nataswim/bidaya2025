@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log; // ← Ajouter cet import
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -35,16 +37,37 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Récupérer le rôle visitor par défaut
+        $visitorRole = Role::where('name', 'visitor')->where('is_default', true)->first();
+        
+        // Fallback si pas trouvé par is_default
+        if (!$visitorRole) {
+            $visitorRole = Role::where('name', 'visitor')->first();
+        }
+
+        // Sécurité : si toujours pas de rôle visitor, créer une erreur
+        if (!$visitorRole) {
+            Log::error('Rôle visitor non trouvé lors de l\'inscription pour: ' . $request->email);
+            return redirect()->back()
+                ->withErrors(['general' => 'Erreur système : configuration des rôles incomplète.'])
+                ->withInput();
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => $visitorRole->id, // Assigner automatiquement le rôle visitor
+            'status' => 'active',
+            'locale' => 'fr',
+            'timezone' => 'Europe/Paris',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('dashboard', absolute: false))
+            ->with('success', 'Inscription réussie ! Votre compte doit être validé par un administrateur pour accéder aux contenus premium.');
     }
 }

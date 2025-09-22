@@ -162,7 +162,7 @@
                                 <!-- Intro (toujours visible) -->
                                 @if($post->intro)
                                     <p class="card-text text-muted flex-grow-1 mb-3">
-                                        {{ Str::limit($post->intro, 120) }}
+                                        {!! Str::limit(strip_tags($post->intro), 120) !!}
                                     </p>
                                 @endif
                                 

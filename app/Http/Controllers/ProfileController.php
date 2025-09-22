@@ -16,6 +16,7 @@ class ProfileController extends Controller
         }
     }
 
+    // MÉTHODES ADMIN (existantes)
     public function show()
     {
         $this->checkAdminAccess();
@@ -65,5 +66,48 @@ class ProfileController extends Controller
 
         return redirect('/')
             ->with('success', 'Votre compte a été supprimé.');
+    }
+
+    // NOUVELLE MÉTHODE POUR LES UTILISATEURS NORMAUX
+    public function updateUserProfile(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,' . auth()->id()],
+            'first_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['nullable', 'string', 'max:255'],
+            'username' => ['nullable', 'string', 'max:255', 'unique:users,username,' . auth()->id()],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'date_of_birth' => ['nullable', 'date', 'before:today'],
+            'bio' => ['nullable', 'string', 'max:1000'],
+            'avatar' => ['nullable', 'url', 'max:500'],
+            'locale' => ['required', 'in:fr,en'],
+            'timezone' => ['required', 'string'],
+            'password' => ['nullable', 'min:8', 'confirmed'],
+        ]);
+
+        $user = Auth::user();
+        $data = $request->only([
+            'name', 'email', 'first_name', 'last_name', 'username', 
+            'phone', 'date_of_birth', 'bio', 'avatar', 'locale', 'timezone'
+        ]);
+
+        // Gestion du mot de passe
+        if (!empty($request->password)) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        // Nettoyer les champs optionnels vides
+        $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
+        foreach ($optionalFields as $field) {
+            if (isset($data[$field]) && empty($data[$field])) {
+                $data[$field] = null;
+            }
+        }
+
+        $user->update($data);
+
+        return redirect()->route('user.profile.edit')
+            ->with('success', 'Profil mis à jour avec succès.');
     }
 }

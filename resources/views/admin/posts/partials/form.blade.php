@@ -43,38 +43,46 @@
                     @enderror
                 </div>
 
-                <!-- Introduction -->
+                <!-- Introduction avec Quill -->
                 <div class="mb-4">
                     <label for="intro" class="form-label fw-semibold">
                         Introduction / Résumé
                         <span class="badge bg-info-subtle text-info ms-2">Toujours visible</span>
                     </label>
+                    
+                    <!-- Conteneur pour l'éditeur Quill -->
+                    <div id="intro-editor" style="height: 150px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    
+                    <!-- Textarea cachée pour Laravel -->
                     <textarea name="intro" 
                               id="intro" 
-                              rows="4"
-                              class="form-control @error('intro') is-invalid @enderror"
-                              placeholder="Rédigez une introduction engageante qui sera visible par tous les visiteurs...">{{ old('intro', isset($post) ? $post->intro : '') }}</textarea>
+                              class="d-none @error('intro') is-invalid @enderror">{{ old('intro', isset($post) ? $post->intro : '') }}</textarea>
+                              
                     <div class="form-text">Cette introduction sera visible par tous les visiteurs, même pour les articles restreints</div>
                     @error('intro')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Contenu principal -->
+                <!-- Contenu principal avec Quill -->
                 <div class="mb-4">
                     <label for="content" class="form-label fw-semibold">
                         Contenu principal *
                         <span class="badge bg-warning-subtle text-warning ms-2">Selon visibilité</span>
                     </label>
+                    
+                    <!-- Conteneur pour l'éditeur Quill -->
+                    <div id="content-editor" style="height: 300px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    
+                    <!-- Textarea cachée pour Laravel -->
                     <textarea name="content" 
                               id="content" 
-                              rows="15"
-                              class="form-control @error('content') is-invalid @enderror"
-                              placeholder="Rédigez le contenu principal de votre article..."
+                              class="d-none @error('content') is-invalid @enderror"
                               required>{{ old('content', isset($post) ? $post->content : '') }}</textarea>
+                              
                     <div class="form-text">Ce contenu sera visible selon les paramètres de visibilité choisis</div>
                     @error('content')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -380,19 +388,27 @@
             <div class="card-body p-4">
                 <div class="mb-3">
                     <label for="image" class="form-label fw-semibold">URL de l'image</label>
-                    <input type="url" 
-                           name="image" 
-                           id="image" 
-                           value="{{ old('image', isset($post) ? $post->image : '') }}"
-                           class="form-control @error('image') is-invalid @enderror"
-                           placeholder="https://exemple.com/image.jpg">
+                    <div class="input-group">
+                        <input type="url" 
+                               name="image" 
+                               id="image" 
+                               value="{{ old('image', isset($post) ? $post->image : '') }}"
+                               class="form-control @error('image') is-invalid @enderror"
+                               placeholder="https://exemple.com/image.jpg">
+                        <button type="button" 
+                                class="btn btn-outline-primary"
+                                onclick="openMediaSelectorForImageField()">
+                            <i class="fas fa-images"></i>
+                        </button>
+                    </div>
+                    <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
                     @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 @if(isset($post) && $post->image)
-                    <div class="mt-3">
+                    <div class="mt-3" id="currentImagePreview">
                         <small class="text-muted d-block mb-2">Aperçu actuel :</small>
                         <img src="{{ $post->image }}" 
                              class="img-fluid rounded shadow-sm" 
@@ -400,6 +416,15 @@
                              alt="Image actuelle">
                     </div>
                 @endif
+                
+                <!-- Aperçu de l'image sélectionnée -->
+                <div class="mt-3 d-none" id="newImagePreview">
+                    <small class="text-muted d-block mb-2">Nouvel aperçu :</small>
+                    <img id="previewImg" 
+                         class="img-fluid rounded shadow-sm" 
+                         style="max-height: 150px; object-fit: cover;"
+                         alt="Aperçu">
+                </div>
             </div>
         </div>
     </div>
@@ -452,59 +477,3 @@
 </style>
 @endpush
 
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Auto-génération du slug
-    const nameInput = document.getElementById('name');
-    const slugInput = document.getElementById('slug');
-    
-    nameInput.addEventListener('input', function() {
-        if (!slugInput.value || slugInput.dataset.autoGenerated) {
-            const slug = this.value
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/^-+|-+$/g, '');
-            slugInput.value = slug;
-            slugInput.dataset.autoGenerated = 'true';
-        }
-    });
-    
-    slugInput.addEventListener('input', function() {
-        this.dataset.autoGenerated = '';
-    });
-
-    // Gestion de l'aide à la visibilité
-    const visibilitySelect = document.getElementById('visibility');
-    const publicHelp = document.getElementById('public-help');
-    const authenticatedHelp = document.getElementById('authenticated-help');
-    const publicImpact = document.getElementById('public-impact');
-    const authenticatedImpact = document.getElementById('authenticated-impact');
-
-    function updateVisibilityHelp() {
-        const value = visibilitySelect.value;
-        
-        // Masquer tous les éléments d'aide
-        publicHelp.style.display = 'none';
-        authenticatedHelp.style.display = 'none';
-        publicImpact.style.display = 'none';
-        authenticatedImpact.style.display = 'none';
-        
-        // Afficher l'aide correspondante
-        if (value === 'public') {
-            publicHelp.style.display = 'block';
-            publicImpact.style.display = 'block';
-        } else if (value === 'authenticated') {
-            authenticatedHelp.style.display = 'block';
-            authenticatedImpact.style.display = 'block';
-        }
-    }
-
-    // Initialiser l'affichage
-    updateVisibilityHelp();
-    
-    // Écouter les changements
-    visibilitySelect.addEventListener('change', updateVisibilityHelp);
-});
-</script>
-@endpush

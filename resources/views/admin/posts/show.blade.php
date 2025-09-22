@@ -58,7 +58,7 @@
                         <div class="mb-4">
                             <h6 class="fw-semibold mb-3">Introduction</h6>
                             <div class="bg-light p-3 rounded">
-                                {{ $post->intro }}
+                                {!! $post->intro !!}
                             </div>
                         </div>
                     @endif
@@ -67,7 +67,7 @@
                         <div class="mb-4">
                             <h6 class="fw-semibold mb-3">Contenu</h6>
                             <div class="content-display">
-                                {!! nl2br(e($post->content)) !!}
+                                {!! $post->content !!}
                             </div>
                         </div>
                     @endif
@@ -258,6 +258,51 @@
 
 @push('styles')
 <style>
+    /* Styles pour le contenu HTML de Quill */
+.content-display h1,
+.content-display h2,
+.content-display h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.content-display p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.content-display ul,
+.content-display ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.content-display blockquote {
+    border-left: 4px solid var(--bs-primary);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.content-display img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.content-display pre {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #0ea5e9;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
 .content-display {
     line-height: 1.6;
     max-height: 400px;

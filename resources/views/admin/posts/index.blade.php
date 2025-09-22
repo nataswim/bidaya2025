@@ -126,7 +126,7 @@
                                                             </a>
                                                         </h6>
                                                         @if($post->intro)
-                                                            <small class="text-muted">{{ Str::limit($post->intro, 80) }}</small>
+                                                            <small class="text-muted">{!! Str::limit(strip_tags($post->intro), 80) !!}</small>
                                                         @endif
                                                         @if($post->is_featured)
                                                             <span class="badge bg-warning-subtle text-warning ms-2">
@@ -416,6 +416,51 @@
 
 @push('styles')
 <style>
+    /* Styles pour le contenu HTML de Quill */
+.content-display h1,
+.content-display h2,
+.content-display h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.content-display p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.content-display ul,
+.content-display ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.content-display blockquote {
+    border-left: 4px solid var(--bs-primary);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.content-display img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.content-display pre {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #0ea5e9;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
 .bg-gradient-primary {
     background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
 }

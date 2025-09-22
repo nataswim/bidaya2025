@@ -148,7 +148,7 @@
                             </h5>
                             
                             @if($post->intro)
-                                <p class="card-text text-muted flex-grow-1">{{ Str::limit($post->intro, 120) }}</p>
+                                <p class="card-text text-muted flex-grow-1">{!! Str::limit(strip_tags($post->intro), 120) !!}</p>
                             @endif
                             
                             <div class="mt-auto pt-3">

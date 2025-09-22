@@ -34,6 +34,21 @@
         </div>
         
         <ul class="nav nav-pills flex-column px-3">
+            <!-- NOUVEAU : Section Médias -->
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.media.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.media.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-images me-3"></i>
+                    <span>Médias</span>
+                    @php
+                        $mediaCount = App\Models\Media::count();
+                    @endphp
+                    @if($mediaCount > 0)
+                        <span class="badge bg-success ms-auto">{{ $mediaCount }}</span>
+                    @endif
+                </a>
+            </li>
+
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.posts.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.posts.*') ? 'active bg-primary' : '' }}">
