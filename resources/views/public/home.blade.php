@@ -362,7 +362,7 @@
         @guest
             <div class="d-flex gap-3 justify-content-center">
                 <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-user-plus me-2"></i>Créer un compte gratuit
+                    <i class="fas fa-user-plus me-2"></i>Créer un compte
                 </a>
                 <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-5">
                     <i class="fas fa-sign-in-alt me-2"></i>Se connecter
