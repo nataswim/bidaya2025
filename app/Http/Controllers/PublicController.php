@@ -65,50 +65,58 @@ class PublicController extends Controller
     }
 
     public function show(Post $post)
-    {
-        // Vérifier si le post est publié (métadonnées visibles)
-        if (!$post->isMetadataVisible()) {
-            abort(404, 'Article non trouvé.');
-        }
-
-        // Incrémenter les vues pour tous les visiteurs (même si contenu restreint)
-        $post->increment('hits');
-
-        // Charger les relations nécessaires
-        $post->load(['category', 'tags', 'creator']);
-
-        // Déterminer si le contenu complet est visible
-        $contentVisible = $post->isContentVisibleTo(auth()->user());
-
-        // Articles similaires (même catégorie, métadonnées visibles)
-        $relatedPosts = collect();
-        if ($post->category_id) {
-            $relatedPosts = Post::where('status', 'published')
-                ->where('category_id', $post->category_id)
-                ->where('id', '!=', $post->id)
-                ->whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                ->orderBy('published_at', 'desc')
-                ->limit(4)
-                ->get();
-        }
-
-        // Articles populaires si pas assez d'articles similaires
-        if ($relatedPosts->count() < 3) {
-            $popularPosts = Post::where('status', 'published')
-                ->where('id', '!=', $post->id)
-                ->whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                ->orderBy('hits', 'desc')
-                ->limit(4 - $relatedPosts->count())
-                ->get();
-            
-            $relatedPosts = $relatedPosts->merge($popularPosts);
-        }
-
-        return view('public.show', compact('post', 'relatedPosts', 'contentVisible'));
+{
+    // Vérifier si le post est publié (métadonnées visibles)
+    if (!$post->isMetadataVisible()) {
+        abort(404, 'Article non trouvé.');
     }
 
+    // Incrémenter les vues pour tous les visiteurs (même si contenu restreint)
+    $post->increment('hits');
+
+    // Charger les relations nécessaires
+    $post->load(['category', 'tags', 'creator']);
+
+    // Déterminer si le contenu complet est visible
+    $contentVisible = $post->isContentVisibleTo(auth()->user());
+
+    // Articles similaires (même catégorie, métadonnées visibles)
+    $relatedPosts = collect();
+    if ($post->category_id) {
+        $relatedPosts = Post::where('status', 'published')
+            ->where('category_id', $post->category_id)
+            ->where('id', '!=', $post->id)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->orderBy('published_at', 'desc')
+            ->limit(4)
+            ->get();
+    }
+
+    // Articles populaires si pas assez d'articles similaires
+    if ($relatedPosts->count() < 3) {
+        $popularPosts = Post::where('status', 'published')
+            ->where('id', '!=', $post->id)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->orderBy('hits', 'desc')
+            ->limit(4 - $relatedPosts->count())
+            ->get();
+        
+        $relatedPosts = $relatedPosts->merge($popularPosts);
+    }
+
+    // Posts récents pour la sidebar
+    $recentPosts = Post::where('status', 'published')
+        ->where('id', '!=', $post->id)
+        ->whereNotNull('published_at')
+        ->where('published_at', '<=', now())
+        ->latest()
+        ->take(5)
+        ->get();
+
+    return view('public.show', compact('post', 'relatedPosts', 'contentVisible', 'recentPosts'));
+}
     public function about()
     {
         return view('public.about');
