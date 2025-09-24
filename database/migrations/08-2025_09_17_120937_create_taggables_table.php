@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Exécute les migrations.
+     * ExÃ©cute les migrations.
      */
     public function up(): void
     {
@@ -19,8 +19,8 @@ return new class extends Migration
                   ->constrained('tags')
                   ->cascadeOnDelete();
 
-            // Colonnes morphables (permettent d'associer un tag à plusieurs modèles)
-            $table->morphs('taggable'); // crée taggable_id (bigint) + taggable_type (string)
+            // Colonnes morphables (permettent d'associer un tag Ã plusieurs modÃ¨les)
+            $table->morphs('taggable'); // crÃ©e taggable_id (bigint) + taggable_type (string)
 
             // Empêcher les doublons
             $table->unique(['tag_id', 'taggable_id', 'taggable_type'], 'taggables_unique');

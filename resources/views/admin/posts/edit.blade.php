@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.posts.update', $post) }}">
         @method('PUT')
         @include('admin.posts.partials.form', [
-            'submitLabel' => 'Mettre à jour l\'article',
+            'submitLabel' => 'Mettre Ã jour l\'article',
             'post' => $post,
             'categories' => $categories,
             'tags' => $tags

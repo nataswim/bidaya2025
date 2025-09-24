@@ -19,7 +19,7 @@ class QuillMediaManager {
 
         const quill = new Quill(container, {
             theme: 'snow',
-            placeholder: 'Rédigez votre contenu...',
+            placeholder: 'RÃ©digez votre contenu...',
             modules: {
                 toolbar: {
                     container: [
@@ -106,13 +106,13 @@ class QuillMediaManager {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">
-                                <i class="fas fa-images me-2"></i>Insérer une image
+                                <i class="fas fa-images me-2"></i>InsÃ©rer une image
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         
                         <div class="modal-body">
-                            <!-- Sélection de taille -->
+                            <!-- SÃ©lection de taille -->
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Taille d'insertion :</label>
                                 <div class="btn-group w-100" role="group">
@@ -155,12 +155,12 @@ class QuillMediaManager {
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         this.imageModal = document.getElementById('advancedImageModal');
         
-        // Événements
+        // Ã©vÃ©nements
         this.setupModalEvents();
     }
 
     setupModalEvents() {
-        // Sélection de taille
+        // SÃ©lection de taille
         const sizeInputs = this.imageModal.querySelectorAll('input[name="imageSize"]');
         sizeInputs.forEach(input => {
             input.addEventListener('change', (e) => {
@@ -202,11 +202,11 @@ async loadMediaImages() {
         }
         
         const data = await response.json();
-        console.log('Données API reçues:', data); // Debug
+        console.log('DonnÃ©es API reçues:', data); // Debug
         
         this.renderImages(data.data || []);
     } catch (error) {
-        console.error('Erreur lors du chargement des médias:', error);
+        console.error('Erreur lors du chargement des mÃ©dias:', error);
         this.showImageError(error.message);
     }
 }
@@ -225,10 +225,10 @@ renderImages(images) {
         grid.innerHTML = `
             <div class="col-12 text-center py-4">
                 <i class="fas fa-images fa-3x text-muted mb-3"></i>
-                <h5 class="text-muted">Aucune image trouvée</h5>
-                <p class="text-muted">Uploadez des images dans votre médiathèque.</p>
+                <h5 class="text-muted">Aucune image trouvÃ©e</h5>
+                <p class="text-muted">Uploadez des images dans votre mÃ©diathÃ¨que.</p>
                 <a href="/admin/media" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-upload me-2"></i>Gérer les médias
+                    <i class="fas fa-upload me-2"></i>GÃ©rer les mÃ©dias
                 </a>
             </div>
         `;
@@ -238,14 +238,14 @@ renderImages(images) {
     images.forEach(image => {
         console.log('Traitement de l\'image:', image); // Debug
         
-        // Construire l'URL correctement selon votre modèle Media
+        // Construire l'URL correctement selon votre modÃ¨le Media
         let imageUrl = '';
         if (image.url) {
             imageUrl = image.url;
         } else if (image.path) {
             imageUrl = `/storage/${image.path}`;
         } else {
-            console.warn('Aucune URL trouvée pour:', image);
+            console.warn('Aucune URL trouvÃ©e pour:', image);
             return;
         }
         
@@ -262,7 +262,7 @@ renderImages(images) {
                 <div class="card-img-top" style="height: 120px; overflow: hidden;">
                     <img src="${imageUrl}" alt="${imageName}" 
                          class="img-fluid w-100 h-100" style="object-fit: cover;"
-                         onload="console.log('Image chargée:', this.src)"
+                         onload="console.log('Image chargÃ©e:', this.src)"
                          onerror="console.error('Erreur chargement image:', this.src); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5Ij5Erreur<L3RleHQ+PC9zdmc+';">
                 </div>
                 <div class="card-body p-2">
@@ -270,13 +270,13 @@ renderImages(images) {
                         ${imageName}
                     </p>
                     <small class="text-muted size-preview">
-                        Sera insérée en ${this.imageSizeOptions[this.selectedImageSize].label.toLowerCase()}
+                        Sera insÃ©rÃ©e en ${this.imageSizeOptions[this.selectedImageSize].label.toLowerCase()}
                     </small>
                 </div>
             </div>
         `;
         
-        // Ajouter l'événement de clic
+        // Ajouter l'Ã©vÃ©nement de clic
         col.addEventListener('click', () => {
             console.log('Insertion image URL:', imageUrl);
             this.insertImage(imageUrl, imageName);
@@ -285,7 +285,7 @@ renderImages(images) {
         grid.appendChild(col);
     });
     
-    // Ajouter les événements de recherche
+    // Ajouter les Ã©vÃ©nements de recherche
     const searchInput = this.imageModal.querySelector('#imageSearchInput');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
@@ -307,14 +307,14 @@ renderImages(images) {
         const range = quill.getSelection() || { index: quill.getLength() };
         const sizeConfig = this.imageSizeOptions[this.selectedImageSize];
         
-        // Insérer l'image
+        // InsÃ©rer l'image
         quill.insertEmbed(range.index, 'image', imageUrl);
         
         // Appliquer les styles responsifs
         setTimeout(() => {
             const imgElement = quill.root.querySelector(`img[src="${imageUrl}"]`);
             if (imgElement) {
-                imgElement.setAttribute('alt', altText || 'Image insérée');
+                imgElement.setAttribute('alt', altText || 'Image insÃ©rÃ©e');
                 imgElement.style.width = sizeConfig.width;
                 imgElement.style.maxWidth = sizeConfig.maxWidth;
                 this.applyResponsiveStyles(imgElement);
@@ -325,7 +325,7 @@ renderImages(images) {
             }
         }, 100);
         
-        // Déplacer le curseur
+        // DÃ©placer le curseur
         quill.setSelection(range.index + 1);
         
         // Fermer le modal
@@ -391,7 +391,7 @@ renderImages(images) {
     updateImagePreviews() {
         const previews = this.imageModal.querySelectorAll('.size-preview');
         previews.forEach(preview => {
-            preview.textContent = `Sera insérée en ${this.imageSizeOptions[this.selectedImageSize].label.toLowerCase()}`;
+            preview.textContent = `Sera insÃ©rÃ©e en ${this.imageSizeOptions[this.selectedImageSize].label.toLowerCase()}`;
         });
     }
 

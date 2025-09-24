@@ -12,16 +12,16 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // Nom d'affichage
             $table->string('file_name'); // Nom du fichier physique
-            $table->string('original_name'); // Nom original du fichier uploadé
+            $table->string('original_name'); // Nom original du fichier uploadÃ©
             $table->string('mime_type');
             $table->string('path'); // Chemin relatif depuis storage/app/public
             $table->unsignedBigInteger('size'); // Taille en octets
             $table->json('metadata')->nullable(); // Dimensions, etc.
-            $table->text('alt_text')->nullable(); // Texte alternatif pour l'accessibilité
+            $table->text('alt_text')->nullable(); // Texte alternatif pour l'accessibilitÃ©
             $table->text('description')->nullable();
             $table->unsignedBigInteger('media_category_id')->nullable();
             $table->unsignedBigInteger('uploaded_by');
-            $table->timestamp('used_at')->nullable(); // Dernière utilisation
+            $table->timestamp('used_at')->nullable(); // DerniÃ¨re utilisation
             $table->timestamps();
 
             $table->foreign('media_category_id')->references('id')->on('media_categories')->onDelete('set null');

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils en Développement - Roadmap et Innovations Futures Evidence-Based')
-@section('meta_description', 'Aperçu des futurs outils sportifs en développement : biomécanique, récupération, nutrition spécialisée, psychologie sportive. Roadmap basée sur les besoins utilisateurs et recherches scientifiques.')
+@section('title', 'Outils en DÃ©veloppement - Roadmap et Innovations Futures Evidence-Based')
+@section('meta_description', 'Aperçu des futurs outils sportifs en dÃ©veloppement : biomÃ©canique, rÃ©cupÃ©ration, nutrition spÃ©cialisÃ©e, psychologie sportive. Roadmap basÃ©e sur les besoins utilisateurs et recherches scientifiques.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active text-dark" aria-current="page">
-                    Outils en Développement
+                    Outils en DÃ©veloppement
                 </li>
             </ol>
         </nav>
@@ -25,16 +25,16 @@
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">
                     <i class="fas fa-wrench me-3"></i>
-                    Outils en Développement
+                    Outils en DÃ©veloppement
                 </h1>
                 <p class="lead mb-4">
-                    Aperçu des innovations futures de notre écosystème d'outils sportifs. 
-                    Développement basé sur vos retours, les dernières recherches scientifiques et l'évolution des besoins en sport-santé.
+                    Aperçu des innovations futures de notre Ã©cosystÃ¨me d'outils sportifs. 
+                    DÃ©veloppement basÃ© sur vos retours, les derniÃ¨res recherches scientifiques et l'Ã©volution des besoins en sport-santÃ©.
                 </p>
                 <div class="alert alert-info border-0 bg-white bg-opacity-75">
                     <small>
                         <i class="fas fa-lightbulb me-2"></i>
-                        <strong>40+ outils prévus</strong> - Développement selon priorités et retours utilisateurs
+                        <strong>40+ outils prÃ©vus</strong> - DÃ©veloppement selon prioritÃ©s et retours utilisateurs
                     </small>
                 </div>
             </div>
@@ -57,12 +57,12 @@
                     <i class="fas fa-clock fa-2x text-info"></i>
                 </div>
                 <div class="col-md-11">
-                    <h6 class="fw-bold mb-2 text-info">Projets en Cours de Développement</h6>
+                    <h6 class="fw-bold mb-2 text-info">Projets en Cours de DÃ©veloppement</h6>
                     <p class="mb-0 small text-dark">
-                        <strong>Ces outils sont actuellement en phase de conception et développement.</strong> 
-                        Les fonctionnalités, priorités et délais peuvent évoluer selon les retours utilisateurs, 
-                        l'avancement des recherches scientifiques et les ressources de développement disponibles. 
-                        Aucune date de disponibilité ferme n'est garantie.
+                        <strong>Ces outils sont actuellement en phase de conception et dÃ©veloppement.</strong> 
+                        Les fonctionnalitÃ©s, prioritÃ©s et dÃ©lais peuvent Ã©voluer selon les retours utilisateurs, 
+                        l'avancement des recherches scientifiques et les ressources de dÃ©veloppement disponibles. 
+                        Aucune date de disponibilitÃ© ferme n'est garantie.
                     </p>
                 </div>
             </div>
@@ -70,18 +70,18 @@
     </div>
 </section>
 
-<!-- Outils par priorité de développement -->
+<!-- Outils par prioritÃ© de dÃ©veloppement -->
 <section class="py-5 bg-light">
     <div class="container">
         
-        <!-- Priorité 1 - Impact élevé, demande forte -->
+        <!-- PrioritÃ© 1 - Impact Ã©levÃ©, demande forte -->
         <div class="mb-5">
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-danger text-white">
                     <div class="d-flex align-items-center">
-                        <span class="badge bg-light text-danger me-3" style="font-size: 1.2rem;">Priorité 1</span>
+                        <span class="badge bg-light text-danger me-3" style="font-size: 1.2rem;">PrioritÃ© 1</span>
                         <div>
-                            <h3 class="mb-1">Impact Élevé - Demande Forte</h3>
+                            <h3 class="mb-1">Impact Ã©levÃ© - Demande Forte</h3>
                             <p class="mb-0 opacity-75">Outils prioritaires selon analyse des besoins utilisateurs</p>
                         </div>
                     </div>
@@ -98,49 +98,49 @@
                                     </h6>
                                     <p class="card-text small">
                                         FTP, zones de puissance, analyse performance cyclisme. 
-                                        Intégration données capteurs et planification entraînement personnalisée.
+                                        IntÃ©gration donnÃ©es capteurs et planification entraînement personnalisÃ©e.
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="badge bg-danger">Priorité 1</span>
-                                        <small class="text-muted">Performance spécialisée</small>
+                                        <span class="badge bg-danger">PrioritÃ© 1</span>
+                                        <small class="text-muted">Performance spÃ©cialisÃ©e</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Générateur HIIT Personnalisé -->
+                        <!-- GÃ©nÃ©rateur HIIT PersonnalisÃ© -->
                         <div class="col-lg-6">
                             <div class="card border-primary bg-light h-100">
                                 <div class="card-body">
                                     <h6 class="card-title text-primary">
-                                        <i class="fas fa-bolt me-2"></i>Générateur HIIT Personnalisé
+                                        <i class="fas fa-bolt me-2"></i>GÃ©nÃ©rateur HIIT PersonnalisÃ©
                                     </h6>
                                     <p class="card-text small">
-                                        Protocoles HIIT scientifiques adaptés selon objectifs, niveau et discipline. 
-                                        Timing précis et progression automatique.
+                                        Protocoles HIIT scientifiques adaptÃ©s selon objectifs, niveau et discipline. 
+                                        Timing prÃ©cis et progression automatique.
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="badge bg-primary">Priorité 1</span>
-                                        <small class="text-muted">Planification avancée</small>
+                                        <span class="badge bg-primary">PrioritÃ© 1</span>
+                                        <small class="text-muted">Planification avancÃ©e</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Évaluateur Risque Blessure -->
+                        <!-- Ã©valuateur Risque Blessure -->
                         <div class="col-lg-6">
                             <div class="card border-success bg-light h-100">
                                 <div class="card-body">
                                     <h6 class="card-title text-success">
-                                        <i class="fas fa-first-aid me-2"></i>Évaluateur Risque Blessure
+                                        <i class="fas fa-first-aid me-2"></i>Ã©valuateur Risque Blessure
                                     </h6>
                                     <p class="card-text small">
-                                        Screening préventif multi-factoriel pour identifier les risques de blessure. 
-                                        Recommandations personnalisées de prévention.
+                                        Screening prÃ©ventif multi-factoriel pour identifier les risques de blessure. 
+                                        Recommandations personnalisÃ©es de prÃ©vention.
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="badge bg-success">Priorité 1</span>
-                                        <small class="text-muted">Prévention & Santé</small>
+                                        <span class="badge bg-success">PrioritÃ© 1</span>
+                                        <small class="text-muted">PrÃ©vention & SantÃ©</small>
                                     </div>
                                 </div>
                             </div>
@@ -151,15 +151,15 @@
             </div>
         </div>
 
-        <!-- Priorité 2 - Complémentarité forte -->
+        <!-- PrioritÃ© 2 - ComplÃ©mentaritÃ© forte -->
         <div class="mb-5">
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-warning text-dark">
                     <div class="d-flex align-items-center">
-                        <span class="badge bg-dark text-warning me-3" style="font-size: 1.2rem;">Priorité 2</span>
+                        <span class="badge bg-dark text-warning me-3" style="font-size: 1.2rem;">PrioritÃ© 2</span>
                         <div>
-                            <h3 class="mb-1">Complémentarité Forte</h3>
-                            <p class="mb-0 opacity-75">Outils enrichissant l'écosystème existant</p>
+                            <h3 class="mb-1">ComplÃ©mentaritÃ© Forte</h3>
+                            <p class="mb-0 opacity-75">Outils enrichissant l'Ã©cosystÃ¨me existant</p>
                         </div>
                     </div>
                 </div>
@@ -171,13 +171,13 @@
                             <div class="card border-danger bg-light h-100">
                                 <div class="card-body">
                                     <h6 class="card-title text-danger">
-                                        <i class="fas fa-heartbeat me-2"></i>Tracker Variabilité Cardiaque (HRV)
+                                        <i class="fas fa-heartbeat me-2"></i>Tracker VariabilitÃ© Cardiaque (HRV)
                                     </h6>
                                     <p class="card-text small">
-                                        Évaluation quotidienne état de forme via analyse HRV. 
-                                        Recommandations d'intensité d'entraînement.
+                                        Ã©valuation quotidienne Ã©tat de forme via analyse HRV. 
+                                        Recommandations d'intensitÃ© d'entraînement.
                                     </p>
-                                    <span class="badge bg-danger">Priorité 2</span>
+                                    <span class="badge bg-danger">PrioritÃ© 2</span>
                                 </div>
                             </div>
                         </div>
@@ -191,41 +191,41 @@
                                     </h6>
                                     <p class="card-text small">
                                         TSS, TRIMP, gestion fatigue et planification charge optimale. 
-                                        Prévention surentraînement.
+                                        PrÃ©vention surentraînement.
                                     </p>
-                                    <span class="badge bg-danger">Priorité 2</span>
+                                    <span class="badge bg-danger">PrioritÃ© 2</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Stratégie Nutritionnelle Course -->
+                        <!-- StratÃ©gie Nutritionnelle Course -->
                         <div class="col-lg-4">
                             <div class="card border-success bg-light h-100">
                                 <div class="card-body">
                                     <h6 class="card-title text-success">
-                                        <i class="fas fa-route me-2"></i>Stratégie Nutritionnelle Course
+                                        <i class="fas fa-route me-2"></i>StratÃ©gie Nutritionnelle Course
                                     </h6>
                                     <p class="card-text small">
-                                        Plan détaillé nutrition/hydratation selon distance course. 
-                                        Timing optimal et quantités personnalisées.
+                                        Plan dÃ©taillÃ© nutrition/hydratation selon distance course. 
+                                        Timing optimal et quantitÃ©s personnalisÃ©es.
                                     </p>
-                                    <span class="badge bg-success">Priorité 2</span>
+                                    <span class="badge bg-success">PrioritÃ© 2</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Calculateur Qualité Sommeil -->
+                        <!-- Calculateur QualitÃ© Sommeil -->
                         <div class="col-lg-4">
                             <div class="card border-success bg-light h-100">
                                 <div class="card-body">
                                     <h6 class="card-title text-success">
-                                        <i class="fas fa-moon me-2"></i>Calculateur Qualité Sommeil Athlète
+                                        <i class="fas fa-moon me-2"></i>Calculateur QualitÃ© Sommeil AthlÃ¨te
                                     </h6>
                                     <p class="card-text small">
-                                        Analyse phases sommeil et recommandations récupération. 
+                                        Analyse phases sommeil et recommandations rÃ©cupÃ©ration. 
                                         Optimisation performance via sommeil.
                                     </p>
-                                    <span class="badge bg-success">Priorité 2</span>
+                                    <span class="badge bg-success">PrioritÃ© 2</span>
                                 </div>
                             </div>
                         </div>
@@ -238,10 +238,10 @@
                                         <i class="fas fa-clock me-2"></i>Calculateur Timing Nutritionnel
                                     </h6>
                                     <p class="card-text small">
-                                        Fenêtres métaboliques pré/pendant/post effort. 
+                                        Fenêtres mÃ©taboliques prÃ©/pendant/post effort. 
                                         Optimisation absorption nutriments.
                                     </p>
-                                    <span class="badge bg-warning">Priorité 2</span>
+                                    <span class="badge bg-warning">PrioritÃ© 2</span>
                                 </div>
                             </div>
                         </div>
@@ -254,10 +254,10 @@
                                         <i class="fas fa-running me-2"></i>Calculateur Vitesse Critique Course
                                     </h6>
                                     <p class="card-text small">
-                                        Seuils physiologiques course à pied. 
-                                        Zones d'entraînement spécifiques endurance.
+                                        Seuils physiologiques course Ã pied. 
+                                        Zones d'entraînement spÃ©cifiques endurance.
                                     </p>
-                                    <span class="badge bg-warning">Priorité 2</span>
+                                    <span class="badge bg-warning">PrioritÃ© 2</span>
                                 </div>
                             </div>
                         </div>
@@ -267,42 +267,42 @@
             </div>
         </div>
 
-        <!-- Priorité 3 - Spécialisation avancée -->
+        <!-- PrioritÃ© 3 - SpÃ©cialisation avancÃ©e -->
         <div class="mb-5">
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-secondary text-white">
                     <div class="d-flex align-items-center">
-                        <span class="badge bg-light text-secondary me-3" style="font-size: 1.2rem;">Priorité 3</span>
+                        <span class="badge bg-light text-secondary me-3" style="font-size: 1.2rem;">PrioritÃ© 3</span>
                         <div>
-                            <h3 class="mb-1">Spécialisation Avancée</h3>
-                            <p class="mb-0 opacity-75">Outils pour utilisateurs experts et cas spécifiques</p>
+                            <h3 class="mb-1">SpÃ©cialisation AvancÃ©e</h3>
+                            <p class="mb-0 opacity-75">Outils pour utilisateurs experts et cas spÃ©cifiques</p>
                         </div>
                     </div>
                 </div>
                 <div class="card-body py-4">
                     <div class="row g-4">
                         
-                        <!-- Biomécanique -->
+                        <!-- BiomÃ©canique -->
                         <div class="col-md-6">
                             <h6 class="text-secondary border-bottom pb-2">
-                                <i class="fas fa-running me-2"></i>Analyse Biomécanique
+                                <i class="fas fa-running me-2"></i>Analyse BiomÃ©canique
                             </h6>
                             <div class="row g-2">
                                 <div class="col-12">
                                     <div class="card border-secondary bg-light">
                                         <div class="card-body py-2">
-                                            <h6 class="card-title small mb-1">Analyseur de Foulée Course</h6>
-                                            <p class="card-text small mb-1">Cadence, longueur foulée, temps contact sol</p>
-                                            <span class="badge bg-secondary small">Priorité 3</span>
+                                            <h6 class="card-title small mb-1">Analyseur de FoulÃ©e Course</h6>
+                                            <p class="card-text small mb-1">Cadence, longueur foulÃ©e, temps contact sol</p>
+                                            <span class="badge bg-secondary small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="card border-secondary bg-light">
                                         <div class="card-body py-2">
-                                            <h6 class="card-title small mb-1">Analyseur Position Vélo</h6>
-                                            <p class="card-text small mb-1">Optimisation aérodynamique et confort</p>
-                                            <span class="badge bg-secondary small">Priorité 3</span>
+                                            <h6 class="card-title small mb-1">Analyseur Position VÃ©lo</h6>
+                                            <p class="card-text small mb-1">Optimisation aÃ©rodynamique et confort</p>
+                                            <span class="badge bg-secondary small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -318,9 +318,9 @@
                                 <div class="col-12">
                                     <div class="card border-info bg-light">
                                         <div class="card-body py-2">
-                                            <h6 class="card-title small mb-1">Évaluateur Motivation Sportive</h6>
-                                            <p class="card-text small mb-1">Profils motivationnels, stratégies</p>
-                                            <span class="badge bg-info small">Priorité 3</span>
+                                            <h6 class="card-title small mb-1">Ã©valuateur Motivation Sportive</h6>
+                                            <p class="card-text small mb-1">Profils motivationnels, stratÃ©gies</p>
+                                            <span class="badge bg-info small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -328,8 +328,8 @@
                                     <div class="card border-info bg-light">
                                         <div class="card-body py-2">
                                             <h6 class="card-title small mb-1">Planificateur Objectifs SMART</h6>
-                                            <p class="card-text small mb-1">Méthodologie structurée progression</p>
-                                            <span class="badge bg-info small">Priorité 3</span>
+                                            <p class="card-text small mb-1">MÃ©thodologie structurÃ©e progression</p>
+                                            <span class="badge bg-info small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -347,7 +347,7 @@
                                         <div class="card-body py-2">
                                             <h6 class="card-title small mb-1">Calculateur Impact Altitude</h6>
                                             <p class="card-text small mb-1">Ajustements performance, acclimatation</p>
-                                            <span class="badge bg-warning small">Priorité 3</span>
+                                            <span class="badge bg-warning small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -355,8 +355,8 @@
                                     <div class="card border-warning bg-light">
                                         <div class="card-body py-2">
                                             <h6 class="card-title small mb-1">Correcteur Performance Climatique</h6>
-                                            <p class="card-text small mb-1">Température, humidité, vent</p>
-                                            <span class="badge bg-warning small">Priorité 3</span>
+                                            <p class="card-text small mb-1">TempÃ©rature, humiditÃ©, vent</p>
+                                            <span class="badge bg-warning small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -372,9 +372,9 @@
                                 <div class="col-12">
                                     <div class="card border-primary bg-light">
                                         <div class="card-body py-2">
-                                            <h6 class="card-title small mb-1">Comparateur Performances Standardisé</h6>
+                                            <h6 class="card-title small mb-1">Comparateur Performances StandardisÃ©</h6>
                                             <p class="card-text small mb-1">Normes par âge/sexe/niveau</p>
-                                            <span class="badge bg-primary small">Priorité 3</span>
+                                            <span class="badge bg-primary small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +383,7 @@
                                         <div class="card-body py-2">
                                             <h6 class="card-title small mb-1">Calculateur Âge Sportif</h6>
                                             <p class="card-text small mb-1">Performance vs âge biologique</p>
-                                            <span class="badge bg-primary small">Priorité 3</span>
+                                            <span class="badge bg-primary small">PrioritÃ© 3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -400,34 +400,34 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-users me-2"></i>
-                    Contribuez au Développement
+                    Contribuez au DÃ©veloppement
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-success">Vos Retours Orientent nos Priorités</h6>
+                        <h6 class="text-success">Vos Retours Orientent nos PrioritÃ©s</h6>
                         <p class="small">
-                            Le développement de nouveaux outils se base sur l'analyse des besoins réels des utilisateurs. 
-                            Vos suggestions, retours d'usage et demandes spécifiques influencent directement 
-                            nos priorités de développement et l'évolution de la roadmap.
+                            Le dÃ©veloppement de nouveaux outils se base sur l'analyse des besoins rÃ©els des utilisateurs. 
+                            Vos suggestions, retours d'usage et demandes spÃ©cifiques influencent directement 
+                            nos prioritÃ©s de dÃ©veloppement et l'Ã©volution de la roadmap.
                         </p>
                         
                         <h6 class="text-primary mt-3">Comment Contribuer</h6>
                         <ul class="small">
                             <li><strong>Suggestions d'outils :</strong> Proposez de nouveaux calculateurs</li>
-                            <li><strong>Améliorations :</strong> Signalez bugs ou améliorations possibles</li>
+                            <li><strong>AmÃ©liorations :</strong> Signalez bugs ou amÃ©liorations possibles</li>
                             <li><strong>Cas d'usage :</strong> Partagez comment vous utilisez les outils</li>
                             <li><strong>Expertise :</strong> Apportez votre connaissance scientifique/terrain</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-warning">Critères de Priorisation</h6>
+                        <h6 class="text-warning">CritÃ¨res de Priorisation</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Critère</th>
+                                        <th>CritÃ¨re</th>
                                         <th>Poids</th>
                                         <th>Description</th>
                                     </tr>
@@ -435,21 +435,21 @@
                                 <tbody>
                                     <tr>
                                         <td>Impact utilisateur</td>
-                                        <td>Élevé</td>
-                                        <td>Nombre personnes bénéficiant</td>
+                                        <td>Ã©levÃ©</td>
+                                        <td>Nombre personnes bÃ©nÃ©ficiant</td>
                                     </tr>
                                     <tr>
                                         <td>Base scientifique</td>
-                                        <td>Élevé</td>
+                                        <td>Ã©levÃ©</td>
                                         <td>Evidence disponible</td>
                                     </tr>
                                     <tr>
-                                        <td>Faisabilité technique</td>
+                                        <td>FaisabilitÃ© technique</td>
                                         <td>Moyen</td>
-                                        <td>Complexité développement</td>
+                                        <td>ComplexitÃ© dÃ©veloppement</td>
                                     </tr>
                                     <tr>
-                                        <td>Complémentarité</td>
+                                        <td>ComplÃ©mentaritÃ©</td>
                                         <td>Moyen</td>
                                         <td>Synergie avec existant</td>
                                     </tr>
@@ -476,14 +476,14 @@
             </div>
             <div class="col-md-6">
                 <a href="{{ route('tools.index') }}" class="btn btn-warning btn-lg w-100">
-                    Retour Index Général <i class="fas fa-home ms-2"></i>
+                    Retour Index GÃ©nÃ©ral <i class="fas fa-home ms-2"></i>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Méthodologie développement -->
+<!-- MÃ©thodologie dÃ©veloppement -->
 <section class="py-5">
     <div class="container">
         
@@ -492,7 +492,7 @@
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-flask me-2"></i>
-                    Méthodologie de Développement Evidence-Based
+                    MÃ©thodologie de DÃ©veloppement Evidence-Based
                 </h3>
             </div>
             <div class="card-body">
@@ -501,34 +501,34 @@
                         <h6 class="text-primary">Processus de Validation Scientifique</h6>
                         <p class="small">
                             Chaque nouvel outil suit un processus rigoureux de validation scientifique 
-                            avant développement. Nous nous assurons que les algorithmes, formules et 
-                            recommandations s'appuient sur des recherches peer-reviewed récentes.
+                            avant dÃ©veloppement. Nous nous assurons que les algorithmes, formules et 
+                            recommandations s'appuient sur des recherches peer-reviewed rÃ©centes.
                         </p>
                         
-                        <h6 class="text-success mt-3">Étapes de Développement</h6>
+                        <h6 class="text-success mt-3">Ã©tapes de DÃ©veloppement</h6>
                         <ol class="small">
-                            <li><strong>Revue littérature :</strong> Analyse recherches récentes</li>
+                            <li><strong>Revue littÃ©rature :</strong> Analyse recherches rÃ©centes</li>
                             <li><strong>Validation expert :</strong> Consultation professionnels</li>
-                            <li><strong>Prototype :</strong> Développement version test</li>
+                            <li><strong>Prototype :</strong> DÃ©veloppement version test</li>
                             <li><strong>Tests utilisateurs :</strong> Feedback et ajustements</li>
-                            <li><strong>Déploiement :</strong> Version finale avec documentation</li>
+                            <li><strong>DÃ©ploiement :</strong> Version finale avec documentation</li>
                         </ol>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-warning">Critères de Qualité</h6>
+                        <h6 class="text-warning">CritÃ¨res de QualitÃ©</h6>
                         <ul class="small">
-                            <li><strong>Précision scientifique :</strong> Algorithmes validés</li>
-                            <li><strong>Sécurité utilisateur :</strong> Avertissements appropriés</li>
-                            <li><strong>Facilité d'usage :</strong> Interface intuitive</li>
-                            <li><strong>Approche équilibrée :</strong> Santé avant performance</li>
-                            <li><strong>Éducation :</strong> Contenu informatif accompagnant</li>
+                            <li><strong>PrÃ©cision scientifique :</strong> Algorithmes validÃ©s</li>
+                            <li><strong>SÃ©curitÃ© utilisateur :</strong> Avertissements appropriÃ©s</li>
+                            <li><strong>FacilitÃ© d'usage :</strong> Interface intuitive</li>
+                            <li><strong>Approche Ã©quilibrÃ©e :</strong> SantÃ© avant performance</li>
+                            <li><strong>Ã©ducation :</strong> Contenu informatif accompagnant</li>
                         </ul>
                         
                         <div class="alert alert-info alert-sm">
-                            <h6 class="small">Évolution Continue</h6>
+                            <h6 class="small">Ã©volution Continue</h6>
                             <p class="small mb-0">
-                                Les outils existants sont régulièrement mis à jour selon 
-                                l'évolution des connaissances scientifiques et retours utilisateurs.
+                                Les outils existants sont rÃ©guliÃ¨rement mis Ã jour selon 
+                                l'Ã©volution des connaissances scientifiques et retours utilisateurs.
                             </p>
                         </div>
                     </div>
@@ -547,36 +547,36 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-secondary">Contraintes de Développement</h6>
+                        <h6 class="text-secondary">Contraintes de DÃ©veloppement</h6>
                         <p class="small">
-                            Le développement d'outils de qualité nécessite du temps, des ressources 
-                            et une expertise multidisciplinaire. Nous privilégions la qualité sur la quantité, 
-                            ce qui peut retarder certains développements mais garantit la fiabilité.
+                            Le dÃ©veloppement d'outils de qualitÃ© nÃ©cessite du temps, des ressources 
+                            et une expertise multidisciplinaire. Nous privilÃ©gions la qualitÃ© sur la quantitÃ©, 
+                            ce qui peut retarder certains dÃ©veloppements mais garantit la fiabilitÃ©.
                         </p>
                         
-                        <h6 class="text-warning mt-3">Facteurs Influençant les Délais</h6>
+                        <h6 class="text-warning mt-3">Facteurs Influençant les DÃ©lais</h6>
                         <ul class="small">
-                            <li>Complexité technique de l'outil</li>
-                            <li>Disponibilité de recherches validées</li>
-                            <li>Ressources de développement</li>
+                            <li>ComplexitÃ© technique de l'outil</li>
+                            <li>DisponibilitÃ© de recherches validÃ©es</li>
+                            <li>Ressources de dÃ©veloppement</li>
                             <li>Retours et tests utilisateurs</li>
-                            <li>Évolution priorités selon besoins</li>
+                            <li>Ã©volution prioritÃ©s selon besoins</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-info">Engagement Qualité</h6>
+                        <h6 class="text-info">Engagement QualitÃ©</h6>
                         <p class="small">
-                            Nous nous engageons à maintenir les standards élevés de qualité scientifique 
-                            et de sécurité utilisateur qui caractérisent nos outils actuels. 
-                            Aucun outil ne sera publié sans validation rigoureuse.
+                            Nous nous engageons Ã maintenir les standards Ã©levÃ©s de qualitÃ© scientifique 
+                            et de sÃ©curitÃ© utilisateur qui caractÃ©risent nos outils actuels. 
+                            Aucun outil ne sera publiÃ© sans validation rigoureuse.
                         </p>
                         
                         <div class="alert alert-warning">
-                            <h6 class="small">Aucune Garantie de Délai</h6>
+                            <h6 class="small">Aucune Garantie de DÃ©lai</h6>
                             <p class="mb-0 small">
-                                Les projets présentés sont des intentions de développement, 
+                                Les projets prÃ©sentÃ©s sont des intentions de dÃ©veloppement, 
                                 <strong>non des engagements fermes avec dates garanties.</strong> 
-                                Les priorités peuvent évoluer selon les besoins utilisateurs 
+                                Les prioritÃ©s peuvent Ã©voluer selon les besoins utilisateurs 
                                 et l'avancement des recherches scientifiques dans chaque domaine.
                             </p>
                         </div>
@@ -588,7 +588,7 @@
 </section>
 
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -599,12 +599,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -614,15 +614,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -649,7 +649,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -660,12 +660,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -775,7 +775,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'apparition progressive pour les cards de priorité
+    // Animation d'apparition progressive pour les cards de prioritÃ©
     const priorityCards = document.querySelectorAll('.card.border-danger, .card.border-primary, .card.border-success, .card.border-warning, .card.border-info, .card.border-secondary');
     
     const observerOptions = {

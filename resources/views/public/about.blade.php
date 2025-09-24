@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'À propos')
+@section('title', 'Ã propos')
 
 @section('content')
 <!-- Hero Section -->
@@ -8,9 +8,9 @@
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">À propos de nous</h1>
+                <h1 class="display-4 fw-bold mb-4">Ã propos de nous</h1>
                 <p class="lead mb-0">
-                    Découvrez notre mission, notre équipe et notre passion pour le développement web et les technologies modernes.
+                    DÃ©couvrez notre mission, notre Ã©quipe et notre passion pour le dÃ©veloppement web et les technologies modernes.
                 </p>
             </div>
             <div class="col-lg-6 text-center">
@@ -30,8 +30,8 @@
             <div class="col-lg-8 text-center">
                 <h2 class="display-5 fw-bold mb-4">Notre Mission</h2>
                 <p class="lead text-muted mb-5">
-                    Nous nous engageons à partager nos connaissances en développement web et à créer une communauté 
-                    d'apprentissage où développeurs débutants et expérimentés peuvent grandir ensemble.
+                    Nous nous engageons Ã partager nos connaissances en dÃ©veloppement web et Ã crÃ©er une communautÃ© 
+                    d'apprentissage où dÃ©veloppeurs dÃ©butants et expÃ©rimentÃ©s peuvent grandir ensemble.
                 </p>
             </div>
         </div>
@@ -42,19 +42,19 @@
                     [
                         'icon' => 'fas fa-lightbulb',
                         'title' => 'Innovation',
-                        'description' => 'Nous explorons constamment les nouvelles technologies et partageons nos découvertes avec la communauté.',
+                        'description' => 'Nous explorons constamment les nouvelles technologies et partageons nos dÃ©couvertes avec la communautÃ©.',
                         'color' => 'warning'
                     ],
                     [
                         'icon' => 'fas fa-graduation-cap',
-                        'title' => 'Pédagogie',
-                        'description' => 'Nous croyons en une approche pédagogique claire et accessible pour tous les niveaux de compétence.',
+                        'title' => 'PÃ©dagogie',
+                        'description' => 'Nous croyons en une approche pÃ©dagogique claire et accessible pour tous les niveaux de compÃ©tence.',
                         'color' => 'success'
                     ],
                     [
                         'icon' => 'fas fa-handshake',
-                        'title' => 'Communauté',
-                        'description' => 'Nous favorisons les échanges et l\'entraide entre développeurs de tous horizons et expériences.',
+                        'title' => 'CommunautÃ©',
+                        'description' => 'Nous favorisons les Ã©changes et l\'entraide entre dÃ©veloppeurs de tous horizons et expÃ©riences.',
                         'color' => 'info'
                     ]
                 ];
@@ -85,14 +85,14 @@
             <div class="col-lg-6">
                 <h2 class="display-6 fw-bold mb-4">Notre Histoire</h2>
                 <p class="text-muted mb-4">
-                    Fondé en 2025, {{ config('app.name') }} est né de la passion de développeurs expérimentés 
-                    souhaitant partager leurs connaissances avec la communauté. Ce qui a commencé comme un simple 
-                    blog personnel s'est transformé en une plateforme d'apprentissage reconnue.
+                    FondÃ© en 2025, {{ config('app.name') }} est nÃ© de la passion de dÃ©veloppeurs expÃ©rimentÃ©s 
+                    souhaitant partager leurs connaissances avec la communautÃ©. Ce qui a commencÃ© comme un simple 
+                    blog personnel s'est transformÃ© en une plateforme d'apprentissage reconnue.
                 </p>
                 <p class="text-muted mb-4">
-                    Aujourd'hui, nous publions régulièrement des tutoriels, des analyses techniques et des 
-                    retours d'expérience pour aider les développeurs à progresser dans leur carrière et 
-                    rester à jour avec les évolutions technologiques.
+                    Aujourd'hui, nous publions rÃ©guliÃ¨rement des tutoriels, des analyses techniques et des 
+                    retours d'expÃ©rience pour aider les dÃ©veloppeurs Ã progresser dans leur carriÃ¨re et 
+                    rester Ã jour avec les Ã©volutions technologiques.
                 </p>
                 <div class="d-flex gap-3">
                     <a href="{{ route('public.index') }}" class="btn btn-primary">
@@ -108,7 +108,7 @@
                     <div class="col-6">
                         <div class="card border-0 shadow-sm text-center p-4">
                             <h3 class="fw-bold text-primary mb-2">{{ App\Models\Post::count() }}+</h3>
-                            <small class="text-muted">Articles publiés</small>
+                            <small class="text-muted">Articles publiÃ©s</small>
                         </div>
                     </div>
                     <div class="col-6">
@@ -126,7 +126,7 @@
                     <div class="col-6">
                         <div class="card border-0 shadow-sm text-center p-4">
                             <h3 class="fw-bold text-info mb-2">{{ App\Models\Category::count() }}+</h3>
-                            <small class="text-muted">Catégories</small>
+                            <small class="text-muted">CatÃ©gories</small>
                         </div>
                     </div>
                 </div>
@@ -140,22 +140,22 @@
     <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="display-6 fw-bold mb-4">Rejoignez-nous dès aujourd'hui</h2>
+                <h2 class="display-6 fw-bold mb-4">Rejoignez-nous dÃ¨s aujourd'hui</h2>
                 <p class="lead mb-4">
-                    Faites partie de notre communauté grandissante de développeurs passionnés.
+                    Faites partie de notre communautÃ© grandissante de dÃ©veloppeurs passionnÃ©s.
                 </p>
                 @guest
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
                         <a href="{{ route('register') }}" class="btn btn-light btn-lg">
-                            Créer un compte
+                            CrÃ©er un compte
                         </a>
                         <a href="{{ route('public.index') }}" class="btn btn-outline-light btn-lg">
-                            Découvrir nos articles
+                            DÃ©couvrir nos articles
                         </a>
                     </div>
                 @else
                     <div class="alert alert-light d-inline-block">
-                        Merci de faire partie de notre communauté, {{ auth()->user()->name }} !
+                        Merci de faire partie de notre communautÃ©, {{ auth()->user()->name }} !
                     </div>
                 @endguest
             </div>

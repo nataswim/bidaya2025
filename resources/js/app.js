@@ -16,7 +16,7 @@ if (token) {
 window.Alpine = Alpine;
 Alpine.start();
 
-// Scripts personnalisés
+// Scripts personnalisÃ©s
 document.addEventListener('DOMContentLoaded', function() {
     // Auto-hide alerts
     setTimeout(function() {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const deleteButtons = document.querySelectorAll('[data-confirm="delete"]');
     deleteButtons.forEach(function(button) {
         button.addEventListener('click', function(e) {
-            if (!confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer cet Ã©lÃ©ment ?')) {
                 e.preventDefault();
             }
         });

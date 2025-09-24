@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             
-            if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.')) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet Ã©lÃ©ment ? Cette action est irrÃ©versible.')) {
                 if (this.tagName === 'BUTTON' && this.closest('form')) {
                     this.closest('form').submit();
                 } else if (this.tagName === 'A') {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Auto-génération des slugs
+    // Auto-gÃ©nÃ©ration des slugs
     const nameInputs = document.querySelectorAll('input[name="name"]');
     const slugInputs = document.querySelectorAll('input[name="slug"]');
     
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Prévisualisation d'images
+    // PrÃ©visualisation d'images
     document.querySelectorAll('input[name="image"]').forEach(input => {
         input.addEventListener('input', function() {
             const previewContainer = this.closest('.form-group')?.querySelector('.image-preview');
@@ -81,20 +81,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Notifications toast
     initializeToasts();
     
-    // Tables responsives améliorées
+    // Tables responsives amÃ©liorÃ©es
     enhanceResponsiveTables();
     
-    // Filtres en temps réel
+    // Filtres en temps rÃ©el
     initializeLiveFilters();
 });
 
-// Fonction de génération de slug
+// Fonction de gÃ©nÃ©ration de slug
 function generateSlug(text) {
     return text
         .toLowerCase()
         .trim()
-        .replace(/[àáâãäå]/g, 'a')
-        .replace(/[èéêë]/g, 'e')
+        .replace(/[Ãáâãäå]/g, 'a')
+        .replace(/[Ã¨Ã©êë]/g, 'e')
         .replace(/[ìíîï]/g, 'i')
         .replace(/[òóôõö]/g, 'o')
         .replace(/[ùúûü]/g, 'u')
@@ -124,7 +124,7 @@ function showSaveIndicator() {
     const indicator = document.createElement('div');
     indicator.className = 'position-fixed top-0 end-0 m-3 alert alert-success alert-dismissible fade show';
     indicator.innerHTML = `
-        <i class="fas fa-check me-2"></i>Brouillon sauvegardé
+        <i class="fas fa-check me-2"></i>Brouillon sauvegardÃ©
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
     document.body.appendChild(indicator);
@@ -143,7 +143,7 @@ function initializeToasts() {
     });
 }
 
-// Tables responsives améliorées
+// Tables responsives amÃ©liorÃ©es
 function enhanceResponsiveTables() {
     const tables = document.querySelectorAll('.table-responsive-stack table');
     tables.forEach(table => {
@@ -161,7 +161,7 @@ function enhanceResponsiveTables() {
     });
 }
 
-// Filtres en temps réel
+// Filtres en temps rÃ©el
 function initializeLiveFilters() {
     const searchInputs = document.querySelectorAll('input[name="search"]');
     searchInputs.forEach(input => {
@@ -187,7 +187,7 @@ function filterTable(searchTerm) {
     });
 }
 
-// Upload de fichiers avec prévisualisation
+// Upload de fichiers avec prÃ©visualisation
 function initializeFileUploads() {
     document.querySelectorAll('input[type="file"]').forEach(input => {
         input.addEventListener('change', function(e) {
@@ -218,7 +218,7 @@ function initializeFileUploads() {
 function openModal(modalId, data = {}) {
     const modal = document.getElementById(modalId);
     if (modal) {
-        // Remplir les champs avec les données
+        // Remplir les champs avec les donnÃ©es
         Object.keys(data).forEach(key => {
             const field = modal.querySelector(`[name="${key}"]`);
             if (field) {
@@ -230,7 +230,7 @@ function openModal(modalId, data = {}) {
     }
 }
 
-// Export des données
+// Export des donnÃ©es
 function exportData(format, endpoint) {
     const form = document.createElement('form');
     form.method = 'POST';
@@ -254,7 +254,7 @@ function exportData(format, endpoint) {
     document.body.removeChild(form);
 }
 
-// Validation côté client améliorée
+// Validation côtÃ© client amÃ©liorÃ©e
 function initializeFormValidation() {
     const forms = document.querySelectorAll('form[data-validate]');
     forms.forEach(form => {
@@ -314,7 +314,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Thème sombre/clair
+// ThÃ¨me sombre/clair
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -325,12 +325,12 @@ function initializeThemeToggle() {
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Mettre à jour l'icône
+            // Mettre Ã jour l'icône
             const icon = this.querySelector('i');
             icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         });
         
-        // Charger le thème sauvegardé
+        // Charger le thÃ¨me sauvegardÃ©
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
     }

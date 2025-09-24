@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Exécute les migrations.
+     * ExÃ©cute les migrations.
      */
     public function up(): void
     {
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->unsignedInteger('order')->nullable()->index();
             $table->string('status', 50)->default('active')->index();
 
-            // Audit (créateur, modificateur, suppression)
+            // Audit (crÃ©ateur, modificateur, suppression)
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('deleted_by')->nullable()->constrained('users')->nullOnDelete();
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            // Index supplémentaires
+            // Index supplÃ©mentaires
             $table->index(['status', 'deleted_at']);
             $table->index(['group_name', 'status']);
         });

@@ -35,7 +35,7 @@
             </ul>
             
             <div class="d-flex align-items-center">
-                @if(auth()->user()->hasRole('admin'))
+@if(auth()->check() && auth()->user()->role && auth()->user()->hasRole('admin'))
                     <a href="{{ route('admin.dashboard') }}" class="btn btn-sm btn-outline-danger me-3">
                         <i class="fas fa-cog me-1"></i>Admin
                     </a>
@@ -62,7 +62,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
+                                    <i class="fas fa-sign-out-alt me-2"></i>Se dÃ©connecter
                                 </button>
                             </form>
                         </li>

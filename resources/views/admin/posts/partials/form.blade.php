@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="slug-automatique">
                     </div>
-                    <div class="form-text">Laisser vide pour génération automatique à partir du titre</div>
+                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique Ã partir du titre</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -46,14 +46,14 @@
                 <!-- Introduction avec Quill -->
                 <div class="mb-4">
                     <label for="intro" class="form-label fw-semibold">
-                        Introduction / Résumé
+                        Introduction / RÃ©sumÃ©
                         <span class="badge bg-info-subtle text-info ms-2">Toujours visible</span>
                     </label>
                     
-                    <!-- Conteneur pour l'éditeur Quill -->
+                    <!-- Conteneur pour l'Ã©diteur Quill -->
                     <div id="intro-editor" style="height: 150px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
-                    <!-- Textarea cachée pour Laravel -->
+                    <!-- Textarea cachÃ©e pour Laravel -->
                     <textarea name="intro" 
                               id="intro" 
                               class="d-none @error('intro') is-invalid @enderror">{{ old('intro', isset($post) ? $post->intro : '') }}</textarea>
@@ -68,19 +68,19 @@
                 <div class="mb-4">
                     <label for="content" class="form-label fw-semibold">
                         Contenu principal *
-                        <span class="badge bg-warning-subtle text-warning ms-2">Selon visibilité</span>
+                        <span class="badge bg-warning-subtle text-warning ms-2">Selon visibilitÃ©</span>
                     </label>
                     
-                    <!-- Conteneur pour l'éditeur Quill -->
+                    <!-- Conteneur pour l'Ã©diteur Quill -->
                     <div id="content-editor" style="height: 300px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
-                    <!-- Textarea cachée pour Laravel -->
+                    <!-- Textarea cachÃ©e pour Laravel -->
                     <textarea name="content" 
                               id="content" 
                               class="d-none @error('content') is-invalid @enderror"
                               required>{{ old('content', isset($post) ? $post->content : '') }}</textarea>
                               
-                    <div class="form-text">Ce contenu sera visible selon les paramètres de visibilité choisis</div>
+                    <div class="form-text">Ce contenu sera visible selon les paramÃ¨tres de visibilitÃ© choisis</div>
                     @error('content')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
@@ -97,7 +97,7 @@
                             Tutoriel
                         </option>
                         <option value="news" {{ old('type', isset($post) ? $post->type : '') === 'news' ? 'selected' : '' }}>
-                            Actualité
+                            ActualitÃ©
                         </option>
                         <option value="review" {{ old('type', isset($post) ? $post->type : '') === 'review' ? 'selected' : '' }}>
                             Test/Avis
@@ -110,11 +110,11 @@
             </div>
         </div>
 
-        <!-- SEO et métadonnées -->
+        <!-- SEO et mÃ©tadonnÃ©es -->
         <div class="card border-0 shadow-sm mt-4">
             <div class="card-header bg-gradient-info text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-search me-2"></i>SEO et Métadonnées
+                    <i class="fas fa-search me-2"></i>SEO et MÃ©tadonnÃ©es
                 </h6>
             </div>
             <div class="card-body p-4">
@@ -127,13 +127,13 @@
                                value="{{ old('meta_title', isset($post) ? $post->meta_title : '') }}"
                                class="form-control @error('meta_title') is-invalid @enderror"
                                maxlength="60"
-                               placeholder="Titre optimisé pour les moteurs de recherche">
+                               placeholder="Titre optimisÃ© pour les moteurs de recherche">
                         @error('meta_title')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="meta_keywords" class="form-label fw-semibold">Mots-clés</label>
+                        <label for="meta_keywords" class="form-label fw-semibold">Mots-clÃ©s</label>
                         <input type="text" 
                                name="meta_keywords" 
                                id="meta_keywords" 
@@ -151,7 +151,7 @@
                                   rows="3"
                                   class="form-control @error('meta_description') is-invalid @enderror"
                                   maxlength="160"
-                                  placeholder="Description qui apparaîtra dans les résultats de recherche...">{{ old('meta_description', isset($post) ? $post->meta_description : '') }}</textarea>
+                                  placeholder="Description qui apparaîtra dans les rÃ©sultats de recherche...">{{ old('meta_description', isset($post) ? $post->meta_description : '') }}</textarea>
                         @error('meta_description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -178,7 +178,7 @@
                             <i class="fas fa-edit"></i> Brouillon
                         </option>
                         <option value="published" {{ old('status', isset($post) ? $post->status : '') === 'published' ? 'selected' : '' }}>
-                            <i class="fas fa-check"></i> Publié
+                            <i class="fas fa-check"></i> PubliÃ©
                         </option>
                     </select>
                     @error('status')
@@ -186,14 +186,14 @@
                     @enderror
                 </div>
 
-                <!-- VISIBILITÉ -->
+                <!-- VISIBILITÃ© -->
                 <div class="mb-3">
                     <label for="visibility" class="form-label fw-semibold">
-                        <i class="fas fa-eye me-1 text-info"></i>Visibilité du contenu
+                        <i class="fas fa-eye me-1 text-info"></i>VisibilitÃ© du contenu
                     </label>
                     <select name="visibility" id="visibility" class="form-select @error('visibility') is-invalid @enderror">
                         <option value="public" {{ old('visibility', isset($post) ? $post->visibility : 'public') === 'public' ? 'selected' : '' }}>
-                            <i class="fas fa-globe"></i> Public - Accessible à tous les visiteurs
+                            <i class="fas fa-globe"></i> Public - Accessible Ã tous les visiteurs
                         </option>
                         <option value="authenticated" {{ old('visibility', isset($post) ? $post->visibility : '') === 'authenticated' ? 'selected' : '' }}>
                             <i class="fas fa-lock"></i> Membres uniquement - Connexion requise
@@ -207,11 +207,11 @@
                                 <div class="d-flex align-items-start">
                                     <i class="fas fa-globe text-success me-2 mt-1"></i>
                                     <div>
-                                        <strong class="text-success">Accès public</strong>
+                                        <strong class="text-success">AccÃ¨s public</strong>
                                         <div class="small text-muted mt-1">
                                             • Visible par tous les visiteurs<br>
-                                            • Indexé par les moteurs de recherche<br>
-                                            • Partageable sur les réseaux sociaux
+                                            • IndexÃ© par les moteurs de recherche<br>
+                                            • Partageable sur les rÃ©seaux sociaux
                                         </div>
                                     </div>
                                 </div>
@@ -220,11 +220,11 @@
                                 <div class="d-flex align-items-start">
                                     <i class="fas fa-lock text-warning me-2 mt-1"></i>
                                     <div>
-                                        <strong class="text-warning">Accès restreint</strong>
+                                        <strong class="text-warning">AccÃ¨s restreint</strong>
                                         <div class="small text-muted mt-1">
                                             • Titre et introduction visibles par tous<br>
-                                            • Contenu complet réservé aux membres<br>
-                                            • Incite à l'inscription sur votre site
+                                            • Contenu complet rÃ©servÃ© aux membres<br>
+                                            • Incite Ã l'inscription sur votre site
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@
                 <div class="mb-3">
                     <div class="border rounded p-3 bg-light">
                         <h6 class="small fw-semibold mb-2">
-                            <i class="fas fa-info-circle text-primary me-1"></i>Impact de la visibilité
+                            <i class="fas fa-info-circle text-primary me-1"></i>Impact de la visibilitÃ©
                         </h6>
                         <div id="visibility-impact">
                             <div id="public-impact" style="display: none;">
@@ -257,7 +257,7 @@
                                         <div class="bg-success bg-opacity-10 rounded p-2">
                                             <i class="fas fa-search text-success"></i>
                                             <div class="small fw-bold text-success">SEO</div>
-                                            <div class="tiny text-muted">Indexé</div>
+                                            <div class="tiny text-muted">IndexÃ©</div>
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -275,7 +275,7 @@
                                         <div class="bg-warning bg-opacity-10 rounded p-2">
                                             <i class="fas fa-user-check text-warning"></i>
                                             <div class="small fw-bold text-warning">Membres</div>
-                                            <div class="tiny text-muted">Connectés</div>
+                                            <div class="tiny text-muted">ConnectÃ©s</div>
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -305,7 +305,7 @@
                            id="published_at" 
                            value="{{ old('published_at', isset($post) ? $post->published_at?->format('Y-m-d\TH:i') : '') }}"
                            class="form-control @error('published_at') is-invalid @enderror">
-                    <div class="form-text">Laisser vide pour publication immédiate</div>
+                    <div class="form-text">Laisser vide pour publication immÃ©diate</div>
                     @error('published_at')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -339,18 +339,18 @@
             </div>
         </div>
 
-        <!-- Catégorie et Tags -->
+        <!-- CatÃ©gorie et Tags -->
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-warning text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-folder me-2"></i>Catégorisation
+                    <i class="fas fa-folder me-2"></i>CatÃ©gorisation
                 </h6>
             </div>
             <div class="card-body p-4">
                 <div class="mb-3">
-                    <label for="category_id" class="form-label fw-semibold">Catégorie *</label>
+                    <label for="category_id" class="form-label fw-semibold">CatÃ©gorie *</label>
                     <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror" required>
-                        <option value="">Sélectionner une catégorie</option>
+                        <option value="">SÃ©lectionner une catÃ©gorie</option>
                         @foreach(\App\Models\Category::where('status', 'active')->orderBy('name')->get() as $category)
                             <option value="{{ $category->id }}" 
                                     {{ old('category_id', isset($post) ? $post->category_id : '') == $category->id ? 'selected' : '' }}>
@@ -373,7 +373,7 @@
                             </option>
                         @endforeach
                     </select>
-                    <div class="form-text">Maintenez Ctrl pour sélectionner plusieurs tags</div>
+                    <div class="form-text">Maintenez Ctrl pour sÃ©lectionner plusieurs tags</div>
                 </div>
             </div>
         </div>
@@ -387,7 +387,7 @@
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header bg-gradient-info text-white p-4">
         <h6 class="mb-0">
-            <i class="fas fa-image me-2"></i>Image à la une
+            <i class="fas fa-image me-2"></i>Image Ã la une
         </h6>
     </div>
     <div class="card-body p-4">
@@ -406,7 +406,7 @@
                     <i class="fas fa-images"></i>
                 </button>
             </div>
-            <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
+            <div class="form-text">SÃ©lectionnez depuis la mÃ©diathÃ¨que ou saisissez une URL</div>
             @error('image')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -448,7 +448,7 @@
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                        <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                     </a>
                     <div class="d-flex gap-2">
                         <button type="submit" name="action" value="save" class="btn btn-primary">

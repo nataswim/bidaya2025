@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur IMC & Composition Corporelle - Analyse Scientifique Avancée')
-@section('meta_description', 'Calculez votre IMC et analysez votre composition corporelle avec nos outils avancés, incluant % de graisse, WHtR et BRI. Informations scientifiques récentes sur les limites de l\'IMC.')
+@section('title', 'Calculateur IMC & Composition Corporelle - Analyse Scientifique AvancÃ©e')
+@section('meta_description', 'Calculez votre IMC et analysez votre composition corporelle avec nos outils avancÃ©s, incluant % de graisse, WHtR et BRI. Informations scientifiques rÃ©centes sur les limites de l\'IMC.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,7 +16,7 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-info-circle text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    Analysez votre composition corporelle avec les dernières recherches scientifiques et alternatives modernes à l'IMC
+                    Analysez votre composition corporelle avec les derniÃ¨res recherches scientifiques et alternatives modernes Ã l'IMC
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
     <div class="container">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
-                <h3 class="text-center mb-4">Calculateur Avancé</h3>
+                <h3 class="text-center mb-4">Calculateur AvancÃ©</h3>
                 
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
@@ -68,12 +68,12 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg px-4 py-3 fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>Réinitialiser
+                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
                         </button>
                     </div>
                 </div>
 
-                <!-- Résultats -->
+                <!-- RÃ©sultats -->
                 <div id="results" class="d-none">
                     <div class="alert alert-success">
                         <h5 class="alert-heading">
@@ -81,7 +81,7 @@
                         </h5>
                         
                         <div class="row g-3 mt-3" id="resultsContent">
-                            <!-- Les résultats seront injectés ici par JavaScript -->
+                            <!-- Les rÃ©sultats seront injectÃ©s ici par JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -102,53 +102,53 @@
             </div>
             <div class="card-body">
                 <div class="alert alert-danger">
-                    <strong>Position AMA 2023 :</strong> L'Association Médicale Américaine reconnaît l'IMC comme 
-                    "une mesure clinique imparfaite" en raison de ses préjugés historiques et de son exclusion raciste.
+                    <strong>Position AMA 2023 :</strong> L'Association MÃ©dicale AmÃ©ricaine reconnaît l'IMC comme 
+                    "une mesure clinique imparfaite" en raison de ses prÃ©jugÃ©s historiques et de son exclusion raciste.
                 </div>
                 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6><i class="fas fa-bug text-danger me-2"></i>Problèmes Fondamentaux Identifiés</h6>
+                        <h6><i class="fas fa-bug text-danger me-2"></i>ProblÃ¨mes Fondamentaux IdentifiÃ©s</h6>
                         <ul>
                             <li><strong>Ne distingue pas :</strong> Muscle, graisse, os et eau</li>
-                            <li><strong>Ignore la distribution :</strong> Graisse viscérale vs sous-cutanée</li>
-                            <li><strong>Biais démographiques :</strong> Développé sur hommes belges 1830s</li>
-                            <li><strong>Variations ethniques :</strong> Différences métaboliques importantes</li>
+                            <li><strong>Ignore la distribution :</strong> Graisse viscÃ©rale vs sous-cutanÃ©e</li>
+                            <li><strong>Biais dÃ©mographiques :</strong> DÃ©veloppÃ© sur hommes belges 1830s</li>
+                            <li><strong>Variations ethniques :</strong> DiffÃ©rences mÃ©taboliques importantes</li>
                             <li><strong>Effet âge :</strong> Changements composition avec vieillissement</li>
-                            <li><strong>Paradoxe athlétique :</strong> Sportifs "obèses" selon IMC</li>
+                            <li><strong>Paradoxe athlÃ©tique :</strong> Sportifs "obÃ¨ses" selon IMC</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6><i class="fas fa-chart-bar text-info me-2"></i>Données Scientifiques Récentes</h6>
+                        <h6><i class="fas fa-chart-bar text-info me-2"></i>DonnÃ©es Scientifiques RÃ©centes</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Population</th>
-                                        <th>% Mal Classifiés</th>
+                                        <th>% Mal ClassifiÃ©s</th>
                                         <th>Impact Principal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Athlètes NFL</td>
+                                        <td>AthlÃ¨tes NFL</td>
                                         <td class="text-danger fw-bold">95%+</td>
-                                        <td>Faux positifs obésité</td>
+                                        <td>Faux positifs obÃ©sitÃ©</td>
                                     </tr>
                                     <tr>
-                                        <td>Personnes âgées</td>
+                                        <td>Personnes âgÃ©es</td>
                                         <td class="text-warning fw-bold">40-60%</td>
                                         <td>Sous-estimation risques</td>
                                     </tr>
                                     <tr>
-                                        <td>Population générale US</td>
+                                        <td>Population gÃ©nÃ©rale US</td>
                                         <td class="text-warning fw-bold">30%</td>
-                                        <td>75 millions mal classifiés</td>
+                                        <td>75 millions mal classifiÃ©s</td>
                                     </tr>
                                     <tr>
-                                        <td>Femmes post-ménopause</td>
+                                        <td>Femmes post-mÃ©nopause</td>
                                         <td class="text-warning fw-bold">35-45%</td>
-                                        <td>Graisse viscérale ignorée</td>
+                                        <td>Graisse viscÃ©rale ignorÃ©e</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -156,8 +156,8 @@
                         
                         <div class="alert alert-warning alert-sm">
                             <small>
-                                <strong>Paradoxe métabolique :</strong> 29% des "obèses" sont métaboliquement sains, 
-                                tandis que 30% des "normaux" sont métaboliquement malades.
+                                <strong>Paradoxe mÃ©tabolique :</strong> 29% des "obÃ¨ses" sont mÃ©taboliquement sains, 
+                                tandis que 30% des "normaux" sont mÃ©taboliquement malades.
                             </small>
                         </div>
                     </div>
@@ -170,13 +170,13 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-microscope me-2"></i>
-                    Alternatives Modernes Validées Scientifiquement
+                    Alternatives Modernes ValidÃ©es Scientifiquement
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6><i class="fas fa-ruler text-primary me-2"></i>Indices Anthropométriques Améliorés</h6>
+                        <h6><i class="fas fa-ruler text-primary me-2"></i>Indices AnthropomÃ©triques AmÃ©liorÃ©s</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-hover">
                                 <thead class="table-light">
@@ -212,33 +212,33 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6><i class="fas fa-cogs text-success me-2"></i>Technologies de Précision 2024</h6>
+                        <h6><i class="fas fa-cogs text-success me-2"></i>Technologies de PrÃ©cision 2024</h6>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <strong>DEXA (Gold Standard)</strong>
-                                <span class="badge bg-success">Précis à 98%</span>
+                                <span class="badge bg-success">PrÃ©cis Ã 98%</span>
                             </li>
                             <li class="list-group-item">
-                                <strong>BIA Multifrequency :</strong> Analyse impédance électrique
+                                <strong>BIA Multifrequency :</strong> Analyse impÃ©dance Ã©lectrique
                             </li>
                             <li class="list-group-item">
-                                <strong>ADP (Bod Pod) :</strong> Déplacement d'air volumétrique
+                                <strong>ADP (Bod Pod) :</strong> DÃ©placement d'air volumÃ©trique
                             </li>
                             <li class="list-group-item">
-                                <strong>Ultrasons :</strong> Épaisseur graisse sous-cutanée
+                                <strong>Ultrasons :</strong> Ã©paisseur graisse sous-cutanÃ©e
                             </li>
                             <li class="list-group-item">
-                                <strong>IRM/CT Scan :</strong> Graisse viscérale directe
+                                <strong>IRM/CT Scan :</strong> Graisse viscÃ©rale directe
                             </li>
                             <li class="list-group-item">
-                                <strong>Anthropométrie 3D :</strong> Scanners corporels complets
+                                <strong>AnthropomÃ©trie 3D :</strong> Scanners corporels complets
                             </li>
                         </ul>
                         
                         <div class="alert alert-success mt-3">
                             <small>
                                 <strong>Recommandation AMA 2023 :</strong> Utiliser l'IMC en conjonction avec 
-                                des mesures complémentaires pour une évaluation complète.
+                                des mesures complÃ©mentaires pour une Ã©valuation complÃ¨te.
                             </small>
                         </div>
                     </div>
@@ -259,41 +259,41 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                             <tr>
-                                <th>Catégorie IMC</th>
+                                <th>CatÃ©gorie IMC</th>
                                 <th>Valeur</th>
-                                <th>Prévalence</th>
-                                <th>Risques Associés</th>
+                                <th>PrÃ©valence</th>
+                                <th>Risques AssociÃ©s</th>
                                 <th>Limitations Principales</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="table-info">
-                                <td><strong>Insuffisance pondérale</strong></td>
+                                <td><strong>Insuffisance pondÃ©rale</strong></td>
                                 <td>&lt; 18.5</td>
                                 <td>1-2%</td>
-                                <td>Carences, immunité réduite</td>
-                                <td>Peut masquer sarcopénie</td>
+                                <td>Carences, immunitÃ© rÃ©duite</td>
+                                <td>Peut masquer sarcopÃ©nie</td>
                             </tr>
                             <tr class="table-success">
                                 <td><strong>Poids normal</strong></td>
                                 <td>18.5 - 24.9</td>
                                 <td>30-35%</td>
                                 <td>Risque de base</td>
-                                <td><span class="text-danger">30% métaboliquement malades</span></td>
+                                <td><span class="text-danger">30% mÃ©taboliquement malades</span></td>
                             </tr>
                             <tr class="table-warning">
                                 <td><strong>Surpoids</strong></td>
                                 <td>25.0 - 29.9</td>
                                 <td>35-40%</td>
-                                <td>Risque modéré</td>
-                                <td>Inclut athlètes musclés</td>
+                                <td>Risque modÃ©rÃ©</td>
+                                <td>Inclut athlÃ¨tes musclÃ©s</td>
                             </tr>
                             <tr class="table-danger">
-                                <td><strong>Obésité</strong></td>
+                                <td><strong>ObÃ©sitÃ©</strong></td>
                                 <td>≥ 30.0</td>
                                 <td>25-30%</td>
-                                <td>Risque élevé</td>
-                                <td><span class="text-success">29% métaboliquement sains</span></td>
+                                <td>Risque Ã©levÃ©</td>
+                                <td><span class="text-success">29% mÃ©taboliquement sains</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -301,8 +301,8 @@
                 
                 <div class="alert alert-warning">
                     <i class="fas fa-exclamation-circle me-2"></i>
-                    <strong>Important :</strong> Ces catégories doivent être interprétées dans le contexte 
-                    de l'âge, du sexe, de l'ethnicité, de la composition corporelle et des marqueurs métaboliques.
+                    <strong>Important :</strong> Ces catÃ©gories doivent être interprÃ©tÃ©es dans le contexte 
+                    de l'âge, du sexe, de l'ethnicitÃ©, de la composition corporelle et des marqueurs mÃ©taboliques.
                 </div>
             </div>
         </div>
@@ -320,14 +320,14 @@
                     <div class="col-md-4">
                         <div class="card h-100 border-primary">
                             <div class="card-header bg-primary text-white">
-                                <h6 class="mb-0">Évaluation Complète Recommandée</h6>
+                                <h6 class="mb-0">Ã©valuation ComplÃ¨te RecommandÃ©e</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
                                     <li><i class="fas fa-check text-success me-2"></i>IMC + tour de taille (minimum)</li>
                                     <li><i class="fas fa-check text-success me-2"></i>Composition corporelle (DEXA/BIA)</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Biomarqueurs métaboliques</li>
-                                    <li><i class="fas fa-check text-success me-2"></i>Évaluation cardiovasculaire</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Biomarqueurs mÃ©taboliques</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Ã©valuation cardiovasculaire</li>
                                     <li><i class="fas fa-check text-success me-2"></i>Tests fonctionnels</li>
                                     <li><i class="fas fa-check text-success me-2"></i>Historique familial</li>
                                 </ul>
@@ -341,11 +341,11 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
-                                    <li><i class="fas fa-eye text-primary me-2"></i>Monitoring régulier composition</li>
-                                    <li><i class="fas fa-calendar text-primary me-2"></i>Évaluation métabolique annuelle</li>
+                                    <li><i class="fas fa-eye text-primary me-2"></i>Monitoring rÃ©gulier composition</li>
+                                    <li><i class="fas fa-calendar text-primary me-2"></i>Ã©valuation mÃ©tabolique annuelle</li>
                                     <li><i class="fas fa-users text-primary me-2"></i>Adaptation seuils selon population</li>
-                                    <li><i class="fas fa-heart text-primary me-2"></i>Focus qualité de vie et fonction</li>
-                                    <li><i class="fas fa-shield text-primary me-2"></i>Prévention primaire personnalisée</li>
+                                    <li><i class="fas fa-heart text-primary me-2"></i>Focus qualitÃ© de vie et fonction</li>
+                                    <li><i class="fas fa-shield text-primary me-2"></i>PrÃ©vention primaire personnalisÃ©e</li>
                                     <li><i class="fas fa-user-md text-primary me-2"></i>Approche multidisciplinaire</li>
                                 </ul>
                             </div>
@@ -358,12 +358,12 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
-                                    <li><i class="fas fa-robot text-info me-2"></i>Algorithmes IA prédictifs</li>
-                                    <li><i class="fas fa-dna text-info me-2"></i>Génomique nutritionnelle</li>
-                                    <li><i class="fas fa-bacteria text-info me-2"></i>Microbiome et métabolisme</li>
-                                    <li><i class="fas fa-watch text-info me-2"></i>Wearables métaboliques</li>
-                                    <li><i class="fas fa-user text-info me-2"></i>Médecine personnalisée</li>
-                                    <li><i class="fas fa-crosshairs text-info me-2"></i>Intervention précoce ciblée</li>
+                                    <li><i class="fas fa-robot text-info me-2"></i>Algorithmes IA prÃ©dictifs</li>
+                                    <li><i class="fas fa-dna text-info me-2"></i>GÃ©nomique nutritionnelle</li>
+                                    <li><i class="fas fa-bacteria text-info me-2"></i>Microbiome et mÃ©tabolisme</li>
+                                    <li><i class="fas fa-watch text-info me-2"></i>Wearables mÃ©taboliques</li>
+                                    <li><i class="fas fa-user text-info me-2"></i>MÃ©decine personnalisÃ©e</li>
+                                    <li><i class="fas fa-crosshairs text-info me-2"></i>Intervention prÃ©coce ciblÃ©e</li>
                                 </ul>
                             </div>
                         </div>
@@ -374,7 +374,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -387,12 +387,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -402,15 +402,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -437,7 +437,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -448,12 +448,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -556,7 +556,7 @@ function calculateBMI() {
     let badgeClass = '';
     
     if (bmi < 18.5) {
-        category = 'Insuffisance pondérale';
+        category = 'Insuffisance pondÃ©rale';
         categoryColor = 'text-info';
         badgeClass = 'bg-info';
     } else if (bmi < 25) {
@@ -568,19 +568,19 @@ function calculateBMI() {
         categoryColor = 'text-warning';
         badgeClass = 'bg-warning text-dark';
     } else {
-        category = 'Obésité';
+        category = 'ObÃ©sitÃ©';
         categoryColor = 'text-danger';
         badgeClass = 'bg-danger';
     }
 
-    // Calculs complémentaires
+    // Calculs complÃ©mentaires
     let whtr = null;
     let bri = null;
     let bodyFat = null;
     
     if (waist && waist > 0) {
         whtr = waist / height;
-        // Estimation BRI simplifiée
+        // Estimation BRI simplifiÃ©e
         bri = 364.2 - 365.5 * Math.sqrt(1 - ((waist / (2 * Math.PI)) ** 2) / ((0.5 * height) ** 2));
     }
 
@@ -588,10 +588,10 @@ function calculateBMI() {
     if (age && age > 0) {
         const genderFactor = gender === 'male' ? 1 : 0;
         bodyFat = (1.20 * bmi) + (0.23 * age) - (10.8 * genderFactor) - 5.4;
-        bodyFat = Math.max(0, bodyFat); // Ne peut pas être négatif
+        bodyFat = Math.max(0, bodyFat); // Ne peut pas être nÃ©gatif
     }
 
-    // Construire les résultats
+    // Construire les rÃ©sultats
     let resultsHTML = `
         <div class="col-md-3">
             <div class="card border-primary h-100">
@@ -613,7 +613,7 @@ function calculateBMI() {
             <div class="col-md-3">
                 <div class="card border-warning h-100">
                     <div class="card-body text-center">
-                        <h6 class="card-title">% Graisse Estimé</h6>
+                        <h6 class="card-title">% Graisse EstimÃ©</h6>
                         <p class="card-text fs-5">
                             <strong>${Math.round(bodyFat * 10) / 10}%</strong>
                         </p>
@@ -634,7 +634,7 @@ function calculateBMI() {
             whtrStatus = 'Attention';
             whtrClass = 'text-warning';
         } else {
-            whtrStatus = 'Risque élevé';
+            whtrStatus = 'Risque Ã©levÃ©';
             whtrClass = 'text-danger';
         }
         
@@ -672,7 +672,7 @@ function calculateBMI() {
     document.getElementById('resultsContent').innerHTML = resultsHTML;
     document.getElementById('results').classList.remove('d-none');
     
-    // Scroll vers les résultats
+    // Scroll vers les rÃ©sultats
     document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 

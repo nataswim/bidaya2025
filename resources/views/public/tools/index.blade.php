@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Outils & Calculateurs Sportifs - Collection Evidence-Based')
-@section('meta_description', 'Suite complète d\'outils et calculateurs pour optimiser votre santé, performance et entraînement sportif. Organisés par catégories spécialisées, basés sur les recherches scientifiques 2024.')
+@section('meta_description', 'Suite complÃ¨te d\'outils et calculateurs pour optimiser votre santÃ©, performance et entraînement sportif. OrganisÃ©s par catÃ©gories spÃ©cialisÃ©es, basÃ©s sur les recherches scientifiques 2024.')
 
 @section('content')
 <!-- Section titre -->
@@ -17,31 +17,31 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-flask text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Collection scientifique complète</strong> d'outils pour optimiser votre santé, 
-                    performance et entraînement sportif basés sur les recherches 2024
+                    <strong>Collection scientifique complÃ¨te</strong> d'outils pour optimiser votre santÃ©, 
+                    performance et entraînement sportif basÃ©s sur les recherches 2024
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Navigation par Catégories -->
+<!-- Navigation par CatÃ©gories -->
 <section class="py-5 bg-light">
     <div class="container">
         
         <!-- Introduction -->
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Explorez nos Outils par Catégorie</h2>
+            <h2 class="fw-bold mb-3">Explorez nos Outils par CatÃ©gorie</h2>
             <p class="lead text-muted">
-                Choisissez la catégorie qui correspond à vos besoins pour accéder aux outils spécialisés 
-                et calculateurs scientifiques adaptés à votre pratique sportive.
+                Choisissez la catÃ©gorie qui correspond Ã vos besoins pour accÃ©der aux outils spÃ©cialisÃ©s 
+                et calculateurs scientifiques adaptÃ©s Ã votre pratique sportive.
             </p>
         </div>
 
-        <!-- Catégories d'outils -->
+        <!-- CatÃ©gories d'outils -->
         <div class="row g-4 mb-5">
             
-            <!-- 1. Santé & Composition Corporelle -->
+            <!-- 1. SantÃ© & Composition Corporelle -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.category.health') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
@@ -49,21 +49,21 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-heartbeat me-3" style="font-size: 2rem;"></i>
                                 <div>
-                                    <h4 class="mb-1">Santé & Composition Corporelle</h4>
+                                    <h4 class="mb-1">SantÃ© & Composition Corporelle</h4>
                                     <p class="mb-0 opacity-75">4 outils disponibles</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Analysez votre santé et composition corporelle avec précision scientifique : 
+                                Analysez votre santÃ© et composition corporelle avec prÃ©cision scientifique : 
                                 IMC, masse grasse, TDEE, indices de forme physique.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-primary fw-bold">Découvrir les outils →</span>
+                                <span class="text-primary fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
                                     <span class="badge bg-success">Essentiel</span>
-                                    <span class="badge bg-primary">Avancé</span>
+                                    <span class="badge bg-primary">AvancÃ©</span>
                                     <span class="badge bg-warning">Pro</span>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                 </a>
             </div>
 
-            <!-- 2. Nutrition & Énergie -->
+            <!-- 2. Nutrition & Ã©nergie -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.category.nutrition') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
@@ -80,7 +80,7 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-apple-alt me-3" style="font-size: 2rem;"></i>
                                 <div>
-                                    <h4 class="mb-1">Nutrition & Énergie</h4>
+                                    <h4 class="mb-1">Nutrition & Ã©nergie</h4>
                                     <p class="mb-0 opacity-75">3 outils disponibles</p>
                                 </div>
                             </div>
@@ -88,13 +88,13 @@
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
                                 Optimisez votre nutrition sportive : conversion calories-macros, 
-                                besoins caloriques et hydratation personnalisée.
+                                besoins caloriques et hydratation personnalisÃ©e.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-success fw-bold">Découvrir les outils →</span>
+                                <span class="text-success fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
                                     <span class="badge bg-success">Essentiel</span>
-                                    <span class="badge bg-primary">Avancé</span>
+                                    <span class="badge bg-primary">AvancÃ©</span>
                                     <span class="badge bg-warning">Pro</span>
                                 </div>
                             </div>
@@ -119,10 +119,10 @@
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
                                 Optimisez votre entraînement cardio : zones d'entraînement scientifiques 
-                                et cohérence cardiaque pour la performance.
+                                et cohÃ©rence cardiaque pour la performance.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-danger fw-bold">Découvrir les outils →</span>
+                                <span class="text-danger fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
                                     <span class="badge bg-info">Bien-être</span>
                                     <span class="badge bg-warning">Pro</span>
@@ -148,14 +148,14 @@
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Suite complète natation : prédiction performance, planification, 
-                                VNC, efficacité technique, triathlon et chronométrage.
+                                Suite complÃ¨te natation : prÃ©diction performance, planification, 
+                                VNC, efficacitÃ© technique, triathlon et chronomÃ©trage.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-info fw-bold">Découvrir les outils →</span>
+                                <span class="text-info fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
                                     <span class="badge bg-success">Essentiel</span>
-                                    <span class="badge bg-primary">Avancé</span>
+                                    <span class="badge bg-primary">AvancÃ©</span>
                                     <span class="badge bg-warning">Pro</span>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@
                 </a>
             </div>
 
-            <!-- 5. Course à Pied & Endurance -->
+            <!-- 5. Course Ã Pied & Endurance -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.category.running') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
@@ -172,20 +172,20 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-running me-3" style="font-size: 2rem;"></i>
                                 <div>
-                                    <h4 class="mb-1">Course à Pied & Endurance</h4>
+                                    <h4 class="mb-1">Course Ã Pied & Endurance</h4>
                                     <p class="mb-0 opacity-75">1 outil disponible</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Planification intelligente course à pied : plans d'entraînement 
-                                personnalisés selon votre objectif et niveau.
+                                Planification intelligente course Ã pied : plans d'entraînement 
+                                personnalisÃ©s selon votre objectif et niveau.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-warning fw-bold">Découvrir les outils →</span>
+                                <span class="text-warning fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
-                                    <span class="badge bg-primary">Avancé</span>
+                                    <span class="badge bg-primary">AvancÃ©</span>
                                 </div>
                             </div>
                         </div>
@@ -208,13 +208,13 @@
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Calculs musculation précis : répétition maximale (1RM) 
+                                Calculs musculation prÃ©cis : rÃ©pÃ©tition maximale (1RM) 
                                 et pourcentages d'entraînement pour optimiser vos charges.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-dark fw-bold">Découvrir les outils →</span>
+                                <span class="text-dark fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
-                                    <span class="badge bg-primary">Avancé</span>
+                                    <span class="badge bg-primary">AvancÃ©</span>
                                 </div>
                             </div>
                         </div>
@@ -237,11 +237,11 @@
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Utilitaires d'entraînement : chronométrage professionnel 
-                                multi-athlètes et carte interactive pour planification parcours.
+                                Utilitaires d'entraînement : chronomÃ©trage professionnel 
+                                multi-athlÃ¨tes et carte interactive pour planification parcours.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-secondary fw-bold">Découvrir les outils →</span>
+                                <span class="text-secondary fw-bold">DÃ©couvrir les outils →</span>
                                 <div class="d-flex gap-1">
                                     <span class="badge bg-secondary">Pratique</span>
                                     <span class="badge bg-warning">Pro</span>
@@ -252,7 +252,7 @@
                 </a>
             </div>
 
-            <!-- 8. Outils en Développement -->
+            <!-- 8. Outils en DÃ©veloppement -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.category.development') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
@@ -260,22 +260,22 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-wrench me-3" style="font-size: 2rem;"></i>
                                 <div>
-                                    <h4 class="mb-1">Outils en Développement</h4>
-                                    <p class="mb-0 opacity-75">40+ outils prévus</p>
+                                    <h4 class="mb-1">Outils en DÃ©veloppement</h4>
+                                    <p class="mb-0 opacity-75">40+ outils prÃ©vus</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Aperçu des innovations à venir : biomécanique, récupération avancée, 
-                                nutrition spécialisée, psychologie sportive et plus encore.
+                                Aperçu des innovations Ã venir : biomÃ©canique, rÃ©cupÃ©ration avancÃ©e, 
+                                nutrition spÃ©cialisÃ©e, psychologie sportive et plus encore.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-warning fw-bold">Découvrir le roadmap →</span>
+                                <span class="text-warning fw-bold">DÃ©couvrir le roadmap →</span>
                                 <div class="d-flex gap-1">
-                                    <span class="badge bg-danger">Priorité 1</span>
-                                    <span class="badge bg-warning">Priorité 2</span>
-                                    <span class="badge bg-secondary">Priorité 3</span>
+                                    <span class="badge bg-danger">PrioritÃ© 1</span>
+                                    <span class="badge bg-warning">PrioritÃ© 2</span>
+                                    <span class="badge bg-secondary">PrioritÃ© 3</span>
                                 </div>
                             </div>
                         </div>
@@ -303,7 +303,7 @@
                             </div>
                             <h6 class="fw-bold">1. Commencez Simple</h6>
                             <p class="small text-muted">
-                                Débutez avec les outils niveau "Essentiel" : IMC, hydratation, 
+                                DÃ©butez avec les outils niveau "Essentiel" : IMC, hydratation, 
                                 zones cardiaques de base.
                             </p>
                         </div>
@@ -316,8 +316,8 @@
                             </div>
                             <h6 class="fw-bold">2. Progressez Intelligemment</h6>
                             <p class="small text-muted">
-                                Évoluez vers les outils "Avancé" pour approfondir votre analyse 
-                                et optimiser vos résultats.
+                                Ã©voluez vers les outils "AvancÃ©" pour approfondir votre analyse 
+                                et optimiser vos rÃ©sultats.
                             </p>
                         </div>
                     </div>
@@ -330,7 +330,7 @@
                             <h6 class="fw-bold">3. Expertise "Pro"</h6>
                             <p class="small text-muted">
                                 Utilisez les outils "Pro" pour une analyse scientifique 
-                                complète et un coaching personnalisé.
+                                complÃ¨te et un coaching personnalisÃ©.
                             </p>
                         </div>
                     </div>
@@ -342,7 +342,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -353,12 +353,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -368,15 +368,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -403,7 +403,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -415,12 +415,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -507,13 +507,13 @@
             <div class="col-lg-8">
                 <h2 class="display-6 fw-bold mb-3">Commencez votre Analyse Scientifique</h2>
                 <p class="lead mb-4">
-                    Explorez nos outils par catégorie et bénéficiez d'une approche scientifique 
-                    personnalisée pour optimiser votre santé et performance sportive.
+                    Explorez nos outils par catÃ©gorie et bÃ©nÃ©ficiez d'une approche scientifique 
+                    personnalisÃ©e pour optimiser votre santÃ© et performance sportive.
                 </p>
                 
                 <div class="d-flex flex-wrap justify-content-center gap-3">
                     <a href="{{ route('tools.category.health') }}" class="btn btn-light btn-lg">
-                        <i class="fas fa-heartbeat me-2"></i>Santé & Composition
+                        <i class="fas fa-heartbeat me-2"></i>SantÃ© & Composition
                     </a>
                     <a href="{{ route('tools.category.swimming') }}" class="btn btn-outline-light btn-lg">
                         <i class="fas fa-swimmer me-2"></i>Natation & Aquatique
@@ -526,8 +526,8 @@
                 <div class="alert alert-info border-0 bg-white bg-opacity-25 mt-4 d-inline-block">
                     <small>
                         <i class="fas fa-shield-alt me-2"></i>
-                        <strong>Avis médical :</strong> Ces outils ne remplacent pas l'avis d'un professionnel de santé. 
-                        Consultez un médecin avant tout programme sportif intense.
+                        <strong>Avis mÃ©dical :</strong> Ces outils ne remplacent pas l'avis d'un professionnel de santÃ©. 
+                        Consultez un mÃ©decin avant tout programme sportif intense.
                     </small>
                 </div>
             </div>
@@ -569,7 +569,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrée pour les cards
+    // Animation d'entrÃ©e pour les cards
     const cards = document.querySelectorAll('.category-card');
     
     const observerOptions = {

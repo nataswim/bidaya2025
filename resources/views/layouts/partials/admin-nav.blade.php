@@ -34,12 +34,16 @@
         </div>
         
         <ul class="nav nav-pills flex-column px-3">
-            <!-- NOUVEAU : Section Médias -->
+
+
+
+
+            <!-- NOUVEAU : Section MÃ©dias -->
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.media.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.media.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-images me-3"></i>
-                    <span>Médias</span>
+                    <span>MÃ©dias</span>
                     @php
                         $mediaCount = App\Models\Media::count();
                     @endphp
@@ -61,7 +65,7 @@
                 <a href="{{ route('admin.categories.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.categories.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-folder me-3"></i>
-                    <span>Catégories</span>
+                    <span>CatÃ©gories</span>
                 </a>
             </li>
             <li class="nav-item mb-1">
@@ -106,6 +110,36 @@
                     <span>Paiements</span>
                 </a>
             </li>
+
+
+<div class="px-3 mb-3 mt-4">
+    <small class="text-uppercase text-light opacity-50 fw-semibold">Téléchargements</small>
+</div>
+
+<ul class="nav nav-pills flex-column px-3">
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.downloadables.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.downloadables.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-download me-3"></i>
+            <span>Fichiers</span>
+            @php
+                $downloadCount = \App\Models\Downloadable::count();
+            @endphp
+            @if($downloadCount > 0)
+                <span class="badge bg-success ms-auto">{{ $downloadCount }}</span>
+            @endif
+        </a>
+    </li>
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.download-categories.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.download-categories.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-folder-open me-3"></i>
+            <span>Catégories</span>
+        </a>
+    </li>
+</ul>
+
+
 
         </ul>
     </div>

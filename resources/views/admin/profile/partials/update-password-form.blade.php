@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Mettre à jour le mot de passe') }}
+            {{ __('Mettre Ã jour le mot de passe') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Assurez-vous que votre compte utilise un mot de passe long et aléatoire pour rester sécurisé.') }}
+            {{ __('Assurez-vous que votre compte utilise un mot de passe long et alÃ©atoire pour rester sÃ©curisÃ©.') }}
         </p>
     </header>
 

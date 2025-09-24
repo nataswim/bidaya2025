@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Planificateur d\'Entraînement Triathlon - Périodisation Scientifique Multi-Sports')
-@section('meta_description', 'Planificateur triathlon basé sur la science du sport. Calcul séances hebdomadaires optimales selon objectif et niveau. Périodisation, nutrition, prévention blessures. Evidence-based 2024.')
+@section('title', 'Planificateur d\'Entraînement Triathlon - PÃ©riodisation Scientifique Multi-Sports')
+@section('meta_description', 'Planificateur triathlon basÃ© sur la science du sport. Calcul sÃ©ances hebdomadaires optimales selon objectif et niveau. PÃ©riodisation, nutrition, prÃ©vention blessures. Evidence-based 2024.')
 
 @section('content')
 <!-- Section titre -->
@@ -15,8 +15,8 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-clock text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Planification scientifique personnalisée</strong> basée sur les dernières recherches 
-                    en sciences du sport combiné et périodisation multi-disciplines
+                    <strong>Planification scientifique personnalisÃ©e</strong> basÃ©e sur les derniÃ¨res recherches 
+                    en sciences du sport combinÃ© et pÃ©riodisation multi-disciplines
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-calendar-alt me-2"></i>
-                    Générateur de Plan Personnalisé
+                    GÃ©nÃ©rateur de Plan PersonnalisÃ©
                 </h3>
             </div>
             <div class="card-body">
@@ -42,13 +42,13 @@
                     <!-- Sera rempli par JavaScript -->
                 </div>
 
-                <!-- Sélection objectif et niveau -->
+                <!-- SÃ©lection objectif et niveau -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
                         <label for="goal" class="form-label fw-bold">Objectif de Triathlon</label>
                         <select id="goal" class="form-select form-select-lg border-primary">
                             <option value="">-- Choisir un objectif --</option>
-                            <option value="discovery">Découverte / Sprint (750m-20km-5km)</option>
+                            <option value="discovery">DÃ©couverte / Sprint (750m-20km-5km)</option>
                             <option value="olympic">Distance Olympique (1.5km-40km-10km)</option>
                             <option value="half_ironman">Half Ironman 70.3 (1.9km-90km-21km)</option>
                             <option value="ironman">Ironman (3.8km-180km-42km)</option>
@@ -56,47 +56,47 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="experience" class="form-label fw-bold">Niveau d'expérience</label>
+                        <label for="experience" class="form-label fw-bold">Niveau d'expÃ©rience</label>
                         <select id="experience" class="form-select form-select-lg border-success">
-                            <option value="">-- Sélectionner votre niveau --</option>
-                            <option value="beginner">Débutant (moins de 1 an)</option>
-                            <option value="intermediate">Intermédiaire (1-3 ans)</option>
-                            <option value="advanced">Avancé (3-5 ans)</option>
+                            <option value="">-- SÃ©lectionner votre niveau --</option>
+                            <option value="beginner">DÃ©butant (moins de 1 an)</option>
+                            <option value="intermediate">IntermÃ©diaire (1-3 ans)</option>
+                            <option value="advanced">AvancÃ© (3-5 ans)</option>
                             <option value="expert">Expert (plus de 5 ans)</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Paramètres additionnels -->
-                <h5 class="fw-bold mb-3">Paramètres de Personnalisation</h5>
+                <!-- ParamÃ¨tres additionnels -->
+                <h5 class="fw-bold mb-3">ParamÃ¨tres de Personnalisation</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <label for="timeAvailable" class="form-label">Temps disponible/semaine</label>
                         <select id="timeAvailable" class="form-select border-warning">
-                            <option value="low">Limité (3-5h/semaine)</option>
-                            <option value="moderate" selected>Modéré (6-10h/semaine)</option>
-                            <option value="high">Élevé (11-15h/semaine)</option>
-                            <option value="very_high">Très élevé (>15h/semaine)</option>
+                            <option value="low">LimitÃ© (3-5h/semaine)</option>
+                            <option value="moderate" selected>ModÃ©rÃ© (6-10h/semaine)</option>
+                            <option value="high">Ã©levÃ© (11-15h/semaine)</option>
+                            <option value="very_high">TrÃ¨s Ã©levÃ© (>15h/semaine)</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="discipline" class="form-label">Point fort</label>
                         <select id="discipline" class="form-select border-info">
-                            <option value="balanced" selected>Équilibré</option>
+                            <option value="balanced" selected>Ã©quilibrÃ©</option>
                             <option value="swimming">Natation</option>
                             <option value="cycling">Cyclisme</option>
-                            <option value="running">Course à pied</option>
+                            <option value="running">Course Ã pied</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="season" class="form-label">Période de l'année</label>
+                        <label for="season" class="form-label">PÃ©riode de l'annÃ©e</label>
                         <select id="season" class="form-select border-secondary">
-                            <option value="preparation">Préparation générale</option>
+                            <option value="preparation">PrÃ©paration gÃ©nÃ©rale</option>
                             <option value="base" selected>Phase de base</option>
-                            <option value="build">Phase de développement</option>
-                            <option value="peak">Phase spécifique/pic</option>
-                            <option value="taper">Affûtage pré-compétition</option>
-                            <option value="recovery">Récupération/Transition</option>
+                            <option value="build">Phase de dÃ©veloppement</option>
+                            <option value="peak">Phase spÃ©cifique/pic</option>
+                            <option value="taper">Affûtage prÃ©-compÃ©tition</option>
+                            <option value="recovery">RÃ©cupÃ©ration/Transition</option>
                         </select>
                     </div>
                 </div>
@@ -105,37 +105,37 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <button class="btn btn-primary btn-lg fw-bold w-100" onclick="generatePlan()">
-                            <i class="fas fa-magic me-2"></i>Générer mon Plan Personnalisé
+                            <i class="fas fa-magic me-2"></i>GÃ©nÃ©rer mon Plan PersonnalisÃ©
                         </button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetPlanner()">
-                            <i class="fas fa-redo me-2"></i>Réinitialiser
+                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Résultats du Plan -->
+        <!-- RÃ©sultats du Plan -->
         <div id="planResults" class="d-none">
-            <!-- Plan Recommandé -->
+            <!-- Plan RecommandÃ© -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-clipboard-list me-2"></i>
-                        Votre Plan d'Entraînement Personnalisé
+                        Votre Plan d'Entraînement PersonnalisÃ©
                     </h3>
                 </div>
                 <div class="card-body">
                     <div class="alert alert-success">
-                        <h5 class="alert-heading">Recommandation Personnalisée</h5>
+                        <h5 class="alert-heading">Recommandation PersonnalisÃ©e</h5>
                         <p id="planSummary">
                             <!-- Sera rempli par JavaScript -->
                         </p>
                     </div>
 
-                    <!-- Répartition par discipline -->
+                    <!-- RÃ©partition par discipline -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-4">
                             <div class="card border-info">
@@ -147,7 +147,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-3"><strong class="text-info" id="swimmingSessions">0</strong></span>
-                                        <small class="d-block">séances/semaine</small>
+                                        <small class="d-block">sÃ©ances/semaine</small>
                                     </p>
                                     <small class="text-muted" id="swimmingPercentage">% du volume total</small>
                                     <hr>
@@ -166,7 +166,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-3"><strong class="text-warning" id="cyclingSessions">0</strong></span>
-                                        <small class="d-block">séances/semaine</small>
+                                        <small class="d-block">sÃ©ances/semaine</small>
                                     </p>
                                     <small class="text-muted" id="cyclingPercentage">% du volume total</small>
                                     <hr>
@@ -179,36 +179,36 @@
                             <div class="card border-danger">
                                 <div class="card-header bg-danger text-white text-center">
                                     <h6 class="mb-0">
-                                        <i class="fas fa-running me-2"></i>Course à pied
+                                        <i class="fas fa-running me-2"></i>Course Ã pied
                                     </h6>
                                 </div>
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-3"><strong class="text-danger" id="runningSessions">0</strong></span>
-                                        <small class="d-block">séances/semaine</small>
+                                        <small class="d-block">sÃ©ances/semaine</small>
                                     </p>
                                     <small class="text-muted" id="runningPercentage">% du volume total</small>
                                     <hr>
-                                    <small id="runningFocus" class="text-muted">Focus économie et résistance</small>
+                                    <small id="runningFocus" class="text-muted">Focus Ã©conomie et rÃ©sistance</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Séances spécialisées -->
+                    <!-- SÃ©ances spÃ©cialisÃ©es -->
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="card border-primary">
                                 <div class="card-header bg-primary text-white">
                                     <h6 class="mb-0">
-                                        <i class="fas fa-link me-2"></i>Séances Brick
+                                        <i class="fas fa-link me-2"></i>SÃ©ances Brick
                                     </h6>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong id="brickSessions">0</strong> séance(s) vélo-course/semaine
+                                        <strong id="brickSessions">0</strong> sÃ©ance(s) vÃ©lo-course/semaine
                                     </p>
-                                    <small class="text-muted">Adaptation aux transitions spécifiques</small>
+                                    <small class="text-muted">Adaptation aux transitions spÃ©cifiques</small>
                                 </div>
                             </div>
                         </div>
@@ -222,9 +222,9 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <strong id="strengthSessions">0</strong> séance(s) force/semaine
+                                        <strong id="strengthSessions">0</strong> sÃ©ance(s) force/semaine
                                     </p>
-                                    <small class="text-muted">Prévention blessures et performance</small>
+                                    <small class="text-muted">PrÃ©vention blessures et performance</small>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +232,7 @@
                 </div>
             </div>
 
-            <!-- Planning Hebdomadaire Détaillé -->
+            <!-- Planning Hebdomadaire DÃ©taillÃ© -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-info text-white">
                     <h3 class="mb-2">
@@ -250,7 +250,7 @@
     </div>
 </section>
 
-<!-- Contenu Éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
         
@@ -264,28 +264,28 @@
             </div>
             <div class="card-body">
                 <p>
-                    La planification du triathlon nécessite une approche multi-disciplinaire équilibrant trois sports distincts. 
-                    Nos recommandations intègrent la science de la périodisation, la spécificité de l'entraînement, 
-                    et la prévention des blessures selon les recherches les plus récentes.
+                    La planification du triathlon nÃ©cessite une approche multi-disciplinaire Ã©quilibrant trois sports distincts. 
+                    Nos recommandations intÃ¨grent la science de la pÃ©riodisation, la spÃ©cificitÃ© de l'entraînement, 
+                    et la prÃ©vention des blessures selon les recherches les plus rÃ©centes.
                 </p>
 
                 <div class="alert alert-info">
-                    <h6><i class="fas fa-lightbulb me-2"></i>Mise à jour Recherche 2024</h6>
+                    <h6><i class="fas fa-lightbulb me-2"></i>Mise Ã jour Recherche 2024</h6>
                     <p class="mb-0">
-                        La "variabilité de l'entraînement" (alternance d'intensité/volume) est cruciale pour éviter 
-                        le surentraînement et maximiser les gains dans chaque discipline tout en préservant la santé.
+                        La "variabilitÃ© de l'entraînement" (alternance d'intensitÃ©/volume) est cruciale pour Ã©viter 
+                        le surentraînement et maximiser les gains dans chaque discipline tout en prÃ©servant la santÃ©.
                     </p>
                 </div>
 
                 <div class="row g-4 mt-3">
                     <div class="col-md-6">
-                        <h6>Périodisation Spécifique au Triathlon</h6>
+                        <h6>PÃ©riodisation SpÃ©cifique au Triathlon</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Phase</th>
-                                        <th>Durée</th>
+                                        <th>DurÃ©e</th>
                                         <th>Objectif</th>
                                         <th>Focus Disciplines</th>
                                     </tr>
@@ -294,57 +294,57 @@
                                     <tr>
                                         <td><strong>Base</strong></td>
                                         <td>12-16 sem</td>
-                                        <td>Volume, endurance générale, technique</td>
-                                        <td>Équilibre des 3 disciplines</td>
+                                        <td>Volume, endurance gÃ©nÃ©rale, technique</td>
+                                        <td>Ã©quilibre des 3 disciplines</td>
                                     </tr>
                                     <tr>
                                         <td>Build</td>
                                         <td>8-10 sem</td>
-                                        <td>Intensité, force spécifique, seuil</td>
-                                        <td>Focus progressif vélo/course</td>
+                                        <td>IntensitÃ©, force spÃ©cifique, seuil</td>
+                                        <td>Focus progressif vÃ©lo/course</td>
                                     </tr>
                                     <tr>
-                                        <td>Spécialisée</td>
+                                        <td>SpÃ©cialisÃ©e</td>
                                         <td>4-6 sem</td>
                                         <td>Rythme course, transitions, affûtage</td>
-                                        <td>Simulation course, brick fréquents</td>
+                                        <td>Simulation course, brick frÃ©quents</td>
                                     </tr>
                                     <tr>
                                         <td>Affûtage</td>
                                         <td>1-3 sem</td>
-                                        <td>Récupération, supercompensation</td>
-                                        <td>Réduction volume, maintien intensité</td>
+                                        <td>RÃ©cupÃ©ration, supercompensation</td>
+                                        <td>RÃ©duction volume, maintien intensitÃ©</td>
                                     </tr>
                                     <tr>
                                         <td>Transition</td>
                                         <td>2-4 sem</td>
-                                        <td>Récupération mentale/physique</td>
-                                        <td>Activités alternatives</td>
+                                        <td>RÃ©cupÃ©ration mentale/physique</td>
+                                        <td>ActivitÃ©s alternatives</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <p class="small">
-                            L'intégration de blocs d'entraînement "brick" (vélo-course) est essentielle dès la phase Build 
-                            pour l'adaptation spécifique aux transitions.
+                            L'intÃ©gration de blocs d'entraînement "brick" (vÃ©lo-course) est essentielle dÃ¨s la phase Build 
+                            pour l'adaptation spÃ©cifique aux transitions.
                         </p>
                     </div>
 
                     <div class="col-md-6">
-                        <h6>Adaptations Physiologiques Croisées</h6>
+                        <h6>Adaptations Physiologiques CroisÃ©es</h6>
                         <ul class="small">
-                            <li><strong>Natation :</strong> Efficacité propulsive, adaptation à l'hypoxie, proprioception aquatique</li>
-                            <li><strong>Cyclisme :</strong> Puissance aérobie, endurance musculaire des jambes, position aérodynamique</li>
-                            <li><strong>Course à pied :</strong> Économie de course, résistance aux chocs, adaptation post-vélo</li>
-                            <li><strong>Physiologie Intégrée :</strong> Amélioration VO2 Max générale, gestion fatigue neuromusculaire</li>
+                            <li><strong>Natation :</strong> EfficacitÃ© propulsive, adaptation Ã l'hypoxie, proprioception aquatique</li>
+                            <li><strong>Cyclisme :</strong> Puissance aÃ©robie, endurance musculaire des jambes, position aÃ©rodynamique</li>
+                            <li><strong>Course Ã pied :</strong> Ã©conomie de course, rÃ©sistance aux chocs, adaptation post-vÃ©lo</li>
+                            <li><strong>Physiologie IntÃ©grÃ©e :</strong> AmÃ©lioration VO2 Max gÃ©nÃ©rale, gestion fatigue neuromusculaire</li>
                         </ul>
                         
                         <div class="alert alert-warning">
-                            <h6>Découverte Recherche 2024</h6>
+                            <h6>DÃ©couverte Recherche 2024</h6>
                             <p class="mb-0 small">
-                                La natation en eau libre développe une proprioception unique, améliorant l'équilibre 
+                                La natation en eau libre dÃ©veloppe une proprioception unique, amÃ©liorant l'Ã©quilibre 
                                 et la coordination sur les autres disciplines. Les entraînements en eau libre 
-                                sont recommandés dès que possible.
+                                sont recommandÃ©s dÃ¨s que possible.
                             </p>
                         </div>
 
@@ -386,18 +386,18 @@
             </div>
         </div>
 
-        <!-- Nutrition et Récupération -->
+        <!-- Nutrition et RÃ©cupÃ©ration -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-apple-alt me-2"></i>
-                    Nutrition et Récupération Avancées en Triathlon
+                    Nutrition et RÃ©cupÃ©ration AvancÃ©es en Triathlon
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Stratégies Nutritionnelles par Phase</h6>
+                        <h6>StratÃ©gies Nutritionnelles par Phase</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -411,81 +411,81 @@
                                 <tbody>
                                     <tr>
                                         <td>Entraînement</td>
-                                        <td>Glucides complexes 5-7g/kg<br>Protéines 1.2-1.7g/kg</td>
-                                        <td>35-40ml/kg/jour<br>+ électrolytes</td>
-                                        <td>Pré: 1-4h avant<br>Post: 30min fenêtre</td>
+                                        <td>Glucides complexes 5-7g/kg<br>ProtÃ©ines 1.2-1.7g/kg</td>
+                                        <td>35-40ml/kg/jour<br>+ Ã©lectrolytes</td>
+                                        <td>PrÃ©: 1-4h avant<br>Post: 30min fenêtre</td>
                                     </tr>
                                     <tr>
                                         <td>Avant course</td>
                                         <td>Surcharge glucidique<br>8-12g/kg (3 jours)</td>
-                                        <td>Hyperhydratation<br>contrôlée</td>
+                                        <td>Hyperhydratation<br>contrôlÃ©e</td>
                                         <td>Dernier repas:<br>3-4h avant</td>
                                     </tr>
                                     <tr>
                                         <td>Pendant course</td>
                                         <td>Gels, barres<br>30-90g glucides/h</td>
-                                        <td>Boissons énergétiques<br>500-1000ml/h</td>
-                                        <td>Début dès 1ère heure<br>Régularité cruciale</td>
+                                        <td>Boissons Ã©nergÃ©tiques<br>500-1000ml/h</td>
+                                        <td>DÃ©but dÃ¨s 1Ã¨re heure<br>RÃ©gularitÃ© cruciale</td>
                                     </tr>
                                     <tr>
                                         <td>Post course</td>
-                                        <td>Glucides + Protéines<br>ratio 3:1 ou 4:1</td>
-                                        <td>Réhydratation<br>150% pertes</td>
-                                        <td>Immédiat puis<br>toutes les 2h</td>
+                                        <td>Glucides + ProtÃ©ines<br>ratio 3:1 ou 4:1</td>
+                                        <td>RÃ©hydratation<br>150% pertes</td>
+                                        <td>ImmÃ©diat puis<br>toutes les 2h</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Techniques de Récupération Optimisées</h6>
+                        <h6>Techniques de RÃ©cupÃ©ration OptimisÃ©es</h6>
                         <ul class="small">
-                            <li><strong>Sommeil :</strong> 7-9 heures minimum, siestes stratégiques possible (20-30min)</li>
-                            <li><strong>Nutrition post-effort :</strong> "Fenêtre métabolique" critique 30-60 minutes</li>
-                            <li><strong>Récupération active :</strong> Nage légère ou vélo zone 1 (50-60% FCmax)</li>
-                            <li><strong>Compression :</strong> Manches, chaussettes de récupération (2-4h post-effort)</li>
-                            <li><strong>Thérapie par le froid :</strong> Bains 10-15°C, 10-15 minutes maximum</li>
-                            <li><strong>Massage :</strong> Techniques de drainage, éviter massage profond pré-compétition</li>
+                            <li><strong>Sommeil :</strong> 7-9 heures minimum, siestes stratÃ©giques possible (20-30min)</li>
+                            <li><strong>Nutrition post-effort :</strong> "Fenêtre mÃ©tabolique" critique 30-60 minutes</li>
+                            <li><strong>RÃ©cupÃ©ration active :</strong> Nage lÃ©gÃ¨re ou vÃ©lo zone 1 (50-60% FCmax)</li>
+                            <li><strong>Compression :</strong> Manches, chaussettes de rÃ©cupÃ©ration (2-4h post-effort)</li>
+                            <li><strong>ThÃ©rapie par le froid :</strong> Bains 10-15°C, 10-15 minutes maximum</li>
+                            <li><strong>Massage :</strong> Techniques de drainage, Ã©viter massage profond prÃ©-compÃ©tition</li>
                         </ul>
                         
                         <div class="alert alert-success">
-                            <h6>Innovation Récupération 2024</h6>
+                            <h6>Innovation RÃ©cupÃ©ration 2024</h6>
                             <p class="mb-0 small">
-                                L'intégration de la méditation et de la cohérence cardiaque (5-10min quotidien) 
-                                réduit significativement le stress perçu et accélère la récupération 
-                                chez les triathlètes d'endurance.
+                                L'intÃ©gration de la mÃ©ditation et de la cohÃ©rence cardiaque (5-10min quotidien) 
+                                rÃ©duit significativement le stress perçu et accÃ©lÃ¨re la rÃ©cupÃ©ration 
+                                chez les triathlÃ¨tes d'endurance.
                             </p>
                         </div>
 
-                        <h6 className="mt-3">Supplémentation Evidence-Based</h6>
+                        <h6 className="mt-3">SupplÃ©mentation Evidence-Based</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Supplément</th>
-                                        <th>Bénéfice</th>
+                                        <th>SupplÃ©ment</th>
+                                        <th>BÃ©nÃ©fice</th>
                                         <th>Dosage</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Créatine</td>
-                                        <td>Puissance, récupération</td>
+                                        <td>CrÃ©atine</td>
+                                        <td>Puissance, rÃ©cupÃ©ration</td>
                                         <td>3-5g/jour</td>
                                     </tr>
                                     <tr>
                                         <td>Bêta-alanine</td>
                                         <td>Tampon lactique</td>
-                                        <td>3-6g/jour (divisé)</td>
+                                        <td>3-6g/jour (divisÃ©)</td>
                                     </tr>
                                     <tr>
-                                        <td>Caféine</td>
+                                        <td>CafÃ©ine</td>
                                         <td>Performance, focus</td>
-                                        <td>3-6mg/kg pré-effort</td>
+                                        <td>3-6mg/kg prÃ©-effort</td>
                                     </tr>
                                     <tr>
                                         <td>Nitrates</td>
-                                        <td>Efficacité O2</td>
+                                        <td>EfficacitÃ© O2</td>
                                         <td>5-9mmol 2-3h avant</td>
                                     </tr>
                                 </tbody>
@@ -496,12 +496,12 @@
             </div>
         </div>
 
-        <!-- Prévention des Blessures -->
+        <!-- PrÃ©vention des Blessures -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    Prévention des Blessures et Matériel 2024
+                    PrÃ©vention des Blessures et MatÃ©riel 2024
                 </h3>
             </div>
             <div class="card-body">
@@ -518,9 +518,9 @@
                                 <div id="swimming-injuries" class="accordion-collapse collapse" data-bs-parent="#injuryAccordion">
                                     <div class="accordion-body small">
                                         <ul>
-                                            <li><strong>Épaule du nageur :</strong> Conflit sous-acromial, tendinopathie coiffe</li>
-                                            <li><strong>Douleurs cervicales :</strong> Hyperextension répétée</li>
-                                            <li><strong>Prévention :</strong> Renforcement coiffe des rotateurs, étirements antérieurs</li>
+                                            <li><strong>Ã©paule du nageur :</strong> Conflit sous-acromial, tendinopathie coiffe</li>
+                                            <li><strong>Douleurs cervicales :</strong> Hyperextension rÃ©pÃ©tÃ©e</li>
+                                            <li><strong>PrÃ©vention :</strong> Renforcement coiffe des rotateurs, Ã©tirements antÃ©rieurs</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -534,10 +534,10 @@
                                 <div id="cycling-injuries" class="accordion-collapse collapse" data-bs-parent="#injuryAccordion">
                                     <div class="accordion-body small">
                                         <ul>
-                                            <li><strong>Douleurs lombaires :</strong> Position prolongée, core faible</li>
-                                            <li><strong>Syndrome fémoro-patellaire :</strong> Mauvais réglage selle</li>
+                                            <li><strong>Douleurs lombaires :</strong> Position prolongÃ©e, core faible</li>
+                                            <li><strong>Syndrome fÃ©moro-patellaire :</strong> Mauvais rÃ©glage selle</li>
                                             <li><strong>Neuropathies :</strong> Compression nerf pudendal/cubital</li>
-                                            <li><strong>Prévention :</strong> Étude posturale, renforcement core, selle adaptée</li>
+                                            <li><strong>PrÃ©vention :</strong> Ã©tude posturale, renforcement core, selle adaptÃ©e</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -545,16 +545,16 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#running-injuries">
-                                        <i class="fas fa-running text-danger me-2"></i>Blessures Course à pied
+                                        <i class="fas fa-running text-danger me-2"></i>Blessures Course Ã pied
                                     </button>
                                 </h2>
                                 <div id="running-injuries" class="accordion-collapse collapse" data-bs-parent="#injuryAccordion">
                                     <div class="accordion-body small">
                                         <ul>
-                                            <li><strong>Tendinopathie d'Achille :</strong> Surcharge, transition vélo-course</li>
-                                            <li><strong>Syndrome essuie-glace :</strong> Friction TFL sur condyle fémoral</li>
-                                            <li><strong>Périostite tibiale :</strong> Progression volume trop rapide</li>
-                                            <li><strong>Prévention :</strong> Progression graduelle, chaussures adaptées, technique</li>
+                                            <li><strong>Tendinopathie d'Achille :</strong> Surcharge, transition vÃ©lo-course</li>
+                                            <li><strong>Syndrome essuie-glace :</strong> Friction TFL sur condyle fÃ©moral</li>
+                                            <li><strong>PÃ©riostite tibiale :</strong> Progression volume trop rapide</li>
+                                            <li><strong>PrÃ©vention :</strong> Progression graduelle, chaussures adaptÃ©es, technique</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -562,21 +562,21 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Matériel Essentiel 2024</h6>
+                        <h6>MatÃ©riel Essentiel 2024</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Catégorie</th>
-                                        <th>Équipement</th>
-                                        <th>Priorité</th>
+                                        <th>CatÃ©gorie</th>
+                                        <th>Ã©quipement</th>
+                                        <th>PrioritÃ©</th>
                                         <th>Budget</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td rowspan="3">Natation</td>
-                                        <td>Combinaison néoprène</td>
+                                        <td>Combinaison nÃ©oprÃ¨ne</td>
                                         <td><span class="badge bg-danger">Essentiel</span></td>
                                         <td>€€€</td>
                                     </tr>
@@ -592,7 +592,7 @@
                                     </tr>
                                     <tr>
                                         <td rowspan="3">Cyclisme</td>
-                                        <td>Vélo triathlon/TT</td>
+                                        <td>VÃ©lo triathlon/TT</td>
                                         <td><span class="badge bg-danger">Essentiel</span></td>
                                         <td>€€€€</td>
                                     </tr>
@@ -613,7 +613,7 @@
                                         <td>€€</td>
                                     </tr>
                                     <tr>
-                                        <td>Lacets élastiques</td>
+                                        <td>Lacets Ã©lastiques</td>
                                         <td><span class="badge bg-success">Utile</span></td>
                                         <td>€</td>
                                     </tr>
@@ -635,8 +635,8 @@
                         <div class="alert alert-info">
                             <h6>Tendance Technologique 2024</h6>
                             <p class="mb-0 small">
-                                Les capteurs de puissance en natation et l'analyse biomécanique en course 
-                                deviennent accessibles, permettant une prévention ultra-personnalisée des blessures 
+                                Les capteurs de puissance en natation et l'analyse biomÃ©canique en course 
+                                deviennent accessibles, permettant une prÃ©vention ultra-personnalisÃ©e des blessures 
                                 et une optimisation de la technique.
                             </p>
                         </div>
@@ -650,7 +650,7 @@
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-lightbulb me-2"></i>
-                    Conseils Spécifiques Evidence-Based par Discipline
+                    Conseils SpÃ©cifiques Evidence-Based par Discipline
                 </h3>
             </div>
             <div class="card-body">
@@ -658,45 +658,45 @@
                     <div class="col-md-4">
                         <h6><i class="fas fa-swimmer text-info me-2"></i>Natation</h6>
                         <ul class="small">
-                            <li><strong>Technique prioritaire :</strong> Efficacité propulsive avant volume</li>
-                            <li><strong>Respiration bilatérale :</strong> Équilibre musculaire et navigation</li>
-                            <li><strong>Eau libre régulière :</strong> Adaptation conditions réelles</li>
-                            <li><strong>Sighting practice :</strong> Technique visée toutes les 6-8 mouvements</li>
-                            <li><strong>Drafting :</strong> Économie d'énergie 10-20% en peloton</li>
-                            <li><strong>Échauffement spécifique :</strong> 400-800m progression intensité</li>
+                            <li><strong>Technique prioritaire :</strong> EfficacitÃ© propulsive avant volume</li>
+                            <li><strong>Respiration bilatÃ©rale :</strong> Ã©quilibre musculaire et navigation</li>
+                            <li><strong>Eau libre rÃ©guliÃ¨re :</strong> Adaptation conditions rÃ©elles</li>
+                            <li><strong>Sighting practice :</strong> Technique visÃ©e toutes les 6-8 mouvements</li>
+                            <li><strong>Drafting :</strong> Ã©conomie d'Ã©nergie 10-20% en peloton</li>
+                            <li><strong>Ã©chauffement spÃ©cifique :</strong> 400-800m progression intensitÃ©</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <h6><i class="fas fa-biking text-warning me-2"></i>Cyclisme</h6>
                         <ul class="small">
-                            <li><strong>Position aérodynamique :</strong> Gain 15-30% résistance air</li>
-                            <li><strong>Entraînement puissance :</strong> Zones FTP spécifiques triathlon</li>
-                            <li><strong>Cadence optimale :</strong> 85-95 rpm préservation jambes</li>
-                            <li><strong>Nutrition timing :</strong> Début alimentation dès 1ère heure</li>
-                            <li><strong>Pacing strategy :</strong> Répartition effort selon distance</li>
-                            <li><strong>Brick training :</strong> Transition vélo-course 2x/semaine</li>
+                            <li><strong>Position aÃ©rodynamique :</strong> Gain 15-30% rÃ©sistance air</li>
+                            <li><strong>Entraînement puissance :</strong> Zones FTP spÃ©cifiques triathlon</li>
+                            <li><strong>Cadence optimale :</strong> 85-95 rpm prÃ©servation jambes</li>
+                            <li><strong>Nutrition timing :</strong> DÃ©but alimentation dÃ¨s 1Ã¨re heure</li>
+                            <li><strong>Pacing strategy :</strong> RÃ©partition effort selon distance</li>
+                            <li><strong>Brick training :</strong> Transition vÃ©lo-course 2x/semaine</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h6><i class="fas fa-running text-danger me-2"></i>Course à pied</h6>
+                        <h6><i class="fas fa-running text-danger me-2"></i>Course Ã pied</h6>
                         <ul class="small">
-                            <li><strong>Économie de course :</strong> Technique plus importante que VO2max</li>
-                            <li><strong>Adaptation post-vélo :</strong> Jambes lourdes 5-10 premières minutes</li>
-                            <li><strong>Stratégie allure :</strong> Start conservateur puis progression</li>
-                            <li><strong>Renforcement spécifique :</strong> Travail excentrique prévention</li>
-                            <li><strong>Récupération active :</strong> Footing léger jours off</li>
-                            <li><strong>Terrain varié :</strong> Adaptation surface course (route/trail)</li>
+                            <li><strong>Ã©conomie de course :</strong> Technique plus importante que VO2max</li>
+                            <li><strong>Adaptation post-vÃ©lo :</strong> Jambes lourdes 5-10 premiÃ¨res minutes</li>
+                            <li><strong>StratÃ©gie allure :</strong> Start conservateur puis progression</li>
+                            <li><strong>Renforcement spÃ©cifique :</strong> Travail excentrique prÃ©vention</li>
+                            <li><strong>RÃ©cupÃ©ration active :</strong> Footing lÃ©ger jours off</li>
+                            <li><strong>Terrain variÃ© :</strong> Adaptation surface course (route/trail)</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="alert alert-warning mt-4">
-                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Recommandations de Santé et Sécurité</h6>
+                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Recommandations de SantÃ© et SÃ©curitÃ©</h6>
                     <p class="mb-0">
-                        Le triathlon est un sport exigeant nécessitant une progression graduelle et méthodique. 
-                        Consultez un professionnel de santé avant de débuter, surtout si vous avez des antécédents 
-                        cardiovasculaires. Respectez les signaux de fatigue et intégrez des périodes de récupération 
-                        complète. La performance durable prime sur la performance immédiate.
+                        Le triathlon est un sport exigeant nÃ©cessitant une progression graduelle et mÃ©thodique. 
+                        Consultez un professionnel de santÃ© avant de dÃ©buter, surtout si vous avez des antÃ©cÃ©dents 
+                        cardiovasculaires. Respectez les signaux de fatigue et intÃ©grez des pÃ©riodes de rÃ©cupÃ©ration 
+                        complÃ¨te. La performance durable prime sur la performance immÃ©diate.
                     </p>
                 </div>
             </div>
@@ -704,7 +704,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -717,12 +717,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -732,15 +732,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -767,7 +767,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -778,12 +778,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -922,7 +922,7 @@ const trainingPlans = {
     }
 };
 
-// Ajustements selon paramètres
+// Ajustements selon paramÃ¨tres
 const adjustmentFactors = {
     timeAvailable: {
         low: 0.7,
@@ -946,7 +946,7 @@ const adjustmentFactors = {
     }
 };
 
-// Génération du plan d'entraînement
+// GÃ©nÃ©ration du plan d'entraînement
 function generatePlan() {
     const goal = document.getElementById('goal').value;
     const experience = document.getElementById('experience').value;
@@ -956,7 +956,7 @@ function generatePlan() {
     
     // Validation
     if (!goal || !experience) {
-        showError('Veuillez sélectionner votre objectif et votre niveau d\'expérience.');
+        showError('Veuillez sÃ©lectionner votre objectif et votre niveau d\'expÃ©rience.');
         return;
     }
     
@@ -971,7 +971,7 @@ function generatePlan() {
     const disciplineAdj = adjustmentFactors.discipline[discipline];
     const seasonAdj = adjustmentFactors.season[season];
     
-    // Calcul plan ajusté
+    // Calcul plan ajustÃ©
     const adjustedPlan = {
         total: Math.round(basePlan.total * timeAdjustment * seasonAdj.volume),
         swimming: Math.max(1, Math.round(basePlan.swimming * timeAdjustment * disciplineAdj.swimming * seasonAdj.volume)),
@@ -981,7 +981,7 @@ function generatePlan() {
         strength: Math.round(basePlan.strength * timeAdjustment)
     };
     
-    // S'assurer que le total est cohérent
+    // S'assurer que le total est cohÃ©rent
     const disciplineSum = adjustedPlan.swimming + adjustedPlan.cycling + adjustedPlan.running;
     if (disciplineSum > adjustedPlan.total) {
         adjustedPlan.total = disciplineSum + adjustedPlan.brick + adjustedPlan.strength;
@@ -992,9 +992,9 @@ function generatePlan() {
 
 // Affichage du plan
 function displayPlan(plan, goal, experience, timeAvailable, season) {
-    // Texte de résumé
+    // Texte de rÃ©sumÃ©
     const goalNames = {
-        discovery: 'Découverte/Sprint',
+        discovery: 'DÃ©couverte/Sprint',
         olympic: 'Distance Olympique',
         half_ironman: 'Half Ironman 70.3',
         ironman: 'Ironman',
@@ -1002,35 +1002,35 @@ function displayPlan(plan, goal, experience, timeAvailable, season) {
     };
     
     const experienceNames = {
-        beginner: 'débutant',
-        intermediate: 'intermédiaire',
-        advanced: 'avancé',
+        beginner: 'dÃ©butant',
+        intermediate: 'intermÃ©diaire',
+        advanced: 'avancÃ©',
         expert: 'expert'
     };
     
     const timeNames = {
-        low: 'temps limité',
-        moderate: 'temps modéré',
-        high: 'temps élevé',
-        very_high: 'temps très élevé'
+        low: 'temps limitÃ©',
+        moderate: 'temps modÃ©rÃ©',
+        high: 'temps Ã©levÃ©',
+        very_high: 'temps trÃ¨s Ã©levÃ©'
     };
     
     const seasonNames = {
-        preparation: 'préparation générale',
+        preparation: 'prÃ©paration gÃ©nÃ©rale',
         base: 'phase de base',
-        build: 'phase de développement',
-        peak: 'phase spécifique',
+        build: 'phase de dÃ©veloppement',
+        peak: 'phase spÃ©cifique',
         taper: 'affûtage',
-        recovery: 'récupération'
+        recovery: 'rÃ©cupÃ©ration'
     };
     
     document.getElementById('planSummary').innerHTML = `
         Pour votre objectif <strong>${goalNames[goal]}</strong> et niveau <strong>${experienceNames[experience]}</strong>,
         avec <strong>${timeNames[timeAvailable]}</strong> en <strong>${seasonNames[season]}</strong>,
-        il est recommandé de faire <strong>${plan.total} séances</strong> d'entraînement par semaine.
+        il est recommandÃ© de faire <strong>${plan.total} sÃ©ances</strong> d'entraînement par semaine.
     `;
     
-    // Séances par discipline
+    // SÃ©ances par discipline
     document.getElementById('swimmingSessions').textContent = plan.swimming;
     document.getElementById('cyclingSessions').textContent = plan.cycling;
     document.getElementById('runningSessions').textContent = plan.running;
@@ -1046,49 +1046,49 @@ function displayPlan(plan, goal, experience, timeAvailable, season) {
     document.getElementById('cyclingPercentage').textContent = `~${cyclePercent}% du volume total`;
     document.getElementById('runningPercentage').textContent = `~${runPercent}% du volume total`;
     
-    // Focus spécifiques selon la phase
+    // Focus spÃ©cifiques selon la phase
     updateFocusText(season);
     
     // Planning hebdomadaire
     generateWeeklySchedule(plan, season);
     
-    // Afficher les résultats
+    // Afficher les rÃ©sultats
     document.getElementById('planResults').classList.remove('d-none');
     document.getElementById('planResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Mise à jour du focus selon la saison
+// Mise Ã jour du focus selon la saison
 function updateFocusText(season) {
     const focusTexts = {
         preparation: {
-            swimming: 'Technique, mobilité articulaire',
-            cycling: 'Endurance base, force générale',
-            running: 'Volume progressif, prévention'
+            swimming: 'Technique, mobilitÃ© articulaire',
+            cycling: 'Endurance base, force gÃ©nÃ©rale',
+            running: 'Volume progressif, prÃ©vention'
         },
         base: {
-            swimming: 'Volume, endurance aérobie',
-            cycling: 'Endurance, économie gestuelle',
+            swimming: 'Volume, endurance aÃ©robie',
+            cycling: 'Endurance, Ã©conomie gestuelle',
             running: 'Endurance fondamentale'
         },
         build: {
-            swimming: 'Seuil, vitesse spécifique',
+            swimming: 'Seuil, vitesse spÃ©cifique',
             cycling: 'Puissance, seuil lactique',
-            running: 'Tempo, seuil anaérobie'
+            running: 'Tempo, seuil anaÃ©robie'
         },
         peak: {
             swimming: 'Allure course, transitions',
-            cycling: 'Spécifique compétition',
+            cycling: 'SpÃ©cifique compÃ©tition',
             running: 'Rythme cible, brick'
         },
         taper: {
             swimming: 'Maintien sensation',
-            cycling: 'Qualité, récupération',
+            cycling: 'QualitÃ©, rÃ©cupÃ©ration',
             running: 'Activation, confiance'
         },
         recovery: {
             swimming: 'Plaisir, technique',
             cycling: 'Exploration, plaisir',
-            running: 'Récupération active'
+            running: 'RÃ©cupÃ©ration active'
         }
     };
     
@@ -1098,14 +1098,14 @@ function updateFocusText(season) {
     document.getElementById('runningFocus').textContent = focus.running;
 }
 
-// Génération du planning hebdomadaire
+// GÃ©nÃ©ration du planning hebdomadaire
 function generateWeeklySchedule(plan, season) {
     const scheduleContainer = document.getElementById('weeklySchedule');
     
     // Structure de la semaine type
     const weekDays = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
     
-    // Répartition intelligente des séances
+    // RÃ©partition intelligente des sÃ©ances
     const schedule = distributeWorkouts(plan, season);
     
     let tableHTML = `
@@ -1113,10 +1113,10 @@ function generateWeeklySchedule(plan, season) {
             <thead class="table-dark">
                 <tr>
                     <th>Jour</th>
-                    <th>Séance Principale</th>
-                    <th>Séance Secondaire</th>
-                    <th>Durée Approximative</th>
-                    <th>Intensité</th>
+                    <th>SÃ©ance Principale</th>
+                    <th>SÃ©ance Secondaire</th>
+                    <th>DurÃ©e Approximative</th>
+                    <th>IntensitÃ©</th>
                 </tr>
             </thead>
             <tbody>
@@ -1141,23 +1141,23 @@ function generateWeeklySchedule(plan, season) {
     scheduleContainer.innerHTML = tableHTML;
 }
 
-// Distribution intelligente des séances
+// Distribution intelligente des sÃ©ances
 function distributeWorkouts(plan, season) {
     const baseSchedule = [
-        { primary: 'Natation technique', secondary: '', duration: '45-60min', intensity: 'Modérée', intensityColor: 'warning' },
+        { primary: 'Natation technique', secondary: '', duration: '45-60min', intensity: 'ModÃ©rÃ©e', intensityColor: 'warning' },
         { primary: 'Cyclisme endurance', secondary: '', duration: '60-90min', intensity: 'Faible', intensityColor: 'success' },
-        { primary: 'Course à pied', secondary: 'Renforcement', duration: '30-45min + 20min', intensity: 'Modérée', intensityColor: 'warning' },
-        { primary: 'Natation intensité', secondary: '', duration: '45-60min', intensity: 'Élevée', intensityColor: 'danger' },
-        { primary: 'Brick (Vélo + Course)', secondary: '', duration: '90-120min', intensity: 'Élevée', intensityColor: 'danger' },
-        { primary: 'Cyclisme long', secondary: '', duration: '2-4h', intensity: 'Faible-Modérée', intensityColor: 'info' },
-        { primary: 'Récupération ou Repos', secondary: '', duration: 'Optionnel', intensity: 'Très faible', intensityColor: 'secondary' }
+        { primary: 'Course Ã pied', secondary: 'Renforcement', duration: '30-45min + 20min', intensity: 'ModÃ©rÃ©e', intensityColor: 'warning' },
+        { primary: 'Natation intensitÃ©', secondary: '', duration: '45-60min', intensity: 'Ã©levÃ©e', intensityColor: 'danger' },
+        { primary: 'Brick (VÃ©lo + Course)', secondary: '', duration: '90-120min', intensity: 'Ã©levÃ©e', intensityColor: 'danger' },
+        { primary: 'Cyclisme long', secondary: '', duration: '2-4h', intensity: 'Faible-ModÃ©rÃ©e', intensityColor: 'info' },
+        { primary: 'RÃ©cupÃ©ration ou Repos', secondary: '', duration: 'Optionnel', intensity: 'TrÃ¨s faible', intensityColor: 'secondary' }
     ];
     
     // Ajustements selon la phase
     if (season === 'recovery') {
         return baseSchedule.map(day => ({
             ...day,
-            intensity: 'Très faible',
+            intensity: 'TrÃ¨s faible',
             intensityColor: 'secondary',
             duration: day.primary.includes('Repos') ? 'Repos complet' : '30-45min'
         }));
@@ -1181,7 +1181,7 @@ function showError(message) {
     document.getElementById('planResults').classList.add('d-none');
 }
 
-// Réinitialisation du planificateur
+// RÃ©initialisation du planificateur
 function resetPlanner() {
     const selects = [
         { id: 'goal', value: '' },

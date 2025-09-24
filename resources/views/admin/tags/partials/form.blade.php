@@ -27,7 +27,7 @@
 
                 <!-- Slug -->
                 <div class="mb-4">
-                    <label for="slug" class="form-label fw-semibold">URL personnalisée (Slug)</label>
+                    <label for="slug" class="form-label fw-semibold">URL personnalisÃ©e (Slug)</label>
                     <div class="input-group">
                         <span class="input-group-text bg-light">{{ url('/tags') }}/</span>
                         <input type="text" 
@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="laravel-php">
                     </div>
-                    <div class="form-text">Laisser vide pour génération automatique</div>
+                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -59,7 +59,7 @@
                 <!-- Section SEO -->
                 <div class="border-top pt-4">
                     <h6 class="fw-semibold mb-3 text-primary">
-                        <i class="fas fa-search me-2"></i>Référencement (SEO)
+                        <i class="fas fa-search me-2"></i>RÃ©fÃ©rencement (SEO)
                     </h6>
                     
                     <div class="row g-3">
@@ -70,7 +70,7 @@
                                    id="meta_title" 
                                    value="{{ old('meta_title', isset($tag) ? $tag->meta_title : '') }}"
                                    class="form-control @error('meta_title') is-invalid @enderror"
-                                   placeholder="Titre optimisé pour les moteurs de recherche">
+                                   placeholder="Titre optimisÃ© pour les moteurs de recherche">
                             @error('meta_title')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -82,14 +82,14 @@
                                       id="meta_description" 
                                       rows="3"
                                       class="form-control @error('meta_description') is-invalid @enderror"
-                                      placeholder="Description courte pour les résultats de recherche">{{ old('meta_description', isset($tag) ? $tag->meta_description : '') }}</textarea>
+                                      placeholder="Description courte pour les rÃ©sultats de recherche">{{ old('meta_description', isset($tag) ? $tag->meta_description : '') }}</textarea>
                             @error('meta_description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         
                         <div class="col-12">
-                            <label for="meta_keywords" class="form-label">Mots-clés</label>
+                            <label for="meta_keywords" class="form-label">Mots-clÃ©s</label>
                             <input type="text" 
                                    name="meta_keywords" 
                                    id="meta_keywords" 
@@ -108,11 +108,11 @@
 
     <!-- Sidebar -->
     <div class="col-lg-4">
-        <!-- Statut et visibilité -->
+        <!-- Statut et visibilitÃ© -->
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-success text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-toggle-on me-2"></i>Statut et visibilité
+                    <i class="fas fa-toggle-on me-2"></i>Statut et visibilitÃ©
                 </h6>
             </div>
             <div class="card-body p-4">
@@ -132,7 +132,7 @@
                 <div class="form-text">
                     <small class="text-muted">
                         <i class="fas fa-info-circle me-1"></i>
-                        Les tags inactifs n'apparaissent pas dans les sélections
+                        Les tags inactifs n'apparaissent pas dans les sÃ©lections
                     </small>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                        id="group_name" 
                        value="{{ old('group_name', isset($tag) ? $tag->group_name : '') }}"
                        class="form-control @error('group_name') is-invalid @enderror"
-                       placeholder="Ex: Technologies, Catégories">
+                       placeholder="Ex: Technologies, CatÃ©gories">
                 <div class="form-text">Grouper les tags similaires ensemble</div>
                 @error('group_name')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -212,7 +212,7 @@
                 <i class="fas fa-images"></i>
             </button>
         </div>
-        <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
+        <div class="form-text">SÃ©lectionnez depuis la mÃ©diathÃ¨que ou saisissez une URL</div>
         @error('image')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -251,7 +251,7 @@
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="{{ route('admin.tags.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                        <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                     </a>
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-warning">

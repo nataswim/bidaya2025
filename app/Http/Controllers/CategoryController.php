@@ -12,7 +12,7 @@ class CategoryController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'Accès non autorisé');
+            abort(403, 'AccÃ¨s non autorisÃ©');
         }
     }
 
@@ -48,7 +48,7 @@ class CategoryController extends Controller
         Category::create($data);
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Catégorie créée avec succès.');
+            ->with('success', 'CatÃ©gorie crÃ©Ã©e avec succÃ¨s.');
     }
 
     public function show(Category $category)
@@ -74,7 +74,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Catégorie mise à jour avec succès.');
+            ->with('success', 'CatÃ©gorie mise Ã jour avec succÃ¨s.');
     }
 
     public function destroy(Category $category)
@@ -83,13 +83,13 @@ class CategoryController extends Controller
         
         if ($category->posts()->count() > 0) {
             return redirect()->route('admin.categories.index')
-                ->with('error', 'Impossible de supprimer une catégorie avec des articles.');
+                ->with('error', 'Impossible de supprimer une catÃ©gorie avec des articles.');
         }
         
         $category->update(['deleted_by' => auth()->id()]);
         $category->delete();
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Catégorie supprimée avec succès.');
+            ->with('success', 'CatÃ©gorie supprimÃ©e avec succÃ¨s.');
     }
 }

@@ -77,11 +77,11 @@ class PaymentController extends Controller
             $payment->update(['status' => 'completed']);
             
             return redirect()->route('dashboard')
-                ->with('success', 'Paiement réussi ! Un administrateur validera votre accès premium prochainement.');
+                ->with('success', 'Paiement rÃ©ussi ! Un administrateur validera votre accÃ¨s premium prochainement.');
         }
 
         return redirect()->route('payments.index')
-            ->with('error', 'Paiement non trouvé.');
+            ->with('error', 'Paiement non trouvÃ©.');
     }
 
     public function history()

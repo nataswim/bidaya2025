@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Accueil - Votre plateforme d\'entraînement aquatique')
-@section('meta_description', 'Découvrez notre plateforme dédiée à la natation et au triathlon avec articles, plans d\'entraînement, fiches techniques et vidéos. Rejoignez notre communauté de nageurs, triathlètes et coachs.')
+@section('meta_description', 'DÃ©couvrez notre plateforme dÃ©diÃ©e Ã la natation et au triathlon avec articles, plans d\'entraînement, fiches techniques et vidÃ©os. Rejoignez notre communautÃ© de nageurs, triathlÃ¨tes et coachs.')
 
 @section('content')
 <!-- Hero Section -->
@@ -14,15 +14,15 @@
                     <h1 class="display-4 fw-bold mb-0">Votre plateforme digitale pour booster vos performances aquatiques</h1>
                 </div>
                 <p class="lead mb-4">
-                    Planifiez, suivez et optimisez vos entraînements de natation et triathlon. Une plateforme complète pour nageurs, triathlètes, entraîneurs et coachs, du débutant au professionnel.
+                    Planifiez, suivez et optimisez vos entraînements de natation et triathlon. Une plateforme complÃ¨te pour nageurs, triathlÃ¨tes, entraîneurs et coachs, du dÃ©butant au professionnel.
                 </p>
                 <div class="d-flex gap-3">
                     <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                        Découvrir les plans d'entraînement
+                        DÃ©couvrir les plans d'entraînement
                         <i class="fas fa-chevron-right ms-2"></i>
                     </a>
                     <a href="{{ route('register') }}" class="btn btn-outline-light px-4">
-                        Rejoindre la communauté
+                        Rejoindre la communautÃ©
                     </a>
                 </div>
             </div>
@@ -41,9 +41,9 @@
     </div>
 </section>
 
-<!-- Pour qui Section avec Vidéo Background TempoSwim -->
+<!-- Pour qui Section avec VidÃ©o Background TempoSwim -->
 <section class="py-5 position-relative">
-    <!-- Vidéo d'arrière-plan TempoSwim -->
+    <!-- VidÃ©o d'arriÃ¨re-plan TempoSwim -->
     <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1; overflow: hidden;">
         <iframe 
             src="https://www.youtube.com/embed/AhBaSV8psGA?autoplay=1&mute=1&loop=1&playlist=AhBaSV8psGA&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" 
@@ -61,7 +61,7 @@
         <div class="text-center mb-5 text-white">
             <h2 class="fw-bold">Pour qui est conçue cette plateforme ?</h2>
             <p class="lead">
-                Une solution adaptée à tous les profils aquatiques, amateurs ou professionnels
+                Une solution adaptÃ©e Ã tous les profils aquatiques, amateurs ou professionnels
             </p>
         </div>
         <div class="row g-4">
@@ -76,7 +76,7 @@
                         </div>
                         <div>
                             <h3 class="h5 mb-2">Nageurs et Nageuses</h3>
-                            <p class="card-text text-muted small mb-0">De tous niveaux, du débutant au compétiteur confirmé, pour structurer et améliorer vos entraînements en piscine.</p>
+                            <p class="card-text text-muted small mb-0">De tous niveaux, du dÃ©butant au compÃ©titeur confirmÃ©, pour structurer et amÃ©liorer vos entraînements en piscine.</p>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                         </div>
                         <div>
                             <h3 class="h5 mb-2">Entraîneurs et Coachs</h3>
-                            <p class="card-text text-muted small mb-0">Pour créer, partager et superviser des plans d'entraînement adaptés à vos athlètes et équipes.</p>
+                            <p class="card-text text-muted small mb-0">Pour crÃ©er, partager et superviser des plans d'entraînement adaptÃ©s Ã vos athlÃ¨tes et Ã©quipes.</p>
                         </div>
                     </div>
                 </div>
@@ -105,8 +105,8 @@
                             </div>
                         </div>
                         <div>
-                            <h3 class="h5 mb-2">Triathlètes</h3>
-                            <p class="card-text text-muted small mb-0">Pour optimiser votre segment natation et intégrer parfaitement vos entraînements multi-disciplines.</p>
+                            <h3 class="h5 mb-2">TriathlÃ¨tes</h3>
+                            <p class="card-text text-muted small mb-0">Pour optimiser votre segment natation et intÃ©grer parfaitement vos entraînements multi-disciplines.</p>
                         </div>
                     </div>
                 </div>
@@ -120,8 +120,8 @@
                             </div>
                         </div>
                         <div>
-                            <h3 class="h5 mb-2">Amateurs Passionnés</h3>
-                            <p class="card-text text-muted small mb-0">Pour progresser méthodiquement dans l'eau et atteindre vos objectifs personnels de forme et bien-être.</p>
+                            <h3 class="h5 mb-2">Amateurs PassionnÃ©s</h3>
+                            <p class="card-text text-muted small mb-0">Pour progresser mÃ©thodiquement dans l'eau et atteindre vos objectifs personnels de forme et bien-être.</p>
                         </div>
                     </div>
                 </div>
@@ -134,13 +134,13 @@
 
 
 
-<!-- Fonctionnalités clés -->
+<!-- FonctionnalitÃ©s clÃ©s -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">Fonctionnalités clés</h2>
+            <h2 class="fw-bold">FonctionnalitÃ©s clÃ©s</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Notre plateforme offre tous les outils nécessaires pour progresser et atteindre vos objectifs aquatiques
+                Notre plateforme offre tous les outils nÃ©cessaires pour progresser et atteindre vos objectifs aquatiques
             </p>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -148,33 +148,33 @@
                 $features = [
                     [
                         'icon' => 'fas fa-clipboard-list',
-                        'title' => 'Plans d\'Entraînement Personnalisés',
-                        'description' => 'Créez des programmes adaptés à votre niveau et vos objectifs : sprint, endurance, technique, récupération.'
+                        'title' => 'Plans d\'Entraînement PersonnalisÃ©s',
+                        'description' => 'CrÃ©ez des programmes adaptÃ©s Ã votre niveau et vos objectifs : sprint, endurance, technique, rÃ©cupÃ©ration.'
                     ],
                     [
                         'icon' => 'fas fa-dumbbell',
-                        'title' => 'Exercices Spécialisés',
-                        'description' => 'Bibliothèque d\'exercices conçus par des entraîneurs pros pour améliorer technique, vitesse et endurance.'
+                        'title' => 'Exercices SpÃ©cialisÃ©s',
+                        'description' => 'BibliothÃ¨que d\'exercices conçus par des entraîneurs pros pour amÃ©liorer technique, vitesse et endurance.'
                     ],
                     [
                         'icon' => 'fas fa-calendar-alt',
-                        'title' => 'Organisation des Séances',
-                        'description' => 'Planifiez vos entraînements, suivez votre progression et organisez vos séances de façon optimale.'
+                        'title' => 'Organisation des SÃ©ances',
+                        'description' => 'Planifiez vos entraînements, suivez votre progression et organisez vos sÃ©ances de façon optimale.'
                     ],
                     [
                         'icon' => 'fas fa-book-open',
                         'title' => 'Fiches Techniques',
-                        'description' => 'Guides détaillés sur les techniques de nage, la biomécanique et les stratégies d\'entraînement.'
+                        'description' => 'Guides dÃ©taillÃ©s sur les techniques de nage, la biomÃ©canique et les stratÃ©gies d\'entraînement.'
                     ],
                     [
                         'icon' => 'fas fa-chart-line',
                         'title' => 'Suivi des Performances',
-                        'description' => 'Enregistrez vos temps, analysez votre progression avec des graphiques et statistiques détaillés.'
+                        'description' => 'Enregistrez vos temps, analysez votre progression avec des graphiques et statistiques dÃ©taillÃ©s.'
                     ],
                     [
                         'icon' => 'fas fa-play-circle',
-                        'title' => 'Vidéos d\'Entraînement',
-                        'description' => 'Démonstrations techniques, séances filmées et conseils de coachs professionnels.'
+                        'title' => 'VidÃ©os d\'Entraînement',
+                        'description' => 'DÃ©monstrations techniques, sÃ©ances filmÃ©es et conseils de coachs professionnels.'
                     ]
                 ];
             @endphp
@@ -196,7 +196,7 @@
     </div>
 </section>
 
-<!-- Témoignages -->
+<!-- TÃ©moignages -->
 <section class="py-5 bg-primary text-white">
     <div class="container-lg">
         <div class="text-center mb-5">
@@ -206,19 +206,19 @@
             @php
                 $testimonials = [
                     [
-                        'name' => 'Sarah, Nageuse compétition',
-                        'quote' => 'Cette plateforme a transformé ma façon de m\'entraîner. J\'ai amélioré mon 200m papillon de 3 secondes en seulement deux mois.',
-                        'role' => 'Nageuse compétition'
+                        'name' => 'Sarah, Nageuse compÃ©tition',
+                        'quote' => 'Cette plateforme a transformÃ© ma façon de m\'entraîner. J\'ai amÃ©liorÃ© mon 200m papillon de 3 secondes en seulement deux mois.',
+                        'role' => 'Nageuse compÃ©tition'
                     ],
                     [
                         'name' => 'Marc, Coach natation',
-                        'quote' => 'Un outil indispensable pour tout entraîneur. Je gère les programmes de toute mon équipe et peux suivre leur progression en temps réel.',
+                        'quote' => 'Un outil indispensable pour tout entraîneur. Je gÃ¨re les programmes de toute mon Ã©quipe et peux suivre leur progression en temps rÃ©el.',
                         'role' => 'Entraîneur'
                     ],
                     [
-                        'name' => 'Sophie, Triathlète amateur',
-                        'quote' => 'Enfin un outil qui me permet d\'intégrer parfaitement mes séances de natation dans mon planning global d\'entraînement.',
-                        'role' => 'Triathlète'
+                        'name' => 'Sophie, TriathlÃ¨te amateur',
+                        'quote' => 'Enfin un outil qui me permet d\'intÃ©grer parfaitement mes sÃ©ances de natation dans mon planning global d\'entraînement.',
+                        'role' => 'TriathlÃ¨te'
                     ]
                 ];
             @endphp
@@ -250,40 +250,40 @@
     <div class="container-lg">
         <div class="text-center mb-5">
             <h2 class="fw-bold">Comment ça marche ?</h2>
-            <p class="lead text-muted">Trois étapes simples pour optimiser vos entraînements aquatiques</p>
+            <p class="lead text-muted">Trois Ã©tapes simples pour optimiser vos entraînements aquatiques</p>
         </div>
         <div class="row g-4 align-items-center">
             <div class="col-md-4 text-center">
                 <div class="bg-success-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
                     <i class="fas fa-user-plus text-success fs-1"></i>
                 </div>
-                <h3 class="h5">1. Créez votre profil</h3>
-                <p class="text-muted">Inscrivez-vous et définissez votre niveau, objectifs et spécialités aquatiques</p>
+                <h3 class="h5">1. CrÃ©ez votre profil</h3>
+                <p class="text-muted">Inscrivez-vous et dÃ©finissez votre niveau, objectifs et spÃ©cialitÃ©s aquatiques</p>
             </div>
             <div class="col-md-4 text-center">
                 <div class="bg-warning-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
                     <i class="fas fa-swimmer text-warning fs-1"></i>
                 </div>
                 <h3 class="h5">2. Choisissez vos plans</h3>
-                <p class="text-muted">Sélectionnez des programmes existants ou créez vos propres séances d'entraînement</p>
+                <p class="text-muted">SÃ©lectionnez des programmes existants ou crÃ©ez vos propres sÃ©ances d'entraînement</p>
             </div>
             <div class="col-md-4 text-center">
                 <div class="bg-info-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
                     <i class="fas fa-chart-line text-info fs-1"></i>
                 </div>
-                <h3 class="h5">3. Suivez vos progrès</h3>
-                <p class="text-muted">Enregistrez vos performances et visualisez votre évolution dans l'eau</p>
+                <h3 class="h5">3. Suivez vos progrÃ¨s</h3>
+                <p class="text-muted">Enregistrez vos performances et visualisez votre Ã©volution dans l'eau</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -354,15 +354,15 @@
 <!-- Call to Action -->
 <section class="py-5 bg-white">
     <div class="container-lg text-center py-4">
-        <h2 class="mb-4 fw-bold">Prêt à améliorer vos performances aquatiques ?</h2>
+        <h2 class="mb-4 fw-bold">Prêt Ã amÃ©liorer vos performances aquatiques ?</h2>
         <p class="lead text-muted mb-4 mx-auto" style="max-width: 700px;">
-            Rejoignez des milliers de nageurs, entraîneurs et triathlètes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entraînements.
+            Rejoignez des milliers de nageurs, entraîneurs et triathlÃ¨tes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entraînements.
         </p>
         
         @guest
             <div class="d-flex gap-3 justify-content-center">
                 <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-user-plus me-2"></i>Créer un compte
+                    <i class="fas fa-user-plus me-2"></i>CrÃ©er un compte
                 </a>
                 <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-5">
                     <i class="fas fa-sign-in-alt me-2"></i>Se connecter
@@ -376,11 +376,11 @@
         @else
             <div class="alert alert-success d-inline-flex align-items-center px-4 py-3">
                 <i class="fas fa-check-circle me-2"></i>
-                <span class="fw-medium">Bienvenue dans la communauté aquatique, {{ auth()->user()->first_name ?: auth()->user()->name }} !</span>
+                <span class="fw-medium">Bienvenue dans la communautÃ© aquatique, {{ auth()->user()->first_name ?: auth()->user()->name }} !</span>
             </div>
             <div class="mt-3">
                 <a href="{{ route('public.index') }}" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-swimmer me-2"></i>Découvrir nos entraînements
+                    <i class="fas fa-swimmer me-2"></i>DÃ©couvrir nos entraînements
                 </a>
             </div>
         @endguest

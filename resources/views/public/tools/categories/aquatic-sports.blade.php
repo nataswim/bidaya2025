@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Outils Sports Aquatiques & Natation - Analyse Technique et Performance Evidence-Based')
-@section('meta_description', 'Suite complète d\'outils scientifiques pour natation et sports aquatiques : prédiction performance, planification, technique, VNC, triathlon. Approche sécurisée et biomécanique.')
+@section('meta_description', 'Suite complÃ¨te d\'outils scientifiques pour natation et sports aquatiques : prÃ©diction performance, planification, technique, VNC, triathlon. Approche sÃ©curisÃ©e et biomÃ©canique.')
 
 @section('content')
 <!-- Section titre -->
@@ -28,13 +28,13 @@
                     Sports Aquatiques & Natation
                 </h1>
                 <p class="lead mb-4">
-                    Suite complète d'outils scientifiques pour optimiser votre pratique aquatique. 
-                    Analyse technique, planification, prédiction performance basées sur la biomécanique et la physiologie aquatique.
+                    Suite complÃ¨te d'outils scientifiques pour optimiser votre pratique aquatique. 
+                    Analyse technique, planification, prÃ©diction performance basÃ©es sur la biomÃ©canique et la physiologie aquatique.
                 </p>
                 <div class="alert alert-warning border-0 bg-white bg-opacity-25">
                     <small>
                         <i class="fas fa-water me-2"></i>
-                        <strong>6 outils disponibles</strong> - De l'initiation à l'expertise technique
+                        <strong>6 outils disponibles</strong> - De l'initiation Ã l'expertise technique
                     </small>
                 </div>
             </div>
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<!-- Avertissement sécurité aquatique -->
+<!-- Avertissement sÃ©curitÃ© aquatique -->
 <section class="py-4 bg-warning">
     <div class="container">
         <div class="alert alert-dark border-0 mb-0">
@@ -57,12 +57,12 @@
                     <i class="fas fa-life-ring fa-2x text-dark"></i>
                 </div>
                 <div class="col-md-11">
-                    <h6 class="fw-bold mb-2">Sécurité Aquatique Prioritaire</h6>
+                    <h6 class="fw-bold mb-2">SÃ©curitÃ© Aquatique Prioritaire</h6>
                     <p class="mb-0 small">
-                        <strong>La natation nécessite des compétences aquatiques solides et une surveillance appropriée.</strong> 
-                        Ne nagez jamais seul, respectez votre niveau technique, et assurez-vous de la présence de secours qualifiés. 
-                        Ces outils d'analyse ne remplacent pas l'apprentissage technique avec un maître-nageur qualifié 
-                        ni les règles de sécurité aquatique fondamentales.
+                        <strong>La natation nÃ©cessite des compÃ©tences aquatiques solides et une surveillance appropriÃ©e.</strong> 
+                        Ne nagez jamais seul, respectez votre niveau technique, et assurez-vous de la prÃ©sence de secours qualifiÃ©s. 
+                        Ces outils d'analyse ne remplacent pas l'apprentissage technique avec un maître-nageur qualifiÃ© 
+                        ni les rÃ¨gles de sÃ©curitÃ© aquatique fondamentales.
                     </p>
                 </div>
             </div>
@@ -70,12 +70,12 @@
     </div>
 </section>
 
-<!-- Outils de la catégorie -->
+<!-- Outils de la catÃ©gorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
             
-            <!-- 1. Prédiction Performance Natation -->
+            <!-- 1. PrÃ©diction Performance Natation -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.swimming-predictor') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -86,15 +86,15 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">Prédiction Performance Natation</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">PrÃ©diction Performance Natation</h5>
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Analyse et prédiction scientifique des performances natation sur différentes distances. 
-                                        Modèles mathématiques validés pour planification objetifs et évaluation progression.
+                                        Analyse et prÃ©diction scientifique des performances natation sur diffÃ©rentes distances. 
+                                        ModÃ¨les mathÃ©matiques validÃ©s pour planification objetifs et Ã©valuation progression.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -119,14 +119,14 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
                                         <h5 class="card-title mb-0 text-dark fw-bold">Planificateur Natation</h5>
-                                        <span class="badge bg-primary ms-2">Avancé</span>
+                                        <span class="badge bg-primary ms-2">AvancÃ©</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Séances et périodisation d'entraînement natation personnalisées. 
+                                        SÃ©ances et pÃ©riodisation d'entraînement natation personnalisÃ©es. 
                                         Structure progressive respectant les principes physiologiques et techniques.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>8-12 min</small>
@@ -154,11 +154,11 @@
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Entraînement multidisciplinaire scientifique intégrant natation, cyclisme et course. 
-                                        Périodisation équilibrée et gestion des transitions spécifiques.
+                                        Entraînement multidisciplinaire scientifique intÃ©grant natation, cyclisme et course. 
+                                        PÃ©riodisation Ã©quilibrÃ©e et gestion des transitions spÃ©cifiques.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>10-15 min</small>
@@ -186,11 +186,11 @@
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Vitesse de Nage Critique et seuils métaboliques personnalisés. 
-                                        Détermination zones d'entraînement spécifiques à la natation.
+                                        Vitesse de Nage Critique et seuils mÃ©taboliques personnalisÃ©s. 
+                                        DÃ©termination zones d'entraînement spÃ©cifiques Ã la natation.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>6-10 min</small>
@@ -203,7 +203,7 @@
                 </a>
             </div>
 
-            <!-- 5. Efficacité Technique Natation -->
+            <!-- 5. EfficacitÃ© Technique Natation -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.swimming-efficiency') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -214,15 +214,15 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">Efficacité Technique Natation</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">EfficacitÃ© Technique Natation</h5>
                                         <span class="badge bg-success ms-2">Essentiel</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Calculateur DPS (Distance Par Stroke) et SWOLF pour analyse efficacité technique. 
-                                        Comparaisons normatives et recommandations d'amélioration.
+                                        Calculateur DPS (Distance Par Stroke) et SWOLF pour analyse efficacitÃ© technique. 
+                                        Comparaisons normatives et recommandations d'amÃ©lioration.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>3-5 min</small>
@@ -235,7 +235,7 @@
                 </a>
             </div>
 
-            <!-- 6. Chronomètre Natation -->
+            <!-- 6. ChronomÃ¨tre Natation -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.chronometre') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -246,18 +246,18 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">Chronomètre Natation</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">ChronomÃ¨tre Natation</h5>
                                         <span class="badge bg-success ms-2">Essentiel</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Chronométrage spécialisé natation et sports aquatiques. 
-                                        Interface optimisée pour suivi séances et calculs automatiques.
+                                        ChronomÃ©trage spÃ©cialisÃ© natation et sports aquatiques. 
+                                        Interface optimisÃ©e pour suivi sÃ©ances et calculs automatiques.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
-                                            <small>En temps réel</small>
+                                            <small>En temps rÃ©el</small>
                                         </div>
                                     </div>
                                 </div>
@@ -285,46 +285,46 @@
     </div>
 </section>
 
-<!-- Contenu éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
         
-        <!-- Biomécanique et technique natation -->
+        <!-- BiomÃ©canique et technique natation -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-cogs me-2"></i>
-                    Biomécanique et Technique en Natation
+                    BiomÃ©canique et Technique en Natation
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info">Principes Biomécaniques Fondamentaux</h6>
+                        <h6 class="text-info">Principes BiomÃ©caniques Fondamentaux</h6>
                         <p class="small">
                             La natation est unique par sa dimension tridimensionnelle et l'absence d'appui fixe. 
-                            L'efficacité résulte de l'équilibre entre forces propulsives et résistances hydrodynamiques. 
+                            L'efficacitÃ© rÃ©sulte de l'Ã©quilibre entre forces propulsives et rÃ©sistances hydrodynamiques. 
                             La technique prime sur la force pure, rendant l'apprentissage progressif essentiel.
                         </p>
                         
                         <h6 class="text-primary mt-3">Facteurs de Performance</h6>
                         <ul class="small">
-                            <li><strong>Hydrodynamisme :</strong> Position corps, alignement, réduction traînée</li>
-                            <li><strong>Propulsion :</strong> Efficacité prise d'appui, coordination gestuelle</li>
-                            <li><strong>Respiration :</strong> Technique adaptée, perturbation minimale</li>
+                            <li><strong>Hydrodynamisme :</strong> Position corps, alignement, rÃ©duction traînÃ©e</li>
+                            <li><strong>Propulsion :</strong> EfficacitÃ© prise d'appui, coordination gestuelle</li>
+                            <li><strong>Respiration :</strong> Technique adaptÃ©e, perturbation minimale</li>
                             <li><strong>Coordination :</strong> Synchronisation bras-jambes-respiration</li>
-                            <li><strong>Rythme :</strong> Amplitude vs fréquence selon distance</li>
+                            <li><strong>Rythme :</strong> Amplitude vs frÃ©quence selon distance</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Progression Technique Sécurisée</h6>
+                        <h6 class="text-success">Progression Technique SÃ©curisÃ©e</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Étape</th>
+                                        <th>Ã©tape</th>
                                         <th>Objectif</th>
-                                        <th>Durée</th>
+                                        <th>DurÃ©e</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -345,7 +345,7 @@
                                     </tr>
                                     <tr>
                                         <td>Perfectionnement</td>
-                                        <td>Efficacité, automatisation</td>
+                                        <td>EfficacitÃ©, automatisation</td>
                                         <td>Processus continu</td>
                                     </tr>
                                 </tbody>
@@ -355,9 +355,9 @@
                         <div class="alert alert-warning alert-sm mt-3">
                             <h6 class="small">Patience et Progression</h6>
                             <p class="small mb-0">
-                                La technique natation demande temps et répétition. Forcer la progression 
-                                peut créer des défauts techniques durables. La supervision qualifiée 
-                                accélère l'apprentissage correct.
+                                La technique natation demande temps et rÃ©pÃ©tition. Forcer la progression 
+                                peut crÃ©er des dÃ©fauts techniques durables. La supervision qualifiÃ©e 
+                                accÃ©lÃ¨re l'apprentissage correct.
                             </p>
                         </div>
                     </div>
@@ -365,57 +365,57 @@
             </div>
         </div>
 
-        <!-- Sécurité aquatique et prévention -->
+        <!-- SÃ©curitÃ© aquatique et prÃ©vention -->
         <div class="card mb-4">
             <div class="card-header bg-danger text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-life-ring me-2"></i>
-                    Sécurité Aquatique et Prévention
+                    SÃ©curitÃ© Aquatique et PrÃ©vention
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-danger">Règles de Sécurité Fondamentales</h6>
+                        <h6 class="text-danger">RÃ¨gles de SÃ©curitÃ© Fondamentales</h6>
                         <ul class="small">
-                            <li><strong>Jamais seul :</strong> Toujours nager accompagné ou surveillé</li>
+                            <li><strong>Jamais seul :</strong> Toujours nager accompagnÃ© ou surveillÃ©</li>
                             <li><strong>Connaître ses limites :</strong> Respecter niveau technique et condition physique</li>
-                            <li><strong>Surveillance qualifiée :</strong> Présence maître-nageur ou sauveteur</li>
-                            <li><strong>Équipement sécurité :</strong> Matériel flottaison si nécessaire</li>
-                            <li><strong>Conditions environnementales :</strong> Évaluer sécurité lieu de nage</li>
-                            <li><strong>État physique :</strong> Ne pas nager malade, fatigué ou sous influence</li>
+                            <li><strong>Surveillance qualifiÃ©e :</strong> PrÃ©sence maître-nageur ou sauveteur</li>
+                            <li><strong>Ã©quipement sÃ©curitÃ© :</strong> MatÃ©riel flottaison si nÃ©cessaire</li>
+                            <li><strong>Conditions environnementales :</strong> Ã©valuer sÃ©curitÃ© lieu de nage</li>
+                            <li><strong>Ã©tat physique :</strong> Ne pas nager malade, fatiguÃ© ou sous influence</li>
                         </ul>
                         
                         <div class="alert alert-danger alert-sm">
                             <h6 class="small">Signaux d'Alarme</h6>
                             <p class="small mb-0">
                                 Essoufflement excessif, crampes, vertiges, panique : 
-                                <strong>sortir immédiatement de l'eau et signaler.</strong>
+                                <strong>sortir immÃ©diatement de l'eau et signaler.</strong>
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-warning">Prévention Noyade et Accidents</h6>
+                        <h6 class="text-warning">PrÃ©vention Noyade et Accidents</h6>
                         <p class="small">
-                            La noyade est silencieuse et rapide. Elle peut survenir même chez des nageurs expérimentés 
+                            La noyade est silencieuse et rapide. Elle peut survenir même chez des nageurs expÃ©rimentÃ©s 
                             en cas de malaise, fatigue excessive ou conditions difficiles.
                         </p>
                         
-                        <h6 class="text-success mt-3">Comportements Préventifs</h6>
+                        <h6 class="text-success mt-3">Comportements PrÃ©ventifs</h6>
                         <ul class="small">
-                            <li>Échauffement progressif, surtout en eau froide</li>
-                            <li>Entrée graduelle dans l'eau</li>
-                            <li>Hydratation avant et après la nage</li>
-                            <li>Protection solaire et thermique adaptée</li>
-                            <li>Signalement de sa présence au personnel</li>
+                            <li>Ã©chauffement progressif, surtout en eau froide</li>
+                            <li>EntrÃ©e graduelle dans l'eau</li>
+                            <li>Hydratation avant et aprÃ¨s la nage</li>
+                            <li>Protection solaire et thermique adaptÃ©e</li>
+                            <li>Signalement de sa prÃ©sence au personnel</li>
                             <li>Connaissance basiques premiers secours</li>
                         </ul>
                         
                         <div class="alert alert-info alert-sm">
-                            <h6 class="small">Eau Libre - Précautions Renforcées</h6>
+                            <h6 class="small">Eau Libre - PrÃ©cautions RenforcÃ©es</h6>
                             <p class="small mb-0">
-                                Mer, lac, rivière nécessitent expérience et précautions supplémentaires : 
-                                courants, température, visibilité, faune aquatique.
+                                Mer, lac, riviÃ¨re nÃ©cessitent expÃ©rience et prÃ©cautions supplÃ©mentaires : 
+                                courants, tempÃ©rature, visibilitÃ©, faune aquatique.
                             </p>
                         </div>
                     </div>
@@ -437,16 +437,16 @@
                         <h6 class="text-primary">Adaptations Cardiovasculaires</h6>
                         <p class="small">
                             L'immersion modifie la distribution sanguine (effet de compression hydrostatique) 
-                            et la thermorégulation. La FC en natation est généralement 10-15 bpm inférieure 
-                            à la course à allure équivalente.
+                            et la thermorÃ©gulation. La FC en natation est gÃ©nÃ©ralement 10-15 bpm infÃ©rieure 
+                            Ã la course Ã allure Ã©quivalente.
                         </p>
                         
                         <h6 class="text-success mt-3">Respiration en Natation</h6>
                         <ul class="small">
-                            <li><strong>Contrôle respiratoire :</strong> Expiration complète sous l'eau</li>
-                            <li><strong>Timing :</strong> Inspiration rapide, expiration prolongée</li>
-                            <li><strong>Bilatérale :</strong> Développement équilibre musculaire</li>
-                            <li><strong>Hypoxie modérée :</strong> Adaptation progressive, sécurisée</li>
+                            <li><strong>Contrôle respiratoire :</strong> Expiration complÃ¨te sous l'eau</li>
+                            <li><strong>Timing :</strong> Inspiration rapide, expiration prolongÃ©e</li>
+                            <li><strong>BilatÃ©rale :</strong> DÃ©veloppement Ã©quilibre musculaire</li>
+                            <li><strong>Hypoxie modÃ©rÃ©e :</strong> Adaptation progressive, sÃ©curisÃ©e</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -455,30 +455,30 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>Système</th>
+                                        <th>SystÃ¨me</th>
                                         <th>Adaptation</th>
-                                        <th>Bénéfice</th>
+                                        <th>BÃ©nÃ©fice</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Cardiovasculaire</td>
-                                        <td>Efficacité pompe cardiaque</td>
-                                        <td>Endurance générale</td>
+                                        <td>EfficacitÃ© pompe cardiaque</td>
+                                        <td>Endurance gÃ©nÃ©rale</td>
                                     </tr>
                                     <tr>
                                         <td>Respiratoire</td>
-                                        <td>Capacité et contrôle</td>
-                                        <td>Gestion apnée</td>
+                                        <td>CapacitÃ© et contrôle</td>
+                                        <td>Gestion apnÃ©e</td>
                                     </tr>
                                     <tr>
                                         <td>Musculaire</td>
                                         <td>Coordination fine</td>
-                                        <td>Efficacité gestuelle</td>
+                                        <td>EfficacitÃ© gestuelle</td>
                                     </tr>
                                     <tr>
                                         <td>Articulaire</td>
-                                        <td>Mobilité, souplesse</td>
+                                        <td>MobilitÃ©, souplesse</td>
                                         <td>Amplitude mouvement</td>
                                     </tr>
                                 </tbody>
@@ -486,10 +486,10 @@
                         </div>
                         
                         <div class="alert alert-success alert-sm">
-                            <h6 class="small">Bénéfices Santé Globale</h6>
+                            <h6 class="small">BÃ©nÃ©fices SantÃ© Globale</h6>
                             <p class="small mb-0">
                                 Natation : sport complet, faible impact articulaire, 
-                                développement harmonieux, accessible tous âges.
+                                dÃ©veloppement harmonieux, accessible tous âges.
                             </p>
                         </div>
                     </div>
@@ -497,12 +497,12 @@
             </div>
         </div>
 
-        <!-- Approche équilibrée entraînement -->
+        <!-- Approche Ã©quilibrÃ©e entraînement -->
         <div class="card">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-balance-scale me-2"></i>
-                    Approche Équilibrée de l'Entraînement Aquatique
+                    Approche Ã©quilibrÃ©e de l'Entraînement Aquatique
                 </h3>
             </div>
             <div class="card-body">
@@ -510,36 +510,36 @@
                     <div class="col-md-6">
                         <h6 class="text-success">Principes d'Entraînement Sain</h6>
                         <ul class="small">
-                            <li><strong>Progression graduelle :</strong> Augmentation volume/intensité 10% max/semaine</li>
-                            <li><strong>Récupération intégrée :</strong> Repos actif et passif nécessaires</li>
-                            <li><strong>Variété technique :</strong> Travail 4 nages pour développement complet</li>
-                            <li><strong>Plaisir préservé :</strong> Motivation et adhésion long terme</li>
-                            <li><strong>Écoute corporelle :</strong> Adaptation selon signaux fatigue</li>
-                            <li><strong>Objectifs réalistes :</strong> Progression respectant capacités individuelles</li>
+                            <li><strong>Progression graduelle :</strong> Augmentation volume/intensitÃ© 10% max/semaine</li>
+                            <li><strong>RÃ©cupÃ©ration intÃ©grÃ©e :</strong> Repos actif et passif nÃ©cessaires</li>
+                            <li><strong>VariÃ©tÃ© technique :</strong> Travail 4 nages pour dÃ©veloppement complet</li>
+                            <li><strong>Plaisir prÃ©servÃ© :</strong> Motivation et adhÃ©sion long terme</li>
+                            <li><strong>Ã©coute corporelle :</strong> Adaptation selon signaux fatigue</li>
+                            <li><strong>Objectifs rÃ©alistes :</strong> Progression respectant capacitÃ©s individuelles</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-warning">Prévention Surentraînement</h6>
+                        <h6 class="text-warning">PrÃ©vention Surentraînement</h6>
                         <p class="small">
                             Le surentraînement en natation peut se manifester par stagnation performance, 
-                            fatigue chronique, infections répétées, perte motivation ou troubles sommeil.
+                            fatigue chronique, infections rÃ©pÃ©tÃ©es, perte motivation ou troubles sommeil.
                         </p>
                         
                         <h6 class="text-info mt-3">Signaux d'Alerte</h6>
                         <ul class="small">
-                            <li>FC repos élevée de façon persistante</li>
+                            <li>FC repos Ã©levÃ©e de façon persistante</li>
                             <li>Sensation de lourdeur dans l'eau</li>
-                            <li>Temps dégradés malgré l'effort</li>
-                            <li>Irritabilité, troubles de l'humeur</li>
-                            <li>Appétit diminué, perte de poids</li>
-                            <li>Blessures à répétition</li>
+                            <li>Temps dÃ©gradÃ©s malgrÃ© l'effort</li>
+                            <li>IrritabilitÃ©, troubles de l'humeur</li>
+                            <li>AppÃ©tit diminuÃ©, perte de poids</li>
+                            <li>Blessures Ã rÃ©pÃ©tition</li>
                         </ul>
                         
                         <div class="alert alert-warning mt-3">
                             <h6><i class="fas fa-heart me-2"></i>Bien-être Prioritaire</h6>
                             <p class="mb-0 small">
                                 L'entraînement natation doit enrichir votre vie, non la dominer. 
-                                <strong>Santé et équilibre personnel priment sur performance.</strong> 
+                                <strong>SantÃ© et Ã©quilibre personnel priment sur performance.</strong> 
                                 Si la natation devient source de stress ou obsession, 
                                 consultez un professionnel pour retrouver une approche saine.
                             </p>
@@ -551,7 +551,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -562,12 +562,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -577,15 +577,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -612,7 +612,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -624,12 +624,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -742,7 +742,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrée pour les cards
+    // Animation d'entrÃ©e pour les cards
     const cards = document.querySelectorAll('.hover-lift');
     
     const observerOptions = {

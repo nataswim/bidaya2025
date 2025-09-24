@@ -14,7 +14,7 @@ class PostController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('editor')) {
-            abort(403, 'Accès non autorisé');
+            abort(403, 'AccÃ¨s non autorisÃ©');
         }
     }
 
@@ -44,12 +44,12 @@ class PostController extends Controller
             $query->where('status', $status);
         }
 
-        // Filtrage par visibilité
+        // Filtrage par visibilitÃ©
         if ($visibility) {
             $query->where('visibility', $visibility);
         }
 
-        // Filtrage par catégorie
+        // Filtrage par catÃ©gorie
         if ($categoryId) {
             $query->where('category_id', $categoryId);
         }
@@ -86,21 +86,21 @@ class PostController extends Controller
         
         $data = $request->validated();
         
-        // Générer le slug si pas fourni
+        // GÃ©nÃ©rer le slug si pas fourni
         if (empty($data['slug'])) {
             $data['slug'] = \Str::slug($data['name']);
         }
         
-        // Définir la date de publication si le statut est publié
+        // DÃ©finir la date de publication si le statut est publiÃ©
         if ($data['status'] === 'published' && empty($data['published_at'])) {
             $data['published_at'] = now();
         }
         
-        // Informations de création
+        // Informations de crÃ©ation
         $data['created_by'] = auth()->id();
         $data['created_by_name'] = auth()->user()->name;
         
-        // Créer le post
+        // CrÃ©er le post
         $post = Post::create($data);
         
         // Attacher les tags si fournis
@@ -112,11 +112,11 @@ class PostController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.posts.edit', $post)
-                ->with('success', 'Article créé avec succès. Vous pouvez continuer à l\'éditer.');
+                ->with('success', 'Article crÃ©Ã© avec succÃ¨s. Vous pouvez continuer Ã l\'Ã©diter.');
         }
 
         return redirect()->route('admin.posts.index')
-            ->with('success', 'Article créé avec succès.');
+            ->with('success', 'Article crÃ©Ã© avec succÃ¨s.');
     }
 
     public function show(Post $post)
@@ -146,15 +146,15 @@ class PostController extends Controller
         
         $data = $request->validated();
         
-        // Gérer le slug
+        // GÃ©rer le slug
         if (empty($data['slug'])) {
             $data['slug'] = \Str::slug($data['name']);
         }
         
-        // Gérer la date de publication
+        // GÃ©rer la date de publication
         if ($data['status'] === 'published') {
             if (empty($data['published_at']) && $post->status !== 'published') {
-                // Premier passage de brouillon à publié
+                // Premier passage de brouillon Ã publiÃ©
                 $data['published_at'] = now();
             }
         } else {
@@ -167,7 +167,7 @@ class PostController extends Controller
         // Informations de modification
         $data['updated_by'] = auth()->id();
         
-        // Mettre à jour le post
+        // Mettre Ã jour le post
         $post->update($data);
         
         // Synchroniser les tags
@@ -181,25 +181,25 @@ class PostController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.posts.edit', $post)
-                ->with('success', 'Article mis à jour avec succès.');
+                ->with('success', 'Article mis Ã jour avec succÃ¨s.');
         }
 
         return redirect()->route('admin.posts.index')
-            ->with('success', 'Article mis à jour avec succès.');
+            ->with('success', 'Article mis Ã jour avec succÃ¨s.');
     }
 
     public function destroy(Post $post)
     {
         $this->checkAdminAccess();
         
-        // Détacher les tags avant suppression
+        // DÃ©tacher les tags avant suppression
         $post->tags()->detach();
         
         // Soft delete
         $post->delete();
 
         return redirect()->route('admin.posts.index')
-            ->with('success', 'Article supprimé avec succès.');
+            ->with('success', 'Article supprimÃ© avec succÃ¨s.');
     }
 
     /**
@@ -224,7 +224,7 @@ class PostController extends Controller
         $newPost->tags()->sync($post->tags->pluck('id'));
 
         return redirect()->route('admin.posts.edit', $newPost)
-            ->with('success', 'Article dupliqué avec succès.');
+            ->with('success', 'Article dupliquÃ© avec succÃ¨s.');
     }
 
     /**
@@ -242,13 +242,13 @@ class PostController extends Controller
             'updated_by' => auth()->id()
         ]);
 
-        $message = $newStatus === 'published' ? 'Article publié avec succès.' : 'Article mis en brouillon.';
+        $message = $newStatus === 'published' ? 'Article publiÃ© avec succÃ¨s.' : 'Article mis en brouillon.';
 
         return redirect()->back()->with('success', $message);
     }
 
     /**
-     * Changer la visibilité rapidement
+     * Changer la visibilitÃ© rapidement
      */
     public function toggleVisibility(Post $post)
     {
@@ -269,7 +269,7 @@ class PostController extends Controller
     }
 
     /**
-     * Statistiques détaillées
+     * Statistiques dÃ©taillÃ©es
      */
     public function stats()
     {
@@ -324,11 +324,11 @@ class PostController extends Controller
                 
                 // En-têtes CSV
                 fputcsv($file, [
-                    'ID', 'Titre', 'Slug', 'Statut', 'Visibilité', 'Catégorie', 
-                    'Auteur', 'Vues', 'Mis en avant', 'Date création', 'Date publication'
+                    'ID', 'Titre', 'Slug', 'Statut', 'VisibilitÃ©', 'CatÃ©gorie', 
+                    'Auteur', 'Vues', 'Mis en avant', 'Date crÃ©ation', 'Date publication'
                 ]);
                 
-                // Données
+                // DonnÃ©es
                 foreach ($posts as $post) {
                     fputcsv($file, [
                         $post->id,
@@ -349,7 +349,7 @@ class PostController extends Controller
             }, 200, $headers);
         }
         
-        return redirect()->back()->with('error', 'Format d\'export non supporté.');
+        return redirect()->back()->with('error', 'Format d\'export non supportÃ©.');
     }
 
     /**
@@ -363,7 +363,7 @@ class PostController extends Controller
         $postIds = $request->input('posts', []);
         
         if (empty($postIds)) {
-            return redirect()->back()->with('error', 'Aucun article sélectionné.');
+            return redirect()->back()->with('error', 'Aucun article sÃ©lectionnÃ©.');
         }
         
         $count = 0;
@@ -375,7 +375,7 @@ class PostController extends Controller
                     'published_at' => now(),
                     'updated_by' => auth()->id()
                 ]);
-                $message = "{$count} article(s) publié(s).";
+                $message = "{$count} article(s) publiÃ©(s).";
                 break;
                 
             case 'draft':
@@ -415,7 +415,7 @@ class PostController extends Controller
                     'is_featured' => false,
                     'updated_by' => auth()->id()
                 ]);
-                $message = "{$count} article(s) retiré(s) de la une.";
+                $message = "{$count} article(s) retirÃ©(s) de la une.";
                 break;
                 
             case 'delete':
@@ -427,7 +427,7 @@ class PostController extends Controller
                         $count++;
                     }
                 }
-                $message = "{$count} article(s) supprimé(s).";
+                $message = "{$count} article(s) supprimÃ©(s).";
                 break;
                 
             default:

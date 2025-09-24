@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Une fois votre compte supprimé, toutes ses ressources et données seront définitivement effacées. Avant de supprimer votre compte, veuillez télécharger toutes les données ou informations que vous souhaitez conserver.') }}
+            {{ __('Une fois votre compte supprimÃ©, toutes ses ressources et donnÃ©es seront dÃ©finitivement effacÃ©es. Avant de supprimer votre compte, veuillez tÃ©lÃ©charger toutes les donnÃ©es ou informations que vous souhaitez conserver.') }}
         </p>
     </header>
 
@@ -24,7 +24,7 @@
             </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                {{ __('Une fois votre compte supprimé, toutes ses ressources et données seront définitivement effacées. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte.') }}
+                {{ __('Une fois votre compte supprimÃ©, toutes ses ressources et donnÃ©es seront dÃ©finitivement effacÃ©es. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez supprimer dÃ©finitivement votre compte.') }}
             </p>
 
             <div class="mt-6">

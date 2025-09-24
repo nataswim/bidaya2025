@@ -77,7 +77,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="dropdown-item">
-                                <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
+                                <i class="fas fa-sign-out-alt me-2"></i>Se dÃ©connecter
                             </button>
                         </form>
                     </li>

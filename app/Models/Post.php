@@ -52,7 +52,7 @@ class Post extends Model
     }
 
     /**
-     * Les métadonnées (titre, intro, image) sont toujours visibles si le post est publié
+     * Les mÃ©tadonnÃ©es (titre, intro, image) sont toujours visibles si le post est publiÃ©
      */
     public function isMetadataVisible(): bool
     {
@@ -65,37 +65,37 @@ class Post extends Model
 
 
     /**
-     * Vérifier si le contenu complet est visible pour l'utilisateur actuel
+     * VÃ©rifier si le contenu complet est visible pour l'utilisateur actuel
      */
     public function isContentVisibleTo($user = null): bool
 {
-    // Si le post n'est pas publié, seuls les admins/éditeurs peuvent voir le contenu
+    // Si le post n'est pas publiÃ©, seuls les admins/Ã©diteurs peuvent voir le contenu
     if (!$this->isMetadataVisible()) {
         return $user && ($user->hasRole('admin') || $user->hasRole('editor'));
     }
     
-    // Si la visibilité est publique, tout le monde peut voir le contenu
+    // Si la visibilitÃ© est publique, tout le monde peut voir le contenu
     if ($this->visibility === 'public') {
         return true;
     }
     
-    // Si la visibilité est "authenticated", vérifier le rôle de l'utilisateur
+    // Si la visibilitÃ© est "authenticated", vÃ©rifier le rôle de l'utilisateur
     if ($this->visibility === 'authenticated') {
         if (!$user) {
-            return false; // Pas connecté = pas d'accès
+            return false; // Pas connectÃ© = pas d'accÃ¨s
         }
         
-        // Les admins et éditeurs peuvent tout voir
+        // Les admins et Ã©diteurs peuvent tout voir
         if ($user->hasRole('admin') || $user->hasRole('editor')) {
             return true;
         }
         
         // Les visitors ne peuvent PAS voir le contenu premium
         if ($user->hasRole('visitor')) {
-            return false; // ❌ VISITOR = PAS D'ACCÈS AU PREMIUM
+            return false; // ❌ VISITOR = PAS D'ACCÃ¨S AU PREMIUM
         }
         
-        // Les users et rôles supérieurs peuvent voir
+        // Les users et rôles supÃ©rieurs peuvent voir
         return $user->hasRole('user') || ($user->role && $user->role->level >= 10);
     }
     
@@ -104,25 +104,25 @@ class Post extends Model
 
 
 /**
- * Déterminer le message à afficher pour l'accès restreint
+ * DÃ©terminer le message Ã afficher pour l'accÃ¨s restreint
  */
 public function getAccessMessage($user = null): string
 {
     if (!$user) {
-        return 'Connectez-vous pour accéder à ce contenu premium.';
+        return 'Connectez-vous pour accÃ©der Ã ce contenu premium.';
     }
     
     if ($user->hasRole('visitor')) {
-        return 'Votre compte doit être validé par un administrateur pour accéder aux contenus premium.';
+        return 'Votre compte doit être validÃ© par un administrateur pour accÃ©der aux contenus premium.';
     }
     
-    return 'Accès non autorisé à ce contenu.';
+    return 'AccÃ¨s non autorisÃ© Ã ce contenu.';
 }
 
 
 
     /**
-     * Scope pour les posts avec métadonnées visibles
+     * Scope pour les posts avec mÃ©tadonnÃ©es visibles
      */
     public function scopeWithMetadataVisible($query)
     {
@@ -141,13 +141,13 @@ public function getAccessMessage($user = null): string
 public function scopeVisibleTo($query, $user = null)
 {
     return $query->where(function($q) use ($user) {
-        // Posts publics et publiés
+        // Posts publics et publiÃ©s
         $q->where('status', 'published')
           ->whereNotNull('published_at')
           ->where('published_at', '<=', now())
           ->where('visibility', 'public');
         
-        // Si utilisateur connecté et NON-visitor, ajouter les posts premium
+        // Si utilisateur connectÃ© et NON-visitor, ajouter les posts premium
         if ($user && !$user->hasRole('visitor')) {
             $q->orWhere(function($subQ) use ($user) {
                 $subQ->where('status', 'published')
@@ -157,7 +157,7 @@ public function scopeVisibleTo($query, $user = null)
             });
         }
         
-        // Si admin/éditeur, voir tous les posts
+        // Si admin/Ã©diteur, voir tous les posts
         if ($user && ($user->hasRole('admin') || $user->hasRole('editor'))) {
             $q->orWhere(function($subQ) {
                 $subQ->whereIn('status', ['draft', 'published']);
@@ -172,7 +172,7 @@ public function scopeVisibleTo($query, $user = null)
 
 
     /**
-     * Scope pour les posts publiés uniquement
+     * Scope pour les posts publiÃ©s uniquement
      */
     public function scopePublished($query)
     {
@@ -198,7 +198,7 @@ public function scopeVisibleTo($query, $user = null)
     }
 
     /**
-     * Accessor pour le résumé du contenu
+     * Accessor pour le rÃ©sumÃ© du contenu
      */
     public function getExcerptAttribute()
     {
@@ -210,7 +210,7 @@ public function scopeVisibleTo($query, $user = null)
     }
 
     /**
-     * Accessor pour le temps de lecture estimé
+     * Accessor pour le temps de lecture estimÃ©
      */
     public function getReadingTimeAttribute()
     {
@@ -221,7 +221,7 @@ public function scopeVisibleTo($query, $user = null)
     }
 
     /**
-     * Mutator pour générer automatiquement le slug
+     * Mutator pour gÃ©nÃ©rer automatiquement le slug
      */
     public function setNameAttribute($value)
     {
@@ -233,7 +233,7 @@ public function scopeVisibleTo($query, $user = null)
     }
 
     /**
-     * Boot method pour les événements du modèle
+     * Boot method pour les Ã©vÃ©nements du modÃ¨le
      */
     protected static function boot()
     {

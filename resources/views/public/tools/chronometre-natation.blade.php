@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Chronomètre Professionnel Natation & Analyse Performance - Outil Pro')
-@section('meta_description', 'Chronomètre haute précision pour natation avec analyse en temps réel, métriques avancées et graphiques de performance. Outil professionnel pour entraîneurs et nageurs.')
+@section('title', 'ChronomÃ¨tre Professionnel Natation & Analyse Performance - Outil Pro')
+@section('meta_description', 'ChronomÃ¨tre haute prÃ©cision pour natation avec analyse en temps rÃ©el, mÃ©triques avancÃ©es et graphiques de performance. Outil professionnel pour entraîneurs et nageurs.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,21 +9,21 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-stopwatch"></i>
-            Chronomètre Professionnel de Natation
+            ChronomÃ¨tre Professionnel de Natation
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-chart-line text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    Chronométrage haute précision avec analyse en temps réel, métriques avancées et visualisation des performances
+                    ChronomÃ©trage haute prÃ©cision avec analyse en temps rÃ©el, mÃ©triques avancÃ©es et visualisation des performances
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Chronomètre Principal -->
+<!-- ChronomÃ¨tre Principal -->
 <section class="py-5 bg-light">
     <div class="container">
         <!-- Affichage principal du temps -->
@@ -35,7 +35,7 @@
                     </div>
                     <div class="d-flex justify-content-center gap-3">
                         <button id="startStopBtn" class="btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg">
-                            <i class="fas fa-play me-2"></i>Départ
+                            <i class="fas fa-play me-2"></i>DÃ©part
                         </button>
                         <button id="resetBtn" class="btn btn-dark btn-lg px-5 py-3 fw-bold shadow-lg">
                             <i class="fas fa-redo me-2"></i>Reset
@@ -51,7 +51,7 @@
                 <div class="card border-0 shadow-sm h-100" style="border-left: 5px solid #0d6efd;">
                     <div class="card-header bg-primary text-white">
                         <h5 class="mb-0">
-                            <i class="fas fa-swimmer me-2"></i>Athlète 1
+                            <i class="fas fa-swimmer me-2"></i>AthlÃ¨te 1
                         </h5>
                     </div>
                     <div class="card-body text-center">
@@ -60,7 +60,7 @@
                                 <i class="fas fa-flag me-2"></i>Passage
                             </button>
                             <button class="btn btn-warning btn-lg fw-bold finish-btn" data-swimmer="1">
-                                <i class="fas fa-trophy me-2"></i>Arrivée
+                                <i class="fas fa-trophy me-2"></i>ArrivÃ©e
                             </button>
                         </div>
                         <div class="mt-3 p-3 bg-light rounded">
@@ -76,7 +76,7 @@
                 <div class="card border-0 shadow-sm h-100" style="border-left: 5px solid #dc3545;">
                     <div class="card-header bg-danger text-white">
                         <h5 class="mb-0">
-                            <i class="fas fa-swimmer me-2"></i>Athlète 2
+                            <i class="fas fa-swimmer me-2"></i>AthlÃ¨te 2
                         </h5>
                     </div>
                     <div class="card-body text-center">
@@ -85,7 +85,7 @@
                                 <i class="fas fa-flag me-2"></i>Passage
                             </button>
                             <button class="btn btn-warning btn-lg fw-bold finish-btn" data-swimmer="2">
-                                <i class="fas fa-trophy me-2"></i>Arrivée
+                                <i class="fas fa-trophy me-2"></i>ArrivÃ©e
                             </button>
                         </div>
                         <div class="mt-3 p-3 bg-light rounded">
@@ -101,7 +101,7 @@
                 <div class="card border-0 shadow-sm h-100" style="border-left: 5px solid #198754;">
                     <div class="card-header bg-success text-white">
                         <h5 class="mb-0">
-                            <i class="fas fa-swimmer me-2"></i>Athlète 3
+                            <i class="fas fa-swimmer me-2"></i>AthlÃ¨te 3
                         </h5>
                     </div>
                     <div class="card-body text-center">
@@ -110,7 +110,7 @@
                                 <i class="fas fa-flag me-2"></i>Passage
                             </button>
                             <button class="btn btn-warning btn-lg fw-bold finish-btn" data-swimmer="3">
-                                <i class="fas fa-trophy me-2"></i>Arrivée
+                                <i class="fas fa-trophy me-2"></i>ArrivÃ©e
                             </button>
                         </div>
                         <div class="mt-3 p-3 bg-light rounded">
@@ -123,7 +123,7 @@
             </div>
         </div>
 
-        <!-- Résultats Finaux -->
+        <!-- RÃ©sultats Finaux -->
         <div id="finalResults" class="card shadow-lg border-0 mb-4 d-none">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-0">
@@ -136,9 +136,9 @@
                         <thead class="table-light">
                             <tr>
                                 <th class="text-center py-3">Position</th>
-                                <th class="text-center py-3">Athlète</th>
+                                <th class="text-center py-3">AthlÃ¨te</th>
                                 <th class="text-center py-3">Temps Final</th>
-                                <th class="text-center py-3">Différence</th>
+                                <th class="text-center py-3">DiffÃ©rence</th>
                             </tr>
                         </thead>
                         <tbody id="resultsTableBody">
@@ -149,41 +149,41 @@
             </div>
         </div>
 
-        <!-- Détails des Temps -->
+        <!-- DÃ©tails des Temps -->
         <div id="lapDetails" class="d-none">
             <!-- Sera rempli par JavaScript -->
         </div>
     </div>
 </section>
 
-<!-- Contenu Éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
-        <!-- Technologies de Chronométrage -->
+        <!-- Technologies de ChronomÃ©trage -->
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-cogs me-2"></i>
-                    Technologies de Chronométrage Moderne - 2024
+                    Technologies de ChronomÃ©trage Moderne - 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <strong>Standards Omega Olympic :</strong> Les systèmes utilisés aux JO mesurent au millième de seconde 
-                    avec des capteurs tactiles dans les plaques de touchée et une précision de ±0.001s.
+                    <strong>Standards Omega Olympic :</strong> Les systÃ¨mes utilisÃ©s aux JO mesurent au milliÃ¨me de seconde 
+                    avec des capteurs tactiles dans les plaques de touchÃ©e et une prÃ©cision de ±0.001s.
                 </div>
                 
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6>
-                            <i class="fas fa-microchip me-2"></i>Systèmes Automatiques Professionnels
+                            <i class="fas fa-microchip me-2"></i>SystÃ¨mes Automatiques Professionnels
                         </h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Système</th>
-                                        <th>Précision</th>
+                                        <th>SystÃ¨me</th>
+                                        <th>PrÃ©cision</th>
                                         <th>Usage</th>
                                     </tr>
                                 </thead>
@@ -196,15 +196,15 @@
                                     <tr>
                                         <td><strong>Colorado Time Systems</strong></td>
                                         <td>±0.01s</td>
-                                        <td>Compétitions nationales</td>
+                                        <td>CompÃ©titions nationales</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Daktronics AllSport</strong></td>
                                         <td>±0.01s</td>
-                                        <td>Clubs, lycées</td>
+                                        <td>Clubs, lycÃ©es</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Chronométrage manuel</strong></td>
+                                        <td><strong>ChronomÃ©trage manuel</strong></td>
                                         <td>±0.1s</td>
                                         <td>Entraînement</td>
                                     </tr>
@@ -218,27 +218,27 @@
                         </h6>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
-                                <span><strong>Analyse vidéo HD</strong></span>
+                                <span><strong>Analyse vidÃ©o HD</strong></span>
                                 <span class="badge bg-primary">1000 fps</span>
                             </li>
                             <li class="list-group-item">
                                 <strong>Capteurs portables :</strong> Garmin Swim, Tritonwear
                             </li>
                             <li class="list-group-item">
-                                <strong>IA temps réel :</strong> Analyse automatique technique
+                                <strong>IA temps rÃ©el :</strong> Analyse automatique technique
                             </li>
                             <li class="list-group-item">
-                                <strong>Capteurs sous-marins :</strong> Tracking 3D immergé
+                                <strong>Capteurs sous-marins :</strong> Tracking 3D immergÃ©
                             </li>
                             <li class="list-group-item">
-                                <strong>Réalité augmentée :</strong> Métriques dans les lunettes
+                                <strong>RÃ©alitÃ© augmentÃ©e :</strong> MÃ©triques dans les lunettes
                             </li>
                         </ul>
                         
                         <div class="alert alert-success mt-3">
                             <small>
-                                <strong>Innovation 2024 :</strong> Les systèmes IA combinent vidéo + capteurs 
-                                pour une analyse technique automatique en temps réel.
+                                <strong>Innovation 2024 :</strong> Les systÃ¨mes IA combinent vidÃ©o + capteurs 
+                                pour une analyse technique automatique en temps rÃ©el.
                             </small>
                         </div>
                     </div>
@@ -246,12 +246,12 @@
             </div>
         </div>
 
-        <!-- Métriques Chronométriques -->
+        <!-- MÃ©triques ChronomÃ©triques -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-chart-bar me-2"></i>
-                    Métriques Chronométriques Clés
+                    MÃ©triques ChronomÃ©triques ClÃ©s
                 </h3>
             </div>
             <div class="card-body">
@@ -259,7 +259,7 @@
                     <div class="col-md-4">
                         <div class="card border-primary h-100">
                             <div class="card-header bg-primary text-white text-center">
-                                <h6 class="mb-0">Fréquence de Coup de Bras (FCB)</h6>
+                                <h6 class="mb-0">FrÃ©quence de Coup de Bras (FCB)</h6>
                             </div>
                             <div class="card-body text-center">
                                 <div class="display-4 text-primary fw-bold mb-2">45-55</div>
@@ -280,7 +280,7 @@
                             </div>
                             <div class="card-body text-center">
                                 <div class="display-4 text-success fw-bold mb-2">2.2-2.6</div>
-                                <small class="text-muted d-block mb-3">mètres/coup (élite masculine)</small>
+                                <small class="text-muted d-block mb-3">mÃ¨tres/coup (Ã©lite masculine)</small>
                                 <hr>
                                 <p class="small mb-0">
                                     <strong>Sun Yang</strong><br>
@@ -300,8 +300,8 @@
                                 <small class="text-muted d-block mb-3">IN = FCB × LCB (sprint)</small>
                                 <hr>
                                 <p class="small mb-0">
-                                    <strong>Efficacité globale</strong><br>
-                                    <span class="badge bg-warning text-dark">Plus élevé = plus efficace</span>
+                                    <strong>EfficacitÃ© globale</strong><br>
+                                    <span class="badge bg-warning text-dark">Plus Ã©levÃ© = plus efficace</span>
                                 </p>
                             </div>
                         </div>
@@ -339,7 +339,7 @@
                                 <td class="text-center"><span class="badge bg-primary">20"24 - 21"30</span></td>
                             </tr>
                             <tr>
-                                <td><strong><i class="fas fa-swimmer me-2"></i>Dos crawlé</strong></td>
+                                <td><strong><i class="fas fa-swimmer me-2"></i>Dos crawlÃ©</strong></td>
                                 <td class="text-center">45-50</td>
                                 <td class="text-center">2.0-2.4</td>
                                 <td class="text-center">1.85-2.05</td>
@@ -365,12 +365,12 @@
             </div>
         </div>
 
-        <!-- Stratégies de Course -->
+        <!-- StratÃ©gies de Course -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-bullseye me-2"></i>
-                    Stratégies de Course et Allures
+                    StratÃ©gies de Course et Allures
                 </h3>
             </div>
             <div class="card-body">
@@ -384,9 +384,9 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
-                                    <li class="mb-2"><strong>Départ :</strong> 95-100% effort maximal</li>
+                                    <li class="mb-2"><strong>DÃ©part :</strong> 95-100% effort maximal</li>
                                     <li class="mb-2"><strong>Maintien :</strong> 98-102%</li>
-                                    <li class="mb-2"><strong>Stratégie :</strong> All-out dès le départ</li>
+                                    <li class="mb-2"><strong>StratÃ©gie :</strong> All-out dÃ¨s le dÃ©part</li>
                                 </ul>
                                 <div class="alert alert-info alert-sm">
                                     <small>
@@ -402,14 +402,14 @@
                         <div class="card border-info h-100">
                             <div class="card-header bg-info text-white">
                                 <h6 class="mb-0">
-                                    <i class="fas fa-chart-line me-2"></i>200m Contrôlé
+                                    <i class="fas fa-chart-line me-2"></i>200m ContrôlÃ©
                                 </h6>
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
-                                    <li class="mb-2"><strong>Stratégie :</strong> "Negative split"</li>
-                                    <li class="mb-2"><strong>2e moitié :</strong> 2-4% plus rapide</li>
-                                    <li class="mb-2"><strong>Gestion :</strong> Répartition énergétique</li>
+                                    <li class="mb-2"><strong>StratÃ©gie :</strong> "Negative split"</li>
+                                    <li class="mb-2"><strong>2e moitiÃ© :</strong> 2-4% plus rapide</li>
+                                    <li class="mb-2"><strong>Gestion :</strong> RÃ©partition Ã©nergÃ©tique</li>
                                 </ul>
                                 <div class="alert alert-success alert-sm">
                                     <small>
@@ -427,12 +427,12 @@
             </div>
         </div>
 
-        <!-- Cas d'Étude -->
+        <!-- Cas d'Ã©tude -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-microscope me-2"></i>
-                    Cas d'Étude : Optimisation Technique - Adam Peaty
+                    Cas d'Ã©tude : Optimisation Technique - Adam Peaty
                 </h3>
             </div>
             <div class="card-body">
@@ -440,7 +440,7 @@
                     <div class="col-md-6">
                         <div class="card border-danger">
                             <div class="card-header bg-danger text-white">
-                                <h6 class="mb-0">Problème Identifié</h6>
+                                <h6 class="mb-0">ProblÃ¨me IdentifiÃ©</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
@@ -455,12 +455,12 @@
                     <div class="col-md-6">
                         <div class="card border-success">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Après Optimisation</h6>
+                                <h6 class="mb-0">AprÃ¨s Optimisation</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
-                                    <li>• FCB optimisée : <span class="badge bg-success">38 coups/min</span></li>
-                                    <li>• LCB améliorée : <span class="badge bg-success">2,15 m/coup</span></li>
+                                    <li>• FCB optimisÃ©e : <span class="badge bg-success">38 coups/min</span></li>
+                                    <li>• LCB amÃ©liorÃ©e : <span class="badge bg-success">2,15 m/coup</span></li>
                                     <li>• Nouvel IN : <span class="badge bg-success">95</span></li>
                                     <li>• Temps final : <span class="badge bg-success">57"37</span></li>
                                 </ul>
@@ -469,9 +469,9 @@
                     </div>
                 </div>
                 <div class="alert alert-success mt-4 text-center">
-                    <h5 class="mb-2">Résultat</h5>
+                    <h5 class="mb-2">RÃ©sultat</h5>
                     <p class="mb-0">
-                        Amélioration : <span class="badge bg-danger fs-6">57"92</span> → 
+                        AmÃ©lioration : <span class="badge bg-danger fs-6">57"92</span> → 
                         <span class="badge bg-success fs-6">57"37</span> = 
                         <span class="badge bg-warning fs-6 text-dark">-0"55</span>
                     </p>
@@ -496,7 +496,7 @@
                                     <i class="fas fa-water"></i>
                                 </div>
                                 <h6 class="fw-bold mb-3">Capteurs Sous-marins</h6>
-                                <p class="small text-muted">Tracking 3D immergé pour analyse complète du mouvement sous l'eau</p>
+                                <p class="small text-muted">Tracking 3D immergÃ© pour analyse complÃ¨te du mouvement sous l'eau</p>
                             </div>
                         </div>
                     </div>
@@ -506,8 +506,8 @@
                                 <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                                     <i class="fas fa-eye"></i>
                                 </div>
-                                <h6 class="fw-bold mb-3">Réalité Augmentée</h6>
-                                <p class="small text-muted">Métriques en temps réel affichées dans les lunettes de natation</p>
+                                <h6 class="fw-bold mb-3">RÃ©alitÃ© AugmentÃ©e</h6>
+                                <p class="small text-muted">MÃ©triques en temps rÃ©el affichÃ©es dans les lunettes de natation</p>
                             </div>
                         </div>
                     </div>
@@ -517,26 +517,26 @@
                                 <div class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                                     <i class="fas fa-brain"></i>
                                 </div>
-                                <h6 class="fw-bold mb-3">IA Avancée</h6>
-                                <p class="small text-muted">Prédiction et optimisation automatique des stratégies de course</p>
+                                <h6 class="fw-bold mb-3">IA AvancÃ©e</h6>
+                                <p class="small text-muted">PrÃ©diction et optimisation automatique des stratÃ©gies de course</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="alert alert-primary mt-4">
-                    <h5 class="mb-2">Impact Prévu</h5>
+                    <h5 class="mb-2">Impact PrÃ©vu</h5>
                     <div class="row text-center">
                         <div class="col-md-3">
                             <div class="bg-primary bg-opacity-10 p-3 rounded">
                                 <div class="h4 fw-bold text-primary mb-1">2.3%</div>
-                                <small>Amélioration moyenne performances</small>
+                                <small>AmÃ©lioration moyenne performances</small>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="bg-success bg-opacity-10 p-3 rounded">
                                 <div class="h4 fw-bold text-success mb-1">1.1s</div>
-                                <small>Gain moyen 100m élite</small>
+                                <small>Gain moyen 100m Ã©lite</small>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -548,7 +548,7 @@
                         <div class="col-md-3">
                             <div class="bg-danger bg-opacity-10 p-3 rounded">
                                 <div class="h4 fw-bold text-danger mb-1">0.01s</div>
-                                <small>Précision prédictive IA</small>
+                                <small>PrÃ©cision prÃ©dictive IA</small>
                             </div>
                         </div>
                     </div>
@@ -558,7 +558,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -571,12 +571,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -586,15 +586,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -621,7 +621,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -632,12 +632,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -754,9 +754,9 @@ class SwimmingChronometer {
         this.isRunning = false;
         this.interval = null;
         this.swimmers = {
-            1: { laps: [], finishTime: null, name: 'Athlète 1' },
-            2: { laps: [], finishTime: null, name: 'Athlète 2' },
-            3: { laps: [], finishTime: null, name: 'Athlète 3' }
+            1: { laps: [], finishTime: null, name: 'AthlÃ¨te 1' },
+            2: { laps: [], finishTime: null, name: 'AthlÃ¨te 2' },
+            3: { laps: [], finishTime: null, name: 'AthlÃ¨te 3' }
         };
         this.raceFinished = false;
         
@@ -804,7 +804,7 @@ class SwimmingChronometer {
             document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-play me-2"></i>Reprendre';
             document.getElementById('startStopBtn').className = 'btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg';
             
-            // Désactiver les boutons nageurs
+            // DÃ©sactiver les boutons nageurs
             this.disableSwimmerButtons();
         }
         
@@ -834,7 +834,7 @@ class SwimmingChronometer {
         this.swimmers[swimmerId].finishTime = this.time;
         this.updateSwimmerDisplay(swimmerId);
         
-        // Vérifier si tous les nageurs ont fini
+        // VÃ©rifier si tous les nageurs ont fini
         const finishedSwimmers = Object.values(this.swimmers).filter(s => s.finishTime !== null);
         if (finishedSwimmers.length === 3) {
             this.endRace();
@@ -848,7 +848,7 @@ class SwimmingChronometer {
         this.isRunning = false;
         this.raceFinished = true;
         
-        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-check me-2"></i>Course Terminée';
+        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-check me-2"></i>Course TerminÃ©e';
         document.getElementById('startStopBtn').className = 'btn btn-success btn-lg px-5 py-3 fw-bold shadow-lg';
         document.getElementById('startStopBtn').disabled = true;
         
@@ -861,14 +861,14 @@ class SwimmingChronometer {
         this.isRunning = false;
         this.raceFinished = false;
         
-        // Réinitialiser les nageurs
+        // RÃ©initialiser les nageurs
         Object.keys(this.swimmers).forEach(id => {
             this.swimmers[id] = { laps: [], finishTime: null, name: this.swimmers[id].name };
             this.updateSwimmerDisplay(parseInt(id));
         });
         
-        // Réinitialiser l'interface
-        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-play me-2"></i>Départ';
+        // RÃ©initialiser l'interface
+        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-play me-2"></i>DÃ©part';
         document.getElementById('startStopBtn').className = 'btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg';
         document.getElementById('startStopBtn').disabled = false;
         
@@ -887,7 +887,7 @@ class SwimmingChronometer {
         const swimmer = this.swimmers[swimmerId];
         const swimmerElement = document.getElementById(`swimmer${swimmerId}`);
         
-        // Mettre à jour le nombre de passages
+        // Mettre Ã jour le nombre de passages
         swimmerElement.querySelector('.lap-count').textContent = swimmer.laps.length;
         
         // Calculer et afficher la moyenne
@@ -898,13 +898,13 @@ class SwimmingChronometer {
         }
         swimmerElement.querySelector('.avg-time').textContent = avgTime;
         
-        // Mettre à jour le statut
+        // Mettre Ã jour le statut
         const statusElement = swimmerElement.querySelector('.status');
         if (swimmer.finishTime) {
-            statusElement.textContent = 'Arrivé';
+            statusElement.textContent = 'ArrivÃ©';
             statusElement.className = 'status badge bg-success';
             
-            // Désactiver les boutons
+            // DÃ©sactiver les boutons
             swimmerElement.querySelector('.lap-btn').disabled = true;
             swimmerElement.querySelector('.finish-btn').disabled = true;
         } else if (this.isRunning) {
@@ -967,7 +967,7 @@ class SwimmingChronometer {
             card.className = 'card border-0 shadow-sm mb-4';
             card.innerHTML = `
                 <div class="card-header py-3" style="background: ${color}; color: white;">
-                    <h5 class="mb-0 fw-bold">${swimmer.name} - Détails des Temps de Passage</h5>
+                    <h5 class="mb-0 fw-bold">${swimmer.name} - DÃ©tails des Temps de Passage</h5>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -975,7 +975,7 @@ class SwimmingChronometer {
                             <thead class="table-light">
                                 <tr>
                                     <th class="text-center fw-bold py-3">Fraction</th>
-                                    <th class="text-center fw-bold py-3">Temps Intermédiaire</th>
+                                    <th class="text-center fw-bold py-3">Temps IntermÃ©diaire</th>
                                     <th class="text-center fw-bold py-3">Total</th>
                                 </tr>
                             </thead>
@@ -1022,7 +1022,7 @@ class SwimmingChronometer {
     }
 }
 
-// Initialiser le chronomètre au chargement de la page
+// Initialiser le chronomÃ¨tre au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
     new SwimmingChronometer();
 });

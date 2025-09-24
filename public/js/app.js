@@ -18077,7 +18077,7 @@ if (token) {
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 
-// Scripts personnalisés
+// Scripts personnalisÃ©s
 document.addEventListener('DOMContentLoaded', function () {
   // Auto-hide alerts
   setTimeout(function () {
@@ -18092,7 +18092,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var deleteButtons = document.querySelectorAll('[data-confirm="delete"]');
   deleteButtons.forEach(function (button) {
     button.addEventListener('click', function (e) {
-      if (!confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+      if (!confirm('Êtes-vous sûr de vouloir supprimer cet Ã©lÃ©ment ?')) {
         e.preventDefault();
       }
     });

@@ -8,7 +8,7 @@
     <div class="bg-white p-6 rounded shadow-md space-y-4">
         <p><strong>Nom :</strong> {{ $user->name }}</p>
         <p><strong>Email :</strong> {{ $user->email }}</p>
-        <p><strong>Date de création :</strong> {{ $user->created_at->format('d/m/Y H:i') }}</p>
+        <p><strong>Date de crÃ©ation :</strong> {{ $user->created_at->format('d/m/Y H:i') }}</p>
     </div>
 
     <div class="mt-6">

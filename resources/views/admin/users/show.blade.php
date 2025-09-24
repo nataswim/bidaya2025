@@ -2,7 +2,7 @@
 
 @section('title', 'Profil utilisateur')
 @section('page-title', $user->name)
-@section('page-description', 'Profil et détails du compte')
+@section('page-description', 'Profil et dÃ©tails du compte')
 
 @section('content')
 <div class="container-fluid">
@@ -61,7 +61,7 @@
                         @if($user->phone)
                             <div class="col-md-6">
                                 <div class="border-start border-success border-3 ps-3">
-                                    <small class="text-muted d-block">Téléphone</small>
+                                    <small class="text-muted d-block">TÃ©lÃ©phone</small>
                                     <strong>{{ $user->phone }}</strong>
                                 </div>
                             </div>
@@ -102,16 +102,16 @@
                         </div>
                     @endif
 
-                    <!-- Activité récente -->
+                    <!-- ActivitÃ© rÃ©cente -->
                     <div class="border-top pt-4">
                         <h6 class="fw-semibold mb-3">
-                            <i class="fas fa-chart-line me-2 text-primary"></i>Activité
+                            <i class="fas fa-chart-line me-2 text-primary"></i>ActivitÃ©
                         </h6>
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <div class="text-center p-3 bg-light rounded">
                                     <div class="fw-bold text-primary fs-4">{{ $user->posts()->count() }}</div>
-                                    <small class="text-muted">Articles créés</small>
+                                    <small class="text-muted">Articles crÃ©Ã©s</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -131,11 +131,11 @@
                         </div>
                     </div>
 
-                    <!-- Articles récents -->
+                    <!-- Articles rÃ©cents -->
                     @if($user->posts()->count() > 0)
                         <div class="border-top pt-4">
                             <h6 class="fw-semibold mb-3">
-                                <i class="fas fa-file-alt me-2"></i>Articles récents
+                                <i class="fas fa-file-alt me-2"></i>Articles rÃ©cents
                             </h6>
                             <div class="list-group list-group-flush">
                                 @foreach($user->posts()->latest()->take(5)->get() as $post)
@@ -231,12 +231,12 @@
                 <div class="card-body p-3">
                     <div class="row g-3 small">
                         <div class="col-6">
-                            <small class="text-muted d-block">Dernière connexion</small>
+                            <small class="text-muted d-block">DerniÃ¨re connexion</small>
                             @if($user->last_login_at)
                                 <strong>{{ $user->last_login_at->format('d/m/Y H:i') }}</strong>
                                 <div class="text-muted">{{ $user->last_login_at->diffForHumans() }}</div>
                             @else
-                                <em class="text-muted">Jamais connecté</em>
+                                <em class="text-muted">Jamais connectÃ©</em>
                             @endif
                         </div>
                         
@@ -251,11 +251,11 @@
                         </div>
 
                         <div class="col-6">
-                            <small class="text-muted d-block">Dernière MAJ</small>
+                            <small class="text-muted d-block">DerniÃ¨re MAJ</small>
                             @if($user->updated_at && $user->updated_at != $user->created_at)
                                 <strong>{{ $user->updated_at->format('d/m/Y') }}</strong>
                             @else
-                                <em class="text-muted">Jamais modifié</em>
+                                <em class="text-muted">Jamais modifiÃ©</em>
                             @endif
                         </div>
                     </div>
@@ -279,13 +279,13 @@
                             data-bs-toggle="modal" 
                             data-bs-target="#toggleStatusModal">
                         <i class="fas fa-{{ $user->status === 'active' ? 'pause' : 'play' }} me-2"></i>
-                        {{ $user->status === 'active' ? 'Désactiver' : 'Activer' }} le compte
+                        {{ $user->status === 'active' ? 'DÃ©sactiver' : 'Activer' }} le compte
                     </button>
                 </div>
             @endif
 
             <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
-                <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
             </a>
         </div>
         
@@ -293,7 +293,7 @@
             <hr class="my-3">
             
             <form method="POST" action="{{ route('admin.users.destroy', $user) }}" 
-                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce compte utilisateur ? Cette action est irréversible.')">
+                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce compte utilisateur ? Cette action est irrÃ©versible.')">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-outline-danger w-100">
@@ -330,11 +330,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir <strong>{{ $user->status === 'active' ? 'désactiver' : 'activer' }}</strong> le compte de <strong>{{ $user->name }}</strong> ?</p>
+                <p>Êtes-vous sûr de vouloir <strong>{{ $user->status === 'active' ? 'dÃ©sactiver' : 'activer' }}</strong> le compte de <strong>{{ $user->name }}</strong> ?</p>
                 @if($user->status === 'active')
                     <div class="alert alert-warning">
                         <i class="fas fa-info-circle me-2"></i>
-                        L'utilisateur ne pourra plus se connecter une fois le compte désactivé.
+                        L'utilisateur ne pourra plus se connecter une fois le compte dÃ©sactivÃ©.
                     </div>
                 @endif
             </div>
@@ -349,7 +349,7 @@
                     <input type="hidden" name="status" value="{{ $user->status === 'active' ? 'inactive' : 'active' }}">
                     <button type="submit" class="btn btn-{{ $user->status === 'active' ? 'warning' : 'success' }}">
                         <i class="fas fa-{{ $user->status === 'active' ? 'pause' : 'play' }} me-2"></i>
-                        {{ $user->status === 'active' ? 'Désactiver' : 'Activer' }}
+                        {{ $user->status === 'active' ? 'DÃ©sactiver' : 'Activer' }}
                     </button>
                 </form>
             </div>

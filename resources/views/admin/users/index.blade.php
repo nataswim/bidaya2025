@@ -64,7 +64,7 @@
                         <th class="border-0 px-4 py-3">Utilisateur</th>
                         <th class="border-0 py-3">Rôle</th>
                         <th class="border-0 py-3">Statut</th>
-                        <th class="border-0 py-3">Dernière connexion</th>
+                        <th class="border-0 py-3">DerniÃ¨re connexion</th>
                         <th class="border-0 py-3">Inscription</th>
                         <th class="border-0 py-3 text-end">Actions</th>
                     </tr>
@@ -112,7 +112,7 @@
                                         <br><small>{{ $user->last_login_at->format('H:i') }}</small>
                                     </div>
                                 @else
-                                    <span class="text-muted">Jamais connecté</span>
+                                    <span class="text-muted">Jamais connectÃ©</span>
                                 @endif
                             </td>
                             <td class="py-3">
@@ -160,7 +160,7 @@
                             <td colspan="6" class="text-center py-5">
                                 <div class="text-muted">
                                     <i class="fas fa-users fa-2x mb-3"></i>
-                                    <div>Aucun utilisateur trouvé</div>
+                                    <div>Aucun utilisateur trouvÃ©</div>
                                 </div>
                             </td>
                         </tr>

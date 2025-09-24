@@ -22,7 +22,7 @@ class RolesTableSeeder extends Seeder
             [
                 'name' => 'Editor', 
                 'slug' => 'editor', 
-                'display_name' => 'Éditeur', 
+                'display_name' => 'Ã©diteur', 
                 'level' => 2, 
                 'is_default' => false,
                 'created_at' => now(),

@@ -15,7 +15,7 @@
                         </div>
                         <div>
                             <h3 class="mb-0">Modifier mon profil</h3>
-                            <small class="text-muted">Gérez vos informations personnelles</small>
+                            <small class="text-muted">GÃ©rez vos informations personnelles</small>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                             </div>
                             
                             <div class="col-md-6">
-                                <label for="first_name" class="form-label fw-semibold">Prénom</label>
+                                <label for="first_name" class="form-label fw-semibold">PrÃ©nom</label>
                                 <input type="text" 
                                        name="first_name" 
                                        id="first_name" 
@@ -93,7 +93,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="phone" class="form-label fw-semibold">Téléphone</label>
+                                <label for="phone" class="form-label fw-semibold">TÃ©lÃ©phone</label>
                                 <input type="tel" 
                                        name="phone" 
                                        id="phone" 
@@ -110,11 +110,11 @@
                                           placeholder="Parlez-nous de vous...">{{ old('bio', auth()->user()->bio) }}</textarea>
                             </div>
 
-                            <!-- Compte et sécurité -->
+                            <!-- Compte et sÃ©curitÃ© -->
                             <div class="col-12 mt-5">
                                 <h5 class="fw-semibold mb-3 pb-2 border-bottom">
                                     <i class="fas fa-shield-alt text-success me-2"></i>
-                                    Compte et sécurité
+                                    Compte et sÃ©curitÃ©
                                 </h5>
                             </div>
                             
@@ -151,11 +151,11 @@
                                        class="form-control">
                             </div>
 
-                            <!-- Préférences -->
+                            <!-- PrÃ©fÃ©rences -->
                             <div class="col-12 mt-5">
                                 <h5 class="fw-semibold mb-3 pb-2 border-bottom">
                                     <i class="fas fa-cog text-info me-2"></i>
-                                    Préférences
+                                    PrÃ©fÃ©rences
                                 </h5>
                             </div>
 
@@ -219,7 +219,7 @@
                                     </div>
                                     @if(auth()->user()->last_login_at)
                                         <div>
-                                            <strong>Dernière connexion :</strong> {{ auth()->user()->last_login_at->format('d/m/Y à H:i') }}
+                                            <strong>DerniÃ¨re connexion :</strong> {{ auth()->user()->last_login_at->format('d/m/Y Ã H:i') }}
                                         </div>
                                     @endif
                                 </div>

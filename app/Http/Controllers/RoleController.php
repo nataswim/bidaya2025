@@ -13,7 +13,7 @@ class RoleController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'Accès non autorisé');
+            abort(403, 'AccÃ¨s non autorisÃ©');
         }
     }
 
@@ -52,7 +52,7 @@ class RoleController extends Controller
         }
 
         return redirect()->route('admin.roles.index')
-            ->with('success', 'Rôle créé avec succès.');
+            ->with('success', 'Rôle crÃ©Ã© avec succÃ¨s.');
     }
 
     public function show(Role $role)
@@ -83,28 +83,28 @@ class RoleController extends Controller
         }
 
         return redirect()->route('admin.roles.index')
-            ->with('success', 'Rôle mis à jour avec succès.');
+            ->with('success', 'Rôle mis Ã jour avec succÃ¨s.');
     }
 
     public function destroy(Role $role)
     {
         $this->checkAdminAccess();
         
-        // Vérifier les dépendances avec les utilisateurs
+        // VÃ©rifier les dÃ©pendances avec les utilisateurs
         if ($role->users()->count() > 0) {
             return redirect()->route('admin.roles.index')
-                ->with('error', 'Impossible de supprimer un rôle assigné à des utilisateurs.');
+                ->with('error', 'Impossible de supprimer un rôle assignÃ© Ã des utilisateurs.');
         }
         
-        // Empêcher la suppression du rôle par défaut
+        // Empêcher la suppression du rôle par dÃ©faut
         if ($role->is_default) {
             return redirect()->route('admin.roles.index')
-                ->with('error', 'Impossible de supprimer le rôle par défaut.');
+                ->with('error', 'Impossible de supprimer le rôle par dÃ©faut.');
         }
         
         $role->delete();
 
         return redirect()->route('admin.roles.index')
-            ->with('success', 'Rôle supprimé avec succès.');
+            ->with('success', 'Rôle supprimÃ© avec succÃ¨s.');
     }
 }

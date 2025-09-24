@@ -1,21 +1,21 @@
 @extends('layouts.public')
 
-@section('title', 'Planificateur Entraînement Course à Pied - Programme Scientifique 2024')
-@section('meta_description', 'Planificateur course scientifique avec zones d\'entraînement optimisées. Distribution polarisée 80/20, biomécanique, économie de course et nutrition spécialisée. Evidence-based 2024.')
+@section('title', 'Planificateur Entraînement Course Ã Pied - Programme Scientifique 2024')
+@section('meta_description', 'Planificateur course scientifique avec zones d\'entraînement optimisÃ©es. Distribution polarisÃ©e 80/20, biomÃ©canique, Ã©conomie de course et nutrition spÃ©cialisÃ©e. Evidence-based 2024.')
 
 @section('content')
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Planificateur d'Entraînement Course à Pied
+            Planificateur d'Entraînement Course Ã Pied
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-clock text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Planifiez vos séances</strong> avec les dernières recherches en biomécanique, 
+                    <strong>Planifiez vos sÃ©ances</strong> avec les derniÃ¨res recherches en biomÃ©canique, 
                     physiologie et sciences du sport
                 </div>
             </div>
@@ -27,12 +27,12 @@
 <section class="py-5 bg-light">
     <div class="container">
         
-        <!-- Planificateur Personnalisé -->
+        <!-- Planificateur PersonnalisÃ© -->
         <div class="card mb-4 shadow-lg">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-user-cog me-2"></i>
-                    Planificateur Personnalisé - Méthode Evidence-Based
+                    Planificateur PersonnalisÃ© - MÃ©thode Evidence-Based
                 </h3>
             </div>
             <div class="card-body">
@@ -49,52 +49,52 @@
                         </label>
                         <select id="goal" class="form-select form-select-lg border-primary">
                             <option value="">-- Choisir un objectif --</option>
-                            <option value="endurance">Améliorer l'endurance</option>
+                            <option value="endurance">AmÃ©liorer l'endurance</option>
                             <option value="weight">Perdre du poids</option>
                             <option value="speed">Gagner en vitesse</option>
                             <option value="10k">Courir un 10 km</option>
                             <option value="half">Courir un semi-marathon</option>
                             <option value="marathon">Courir un marathon</option>
                         </select>
-                        <small class="text-muted">Sélectionnez votre objectif principal</small>
+                        <small class="text-muted">SÃ©lectionnez votre objectif principal</small>
                     </div>
                     <div class="col-md-6">
                         <label for="experience" class="form-label fw-bold">
-                            <i class="fas fa-medal me-2"></i>Niveau d'expérience
+                            <i class="fas fa-medal me-2"></i>Niveau d'expÃ©rience
                         </label>
                         <select id="experience" class="form-select form-select-lg border-primary">
-                            <option value="">-- Sélectionner votre niveau --</option>
-                            <option value="beginner">Débutant (moins de 1 an)</option>
-                            <option value="intermediate">Intermédiaire (1-3 ans)</option>
-                            <option value="advanced">Avancé (plus de 3 ans)</option>
+                            <option value="">-- SÃ©lectionner votre niveau --</option>
+                            <option value="beginner">DÃ©butant (moins de 1 an)</option>
+                            <option value="intermediate">IntermÃ©diaire (1-3 ans)</option>
+                            <option value="advanced">AvancÃ© (plus de 3 ans)</option>
                         </select>
-                        <small class="text-muted">Basé sur votre expérience en course</small>
+                        <small class="text-muted">BasÃ© sur votre expÃ©rience en course</small>
                     </div>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-md-6">
                         <button class="btn btn-primary btn-lg fw-bold w-100" onclick="generatePlan()">
-                            <i class="fas fa-calculator me-2"></i>Générer mon plan personnalisé
+                            <i class="fas fa-calculator me-2"></i>GÃ©nÃ©rer mon plan personnalisÃ©
                         </button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetPlanner()">
-                            <i class="fas fa-redo me-2"></i>Réinitialiser
+                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Résultats du Planificateur -->
+        <!-- RÃ©sultats du Planificateur -->
         <div id="planResults" class="d-none">
-            <!-- Plan Personnalisé -->
+            <!-- Plan PersonnalisÃ© -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-chart-pie me-2"></i>
-                        Recommandation Personnalisée - Distribution Scientifique
+                        Recommandation PersonnalisÃ©e - Distribution Scientifique
                     </h3>
                 </div>
                 <div class="card-body">
@@ -105,7 +105,7 @@
                         </p>
                         <p>
                             <span class="fs-3"><strong class="text-success" id="totalSessions">0</strong></span>
-                            <span class="fs-5"> séances par semaine</span>
+                            <span class="fs-5"> sÃ©ances par semaine</span>
                         </p>
                     </div>
                     
@@ -118,9 +118,9 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="enduranceSessions">0</strong></span>
-                                        <small class="d-block">séances/sem</small>
+                                        <small class="d-block">sÃ©ances/sem</small>
                                     </p>
-                                    <small class="text-muted">60% volume - Base aérobie</small>
+                                    <small class="text-muted">60% volume - Base aÃ©robie</small>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="thresholdSessions">0</strong></span>
-                                        <small class="d-block">séances/sem</small>
+                                        <small class="d-block">sÃ©ances/sem</small>
                                     </p>
                                     <small class="text-muted">20% volume - Tempo/Lactate</small>
                                 </div>
@@ -146,7 +146,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="speedSessions">0</strong></span>
-                                        <small class="d-block">séances/sem</small>
+                                        <small class="d-block">sÃ©ances/sem</small>
                                     </p>
                                     <small class="text-muted">15% volume - VO2max/Neurom.</small>
                                 </div>
@@ -155,35 +155,35 @@
                         <div class="col-md-3">
                             <div class="card border-info h-100">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h6 class="mb-0">Récupération</h6>
+                                    <h6 class="mb-0">RÃ©cupÃ©ration</h6>
                                 </div>
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="recoverySessions">0</strong></span>
-                                        <small class="d-block">séances/sem</small>
+                                        <small class="d-block">sÃ©ances/sem</small>
                                     </p>
-                                    <small class="text-muted">5% volume - Footing régénération</small>
+                                    <small class="text-muted">5% volume - Footing rÃ©gÃ©nÃ©ration</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="alert alert-info mt-3">
-                        <h6><i class="fas fa-info-circle me-2"></i>Distribution Polarisée 80/20</h6>
+                        <h6><i class="fas fa-info-circle me-2"></i>Distribution PolarisÃ©e 80/20</h6>
                         <p class="mb-0">
-                            Ce plan respecte la règle scientifique des ≥80% du volume en zones 1-2 (faible intensité) 
-                            pour optimiser les adaptations aérobies selon les recherches sur les coureurs élites.
+                            Ce plan respecte la rÃ¨gle scientifique des ≥80% du volume en zones 1-2 (faible intensitÃ©) 
+                            pour optimiser les adaptations aÃ©robies selon les recherches sur les coureurs Ã©lites.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Microcycle Détaillé -->
+            <!-- Microcycle DÃ©taillÃ© -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-info text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-calendar-week me-2"></i>
-                        Microcycle Type Recommandé
+                        Microcycle Type RecommandÃ©
                     </h3>
                 </div>
                 <div class="card-body">
@@ -196,7 +196,7 @@
     </div>
 </section>
 
-<!-- Contenu Éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
         
@@ -205,39 +205,39 @@
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-flask me-2"></i>
-                    Fondements Scientifiques en Course à Pied - Recherches 2024
+                    Fondements Scientifiques en Course Ã Pied - Recherches 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-danger border-0">
                     <h6><i class="fas fa-exclamation-triangle me-2"></i>Position ACSM 2024</h6>
                     <p class="mb-0">
-                        L'entraînement en course à pied doit respecter le principe de distribution polarisée 
-                        avec ≥80% du volume en zones 1-2 pour optimiser les adaptations aérobies.
+                        L'entraînement en course Ã pied doit respecter le principe de distribution polarisÃ©e 
+                        avec ≥80% du volume en zones 1-2 pour optimiser les adaptations aÃ©robies.
                     </p>
                 </div>
                 
                 <p>
-                    Les recommandations s'appuient sur les dernières recherches en biomécanique, physiologie de l'exercice 
-                    et sciences du sport publiées en 2024-2025, incluant la méta-analyse de Van Hooren et al. sur l'économie de course.
+                    Les recommandations s'appuient sur les derniÃ¨res recherches en biomÃ©canique, physiologie de l'exercice 
+                    et sciences du sport publiÃ©es en 2024-2025, incluant la mÃ©ta-analyse de Van Hooren et al. sur l'Ã©conomie de course.
                 </p>
                 
                 <div class="alert alert-info border-0">
-                    <h6><i class="fas fa-lightbulb me-2"></i>Découverte majeure 2024</h6>
+                    <h6><i class="fas fa-lightbulb me-2"></i>DÃ©couverte majeure 2024</h6>
                     <p class="mb-0">
-                        Les variables biomécaniques expliquent 4-12% de la variance dans l'économie de course. 
-                        La règle 80/20 reste le standard : ≥80% du volume en basse intensité chez les élites.
+                        Les variables biomÃ©caniques expliquent 4-12% de la variance dans l'Ã©conomie de course. 
+                        La rÃ¨gle 80/20 reste le standard : ≥80% du volume en basse intensitÃ© chez les Ã©lites.
                     </p>
                 </div>
 
                 <div class="row g-4 mt-3">
                     <div class="col-md-6">
-                        <h6>Distribution d'Intensité Élite (Recherche 2024)</h6>
+                        <h6>Distribution d'IntensitÃ© Ã©lite (Recherche 2024)</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Catégorie</th>
+                                        <th>CatÃ©gorie</th>
                                         <th>Zone 1-2</th>
                                         <th>Zone 3</th>
                                         <th>Zone 4-5</th>
@@ -246,28 +246,28 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-success">
-                                        <td><strong>Marathon Élite</strong></td>
+                                        <td><strong>Marathon Ã©lite</strong></td>
                                         <td>85%</td>
                                         <td>10%</td>
                                         <td>5%</td>
                                         <td>160-220km</td>
                                     </tr>
                                     <tr class="table-warning">
-                                        <td>5000-10000m Élite</td>
+                                        <td>5000-10000m Ã©lite</td>
                                         <td>80%</td>
                                         <td>12%</td>
                                         <td>8%</td>
                                         <td>130-190km</td>
                                     </tr>
                                     <tr class="table-info">
-                                        <td>Amateur Avancé</td>
+                                        <td>Amateur AvancÃ©</td>
                                         <td>75%</td>
                                         <td>15%</td>
                                         <td>10%</td>
                                         <td>60-100km</td>
                                     </tr>
                                     <tr>
-                                        <td>Amateur Intermédiaire</td>
+                                        <td>Amateur IntermÃ©diaire</td>
                                         <td>70%</td>
                                         <td>20%</td>
                                         <td>10%</td>
@@ -278,79 +278,79 @@
                         </div>
                         <p class="small text-muted">
                             Source : Analyse de coureurs de classe mondiale (2024). 
-                            Distribution polarisée vs pyramidale montre des résultats similaires pour l'élite.
+                            Distribution polarisÃ©e vs pyramidale montre des rÃ©sultats similaires pour l'Ã©lite.
                         </p>
                     </div>
 
                     <div class="col-md-6">
-                        <h6>Caractéristiques Physiologiques Élites</h6>
+                        <h6>CaractÃ©ristiques Physiologiques Ã©lites</h6>
                         <ul class="small">
                             <li><strong>VO2max :</strong> 70-85 ml/kg/min (hommes), 60-75 (femmes)</li>
-                            <li><strong>Économie course :</strong> 150-190 ml O2/kg/km</li>
+                            <li><strong>Ã©conomie course :</strong> 150-190 ml O2/kg/km</li>
                             <li><strong>Seuil lactique :</strong> 85-95% VO2max</li>
-                            <li><strong>Fréquence :</strong> 11-14 séances/semaine</li>
-                            <li><strong>Compétitions :</strong> 6±2 (marathon), 9±3 (piste) par an</li>
+                            <li><strong>FrÃ©quence :</strong> 11-14 sÃ©ances/semaine</li>
+                            <li><strong>CompÃ©titions :</strong> 6±2 (marathon), 9±3 (piste) par an</li>
                         </ul>
                         
                         <div class="alert alert-warning">
                             <small>
-                                <strong>Innovation 2024 :</strong> Les tests métaboliques portables (lactate, VO2) 
-                                permettent une détermination précise des zones individuelles en temps réel.
+                                <strong>Innovation 2024 :</strong> Les tests mÃ©taboliques portables (lactate, VO2) 
+                                permettent une dÃ©termination prÃ©cise des zones individuelles en temps rÃ©el.
                             </small>
                         </div>
 
                         <h6 class="mt-3">Facteurs Limitants Performance</h6>
                         <ul class="small">
-                            <li><strong>Cardiovasculaire :</strong> Débit cardiaque maximal (40-50%)</li>
-                            <li><strong>Respiratoire :</strong> Diffusion alvéolo-capillaire (15-20%)</li>
-                            <li><strong>Métabolique :</strong> Densité mitochondriale (20-25%)</li>
-                            <li><strong>Biomécanique :</strong> Économie gestuelle (10-15%)</li>
-                            <li><strong>Neuromusculaire :</strong> Rigidité tendineuse (5-10%)</li>
+                            <li><strong>Cardiovasculaire :</strong> DÃ©bit cardiaque maximal (40-50%)</li>
+                            <li><strong>Respiratoire :</strong> Diffusion alvÃ©olo-capillaire (15-20%)</li>
+                            <li><strong>MÃ©tabolique :</strong> DensitÃ© mitochondriale (20-25%)</li>
+                            <li><strong>BiomÃ©canique :</strong> Ã©conomie gestuelle (10-15%)</li>
+                            <li><strong>Neuromusculaire :</strong> RigiditÃ© tendineuse (5-10%)</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Biomécanique et Économie de Course -->
+        <!-- BiomÃ©canique et Ã©conomie de Course -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-running me-2"></i>
-                    Biomécanique et Économie de Course - Recherches 2024
+                    BiomÃ©canique et Ã©conomie de Course - Recherches 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Facteurs Biomécaniques Clés (Méta-analyse 2024)</h6>
+                        <h6>Facteurs BiomÃ©caniques ClÃ©s (MÃ©ta-analyse 2024)</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Variable</th>
-                                        <th>Corrélation</th>
+                                        <th>CorrÃ©lation</th>
                                         <th>Impact Performance</th>
                                         <th>Optimum</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Fréquence de foulée</td>
+                                        <td>FrÃ©quence de foulÃ©e</td>
                                         <td>r = -0.20</td>
-                                        <td>↑ Fréquence = ↓ Coût énergétique</td>
+                                        <td>↑ FrÃ©quence = ↓ Coût Ã©nergÃ©tique</td>
                                         <td>170-190 pas/min</td>
                                     </tr>
                                     <tr>
                                         <td>Oscillation verticale</td>
                                         <td>r = 0.35</td>
-                                        <td>↓ Oscillation = ↑ Efficacité</td>
-                                        <td>&lt;8cm à 12km/h</td>
+                                        <td>↓ Oscillation = ↑ EfficacitÃ©</td>
+                                        <td>&lt;8cm Ã 12km/h</td>
                                     </tr>
                                     <tr>
-                                        <td>Rigidité jambe</td>
+                                        <td>RigiditÃ© jambe</td>
                                         <td>r = -0.28</td>
-                                        <td>↑ Rigidité = ↓ Coût énergétique</td>
+                                        <td>↑ RigiditÃ© = ↓ Coût Ã©nergÃ©tique</td>
                                         <td>20-30 kN/m</td>
                                     </tr>
                                     <tr>
@@ -362,54 +362,54 @@
                                     <tr>
                                         <td>Angle attaque pied</td>
                                         <td>r = 0.22</td>
-                                        <td>↓ Angle = ↑ Économie</td>
+                                        <td>↓ Angle = ↑ Ã©conomie</td>
                                         <td>0-8° (avant-pied)</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <h6 class="mt-3">Paramètres de Foulée Optimaux</h6>
+                        <h6 class="mt-3">ParamÃ¨tres de FoulÃ©e Optimaux</h6>
                         <ul class="small">
-                            <li><strong>Longueur foulée :</strong> Auto-sélection naturelle optimale</li>
-                            <li><strong>Largeur foulée :</strong> 5-10cm entre pieds</li>
-                            <li><strong>Position pied :</strong> Sous centre gravité corporel</li>
+                            <li><strong>Longueur foulÃ©e :</strong> Auto-sÃ©lection naturelle optimale</li>
+                            <li><strong>Largeur foulÃ©e :</strong> 5-10cm entre pieds</li>
+                            <li><strong>Position pied :</strong> Sous centre gravitÃ© corporel</li>
                             <li><strong>Flexion genou :</strong> 40-50° au contact initial</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6>Technologies d'Analyse Biomécanique 2024</h6>
+                        <h6>Technologies d'Analyse BiomÃ©canique 2024</h6>
                         <ul class="small">
-                            <li><strong>Capteurs inertiels 3D :</strong> Analyse biomécanique temps réel portable</li>
-                            <li><strong>Plateformes force :</strong> Mesure forces réaction sol précise</li>
-                            <li><strong>Caméras haute vitesse :</strong> 1000+ fps analyse gestuelle</li>
-                            <li><strong>Wearables avancés :</strong> Métriques oscillation/rigidité</li>
-                            <li><strong>IA analyse foulée :</strong> Correction technique automatisée</li>
+                            <li><strong>Capteurs inertiels 3D :</strong> Analyse biomÃ©canique temps rÃ©el portable</li>
+                            <li><strong>Plateformes force :</strong> Mesure forces rÃ©action sol prÃ©cise</li>
+                            <li><strong>CamÃ©ras haute vitesse :</strong> 1000+ fps analyse gestuelle</li>
+                            <li><strong>Wearables avancÃ©s :</strong> MÃ©triques oscillation/rigiditÃ©</li>
+                            <li><strong>IA analyse foulÃ©e :</strong> Correction technique automatisÃ©e</li>
                             <li><strong>Capteurs puissance :</strong> Quantification charge externe (Stryd)</li>
                         </ul>
                         
                         <div class="alert alert-success">
                             <small>
-                                <strong>Application pratique :</strong> L'augmentation de 5-10% de la fréquence 
-                                vers l'optimum individuel améliore l'économie de course de 2-4%.
+                                <strong>Application pratique :</strong> L'augmentation de 5-10% de la frÃ©quence 
+                                vers l'optimum individuel amÃ©liore l'Ã©conomie de course de 2-4%.
                             </small>
                         </div>
 
-                        <h6 class="mt-3">Analyse Gestuelle Spécialisée</h6>
+                        <h6 class="mt-3">Analyse Gestuelle SpÃ©cialisÃ©e</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Phase</th>
-                                        <th>Durée (%)</th>
-                                        <th>Événements Clés</th>
+                                        <th>DurÃ©e (%)</th>
+                                        <th>Ã©vÃ©nements ClÃ©s</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Contact initial</td>
                                         <td>0%</td>
-                                        <td>Attaque pied, début amortissement</td>
+                                        <td>Attaque pied, dÃ©but amortissement</td>
                                     </tr>
                                     <tr>
                                         <td>Phase d'appui</td>
@@ -419,12 +419,12 @@
                                     <tr>
                                         <td>Phase propulsion</td>
                                         <td>40-60%</td>
-                                        <td>Génération force, push-off</td>
+                                        <td>GÃ©nÃ©ration force, push-off</td>
                                     </tr>
                                     <tr>
-                                        <td>Phase aérienne</td>
+                                        <td>Phase aÃ©rienne</td>
                                         <td>60-100%</td>
-                                        <td>Vol, récupération jambe</td>
+                                        <td>Vol, rÃ©cupÃ©ration jambe</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -439,13 +439,13 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-tachometer-alt me-2"></i>
-                    Zones d'Entraînement Basées sur la Science
+                    Zones d'Entraînement BasÃ©es sur la Science
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Modèle 5 Zones Validé (Coggan/Seiler)</h6>
+                        <h6>ModÃ¨le 5 Zones ValidÃ© (Coggan/Seiler)</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -463,21 +463,21 @@
                                         <td>65-75%</td>
                                         <td>45-65%</td>
                                         <td>&lt; 2</td>
-                                        <td>Récupération active</td>
+                                        <td>RÃ©cupÃ©ration active</td>
                                     </tr>
                                     <tr class="table-info">
                                         <td><strong>Zone 2</strong></td>
                                         <td>75-85%</td>
                                         <td>65-80%</td>
                                         <td>2-3</td>
-                                        <td>Base aérobie, fat-max</td>
+                                        <td>Base aÃ©robie, fat-max</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>Zone 3</td>
                                         <td>85-90%</td>
                                         <td>80-87%</td>
                                         <td>3-4</td>
-                                        <td>Tempo, seuil aérobie</td>
+                                        <td>Tempo, seuil aÃ©robie</td>
                                     </tr>
                                     <tr class="table-danger">
                                         <td>Zone 4</td>
@@ -491,35 +491,35 @@
                                         <td>&gt; 95%</td>
                                         <td>&gt; 95%</td>
                                         <td>&gt; 6</td>
-                                        <td>Puissance anaérobie</td>
+                                        <td>Puissance anaÃ©robie</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <h6 class="mt-3">Détermination Zones Individuelles</h6>
+                        <h6 class="mt-3">DÃ©termination Zones Individuelles</h6>
                         <ul class="small">
                             <li><strong>Test terrain :</strong> Test 30min all-out (seuil 95%)</li>
                             <li><strong>Test lactate :</strong> Paliers progressifs + dosage</li>
-                            <li><strong>Test VO2max :</strong> Laboratoire spirométrie</li>
-                            <li><strong>HRV analyse :</strong> Variabilité cardiaque repos</li>
+                            <li><strong>Test VO2max :</strong> Laboratoire spiromÃ©trie</li>
+                            <li><strong>HRV analyse :</strong> VariabilitÃ© cardiaque repos</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6>Zone 2 : La Révolution Métabolique 2024</h6>
-                        <p class="small">La Zone 2 correspond à l'intensité de combustion maximale des graisses (FatMax) et d'équilibre lactate.</p>
+                        <h6>Zone 2 : La RÃ©volution MÃ©tabolique 2024</h6>
+                        <p class="small">La Zone 2 correspond Ã l'intensitÃ© de combustion maximale des graisses (FatMax) et d'Ã©quilibre lactate.</p>
                         <ul class="small">
-                            <li><strong>Détermination précise :</strong> Test métabolique (étalon-or)</li>
-                            <li><strong>Caractéristique :</strong> État stable production/élimination lactate</li>
-                            <li><strong>Adaptation cellulaire :</strong> Optimisation biogenèse mitochondriale</li>
-                            <li><strong>Durée optimale :</strong> 45-90 minutes en continu</li>
-                            <li><strong>Fréquence :</strong> 3-5x/semaine selon niveau</li>
+                            <li><strong>DÃ©termination prÃ©cise :</strong> Test mÃ©tabolique (Ã©talon-or)</li>
+                            <li><strong>CaractÃ©ristique :</strong> Ã©tat stable production/Ã©limination lactate</li>
+                            <li><strong>Adaptation cellulaire :</strong> Optimisation biogenÃ¨se mitochondriale</li>
+                            <li><strong>DurÃ©e optimale :</strong> 45-90 minutes en continu</li>
+                            <li><strong>FrÃ©quence :</strong> 3-5x/semaine selon niveau</li>
                         </ul>
                         
                         <div class="alert alert-warning">
                             <small>
-                                <strong>Note importante :</strong> Pour les coureurs débutants, 
-                                la Zone 2 peut nécessiter des phases de marche-course alternées (run-walk).
+                                <strong>Note importante :</strong> Pour les coureurs dÃ©butants, 
+                                la Zone 2 peut nÃ©cessiter des phases de marche-course alternÃ©es (run-walk).
                             </small>
                         </div>
 
@@ -528,7 +528,7 @@
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Paramètre</th>
+                                        <th>ParamÃ¨tre</th>
                                         <th>Valeur Zone 2</th>
                                         <th>Adaptation</th>
                                     </tr>
@@ -542,17 +542,17 @@
                                     <tr>
                                         <td>Lactate sanguin</td>
                                         <td>2.0±0.5 mmol/L</td>
-                                        <td>Équilibre production/clairance</td>
+                                        <td>Ã©quilibre production/clairance</td>
                                     </tr>
                                     <tr>
-                                        <td>Efficacité cardiaque</td>
-                                        <td>Volume éjection ↑</td>
+                                        <td>EfficacitÃ© cardiaque</td>
+                                        <td>Volume Ã©jection ↑</td>
                                         <td>Adaptation cardiovasculaire</td>
                                     </tr>
                                     <tr>
-                                        <td>Densité mitochondriale</td>
-                                        <td>Biogenèse ↑</td>
-                                        <td>Capacité oxydative ↑</td>
+                                        <td>DensitÃ© mitochondriale</td>
+                                        <td>BiogenÃ¨se ↑</td>
+                                        <td>CapacitÃ© oxydative ↑</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -562,12 +562,12 @@
             </div>
         </div>
 
-        <!-- Méthodes d'Entraînement Modernes -->
+        <!-- MÃ©thodes d'Entraînement Modernes -->
         <div class="card mb-4">
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-rocket me-2"></i>
-                    Méthodes d'Entraînement Innovantes 2024
+                    MÃ©thodes d'Entraînement Innovantes 2024
                 </h3>
             </div>
             <div class="card-body">
@@ -575,24 +575,24 @@
                     <div class="col-md-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Entraînement Polarisé</h6>
+                                <h6 class="mb-0">Entraînement PolarisÃ©</h6>
                                 <small>(Evidence-Based)</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>Répartition :</strong> 80% Volume Zone 1-2</li>
-                                    <li><strong>Intensité :</strong> 20% Volume Zone 4-5</li>
+                                    <li><strong>RÃ©partition :</strong> 80% Volume Zone 1-2</li>
+                                    <li><strong>IntensitÃ© :</strong> 20% Volume Zone 4-5</li>
                                     <li><strong>Zone 3 :</strong> Minimum ("no man's land")</li>
-                                    <li><strong>Séances intensité :</strong> 2-3 max/semaine</li>
-                                    <li><strong>Récupération :</strong> Complète entre intensités</li>
+                                    <li><strong>SÃ©ances intensitÃ© :</strong> 2-3 max/semaine</li>
+                                    <li><strong>RÃ©cupÃ©ration :</strong> ComplÃ¨te entre intensitÃ©s</li>
                                 </ul>
                                 
-                                <h6 class="mt-3">Bénéfices Scientifiques</h6>
+                                <h6 class="mt-3">BÃ©nÃ©fices Scientifiques</h6>
                                 <ul class="small">
                                     <li>↑ VO2max (+8-15% vs traditionnel)</li>
-                                    <li>↑ Économie course (+3-7%)</li>
+                                    <li>↑ Ã©conomie course (+3-7%)</li>
                                     <li>↓ Risque blessures (-30%)</li>
-                                    <li>↑ Capacité tampons lactate</li>
+                                    <li>↑ CapacitÃ© tampons lactate</li>
                                 </ul>
                             </div>
                         </div>
@@ -600,19 +600,19 @@
                     <div class="col-md-4">
                         <div class="card border-info h-100">
                             <div class="card-header bg-info text-white">
-                                <h6 class="mb-0">Micro-Dosage Haute Intensité</h6>
+                                <h6 class="mb-0">Micro-Dosage Haute IntensitÃ©</h6>
                                 <small>(Tendance 2024)</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>Durée :</strong> Séances courtes haute qualité</li>
-                                    <li><strong>Format :</strong> 4-6 x 30s à 95-100% VMA</li>
-                                    <li><strong>Récupération :</strong> Complète (2-3 min)</li>
-                                    <li><strong>Fréquence :</strong> 2-3x/semaine développement neuromusculaire</li>
-                                    <li><strong>Objectif :</strong> Puissance anaérobie + économie</li>
+                                    <li><strong>DurÃ©e :</strong> SÃ©ances courtes haute qualitÃ©</li>
+                                    <li><strong>Format :</strong> 4-6 x 30s Ã 95-100% VMA</li>
+                                    <li><strong>RÃ©cupÃ©ration :</strong> ComplÃ¨te (2-3 min)</li>
+                                    <li><strong>FrÃ©quence :</strong> 2-3x/semaine dÃ©veloppement neuromusculaire</li>
+                                    <li><strong>Objectif :</strong> Puissance anaÃ©robie + Ã©conomie</li>
                                 </ul>
                                 
-                                <h6 class="mt-3">Protocoles Spécifiques</h6>
+                                <h6 class="mt-3">Protocoles SpÃ©cifiques</h6>
                                 <ul class="small">
                                     <li><strong>15/15 :</strong> 15s ON/15s OFF x 12-20</li>
                                     <li><strong>30/30 :</strong> 30s Z5/30s Z1 x 8-15</li>
@@ -630,18 +630,18 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>Altitude simulée :</strong> Masques/chambres hypoxiques</li>
+                                    <li><strong>Altitude simulÃ©e :</strong> Masques/chambres hypoxiques</li>
                                     <li><strong>Protocole :</strong> "Live High, Train Low"</li>
-                                    <li><strong>Adaptation :</strong> ↑ Hématocrite, EPO naturelle</li>
-                                    <li><strong>Durée :</strong> 2-4 semaines minimum</li>
-                                    <li><strong>Bénéfice :</strong> ↑ Transport O2 (+2-5%)</li>
+                                    <li><strong>Adaptation :</strong> ↑ HÃ©matocrite, EPO naturelle</li>
+                                    <li><strong>DurÃ©e :</strong> 2-4 semaines minimum</li>
+                                    <li><strong>BÃ©nÃ©fice :</strong> ↑ Transport O2 (+2-5%)</li>
                                 </ul>
                                 
                                 <h6 class="mt-3">Technologies Disponibles</h6>
                                 <ul class="small">
-                                    <li><strong>Hypoxico Altitude :</strong> Générateurs hypoxie</li>
-                                    <li><strong>Training Mask :</strong> Résistance respiratoire</li>
-                                    <li><strong>Chambres altitude :</strong> Environnement contrôlé</li>
+                                    <li><strong>Hypoxico Altitude :</strong> GÃ©nÃ©rateurs hypoxie</li>
+                                    <li><strong>Training Mask :</strong> RÃ©sistance respiratoire</li>
+                                    <li><strong>Chambres altitude :</strong> Environnement contrôlÃ©</li>
                                     <li><strong>IHT (Intermittent) :</strong> Cycles hypoxie/normoxie</li>
                                 </ul>
                             </div>
@@ -651,15 +651,15 @@
 
                 <div class="row g-4 mt-3">
                     <div class="col-md-6">
-                        <h6>Entraînement Croisé Spécialisé</h6>
+                        <h6>Entraînement CroisÃ© SpÃ©cialisÃ©</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Activité</th>
-                                        <th>Bénéfice</th>
-                                        <th>Fréquence</th>
-                                        <th>Intensité</th>
+                                        <th>ActivitÃ©</th>
+                                        <th>BÃ©nÃ©fice</th>
+                                        <th>FrÃ©quence</th>
+                                        <th>IntensitÃ©</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -670,8 +670,8 @@
                                         <td>Z2-Z3</td>
                                     </tr>
                                     <tr>
-                                        <td>Vélo</td>
-                                        <td>Capacité cardiovasculaire</td>
+                                        <td>VÃ©lo</td>
+                                        <td>CapacitÃ© cardiovasculaire</td>
                                         <td>1-2x/sem</td>
                                         <td>Z2-Z4</td>
                                     </tr>
@@ -683,7 +683,7 @@
                                     </tr>
                                     <tr>
                                         <td>Natation</td>
-                                        <td>Récupération active</td>
+                                        <td>RÃ©cupÃ©ration active</td>
                                         <td>1x/sem</td>
                                         <td>Z1-Z2</td>
                                     </tr>
@@ -692,18 +692,18 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Périodisation Moderne Avancée</h6>
+                        <h6>PÃ©riodisation Moderne AvancÃ©e</h6>
                         <ul class="small">
-                            <li><strong>Block Periodization :</strong> Blocs spécialisés 3-6 sem</li>
-                            <li><strong>Reverse Periodization :</strong> Intensité → Volume</li>
-                            <li><strong>Conjugate Method :</strong> Stimuli simultanés variés</li>
+                            <li><strong>Block Periodization :</strong> Blocs spÃ©cialisÃ©s 3-6 sem</li>
+                            <li><strong>Reverse Periodization :</strong> IntensitÃ© → Volume</li>
+                            <li><strong>Conjugate Method :</strong> Stimuli simultanÃ©s variÃ©s</li>
                             <li><strong>Auto-Regulated :</strong> Ajustement quotidien HRV</li>
                         </ul>
                         
                         <div class="alert alert-info">
                             <small>
-                                <strong>Recommandation 2024 :</strong> La périodisation par blocs 
-                                montre des résultats supérieurs (+12%) vs périodisation linéaire traditionnelle.
+                                <strong>Recommandation 2024 :</strong> La pÃ©riodisation par blocs 
+                                montre des rÃ©sultats supÃ©rieurs (+12%) vs pÃ©riodisation linÃ©aire traditionnelle.
                             </small>
                         </div>
                     </div>
@@ -711,25 +711,25 @@
             </div>
         </div>
 
-        <!-- Nutrition Spécialisée Course -->
+        <!-- Nutrition SpÃ©cialisÃ©e Course -->
         <div class="card mb-4">
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-utensils me-2"></i>
-                    Nutrition Course à Pied - Spécificités 2024
+                    Nutrition Course Ã Pied - SpÃ©cificitÃ©s 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Stratégies Pré-Effort Optimisées</h6>
+                        <h6>StratÃ©gies PrÃ©-Effort OptimisÃ©es</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Timing</th>
                                         <th>Macronutriment</th>
-                                        <th>Quantité</th>
+                                        <th>QuantitÃ©</th>
                                         <th>Objectif Physiologique</th>
                                     </tr>
                                 </thead>
@@ -738,13 +738,13 @@
                                         <td>3-4h avant</td>
                                         <td>Glucides</td>
                                         <td>2-4g/kg</td>
-                                        <td>Saturation glycogène hépatique</td>
+                                        <td>Saturation glycogÃ¨ne hÃ©patique</td>
                                     </tr>
                                     <tr>
                                         <td>1-2h avant</td>
                                         <td>Glucides</td>
                                         <td>30-60g</td>
-                                        <td>Maintien glycémie</td>
+                                        <td>Maintien glycÃ©mie</td>
                                     </tr>
                                     <tr>
                                         <td>2h avant</td>
@@ -754,7 +754,7 @@
                                     </tr>
                                     <tr>
                                         <td>30-60min avant</td>
-                                        <td>Caféine</td>
+                                        <td>CafÃ©ine</td>
                                         <td>3-6mg/kg</td>
                                         <td>Performance + vigilance</td>
                                     </tr>
@@ -762,7 +762,7 @@
                                         <td>15min avant</td>
                                         <td>Nitrates</td>
                                         <td>5-9mmol</td>
-                                        <td>↑ Efficacité mitochondriale</td>
+                                        <td>↑ EfficacitÃ© mitochondriale</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -770,30 +770,30 @@
                         
                         <h6 class="mt-3">Pendant l'Effort (≥ 60min)</h6>
                         <ul class="small">
-                            <li><strong>Glucides :</strong> 30-60g/heure selon durée effort</li>
+                            <li><strong>Glucides :</strong> 30-60g/heure selon durÃ©e effort</li>
                             <li><strong>Multi-transporteurs :</strong> Glucose:Fructose 2:1</li>
                             <li><strong>Boisson isotonique :</strong> 4-8% glucides concentration</li>
-                            <li><strong>Hydratation :</strong> 150-250ml/15-20min réguliers</li>
-                            <li><strong>Électrolytes :</strong> Sodium 200-700mg/L selon sudation</li>
+                            <li><strong>Hydratation :</strong> 150-250ml/15-20min rÃ©guliers</li>
+                            <li><strong>Ã©lectrolytes :</strong> Sodium 200-700mg/L selon sudation</li>
                         </ul>
 
-                        <h6 class="mt-3">Stratégies Spécialisées</h6>
+                        <h6 class="mt-3">StratÃ©gies SpÃ©cialisÃ©es</h6>
                         <ul class="small">
                             <li><strong>Fat adaptation :</strong> 2-3 semaines keto + recharge CHO</li>
-                            <li><strong>Train low, compete high :</strong> Périodisation glucides</li>
+                            <li><strong>Train low, compete high :</strong> PÃ©riodisation glucides</li>
                             <li><strong>Fasted training :</strong> Zone 2 optimisation</li>
-                            <li><strong>Sleep low :</strong> Coucher glycogène bas</li>
+                            <li><strong>Sleep low :</strong> Coucher glycogÃ¨ne bas</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6>Récupération Nutritionnelle Optimisée</h6>
+                        <h6>RÃ©cupÃ©ration Nutritionnelle OptimisÃ©e</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Timing</th>
                                         <th>Nutriment</th>
-                                        <th>Quantité</th>
+                                        <th>QuantitÃ©</th>
                                         <th>Objectif</th>
                                     </tr>
                                 </thead>
@@ -802,13 +802,13 @@
                                         <td>0-30min</td>
                                         <td>Glucides</td>
                                         <td>1-1.2g/kg</td>
-                                        <td>Resynthèse glycogène rapide</td>
+                                        <td>ResynthÃ¨se glycogÃ¨ne rapide</td>
                                     </tr>
                                     <tr>
                                         <td>0-30min</td>
-                                        <td>Protéines</td>
+                                        <td>ProtÃ©ines</td>
                                         <td>20-25g (leucine 3g)</td>
-                                        <td>Synthèse protéique (mTOR)</td>
+                                        <td>SynthÃ¨se protÃ©ique (mTOR)</td>
                                     </tr>
                                     <tr>
                                         <td>0-60min</td>
@@ -818,7 +818,7 @@
                                     </tr>
                                     <tr>
                                         <td>Continu</td>
-                                        <td>Réhydratation</td>
+                                        <td>RÃ©hydratation</td>
                                         <td>150% poids perdu</td>
                                         <td>Restauration volume plasmatique</td>
                                     </tr>
@@ -828,17 +828,17 @@
                         
                         <div class="alert alert-info">
                             <small>
-                                <strong>Découverte 2024 :</strong> La fenêtre anabolique post-exercice 
-                                est plus longue qu'estimé (2-3h), mais l'optimisation reste cruciale dans les 30min.
+                                <strong>DÃ©couverte 2024 :</strong> La fenêtre anabolique post-exercice 
+                                est plus longue qu'estimÃ© (2-3h), mais l'optimisation reste cruciale dans les 30min.
                             </small>
                         </div>
                         
-                        <h6 class="mt-3">Supplémentation Evidence-Based Coureurs</h6>
+                        <h6 class="mt-3">SupplÃ©mentation Evidence-Based Coureurs</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>Supplément</th>
+                                        <th>SupplÃ©ment</th>
                                         <th>Dosage</th>
                                         <th>Effet Performance</th>
                                         <th>Niveau Preuve</th>
@@ -846,7 +846,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Caféine</td>
+                                        <td>CafÃ©ine</td>
                                         <td>3-6mg/kg</td>
                                         <td>↑ 2-4% endurance</td>
                                         <td>⭐⭐⭐⭐⭐</td>
@@ -854,7 +854,7 @@
                                     <tr>
                                         <td>Nitrates (betterave)</td>
                                         <td>5-9mmol</td>
-                                        <td>↑ 1-3% économie</td>
+                                        <td>↑ 1-3% Ã©conomie</td>
                                         <td>⭐⭐⭐⭐</td>
                                     </tr>
                                     <tr>
@@ -866,13 +866,13 @@
                                     <tr>
                                         <td>Bicarbonate Na</td>
                                         <td>0.3g/kg</td>
-                                        <td>↑ Capacité tampon</td>
+                                        <td>↑ CapacitÃ© tampon</td>
                                         <td>⭐⭐⭐</td>
                                     </tr>
                                     <tr>
-                                        <td>Créatine</td>
+                                        <td>CrÃ©atine</td>
                                         <td>3-5g/jour</td>
-                                        <td>↑ Sprints répétés</td>
+                                        <td>↑ Sprints rÃ©pÃ©tÃ©s</td>
                                         <td>⭐⭐⭐</td>
                                     </tr>
                                 </tbody>
@@ -883,41 +883,41 @@
                         <ul class="small">
                             <li><strong>Fer :</strong> 15-20mg/jour (femmes), monitoring ferritine</li>
                             <li><strong>Vitamine D :</strong> 1000-4000 UI/jour selon statut</li>
-                            <li><strong>B12 :</strong> 2.4μg/jour minimum (végétaliens)</li>
-                            <li><strong>Magnésium :</strong> 400-600mg/jour (crampes, récupération)</li>
-                            <li><strong>Zinc :</strong> 8-15mg/jour (immunité, récupération)</li>
+                            <li><strong>B12 :</strong> 2.4μg/jour minimum (vÃ©gÃ©taliens)</li>
+                            <li><strong>MagnÃ©sium :</strong> 400-600mg/jour (crampes, rÃ©cupÃ©ration)</li>
+                            <li><strong>Zinc :</strong> 8-15mg/jour (immunitÃ©, rÃ©cupÃ©ration)</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Prévention des Blessures -->
+        <!-- PrÃ©vention des Blessures -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    Prévention des Blessures en Course à Pied
+                    PrÃ©vention des Blessures en Course Ã Pied
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-warning border-0">
-                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Statistiques clés 2024</h6>
+                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Statistiques clÃ©s 2024</h6>
                     <p class="mb-0">
-                        72% des blessures en triathlon proviennent de la course à pied. 
+                        72% des blessures en triathlon proviennent de la course Ã pied. 
                         Incidence annuelle : 37-56% des coureurs se blessent, avec 2.5-33 blessures pour 1000h d'entraînement.
                     </p>
                 </div>
                 
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <h6>Blessures les Plus Fréquentes (Prévalence %)</h6>
+                        <h6>Blessures les Plus FrÃ©quentes (PrÃ©valence %)</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Blessure</th>
-                                        <th>Prévalence</th>
+                                        <th>PrÃ©valence</th>
                                         <th>Zone Anatomique</th>
                                         <th>Facteur Principal</th>
                                     </tr>
@@ -926,37 +926,37 @@
                                     <tr>
                                         <td>Syndrome essuie-glace (ITB)</td>
                                         <td><strong>12%</strong></td>
-                                        <td>Genou latéral</td>
+                                        <td>Genou latÃ©ral</td>
                                         <td>Faiblesse hanche</td>
                                     </tr>
                                     <tr>
                                         <td>Fasciite plantaire</td>
                                         <td><strong>10%</strong></td>
                                         <td>Pied</td>
-                                        <td>Surcharge, rigidité</td>
+                                        <td>Surcharge, rigiditÃ©</td>
                                     </tr>
                                     <tr>
-                                        <td>Périostite tibiale</td>
+                                        <td>PÃ©riostite tibiale</td>
                                         <td><strong>9%</strong></td>
                                         <td>Jambe</td>
                                         <td>Progression rapide</td>
                                     </tr>
                                     <tr>
-                                        <td>Syndrome fémoro-patellaire</td>
+                                        <td>Syndrome fÃ©moro-patellaire</td>
                                         <td><strong>8%</strong></td>
-                                        <td>Genou antérieur</td>
-                                        <td>Déséquilibre quadriceps</td>
+                                        <td>Genou antÃ©rieur</td>
+                                        <td>DÃ©sÃ©quilibre quadriceps</td>
                                     </tr>
                                     <tr>
                                         <td>Tendinopathie Achille</td>
                                         <td><strong>7%</strong></td>
-                                        <td>Cheville postérieure</td>
+                                        <td>Cheville postÃ©rieure</td>
                                         <td>Raideur mollets</td>
                                     </tr>
                                     <tr>
                                         <td>Fractures de stress</td>
                                         <td>5%</td>
-                                        <td>Tibia, métatarses</td>
+                                        <td>Tibia, mÃ©tatarses</td>
                                         <td>Charge excessive</td>
                                     </tr>
                                 </tbody>
@@ -964,49 +964,49 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Stratégies Préventives Evidence-Based 2024</h6>
+                        <h6>StratÃ©gies PrÃ©ventives Evidence-Based 2024</h6>
                         <ul class="small">
-                            <li><strong>Progression contrôlée :</strong> Règle 10% volume/semaine max</li>
-                            <li><strong>Renforcement spécifique :</strong> Hanches, core, mollets quotidien</li>
-                            <li><strong>Variété surfaces :</strong> Rotation bitume/terre/piste</li>
-                            <li><strong>Chaussures adaptées :</strong> Rotation 2-3 paires différentes</li>
-                            <li><strong>Analyse biomécanique :</strong> Évaluation foulée annuelle</li>
+                            <li><strong>Progression contrôlÃ©e :</strong> RÃ¨gle 10% volume/semaine max</li>
+                            <li><strong>Renforcement spÃ©cifique :</strong> Hanches, core, mollets quotidien</li>
+                            <li><strong>VariÃ©tÃ© surfaces :</strong> Rotation bitume/terre/piste</li>
+                            <li><strong>Chaussures adaptÃ©es :</strong> Rotation 2-3 paires diffÃ©rentes</li>
+                            <li><strong>Analyse biomÃ©canique :</strong> Ã©valuation foulÃ©e annuelle</li>
                             <li><strong>Monitoring charge :</strong> Ratio aigu:chronique &lt;1.5</li>
-                            <li><strong>Récupération programmée :</strong> Semaines décharge régulières</li>
+                            <li><strong>RÃ©cupÃ©ration programmÃ©e :</strong> Semaines dÃ©charge rÃ©guliÃ¨res</li>
                         </ul>
 
-                        <h6 class="mt-3">Tests de Dépistage Recommandés</h6>
+                        <h6 class="mt-3">Tests de DÃ©pistage RecommandÃ©s</h6>
                         <ul class="small">
                             <li><strong>Single Leg Squat :</strong> Contrôle frontal/sagittal</li>
-                            <li><strong>Y-Balance Test :</strong> Stabilité dynamique asymétries</li>
+                            <li><strong>Y-Balance Test :</strong> StabilitÃ© dynamique asymÃ©tries</li>
                             <li><strong>Hop Tests :</strong> Fonction neuromusculaire</li>
-                            <li><strong>Analyse foulée :</strong> Caméra haute vitesse</li>
-                            <li><strong>Tests force isométrique :</strong> Ratios musculaires</li>
+                            <li><strong>Analyse foulÃ©e :</strong> CamÃ©ra haute vitesse</li>
+                            <li><strong>Tests force isomÃ©trique :</strong> Ratios musculaires</li>
                         </ul>
 
                         <div class="alert alert-success">
                             <small>
-                                <strong>Efficacité prouvée :</strong> Les programmes préventifs réduisent 
-                                l'incidence des blessures de 35-50% selon méta-analyses 2024.
+                                <strong>EfficacitÃ© prouvÃ©e :</strong> Les programmes prÃ©ventifs rÃ©duisent 
+                                l'incidence des blessures de 35-50% selon mÃ©ta-analyses 2024.
                             </small>
                         </div>
                     </div>
                 </div>
                 
                 <div class="mt-4">
-                    <h6>Programme Prévention Quotidien (15-20min)</h6>
+                    <h6>Programme PrÃ©vention Quotidien (15-20min)</h6>
                     <div class="row g-2">
                         <div class="col-md-4">
                             <div class="card border-success h-100">
                                 <div class="card-header bg-success text-white">
-                                    <strong>Échauffement Dynamique (15min)</strong>
+                                    <strong>Ã©chauffement Dynamique (15min)</strong>
                                 </div>
                                 <div class="card-body">
                                     <ul class="small">
                                         <li>Activation cardiovasculaire progressive (5min)</li>
-                                        <li>Mobilité articulaire dynamique (5min)</li>
-                                        <li>Gammes coureur spécifiques (5min)</li>
-                                        <li>Progression allure jusqu'à intensité cible</li>
+                                        <li>MobilitÃ© articulaire dynamique (5min)</li>
+                                        <li>Gammes coureur spÃ©cifiques (5min)</li>
+                                        <li>Progression allure jusqu'Ã intensitÃ© cible</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1014,14 +1014,14 @@
                         <div class="col-md-4">
                             <div class="card border-warning h-100">
                                 <div class="card-header bg-warning text-dark">
-                                    <strong>Renforcement Préventif (20min)</strong>
+                                    <strong>Renforcement PrÃ©ventif (20min)</strong>
                                 </div>
                                 <div class="card-body">
                                     <ul class="small">
                                         <li>Squats/Fentes unipodales (force hanches)</li>
                                         <li>Gainage statique/dynamique (core stability)</li>
-                                        <li>Travail proprioception (équilibre)</li>
-                                        <li>Renforcement mollets/tibial antérieur</li>
+                                        <li>Travail proprioception (Ã©quilibre)</li>
+                                        <li>Renforcement mollets/tibial antÃ©rieur</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1029,14 +1029,14 @@
                         <div class="col-md-4">
                             <div class="card border-info h-100">
                                 <div class="card-header bg-info text-white">
-                                    <strong>Récupération Active (15min)</strong>
+                                    <strong>RÃ©cupÃ©ration Active (15min)</strong>
                                 </div>
                                 <div class="card-body">
                                     <ul class="small">
                                         <li>Retour au calme progressif (5min marche)</li>
-                                        <li>Étirements statiques ciblés (5min)</li>
+                                        <li>Ã©tirements statiques ciblÃ©s (5min)</li>
                                         <li>Auto-massage/foam rolling (5min)</li>
-                                        <li>Hydratation + nutrition récupération</li>
+                                        <li>Hydratation + nutrition rÃ©cupÃ©ration</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1045,22 +1045,22 @@
                 </div>
                 
                 <div class="alert alert-danger mt-3">
-                    <h6><i class="fas fa-exclamation-circle me-2"></i>Important - Sécurité</h6>
+                    <h6><i class="fas fa-exclamation-circle me-2"></i>Important - SÃ©curitÃ©</h6>
                     <p class="mb-0">
                         En cas de douleur persistante (&gt;3 jours), de progression stagnante ou de signaux d'alarme, 
-                        consultez un professionnel qualifié (médecin du sport, kinésithérapeute). 
-                        La progression graduelle et l'écoute du corps sont prioritaires sur la performance immédiate.
+                        consultez un professionnel qualifiÃ© (mÃ©decin du sport, kinÃ©sithÃ©rapeute). 
+                        La progression graduelle et l'Ã©coute du corps sont prioritaires sur la performance immÃ©diate.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Conseils Généraux Evidence-Based -->
+        <!-- Conseils GÃ©nÃ©raux Evidence-Based -->
         <div class="card mb-4">
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-lightbulb me-2"></i>
-                    Conseils Généraux Evidence-Based
+                    Conseils GÃ©nÃ©raux Evidence-Based
                 </h3>
             </div>
             <div class="card-body">
@@ -1068,33 +1068,33 @@
                     <div class="col-md-4">
                         <h6>Optimisation Technique</h6>
                         <ul class="small">
-                            <li><strong>Cadence optimale :</strong> 170-190 pas/min (auto-sélection)</li>
-                            <li><strong>Attaque pied :</strong> Médio/avant-pied privilégiée</li>
-                            <li><strong>Posture corporelle :</strong> Légère inclinaison avant</li>
+                            <li><strong>Cadence optimale :</strong> 170-190 pas/min (auto-sÃ©lection)</li>
+                            <li><strong>Attaque pied :</strong> MÃ©dio/avant-pied privilÃ©giÃ©e</li>
+                            <li><strong>Posture corporelle :</strong> LÃ©gÃ¨re inclinaison avant</li>
                             <li><strong>Regard horizontal :</strong> 10-20m devant</li>
-                            <li><strong>Bras décontractés :</strong> Balancier naturel 90°</li>
-                            <li><strong>Éducatifs techniques :</strong> 2-3x/semaine intégrés</li>
+                            <li><strong>Bras dÃ©contractÃ©s :</strong> Balancier naturel 90°</li>
+                            <li><strong>Ã©ducatifs techniques :</strong> 2-3x/semaine intÃ©grÃ©s</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <h6>Programmation Optimale</h6>
                         <ul class="small">
                             <li><strong>Progression volume :</strong> +10% maximum/semaine</li>
-                            <li><strong>Règle 80/20 :</strong> Strictement respectée toute saison</li>
-                            <li><strong>Échauffement obligatoire :</strong> 15-20 min progressif</li>
-                            <li><strong>Récupération active :</strong> 10-15min post-séance</li>
-                            <li><strong>Tests réguliers :</strong> VMA, seuils trimestriels</li>
-                            <li><strong>Périodisation :</strong> Cycles 3-4 semaines + décharge</li>
+                            <li><strong>RÃ¨gle 80/20 :</strong> Strictement respectÃ©e toute saison</li>
+                            <li><strong>Ã©chauffement obligatoire :</strong> 15-20 min progressif</li>
+                            <li><strong>RÃ©cupÃ©ration active :</strong> 10-15min post-sÃ©ance</li>
+                            <li><strong>Tests rÃ©guliers :</strong> VMA, seuils trimestriels</li>
+                            <li><strong>PÃ©riodisation :</strong> Cycles 3-4 semaines + dÃ©charge</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h6>Récupération Optimisée</h6>
+                        <h6>RÃ©cupÃ©ration OptimisÃ©e</h6>
                         <ul class="small">
-                            <li><strong>Sommeil prioritaire :</strong> 7-9h qualité optimale</li>
-                            <li><strong>Hydratation adaptée :</strong> Selon taux sudation individuel</li>
-                            <li><strong>Nutrition ciblée :</strong> Périodisation glucides</li>
+                            <li><strong>Sommeil prioritaire :</strong> 7-9h qualitÃ© optimale</li>
+                            <li><strong>Hydratation adaptÃ©e :</strong> Selon taux sudation individuel</li>
+                            <li><strong>Nutrition ciblÃ©e :</strong> PÃ©riodisation glucides</li>
                             <li><strong>Gestion stress :</strong> Techniques relaxation</li>
-                            <li><strong>Modalités récupération :</strong> Bains froids, massage</li>
+                            <li><strong>ModalitÃ©s rÃ©cupÃ©ration :</strong> Bains froids, massage</li>
                             <li><strong>Monitoring continu :</strong> HRV, wellness scores</li>
                         </ul>
                     </div>
@@ -1103,29 +1103,29 @@
                 <div class="alert alert-success mt-4">
                     <h6><i class="fas fa-check-circle me-2"></i>Principe Fondamental</h6>
                     <p class="mb-0">
-                        La constance dans l'entraînement à faible intensité (Zone 2) représente 80% des gains de performance 
-                        en course d'endurance. La patience et la régularité priment sur l'intensité excessive.
+                        La constance dans l'entraînement Ã faible intensitÃ© (Zone 2) reprÃ©sente 80% des gains de performance 
+                        en course d'endurance. La patience et la rÃ©gularitÃ© priment sur l'intensitÃ© excessive.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Références Scientifiques -->
+        <!-- RÃ©fÃ©rences Scientifiques -->
         <div class="card">
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-book me-2"></i>
-                    Références Scientifiques et Sources
+                    RÃ©fÃ©rences Scientifiques et Sources
                 </h3>
             </div>
             <div class="card-body">
                 <p>
-                    Ce planificateur intègre les dernières recherches en sciences du sport et course d'endurance
-                    publiées en 2024-2025 dans des revues scientifiques de référence internationale :
+                    Ce planificateur intÃ¨gre les derniÃ¨res recherches en sciences du sport et course d'endurance
+                    publiÃ©es en 2024-2025 dans des revues scientifiques de rÃ©fÃ©rence internationale :
                 </p>
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <h6>Biomécanique Course</h6>
+                        <h6>BiomÃ©canique Course</h6>
                         <ul class="small">
                             <li>Sports Medicine (Van Hooren et al., 2024)</li>
                             <li>Journal of Biomechanics</li>
@@ -1154,11 +1154,11 @@
                 </div>
 
                 <div class="alert alert-info mt-3">
-                    <h6><i class="fas fa-chart-line me-2"></i>Méta-analyses clés 2024</h6>
+                    <h6><i class="fas fa-chart-line me-2"></i>MÃ©ta-analyses clÃ©s 2024</h6>
                     <p class="mb-0">
-                        Les dernières revues systématiques confirment l'efficacité supérieure de l'entraînement polarisé 
+                        Les derniÃ¨res revues systÃ©matiques confirment l'efficacitÃ© supÃ©rieure de l'entraînement polarisÃ© 
                         pour les performances d'endurance, avec des gains de 8-15% vs entraînement traditionnel 
-                        chez les coureurs entraînés.
+                        chez les coureurs entraînÃ©s.
                     </p>
                 </div>
             </div>
@@ -1166,7 +1166,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -1179,12 +1179,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -1194,15 +1194,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -1229,7 +1229,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -1240,12 +1240,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1341,7 +1341,7 @@
 
 @push('scripts')
 <script>
-// Base de données des plans d'entraînement
+// Base de donnÃ©es des plans d'entraînement
 const trainingPlans = {
     'endurance': {
         'beginner': 3,
@@ -1377,7 +1377,7 @@ const trainingPlans = {
 
 // Descriptions des objectifs
 const goalDescriptions = {
-    'endurance': 'Améliorer l\'endurance',
+    'endurance': 'AmÃ©liorer l\'endurance',
     'weight': 'Perdre du poids',
     'speed': 'Gagner en vitesse',
     '10k': 'Courir un 10 km',
@@ -1387,9 +1387,9 @@ const goalDescriptions = {
 
 // Descriptions des niveaux
 const experienceDescriptions = {
-    'beginner': 'débutant',
-    'intermediate': 'intermédiaire',
-    'advanced': 'avancé'
+    'beginner': 'dÃ©butant',
+    'intermediate': 'intermÃ©diaire',
+    'advanced': 'avancÃ©'
 };
 
 // Microcycles types par niveau
@@ -1418,7 +1418,7 @@ const weeklySchedules = {
         'Mercredi': 'Endurance Z2 (75min)',
         'Jeudi': 'Tempo Z3 (45min)',
         'Vendredi': 'Endurance Z1-2 (45min)',
-        'Samedi': 'Séance spécifique (60min)',
+        'Samedi': 'SÃ©ance spÃ©cifique (60min)',
         'Dimanche': 'Sortie longue (120-180min)'
     }
 };
@@ -1430,23 +1430,23 @@ function generatePlan() {
     
     // Validation
     if (!goal || !experience) {
-        showError('Veuillez sélectionner un objectif et un niveau d\'expérience.');
+        showError('Veuillez sÃ©lectionner un objectif et un niveau d\'expÃ©rience.');
         return;
     }
     
     // Masquer les erreurs
     errorDiv.classList.add('d-none');
     
-    // Récupérer le nombre de séances
+    // RÃ©cupÃ©rer le nombre de sÃ©ances
     const totalSessions = trainingPlans[goal][experience];
     
-    // Calculer la distribution selon le modèle polarisé
+    // Calculer la distribution selon le modÃ¨le polarisÃ©
     const enduranceSessions = Math.round(totalSessions * 0.6); // 60% Zone 1-2
     const thresholdSessions = Math.round(totalSessions * 0.2); // 20% Zone 3
     const speedSessions = Math.round(totalSessions * 0.15); // 15% Zone 4-5
-    const recoverySessions = Math.max(0, Math.round(totalSessions * 0.05)); // 5% Récupération
+    const recoverySessions = Math.max(0, Math.round(totalSessions * 0.05)); // 5% RÃ©cupÃ©ration
     
-    // Afficher les résultats
+    // Afficher les rÃ©sultats
     displayResults(goal, experience, totalSessions, {
         endurance: enduranceSessions,
         threshold: thresholdSessions,
@@ -1467,7 +1467,7 @@ function displayResults(goal, experience, totalSessions, distribution) {
     document.getElementById('planDescription').innerHTML = `
         Pour votre objectif <strong class="text-primary">${goalDescriptions[goal]}</strong> et niveau 
         <strong class="text-warning">${experienceDescriptions[experience]}</strong>, 
-        il est recommandé de courir :
+        il est recommandÃ© de courir :
     `;
     
     document.getElementById('totalSessions').textContent = totalSessions;
@@ -1476,10 +1476,10 @@ function displayResults(goal, experience, totalSessions, distribution) {
     document.getElementById('speedSessions').textContent = distribution.speed;
     document.getElementById('recoverySessions').textContent = distribution.recovery;
     
-    // Affichage du microcycle détaillé
+    // Affichage du microcycle dÃ©taillÃ©
     displayWeeklySchedule(experience);
     
-    // Afficher la section résultats
+    // Afficher la section rÃ©sultats
     document.getElementById('planResults').classList.remove('d-none');
     document.getElementById('planResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -1493,7 +1493,7 @@ function displayWeeklySchedule(experience) {
             <thead class="table-dark">
                 <tr>
                     <th>Jour</th>
-                    <th>Séance Recommandée</th>
+                    <th>SÃ©ance RecommandÃ©e</th>
                     <th>Notes</th>
                 </tr>
             </thead>
@@ -1505,19 +1505,19 @@ function displayWeeklySchedule(experience) {
         let rowClass = '';
         
         if (session.includes('Repos')) {
-            notes = 'Récupération complète ou marche légère';
+            notes = 'RÃ©cupÃ©ration complÃ¨te ou marche lÃ©gÃ¨re';
             rowClass = 'table-light';
         } else if (session.includes('Z2') || session.includes('Endurance')) {
-            notes = 'Zone 2: conversationnel, base aérobie';
+            notes = 'Zone 2: conversationnel, base aÃ©robie';
             rowClass = 'table-success';
         } else if (session.includes('Z3') || session.includes('Tempo')) {
-            notes = 'Zone 3: rythme soutenu mais contrôlé';
+            notes = 'Zone 3: rythme soutenu mais contrôlÃ©';
             rowClass = 'table-warning';
         } else if (session.includes('Z4') || session.includes('Z5') || session.includes('Intervalles')) {
-            notes = 'Zone 4-5: haute intensité, récupération complète';
+            notes = 'Zone 4-5: haute intensitÃ©, rÃ©cupÃ©ration complÃ¨te';
             rowClass = 'table-danger';
         } else if (session.includes('longue')) {
-            notes = 'Développement endurance fondamentale';
+            notes = 'DÃ©veloppement endurance fondamentale';
             rowClass = 'table-info';
         } else {
             notes = 'Alternance allures, travail technique';
@@ -1547,7 +1547,7 @@ function resetPlanner() {
     document.getElementById('planResults').classList.add('d-none');
 }
 
-// Génération automatique si les deux champs sont remplis
+// GÃ©nÃ©ration automatique si les deux champs sont remplis
 document.getElementById('goal').addEventListener('change', checkAutoGenerate);
 document.getElementById('experience').addEventListener('change', checkAutoGenerate);
 
@@ -1556,7 +1556,7 @@ function checkAutoGenerate() {
     const experience = document.getElementById('experience').value;
     
     if (goal && experience) {
-        setTimeout(generatePlan, 300); // Délai pour éviter les générations trop fréquentes
+        setTimeout(generatePlan, 300); // DÃ©lai pour Ã©viter les gÃ©nÃ©rations trop frÃ©quentes
     }
 }
 </script>

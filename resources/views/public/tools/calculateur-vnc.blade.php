@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Calculateur Vitesse de Nage Critique (VNC) & Zones d\'Entraînement - Outil Pro')
-@section('meta_description', 'Calculez votre VNC et vos zones d\'entraînement natation avec la méthode scientifique validée. Formule : (Temps 400m - Temps 200m) / 2. Simple, rapide, efficace.')
+@section('meta_description', 'Calculez votre VNC et vos zones d\'entraînement natation avec la mÃ©thode scientifique validÃ©e. Formule : (Temps 400m - Temps 200m) / 2. Simple, rapide, efficace.')
 
 @section('content')
 <!-- Section titre -->
@@ -29,7 +29,7 @@
     <div class="container">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
-                <h3 class="text-center mb-4">Saisissez vos temps de référence</h3>
+                <h3 class="text-center mb-4">Saisissez vos temps de rÃ©fÃ©rence</h3>
                 
                 <!-- Messages d'erreur -->
                 <div id="errorMessage" class="alert alert-danger d-none">
@@ -77,12 +77,12 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg px-4 py-3 fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>Réinitialiser
+                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
                         </button>
                     </div>
                 </div>
 
-                <!-- Résultats VNC -->
+                <!-- RÃ©sultats VNC -->
                 <div id="vncResults" class="d-none">
                     <div class="alert alert-success shadow-sm">
                         <h5 class="alert-heading text-center mb-4">
@@ -122,7 +122,7 @@
                         <div class="alert alert-info mt-3">
                             <i class="fas fa-info-circle me-2"></i>
                             <small>
-                                Ces zones sont des estimations basées sur votre VNC. Adaptez selon votre ressenti 
+                                Ces zones sont des estimations basÃ©es sur votre VNC. Adaptez selon votre ressenti 
                                 et les conseils de votre entraîneur.
                             </small>
                         </div>
@@ -133,7 +133,7 @@
     </div>
 </section>
 
-<!-- Contenu Éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
         <!-- Comprendre la VNC -->
@@ -146,8 +146,8 @@
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <strong>Définition :</strong> La VNC représente la vitesse maximale qu'un nageur peut maintenir 
-                    de manière quasi-stationnaire sans accumulation significative de lactate. C'est votre seuil anaérobie en natation.
+                    <strong>DÃ©finition :</strong> La VNC reprÃ©sente la vitesse maximale qu'un nageur peut maintenir 
+                    de maniÃ¨re quasi-stationnaire sans accumulation significative de lactate. C'est votre seuil anaÃ©robie en natation.
                 </div>
                 
                 <div class="row g-4">
@@ -155,33 +155,33 @@
                         <h6>
                             <i class="fas fa-flask me-2 text-primary"></i>Base Scientifique
                         </h6>
-                        <p>La formule utilisée est simple mais efficace :</p>
+                        <p>La formule utilisÃ©e est simple mais efficace :</p>
                         <div class="card bg-light">
                             <div class="card-body text-center">
                                 <code class="fs-5">VNC = (T400m - T200m) ÷ 2</code>
-                                <p class="small mt-2 mb-0">Résultat en secondes par 100 mètres</p>
+                                <p class="small mt-2 mb-0">RÃ©sultat en secondes par 100 mÃ¨tres</p>
                             </div>
                         </div>
                         <p class="mt-3">
-                            Cette méthode est basée sur la différence de temps entre deux distances sub-maximales 
-                            pour révéler votre seuil d'endurance.
+                            Cette mÃ©thode est basÃ©e sur la diffÃ©rence de temps entre deux distances sub-maximales 
+                            pour rÃ©vÃ©ler votre seuil d'endurance.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6>
-                            <i class="fas fa-bullseye me-2 text-success"></i>Pourquoi s'entraîner à la VNC ?
+                            <i class="fas fa-bullseye me-2 text-success"></i>Pourquoi s'entraîner Ã la VNC ?
                         </h6>
                         <ul>
-                            <li><strong>Amélioration du seuil :</strong> Repousse votre limite lactique</li>
+                            <li><strong>AmÃ©lioration du seuil :</strong> Repousse votre limite lactique</li>
                             <li><strong>Endurance de puissance :</strong> Combine endurance et vitesse</li>
-                            <li><strong>Économie de nage :</strong> Améliore votre efficacité technique</li>
+                            <li><strong>Ã©conomie de nage :</strong> AmÃ©liore votre efficacitÃ© technique</li>
                             <li><strong>Progression mesurable :</strong> Test reproductible dans le temps</li>
                         </ul>
                         
                         <div class="alert alert-success">
                             <small>
-                                <strong>La VNC est un excellent indicateur</strong> de votre capacité aérobie 
-                                et de votre efficacité propulsive en natation.
+                                <strong>La VNC est un excellent indicateur</strong> de votre capacitÃ© aÃ©robie 
+                                et de votre efficacitÃ© propulsive en natation.
                             </small>
                         </div>
                     </div>
@@ -189,31 +189,31 @@
             </div>
         </div>
 
-        <!-- Détail des Zones -->
+        <!-- DÃ©tail des Zones -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-layer-group me-2"></i>
-                    Détail des Zones d'Entraînement
+                    DÃ©tail des Zones d'Entraînement
                 </h3>
             </div>
             <div class="card-body">
                 <p>
-                    L'entraînement à différentes intensités permet de cibler des adaptations physiologiques 
-                    spécifiques. Voici le détail de chaque zone :
+                    L'entraînement Ã diffÃ©rentes intensitÃ©s permet de cibler des adaptations physiologiques 
+                    spÃ©cifiques. Voici le dÃ©tail de chaque zone :
                 </p>
                 
                 <div class="row g-3">
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-info h-100">
                             <div class="card-header bg-info text-white">
-                                <h6 class="mb-0">Zone 1 : Récupération</h6>
+                                <h6 class="mb-0">Zone 1 : RÃ©cupÃ©ration</h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Intensité :</strong> 115-125% VNC</p>
-                                <p><strong>Sensation :</strong> Très facile, conversation fluide</p>
-                                <p><strong>Objectif :</strong> Favoriser la circulation et la récupération musculaire</p>
-                                <p><strong>Usage :</strong> Échauffement, récupération active</p>
+                                <p><strong>IntensitÃ© :</strong> 115-125% VNC</p>
+                                <p><strong>Sensation :</strong> TrÃ¨s facile, conversation fluide</p>
+                                <p><strong>Objectif :</strong> Favoriser la circulation et la rÃ©cupÃ©ration musculaire</p>
+                                <p><strong>Usage :</strong> Ã©chauffement, rÃ©cupÃ©ration active</p>
                             </div>
                         </div>
                     </div>
@@ -221,13 +221,13 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Zone 2 : Endurance Aérobie</h6>
+                                <h6 class="mb-0">Zone 2 : Endurance AÃ©robie</h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Intensité :</strong> 105-115% VNC</p>
-                                <p><strong>Sensation :</strong> Facile à modéré, soutenable longtemps</p>
-                                <p><strong>Objectif :</strong> Développer la base aérobie et l'efficacité énergétique</p>
-                                <p><strong>Usage :</strong> Séries longues, fond</p>
+                                <p><strong>IntensitÃ© :</strong> 105-115% VNC</p>
+                                <p><strong>Sensation :</strong> Facile Ã modÃ©rÃ©, soutenable longtemps</p>
+                                <p><strong>Objectif :</strong> DÃ©velopper la base aÃ©robie et l'efficacitÃ© Ã©nergÃ©tique</p>
+                                <p><strong>Usage :</strong> SÃ©ries longues, fond</p>
                             </div>
                         </div>
                     </div>
@@ -238,10 +238,10 @@
                                 <h6 class="mb-0">Zone 3 : Seuil (VNC)</h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Intensité :</strong> 98-102% VNC</p>
+                                <p><strong>IntensitÃ© :</strong> 98-102% VNC</p>
                                 <p><strong>Sensation :</strong> Difficile mais soutenable</p>
-                                <p><strong>Objectif :</strong> Maintenir une vitesse élevée sur la durée</p>
-                                <p><strong>Usage :</strong> Séries au seuil, tempo</p>
+                                <p><strong>Objectif :</strong> Maintenir une vitesse Ã©levÃ©e sur la durÃ©e</p>
+                                <p><strong>Usage :</strong> SÃ©ries au seuil, tempo</p>
                             </div>
                         </div>
                     </div>
@@ -252,10 +252,10 @@
                                 <h6 class="mb-0">Zone 4 : VO2 Max</h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Intensité :</strong> 90-98% VNC</p>
-                                <p><strong>Sensation :</strong> Très difficile, effort maximal sur courtes durées</p>
-                                <p><strong>Objectif :</strong> Améliorer la puissance aérobie maximale</p>
-                                <p><strong>Usage :</strong> Séries courtes intenses, fractionné</p>
+                                <p><strong>IntensitÃ© :</strong> 90-98% VNC</p>
+                                <p><strong>Sensation :</strong> TrÃ¨s difficile, effort maximal sur courtes durÃ©es</p>
+                                <p><strong>Objectif :</strong> AmÃ©liorer la puissance aÃ©robie maximale</p>
+                                <p><strong>Usage :</strong> SÃ©ries courtes intenses, fractionnÃ©</p>
                             </div>
                         </div>
                     </div>
@@ -266,10 +266,10 @@
                                 <h6 class="mb-0">Zone 5 : Vitesse Maximale</h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Intensité :</strong> 80-90% VNC</p>
+                                <p><strong>IntensitÃ© :</strong> 80-90% VNC</p>
                                 <p><strong>Sensation :</strong> Sprint, effort maximal</p>
-                                <p><strong>Objectif :</strong> Développer la vitesse pure et la puissance neuromusculaire</p>
-                                <p><strong>Usage :</strong> Sprints, départs, virages</p>
+                                <p><strong>Objectif :</strong> DÃ©velopper la vitesse pure et la puissance neuromusculaire</p>
+                                <p><strong>Usage :</strong> Sprints, dÃ©parts, virages</p>
                             </div>
                         </div>
                     </div>
@@ -294,8 +294,8 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Définir les allures de séries</li>
-                                    <li>Périodiser les intensités</li>
+                                    <li>DÃ©finir les allures de sÃ©ries</li>
+                                    <li>PÃ©riodiser les intensitÃ©s</li>
                                     <li>Suivre la progression</li>
                                     <li>Adapter les charges</li>
                                 </ul>
@@ -306,13 +306,13 @@
                     <div class="col-md-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Test et Évaluation</h6>
+                                <h6 class="mb-0">Test et Ã©valuation</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Test reproductible mensuel</li>
                                     <li>Indicateur de forme</li>
-                                    <li>Validation des progrès</li>
+                                    <li>Validation des progrÃ¨s</li>
                                     <li>Ajustement des objectifs</li>
                                 </ul>
                             </div>
@@ -326,10 +326,10 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Stratégie de course</li>
+                                    <li>StratÃ©gie de course</li>
                                     <li>Gestion de l'effort</li>
-                                    <li>Amélioration technique</li>
-                                    <li>Préparation compétition</li>
+                                    <li>AmÃ©lioration technique</li>
+                                    <li>PrÃ©paration compÃ©tition</li>
                                 </ul>
                             </div>
                         </div>
@@ -338,35 +338,35 @@
             </div>
         </div>
 
-        <!-- Références Scientifiques -->
+        <!-- RÃ©fÃ©rences Scientifiques -->
         <div class="card">
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-book me-2"></i>
-                    Références Scientifiques
+                    RÃ©fÃ©rences Scientifiques
                 </h3>
             </div>
             <div class="card-body">
                 <p>
-                    La méthode VNC est largement reconnue et utilisée en physiologie de l'exercice 
-                    et en entraînement sportif depuis les années 1990.
+                    La mÃ©thode VNC est largement reconnue et utilisÃ©e en physiologie de l'exercice 
+                    et en entraînement sportif depuis les annÃ©es 1990.
                 </p>
                 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Études Fondamentales</h6>
+                        <h6>Ã©tudes Fondamentales</h6>
                         <ul class="small">
-                            <li><strong>Wakayoshi et al. (1993)</strong> - Validation de la VNC comme standard aérobie en natation</li>
-                            <li><strong>Pelayo et al. (1996)</strong> - Validité chez les nageurs masculins et féminins</li>
+                            <li><strong>Wakayoshi et al. (1993)</strong> - Validation de la VNC comme standard aÃ©robie en natation</li>
+                            <li><strong>Pelayo et al. (1996)</strong> - ValiditÃ© chez les nageurs masculins et fÃ©minins</li>
                             <li><strong>Dekerle et al. (2002)</strong> - Applications pratiques en entraînement</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <h6>Applications Modernes</h6>
                         <ul class="small">
-                            <li><strong>Costill et al. (1985)</strong> - Métabolisme énergétique en natation</li>
+                            <li><strong>Costill et al. (1985)</strong> - MÃ©tabolisme Ã©nergÃ©tique en natation</li>
                             <li><strong>Olbrecht (2000)</strong> - Science de l'entraînement optimal</li>
-                            <li><strong>Maglischo (2003)</strong> - Biomécanique et physiologie</li>
+                            <li><strong>Maglischo (2003)</strong> - BiomÃ©canique et physiologie</li>
                         </ul>
                     </div>
                 </div>
@@ -374,7 +374,7 @@
                 <div class="alert alert-info mt-3">
                     <i class="fas fa-info-circle me-2"></i>
                     <small>
-                        La VNC reste un outil de référence utilisé par les entraîneurs du monde entier 
+                        La VNC reste un outil de rÃ©fÃ©rence utilisÃ© par les entraîneurs du monde entier 
                         pour optimiser les performances de leurs nageurs.
                     </small>
                 </div>
@@ -383,7 +383,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -396,12 +396,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -411,15 +411,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -446,7 +446,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -457,12 +457,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -565,7 +565,7 @@ function formatSecondsToTime(totalSeconds) {
 }
 
 function calculateVNC() {
-    // Récupérer les valeurs
+    // RÃ©cupÃ©rer les valeurs
     const time200min = document.getElementById('time200min').value;
     const time200sec = document.getElementById('time200sec').value;
     const time400min = document.getElementById('time400min').value;
@@ -585,7 +585,7 @@ function calculateVNC() {
     }
     
     if (t400 <= t200) {
-        errorDiv.textContent = "Le temps sur 400m doit être supérieur au temps sur 200m.";
+        errorDiv.textContent = "Le temps sur 400m doit être supÃ©rieur au temps sur 200m.";
         errorDiv.classList.remove('d-none');
         document.getElementById('vncResults').classList.add('d-none');
         return;
@@ -597,27 +597,27 @@ function calculateVNC() {
     // Calcul VNC : (T400 - T200) / 2
     const vnc = (t400 - t200) / 2;
     
-    // Affichage du résultat principal
+    // Affichage du rÃ©sultat principal
     document.getElementById('vncValue').textContent = formatSecondsToTime(vnc) + " / 100m";
     
-    // Définition des zones d'entraînement
+    // DÃ©finition des zones d'entraînement
     const zones = [
         {
-            name: "Zone 1: Récupération",
+            name: "Zone 1: RÃ©cupÃ©ration",
             percentage: "115-125%",
             min: vnc * 1.15,
             max: vnc * 1.25,
-            objectif: "Circulation, récupération musculaire",
-            sensation: "Très facile, conversation fluide",
+            objectif: "Circulation, rÃ©cupÃ©ration musculaire",
+            sensation: "TrÃ¨s facile, conversation fluide",
             color: "table-info"
         },
         {
-            name: "Zone 2: Endurance Aérobie",
+            name: "Zone 2: Endurance AÃ©robie",
             percentage: "105-115%",
             min: vnc * 1.05,
             max: vnc * 1.15,
-            objectif: "Base aérobie, efficacité énergétique",
-            sensation: "Facile à modéré, longue durée",
+            objectif: "Base aÃ©robie, efficacitÃ© Ã©nergÃ©tique",
+            sensation: "Facile Ã modÃ©rÃ©, longue durÃ©e",
             color: "table-success"
         },
         {
@@ -625,7 +625,7 @@ function calculateVNC() {
             percentage: "98-102%",
             min: vnc * 0.98,
             max: vnc * 1.02,
-            objectif: "Maintenir vitesse élevée sur durée",
+            objectif: "Maintenir vitesse Ã©levÃ©e sur durÃ©e",
             sensation: "Difficile mais soutenable",
             color: "table-warning"
         },
@@ -634,8 +634,8 @@ function calculateVNC() {
             percentage: "90-98%",
             min: vnc * 0.90,
             max: vnc * 0.98,
-            objectif: "Puissance aérobie maximale",
-            sensation: "Très difficile, courtes durées",
+            objectif: "Puissance aÃ©robie maximale",
+            sensation: "TrÃ¨s difficile, courtes durÃ©es",
             color: "table-danger"
         },
         {
@@ -663,10 +663,10 @@ function calculateVNC() {
         </tr>
     `).join('');
     
-    // Afficher les résultats
+    // Afficher les rÃ©sultats
     document.getElementById('vncResults').classList.remove('d-none');
     
-    // Scroll vers les résultats
+    // Scroll vers les rÃ©sultats
     document.getElementById('vncResults').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
@@ -679,7 +679,7 @@ function resetForm() {
     document.getElementById('errorMessage').classList.add('d-none');
 }
 
-// Validation en temps réel
+// Validation en temps rÃ©el
 document.addEventListener('DOMContentLoaded', function() {
     const inputs = document.querySelectorAll('input[type="number"]');
     inputs.forEach(input => {

@@ -65,7 +65,7 @@
                                         <td class="p-4">
                                             @if($payment->status === 'completed')
                                                 <span class="badge bg-success">
-                                                    <i class="fas fa-check me-1"></i>Payé
+                                                    <i class="fas fa-check me-1"></i>PayÃ©
                                                 </span>
                                             @elseif($payment->status === 'pending')
                                                 <span class="badge bg-warning">
@@ -84,22 +84,22 @@
                                                 </span>
                                             @elseif($payment->admin_status === 'approved')
                                                 <span class="badge bg-success">
-                                                    <i class="fas fa-check-circle me-1"></i>Approuvé
+                                                    <i class="fas fa-check-circle me-1"></i>ApprouvÃ©
                                                 </span>
                                                 @if($payment->processed_at)
                                                     <br>
                                                     <small class="text-muted">
-                                                        Le {{ $payment->processed_at->format('d/m/Y à H:i') }}
+                                                        Le {{ $payment->processed_at->format('d/m/Y Ã H:i') }}
                                                     </small>
                                                 @endif
                                             @elseif($payment->admin_status === 'rejected')
                                                 <span class="badge bg-danger">
-                                                    <i class="fas fa-times-circle me-1"></i>Rejeté
+                                                    <i class="fas fa-times-circle me-1"></i>RejetÃ©
                                                 </span>
                                                 @if($payment->processed_at)
                                                     <br>
                                                     <small class="text-muted">
-                                                        Le {{ $payment->processed_at->format('d/m/Y à H:i') }}
+                                                        Le {{ $payment->processed_at->format('d/m/Y Ã H:i') }}
                                                     </small>
                                                 @endif
                                             @endif
@@ -116,7 +116,7 @@
                                             
                                             @if($payment->processedBy)
                                                 <div class="small text-muted mt-1">
-                                                    Traité par {{ $payment->processedBy->name }}
+                                                    TraitÃ© par {{ $payment->processedBy->name }}
                                                 </div>
                                             @endif
                                         </td>
@@ -127,13 +127,13 @@
                         </div>
 
                     @else
-                        <!-- État vide -->
+                        <!-- Ã©tat vide -->
                         <div class="text-center py-5">
                             <div class="mb-4">
                                 <i class="fas fa-receipt fa-4x text-muted"></i>
                             </div>
-                            <h5 class="text-muted mb-3">Aucun paiement effectué</h5>
-                            <p class="text-muted mb-4">Vous n'avez encore effectué aucun paiement pour un accès premium.</p>
+                            <h5 class="text-muted mb-3">Aucun paiement effectuÃ©</h5>
+                            <p class="text-muted mb-4">Vous n'avez encore effectuÃ© aucun paiement pour un accÃ¨s premium.</p>
                             <a href="{{ route('payments.index') }}" class="btn btn-primary">
                                 <i class="fas fa-crown me-2"></i>Passer Premium maintenant
                             </a>
@@ -143,7 +143,7 @@
                 </div>
                 
                 @if($payments->count() > 0)
-                    <!-- Résumé en bas -->
+                    <!-- RÃ©sumÃ© en bas -->
                     <div class="card-footer bg-light border-top p-4">
                         <div class="row text-center">
                             <div class="col-md-3">
@@ -151,11 +151,11 @@
                                 <strong>{{ $payments->count() }}</strong>
                             </div>
                             <div class="col-md-3">
-                                <div class="small text-muted">Payés</div>
+                                <div class="small text-muted">PayÃ©s</div>
                                 <strong class="text-success">{{ $payments->where('status', 'completed')->count() }}</strong>
                             </div>
                             <div class="col-md-3">
-                                <div class="small text-muted">Approuvés</div>
+                                <div class="small text-muted">ApprouvÃ©s</div>
                                 <strong class="text-success">{{ $payments->where('admin_status', 'approved')->count() }}</strong>
                             </div>
                             <div class="col-md-3">

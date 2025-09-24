@@ -12,7 +12,7 @@ class PaymentController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'Accès non autorisé');
+            abort(403, 'AccÃ¨s non autorisÃ©');
         }
     }
 
@@ -48,11 +48,11 @@ class PaymentController extends Controller
                 'admin_status' => 'approved',
                 'processed_by' => auth()->id(),
                 'processed_at' => now(),
-                'admin_notes' => 'Rôle changé vers utilisateur premium'
+                'admin_notes' => 'Rôle changÃ© vers utilisateur premium'
             ]);
             
             return redirect()->back()
-                ->with('success', "Paiement approuvé. {$payment->user->name} est maintenant utilisateur premium.");
+                ->with('success', "Paiement approuvÃ©. {$payment->user->name} est maintenant utilisateur premium.");
         }
         
         return redirect()->back()->with('error', 'Erreur lors du changement de rôle.');
@@ -74,6 +74,6 @@ class PaymentController extends Controller
         ]);
         
         return redirect()->back()
-            ->with('success', 'Paiement rejeté avec motif.');
+            ->with('success', 'Paiement rejetÃ© avec motif.');
     }
 }

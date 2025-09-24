@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.roles.update', $role) }}">
         @method('PUT')
         @include('admin.roles.partials.form', [
-            'submitLabel' => 'Mettre à jour le rôle',
+            'submitLabel' => 'Mettre Ã jour le rôle',
             'role' => $role
         ])
     </form>
@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-génération conditionnelle en édition
+    // Auto-gÃ©nÃ©ration conditionnelle en Ã©dition
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     const displayNameInput = document.getElementById('display_name');
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isDefaultCheckbox.addEventListener('change', function() {
             if (this.checked && !originalIsDefault) {
-                const confirmed = confirm('Définir ce rôle comme défaut remplacera le rôle par défaut actuel. Continuer ?');
+                const confirmed = confirm('DÃ©finir ce rôle comme dÃ©faut remplacera le rôle par dÃ©faut actuel. Continuer ?');
                 if (!confirmed) {
                     this.checked = false;
                 }
@@ -142,7 +142,7 @@ function updateSelectedPermissions() {
     if (!container) return;
     
     if (selectedCheckboxes.length === 0) {
-        container.innerHTML = '<small class="text-muted">Aucune permission sélectionnée</small>';
+        container.innerHTML = '<small class="text-muted">Aucune permission sÃ©lectionnÃ©e</small>';
     } else {
         let html = `<div class="fw-bold text-primary mb-2">${selectedCheckboxes.length} permission(s)</div>`;
         const badges = Array.from(selectedCheckboxes).slice(0, 10).map(cb => {
@@ -162,7 +162,7 @@ function updateSelectedPermissions() {
     checkGroupToggles();
 }
 
-// Écouter les changements sur les checkboxes de permissions
+// Ã©couter les changements sur les checkboxes de permissions
 document.addEventListener('change', function(e) {
     if (e.target.classList.contains('permission-checkbox')) {
         updateSelectedPermissions();

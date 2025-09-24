@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Calories & Macronutriments Avancé - Nutrition Sportive')
-@section('meta_description', 'Calculez vos besoins caloriques TDEE, BMR et macronutriments personnalisés avec les dernières recherches en nutrition sportive. Répartition protéines/glucides/lipides optimisée.')
+@section('title', 'Calculateur Calories & Macronutriments AvancÃ© - Nutrition Sportive')
+@section('meta_description', 'Calculez vos besoins caloriques TDEE, BMR et macronutriments personnalisÃ©s avec les derniÃ¨res recherches en nutrition sportive. RÃ©partition protÃ©ines/glucides/lipides optimisÃ©e.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,14 +9,14 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-utensils"></i>
-            Calculateur Nutritionnel Avancé
+            Calculateur Nutritionnel AvancÃ©
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-chart-pie text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    Calculez vos besoins caloriques et macronutriments basés sur les dernières recherches en nutrition sportive
+                    Calculez vos besoins caloriques et macronutriments basÃ©s sur les derniÃ¨res recherches en nutrition sportive
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="card-body p-5">
                 <h3 class="text-center mb-4">Calculateur TDEE & Macronutriments</h3>
                 
-                <!-- Données personnelles -->
+                <!-- DonnÃ©es personnelles -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-3">
                         <label class="fw-bold mb-2">Âge</label>
@@ -56,19 +56,19 @@
                     </div>
                 </div>
 
-                <!-- Niveau d'activité et objectif -->
+                <!-- Niveau d'activitÃ© et objectif -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
                         <label class="fw-bold mb-2">
-                            <i class="fas fa-running me-2"></i>Niveau d'activité
+                            <i class="fas fa-running me-2"></i>Niveau d'activitÃ©
                         </label>
                         <select id="activity" class="form-select form-select-lg border-warning">
-                            <option value="">-- Sélectionner --</option>
-                            <option value="sedentaire">Sédentaire (bureau, pas d'exercice)</option>
-                            <option value="peu-actif">Peu actif (exercice léger 1-3j/sem)</option>
+                            <option value="">-- SÃ©lectionner --</option>
+                            <option value="sedentaire">SÃ©dentaire (bureau, pas d'exercice)</option>
+                            <option value="peu-actif">Peu actif (exercice lÃ©ger 1-3j/sem)</option>
                             <option value="moyennement-actif">Moyennement actif (exercice 3-5j/sem)</option>
                             <option value="actif">Actif (exercice intense 6-7j/sem)</option>
-                            <option value="tres-actif">Très actif (2x/jour ou travail physique)</option>
+                            <option value="tres-actif">TrÃ¨s actif (2x/jour ou travail physique)</option>
                         </select>
                     </div>
                     <div class="col-md-6">
@@ -76,11 +76,11 @@
                             <i class="fas fa-target me-2"></i>Objectif principal
                         </label>
                         <select id="goal" class="form-select form-select-lg border-success">
-                            <option value="">-- Sélectionner --</option>
-                            <option value="remise-forme">Remise en forme générale</option>
+                            <option value="">-- SÃ©lectionner --</option>
+                            <option value="remise-forme">Remise en forme gÃ©nÃ©rale</option>
                             <option value="gain-musculaire">Gain musculaire</option>
                             <option value="tonifier">Se tonifier</option>
-                            <option value="endurance">Améliorer l'endurance</option>
+                            <option value="endurance">AmÃ©liorer l'endurance</option>
                             <option value="perte-poids">Perdre du poids sainement</option>
                         </select>
                     </div>
@@ -94,16 +94,16 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg px-4 py-3 fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>Réinitialiser
+                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
                         </button>
                     </div>
                 </div>
 
-                <!-- Résultats -->
+                <!-- RÃ©sultats -->
                 <div id="results" class="d-none">
                     <div class="alert alert-success">
                         <h5 class="alert-heading">
-                            <i class="fas fa-chart-bar me-2"></i>Vos Besoins Nutritionnels Personnalisés
+                            <i class="fas fa-chart-bar me-2"></i>Vos Besoins Nutritionnels PersonnalisÃ©s
                         </h5>
                         
                         <!-- Calories -->
@@ -117,7 +117,7 @@
                                         <p class="card-text fs-5">
                                             <strong id="bmrResult">0</strong> kcal
                                         </p>
-                                        <small class="text-muted">Métabolisme de base</small>
+                                        <small class="text-muted">MÃ©tabolisme de base</small>
                                     </div>
                                 </div>
                             </div>
@@ -151,14 +151,14 @@
 
                         <!-- Macronutriments -->
                         <h6 class="mt-4 mb-3">
-                            <i class="fas fa-puzzle-piece me-2"></i>Répartition Macronutriments
+                            <i class="fas fa-puzzle-piece me-2"></i>RÃ©partition Macronutriments
                         </h6>
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <div class="card border-success h-100">
                                     <div class="card-body text-center">
                                         <h6 class="card-title text-success">
-                                            <i class="fas fa-dumbbell me-1"></i>Protéines
+                                            <i class="fas fa-dumbbell me-1"></i>ProtÃ©ines
                                         </h6>
                                         <p class="card-text fs-4">
                                             <strong id="proteinGrams">0</strong>g
@@ -206,13 +206,13 @@
 
                         <!-- Barre de progression -->
                         <div class="mt-4">
-                            <h6>Répartition Visuelle</h6>
+                            <h6>RÃ©partition Visuelle</h6>
                             <div class="progress" style="height: 30px;" id="macroProgress">
                                 <!-- Sera rempli par JavaScript -->
                             </div>
                         </div>
 
-                        <!-- Conseils personnalisés -->
+                        <!-- Conseils personnalisÃ©s -->
                         <div id="personalizedTips" class="mt-4">
                             <!-- Sera rempli par JavaScript -->
                         </div>
@@ -235,8 +235,8 @@
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <strong>Position IOC/ACSM/ISSN 2024 :</strong> Les besoins énergétiques des athlètes intensifs 
-                    peuvent atteindre 40-70 kcal/kg/jour, soit 2800-4900 kcal/jour pour un athlète de 70kg.
+                    <strong>Position IOC/ACSM/ISSN 2024 :</strong> Les besoins Ã©nergÃ©tiques des athlÃ¨tes intensifs 
+                    peuvent atteindre 40-70 kcal/kg/jour, soit 2800-4900 kcal/jour pour un athlÃ¨te de 70kg.
                 </div>
                 
                 <div class="row g-4">
@@ -255,22 +255,22 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-secondary">
-                                        <td>Sédentaire</td>
+                                        <td>SÃ©dentaire</td>
                                         <td>25-30</td>
                                         <td>1750-2100 kcal</td>
                                     </tr>
                                     <tr class="table-light">
-                                        <td>Actif général</td>
+                                        <td>Actif gÃ©nÃ©ral</td>
                                         <td>30-35</td>
                                         <td>2100-2450 kcal</td>
                                     </tr>
                                     <tr class="table-primary">
-                                        <td>Athlète modéré</td>
+                                        <td>AthlÃ¨te modÃ©rÃ©</td>
                                         <td>35-45</td>
                                         <td>2450-3150 kcal</td>
                                     </tr>
                                     <tr class="table-success">
-                                        <td>Athlète intensif</td>
+                                        <td>AthlÃ¨te intensif</td>
                                         <td>45-70</td>
                                         <td>3150-4900 kcal</td>
                                     </tr>
@@ -280,15 +280,15 @@
                     </div>
                     <div class="col-md-6">
                         <h6>
-                            <i class="fas fa-puzzle-piece me-2"></i>Macronutriments Recommandés
+                            <i class="fas fa-puzzle-piece me-2"></i>Macronutriments RecommandÃ©s
                         </h6>
                         <div class="card border-success mb-3">
                             <div class="card-header bg-success text-white">
-                                <small>Protéines</small>
+                                <small>ProtÃ©ines</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small mb-0">
-                                    <li><strong>Sédentaire :</strong> 0.8 g/kg</li>
+                                    <li><strong>SÃ©dentaire :</strong> 0.8 g/kg</li>
                                     <li><strong>Actif :</strong> 1.2-1.6 g/kg</li>
                                     <li><strong>Force :</strong> 1.6-2.2 g/kg</li>
                                     <li><strong>Endurance :</strong> 1.2-1.8 g/kg</li>
@@ -302,8 +302,8 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small mb-0">
-                                    <li><strong>Faible activité :</strong> 3-5 g/kg</li>
-                                    <li><strong>Modérée :</strong> 5-7 g/kg</li>
+                                    <li><strong>Faible activitÃ© :</strong> 3-5 g/kg</li>
+                                    <li><strong>ModÃ©rÃ©e :</strong> 5-7 g/kg</li>
                                     <li><strong>Intense :</strong> 6-10 g/kg</li>
                                     <li><strong>Ultra-endurance :</strong> 8-12 g/kg</li>
                                 </ul>
@@ -316,7 +316,7 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small mb-0">
-                                    <li><strong>Minimum santé :</strong> 20% calories</li>
+                                    <li><strong>Minimum santÃ© :</strong> 20% calories</li>
                                     <li><strong>Optimal sport :</strong> 20-35%</li>
                                     <li><strong>Performance :</strong> 0.8-1.0 g/kg</li>
                                 </ul>
@@ -343,7 +343,7 @@
                         <div class="card border-warning h-100">
                             <div class="card-header bg-warning text-dark">
                                 <h6 class="mb-0">
-                                    <i class="fas fa-play me-1"></i>Pré-Effort
+                                    <i class="fas fa-play me-1"></i>PrÃ©-Effort
                                 </h6>
                             </div>
                             <div class="card-body">
@@ -353,7 +353,7 @@
                                             <tr>
                                                 <th>Timing</th>
                                                 <th>Nutriment</th>
-                                                <th>Quantité</th>
+                                                <th>QuantitÃ©</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -369,7 +369,7 @@
                                             </tr>
                                             <tr>
                                                 <td>30min avant</td>
-                                                <td>Caféine</td>
+                                                <td>CafÃ©ine</td>
                                                 <td>3-6 mg/kg</td>
                                             </tr>
                                         </tbody>
@@ -391,9 +391,9 @@
                                     <table class="table table-sm">
                                         <thead>
                                             <tr>
-                                                <th>Durée</th>
+                                                <th>DurÃ©e</th>
                                                 <th>Nutriment</th>
-                                                <th>Quantité</th>
+                                                <th>QuantitÃ©</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -433,13 +433,13 @@
                                             <tr>
                                                 <th>Timing</th>
                                                 <th>Nutriment</th>
-                                                <th>Quantité</th>
+                                                <th>QuantitÃ©</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>0-30min</td>
-                                                <td>Protéines</td>
+                                                <td>ProtÃ©ines</td>
                                                 <td>20-40g</td>
                                             </tr>
                                             <tr>
@@ -450,7 +450,7 @@
                                             <tr>
                                                 <td>2-4h</td>
                                                 <td>Repas complet</td>
-                                                <td>Équilibré</td>
+                                                <td>Ã©quilibrÃ©</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -467,7 +467,7 @@
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-tint me-2"></i>
-                    Hydratation et Électrolytes
+                    Hydratation et Ã©lectrolytes
                 </h3>
             </div>
             <div class="card-body">
@@ -486,7 +486,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Pré-effort (2-4h)</td>
+                                        <td>PrÃ©-effort (2-4h)</td>
                                         <td>5-7 ml/kg</td>
                                         <td>-</td>
                                         <td>-</td>
@@ -501,20 +501,20 @@
                                         <td>Post-effort</td>
                                         <td>150% poids perdu</td>
                                         <td>Selon pertes sudation</td>
-                                        <td>Avec protéines</td>
+                                        <td>Avec protÃ©ines</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>Signaux de Déshydratation</h6>
+                        <h6>Signaux de DÃ©shydratation</h6>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Soif</span>
                                 <span class="badge bg-warning">Signal tardif</span>
                             </li>
-                            <li class="list-group-item">Urine foncée concentrée</li>
+                            <li class="list-group-item">Urine foncÃ©e concentrÃ©e</li>
                             <li class="list-group-item">Fatigue inhabituelle</li>
                             <li class="list-group-item">Maux de tête</li>
                             <li class="list-group-item">Crampes musculaires</li>
@@ -524,7 +524,7 @@
                         <div class="alert alert-danger mt-3">
                             <small>
                                 <strong>Attention :</strong> Une perte de 2% du poids corporel 
-                                réduit les performances de 10-15%.
+                                rÃ©duit les performances de 10-15%.
                             </small>
                         </div>
                     </div>
@@ -550,10 +550,10 @@
                             <div class="card-body">
                                 <ul class="small">
                                     <li>5-6 repas/collations par jour</li>
-                                    <li>Petit-déjeuner riche en protéines</li>
-                                    <li>Collation pré-entraînement (30-90min)</li>
-                                    <li>Récupération dans les 30min post-effort</li>
-                                    <li>Dîner léger 3h avant coucher</li>
+                                    <li>Petit-dÃ©jeuner riche en protÃ©ines</li>
+                                    <li>Collation prÃ©-entraînement (30-90min)</li>
+                                    <li>RÃ©cupÃ©ration dans les 30min post-effort</li>
+                                    <li>Dîner lÃ©ger 3h avant coucher</li>
                                 </ul>
                             </div>
                         </div>
@@ -566,10 +566,10 @@
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Aliments entiers prioritaires</li>
-                                    <li>Index glycémique adapté au timing</li>
-                                    <li>Protéines complètes à chaque repas</li>
-                                    <li>Graisses insaturées privilégiées</li>
-                                    <li>Fibres selon tolérance digestive</li>
+                                    <li>Index glycÃ©mique adaptÃ© au timing</li>
+                                    <li>ProtÃ©ines complÃ¨tes Ã chaque repas</li>
+                                    <li>Graisses insaturÃ©es privilÃ©giÃ©es</li>
+                                    <li>Fibres selon tolÃ©rance digestive</li>
                                 </ul>
                             </div>
                         </div>
@@ -581,10 +581,10 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Journal alimentaire (apps recommandées)</li>
-                                    <li>Pesée régulière (tendance, pas quotidien)</li>
+                                    <li>Journal alimentaire (apps recommandÃ©es)</li>
+                                    <li>PesÃ©e rÃ©guliÃ¨re (tendance, pas quotidien)</li>
                                     <li>Monitoring de la performance</li>
-                                    <li>Écoute des signaux corporels</li>
+                                    <li>Ã©coute des signaux corporels</li>
                                     <li>Consultation nutritionniste sport</li>
                                 </ul>
                             </div>
@@ -594,7 +594,7 @@
                 
                 <div class="alert alert-warning mt-4">
                     <i class="fas fa-exclamation-triangle me-2"></i>
-                    <strong>Important :</strong> Ces recommandations sont générales. Pour des objectifs spécifiques 
+                    <strong>Important :</strong> Ces recommandations sont gÃ©nÃ©rales. Pour des objectifs spÃ©cifiques 
                     ou des besoins particuliers, consultez un professionnel de la nutrition sportive.
                 </div>
             </div>
@@ -602,7 +602,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -615,12 +615,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -630,15 +630,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -665,7 +665,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -676,12 +676,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -774,7 +774,7 @@
 
 @push('scripts')
 <script>
-// Configuration des ratios basés sur les recherches scientifiques
+// Configuration des ratios basÃ©s sur les recherches scientifiques
 const activityRatios = {
     'sedentaire': 1.2,
     'peu-actif': 1.375,
@@ -791,7 +791,7 @@ const goalRatios = {
     'perte-poids': 0.8
 };
 
-// Besoins en protéines par kg selon activité et objectif
+// Besoins en protÃ©ines par kg selon activitÃ© et objectif
 const proteinRatios = {
     'remise-forme': { 'sedentaire': 0.8, 'peu-actif': 1.2, 'moyennement-actif': 1.3, 'actif': 1.6, 'tres-actif': 1.7 },
     'gain-musculaire': { 'sedentaire': 0.8, 'peu-actif': 1.6, 'moyennement-actif': 1.8, 'actif': 2.0, 'tres-actif': 2.2 },
@@ -823,7 +823,7 @@ function calculateCalories() {
         return;
     }
     
-    // Calcul BMR avec l'équation Mifflin-St Jeor
+    // Calcul BMR avec l'Ã©quation Mifflin-St Jeor
     let bmr;
     if (gender === 'male') {
         bmr = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -844,14 +844,14 @@ function calculateCalories() {
     const proteinCals = proteinGrams * 4;
     const fatCals = fatGrams * 9;
     const carbsCals = tdee - (proteinCals + fatCals);
-    const carbsGrams = Math.max(0, carbsCals / 4); // S'assurer que les glucides ne sont pas négatifs
+    const carbsGrams = Math.max(0, carbsCals / 4); // S'assurer que les glucides ne sont pas nÃ©gatifs
     
     // Calcul des pourcentages
     const proteinPct = (proteinCals / tdee) * 100;
     const fatPct = (fatCals / tdee) * 100;
     const carbsPct = (carbsCals / tdee) * 100;
     
-    // Calcul hydratation (35ml/kg minimum + ajustement activité)
+    // Calcul hydratation (35ml/kg minimum + ajustement activitÃ©)
     const hydrationBase = weight * 0.035; // 35ml/kg en litres
     const hydrationBonus = activity === 'tres-actif' ? 0.5 : 
                           activity === 'actif' ? 0.3 : 
@@ -896,7 +896,7 @@ function displayResults(results, activity, goal, weight) {
     // Barre de progression
     const progressHTML = `
         <div class="progress-bar bg-success" style="width: ${results.proteinPct}%">
-            Protéines ${results.proteinPct}%
+            ProtÃ©ines ${results.proteinPct}%
         </div>
         <div class="progress-bar bg-warning text-dark" style="width: ${results.fatPct}%">
             Lipides ${results.fatPct}%
@@ -907,7 +907,7 @@ function displayResults(results, activity, goal, weight) {
     `;
     document.getElementById('macroProgress').innerHTML = progressHTML;
     
-    // Conseils personnalisés
+    // Conseils personnalisÃ©s
     const tipsHTML = generatePersonalizedTips(activity, goal, results, weight);
     document.getElementById('personalizedTips').innerHTML = tipsHTML;
     
@@ -928,9 +928,9 @@ function generatePersonalizedTips(activity, goal, results, weight) {
                 </div>
                 <div class="card-body">
                     <ul class="small mb-0">
-                        <li><strong>Déficit modéré :</strong> Réduction de 20% des calories (évitez les régimes drastiques)</li>
-                        <li><strong>Protéines élevées :</strong> ${results.proteinGrams}g préservent la masse musculaire</li>
-                        <li><strong>Timing :</strong> Privilégiez les glucides autour de l'entraînement</li>
+                        <li><strong>DÃ©ficit modÃ©rÃ© :</strong> RÃ©duction de 20% des calories (Ã©vitez les rÃ©gimes drastiques)</li>
+                        <li><strong>ProtÃ©ines Ã©levÃ©es :</strong> ${results.proteinGrams}g prÃ©servent la masse musculaire</li>
+                        <li><strong>Timing :</strong> PrivilÃ©giez les glucides autour de l'entraînement</li>
                         <li><strong>Surveillance :</strong> Perdez 0.5-1kg/semaine maximum</li>
                     </ul>
                 </div>
@@ -946,9 +946,9 @@ function generatePersonalizedTips(activity, goal, results, weight) {
                 </div>
                 <div class="card-body">
                     <ul class="small mb-0">
-                        <li><strong>Surplus contrôlé :</strong> +10% calories pour optimiser les gains</li>
-                        <li><strong>Protéines réparties :</strong> 20-30g toutes les 3-4h</li>
-                        <li><strong>Post-entraînement :</strong> 25-40g protéines dans les 30min</li>
+                        <li><strong>Surplus contrôlÃ© :</strong> +10% calories pour optimiser les gains</li>
+                        <li><strong>ProtÃ©ines rÃ©parties :</strong> 20-30g toutes les 3-4h</li>
+                        <li><strong>Post-entraînement :</strong> 25-40g protÃ©ines dans les 30min</li>
                         <li><strong>Progression :</strong> Viser 0.25-0.5kg/semaine</li>
                     </ul>
                 </div>
@@ -959,15 +959,15 @@ function generatePersonalizedTips(activity, goal, results, weight) {
             <div class="card border-primary">
                 <div class="card-header bg-primary text-white">
                     <h6 class="mb-0">
-                        <i class="fas fa-fire me-2"></i>Conseils Athlète Intensif
+                        <i class="fas fa-fire me-2"></i>Conseils AthlÃ¨te Intensif
                     </h6>
                 </div>
                 <div class="card-body">
                     <ul class="small mb-0">
-                        <li><strong>Énergie élevée :</strong> ${results.tdee} kcal nécessaires pour la performance</li>
-                        <li><strong>Glucides prioritaires :</strong> ${results.carbsGrams}g pour les réserves de glycogène</li>
+                        <li><strong>Ã©nergie Ã©levÃ©e :</strong> ${results.tdee} kcal nÃ©cessaires pour la performance</li>
+                        <li><strong>Glucides prioritaires :</strong> ${results.carbsGrams}g pour les rÃ©serves de glycogÃ¨ne</li>
                         <li><strong>Hydratation :</strong> ${results.hydration}L + pertes sudation</li>
-                        <li><strong>Récupération :</strong> Collation dans les 30min post-effort</li>
+                        <li><strong>RÃ©cupÃ©ration :</strong> Collation dans les 30min post-effort</li>
                     </ul>
                 </div>
             </div>

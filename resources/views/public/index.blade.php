@@ -9,7 +9,7 @@
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">Nos Articles</h1>
-                <p class="lead mb-0">Découvrez nos derniers contenus sur le développement web, les technologies modernes et les bonnes pratiques.</p>
+                <p class="lead mb-0">DÃ©couvrez nos derniers contenus sur le dÃ©veloppement web, les technologies modernes et les bonnes pratiques.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <div class="bg-white bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 
@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-3">
                 <select name="category" class="form-select">
-                    <option value="">Toutes les catégories</option>
+                    <option value="">Toutes les catÃ©gories</option>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->slug }}" {{ $category === $cat->slug ? 'selected' : '' }}>
                             {{ $cat->name }} ({{ $cat->posts_count ?? 0 }})
@@ -84,12 +84,12 @@
                 <div class="mb-4">
                     <div class="alert alert-info border-0">
                         <i class="fas fa-info-circle me-2"></i>
-                        {{ $posts->total() }} résultat(s) trouvé(s)
+                        {{ $posts->total() }} rÃ©sultat(s) trouvÃ©(s)
                         @if($search)
                             pour "<strong>{{ $search }}</strong>"
                         @endif
                         @if($category)
-                            dans la catégorie "<strong>{{ $categories->where('slug', $category)->first()->name ?? $category }}</strong>"
+                            dans la catÃ©gorie "<strong>{{ $categories->where('slug', $category)->first()->name ?? $category }}</strong>"
                         @endif
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                                 <div class="position-absolute top-0 end-0 p-3">
                                     @if($post->is_featured)
                                         <span class="badge bg-warning text-dark mb-2 d-block">
-                                            <i class="fas fa-star me-1"></i>À la une
+                                            <i class="fas fa-star me-1"></i>Ã la une
                                         </span>
                                     @endif
                                     
@@ -138,15 +138,15 @@
                             </div>
                             
                             <div class="card-body d-flex flex-column p-4">
-                                <!-- Métadonnées -->
+                                <!-- MÃ©tadonnÃ©es -->
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <span class="badge bg-primary-subtle text-primary">
-                                            {{ $post->category->name ?? 'Non catégorisé' }}
+                                            {{ $post->category->name ?? 'Non catÃ©gorisÃ©' }}
                                         </span>
                                         <small class="text-muted d-flex align-items-center">
                                             <i class="fas fa-calendar me-1"></i>
-                                            {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') ?? 'Non daté' }}
+                                            {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') ?? 'Non datÃ©' }}
                                         </small>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     </p>
                                 @endif
                                 
-                                <!-- Footer avec informations de visibilité -->
+                                <!-- Footer avec informations de visibilitÃ© -->
                                 <div class="mt-auto">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center text-muted">
@@ -201,18 +201,18 @@
                 </div>
             @endif
         @else
-            <!-- État vide -->
+            <!-- Ã©tat vide -->
             <div class="text-center py-5">
                 <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" 
                      style="width: 120px; height: 120px;">
                     <i class="fas fa-search text-muted fa-3x"></i>
                 </div>
-                <h3 class="fw-bold mb-3">Aucun article trouvé</h3>
+                <h3 class="fw-bold mb-3">Aucun article trouvÃ©</h3>
                 <p class="text-muted mb-4">
                     @if($search || $category || ($tag ?? ''))
-                        Aucun résultat ne correspond à vos critères de recherche.
+                        Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.
                     @else
-                        Il n'y a pas encore d'articles publiés.
+                        Il n'y a pas encore d'articles publiÃ©s.
                     @endif
                 </p>
                 @if($search || $category || ($tag ?? ''))
@@ -231,13 +231,13 @@
         <div class="container-lg text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="fw-bold mb-3">Accédez à tous nos contenus</h2>
+                    <h2 class="fw-bold mb-3">AccÃ©dez Ã tous nos contenus</h2>
                     <p class="lead mb-4">
-                        Rejoignez notre communauté pour débloquer les articles exclusifs et bénéficier de contenus premium.
+                        Rejoignez notre communautÃ© pour dÃ©bloquer les articles exclusifs et bÃ©nÃ©ficier de contenus premium.
                     </p>
                     <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
                         <a href="{{ route('register') }}" class="btn btn-light btn-lg">
-                            <i class="fas fa-user-plus me-2"></i>Créer un compte gratuit
+                            <i class="fas fa-user-plus me-2"></i>CrÃ©er un compte gratuit
                         </a>
                         <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">
                             <i class="fas fa-sign-in-alt me-2"></i>Se connecter

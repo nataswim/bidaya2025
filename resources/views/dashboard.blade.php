@@ -35,9 +35,9 @@
                     'change' => '+23%'
                 ],
                 [
-                    'title' => 'Catégories',
+                    'title' => 'CatÃ©gories',
                     'value' => App\Models\Category::count(),
-                    'subtitle' => 'Catégories actives',
+                    'subtitle' => 'CatÃ©gories actives',
                     'icon' => 'fas fa-folder',
                     'color' => 'warning',
                     'change' => '+5%'
@@ -69,12 +69,12 @@
     </div>
     
     <div class="row g-4">
-        <!-- Articles récents -->
+        <!-- Articles rÃ©cents -->
         <div class="col-lg-8">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white border-bottom-0 p-4">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Articles récents</h5>
+                        <h5 class="mb-0">Articles rÃ©cents</h5>
                         <a href="{{ route('admin.posts.index') }}" class="btn btn-sm btn-outline-primary">Voir tout</a>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                                     </a>
                                 </h6>
                                 <div class="d-flex align-items-center text-muted">
-                                    <small>{{ $post->category->name ?? 'Non catégorisé' }}</small>
+                                    <small>{{ $post->category->name ?? 'Non catÃ©gorisÃ©' }}</small>
                                     <span class="mx-2">•</span>
                                     <small>{{ $post->created_at?->format('d/m/Y') ?? 'N/A' }}</small>
                                 </div>
@@ -140,14 +140,14 @@
                             <i class="fas fa-plus me-2"></i>
                             <div class="text-start">
                                 <div class="fw-semibold">Nouvel article</div>
-                                <small class="opacity-75">Créer un article</small>
+                                <small class="opacity-75">CrÃ©er un article</small>
                             </div>
                         </a>
                         
                         <a href="{{ route('admin.categories.create') }}" class="btn btn-outline-info d-flex align-items-center">
                             <i class="fas fa-folder-plus me-2"></i>
                             <div class="text-start">
-                                <div class="fw-semibold">Nouvelle catégorie</div>
+                                <div class="fw-semibold">Nouvelle catÃ©gorie</div>
                                 <small class="opacity-75">Organiser le contenu</small>
                             </div>
                         </a>
@@ -163,10 +163,10 @@
                 </div>
             </div>
             
-            <!-- Activité récente -->
+            <!-- ActivitÃ© rÃ©cente -->
             <div class="card border-0 shadow-sm mt-4">
                 <div class="card-header bg-white border-bottom-0 p-4">
-                    <h5 class="mb-0">Activité récente</h5>
+                    <h5 class="mb-0">ActivitÃ© rÃ©cente</h5>
                 </div>
                 <div class="card-body p-4">
                     <div class="timeline">

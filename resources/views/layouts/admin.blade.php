@@ -55,7 +55,7 @@
     <!-- Quill.js - UNE SEULE FOIS -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="{{ asset('js/quill-advanced.js') }}"></script>
-<!-- Sélecteur de médias -->
+<!-- SÃ©lecteur de mÃ©dias -->
 <script src="{{ asset('js/media-selector.js') }}"></script>
 
 

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Détail du tag')
+@section('title', 'DÃ©tail du tag')
 @section('page-title', $tag->name)
-@section('page-description', 'Détails du tag')
+@section('page-description', 'DÃ©tails du tag')
 
 @section('content')
 <div class="container-fluid">
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="border-start border-success border-3 ps-3">
-                                <small class="text-muted d-block">Articles associés</small>
+                                <small class="text-muted d-block">Articles associÃ©s</small>
                                 <strong>{{ $tag->posts()->count() }} articles</strong>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                 
                                 @if($tag->meta_keywords)
                                     <div class="col-12">
-                                        <small class="text-muted d-block">Mots-clés</small>
+                                        <small class="text-muted d-block">Mots-clÃ©s</small>
                                         <div>
                                             @foreach(explode(',', $tag->meta_keywords) as $keyword)
                                                 <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
@@ -134,7 +134,7 @@
                                 <div class="col-md-4">
                                     <div class="text-center p-3 bg-success bg-opacity-10 rounded">
                                         <div class="fw-bold text-success fs-4">{{ $tag->posts()->where('status', 'published')->count() }}</div>
-                                        <small class="text-muted">Publiés</small>
+                                        <small class="text-muted">PubliÃ©s</small>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -151,7 +151,7 @@
                                 </div>
                             </div>
 
-                            <!-- Liste des articles récents -->
+                            <!-- Liste des articles rÃ©cents -->
                             <div class="list-group list-group-flush">
                                 @foreach($tag->posts()->latest()->take(10)->get() as $post)
                                     <div class="list-group-item border-0 px-0 py-3">
@@ -223,7 +223,7 @@
                             <div class="text-center py-4">
                                 <i class="fas fa-file-alt fa-2x text-muted mb-3"></i>
                                 <h6>Aucun article</h6>
-                                <p class="text-muted mb-0">Ce tag n'est utilisé par aucun article pour le moment.</p>
+                                <p class="text-muted mb-0">Ce tag n'est utilisÃ© par aucun article pour le moment.</p>
                             </div>
                         </div>
                     @endif
@@ -233,7 +233,7 @@
 
         <!-- Sidebar informations -->
         <div class="col-lg-4">
-            <!-- Informations générales -->
+            <!-- Informations gÃ©nÃ©rales -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-info text-white p-3">
                     <h6 class="mb-0">
@@ -311,19 +311,19 @@
                     <div class="row g-3 small">
                         @if($tag->creator)
                             <div class="col-12">
-                                <small class="text-muted d-block">Créé par</small>
+                                <small class="text-muted d-block">CrÃ©Ã© par</small>
                                 <strong>{{ $tag->creator->name }}</strong>
                             </div>
                         @endif
                         
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de création</small>
+                            <small class="text-muted d-block">Date de crÃ©ation</small>
                             <strong>{{ $tag->created_at?->format('d/m/Y H:i') ?? 'N/A' }}</strong>
                         </div>
                         
                         @if($tag->updated_at && $tag->updated_at != $tag->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">Dernière modification</small>
+                                <small class="text-muted d-block">DerniÃ¨re modification</small>
                                 <strong>{{ $tag->updated_at->format('d/m/Y H:i') }}</strong>
                             </div>
                         @endif
@@ -342,14 +342,14 @@
                             <i class="fas fa-external-link-alt me-2"></i>Voir sur le site
                         </a>
                         <a href="{{ route('admin.tags.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                         </a>
                     </div>
                     
                     <hr class="my-3">
                     
                     <form method="POST" action="{{ route('admin.tags.destroy', $tag) }}" 
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce tag ? Il sera retiré de tous les articles associés.')">
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce tag ? Il sera retirÃ© de tous les articles associÃ©s.')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger w-100">

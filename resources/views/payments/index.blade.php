@@ -16,7 +16,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h4 class="mb-1">Passer Premium</h4>
-                            <p class="text-muted mb-0">Débloquez l'accès à tous les contenus exclusifs</p>
+                            <p class="text-muted mb-0">DÃ©bloquez l'accÃ¨s Ã tous les contenus exclusifs</p>
                         </div>
                         <a href="{{ route('user.dashboard') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-arrow-left me-2"></i>Retour
@@ -30,8 +30,8 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-info-circle fa-2x text-info me-3"></i>
                                 <div>
-                                    <h6 class="mb-1">Paiement déjà effectué</h6>
-                                    <p class="mb-0">Vous avez déjà effectué un paiement. Un administrateur validera votre accès premium prochainement.</p>
+                                    <h6 class="mb-1">Paiement dÃ©jÃ effectuÃ©</h6>
+                                    <p class="mb-0">Vous avez dÃ©jÃ effectuÃ© un paiement. Un administrateur validera votre accÃ¨s premium prochainement.</p>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                     <div class="col-md-4">
                                         <div class="d-flex align-items-center">
                                             <i class="fas fa-unlock text-success me-2"></i>
-                                            <span>Accès complet aux articles</span>
+                                            <span>AccÃ¨s complet aux articles</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -91,8 +91,8 @@
                                     </p>
                                     
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Accès illimité</li>
-                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{{ $plan['duration_months'] }} mois d'accès</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>AccÃ¨s illimitÃ©</li>
+                                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>{{ $plan['duration_months'] }} mois d'accÃ¨s</li>
                                         <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Tous les outils premium</li>
                                         <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Support inclus</li>
                                     </ul>
@@ -105,7 +105,7 @@
                                             data-name="{{ $plan['name'] }}"
                                             {{ $hasCompletedPayment ? 'disabled' : '' }}>
                                         @if($hasCompletedPayment)
-                                            <i class="fas fa-check me-2"></i>Déjà payé
+                                            <i class="fas fa-check me-2"></i>DÃ©jÃ payÃ©
                                         @else
                                             <i class="fas fa-credit-card me-2"></i>Choisir ce plan
                                         @endif
@@ -116,7 +116,7 @@
                         @endforeach
                     </div>
 
-                    <!-- Formulaire de paiement (masqué initialement) -->
+                    <!-- Formulaire de paiement (masquÃ© initialement) -->
                     <div id="payment-section" class="d-none">
                         <div class="card border-primary">
                             <div class="card-header bg-primary text-white">
@@ -125,17 +125,17 @@
                             <div class="card-body">
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <h6>Plan sélectionné</h6>
+                                        <h6>Plan sÃ©lectionnÃ©</h6>
                                         <div id="selected-plan-info" class="p-3 bg-light rounded"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6>Sécurité</h6>
+                                        <h6>SÃ©curitÃ©</h6>
                                         <div class="p-3 bg-light rounded">
                                             <div class="d-flex align-items-center text-success">
                                                 <i class="fas fa-shield-alt me-2"></i>
-                                                <span>Paiement sécurisé par Stripe</span>
+                                                <span>Paiement sÃ©curisÃ© par Stripe</span>
                                             </div>
-                                            <small class="text-muted">Vos données sont protégées</small>
+                                            <small class="text-muted">Vos donnÃ©es sont protÃ©gÃ©es</small>
                                         </div>
                                     </div>
                                 </div>
@@ -156,13 +156,13 @@
                         </div>
                     </div>
 
-                    <!-- Informations légales -->
+                    <!-- Informations lÃ©gales -->
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="text-center">
                                 <small class="text-muted">
-                                    En procédant au paiement, vous acceptez nos conditions d'utilisation. 
-                                    Paiement sécurisé SSL 256 bits.
+                                    En procÃ©dant au paiement, vous acceptez nos conditions d'utilisation. 
+                                    Paiement sÃ©curisÃ© SSL 256 bits.
                                 </small>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Attendre que Stripe soit chargé
+    // Attendre que Stripe soit chargÃ©
     function waitForStripe(callback) {
         if (typeof Stripe !== 'undefined') {
             callback();
@@ -187,12 +187,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     waitForStripe(function() {
-        console.log('Stripe chargé avec succès');
+        console.log('Stripe chargÃ© avec succÃ¨s');
         
         const stripe = Stripe('{{ config('stripe.publishable_key') }}');
         let elements, paymentElement, selectedPlan;
 
-        console.log('Clé publique Stripe:', '{{ config('stripe.publishable_key') }}');
+        console.log('ClÃ© publique Stripe:', '{{ config('stripe.publishable_key') }}');
 
         // Gestionnaire des boutons de plan
         document.querySelectorAll('.payment-btn').forEach(btn => {
@@ -205,29 +205,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     name: this.dataset.name
                 };
                 
-                console.log('Bouton cliqué, plan:', selectedPlan);
+                console.log('Bouton cliquÃ©, plan:', selectedPlan);
                 initializePayment();
             });
         });
 
         async function initializePayment() {
             try {
-                console.log('Plan sélectionné:', selectedPlan);
+                console.log('Plan sÃ©lectionnÃ©:', selectedPlan);
                 showLoading(true);
                 
-                // Afficher les informations du plan sélectionné
+                // Afficher les informations du plan sÃ©lectionnÃ©
                 document.getElementById('selected-plan-info').innerHTML = `
                     <strong>${selectedPlan.name}</strong><br>
                     <span class="h5 text-primary">${(selectedPlan.amount / 100).toFixed(0)}€</span>
                     <small class="text-muted d-block">Paiement unique</small>
                 `;
                 
-                // Mettre à jour le texte du bouton
+                // Mettre Ã jour le texte du bouton
                 document.getElementById('button-text').textContent = `Payer ${(selectedPlan.amount / 100).toFixed(0)}€`;
 
                 console.log('Envoi de la requête vers:', '{{ route('payments.create-intent') }}');
                 
-                // Créer le PaymentIntent
+                // CrÃ©er le PaymentIntent
                 const response = await fetch('{{ route('payments.create-intent') }}', {
                     method: 'POST',
                     headers: {
@@ -239,14 +239,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                 });
 
-                console.log('Réponse reçue:', response.status);
+                console.log('RÃ©ponse reçue:', response.status);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
                 const data = await response.json();
-                console.log('Données:', data);
+                console.log('DonnÃ©es:', data);
 
                 if (data.error) {
                     console.error('Erreur Stripe:', data.error);
@@ -260,9 +260,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
 
-                console.log('Création des Elements Stripe...');
+                console.log('CrÃ©ation des Elements Stripe...');
 
-                // Créer les Elements Stripe
+                // CrÃ©er les Elements Stripe
                 elements = stripe.elements({
                     clientSecret: data.client_secret,
                     appearance: {
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
             } catch (error) {
-                console.error('Erreur complète:', error);
+                console.error('Erreur complÃ¨te:', error);
                 showMessage('Erreur lors de l\'initialisation: ' + error.message, 'error');
                 showLoading(false);
             }

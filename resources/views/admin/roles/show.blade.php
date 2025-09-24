@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Détail du rôle')
+@section('title', 'DÃ©tail du rôle')
 @section('page-title', $role->display_name ?? $role->name)
-@section('page-description', 'Détails du rôle et permissions')
+@section('page-description', 'DÃ©tails du rôle et permissions')
 
 @section('content')
 <div class="container-fluid">
@@ -25,7 +25,7 @@
                                     <small class="opacity-75">{{ $role->name }}</small>
                                     @if($role->is_default)
                                         <span class="badge bg-warning">
-                                            <i class="fas fa-star me-1"></i>Par défaut
+                                            <i class="fas fa-star me-1"></i>Par dÃ©faut
                                         </span>
                                     @endif
                                 </div>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="border-start border-success border-3 ps-3">
-                                <small class="text-muted d-block">Niveau d'autorité</small>
+                                <small class="text-muted d-block">Niveau d'autoritÃ©</small>
                                 <strong>{{ $role->level }}/100</strong>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                                             <div class="card-header bg-light p-3">
                                                 <h6 class="mb-0 text-capitalize">
                                                     <i class="fas fa-folder me-2 text-info"></i>
-                                                    {{ str_replace('_', ' ', $group ?: 'Général') }}
+                                                    {{ str_replace('_', ' ', $group ?: 'GÃ©nÃ©ral') }}
                                                     <span class="badge bg-info-subtle text-info ms-2">{{ $permissions->count() }}</span>
                                                 </h6>
                                             </div>
@@ -112,8 +112,8 @@
                         <div class="mb-4">
                             <div class="alert alert-warning">
                                 <i class="fas fa-exclamation-triangle me-2"></i>
-                                <strong>Aucune permission assignée</strong><br>
-                                Ce rôle n'a aucune permission. Les utilisateurs avec ce rôle auront un accès très limité.
+                                <strong>Aucune permission assignÃ©e</strong><br>
+                                Ce rôle n'a aucune permission. Les utilisateurs avec ce rôle auront un accÃ¨s trÃ¨s limitÃ©.
                             </div>
                         </div>
                     @endif
@@ -188,7 +188,7 @@
                             <div class="text-center py-4">
                                 <i class="fas fa-users fa-2x text-muted mb-3"></i>
                                 <h6>Aucun utilisateur</h6>
-                                <p class="text-muted mb-0">Ce rôle n'est assigné à aucun utilisateur.</p>
+                                <p class="text-muted mb-0">Ce rôle n'est assignÃ© Ã aucun utilisateur.</p>
                             </div>
                         </div>
                     @endif
@@ -198,7 +198,7 @@
 
         <!-- Sidebar informations -->
         <div class="col-lg-4">
-            <!-- Statistiques détaillées -->
+            <!-- Statistiques dÃ©taillÃ©es -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-info text-white p-3">
                     <h6 class="mb-0">
@@ -275,13 +275,13 @@
                 <div class="card-body p-3">
                     <div class="row g-3 small">
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de création</small>
+                            <small class="text-muted d-block">Date de crÃ©ation</small>
                             <strong>{{ $role->created_at?->format('d/m/Y H:i') ?? 'N/A' }}</strong>
                         </div>
                         
                         @if($role->updated_at && $role->updated_at != $role->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">Dernière modification</small>
+                                <small class="text-muted d-block">DerniÃ¨re modification</small>
                                 <strong>{{ $role->updated_at->format('d/m/Y H:i') }}</strong>
                             </div>
                         @endif
@@ -300,7 +300,7 @@
                             <i class="fas fa-users me-2"></i>Voir les utilisateurs
                         </a>
                         <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                         </a>
                     </div>
                     
@@ -308,7 +308,7 @@
                         <hr class="my-3">
                         
                         <form method="POST" action="{{ route('admin.roles.destroy', $role) }}" 
-                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Les utilisateurs assignés perdront leurs permissions.')">
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Les utilisateurs assignÃ©s perdront leurs permissions.')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger w-100">

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Exécute les migrations.
+     * ExÃ©cute les migrations.
      */
     public function up(): void
     {
@@ -24,7 +24,7 @@ return new class extends Migration
                   ->constrained('roles')
                   ->nullOnDelete();
 
-            // Informations supplémentaires
+            // Informations supplÃ©mentaires
             $table->string('avatar', 255)->nullable()->after('role_id');
             $table->text('bio')->nullable()->after('avatar');
             $table->string('phone', 20)->nullable()->after('bio');
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('last_login_ip', 45)->nullable()->after('last_login_at');
             $table->unsignedInteger('login_count')->default(0)->after('last_login_ip');
 
-            // Préférences
+            // PrÃ©fÃ©rences
             $table->json('preferences')->nullable()->after('login_count');
             $table->string('locale', 5)->default('fr')->after('preferences');
             $table->string('timezone', 50)->default('Europe/Paris')->after('locale');
@@ -57,7 +57,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Suppression des colonnes ajoutées
+            // Suppression des colonnes ajoutÃ©es
             $table->dropColumn([
                 'username',
                 'first_name',

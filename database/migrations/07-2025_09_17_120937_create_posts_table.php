@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Exécute les migrations.
+     * ExÃ©cute les migrations.
      */
     public function up(): void
     {
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('content')->nullable();
             $table->string('type', 50)->nullable()->index();
 
-            // Relation avec catégories
+            // Relation avec catÃ©gories
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('category_name', 150)->nullable();
 
@@ -38,12 +38,12 @@ return new class extends Migration
             $table->unsignedInteger('hits')->default(0)->index();
             $table->unsignedInteger('order')->nullable();
 
-            // Statut et modération
+            // Statut et modÃ©ration
             $table->string('status', 50)->default('published')->index();
             $table->foreignId('moderated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->dateTime('moderated_at')->nullable();
 
-            // Audit (créateur, modificateur, suppression)
+            // Audit (crÃ©ateur, modificateur, suppression)
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->string('created_by_name', 150)->nullable();
             $table->string('created_by_alias', 150)->nullable();
@@ -56,7 +56,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            // Index supplémentaires
+            // Index supplÃ©mentaires
             $table->index(['status', 'published_at', 'deleted_at']);
             $table->index(['type', 'status', 'deleted_at']);
             $table->index(['is_featured', 'status', 'published_at']);

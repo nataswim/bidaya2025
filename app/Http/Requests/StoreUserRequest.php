@@ -13,7 +13,7 @@ class StoreUserRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        // Définir des valeurs par défaut avant validation
+        // DÃ©finir des valeurs par dÃ©faut avant validation
         $this->merge([
             'locale' => $this->locale ?: 'fr',
             'timezone' => $this->timezone ?: 'Europe/Paris',

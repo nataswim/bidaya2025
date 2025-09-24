@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Gestion des Catégories')
-@section('page-title', 'Catégories')
-@section('page-description', 'Gestion des catégories d\'articles')
+@section('title', 'Gestion des CatÃ©gories')
+@section('page-title', 'CatÃ©gories')
+@section('page-description', 'Gestion des catÃ©gories d\'articles')
 
 @section('content')
 <div class="container-fluid">
@@ -11,12 +11,12 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div>
                     <h5 class="mb-1">
-                        <i class="fas fa-folder me-2"></i>Liste des catégories
+                        <i class="fas fa-folder me-2"></i>Liste des catÃ©gories
                     </h5>
-                    <small class="opacity-75">{{ $categories->total() }} catégorie(s) au total</small>
+                    <small class="opacity-75">{{ $categories->total() }} catÃ©gorie(s) au total</small>
                 </div>
                 <a href="{{ route('admin.categories.create') }}" class="btn btn-light">
-                    <i class="fas fa-plus me-2"></i>Nouvelle catégorie
+                    <i class="fas fa-plus me-2"></i>Nouvelle catÃ©gorie
                 </a>
             </div>
         </div>
@@ -33,7 +33,7 @@
                                name="search" 
                                value="{{ request('search') }}" 
                                class="form-control border-start-0"
-                               placeholder="Rechercher une catégorie...">
+                               placeholder="Rechercher une catÃ©gorie...">
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -79,7 +79,7 @@
                             </div>
                             <div>
                                 <h6 class="mb-0">{{ $stats['active'] ?? 0 }}</h6>
-                                <small class="text-muted">Catégories actives</small>
+                                <small class="text-muted">CatÃ©gories actives</small>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             </div>
                             <div>
                                 <h6 class="mb-0">{{ $stats['inactive'] ?? 0 }}</h6>
-                                <small class="text-muted">Catégories inactives</small>
+                                <small class="text-muted">CatÃ©gories inactives</small>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                         <th class="border-0 px-4 py-3">
                             <a href="{{ route('admin.categories.index', array_merge(request()->query(), ['sort' => 'name', 'direction' => request('direction') === 'asc' ? 'desc' : 'asc'])) }}" 
                                class="text-decoration-none text-dark d-flex align-items-center">
-                                Catégorie
+                                CatÃ©gorie
                                 <i class="fas fa-sort ms-2 text-muted"></i>
                             </a>
                         </th>
@@ -136,7 +136,7 @@
                         <th class="border-0 py-3 text-center">Articles</th>
                         <th class="border-0 py-3 text-center">Statut</th>
                         <th class="border-0 py-3 text-center">Ordre</th>
-                        <th class="border-0 py-3">Créé le</th>
+                        <th class="border-0 py-3">CrÃ©Ã© le</th>
                         <th class="border-0 py-3 text-end">Actions</th>
                     </tr>
                 </thead>
@@ -233,7 +233,7 @@
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" 
                                                href="{{ route('admin.categories.show', $category) }}">
-                                                <i class="fas fa-eye me-2 text-info"></i>Voir détails
+                                                <i class="fas fa-eye me-2 text-info"></i>Voir dÃ©tails
                                             </a>
                                         </li>
                                         <li>
@@ -253,7 +253,7 @@
                                         <li>
                                             <form method="POST" 
                                                   action="{{ route('admin.categories.destroy', $category) }}" 
-                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ? Cette action supprimera également tous les articles associés.')">
+                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catÃ©gorie ? Cette action supprimera Ã©galement tous les articles associÃ©s.')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" 
@@ -271,16 +271,16 @@
                             <td colspan="7" class="text-center py-5">
                                 <div class="text-muted">
                                     <i class="fas fa-folder-open fa-3x mb-3 opacity-25"></i>
-                                    <h5>Aucune catégorie trouvée</h5>
+                                    <h5>Aucune catÃ©gorie trouvÃ©e</h5>
                                     @if(request()->hasAny(['search', 'status', 'group']))
-                                        <p class="mb-3">Aucun résultat ne correspond à vos critères de recherche.</p>
+                                        <p class="mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
                                         <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-primary">
-                                            <i class="fas fa-arrow-left me-2"></i>Voir toutes les catégories
+                                            <i class="fas fa-arrow-left me-2"></i>Voir toutes les catÃ©gories
                                         </a>
                                     @else
-                                        <p class="mb-3">Créez votre première catégorie pour organiser vos articles</p>
+                                        <p class="mb-3">CrÃ©ez votre premiÃ¨re catÃ©gorie pour organiser vos articles</p>
                                         <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
-                                            <i class="fas fa-plus me-2"></i>Créer une catégorie
+                                            <i class="fas fa-plus me-2"></i>CrÃ©er une catÃ©gorie
                                         </a>
                                     @endif
                                 </div>
@@ -296,8 +296,8 @@
             <div class="card-footer bg-white border-top p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="text-muted">
-                        Affichage de {{ $categories->firstItem() }} à {{ $categories->lastItem() }} 
-                        sur {{ $categories->total() }} résultat(s)
+                        Affichage de {{ $categories->firstItem() }} Ã {{ $categories->lastItem() }} 
+                        sur {{ $categories->total() }} rÃ©sultat(s)
                     </div>
                     <div>
                         {{ $categories->appends(request()->query())->links() }}

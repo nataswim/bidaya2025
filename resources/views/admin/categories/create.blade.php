@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Créer une Catégorie')
-@section('page-title', 'Nouvelle Catégorie')
-@section('page-description', 'Création d\'une nouvelle catégorie')
+@section('title', 'CrÃ©er une CatÃ©gorie')
+@section('page-title', 'Nouvelle CatÃ©gorie')
+@section('page-description', 'CrÃ©ation d\'une nouvelle catÃ©gorie')
 
 @section('content')
 <div class="container-fluid">
@@ -14,17 +14,17 @@
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm">
                     <div class="card-header bg-white border-bottom p-4">
-                        <h5 class="mb-0">Informations de la catégorie</h5>
+                        <h5 class="mb-0">Informations de la catÃ©gorie</h5>
                     </div>
                     <div class="card-body p-4">
                         <div class="mb-4">
-                            <label for="name" class="form-label fw-semibold">Nom de la catégorie *</label>
+                            <label for="name" class="form-label fw-semibold">Nom de la catÃ©gorie *</label>
                             <input type="text" 
                                    name="name" 
                                    id="name" 
                                    value="{{ old('name') }}"
                                    class="form-control form-control-lg @error('name') is-invalid @enderror"
-                                   placeholder="Ex: Développement Web"
+                                   placeholder="Ex: DÃ©veloppement Web"
                                    required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="slug" class="form-label fw-semibold">URL personnalisée (Slug)</label>
+                            <label for="slug" class="form-label fw-semibold">URL personnalisÃ©e (Slug)</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light">{{ url('/articles?category=') }}</span>
                                 <input type="text" 
@@ -42,7 +42,7 @@
                                        class="form-control"
                                        placeholder="developpement-web">
                             </div>
-                            <div class="form-text">Laisser vide pour génération automatique</div>
+                            <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique</div>
                         </div>
 
                         <div class="mb-4">
@@ -51,13 +51,13 @@
                                       id="description" 
                                       rows="4"
                                       class="form-control"
-                                      placeholder="Description détaillée de la catégorie...">{{ old('description') }}</textarea>
+                                      placeholder="Description dÃ©taillÃ©e de la catÃ©gorie...">{{ old('description') }}</textarea>
                         </div>
 
                         <!-- Section SEO -->
                         <div class="border-top pt-4">
                             <h6 class="fw-semibold mb-3">
-                                <i class="fas fa-search me-2 text-primary"></i>Référencement (SEO)
+                                <i class="fas fa-search me-2 text-primary"></i>RÃ©fÃ©rencement (SEO)
                             </h6>
                             
                             <div class="row g-3">
@@ -79,7 +79,7 @@
                                 </div>
                                 
                                 <div class="col-12">
-                                    <label for="meta_keywords" class="form-label">Mots-clés</label>
+                                    <label for="meta_keywords" class="form-label">Mots-clÃ©s</label>
                                     <input type="text" 
                                            name="meta_keywords" 
                                            id="meta_keywords" 
@@ -99,7 +99,7 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-white border-bottom p-4">
                         <h6 class="mb-0">
-                            <i class="fas fa-toggle-on me-2 text-success"></i>Statut et visibilité
+                            <i class="fas fa-toggle-on me-2 text-success"></i>Statut et visibilitÃ©
                         </h6>
                     </div>
                     <div class="card-body p-4">
@@ -124,7 +124,7 @@
                                    class="form-control"
                                    placeholder="0"
                                    min="0">
-                            <div class="form-text">Plus le nombre est petit, plus la catégorie sera affichée en premier</div>
+                            <div class="form-text">Plus le nombre est petit, plus la catÃ©gorie sera affichÃ©e en premier</div>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                                value="{{ old('group_name') }}"
                                class="form-control"
                                placeholder="Ex: Technologies">
-                        <div class="form-text">Grouper les catégories similaires ensemble</div>
+                        <div class="form-text">Grouper les catÃ©gories similaires ensemble</div>
                     </div>
                 </div>
 
@@ -161,7 +161,7 @@
                                value="{{ old('image') }}"
                                class="form-control"
                                placeholder="https://example.com/image.jpg">
-                        <div class="form-text">URL de l'image d'illustration de la catégorie</div>
+                        <div class="form-text">URL de l'image d'illustration de la catÃ©gorie</div>
                     </div>
                 </div>
             </div>
@@ -174,10 +174,10 @@
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center justify-content-between">
                             <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                                <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save me-2"></i>Créer la catégorie
+                                <i class="fas fa-save me-2"></i>CrÃ©er la catÃ©gorie
                             </button>
                         </div>
                     </div>

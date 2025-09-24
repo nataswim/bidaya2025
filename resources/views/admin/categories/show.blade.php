@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Détail de la catégorie')
+@section('title', 'DÃ©tail de la catÃ©gorie')
 @section('page-title', $category->name)
-@section('page-description', 'Détails de la catégorie')
+@section('page-description', 'DÃ©tails de la catÃ©gorie')
 
 @section('content')
 <div class="container-fluid">
@@ -86,7 +86,7 @@
                                 
                                 @if($category->meta_keywords)
                                     <div class="col-12">
-                                        <small class="text-muted d-block">Mots-clés</small>
+                                        <small class="text-muted d-block">Mots-clÃ©s</small>
                                         <div>
                                             @foreach(explode(',', $category->meta_keywords) as $keyword)
                                                 <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
@@ -98,11 +98,11 @@
                         </div>
                     @endif
 
-                    <!-- Articles récents de cette catégorie -->
+                    <!-- Articles rÃ©cents de cette catÃ©gorie -->
                     @if($category->posts()->count() > 0)
                         <div class="border-top pt-4">
                             <h6 class="fw-semibold mb-3">
-                                <i class="fas fa-file-alt me-2"></i>Articles récents
+                                <i class="fas fa-file-alt me-2"></i>Articles rÃ©cents
                             </h6>
                             <div class="list-group list-group-flush">
                                 @foreach($category->posts()->latest()->take(5)->get() as $post)
@@ -187,19 +187,19 @@
                     <div class="row g-3 small">
                         @if($category->creator)
                             <div class="col-12">
-                                <small class="text-muted d-block">Créé par</small>
+                                <small class="text-muted d-block">CrÃ©Ã© par</small>
                                 <strong>{{ $category->creator->name }}</strong>
                             </div>
                         @endif
                         
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de création</small>
+                            <small class="text-muted d-block">Date de crÃ©ation</small>
                             <strong>{{ $category->created_at->format('d/m/Y H:i') }}</strong>
                         </div>
                         
                         @if($category->updated_at && $category->updated_at != $category->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">Dernière modification</small>
+                                <small class="text-muted d-block">DerniÃ¨re modification</small>
                                 <strong>{{ $category->updated_at->format('d/m/Y H:i') }}</strong>
                             </div>
                         @endif
@@ -218,14 +218,14 @@
                             <i class="fas fa-external-link-alt me-2"></i>Voir sur le site
                         </a>
                         <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                         </a>
                     </div>
                     
                     <hr class="my-3">
                     
                     <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" 
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catÃ©gorie ?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger w-100">

@@ -13,22 +13,22 @@
                 </div>
                 <h1 class="display-4 fw-bold mb-3">Erreur serveur</h1>
                 <p class="lead text-muted mb-4">
-                    Une erreur s'est produite sur notre serveur. Nos équipes techniques ont été notifiées 
-                    et travaillent à résoudre ce problème.
+                    Une erreur s'est produite sur notre serveur. Nos Ã©quipes techniques ont Ã©tÃ© notifiÃ©es 
+                    et travaillent Ã rÃ©soudre ce problÃ¨me.
                 </p>
                 <div class="d-flex flex-wrap gap-3 justify-content-center">
                     <a href="{{ route('home') }}" class="btn btn-primary">
-                        <i class="fas fa-home me-2"></i>Retour à l'accueil
+                        <i class="fas fa-home me-2"></i>Retour Ã l'accueil
                     </a>
                     <button onclick="window.location.reload()" class="btn btn-outline-primary">
-                        <i class="fas fa-redo me-2"></i>Réessayer
+                        <i class="fas fa-redo me-2"></i>RÃ©essayer
                     </button>
                 </div>
                 
                 <div class="mt-5 p-4 bg-white rounded border">
                     <h6 class="fw-semibold mb-3">Besoin d'aide ?</h6>
                     <p class="text-muted mb-3">
-                        Si le problème persiste, n'hésitez pas à nous contacter.
+                        Si le problÃ¨me persiste, n'hÃ©sitez pas Ã nous contacter.
                     </p>
                     <a href="{{ route('contact') }}" class="btn btn-sm btn-outline-secondary">
                         <i class="fas fa-envelope me-2"></i>Nous contacter

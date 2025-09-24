@@ -13,8 +13,8 @@
                                  style="width: 80px; height: 80px;">
                                 <i class="fas fa-user-plus text-white fa-2x"></i>
                             </div>
-                            <h2 class="fw-bold">Créer un compte</h2>
-                            <p class="text-muted">Rejoignez notre communauté</p>
+                            <h2 class="fw-bold">CrÃ©er un compte</h2>
+                            <p class="text-muted">Rejoignez notre communautÃ©</p>
                         </div>
 
                         <form method="POST" action="{{ route('register') }}">
@@ -105,7 +105,7 @@
                                            required>
                                     <label for="terms" class="form-check-label">
                                         J'accepte les <a href="#" class="text-decoration-none">conditions d'utilisation</a> 
-                                        et la <a href="#" class="text-decoration-none">politique de confidentialité</a>
+                                        et la <a href="#" class="text-decoration-none">politique de confidentialitÃ©</a>
                                     </label>
                                 </div>
                             </div>
@@ -113,13 +113,13 @@
                             <!-- Submit Button -->
                             <div class="d-grid mb-4">
                                 <button type="submit" class="btn btn-primary btn-lg">
-                                    <i class="fas fa-user-plus me-2"></i>Créer mon compte
+                                    <i class="fas fa-user-plus me-2"></i>CrÃ©er mon compte
                                 </button>
                             </div>
 
                             <!-- Login Link -->
                             <div class="text-center">
-                                <span class="text-muted">Déjà membre ?</span>
+                                <span class="text-muted">DÃ©jÃ membre ?</span>
                                 <a href="{{ route('login') }}" class="text-decoration-none fw-semibold">
                                     Se connecter
                                 </a>
@@ -131,7 +131,7 @@
                 <!-- Retour accueil -->
                 <div class="text-center mt-4">
                     <a href="{{ route('home') }}" class="text-muted text-decoration-none">
-                        <i class="fas fa-arrow-left me-2"></i>Retour à l'accueil
+                        <i class="fas fa-arrow-left me-2"></i>Retour Ã l'accueil
                     </a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Détails du média')
+@section('title', 'DÃ©tails du mÃ©dia')
 
 @section('content')
 <div class="container-fluid py-4">
@@ -9,11 +9,11 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h1 class="h3 mb-0">{{ $media->name }}</h1>
-                    <p class="text-muted mb-0">Détails et édition du média</p>
+                    <p class="text-muted mb-0">DÃ©tails et Ã©dition du mÃ©dia</p>
                 </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('admin.media.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour aux médias
+                        <i class="fas fa-arrow-left me-2"></i>Retour aux mÃ©dias
                     </a>
                     <button type="button" 
                             class="btn btn-outline-danger"
@@ -42,7 +42,7 @@
                                 <a href="{{ $media->url }}" 
                                    target="_blank" 
                                    class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-external-link-alt me-1"></i>Voir en taille réelle
+                                    <i class="fas fa-external-link-alt me-1"></i>Voir en taille rÃ©elle
                                 </a>
                                 <button type="button" 
                                         class="btn btn-outline-success btn-sm"
@@ -85,8 +85,8 @@
                                     </div>
                                 @endif
                                 <div class="col-md-6">
-                                    <strong>Uploadé le :</strong><br>
-                                    <span class="text-muted">{{ $media->created_at->format('d/m/Y à H:i') }}</span>
+                                    <strong>UploadÃ© le :</strong><br>
+                                    <span class="text-muted">{{ $media->created_at->format('d/m/Y Ã H:i') }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <strong>Par :</strong><br>
@@ -94,8 +94,8 @@
                                 </div>
                                 @if($media->used_at)
                                     <div class="col-md-6">
-                                        <strong>Dernière utilisation :</strong><br>
-                                        <span class="text-muted">{{ $media->used_at->format('d/m/Y à H:i') }}</span>
+                                        <strong>DerniÃ¨re utilisation :</strong><br>
+                                        <span class="text-muted">{{ $media->used_at->format('d/m/Y Ã H:i') }}</span>
                                     </div>
                                 @endif
                             </div>
@@ -103,12 +103,12 @@
                     </div>
                 </div>
 
-                <!-- Formulaire d'édition -->
+                <!-- Formulaire d'Ã©dition -->
                 <div class="col-lg-6">
                     <div class="card border-0 shadow-sm">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">
-                                <i class="fas fa-edit text-success me-2"></i>Édition
+                                <i class="fas fa-edit text-success me-2"></i>Ã©dition
                             </h5>
                         </div>
                         <div class="card-body">
@@ -141,7 +141,7 @@
                                                id="alt_text" 
                                                class="form-control @error('alt_text') is-invalid @enderror"
                                                value="{{ old('alt_text', $media->alt_text) }}"
-                                               placeholder="Description pour l'accessibilité">
+                                               placeholder="Description pour l'accessibilitÃ©">
                                         @error('alt_text')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -149,12 +149,12 @@
 
                                     <div class="col-12">
                                         <label for="media_category_id" class="form-label fw-semibold">
-                                            Catégorie
+                                            CatÃ©gorie
                                         </label>
                                         <select name="media_category_id" 
                                                 id="media_category_id" 
                                                 class="form-select @error('media_category_id') is-invalid @enderror">
-                                            <option value="">Aucune catégorie</option>
+                                            <option value="">Aucune catÃ©gorie</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}" 
                                                         {{ old('media_category_id', $media->media_category_id) == $category->id ? 'selected' : '' }}>
@@ -175,7 +175,7 @@
                                                   id="description" 
                                                   class="form-control @error('description') is-invalid @enderror" 
                                                   rows="4"
-                                                  placeholder="Description détaillée du média">{{ old('description', $media->description) }}</textarea>
+                                                  placeholder="Description dÃ©taillÃ©e du mÃ©dia">{{ old('description', $media->description) }}</textarea>
                                         @error('description')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -225,10 +225,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir supprimer ce média ?</p>
+                <p>Êtes-vous sûr de vouloir supprimer ce mÃ©dia ?</p>
                 <div class="alert alert-warning">
                     <i class="fas fa-warning me-2"></i>
-                    <strong>Cette action est irréversible.</strong> Le fichier sera définitivement supprimé du serveur.
+                    <strong>Cette action est irrÃ©versible.</strong> Le fichier sera dÃ©finitivement supprimÃ© du serveur.
                 </div>
             </div>
             <div class="modal-footer">
@@ -237,7 +237,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-trash me-2"></i>Supprimer définitivement
+                        <i class="fas fa-trash me-2"></i>Supprimer dÃ©finitivement
                     </button>
                 </form>
             </div>
@@ -250,11 +250,11 @@
 <script>
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        // Afficher une notification de succès
+        // Afficher une notification de succÃ¨s
         const alert = document.createElement('div');
         alert.className = 'alert alert-success position-fixed';
         alert.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
-        alert.innerHTML = '<i class="fas fa-check me-2"></i>URL copiée !';
+        alert.innerHTML = '<i class="fas fa-check me-2"></i>URL copiÃ©e !';
         document.body.appendChild(alert);
         
         setTimeout(() => {

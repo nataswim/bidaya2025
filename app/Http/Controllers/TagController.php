@@ -12,7 +12,7 @@ class TagController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'Accès non autorisé');
+            abort(403, 'AccÃ¨s non autorisÃ©');
         }
     }
 
@@ -51,7 +51,7 @@ class TagController extends Controller
         Tag::create($data);
 
         return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag créé avec succès.');
+            ->with('success', 'Tag crÃ©Ã© avec succÃ¨s.');
     }
 
     public function show(Tag $tag)
@@ -78,23 +78,23 @@ class TagController extends Controller
         $tag->update($data);
 
         return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag mis à jour avec succès.');
+            ->with('success', 'Tag mis Ã jour avec succÃ¨s.');
     }
 
     public function destroy(Tag $tag)
     {
         $this->checkAdminAccess();
         
-        // Vérifier les dépendances avec les posts
+        // VÃ©rifier les dÃ©pendances avec les posts
         if ($tag->posts()->count() > 0) {
             return redirect()->route('admin.tags.index')
-                ->with('error', 'Impossible de supprimer un tag utilisé par des articles.');
+                ->with('error', 'Impossible de supprimer un tag utilisÃ© par des articles.');
         }
         
         $tag->update(['deleted_by' => auth()->id()]);
         $tag->delete();
 
         return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag supprimé avec succès.');
+            ->with('success', 'Tag supprimÃ© avec succÃ¨s.');
     }
 }

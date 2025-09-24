@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Page non trouvée')
+@section('title', 'Page non trouvÃ©e')
 
 @section('content')
 <div class="min-vh-100 d-flex align-items-center bg-light">
@@ -12,13 +12,13 @@
                          style="width: 150px; height: 150px;">
                         <span class="display-1 fw-bold text-primary">404</span>
                     </div>
-                    <h1 class="display-4 fw-bold mb-3">Page non trouvée</h1>
+                    <h1 class="display-4 fw-bold mb-3">Page non trouvÃ©e</h1>
                     <p class="lead text-muted mb-4">
-                        Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+                        DÃ©solÃ©, la page que vous recherchez n'existe pas ou a Ã©tÃ© dÃ©placÃ©e.
                     </p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
                         <a href="{{ route('home') }}" class="btn btn-primary">
-                            <i class="fas fa-home me-2"></i>Retour à l'accueil
+                            <i class="fas fa-home me-2"></i>Retour Ã l'accueil
                         </a>
                         <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                             <i class="fas fa-newspaper me-2"></i>Voir les articles

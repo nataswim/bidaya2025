@@ -14,9 +14,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h5 class="mb-1">
-                                <i class="fas fa-user-shield me-2"></i>Rôles du système
+                                <i class="fas fa-user-shield me-2"></i>Rôles du systÃ¨me
                             </h5>
-                            <small class="opacity-75">{{ $roles->count() }} rôle(s) configuré(s)</small>
+                            <small class="opacity-75">{{ $roles->count() }} rôle(s) configurÃ©(s)</small>
                         </div>
                         <a href="{{ route('admin.roles.create') }}" class="btn btn-light">
                             <i class="fas fa-plus me-2"></i>Nouveau rôle
@@ -84,7 +84,7 @@
                                             <li>
                                                 <a class="dropdown-item d-flex align-items-center" 
                                                    href="{{ route('admin.roles.show', $role) }}">
-                                                    <i class="fas fa-eye me-2 text-info"></i>Voir détails
+                                                    <i class="fas fa-eye me-2 text-info"></i>Voir dÃ©tails
                                                 </a>
                                             </li>
                                             <li>
@@ -104,7 +104,7 @@
                                                 <li>
                                                     <form method="POST" 
                                                           action="{{ route('admin.roles.destroy', $role) }}" 
-                                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Les utilisateurs assignés perdront leurs permissions.')">
+                                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Les utilisateurs assignÃ©s perdront leurs permissions.')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" 
@@ -147,7 +147,7 @@
                                 <div class="mt-3">
                                     <small class="text-warning">
                                         <i class="fas fa-exclamation-triangle me-1"></i>
-                                        Aucune permission assignée
+                                        Aucune permission assignÃ©e
                                     </small>
                                 </div>
                             @endif
@@ -155,10 +155,10 @@
                     @empty
                         <div class="text-center py-5">
                             <i class="fas fa-user-shield fa-3x text-muted mb-3 opacity-25"></i>
-                            <h5>Aucun rôle configuré</h5>
-                            <p class="text-muted mb-3">Créez des rôles pour organiser les permissions utilisateurs</p>
+                            <h5>Aucun rôle configurÃ©</h5>
+                            <p class="text-muted mb-3">CrÃ©ez des rôles pour organiser les permissions utilisateurs</p>
                             <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">
-                                <i class="fas fa-plus me-2"></i>Créer un rôle
+                                <i class="fas fa-plus me-2"></i>CrÃ©er un rôle
                             </a>
                         </div>
                     @endforelse
@@ -172,7 +172,7 @@
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-chart-pie me-2"></i>Répartition des utilisateurs
+                        <i class="fas fa-chart-pie me-2"></i>RÃ©partition des utilisateurs
                     </h6>
                 </div>
                 <div class="card-body p-3">
@@ -219,20 +219,20 @@
                             </div>
                         @endif
                     @else
-                        <p class="text-muted mb-0">Aucun utilisateur dans le système</p>
+                        <p class="text-muted mb-0">Aucun utilisateur dans le systÃ¨me</p>
                     @endif
                 </div>
             </div>
 
-            <!-- Permissions système -->
+            <!-- Permissions systÃ¨me -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-warning text-white p-3">
                     <div class="d-flex align-items-center justify-content-between">
                         <h6 class="mb-0">
-                            <i class="fas fa-key me-2"></i>Permissions système
+                            <i class="fas fa-key me-2"></i>Permissions systÃ¨me
                         </h6>
                         <a href="{{ route('admin.permissions.index') }}" class="btn btn-sm btn-light">
-                            Gérer
+                            GÃ©rer
                         </a>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
                     @if($permissionGroups->count() > 0)
                         @foreach($permissionGroups->take(5) as $group)
                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                <span class="text-capitalize">{{ str_replace('_', ' ', $group->group ?: 'Général') }}</span>
+                                <span class="text-capitalize">{{ str_replace('_', ' ', $group->group ?: 'GÃ©nÃ©ral') }}</span>
                                 <span class="badge bg-warning-subtle text-warning">{{ $group->count }}</span>
                             </div>
                         @endforeach
@@ -259,7 +259,7 @@
                             </div>
                         @endif
                     @else
-                        <p class="text-muted mb-0">Aucune permission configurée</p>
+                        <p class="text-muted mb-0">Aucune permission configurÃ©e</p>
                     @endif
                     
                     <div class="mt-3 pt-3 border-top">
@@ -284,7 +284,7 @@
                             <i class="fas fa-plus me-2"></i>Nouveau rôle
                         </a>
                         <a href="{{ route('admin.permissions.index') }}" class="btn btn-outline-warning">
-                            <i class="fas fa-key me-2"></i>Gérer les permissions
+                            <i class="fas fa-key me-2"></i>GÃ©rer les permissions
                         </a>
                         <a href="{{ route('admin.users.index') }}" class="btn btn-outline-info">
                             <i class="fas fa-users me-2"></i>Voir les utilisateurs
@@ -312,18 +312,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p>Il y a <strong>{{ $usersWithoutRole }}</strong> utilisateur(s) sans rôle assigné.</p>
-                <p>Ces utilisateurs ont un accès très limité au système. Vous pouvez :</p>
+                <p>Il y a <strong>{{ $usersWithoutRole }}</strong> utilisateur(s) sans rôle assignÃ©.</p>
+                <p>Ces utilisateurs ont un accÃ¨s trÃ¨s limitÃ© au systÃ¨me. Vous pouvez :</p>
                 <ul>
                     <li>Assigner des rôles individuellement depuis la <a href="{{ route('admin.users.index') }}">liste des utilisateurs</a></li>
-                    <li>Créer un <a href="{{ route('admin.roles.create') }}">nouveau rôle</a> si nécessaire</li>
-                    <li>Configurer un <a href="{{ route('admin.roles.index') }}">rôle par défaut</a> pour les nouveaux utilisateurs</li>
+                    <li>CrÃ©er un <a href="{{ route('admin.roles.create') }}">nouveau rôle</a> si nÃ©cessaire</li>
+                    <li>Configurer un <a href="{{ route('admin.roles.index') }}">rôle par dÃ©faut</a> pour les nouveaux utilisateurs</li>
                 </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                 <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
-                    <i class="fas fa-users me-2"></i>Gérer les utilisateurs
+                    <i class="fas fa-users me-2"></i>GÃ©rer les utilisateurs
                 </a>
             </div>
         </div>
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const form = this.closest('form');
                 if (form && form.action.includes('/destroy')) {
                     e.preventDefault();
-                    const confirmed = confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Cette action est irréversible et les utilisateurs assignés perdront leurs permissions.');
+                    const confirmed = confirm('Êtes-vous sûr de vouloir supprimer ce rôle ? Cette action est irrÃ©versible et les utilisateurs assignÃ©s perdront leurs permissions.');
                     if (confirmed) {
                         form.submit();
                     }

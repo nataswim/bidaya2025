@@ -12,11 +12,11 @@ class ProfileController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'Accès non autorisé');
+            abort(403, 'AccÃ¨s non autorisÃ©');
         }
     }
 
-    // MÉTHODES ADMIN (existantes)
+    // MÃ©THODES ADMIN (existantes)
     public function show()
     {
         $this->checkAdminAccess();
@@ -49,7 +49,7 @@ class ProfileController extends Controller
         $user->update($data);
 
         return redirect()->route('admin.profile.show')
-            ->with('success', 'Profil mis à jour avec succès.');
+            ->with('success', 'Profil mis Ã jour avec succÃ¨s.');
     }
 
     public function destroy(Request $request)
@@ -65,10 +65,10 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')
-            ->with('success', 'Votre compte a été supprimé.');
+            ->with('success', 'Votre compte a Ã©tÃ© supprimÃ©.');
     }
 
-    // NOUVELLE MÉTHODE POUR LES UTILISATEURS NORMAUX
+    // NOUVELLE MÃ©THODE POUR LES UTILISATEURS NORMAUX
     public function updateUserProfile(Request $request)
     {
         $request->validate([
@@ -108,6 +108,6 @@ class ProfileController extends Controller
         $user->update($data);
 
         return redirect()->route('user.profile.edit')
-            ->with('success', 'Profil mis à jour avec succès.');
+            ->with('success', 'Profil mis Ã jour avec succÃ¨s.');
     }
 }

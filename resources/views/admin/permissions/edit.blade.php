@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.permissions.update', $permission) }}">
         @method('PUT')
         @include('admin.permissions.partials.form', [
-            'submitLabel' => 'Mettre à jour la permission',
+            'submitLabel' => 'Mettre Ã jour la permission',
             'permission' => $permission
         ])
     </form>
@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-génération du slug (mais pas par défaut en édition)
+    // Auto-gÃ©nÃ©ration du slug (mais pas par dÃ©faut en Ã©dition)
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     const groupInput = document.getElementById('group');

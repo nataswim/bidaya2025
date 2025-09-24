@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.users.update', $user) }}">
         @method('PUT')
         @include('admin.users.partials.form', [
-            'submitLabel' => 'Mettre à jour l\'utilisateur',
+            'submitLabel' => 'Mettre Ã jour l\'utilisateur',
             'user' => $user,
             'roles' => $roles
         ])
@@ -44,7 +44,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Validation des mots de passe (optionnels en édition)
+    // Validation des mots de passe (optionnels en Ã©dition)
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('password_confirmation');
     

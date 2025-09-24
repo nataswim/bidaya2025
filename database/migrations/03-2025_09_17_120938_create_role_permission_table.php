@@ -7,19 +7,19 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Exécute les migrations.
+     * ExÃ©cute les migrations.
      */
     public function up(): void
     {
         Schema::create('role_permission', function (Blueprint $table) {
             $table->id();
 
-            // Clé étrangère vers roles
+            // ClÃ© Ã©trangÃ¨re vers roles
             $table->foreignId('role_id')
                   ->constrained('roles')
                   ->cascadeOnDelete();
 
-            // Clé étrangère vers permissions
+            // ClÃ© Ã©trangÃ¨re vers permissions
             $table->foreignId('permission_id')
                   ->constrained('permissions')
                   ->cascadeOnDelete();

@@ -4,7 +4,7 @@
     'searchRoute' => null,
     'createRoute' => null,
     'createLabel' => 'Nouveau',
-    'emptyMessage' => 'Aucune donnée disponible',
+    'emptyMessage' => 'Aucune donnÃ©e disponible',
     'emptyIcon' => 'fas fa-inbox'
 ])
 

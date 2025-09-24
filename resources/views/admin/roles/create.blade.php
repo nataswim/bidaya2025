@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('title', 'Créer un rôle')
+@section('title', 'CrÃ©er un rôle')
 @section('page-title', 'Nouveau rôle')
-@section('page-description', 'Création d\'un nouveau rôle utilisateur')
+@section('page-description', 'CrÃ©ation d\'un nouveau rôle utilisateur')
 
 @section('content')
 <div class="container-fluid">
     <form method="POST" action="{{ route('admin.roles.store') }}">
         @include('admin.roles.partials.form', [
-            'submitLabel' => 'Créer le rôle'
+            'submitLabel' => 'CrÃ©er le rôle'
         ])
     </form>
 </div>
@@ -37,7 +37,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-génération du slug et display_name
+    // Auto-gÃ©nÃ©ration du slug et display_name
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     const displayNameInput = document.getElementById('display_name');
@@ -103,7 +103,7 @@ function updateSelectedPermissions() {
     if (!container) return;
     
     if (selectedCheckboxes.length === 0) {
-        container.innerHTML = '<small class="text-muted">Aucune permission sélectionnée</small>';
+        container.innerHTML = '<small class="text-muted">Aucune permission sÃ©lectionnÃ©e</small>';
     } else {
         let html = `<div class="fw-bold text-primary mb-2">${selectedCheckboxes.length} permission(s)</div>`;
         const badges = Array.from(selectedCheckboxes).slice(0, 10).map(cb => {
@@ -121,7 +121,7 @@ function updateSelectedPermissions() {
     }
 }
 
-// Écouter les changements sur les checkboxes de permissions
+// Ã©couter les changements sur les checkboxes de permissions
 document.addEventListener('change', function(e) {
     if (e.target.classList.contains('permission-checkbox')) {
         updateSelectedPermissions();

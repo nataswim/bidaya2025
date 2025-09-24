@@ -8,7 +8,7 @@ class UpdateProfileRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // Autoriser l'utilisateur connecté
+        return true; // Autoriser l'utilisateur connectÃ©
     }
 
     public function rules(): array

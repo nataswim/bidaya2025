@@ -14,12 +14,23 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\EbookController;
+use App\Http\Controllers\DownloadCategoryController;
+use App\Http\Controllers\DownloadableController;
 
 // Routes publiques
 Route::view('/', 'public.home')->name('home');
 Route::view('/about', 'public.about')->name('about');
 Route::view('/contact', 'public.contact')->name('contact');
 
+// Routes publiques pour les eBooks (avant les routes auth)
+Route::prefix('ebook')->name('ebook.')->group(function () {
+    Route::get('/', [EbookController::class, 'index'])->name('index');
+    Route::get('/recherche', [EbookController::class, 'search'])->name('search');
+    Route::get('/{category}', [EbookController::class, 'category'])->name('category');
+    Route::get('/{category}/{downloadable}', [EbookController::class, 'show'])->name('show');
+    Route::get('/{category}/{downloadable}/telecharger', [EbookController::class, 'download'])->name('download');
+});
 
 // Routes outils
 Route::get('/outils/calculateur-imc', [ToolController::class, 'bmiCalculator'])->name('tools.bmi');
@@ -42,7 +53,7 @@ Route::get('/outils/calculateur-tdee', [ToolController::class, 'tdeeCalculator']
 Route::get('/outils/planificateur-triathlon', [ToolController::class, 'triathlonPlanner'])->name('tools.triathlon-planner');
 Route::get('/outils/efficacite-technique-natation', [ToolController::class, 'swimmingEfficiency'])->name('tools.swimming-efficiency');
 
-// Routes outils par catégories
+// Routes outils par catÃ©gories
 Route::get('/outils', [ToolController::class, 'index'])->name('tools.index');
 Route::get('/outils/categorie/sante-composition-corporelle', [ToolController::class, 'healthBodyComposition'])->name('tools.category.health');
 Route::get('/outils/categorie/nutrition-energie', [ToolController::class, 'nutritionEnergy'])->name('tools.category.nutrition');
@@ -92,7 +103,7 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::view('/show', 'user.show')->name('show');
     Route::view('profile/edit', 'user.profile.edit')->name('profile.edit');
     
-    // NOUVELLE ROUTE pour traiter la mise à jour du profil
+    // NOUVELLE ROUTE pour traiter la mise Ã jour du profil
     Route::put('profile', [ProfileController::class, 'updateUserProfile'])->name('profile.update');
 
 });
@@ -117,19 +128,19 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::post('/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.users.demote');
 
 
-// ========== ROUTES MÉDIAS ==========
+// ========== ROUTES MÃ©DIAS ==========
     
-    // Gestion principale des médias
+    // Gestion principale des mÃ©dias
     Route::get('media', [MediaController::class, 'index'])->name('media.index');
     Route::post('media', [MediaController::class, 'store'])->name('media.store');
     Route::get('media/{media}', [MediaController::class, 'show'])->name('media.show');
     Route::put('media/{media}', [MediaController::class, 'update'])->name('media.update');
     Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
     
-    // API pour sélection des médias (utilisée dans les modals)
+    // API pour sÃ©lection des mÃ©dias (utilisÃ©e dans les modals)
     Route::get('media-api', [MediaController::class, 'api'])->name('media.api');
     
-    // Gestion des catégories de médias
+    // Gestion des catÃ©gories de mÃ©dias
     Route::get('media-categories', [MediaController::class, 'categories'])->name('media.categories');
     Route::post('media-categories', [MediaController::class, 'storeCategory'])->name('media.categories.store');
     Route::delete('media-categories/{category}', [MediaController::class, 'destroyCategory'])->name('media.categories.destroy');
@@ -138,4 +149,14 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::get('payments', [AdminPaymentController::class, 'index'])->name('payments.index');
     Route::post('payments/{payment}/approve', [AdminPaymentController::class, 'approve'])->name('payments.approve');
     Route::post('payments/{payment}/reject', [AdminPaymentController::class, 'reject'])->name('payments.reject');
+
+    // Gestion des catÃ©gories de tÃ©lÃ©chargement
+    Route::resource('download-categories', DownloadCategoryController::class);
+    Route::get('download-categories-stats', [DownloadCategoryController::class, 'stats'])->name('download-categories.stats');
+    
+    // Gestion des tÃ©lÃ©chargements
+    Route::resource('downloadables', DownloadableController::class);
+    Route::post('downloadables/{downloadable}/duplicate', [DownloadableController::class, 'duplicate'])->name('downloadables.duplicate');
+    Route::get('downloadables-stats', [DownloadableController::class, 'stats'])->name('downloadables.stats');
+    Route::post('downloadables/bulk-action', [DownloadableController::class, 'bulkAction'])->name('downloadables.bulk-action');
 });

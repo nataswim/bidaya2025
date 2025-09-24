@@ -1,0 +1,544 @@
+@csrf
+
+<div class="row g-4">
+    <!-- Contenu principal -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-gradient-primary text-white p-4">
+                <h5 class="mb-0">
+                    <i class="fas fa-download me-2"></i>Informations du tÃ©lÃ©chargement
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <!-- Titre -->
+                <div class="mb-4">
+                    <label for="title" class="form-label fw-semibold">Titre du tÃ©lÃ©chargement *</label>
+                    <input type="text" 
+                           name="title" 
+                           id="title" 
+                           value="{{ old('title', isset($downloadable) ? $downloadable->title : '') }}"
+                           class="form-control form-control-lg @error('title') is-invalid @enderror"
+                           placeholder="Ex: Guide complet de la nutrition sportive"
+                           required>
+                    @error('title')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Slug -->
+                <div class="mb-4">
+                    <label for="slug" class="form-label fw-semibold">Slug URL</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">.../</span>
+                        <input type="text" 
+                               name="slug" 
+                               id="slug" 
+                               value="{{ old('slug', isset($downloadable) ? $downloadable->slug : '') }}"
+                               class="form-control @error('slug') is-invalid @enderror"
+                               placeholder="slug-automatique">
+                    </div>
+                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique Ã partir du titre</div>
+                    @error('slug')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Upload du fichier -->
+                <div class="mb-4">
+                    <label for="file" class="form-label fw-semibold">
+                        Fichier *
+                        @if(isset($downloadable))
+                            <span class="text-muted">(laisser vide pour conserver le fichier actuel)</span>
+                        @endif
+                    </label>
+                    <input type="file" 
+                           name="file" 
+                           id="file" 
+                           class="form-control @error('file') is-invalid @enderror"
+                           accept=".pdf,.epub,.mp4,.zip,.doc,.docx"
+                           {{ !isset($downloadable) ? 'required' : '' }}>
+                    <div class="form-text">
+                        Formats acceptÃ©s : PDF, EPUB, MP4, ZIP, DOC, DOCX (max 100MB)
+                    </div>
+                    @if(isset($downloadable) && $downloadable->file_path)
+                        <div class="mt-2 p-2 bg-light rounded">
+                            <small class="text-muted">
+                                <i class="fas fa-file me-1"></i>
+                                Fichier actuel : {{ basename($downloadable->file_path) }}
+                                @if($downloadable->file_size)
+                                    ({{ $downloadable->file_size }})
+                                @endif
+                            </small>
+                        </div>
+                    @endif
+                    @error('file')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Format -->
+                <div class="mb-4">
+                    <label for="format" class="form-label fw-semibold">Format *</label>
+                    <select name="format" id="format" class="form-select @error('format') is-invalid @enderror" required>
+                        <option value="">SÃ©lectionner un format</option>
+                        <option value="pdf" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'pdf' ? 'selected' : '' }}>
+                            PDF - Document portable
+                        </option>
+                        <option value="epub" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'epub' ? 'selected' : '' }}>
+                            EPUB - Livre Ã©lectronique
+                        </option>
+                        <option value="mp4" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'mp4' ? 'selected' : '' }}>
+                            MP4 - VidÃ©o
+                        </option>
+                        <option value="zip" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'zip' ? 'selected' : '' }}>
+                            ZIP - Archive compressÃ©e
+                        </option>
+                        <option value="doc" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'doc' ? 'selected' : '' }}>
+                            DOC - Word (ancien format)
+                        </option>
+                        <option value="docx" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'docx' ? 'selected' : '' }}>
+                            DOCX - Word (nouveau format)
+                        </option>
+                    </select>
+                    @error('format')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Description courte -->
+                <div class="mb-4">
+                    <label for="short_description" class="form-label fw-semibold">Description courte</label>
+                    <textarea name="short_description" 
+                              id="short_description" 
+                              rows="3"
+                              class="form-control @error('short_description') is-invalid @enderror"
+                              maxlength="1000"
+                              placeholder="RÃ©sumÃ© du contenu...">{{ old('short_description', isset($downloadable) ? $downloadable->short_description : '') }}</textarea>
+                    <div class="form-text">Description affichÃ©e dans les listes (max 1000 caractÃ¨res)</div>
+                    @error('short_description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Description complÃ¨te avec Quill -->
+                <div class="mb-4">
+                    <label for="long_description" class="form-label fw-semibold">Description complÃ¨te</label>
+                    
+                    <!-- Conteneur pour l'Ã©diteur Quill -->
+                    <div id="description-editor" style="height: 200px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    
+                    <!-- Textarea cachÃ©e pour Laravel -->
+                    <textarea name="long_description" 
+                              id="long_description" 
+                              class="d-none @error('long_description') is-invalid @enderror">{{ old('long_description', isset($downloadable) ? $downloadable->long_description : '') }}</textarea>
+                              
+                    <div class="form-text">Description dÃ©taillÃ©e affichÃ©e sur la page du tÃ©lÃ©chargement</div>
+                    @error('long_description')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO et mÃ©tadonnÃ©es -->
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-header bg-gradient-info text-white p-4">
+                <h6 class="mb-0">
+                    <i class="fas fa-search me-2"></i>SEO et MÃ©tadonnÃ©es
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="meta_title" class="form-label fw-semibold">Titre SEO</label>
+                        <input type="text" 
+                               name="meta_title" 
+                               id="meta_title" 
+                               value="{{ old('meta_title', isset($downloadable) ? $downloadable->meta_title : '') }}"
+                               class="form-control @error('meta_title') is-invalid @enderror"
+                               maxlength="255"
+                               placeholder="Titre optimisÃ© pour les moteurs de recherche">
+                        @error('meta_title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="meta_keywords" class="form-label fw-semibold">Mots-clÃ©s</label>
+                        <input type="text" 
+                               name="meta_keywords" 
+                               id="meta_keywords" 
+                               value="{{ old('meta_keywords', isset($downloadable) ? $downloadable->meta_keywords : '') }}"
+                               class="form-control @error('meta_keywords') is-invalid @enderror"
+                               placeholder="mot1, mot2, mot3">
+                        @error('meta_keywords')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-12">
+                        <label for="meta_description" class="form-label fw-semibold">Description SEO</label>
+                        <textarea name="meta_description" 
+                                  id="meta_description" 
+                                  rows="3"
+                                  class="form-control @error('meta_description') is-invalid @enderror"
+                                  maxlength="500"
+                                  placeholder="Description qui apparaîtra dans les rÃ©sultats de recherche...">{{ old('meta_description', isset($downloadable) ? $downloadable->meta_description : '') }}</textarea>
+                        @error('meta_description')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+        <!-- Configuration -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-gradient-success text-white p-4">
+                <h6 class="mb-0">
+                    <i class="fas fa-cog me-2"></i>Configuration
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label for="download_category_id" class="form-label fw-semibold">CatÃ©gorie *</label>
+                    <select name="download_category_id" id="download_category_id" class="form-select @error('download_category_id') is-invalid @enderror" required>
+                        <option value="">SÃ©lectionner une catÃ©gorie</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" 
+                                    {{ old('download_category_id', isset($downloadable) ? $downloadable->download_category_id : request('category')) == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('download_category_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label fw-semibold">Statut</label>
+                    <select name="status" id="status" class="form-select @error('status') is-invalid @enderror">
+                        <option value="active" {{ old('status', isset($downloadable) ? $downloadable->status : 'active') === 'active' ? 'selected' : '' }}>
+                            Actif
+                        </option>
+                        <option value="inactive" {{ old('status', isset($downloadable) ? $downloadable->status : '') === 'inactive' ? 'selected' : '' }}>
+                            Inactif
+                        </option>
+                    </select>
+                    @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="order" class="form-label fw-semibold">Ordre d'affichage</label>
+                    <input type="number" 
+                           name="order" 
+                           id="order" 
+                           value="{{ old('order', isset($downloadable) ? $downloadable->order : 0) }}"
+                           class="form-control @error('order') is-invalid @enderror"
+                           placeholder="0">
+                    @error('order')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" 
+                           name="is_featured" 
+                           id="is_featured" 
+                           value="1"
+                           {{ old('is_featured', isset($downloadable) ? $downloadable->is_featured : false) ? 'checked' : '' }}
+                           class="form-check-input">
+                    <label for="is_featured" class="form-check-label">
+                        <i class="fas fa-star text-warning me-1"></i>
+                        TÃ©lÃ©chargement mis en avant
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Permissions d'accÃ¨s -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-gradient-warning text-white p-4">
+                <h6 class="mb-0">
+                    <i class="fas fa-shield-alt me-2"></i>Permissions d'accÃ¨s
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label for="user_permission" class="form-label fw-semibold">Niveau d'accÃ¨s requis</label>
+                    <select name="user_permission" id="user_permission" class="form-select @error('user_permission') is-invalid @enderror" required>
+                        <option value="public" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : 'public') === 'public' ? 'selected' : '' }}>
+                            <i class="fas fa-globe"></i> Public - Accessible Ã tous
+                        </option>
+                        <option value="visitor" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : '') === 'visitor' ? 'selected' : '' }}>
+                            <i class="fas fa-eye"></i> Visiteur - Non-connectÃ©s uniquement
+                        </option>
+                        <option value="user" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : '') === 'user' ? 'selected' : '' }}>
+                            <i class="fas fa-user"></i> Utilisateur - Membres validÃ©s
+                        </option>
+                    </select>
+                    
+                    <!-- Aide contextuelle -->
+                    <div class="form-text">
+                        <div id="permission-help" class="mt-2 p-3 rounded" style="background-color: #f8f9fa;">
+                            <div id="public-help" style="display: none;">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-globe text-success me-2 mt-1"></i>
+                                    <div>
+                                        <strong class="text-success">AccÃ¨s public</strong>
+                                        <div class="small text-muted mt-1">
+                                            • TÃ©lÃ©chargeable par tous les visiteurs<br>
+                                            • Aucune connexion requise<br>
+                                            • IdÃ©al pour le contenu promotionnel
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="visitor-help" style="display: none;">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-eye text-info me-2 mt-1"></i>
+                                    <div>
+                                        <strong class="text-info">AccÃ¨s visiteur</strong>
+                                        <div class="small text-muted mt-1">
+                                            • RÃ©servÃ© aux non-connectÃ©s<br>
+                                            • Incite Ã dÃ©couvrir sans inscription<br>
+                                            • Utile pour du contenu d'accroche
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="user-help" style="display: none;">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-user text-warning me-2 mt-1"></i>
+                                    <div>
+                                        <strong class="text-warning">AccÃ¨s membre</strong>
+                                        <div class="small text-muted mt-1">
+                                            • RÃ©servÃ© aux utilisateurs connectÃ©s et validÃ©s<br>
+                                            • Exclut les comptes "visitor"<br>
+                                            • Contenu premium et exclusif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    @error('user_permission')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+        </div>
+
+        <!-- Image de couverture -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-gradient-info text-white p-4">
+                <h6 class="mb-0">
+                    <i class="fas fa-image me-2"></i>Image de couverture
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label for="cover_image" class="form-label fw-semibold">URL de l'image</label>
+                    <div class="input-group">
+                        <input type="text" 
+                               name="cover_image" 
+                               id="cover_image" 
+                               value="{{ old('cover_image', isset($downloadable) ? $downloadable->cover_image : '') }}"
+                               class="form-control @error('cover_image') is-invalid @enderror"
+                               placeholder="https://exemple.com/cover.jpg">
+                        <button type="button" 
+                                class="btn btn-outline-primary"
+                                onclick="openMediaSelector('cover_image', 'coverPreview')">
+                            <i class="fas fa-images"></i>
+                        </button>
+                    </div>
+                    <div class="form-text">SÃ©lectionnez depuis la mÃ©diathÃ¨que ou saisissez une URL</div>
+                    @error('cover_image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                @if(isset($downloadable) && $downloadable->cover_image)
+                    <div class="mt-3" id="currentCoverPreview">
+                        <small class="text-muted d-block mb-2">Aperçu actuel :</small>
+                        <img src="{{ $downloadable->cover_image }}" 
+                             id="coverPreview"
+                             class="img-fluid rounded shadow-sm" 
+                             style="max-height: 200px; object-fit: cover;"
+                             alt="Couverture actuelle">
+                    </div>
+                @else
+                    <div class="mt-3 d-none" id="currentCoverPreview">
+                        <small class="text-muted d-block mb-2">Aperçu :</small>
+                        <img id="coverPreview"
+                             class="img-fluid rounded shadow-sm" 
+                             style="max-height: 200px; object-fit: cover;"
+                             alt="Aperçu">
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Retour
+                    </a>
+                    <div class="d-flex gap-2">
+                        <button type="submit" name="action" value="save" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>{{ $submitLabel ?? 'Enregistrer' }}
+                        </button>
+                        <button type="submit" name="action" value="save_and_continue" class="btn btn-success">
+                            <i class="fas fa-save me-2"></i>Enregistrer et continuer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('styles')
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+}
+</style>
+@endpush
+
+@push('scripts')
+<!-- Inclure Quill.js -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-gÃ©nÃ©ration du slug
+    const titleInput = document.getElementById('title');
+    const slugInput = document.getElementById('slug');
+    
+    titleInput.addEventListener('input', function() {
+        if (!slugInput.value || slugInput.dataset.autoGenerated) {
+            const slug = this.value
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+            slugInput.value = slug;
+            slugInput.dataset.autoGenerated = 'true';
+        }
+    });
+    
+    slugInput.addEventListener('input', function() {
+        this.dataset.autoGenerated = '';
+    });
+
+    // Initialiser Quill pour la description longue
+    const quill = new Quill('#description-editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline'],
+                ['link'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['clean']
+            ]
+        },
+        placeholder: 'Description dÃ©taillÃ©e du tÃ©lÃ©chargement...'
+    });
+
+    // Synchroniser Quill avec le textarea
+    const longDescriptionTextarea = document.getElementById('long_description');
+    
+    // Charger le contenu initial dans Quill
+    if (longDescriptionTextarea.value) {
+        quill.root.innerHTML = longDescriptionTextarea.value;
+    }
+    
+    // Mettre Ã jour le textarea quand Quill change
+    quill.on('text-change', function() {
+        longDescriptionTextarea.value = quill.root.innerHTML;
+    });
+
+    // Aide contextuelle pour les permissions
+    const permissionSelect = document.getElementById('user_permission');
+    const helpDivs = {
+        'public': document.getElementById('public-help'),
+        'visitor': document.getElementById('visitor-help'),
+        'user': document.getElementById('user-help')
+    };
+
+    function updatePermissionHelp() {
+        // Cacher toutes les aides
+        Object.values(helpDivs).forEach(div => {
+            if (div) div.style.display = 'none';
+        });
+        
+        // Afficher l'aide correspondante
+        const selectedValue = permissionSelect.value;
+        if (helpDivs[selectedValue]) {
+            helpDivs[selectedValue].style.display = 'block';
+        }
+    }
+
+    permissionSelect.addEventListener('change', updatePermissionHelp);
+    updatePermissionHelp(); // Initialiser
+
+    // Aperçu de l'image de couverture
+    const coverInput = document.getElementById('cover_image');
+    const coverPreview = document.getElementById('coverPreview');
+    const coverPreviewContainer = document.getElementById('currentCoverPreview');
+    
+    coverInput.addEventListener('input', function() {
+        const imageUrl = this.value.trim();
+        if (imageUrl) {
+            coverPreview.src = imageUrl;
+            coverPreviewContainer.classList.remove('d-none');
+        } else {
+            coverPreviewContainer.classList.add('d-none');
+        }
+    });
+
+    // Validation du format de fichier
+    const fileInput = document.getElementById('file');
+    const formatSelect = document.getElementById('format');
+    
+    fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            const fileName = this.files[0].name;
+            const extension = fileName.split('.').pop().toLowerCase();
+            
+            // Auto-sÃ©lectionner le format
+            if (['pdf', 'epub', 'mp4', 'zip', 'doc', 'docx'].includes(extension)) {
+                formatSelect.value = extension === 'doc' || extension === 'docx' ? extension : extension;
+            }
+        }
+    });
+});
+
+// Fonction pour le sÃ©lecteur de mÃ©dias (supposÃ© être dÃ©fini ailleurs)
+function openMediaSelector(inputId, previewId) {
+    // Cette fonction devrait ouvrir un modal de sÃ©lection de mÃ©dias
+    console.log('Ouvrir le sÃ©lecteur de mÃ©dias pour', inputId);
+}
+</script>
+@endpush

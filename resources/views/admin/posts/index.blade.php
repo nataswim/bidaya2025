@@ -43,7 +43,7 @@
                             <select name="status" class="form-select">
                                 <option value="">Tous les statuts</option>
                                 <option value="published" {{ request('status') === 'published' ? 'selected' : '' }}>
-                                    <i class="fas fa-check"></i> Publiés
+                                    <i class="fas fa-check"></i> PubliÃ©s
                                 </option>
                                 <option value="draft" {{ request('status') === 'draft' ? 'selected' : '' }}>
                                     <i class="fas fa-edit"></i> Brouillons
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-2">
                             <select name="visibility" class="form-select">
-                                <option value="">Toute visibilité</option>
+                                <option value="">Toute visibilitÃ©</option>
                                 <option value="public" {{ request('visibility') === 'public' ? 'selected' : '' }}>
                                     <i class="fas fa-globe"></i> Public
                                 </option>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-md-2">
                             <select name="category" class="form-select">
-                                <option value="">Toutes catégories</option>
+                                <option value="">Toutes catÃ©gories</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
@@ -94,8 +94,8 @@
                                 <thead class="bg-light">
                                     <tr>
                                         <th class="border-0 px-4 py-3">Article</th>
-                                        <th class="border-0 px-4 py-3">Statut & Visibilité</th>
-                                        <th class="border-0 px-4 py-3">Catégorie</th>
+                                        <th class="border-0 px-4 py-3">Statut & VisibilitÃ©</th>
+                                        <th class="border-0 px-4 py-3">CatÃ©gorie</th>
                                         <th class="border-0 px-4 py-3">Auteur</th>
                                         <th class="border-0 px-4 py-3">Stats</th>
                                         <th class="border-0 px-4 py-3">Date</th>
@@ -130,7 +130,7 @@
                                                         @endif
                                                         @if($post->is_featured)
                                                             <span class="badge bg-warning-subtle text-warning ms-2">
-                                                                <i class="fas fa-star me-1"></i>À la une
+                                                                <i class="fas fa-star me-1"></i>Ã la une
                                                             </span>
                                                         @endif
                                                     </div>
@@ -145,13 +145,13 @@
                                                         {{ ucfirst($post->status) }}
                                                     </span>
                                                     
-                                                    <!-- Visibilité -->
+                                                    <!-- VisibilitÃ© -->
                                                     @if($post->visibility === 'authenticated')
-                                                        <span class="badge bg-info-subtle text-info" title="Contenu réservé aux membres connectés">
+                                                        <span class="badge bg-info-subtle text-info" title="Contenu rÃ©servÃ© aux membres connectÃ©s">
                                                             <i class="fas fa-lock me-1"></i>Membres
                                                         </span>
                                                     @else
-                                                        <span class="badge bg-success-subtle text-success" title="Contenu accessible à tous">
+                                                        <span class="badge bg-success-subtle text-success" title="Contenu accessible Ã tous">
                                                             <i class="fas fa-globe me-1"></i>Public
                                                         </span>
                                                     @endif
@@ -164,7 +164,7 @@
                                                         {{ $post->category->name }}
                                                     </span>
                                                 @else
-                                                    <span class="text-muted">Non catégorisé</span>
+                                                    <span class="text-muted">Non catÃ©gorisÃ©</span>
                                                 @endif
                                             </td>
                                             
@@ -268,8 +268,8 @@
                             <div class="card-footer bg-white border-top p-4">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
-                                        Affichage de {{ $posts->firstItem() }} à {{ $posts->lastItem() }} 
-                                        sur {{ $posts->total() }} résultat(s)
+                                        Affichage de {{ $posts->firstItem() }} Ã {{ $posts->lastItem() }} 
+                                        sur {{ $posts->total() }} rÃ©sultat(s)
                                     </div>
                                     {{ $posts->appends(request()->query())->links() }}
                                 </div>
@@ -278,16 +278,16 @@
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-newspaper fa-3x text-muted mb-3 opacity-25"></i>
-                            <h5>Aucun article trouvé</h5>
+                            <h5>Aucun article trouvÃ©</h5>
                             @if(request()->hasAny(['search', 'status', 'visibility', 'category']))
-                                <p class="text-muted mb-3">Aucun résultat ne correspond à vos critères de recherche.</p>
+                                <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
                                 <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir tous les articles
                                 </a>
                             @else
-                                <p class="text-muted mb-3">Commencez par créer votre premier article</p>
+                                <p class="text-muted mb-3">Commencez par crÃ©er votre premier article</p>
                                 <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus me-2"></i>Créer un article
+                                    <i class="fas fa-plus me-2"></i>CrÃ©er un article
                                 </a>
                             @endif
                         </div>
@@ -298,7 +298,7 @@
 
         <!-- Sidebar statistiques -->
         <div class="col-lg-3">
-            <!-- Statistiques générales -->
+            <!-- Statistiques gÃ©nÃ©rales -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
@@ -324,7 +324,7 @@
                         <div class="col-6">
                             <div class="bg-success bg-opacity-10 rounded p-3">
                                 <h4 class="fw-bold text-success mb-1">{{ $publishedPosts }}</h4>
-                                <small class="text-muted">Publiés</small>
+                                <small class="text-muted">PubliÃ©s</small>
                             </div>
                         </div>
                         <div class="col-6">
@@ -343,11 +343,11 @@
                 </div>
             </div>
 
-            <!-- Répartition visibilité -->
+            <!-- RÃ©partition visibilitÃ© -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-info text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-eye me-2"></i>Visibilité
+                        <i class="fas fa-eye me-2"></i>VisibilitÃ©
                     </h6>
                 </div>
                 <div class="card-body p-3">
@@ -378,7 +378,7 @@
                             </div>
                         </div>
                     @else
-                        <p class="text-muted mb-0">Aucun article créé</p>
+                        <p class="text-muted mb-0">Aucun article crÃ©Ã©</p>
                     @endif
                 </div>
             </div>
@@ -396,7 +396,7 @@
                             <i class="fas fa-plus me-2"></i>Nouvel article
                         </a>
                         <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-warning">
-                            <i class="fas fa-folder me-2"></i>Gérer les catégories
+                            <i class="fas fa-folder me-2"></i>GÃ©rer les catÃ©gories
                         </a>
                         <a href="{{ route('admin.posts.index', ['status' => 'draft']) }}" class="btn btn-outline-info">
                             <i class="fas fa-edit me-2"></i>Voir les brouillons ({{ $draftPosts }})

@@ -14,7 +14,7 @@
                                 <i class="fas fa-water text-white fa-2x"></i>
                             </div>
                             <h2 class="fw-bold">{{ config('app.name') }}</h2>
-                            <p class="text-muted">Connectez-vous à votre compte</p>
+                            <p class="text-muted">Connectez-vous Ã votre compte</p>
                         </div>
 
                         <!-- Session Status -->
@@ -74,7 +74,7 @@
                                     </label>
                                 </div>
                                 <a href="{{ route('password.request') }}" class="text-decoration-none">
-                                    Mot de passe oublié ?
+                                    Mot de passe oubliÃ© ?
                                 </a>
                             </div>
 
@@ -89,7 +89,7 @@
                             <div class="text-center">
                                 <span class="text-muted">Pas encore de compte ?</span>
                                 <a href="{{ route('register') }}" class="text-decoration-none fw-semibold">
-                                    Créer un compte
+                                    CrÃ©er un compte
                                 </a>
                             </div>
                         </form>
@@ -99,7 +99,7 @@
                 <!-- Retour accueil -->
                 <div class="text-center mt-4">
                     <a href="{{ route('home') }}" class="text-muted text-decoration-none">
-                        <i class="fas fa-arrow-left me-2"></i>Retour à l'accueil
+                        <i class="fas fa-arrow-left me-2"></i>Retour Ã l'accueil
                     </a>
                 </div>
             </div>

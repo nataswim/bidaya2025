@@ -33,11 +33,11 @@ class StoreMediaRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'files.required' => 'Veuillez sélectionner au moins un fichier.',
+            'files.required' => 'Veuillez sÃ©lectionner au moins un fichier.',
             'files.*.image' => 'Le fichier doit être une image.',
-            'files.*.mimes' => 'Formats acceptés : JPEG, PNG, GIF, WebP.',
-            'files.*.max' => 'La taille maximum autorisée est de 5MB.',
-            'media_category_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
+            'files.*.mimes' => 'Formats acceptÃ©s : JPEG, PNG, GIF, WebP.',
+            'files.*.max' => 'La taille maximum autorisÃ©e est de 5MB.',
+            'media_category_id.exists' => 'La catÃ©gorie sÃ©lectionnÃ©e n\'existe pas.',
         ];
     }
 }

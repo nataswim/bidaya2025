@@ -68,7 +68,7 @@
                     @if(!isset($user))
                         <div class="alert alert-info">
                             <i class="fas fa-info-circle me-2"></i>
-                            Le mot de passe doit contenir au moins 8 caractères.
+                            Le mot de passe doit contenir au moins 8 caractÃ¨res.
                         </div>
                     @else
                         <div class="alert alert-warning">
@@ -105,15 +105,15 @@
                     </div>
                 </div>
 
-                <!-- Informations complémentaires -->
+                <!-- Informations complÃ©mentaires -->
                 <div class="border-top pt-4">
                     <h6 class="fw-semibold mb-3 text-secondary">
-                        <i class="fas fa-info me-2"></i>Informations complémentaires
+                        <i class="fas fa-info me-2"></i>Informations complÃ©mentaires
                     </h6>
                     
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="first_name" class="form-label">Prénom</label>
+                            <label for="first_name" class="form-label">PrÃ©nom</label>
                             <input type="text" 
                                    name="first_name" 
                                    id="first_name" 
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="phone" class="form-label">Téléphone</label>
+                            <label for="phone" class="form-label">TÃ©lÃ©phone</label>
                             <input type="tel" 
                                    name="phone" 
                                    id="phone" 
@@ -169,7 +169,7 @@
                                       id="bio" 
                                       rows="3"
                                       class="form-control @error('bio') is-invalid @enderror"
-                                      placeholder="Courte présentation de l'utilisateur...">{{ old('bio', isset($user) ? $user->bio : '') }}</textarea>
+                                      placeholder="Courte prÃ©sentation de l'utilisateur...">{{ old('bio', isset($user) ? $user->bio : '') }}</textarea>
                             @error('bio')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -290,7 +290,7 @@
                 <div class="mb-3">
                     <label for="locale" class="form-label">Langue</label>
                     <select name="locale" id="locale" class="form-select @error('locale') is-invalid @enderror">
-                        <option value="">Défaut (Français)</option>
+                        <option value="">DÃ©faut (Français)</option>
                         <option value="fr" {{ old('locale', isset($user) ? $user->locale : '') === 'fr' ? 'selected' : '' }}>Français</option>
                         <option value="en" {{ old('locale', isset($user) ? $user->locale : '') === 'en' ? 'selected' : '' }}>English</option>
                         <option value="es" {{ old('locale', isset($user) ? $user->locale : '') === 'es' ? 'selected' : '' }}>Español</option>
@@ -303,7 +303,7 @@
                 <div>
                     <label for="timezone" class="form-label">Fuseau horaire</label>
                     <select name="timezone" id="timezone" class="form-select @error('timezone') is-invalid @enderror">
-                        <option value="">Défaut (Europe/Paris)</option>
+                        <option value="">DÃ©faut (Europe/Paris)</option>
                         <option value="Europe/Paris" {{ old('timezone', isset($user) ? $user->timezone : '') === 'Europe/Paris' ? 'selected' : '' }}>Europe/Paris</option>
                         <option value="Europe/London" {{ old('timezone', isset($user) ? $user->timezone : '') === 'Europe/London' ? 'selected' : '' }}>Europe/London</option>
                         <option value="America/New_York" {{ old('timezone', isset($user) ? $user->timezone : '') === 'America/New_York' ? 'selected' : '' }}>America/New_York</option>
@@ -324,7 +324,7 @@
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+                        <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
                     </a>
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">

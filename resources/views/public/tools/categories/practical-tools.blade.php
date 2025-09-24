@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils Pratiques & Chronométrage - Utilitaires Sportifs Professionnels')
-@section('meta_description', 'Outils pratiques pour l\'entraînement sportif : chronométrage professionnel multi-athlètes, carte interactive parcours. Interface optimisée pour coaches et sportifs.')
+@section('title', 'Outils Pratiques & ChronomÃ©trage - Utilitaires Sportifs Professionnels')
+@section('meta_description', 'Outils pratiques pour l\'entraînement sportif : chronomÃ©trage professionnel multi-athlÃ¨tes, carte interactive parcours. Interface optimisÃ©e pour coaches et sportifs.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active text-white" aria-current="page">
-                    Outils Pratiques & Chronométrage
+                    Outils Pratiques & ChronomÃ©trage
                 </li>
             </ol>
         </nav>
@@ -25,16 +25,16 @@
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">
                     <i class="fas fa-tools me-3"></i>
-                    Outils Pratiques & Chronométrage
+                    Outils Pratiques & ChronomÃ©trage
                 </h1>
                 <p class="lead mb-4">
                     Utilitaires pratiques pour l'entraînement et le suivi sportif. 
-                    Outils optimisés pour coaches, éducateurs sportifs et pratiquants autonomes recherchant efficacité et simplicité d'usage.
+                    Outils optimisÃ©s pour coaches, Ã©ducateurs sportifs et pratiquants autonomes recherchant efficacitÃ© et simplicitÃ© d'usage.
                 </p>
                 <div class="alert alert-info border-0 bg-white bg-opacity-25">
                     <small>
                         <i class="fas fa-cogs me-2"></i>
-                        <strong>2 outils disponibles</strong> - Interface intuitive et fonctionnalités avancées
+                        <strong>2 outils disponibles</strong> - Interface intuitive et fonctionnalitÃ©s avancÃ©es
                     </small>
                 </div>
             </div>
@@ -60,9 +60,9 @@
                     <h6 class="fw-bold mb-2 text-info">Utilisation Responsable des Outils</h6>
                     <p class="mb-0 small">
                         <strong>Ces outils sont conçus pour faciliter l'entraînement et le suivi sportif.</strong> 
-                        Respectez la confidentialité des données personnelles si vous chronométrez d'autres personnes. 
-                        Pour la carte interactive, vérifiez toujours les conditions de sécurité sur le terrain 
-                        avant de planifier ou réaliser un parcours sportif.
+                        Respectez la confidentialitÃ© des donnÃ©es personnelles si vous chronomÃ©trez d'autres personnes. 
+                        Pour la carte interactive, vÃ©rifiez toujours les conditions de sÃ©curitÃ© sur le terrain 
+                        avant de planifier ou rÃ©aliser un parcours sportif.
                     </p>
                 </div>
             </div>
@@ -70,12 +70,12 @@
     </div>
 </section>
 
-<!-- Outils de la catégorie -->
+<!-- Outils de la catÃ©gorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
             
-            <!-- 1. Chronomètre Pro Groupe -->
+            <!-- 1. ChronomÃ¨tre Pro Groupe -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.chronometre-pro') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -86,23 +86,23 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">Chronomètre Pro Groupe</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">ChronomÃ¨tre Pro Groupe</h5>
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Chronométrage multi-athlètes avancé pour coaching professionnel. 
-                                        Gestion simultanée de plusieurs coureurs avec fonctionnalités avancées : 
-                                        tours automatiques, export données, analyse comparative.
+                                        ChronomÃ©trage multi-athlÃ¨tes avancÃ© pour coaching professionnel. 
+                                        Gestion simultanÃ©e de plusieurs coureurs avec fonctionnalitÃ©s avancÃ©es : 
+                                        tours automatiques, export donnÃ©es, analyse comparative.
                                     </p>
                                     <div class="row g-2 mb-3">
                                         <div class="col-6">
                                             <small class="text-success d-flex align-items-center">
-                                                <i class="fas fa-users me-1"></i>Multi-athlètes
+                                                <i class="fas fa-users me-1"></i>Multi-athlÃ¨tes
                                             </small>
                                         </div>
                                         <div class="col-6">
                                             <small class="text-info d-flex align-items-center">
-                                                <i class="fas fa-download me-1"></i>Export données
+                                                <i class="fas fa-download me-1"></i>Export donnÃ©es
                                             </small>
                                         </div>
                                         <div class="col-6">
@@ -117,10 +117,10 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
-                                            <small>Temps réel</small>
+                                            <small>Temps rÃ©el</small>
                                         </div>
                                     </div>
                                 </div>
@@ -145,19 +145,19 @@
                                         <span class="badge bg-secondary ms-2">Pratique</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Planification parcours et géolocalisation sportive interactive. 
-                                        Création d'itinéraires personnalisés, calcul distances, 
-                                        dénivelés et partage de parcours pour course, vélo, randonnée.
+                                        Planification parcours et gÃ©olocalisation sportive interactive. 
+                                        CrÃ©ation d'itinÃ©raires personnalisÃ©s, calcul distances, 
+                                        dÃ©nivelÃ©s et partage de parcours pour course, vÃ©lo, randonnÃ©e.
                                     </p>
                                     <div class="row g-2 mb-3">
                                         <div class="col-6">
                                             <small class="text-primary d-flex align-items-center">
-                                                <i class="fas fa-route me-1"></i>Tracé parcours
+                                                <i class="fas fa-route me-1"></i>TracÃ© parcours
                                             </small>
                                         </div>
                                         <div class="col-6">
                                             <small class="text-warning d-flex align-items-center">
-                                                <i class="fas fa-mountain me-1"></i>Dénivelés
+                                                <i class="fas fa-mountain me-1"></i>DÃ©nivelÃ©s
                                             </small>
                                         </div>
                                         <div class="col-6">
@@ -172,7 +172,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Accéder à l'outil →</small>
+                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-15 min</small>
@@ -195,17 +195,17 @@
                         <i class="fas fa-lightbulb me-2"></i>Suggestions d'Usage Optimal
                     </h6>
                     <p class="small text-muted mb-3">
-                        Combinez ces outils avec nos calculateurs spécialisés pour une approche complète :
+                        Combinez ces outils avec nos calculateurs spÃ©cialisÃ©s pour une approche complÃ¨te :
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <a href="{{ route('tools.category.swimming') }}" class="btn btn-outline-info btn-sm">
-                            <i class="fas fa-swimmer me-1"></i>Chronométrage + VNC
+                            <i class="fas fa-swimmer me-1"></i>ChronomÃ©trage + VNC
                         </a>
                         <a href="{{ route('tools.category.running') }}" class="btn btn-outline-warning btn-sm">
                             <i class="fas fa-running me-1"></i>Parcours + Planificateur
                         </a>
                         <a href="{{ route('tools.category.cardiac') }}" class="btn btn-outline-danger btn-sm">
-                            <i class="fas fa-heart me-1"></i>Chronométrage + Zones FC
+                            <i class="fas fa-heart me-1"></i>ChronomÃ©trage + Zones FC
                         </a>
                     </div>
                 </div>
@@ -221,14 +221,14 @@
             </div>
             <div class="col-md-6">
                 <a href="{{ route('tools.category.development') }}" class="btn btn-secondary btn-lg w-100">
-                    Outils en Développement <i class="fas fa-arrow-right ms-2"></i>
+                    Outils en DÃ©veloppement <i class="fas fa-arrow-right ms-2"></i>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Contenu éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
         
@@ -243,149 +243,149 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-secondary">Chronométrage Efficace</h6>
+                        <h6 class="text-secondary">ChronomÃ©trage Efficace</h6>
                         <p class="small">
-                            Le chronométrage précis est essentiel pour l'évaluation objective des performances 
-                            et la planification d'entraînement. L'usage d'outils numériques permet une 
-                            collecte de données fiable et une analyse comparative dans le temps.
+                            Le chronomÃ©trage prÃ©cis est essentiel pour l'Ã©valuation objective des performances 
+                            et la planification d'entraînement. L'usage d'outils numÃ©riques permet une 
+                            collecte de donnÃ©es fiable et une analyse comparative dans le temps.
                         </p>
                         
-                        <h6 class="text-primary mt-3">Bonnes Pratiques Chronométrage</h6>
+                        <h6 class="text-primary mt-3">Bonnes Pratiques ChronomÃ©trage</h6>
                         <ul class="small">
-                            <li><strong>Standardisation :</strong> Même protocole à chaque test</li>
-                            <li><strong>Conditions similaires :</strong> Environnement, échauffement, moment</li>
-                            <li><strong>Précision :</strong> Déclenchement et arrêt nets</li>
+                            <li><strong>Standardisation :</strong> Même protocole Ã chaque test</li>
+                            <li><strong>Conditions similaires :</strong> Environnement, Ã©chauffement, moment</li>
+                            <li><strong>PrÃ©cision :</strong> DÃ©clenchement et arrêt nets</li>
                             <li><strong>Documentation :</strong> Contexte et conditions de mesure</li>
-                            <li><strong>Répétabilité :</strong> Plusieurs mesures si possible</li>
+                            <li><strong>RÃ©pÃ©tabilitÃ© :</strong> Plusieurs mesures si possible</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Planification Parcours Sécurisée</h6>
+                        <h6 class="text-success">Planification Parcours SÃ©curisÃ©e</h6>
                         <p class="small">
-                            La planification numérique de parcours facilite la préparation mais ne remplace pas 
-                            la reconnaissance terrain. La sécurité, la faisabilité technique et les autorisations 
-                            nécessaires doivent toujours être vérifiées sur site.
+                            La planification numÃ©rique de parcours facilite la prÃ©paration mais ne remplace pas 
+                            la reconnaissance terrain. La sÃ©curitÃ©, la faisabilitÃ© technique et les autorisations 
+                            nÃ©cessaires doivent toujours être vÃ©rifiÃ©es sur site.
                         </p>
                         
-                        <h6 class="text-warning mt-3">Vérifications Essentielles</h6>
+                        <h6 class="text-warning mt-3">VÃ©rifications Essentielles</h6>
                         <ul class="small">
-                            <li><strong>Sécurité terrain :</strong> État, obstacles, dangers potentiels</li>
-                            <li><strong>Autorisations :</strong> Accès public, propriété privée</li>
-                            <li><strong>Conditions météo :</strong> Praticabilité selon saison</li>
-                            <li><strong>Niveau technique :</strong> Adaptation capacités du groupe</li>
-                            <li><strong>Points de sortie :</strong> Secours et évacuation possibles</li>
+                            <li><strong>SÃ©curitÃ© terrain :</strong> Ã©tat, obstacles, dangers potentiels</li>
+                            <li><strong>Autorisations :</strong> AccÃ¨s public, propriÃ©tÃ© privÃ©e</li>
+                            <li><strong>Conditions mÃ©tÃ©o :</strong> PraticabilitÃ© selon saison</li>
+                            <li><strong>Niveau technique :</strong> Adaptation capacitÃ©s du groupe</li>
+                            <li><strong>Points de sortie :</strong> Secours et Ã©vacuation possibles</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Confidentialité et éthique -->
+        <!-- ConfidentialitÃ© et Ã©thique -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    Confidentialité et Utilisation Éthique
+                    ConfidentialitÃ© et Utilisation Ã©thique
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info">Protection des Données Personnelles</h6>
+                        <h6 class="text-info">Protection des DonnÃ©es Personnelles</h6>
                         <p class="small">
-                            Lors du chronométrage d'autres personnes ou du partage de parcours, 
-                            respectez la confidentialité des données personnelles et sportives. 
+                            Lors du chronomÃ©trage d'autres personnes ou du partage de parcours, 
+                            respectez la confidentialitÃ© des donnÃ©es personnelles et sportives. 
                             Obtenez le consentement explicite pour l'enregistrement et le partage d'informations.
                         </p>
                         
                         <h6 class="text-warning mt-3">Bonnes Pratiques RGPD</h6>
                         <ul class="small">
-                            <li><strong>Consentement explicite :</strong> Accord écrit si nécessaire</li>
-                            <li><strong>Minimisation données :</strong> Collecter uniquement le nécessaire</li>
-                            <li><strong>Sécurisation :</strong> Protection contre accès non autorisé</li>
-                            <li><strong>Droit d'effacement :</strong> Possibilité de supprimer les données</li>
-                            <li><strong>Finalité claire :</strong> Usage défini et limité</li>
+                            <li><strong>Consentement explicite :</strong> Accord Ã©crit si nÃ©cessaire</li>
+                            <li><strong>Minimisation donnÃ©es :</strong> Collecter uniquement le nÃ©cessaire</li>
+                            <li><strong>SÃ©curisation :</strong> Protection contre accÃ¨s non autorisÃ©</li>
+                            <li><strong>Droit d'effacement :</strong> PossibilitÃ© de supprimer les donnÃ©es</li>
+                            <li><strong>FinalitÃ© claire :</strong> Usage dÃ©fini et limitÃ©</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Usage Pédagogique et Motivationnel</h6>
+                        <h6 class="text-success">Usage PÃ©dagogique et Motivationnel</h6>
                         <p class="small">
-                            Ces outils doivent servir l'amélioration de la performance et le plaisir de la pratique. 
-                            Évitez les comparaisons blessantes ou la pression excessive. 
-                            Privilégiez l'encouragement et la progression individuelle.
+                            Ces outils doivent servir l'amÃ©lioration de la performance et le plaisir de la pratique. 
+                            Ã©vitez les comparaisons blessantes ou la pression excessive. 
+                            PrivilÃ©giez l'encouragement et la progression individuelle.
                         </p>
                         
                         <h6 class="text-primary mt-3">Approche Constructive</h6>
                         <ul class="small">
-                            <li><strong>Feedback positif :</strong> Souligner les progrès réalisés</li>
-                            <li><strong>Objectifs individualisés :</strong> Respecter les capacités de chacun</li>
-                            <li><strong>Apprentissage :</strong> Expliquer l'intérêt des mesures</li>
-                            <li><strong>Motivation intrinsèque :</strong> Plaisir de l'effort et progression</li>
-                            <li><strong>Bienveillance :</strong> Atmosphère d'entraide et respect mutuel</li>
+                            <li><strong>Feedback positif :</strong> Souligner les progrÃ¨s rÃ©alisÃ©s</li>
+                            <li><strong>Objectifs individualisÃ©s :</strong> Respecter les capacitÃ©s de chacun</li>
+                            <li><strong>Apprentissage :</strong> Expliquer l'intÃ©rêt des mesures</li>
+                            <li><strong>Motivation intrinsÃ¨que :</strong> Plaisir de l'effort et progression</li>
+                            <li><strong>Bienveillance :</strong> AtmosphÃ¨re d'entraide et respect mutuel</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="alert alert-info mt-4">
-                    <h6><i class="fas fa-users me-2"></i>Responsabilité Éducative</h6>
+                    <h6><i class="fas fa-users me-2"></i>ResponsabilitÃ© Ã©ducative</h6>
                     <p class="mb-0 small">
-                        Si vous utilisez ces outils dans un cadre éducatif ou d'encadrement, 
-                        <strong>votre responsabilité est de créer un environnement positif et sécurisant.</strong> 
-                        Les données de performance ne doivent jamais servir à humilier ou exclure, 
-                        mais toujours à encourager et personnaliser l'accompagnement.
+                        Si vous utilisez ces outils dans un cadre Ã©ducatif ou d'encadrement, 
+                        <strong>votre responsabilitÃ© est de crÃ©er un environnement positif et sÃ©curisant.</strong> 
+                        Les donnÃ©es de performance ne doivent jamais servir Ã humilier ou exclure, 
+                        mais toujours Ã encourager et personnaliser l'accompagnement.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Intégration avec autres outils -->
+        <!-- IntÃ©gration avec autres outils -->
         <div class="card">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-link me-2"></i>
-                    Intégration avec l'Écosystème d'Outils
+                    IntÃ©gration avec l'Ã©cosystÃ¨me d'Outils
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-primary">Synergies Recommandées</h6>
+                        <h6 class="text-primary">Synergies RecommandÃ©es</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Outil Pratique</th>
                                         <th>Combinaison Efficace</th>
-                                        <th>Bénéfice</th>
+                                        <th>BÃ©nÃ©fice</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Chronomètre Pro</td>
+                                        <td>ChronomÃ¨tre Pro</td>
                                         <td>+ Zones Cardiaques</td>
-                                        <td>Analyse intensité effort</td>
+                                        <td>Analyse intensitÃ© effort</td>
                                     </tr>
                                     <tr>
-                                        <td>Chronomètre Pro</td>
+                                        <td>ChronomÃ¨tre Pro</td>
                                         <td>+ VNC Natation</td>
-                                        <td>Tests seuils précis</td>
+                                        <td>Tests seuils prÃ©cis</td>
                                     </tr>
                                     <tr>
                                         <td>Carte Interactive</td>
                                         <td>+ Planificateur Course</td>
-                                        <td>Parcours personnalisés</td>
+                                        <td>Parcours personnalisÃ©s</td>
                                     </tr>
                                     <tr>
                                         <td>Carte Interactive</td>
                                         <td>+ Calculateur Hydratation</td>
-                                        <td>Préparation conditions</td>
+                                        <td>PrÃ©paration conditions</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Workflow Recommandé</h6>
+                        <h6 class="text-success">Workflow RecommandÃ©</h6>
                         <div class="timeline-container">
                             <div class="timeline-item">
                                 <div class="timeline-marker bg-primary"></div>
@@ -397,15 +397,15 @@
                             <div class="timeline-item">
                                 <div class="timeline-marker bg-warning"></div>
                                 <div class="timeline-content">
-                                    <h6 class="small fw-bold">2. Préparation</h6>
-                                    <p class="small">Zones cardiaques, hydratation, échauffement</p>
+                                    <h6 class="small fw-bold">2. PrÃ©paration</h6>
+                                    <p class="small">Zones cardiaques, hydratation, Ã©chauffement</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-marker bg-success"></div>
                                 <div class="timeline-content">
-                                    <h6 class="small fw-bold">3. Exécution</h6>
-                                    <p class="small">Chronométrage précis, suivi temps réel</p>
+                                    <h6 class="small fw-bold">3. ExÃ©cution</h6>
+                                    <p class="small">ChronomÃ©trage prÃ©cis, suivi temps rÃ©el</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
@@ -420,8 +420,8 @@
                         <div class="alert alert-success alert-sm mt-3">
                             <h6 class="small">Approche Globale</h6>
                             <p class="small mb-0">
-                                L'efficacité maximale provient de l'usage coordonné des outils, 
-                                chacun apportant sa valeur ajoutée à l'ensemble du processus.
+                                L'efficacitÃ© maximale provient de l'usage coordonnÃ© des outils, 
+                                chacun apportant sa valeur ajoutÃ©e Ã l'ensemble du processus.
                             </p>
                         </div>
                     </div>
@@ -433,7 +433,7 @@
 
 
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -444,12 +444,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -459,15 +459,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -494,7 +494,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -505,12 +505,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -655,7 +655,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrée pour les cards
+    // Animation d'entrÃ©e pour les cards
     const cards = document.querySelectorAll('.hover-lift');
     
     const observerOptions = {

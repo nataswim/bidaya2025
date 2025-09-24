@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Efficacité Technique Natation - DPS & SWOLF Scientifique')
-@section('meta_description', 'Analysez votre efficacité technique en natation avec DPS (Distance Par Stroke) et SWOLF. Comparaisons normatives, recommandations d\'amélioration et progression technique evidence-based.')
+@section('title', 'Calculateur EfficacitÃ© Technique Natation - DPS & SWOLF Scientifique')
+@section('meta_description', 'Analysez votre efficacitÃ© technique en natation avec DPS (Distance Par Stroke) et SWOLF. Comparaisons normatives, recommandations d\'amÃ©lioration et progression technique evidence-based.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,7 +9,7 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-swimmer text-info"></i>
-            Calculateur Efficacité Technique Natation
+            Calculateur EfficacitÃ© Technique Natation
             <i class="fas fa-chart-line text-warning"></i>
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
@@ -18,7 +18,7 @@
                 <i class="fas fa-ruler text-info me-3 mt-1"></i>
                 <div class="text-dark">
                     <strong>Optimisez votre technique</strong> avec l'analyse DPS (Distance Par Stroke) et SWOLF 
-                    basée sur les standards internationaux et recherches en biomécanique aquatique
+                    basÃ©e sur les standards internationaux et recherches en biomÃ©canique aquatique
                 </div>
             </div>
         </div>
@@ -44,13 +44,13 @@
                     <!-- Sera rempli par JavaScript -->
                 </div>
 
-                <!-- Paramètres du test -->
+                <!-- ParamÃ¨tres du test -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <label for="strokeType" class="form-label fw-bold">Type de nage</label>
                         <select id="strokeType" class="form-select form-select-lg border-primary">
                             <option value="freestyle">Crawl / Nage libre</option>
-                            <option value="backstroke">Dos crawlé</option>
+                            <option value="backstroke">Dos crawlÃ©</option>
                             <option value="breaststroke">Brasse</option>
                             <option value="butterfly">Papillon</option>
                         </select>
@@ -58,22 +58,22 @@
                     <div class="col-md-4">
                         <label for="distance" class="form-label fw-bold">Distance du test</label>
                         <select id="distance" class="form-select form-select-lg border-success">
-                            <option value="25">25 mètres</option>
-                            <option value="50" selected>50 mètres</option>
-                            <option value="100">100 mètres</option>
+                            <option value="25">25 mÃ¨tres</option>
+                            <option value="50" selected>50 mÃ¨tres</option>
+                            <option value="100">100 mÃ¨tres</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="poolLength" class="form-label fw-bold">Longueur bassin</label>
                         <select id="poolLength" class="form-select form-select-lg border-info">
-                            <option value="25" selected>25 mètres</option>
-                            <option value="50">50 mètres</option>
+                            <option value="25" selected>25 mÃ¨tres</option>
+                            <option value="50">50 mÃ¨tres</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Données de performance -->
-                <h5 class="fw-bold mb-3">Données de Performance</h5>
+                <!-- DonnÃ©es de performance -->
+                <h5 class="fw-bold mb-3">DonnÃ©es de Performance</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <label for="timeMinutes" class="form-label fw-bold">Temps (minutes)</label>
@@ -99,10 +99,10 @@
                     <div class="col-md-4">
                         <label for="level" class="form-label">Niveau</label>
                         <select id="level" class="form-select border-secondary">
-                            <option value="recreational">Loisir / Débutant</option>
-                            <option value="club" selected>Club / Intermédiaire</option>
-                            <option value="competitive">Compétition</option>
-                            <option value="elite">Élite / National</option>
+                            <option value="recreational">Loisir / DÃ©butant</option>
+                            <option value="club" selected>Club / IntermÃ©diaire</option>
+                            <option value="competitive">CompÃ©tition</option>
+                            <option value="elite">Ã©lite / National</option>
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -123,26 +123,26 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <button class="btn btn-primary btn-lg fw-bold w-100" onclick="calculateEfficiency()">
-                            <i class="fas fa-chart-line me-2"></i>Analyser Efficacité Technique
+                            <i class="fas fa-chart-line me-2"></i>Analyser EfficacitÃ© Technique
                         </button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetCalculator()">
-                            <i class="fas fa-redo me-2"></i>Réinitialiser
+                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Résultats de l'analyse -->
+        <!-- RÃ©sultats de l'analyse -->
         <div id="resultsSection" class="d-none">
-            <!-- Métriques principales -->
+            <!-- MÃ©triques principales -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-trophy me-2"></i>
-                        Analyse de votre Efficacité Technique
+                        Analyse de votre EfficacitÃ© Technique
                     </h3>
                 </div>
                 <div class="card-body">
@@ -156,7 +156,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-3"><strong class="text-primary" id="dpsResult">0.00</strong></span>
-                                        <small class="d-block">mètres/coup</small>
+                                        <small class="d-block">mÃ¨tres/coup</small>
                                     </p>
                                     <span id="dpsRating" class="badge bg-secondary">-</span>
                                 </div>
@@ -198,7 +198,7 @@
                         <div class="col-md-3">
                             <div class="card border-success h-100">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h6 class="mb-0">Fréquence</h6>
+                                    <h6 class="mb-0">FrÃ©quence</h6>
                                     <small>Gestuelle</small>
                                 </div>
                                 <div class="card-body text-center">
@@ -212,9 +212,9 @@
                         </div>
                     </div>
 
-                    <!-- Évaluation globale -->
+                    <!-- Ã©valuation globale -->
                     <div class="alert" id="globalAssessment">
-                        <h6 id="assessmentTitle">Évaluation Globale</h6>
+                        <h6 id="assessmentTitle">Ã©valuation Globale</h6>
                         <p id="assessmentText" class="mb-0">
                             <!-- Sera rempli par JavaScript -->
                         </p>
@@ -239,7 +239,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h6>Objectifs d'amélioration :</h6>
+                            <h6>Objectifs d'amÃ©lioration :</h6>
                             <div id="improvementTargets">
                                 <!-- Sera rempli par JavaScript -->
                             </div>
@@ -266,7 +266,7 @@
     </div>
 </section>
 
-<!-- Contenu Éducatif -->
+<!-- Contenu Ã©ducatif -->
 <section class="py-5">
     <div class="container">
         
@@ -283,14 +283,14 @@
                     <div class="col-md-6">
                         <h6>DPS - Distance Par Stroke</h6>
                         <p class="small">
-                            Le DPS mesure l'efficacité propulsive en calculant la distance parcourue par coup de bras. 
-                            Plus le DPS est élevé, plus le nageur avance loin avec chaque mouvement, indiquant une 
+                            Le DPS mesure l'efficacitÃ© propulsive en calculant la distance parcourue par coup de bras. 
+                            Plus le DPS est Ã©levÃ©, plus le nageur avance loin avec chaque mouvement, indiquant une 
                             meilleure technique de glisse et d'appui.
                         </p>
                         
                         <h6 className="mt-3">Facteurs influençant le DPS :</h6>
                         <ul class="small">
-                            <li><strong>Technique d'appui :</strong> Efficacité de la prise d'eau</li>
+                            <li><strong>Technique d'appui :</strong> EfficacitÃ© de la prise d'eau</li>
                             <li><strong>Position du corps :</strong> Hydrodynamisme et glisse</li>
                             <li><strong>Amplitude gestuelle :</strong> Longueur des mouvements</li>
                             <li><strong>Timing :</strong> Coordination bras/corps/jambes</li>
@@ -300,18 +300,18 @@
                         <h6>SWOLF - Swimming Golf</h6>
                         <p class="small">
                             Le SWOLF combine temps et nombre de coups (Temps + Coups = Score). Plus le score est bas, 
-                            meilleure est l'efficacité globale. C'est un indicateur d'équilibre entre vitesse et technique.
+                            meilleure est l'efficacitÃ© globale. C'est un indicateur d'Ã©quilibre entre vitesse et technique.
                         </p>
                         
-                        <h6 className="mt-3">Interprétation SWOLF :</h6>
+                        <h6 className="mt-3">InterprÃ©tation SWOLF :</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Score 50m Crawl</th>
-                                        <th>Niveau Récréatif</th>
+                                        <th>Niveau RÃ©crÃ©atif</th>
                                         <th>Niveau Club</th>
-                                        <th>Niveau Compétition</th>
+                                        <th>Niveau CompÃ©tition</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -334,7 +334,7 @@
                                         <td>55-65</td>
                                     </tr>
                                     <tr class="table-danger">
-                                        <td>À améliorer</td>
+                                        <td>Ã amÃ©liorer</td>
                                         <td>&gt; 85</td>
                                         <td>&gt; 75</td>
                                         <td>&gt; 65</td>
@@ -352,7 +352,7 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-swimming-pool me-2"></i>
-                    Normes de Référence par Nage
+                    Normes de RÃ©fÃ©rence par Nage
                 </h3>
             </div>
             <div class="card-body">
@@ -374,19 +374,19 @@
                                         <td><strong>Crawl</strong></td>
                                         <td>2.2 - 2.5m</td>
                                         <td>2.0 - 2.3m</td>
-                                        <td>Longue, régulière</td>
+                                        <td>Longue, rÃ©guliÃ¨re</td>
                                     </tr>
                                     <tr>
-                                        <td>Dos crawlé</td>
+                                        <td>Dos crawlÃ©</td>
                                         <td>2.0 - 2.3m</td>
                                         <td>1.8 - 2.1m</td>
-                                        <td>Rotation marquée</td>
+                                        <td>Rotation marquÃ©e</td>
                                     </tr>
                                     <tr>
                                         <td>Brasse</td>
                                         <td>1.8 - 2.2m</td>
                                         <td>1.6 - 2.0m</td>
-                                        <td>Glisse prolongée</td>
+                                        <td>Glisse prolongÃ©e</td>
                                     </tr>
                                     <tr>
                                         <td>Papillon</td>
@@ -399,15 +399,15 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Fréquences Gestuelles Optimales</h6>
+                        <h6>FrÃ©quences Gestuelles Optimales</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Nage</th>
                                         <th>Distance</th>
-                                        <th>Fréquence (coups/min)</th>
-                                        <th>Stratégie</th>
+                                        <th>FrÃ©quence (coups/min)</th>
+                                        <th>StratÃ©gie</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -426,7 +426,7 @@
                                         <td>Dos</td>
                                         <td>50-200m</td>
                                         <td>40-50</td>
-                                        <td>Régularité</td>
+                                        <td>RÃ©gularitÃ©</td>
                                     </tr>
                                     <tr>
                                         <td>Brasse</td>
@@ -448,36 +448,36 @@
             </div>
         </div>
 
-        <!-- Amélioration technique -->
+        <!-- AmÃ©lioration technique -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-arrow-up me-2"></i>
-                    Stratégies d'Amélioration Technique
+                    StratÃ©gies d'AmÃ©lioration Technique
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <h6 className="text-primary">Améliorer le DPS</h6>
+                        <h6 className="text-primary">AmÃ©liorer le DPS</h6>
                         <ul class="small">
-                            <li><strong>Position corporelle :</strong> Corps aligné, tête neutre</li>
-                            <li><strong>Entrée de main :</strong> Extension maximale, pénétration propre</li>
+                            <li><strong>Position corporelle :</strong> Corps alignÃ©, tête neutre</li>
+                            <li><strong>EntrÃ©e de main :</strong> Extension maximale, pÃ©nÃ©tration propre</li>
                             <li><strong>Phase d'appui :</strong> Prise d'eau profonde, avant-bras vertical</li>
                             <li><strong>Roulis :</strong> Rotation corps 30-45°</li>
                             <li><strong>Glisse :</strong> Maintenir vitesse entre les coups</li>
                         </ul>
                         
                         <div className="alert alert-info alert-sm">
-                            <small><strong>Exercice clé :</strong> Nage à 3 temps (3 coups + respiration) pour maximiser la glisse</small>
+                            <small><strong>Exercice clÃ© :</strong> Nage Ã 3 temps (3 coups + respiration) pour maximiser la glisse</small>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <h6 className="text-success">Optimiser SWOLF</h6>
                         <ul class="small">
-                            <li><strong>Équilibre amplitude/fréquence :</strong> Trouver le ratio optimal</li>
-                            <li><strong>Régularité :</strong> Maintenir technique sous fatigue</li>
-                            <li><strong>Efficacité énergétique :</strong> Éviter efforts parasites</li>
+                            <li><strong>Ã©quilibre amplitude/frÃ©quence :</strong> Trouver le ratio optimal</li>
+                            <li><strong>RÃ©gularitÃ© :</strong> Maintenir technique sous fatigue</li>
+                            <li><strong>EfficacitÃ© Ã©nergÃ©tique :</strong> Ã©viter efforts parasites</li>
                             <li><strong>Coordination :</strong> Synchronisation bras/jambes/respiration</li>
                             <li><strong>Streamline :</strong> Position de glisse optimale</li>
                         </ul>
@@ -487,17 +487,17 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6 className="text-warning">Protocole d'Évaluation</h6>
+                        <h6 className="text-warning">Protocole d'Ã©valuation</h6>
                         <ul class="small">
-                            <li><strong>Échauffement :</strong> 400-600m progressif</li>
+                            <li><strong>Ã©chauffement :</strong> 400-600m progressif</li>
                             <li><strong>Standardisation :</strong> Même bassin, même conditions</li>
-                            <li><strong>Intensité :</strong> 80-85% effort (soutenu mais contrôlé)</li>
-                            <li><strong>Récupération :</strong> 2-3min entre répétitions</li>
-                            <li><strong>Fréquence :</strong> Test hebdomadaire ou bi-hebdomadaire</li>
+                            <li><strong>IntensitÃ© :</strong> 80-85% effort (soutenu mais contrôlÃ©)</li>
+                            <li><strong>RÃ©cupÃ©ration :</strong> 2-3min entre rÃ©pÃ©titions</li>
+                            <li><strong>FrÃ©quence :</strong> Test hebdomadaire ou bi-hebdomadaire</li>
                         </ul>
                         
                         <div className="alert alert-warning alert-sm">
-                            <small><strong>Important :</strong> Progrès technique = progression graduelle et constante</small>
+                            <small><strong>Important :</strong> ProgrÃ¨s technique = progression graduelle et constante</small>
                         </div>
                     </div>
                 </div>
@@ -517,32 +517,32 @@
                     <div class="col-md-6">
                         <h6 className="text-danger">Facteurs Limitants</h6>
                         <ul class="small">
-                            <li><strong>Conditions de test :</strong> Température eau, fatigue préalable</li>
-                            <li><strong>Précision mesure :</strong> Comptage coups, chronométrage</li>
-                            <li><strong>Variabilité individuelle :</strong> Morphologie, flexibilité</li>
-                            <li><strong>Phase d'apprentissage :</strong> Technique en évolution</li>
-                            <li><strong>Spécificité distance :</strong> 50m ≠ 1500m</li>
+                            <li><strong>Conditions de test :</strong> TempÃ©rature eau, fatigue prÃ©alable</li>
+                            <li><strong>PrÃ©cision mesure :</strong> Comptage coups, chronomÃ©trage</li>
+                            <li><strong>VariabilitÃ© individuelle :</strong> Morphologie, flexibilitÃ©</li>
+                            <li><strong>Phase d'apprentissage :</strong> Technique en Ã©volution</li>
+                            <li><strong>SpÃ©cificitÃ© distance :</strong> 50m ≠ 1500m</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <h6 className="text-success">Recommandations d'Usage</h6>
                         <ul class="small">
-                            <li><strong>Régularité :</strong> Tests dans conditions similaires</li>
-                            <li><strong>Progression graduelle :</strong> Éviter changements techniques brutaux</li>
-                            <li><strong>Accompagnement :</strong> Analyse vidéo et regard externe</li>
-                            <li><strong>Patience :</strong> Améliorations techniques prennent du temps</li>
+                            <li><strong>RÃ©gularitÃ© :</strong> Tests dans conditions similaires</li>
+                            <li><strong>Progression graduelle :</strong> Ã©viter changements techniques brutaux</li>
+                            <li><strong>Accompagnement :</strong> Analyse vidÃ©o et regard externe</li>
+                            <li><strong>Patience :</strong> AmÃ©liorations techniques prennent du temps</li>
                             <li><strong>Approche holistique :</strong> Technique + condition physique</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="alert alert-warning mt-4">
-                    <h6><i class="fas fa-heart me-2"></i>Approche Équilibrée</h6>
+                    <h6><i class="fas fa-heart me-2"></i>Approche Ã©quilibrÃ©e</h6>
                     <p class="mb-0">
-                        Ces métriques sont des outils d'aide à l'amélioration technique, non des objectifs en soi. 
-                        L'efficacité en natation résulte d'un équilibre entre technique, condition physique et plaisir de nager. 
-                        Une obsession des chiffres peut nuire au développement technique naturel. Privilégiez la progression 
-                        graduelle avec l'accompagnement d'un coach qualifié.
+                        Ces mÃ©triques sont des outils d'aide Ã l'amÃ©lioration technique, non des objectifs en soi. 
+                        L'efficacitÃ© en natation rÃ©sulte d'un Ã©quilibre entre technique, condition physique et plaisir de nager. 
+                        Une obsession des chiffres peut nuire au dÃ©veloppement technique naturel. PrivilÃ©giez la progression 
+                        graduelle avec l'accompagnement d'un coach qualifiÃ©.
                     </p>
                 </div>
             </div>
@@ -550,7 +550,7 @@
     </div>
 </section>
 
-<!-- Section Crédit et Contact -->
+<!-- Section CrÃ©dit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -563,12 +563,12 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement & Expertise</h6>
+                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils développés par 
+                            Contenus et outils dÃ©veloppÃ©s par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -578,15 +578,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
+                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
+                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -613,7 +613,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intégrées</small>
+                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
                 </div>
             </div>
         </div>
@@ -624,12 +624,12 @@
 
 
 
-<!-- Dernières Publications -->
+<!-- DerniÃ¨res Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernières Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -735,7 +735,7 @@
 
 @push('scripts')
 <script>
-// Normes de référence
+// Normes de rÃ©fÃ©rence
 const norms = {
     freestyle: {
         recreational: {
@@ -811,9 +811,9 @@ const norms = {
     }
 };
 
-// Calcul de l'efficacité technique
+// Calcul de l'efficacitÃ© technique
 function calculateEfficiency() {
-    // Récupération des valeurs
+    // RÃ©cupÃ©ration des valeurs
     const strokeType = document.getElementById('strokeType').value;
     const distance = parseFloat(document.getElementById('distance').value);
     const timeMinutes = parseFloat(document.getElementById('timeMinutes').value) || 0;
@@ -834,7 +834,7 @@ function calculateEfficiency() {
     }
     
     if (strokeCount > distance * 10) {
-        showError('Le nombre de coups semble trop élevé pour cette distance.');
+        showError('Le nombre de coups semble trop Ã©levÃ© pour cette distance.');
         return;
     }
     
@@ -857,7 +857,7 @@ function calculateEfficiency() {
         adjustedSwolf = swolf * 0.5; // Approximation pour 50m
     }
     
-    // Affichage des résultats
+    // Affichage des rÃ©sultats
     displayResults({
         dps: dps,
         swolf: Math.round(swolf),
@@ -872,9 +872,9 @@ function calculateEfficiency() {
     });
 }
 
-// Affichage des résultats
+// Affichage des rÃ©sultats
 function displayResults(results) {
-    // Métriques principales
+    // MÃ©triques principales
     document.getElementById('dpsResult').textContent = results.dps.toFixed(2);
     document.getElementById('swolfResult').textContent = results.swolf;
     document.getElementById('speedResult').textContent = results.speed.toFixed(2);
@@ -885,26 +885,26 @@ function displayResults(results) {
     const paceSeconds = Math.round(results.pace % 60);
     document.getElementById('paceResult').textContent = `${paceMinutes}:${paceSeconds.toString().padStart(2, '0')}/100m`;
     
-    // Récupération des normes
+    // RÃ©cupÃ©ration des normes
     const norm = norms[results.strokeType][results.level][results.gender];
     
-    // Évaluation DPS
+    // Ã©valuation DPS
     const dpsRating = evaluateMetric(results.dps, norm.dps);
     document.getElementById('dpsRating').textContent = dpsRating.label;
     document.getElementById('dpsRating').className = `badge bg-${dpsRating.color}`;
     
-    // Évaluation SWOLF (utiliser adjustedSwolf pour comparaison)
+    // Ã©valuation SWOLF (utiliser adjustedSwolf pour comparaison)
     const swolfRating = evaluateMetric(results.adjustedSwolf, norm.swolf, true); // true = lower is better
     document.getElementById('swolfRating').textContent = swolfRating.label;
     document.getElementById('swolfRating').className = `badge bg-${swolfRating.color}`;
     
-    // Évaluation fréquence
+    // Ã©valuation frÃ©quence
     const idealFrequency = getIdealFrequency(results.strokeType, results.distance);
     const frequencyRating = evaluateFrequency(results.frequency, idealFrequency);
     document.getElementById('frequencyRating').textContent = frequencyRating.label;
     document.getElementById('frequencyRating').className = `badge bg-${frequencyRating.color}`;
     
-    // Évaluation globale
+    // Ã©valuation globale
     const globalAssessment = getGlobalAssessment(dpsRating, swolfRating, results);
     document.getElementById('globalAssessment').className = `alert alert-${globalAssessment.color}`;
     document.getElementById('assessmentTitle').textContent = globalAssessment.title;
@@ -916,27 +916,27 @@ function displayResults(results) {
     // Recommandations techniques
     displayTechnicalRecommendations(results, dpsRating, swolfRating, frequencyRating);
     
-    // Afficher la section résultats
+    // Afficher la section rÃ©sultats
     document.getElementById('resultsSection').classList.remove('d-none');
     document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Évaluation d'une métrique
+// Ã©valuation d'une mÃ©trique
 function evaluateMetric(value, norm, lowerIsBetter = false) {
     if (lowerIsBetter) {
         if (value <= norm.excellent) return { label: 'Excellent', color: 'success' };
         if (value <= norm.good) return { label: 'Bon', color: 'info' };
         if (value <= norm.average) return { label: 'Moyen', color: 'warning' };
-        return { label: 'À améliorer', color: 'danger' };
+        return { label: 'Ã amÃ©liorer', color: 'danger' };
     } else {
         if (value >= norm.excellent) return { label: 'Excellent', color: 'success' };
         if (value >= norm.good) return { label: 'Bon', color: 'info' };
         if (value >= norm.average) return { label: 'Moyen', color: 'warning' };
-        return { label: 'À améliorer', color: 'danger' };
+        return { label: 'Ã amÃ©liorer', color: 'danger' };
     }
 }
 
-// Fréquence idéale selon nage et distance
+// FrÃ©quence idÃ©ale selon nage et distance
 function getIdealFrequency(strokeType, distance) {
     const frequencies = {
         freestyle: { short: 50, long: 40 },
@@ -949,42 +949,42 @@ function getIdealFrequency(strokeType, distance) {
     return frequencies[strokeType][isShort ? 'short' : 'long'];
 }
 
-// Évaluation fréquence
+// Ã©valuation frÃ©quence
 function evaluateFrequency(frequency, ideal) {
     const diff = Math.abs(frequency - ideal);
     if (diff <= 3) return { label: 'Optimal', color: 'success' };
     if (diff <= 6) return { label: 'Bon', color: 'info' };
     if (diff <= 10) return { label: 'Acceptable', color: 'warning' };
-    return { label: 'À ajuster', color: 'danger' };
+    return { label: 'Ã ajuster', color: 'danger' };
 }
 
-// Évaluation globale
+// Ã©valuation globale
 function getGlobalAssessment(dpsRating, swolfRating, results) {
     const excellentCount = [dpsRating, swolfRating].filter(r => r.color === 'success').length;
     const goodCount = [dpsRating, swolfRating].filter(r => r.color === 'info').length;
     
     if (excellentCount >= 2) {
         return {
-            title: 'Excellente Efficacité Technique !',
-            text: `Votre technique est très efficace avec un DPS de ${results.dps.toFixed(2)}m et un SWOLF de ${results.swolf}. Continuez sur cette voie en maintenant la régularité.`,
+            title: 'Excellente EfficacitÃ© Technique !',
+            text: `Votre technique est trÃ¨s efficace avec un DPS de ${results.dps.toFixed(2)}m et un SWOLF de ${results.swolf}. Continuez sur cette voie en maintenant la rÃ©gularitÃ©.`,
             color: 'success'
         };
     } else if (excellentCount + goodCount >= 2) {
         return {
-            title: 'Bonne Efficacité Technique',
-            text: `Votre technique montre de bons résultats. Concentrez-vous sur l'amélioration du point le plus faible pour optimiser votre efficacité globale.`,
+            title: 'Bonne EfficacitÃ© Technique',
+            text: `Votre technique montre de bons rÃ©sultats. Concentrez-vous sur l'amÃ©lioration du point le plus faible pour optimiser votre efficacitÃ© globale.`,
             color: 'info'
         };
     } else if (goodCount >= 1) {
         return {
-            title: 'Efficacité Technique à Développer',
-            text: `Votre technique présente des axes d'amélioration intéressants. Un travail technique régulier vous permettra de progresser significativement.`,
+            title: 'EfficacitÃ© Technique Ã DÃ©velopper',
+            text: `Votre technique prÃ©sente des axes d'amÃ©lioration intÃ©ressants. Un travail technique rÃ©gulier vous permettra de progresser significativement.`,
             color: 'warning'
         };
     } else {
         return {
             title: 'Focus sur la Technique',
-            text: `Concentrez-vous sur les fondamentaux techniques. Un accompagnement par un coach vous aidera à développer une nage plus efficace.`,
+            text: `Concentrez-vous sur les fondamentaux techniques. Un accompagnement par un coach vous aidera Ã dÃ©velopper une nage plus efficace.`,
             color: 'danger'
         };
     }
@@ -1002,7 +1002,7 @@ function displayNormativeComparison(results, norm) {
                         <h6 class="card-title mb-1">DPS - Distance Par Stroke</h6>
                         <div class="progress mb-2" style="height: 20px;">
                             <div class="progress-bar bg-danger" style="width: 25%">
-                                <small>À améliorer: &lt;${norm.dps.average.toFixed(1)}m</small>
+                                <small>Ã amÃ©liorer: &lt;${norm.dps.average.toFixed(1)}m</small>
                             </div>
                             <div class="progress-bar bg-warning" style="width: 25%">
                                 <small>Moyen: ${norm.dps.average.toFixed(1)}m</small>
@@ -1033,10 +1033,10 @@ function displayNormativeComparison(results, norm) {
                                 <small>Moyen: ${norm.swolf.good}-${norm.swolf.average}</small>
                             </div>
                             <div class="progress-bar bg-danger" style="width: 25%">
-                                <small>À améliorer: ${norm.swolf.average}+</small>
+                                <small>Ã amÃ©liorer: ${norm.swolf.average}+</small>
                             </div>
                         </div>
-                        <p class="mb-0 small">Votre SWOLF: <strong>${results.adjustedSwolf}</strong> (ajusté 50m)</p>
+                        <p class="mb-0 small">Votre SWOLF: <strong>${results.adjustedSwolf}</strong> (ajustÃ© 50m)</p>
                     </div>
                 </div>
             </div>
@@ -1044,7 +1044,7 @@ function displayNormativeComparison(results, norm) {
     `;
 }
 
-// Objectifs d'amélioration
+// Objectifs d'amÃ©lioration
 function displayImprovementTargets(results, norm) {
     const container = document.getElementById('improvementTargets');
     
@@ -1062,7 +1062,7 @@ function displayImprovementTargets(results, norm) {
                 <span class="badge bg-warning rounded-pill">${swolfTarget}</span>
             </li>
             <li class="list-group-item">
-                <small class="text-muted">Objectifs réalisables à court terme (4-6 semaines)</small>
+                <small class="text-muted">Objectifs rÃ©alisables Ã court terme (4-6 semaines)</small>
             </li>
         </ul>
     `;
@@ -1080,10 +1080,10 @@ function displayTechnicalRecommendations(results, dpsRating, swolfRating, freque
             type: 'DPS - Distance Par Stroke',
             color: 'primary',
             items: [
-                'Travaillez la position haute du corps (tête alignée, épaules stables)',
-                'Améliorez l\'entrée de main (extension maximale, pénétration propre)',
-                'Développez la phase d\'appui (prise d\'eau profonde, avant-bras vertical)',
-                'Exercice recommandé: Nage à 3 temps pour maximiser la glisse'
+                'Travaillez la position haute du corps (tête alignÃ©e, Ã©paules stables)',
+                'AmÃ©liorez l\'entrÃ©e de main (extension maximale, pÃ©nÃ©tration propre)',
+                'DÃ©veloppez la phase d\'appui (prise d\'eau profonde, avant-bras vertical)',
+                'Exercice recommandÃ©: Nage Ã 3 temps pour maximiser la glisse'
             ]
         });
     }
@@ -1091,60 +1091,60 @@ function displayTechnicalRecommendations(results, dpsRating, swolfRating, freque
     // Recommandations SWOLF
     if (swolfRating.color === 'danger' || swolfRating.color === 'warning') {
         recommendations.push({
-            type: 'SWOLF - Efficacité Globale',
+            type: 'SWOLF - EfficacitÃ© Globale',
             color: 'warning',
             items: [
-                'Travaillez l\'équilibre amplitude/fréquence gestuelle',
-                'Améliorez la régularité technique sous effort',
-                'Réduisez les efforts parasites (tensions inutiles)',
-                'Exercice recommandé: Séries tempo avec métronome'
+                'Travaillez l\'Ã©quilibre amplitude/frÃ©quence gestuelle',
+                'AmÃ©liorez la rÃ©gularitÃ© technique sous effort',
+                'RÃ©duisez les efforts parasites (tensions inutiles)',
+                'Exercice recommandÃ©: SÃ©ries tempo avec mÃ©tronome'
             ]
         });
     }
     
-    // Recommandations fréquence
+    // Recommandations frÃ©quence
     if (frequencyRating.color === 'danger' || frequencyRating.color === 'warning') {
         const ideal = getIdealFrequency(results.strokeType, results.distance);
         if (results.frequency > ideal) {
             recommendations.push({
-                type: 'Fréquence Gestuelle - Trop Rapide',
+                type: 'FrÃ©quence Gestuelle - Trop Rapide',
                 color: 'info',
                 items: [
-                    'Ralentissez la cadence pour améliorer l\'amplitude',
+                    'Ralentissez la cadence pour amÃ©liorer l\'amplitude',
                     'Travaillez la glisse entre les mouvements',
-                    'Concentrez-vous sur la phase de traction complète',
-                    'Exercice recommandé: Nage avec temps de pause'
+                    'Concentrez-vous sur la phase de traction complÃ¨te',
+                    'Exercice recommandÃ©: Nage avec temps de pause'
                 ]
             });
         } else {
             recommendations.push({
-                type: 'Fréquence Gestuelle - Trop Lente',
+                type: 'FrÃ©quence Gestuelle - Trop Lente',
                 color: 'info',
                 items: [
-                    'Augmentez légèrement la cadence gestuelle',
+                    'Augmentez lÃ©gÃ¨rement la cadence gestuelle',
                     'Travaillez la coordination bras/jambes',
-                    'Améliorez le retour aérien des bras',
-                    'Exercice recommandé: Sprints courts avec fréquence élevée'
+                    'AmÃ©liorez le retour aÃ©rien des bras',
+                    'Exercice recommandÃ©: Sprints courts avec frÃ©quence Ã©levÃ©e'
                 ]
             });
         }
     }
     
-    // Recommandations générales positives
+    // Recommandations gÃ©nÃ©rales positives
     if (dpsRating.color === 'success' && swolfRating.color === 'success') {
         recommendations.push({
             type: 'Maintien du Niveau',
             color: 'success',
             items: [
-                'Excellente technique ! Maintenez cette efficacité',
+                'Excellente technique ! Maintenez cette efficacitÃ©',
                 'Testez sur des distances plus longues',
                 'Travaillez la technique sous fatigue',
-                'Continuez les tests réguliers pour suivre la progression'
+                'Continuez les tests rÃ©guliers pour suivre la progression'
             ]
         });
     }
     
-    // Générer le HTML
+    // GÃ©nÃ©rer le HTML
     let html = '';
     recommendations.forEach(rec => {
         html += `
@@ -1163,7 +1163,7 @@ function displayTechnicalRecommendations(results, dpsRating, swolfRating, freque
     
     container.innerHTML = html;
     
-    // Afficher aussi les objectifs d'amélioration
+    // Afficher aussi les objectifs d'amÃ©lioration
     displayImprovementTargets(results, norms[results.strokeType][results.level][results.gender]);
 }
 
@@ -1175,7 +1175,7 @@ function showError(message) {
     document.getElementById('resultsSection').classList.add('d-none');
 }
 
-// Réinitialisation du calculateur
+// RÃ©initialisation du calculateur
 function resetCalculator() {
     // Reset des champs de saisie
     document.getElementById('strokeType').value = 'freestyle';
@@ -1188,7 +1188,7 @@ function resetCalculator() {
     document.getElementById('age').value = '';
     document.getElementById('gender').value = 'male';
     
-    // Masquer erreurs et résultats
+    // Masquer erreurs et rÃ©sultats
     document.getElementById('errorMessage').classList.add('d-none');
     document.getElementById('resultsSection').classList.add('d-none');
 }

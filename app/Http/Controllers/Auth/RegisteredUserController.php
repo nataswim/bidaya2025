@@ -37,19 +37,19 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Récupérer le rôle visitor par défaut
+        // RÃ©cupÃ©rer le rôle visitor par dÃ©faut
         $visitorRole = Role::where('name', 'visitor')->where('is_default', true)->first();
         
-        // Fallback si pas trouvé par is_default
+        // Fallback si pas trouvÃ© par is_default
         if (!$visitorRole) {
             $visitorRole = Role::where('name', 'visitor')->first();
         }
 
-        // Sécurité : si toujours pas de rôle visitor, créer une erreur
+        // SÃ©curitÃ© : si toujours pas de rôle visitor, crÃ©er une erreur
         if (!$visitorRole) {
-            Log::error('Rôle visitor non trouvé lors de l\'inscription pour: ' . $request->email);
+            Log::error('Rôle visitor non trouvÃ© lors de l\'inscription pour: ' . $request->email);
             return redirect()->back()
-                ->withErrors(['general' => 'Erreur système : configuration des rôles incomplète.'])
+                ->withErrors(['general' => 'Erreur systÃ¨me : configuration des rôles incomplÃ¨te.'])
                 ->withInput();
         }
 
@@ -68,6 +68,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false))
-            ->with('success', 'Inscription réussie ! Votre compte doit être validé par un administrateur pour accéder aux contenus premium.');
+            ->with('success', 'Inscription rÃ©ussie ! Votre compte doit être validÃ© par un administrateur pour accÃ©der aux contenus premium.');
     }
 }
