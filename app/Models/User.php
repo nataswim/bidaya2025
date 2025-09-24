@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->role && $this->role->slug === $roleSlug;
     }
+
+    public function payments()
+{
+    return $this->hasMany(Payment::class);
+}
 }

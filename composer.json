@@ -19,6 +19,7 @@
         "spatie/laravel-html": "^3.12",
         "spatie/laravel-medialibrary": "^11.12",
         "sqids/sqids": "^0.5.0",
+        "stripe/stripe-php": "^17.6",
         "unisharp/laravel-filemanager": "^2.0",
         "yajra/laravel-datatables-oracle": "^12.0"
     },

@@ -40,6 +40,97 @@
         </div>
     </div>
 
+
+<!-- Notification pour les visiteurs -->
+    @if(auth()->user()->hasRole('visitor'))
+        <div class="row mb-4">
+            <div class="col-12">
+                @php
+                    $completedPayment = auth()->user()->payments()->where('status', 'completed')->where('admin_status', 'pending')->first();
+                @endphp
+                
+                @if($completedPayment)
+                    <div class="alert alert-warning border-0 shadow-sm">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-warning bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 50px; height: 50px;">
+                                <i class="fas fa-clock text-warning fa-lg"></i>
+                            </div>
+                            <div class="flex-fill">
+                                <h5 class="alert-heading mb-2">
+                                    <i class="fas fa-hourglass-half"></i> Paiement en attente de validation
+                                </h5>
+                                <p class="mb-2">
+                                    Votre paiement de <strong>{{ $completedPayment->formatted_price }}</strong> pour 
+                                    <strong>{{ $completedPayment->plan_name }}</strong> a été reçu avec succès.
+                                </p>
+                                <p class="mb-0 small text-muted">
+                                    Un administrateur validera votre accès premium prochainement. 
+                                    Vous recevrez une notification dès l'activation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="alert alert-info border-0 shadow-sm">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-info bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 50px; height: 50px;">
+                                <i class="fas fa-crown text-info fa-lg"></i>
+                            </div>
+                            <div class="flex-fill">
+                                <h5 class="alert-heading mb-2">
+                                    <i class="fas fa-lock"></i> Accès limité - Compte Visiteur
+                                </h5>
+                                <p class="mb-3">
+                                    Votre compte vous donne accès au contenu public uniquement. 
+                                    Pour débloquer tous les articles et contenus premium, passez à un compte utilisateur.
+                                </p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a href="{{ route('payments.index') }}" class="btn btn-primary">
+                                        <i class="fas fa-arrow-up me-2"></i>Passer Premium
+                                    </a>
+                                    <a href="{{ route('payments.history') }}" class="btn btn-outline-secondary btn-sm">
+                                        <i class="fas fa-history me-2"></i>Mes paiements
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+
+    <!-- Notification pour les utilisateurs premium -->
+    @if(auth()->user()->hasRole('user'))
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-success border-0 shadow-sm">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-success bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center me-3" 
+                             style="width: 50px; height: 50px;">
+                            <i class="fas fa-check-circle text-success fa-lg"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <h5 class="alert-heading mb-2">
+                                <i class="fas fa-crown"></i> Compte Premium Actif
+                            </h5>
+                            <p class="mb-0">
+                                Félicitations ! Vous avez accès à tous les contenus premium de la plateforme.
+                                Profitez pleinement de votre expérience utilisateur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+
+
+
+
     <!-- Statistiques utilisateur -->
     <div class="row g-4 mb-5">
         @php
@@ -195,6 +286,26 @@
                                 <small class="opacity-75">Découvrir les derniers contenus</small>
                             </div>
                         </a>
+                        
+
+                        @if(auth()->user()->hasRole('visitor'))
+                            <a href="{{ route('payments.index') }}" class="btn btn-outline-warning text-start">
+                                <i class="fas fa-crown me-2"></i>
+                                <div>
+                                    <div class="fw-semibold">Passer Premium</div>
+                                    <small class="opacity-75">Débloquer tous les contenus</small>
+                                </div>
+                            </a>
+                        @endif
+
+                        <a href="{{ route('payments.history') }}" class="btn btn-outline-secondary text-start">
+                            <i class="fas fa-credit-card me-2"></i>
+                            <div>
+                                <div class="fw-semibold">Mes paiements</div>
+                                <small class="opacity-75">Historique des transactions</small>
+                            </div>
+                        </a>
+
                         
                         @if(auth()->user()->hasRole('admin'))
                             <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-danger text-start">

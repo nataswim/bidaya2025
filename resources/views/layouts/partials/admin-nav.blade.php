@@ -99,6 +99,14 @@
                     <span>Permissions</span>
                 </a>
             </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.payments.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.permissions.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-key me-3"></i>
+                    <span>Paiements</span>
+                </a>
+            </li>
+
         </ul>
     </div>
     

@@ -12,6 +12,8 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ToolController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 
 // Routes publiques
 Route::view('/', 'public.home')->name('home');
@@ -52,11 +54,25 @@ Route::get('/outils/categorie/outils-pratiques', [ToolController::class, 'practi
 Route::get('/outils/categorie/outils-developpement', [ToolController::class, 'developmentTools'])->name('tools.category.development');
 
 
+
+
 // Routes dynamiques pour les articles
 Route::get('/articles', [PublicController::class, 'index'])->name('public.index');
 Route::get('/articles/{post:slug}', [PublicController::class, 'show'])->name('public.show');
 
 require __DIR__.'/auth.php';
+
+
+// ROUTES DE PAIEMENTS UTILISATEURS (HORS GROUPE ADMIN)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
+    Route::post('/payments/create-intent', [PaymentController::class, 'createPaymentIntent'])->name('payments.create-intent');
+    Route::get('/payments/confirm', [PaymentController::class, 'confirmPayment'])->name('payments.confirm');
+    Route::get('/payments/history', [PaymentController::class, 'history'])->name('payments.history');
+});
+
+
+
 
 // Dashboard avec redirection intelligente
 Route::middleware(['auth'])->get('/dashboard', function () {
@@ -118,4 +134,8 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::post('media-categories', [MediaController::class, 'storeCategory'])->name('media.categories.store');
     Route::delete('media-categories/{category}', [MediaController::class, 'destroyCategory'])->name('media.categories.destroy');
 
+    // ROUTES ADMIN PAIEMENTS
+    Route::get('payments', [AdminPaymentController::class, 'index'])->name('payments.index');
+    Route::post('payments/{payment}/approve', [AdminPaymentController::class, 'approve'])->name('payments.approve');
+    Route::post('payments/{payment}/reject', [AdminPaymentController::class, 'reject'])->name('payments.reject');
 });
