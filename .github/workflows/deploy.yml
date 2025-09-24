@@ -16,12 +16,12 @@ jobs:
     - name: Configuration de la connexion SSH
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcm2KZnL/JKXwmyZdezT+oRPDH7h6gIhlcIfLOsC1d88+CocRiI2e7f2L8zKbC3OuAtreqbTdx0QcNNOvIC3qZ1FR6lcrDAqpuESO8GzKYxV9FRCjxpUxrXu8afEa8naBmRIQIsk4okj3Xns4SwwjRI7ctd9aAOojEpAeJShWx75TJMyfGHLsQbZksPDDt+Ox722ykHOOHD4M85nypRuADm/7IU1BnFpR8s1dguq3wRDveZr8C69HMpKIx/c7cJnoCEnTIMRgKztV7ny84Xkb7Lls+DABP56ibyAamNCoIAQCzuTCR6ebCOTn0LoGLimzQuRWg7tUSAnxNBn5TKepz }}
-        known_hosts: ${{ secrets.SSH_HOST }} # S'assure que la connexion est sécurisée
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        known_hosts: ${{ secrets.SSH_HOST }}
 
     - name: Déploiement via SSH sur le serveur o2switch
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.elha2196 }}@${{ secrets.elha2196.o2switch.net }} '
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} '
           echo "Démarrage du déploiement..."
           # Navigue vers le chemin du dépôt Git sur le serveur o2switch
           cd /home/elha2196/repositories/bidaya2025
@@ -50,7 +50,5 @@ jobs:
 
     - name: Validation du déploiement
       run: |
-        # Facultatif : Vous pouvez ajouter une commande pour valider que le site est bien en ligne
-        # Exemple : curl -s -o /dev/null -w "%{http_code}" https://votre-domaine.fr
         echo "Validation du déploiement en cours..."
         echo "Validation du déploiement réussie."
