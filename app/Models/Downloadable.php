@@ -44,7 +44,8 @@ class Downloadable extends Model
     }
 
     /**
-     * VÃ©rifier si l'utilisateur peut tÃ©lÃ©charger ce fichier
+     * Vérifier si l'utilisateur peut télécharger ce fichier
+     * Selon vos exigences : seuls user, editor, admin peuvent télécharger
      */
     public function canBeDownloadedBy($user = null): bool
     {
@@ -52,39 +53,27 @@ class Downloadable extends Model
             return false;
         }
 
-        switch ($this->user_permission) {
-            case 'public':
-                return true;
-            
-            case 'visitor':
-                return !$user; // Accessible uniquement aux non-connectÃ©s
-            
-            case 'user':
-                // VÃ©rifier si l'utilisateur existe et a le bon rôle
-                if (!$user) {
-                    return false;
-                }
-                
-                // VÃ©rifier que l'utilisateur a un rôle
-                if (!$user->role) {
-                    return false;
-                }
-                
-                // Les admins et Ã©diteurs peuvent tout tÃ©lÃ©charger
-                if ($user->hasRole('admin') || $user->hasRole('editor')) {
-                    return true;
-                }
-                
-                // Les users peuvent tÃ©lÃ©charger (pas les visitors)
-                return $user->hasRole('user');
-            
-            default:
-                return false;
+        // Si pas connecté = NON
+        if (!$user) {
+            return false;
         }
+
+        // Si pas de rôle = NON
+        if (!$user->role) {
+            return false;
+        }
+
+        // Si visitor = NON
+        if ($user->hasRole('visitor')) {
+            return false;
+        }
+
+        // Seuls user, editor, admin peuvent télécharger
+        return $user->hasRole('user') || $user->hasRole('editor') || $user->hasRole('admin');
     }
 
     /**
-     * Message d'accÃ¨s selon les permissions
+     * Message d'accès unifié pour tous les cas de restriction
      */
     public function getAccessMessage($user = null): string
     {
@@ -92,25 +81,8 @@ class Downloadable extends Model
             return '';
         }
 
-        switch ($this->user_permission) {
-            case 'visitor':
-                return $user ? 'Ce tÃ©lÃ©chargement est rÃ©servÃ© aux visiteurs non connectÃ©s.' : '';
-            
-            case 'user':
-                if (!$user) {
-                    return 'Connectez-vous pour tÃ©lÃ©charger ce fichier.';
-                }
-                if (!$user->role) {
-                    return 'Votre compte n\'a pas de rôle assignÃ©.';
-                }
-                if ($user->hasRole('visitor')) {
-                    return 'Votre compte doit être validÃ© pour accÃ©der Ã ce tÃ©lÃ©chargement.';
-                }
-                return 'AccÃ¨s non autorisÃ©.';
-            
-            default:
-                return 'TÃ©lÃ©chargement non disponible.';
-        }
+        // Message unifié pour tous les cas de restriction
+        return 'Veuillez vous inscrire ou vous identifier pour télécharger ce document.';
     }
 
     /**
@@ -127,31 +99,14 @@ class Downloadable extends Model
     }
 
     /**
-     * SCOPE CORRIGÃ© : Scope pour les posts visibles selon le niveau d'utilisateur
+     * SCOPE MODIFIÉ : Afficher TOUS les téléchargements
+     * La restriction se fait au niveau du bouton de téléchargement
      */
     public function scopeForPermission($query, $user = null)
     {
-        return $query->where(function($q) use ($user) {
-            // Toujours inclure les tÃ©lÃ©chargements publics
-            $q->where('user_permission', 'public');
-            
-            // Si pas connectÃ©, ajouter les tÃ©lÃ©chargements "visitor"
-            if (!$user) {
-                $q->orWhere('user_permission', 'visitor');
-            } 
-            // Si connectÃ© avec un rôle
-            elseif ($user->role) {
-                // Si admin ou Ã©diteur, voir tout
-                if ($user->hasRole('admin') || $user->hasRole('editor')) {
-                    $q->orWhereIn('user_permission', ['visitor', 'user']);
-                }
-                // Si user validÃ©, voir les tÃ©lÃ©chargements user
-                elseif ($user->hasRole('user')) {
-                    $q->orWhere('user_permission', 'user');
-                }
-                // Les visitors ne voient pas les tÃ©lÃ©chargements "user"
-            }
-        });
+        // TOUS les téléchargements sont visibles
+        // La restriction se fait dans les vues avec canBeDownloadedBy()
+        return $query;
     }
 
     /**
@@ -178,7 +133,7 @@ class Downloadable extends Model
         $formats = [
             'pdf' => 'PDF',
             'epub' => 'EPUB',
-            'mp4' => 'VidÃ©o MP4',
+            'mp4' => 'Vidéo MP4',
             'zip' => 'Archive ZIP',
             'doc' => 'Word DOC',
             'docx' => 'Word DOCX'
@@ -188,13 +143,13 @@ class Downloadable extends Model
     }
 
     /**
-     * IncrÃ©menter le compteur de tÃ©lÃ©chargements
+     * Incrémenter le compteur de téléchargements
      */
     public function incrementDownloadCount($user = null, $request = null)
     {
         $this->increment('download_count');
         
-        // Log du tÃ©lÃ©chargement
+        // Log du téléchargement
         DownloadLog::create([
             'downloadable_id' => $this->id,
             'user_id' => $user?->id,

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', $downloadable->title . ' - ' . $category->name)
-@section('meta_description', $downloadable->short_description ?? 'TÃ©lÃ©chargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
+@section('meta_description', $downloadable->short_description ?? 'Téléchargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
 
 @push('styles')
 <style>
@@ -28,10 +28,11 @@
     box-shadow: 0 5px 20px rgba(0,0,0,0.15);
 }
 
-.permission-alert {
-    border-left: 4px solid #ffc107;
-    background: #fff8e1;
-    border-radius: 0 0.5rem 0.5rem 0;
+.access-alert {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 1rem;
+    padding: 2rem;
 }
 
 .download-stats {
@@ -63,14 +64,14 @@
 @endpush
 
 @section('content')
-<!-- En-tête du tÃ©lÃ©chargement -->
+<!-- En-tête du téléchargement -->
 <section class="hero-download">
     <div class="container">
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb text-white">
                 <li class="breadcrumb-item">
                     <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
-                        <i class="fas fa-home me-1"></i>Espace TÃ©lÃ©chargement
+                        <i class="fas fa-home me-1"></i>Espace Téléchargement
                     </a>
                 </li>
                 <li class="breadcrumb-item">
@@ -107,18 +108,24 @@
                     @if($downloadable->canBeDownloadedBy(auth()->user()))
                         <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
                            class="btn btn-success btn-lg">
-                            <i class="fas fa-download me-2"></i>TÃ©lÃ©charger maintenant
+                            <i class="fas fa-download me-2"></i>Télécharger maintenant
                         </a>
                     @else
-                        @if($downloadable->user_permission === 'user' && !auth()->check())
-                            <a href="{{ route('login') }}" class="btn btn-warning btn-lg">
-                                <i class="fas fa-sign-in-alt me-2"></i>Se connecter pour tÃ©lÃ©charger
-                            </a>
-                        @else
-                            <button class="btn btn-secondary btn-lg" disabled>
-                                <i class="fas fa-lock me-2"></i>AccÃ¨s restreint
-                            </button>
-                        @endif
+                        <div class="access-alert">
+                            <div class="text-center">
+                                <i class="fas fa-lock fa-2x text-warning mb-3"></i>
+                                <h6 class="fw-bold mb-2">Accès restreint</h6>
+                                <p class="mb-3">{{ $downloadable->getAccessMessage(auth()->user()) }}</p>
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <a href="{{ route('login') }}" class="btn btn-warning">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                                    </a>
+                                    <a href="{{ route('register') }}" class="btn btn-primary">
+                                        <i class="fas fa-user-plus me-2"></i>S'inscrire
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                     
                     <button class="btn btn-outline-light btn-lg" onclick="shareContent()">
@@ -131,7 +138,7 @@
                     <div class="row g-3">
                         <div class="col-6">
                             <h4 class="fw-bold mb-1">{{ number_format($downloadable->download_count) }}</h4>
-                            <small class="opacity-75">TÃ©lÃ©chargements</small>
+                            <small class="opacity-75">Téléchargements</small>
                         </div>
                         <div class="col-6">
                             <h4 class="fw-bold mb-1">{{ $downloadable->file_size ?? '?' }}</h4>
@@ -154,30 +161,7 @@
         <div class="row g-5">
             <!-- Contenu principal -->
             <div class="col-lg-8">
-                <!-- Message d'accÃ¨s si restriction -->
-                @if(!$downloadable->canBeDownloadedBy(auth()->user()))
-                    <div class="alert permission-alert mb-4">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-info-circle fa-2x text-warning me-3"></i>
-                            <div>
-                                <h6 class="fw-bold mb-1">AccÃ¨s restreint</h6>
-                                <p class="mb-0">{{ $downloadable->getAccessMessage(auth()->user()) }}</p>
-                                @if($downloadable->user_permission === 'user' && !auth()->check())
-                                    <div class="mt-2">
-                                        <a href="{{ route('login') }}" class="btn btn-warning btn-sm me-2">
-                                            <i class="fas fa-sign-in-alt me-1"></i>Se connecter
-                                        </a>
-                                        <a href="{{ route('register') }}" class="btn btn-outline-warning btn-sm">
-                                            <i class="fas fa-user-plus me-1"></i>CrÃ©er un compte
-                                        </a>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                <!-- Description complÃ¨te -->
+                <!-- Description complète -->
                 @if($downloadable->long_description)
                     <div class="card download-info-card mb-5">
                         <div class="card-body p-5">
@@ -220,27 +204,19 @@
                             @endif
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <i class="fas fa-shield-alt fa-2x text-warning me-3"></i>
+                                    <i class="fas fa-calendar fa-2x text-info me-3"></i>
                                     <div>
-                                        <h6 class="fw-bold mb-1">AccÃ¨s</h6>
-                                        <span class="text-muted">
-                                            @if($downloadable->user_permission === 'public')
-                                                <i class="fas fa-globe me-1"></i>Public
-                                            @elseif($downloadable->user_permission === 'visitor')
-                                                <i class="fas fa-eye me-1"></i>Visiteur
-                                            @else
-                                                <i class="fas fa-user me-1"></i>Membre
-                                            @endif
-                                        </span>
+                                        <h6 class="fw-bold mb-1">Ajouté le</h6>
+                                        <span class="text-muted">{{ $downloadable->created_at->format('d/m/Y') }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <i class="fas fa-calendar fa-2x text-info me-3"></i>
+                                    <i class="fas fa-download fa-2x text-primary me-3"></i>
                                     <div>
-                                        <h6 class="fw-bold mb-1">AjoutÃ© le</h6>
-                                        <span class="text-muted">{{ $downloadable->created_at->format('d/m/Y') }}</span>
+                                        <h6 class="fw-bold mb-1">Téléchargements</h6>
+                                        <span class="text-muted">{{ number_format($downloadable->download_count) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -269,18 +245,25 @@
                             @if($downloadable->canBeDownloadedBy(auth()->user()))
                                 <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
                                    class="btn btn-success">
-                                    <i class="fas fa-download me-2"></i>TÃ©lÃ©charger
+                                    <i class="fas fa-download me-2"></i>Télécharger
                                 </a>
                             @else
-                                @if($downloadable->user_permission === 'user' && !auth()->check())
-                                    <a href="{{ route('login') }}" class="btn btn-warning">
-                                        <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                                    </a>
-                                @else
-                                    <button class="btn btn-secondary" disabled>
-                                        <i class="fas fa-lock me-2"></i>AccÃ¨s restreint
-                                    </button>
-                                @endif
+                                <div class="access-alert">
+                                    <div class="mb-2">
+                                        <i class="fas fa-lock text-warning me-1"></i>
+                                        <small class="text-muted d-block">
+                                            {{ $downloadable->getAccessMessage(auth()->user()) }}
+                                        </small>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <a href="{{ route('login') }}" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                                        </a>
+                                        <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-user-plus me-2"></i>S'inscrire
+                                        </a>
+                                    </div>
+                                </div>
                             @endif
                             
                             <button class="btn btn-outline-primary" onclick="shareContent()">
@@ -289,25 +272,8 @@
                             
                             <a href="{{ route('ebook.category', $category->slug) }}" 
                                class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Retour Ã {{ $category->name }}
+                                <i class="fas fa-arrow-left me-2"></i>Retour à {{ $category->name }}
                             </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Statistiques -->
-                <div class="card download-info-card mb-4">
-                    <div class="card-body download-stats p-4">
-                        <h6 class="fw-bold mb-3">
-                            <i class="fas fa-chart-line me-2"></i>Statistiques
-                        </h6>
-                        <div class="row g-3 text-center">
-                            <div class="col-12">
-                                <div class="p-3">
-                                    <h4 class="fw-bold text-primary mb-1">{{ number_format($downloadable->download_count) }}</h4>
-                                    <small class="text-muted">TÃ©lÃ©chargements total</small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -329,7 +295,7 @@
                                 <div>
                                     <h6 class="fw-bold mb-1">{{ $downloadable->creator->name }}</h6>
                                     <small class="text-muted">
-                                        AjoutÃ© le {{ $downloadable->created_at->format('d/m/Y') }}
+                                        Ajouté le {{ $downloadable->created_at->format('d/m/Y') }}
                                     </small>
                                 </div>
                             </div>
@@ -348,7 +314,7 @@
         <div class="row mb-4">
             <div class="col-12 text-center">
                 <h3 class="fw-bold mb-3">Autres ressources de {{ $category->name }}</h3>
-                <p class="text-muted">DÃ©couvrez d'autres contenus qui pourraient vous intÃ©resser</p>
+                <p class="text-muted">Découvrez d'autres contenus qui pourraient vous intéresser</p>
             </div>
         </div>
         
@@ -377,7 +343,7 @@
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title fw-bold mb-2">{{ Str::limit($related->title, 60) }}</h6>
                             <small class="text-muted mb-3">
-                                <i class="fas fa-download me-1"></i>{{ number_format($related->download_count) }} tÃ©lÃ©chargements
+                                <i class="fas fa-download me-1"></i>{{ number_format($related->download_count) }} téléchargements
                             </small>
                             <div class="mt-auto">
                                 <a href="{{ route('ebook.show', [$category->slug, $related->slug]) }}" 
@@ -401,20 +367,18 @@ function shareContent() {
     if (navigator.share) {
         navigator.share({
             title: '{{ $downloadable->title }}',
-            text: '{{ $downloadable->short_description ?? "DÃ©couvrez cette ressource" }}',
+            text: '{{ $downloadable->short_description ?? "Découvrez cette ressource" }}',
             url: window.location.href
         });
     } else {
-        // Fallback: copier l'URL
         navigator.clipboard.writeText(window.location.href).then(function() {
-            // Afficher une notification
             const toast = document.createElement('div');
             toast.className = 'toast align-items-center text-white bg-success border-0';
             toast.setAttribute('role', 'alert');
             toast.innerHTML = `
                 <div class="d-flex">
                     <div class="toast-body">
-                        <i class="fas fa-check me-2"></i>Lien copiÃ© dans le presse-papiers !
+                        <i class="fas fa-check me-2"></i>Lien copié dans le presse-papiers !
                     </div>
                     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
                 </div>
@@ -432,7 +396,6 @@ function shareContent() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation au scroll
     const cards = document.querySelectorAll('.download-info-card, .related-card');
     
     const observerOptions = {

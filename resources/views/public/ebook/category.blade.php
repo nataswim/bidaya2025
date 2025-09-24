@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', $category->name . ' - Espace TÃ©lÃ©chargement')
-@section('meta_description', $category->short_description ?? 'DÃ©couvrez tous les tÃ©lÃ©chargements de la catÃ©gorie ' . $category->name)
+@section('title', $category->name . ' - Espace Téléchargement')
+@section('meta_description', $category->short_description ?? 'Découvrez tous les téléchargements de la catégorie ' . $category->name)
 
 @push('styles')
 <style>
@@ -47,14 +47,18 @@
     font-weight: bold;
 }
 
-.permission-icon {
-    font-size: 0.8rem;
+.access-message {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
 }
 </style>
 @endpush
 
 @section('content')
-<!-- En-tête de catÃ©gorie -->
+<!-- En-tête de catégorie -->
 <section class="category-header">
     <div class="container">
         <div class="row align-items-center">
@@ -63,7 +67,7 @@
                     <ol class="breadcrumb text-white">
                         <li class="breadcrumb-item">
                             <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
-                                <i class="fas fa-home me-1"></i>Espace TÃ©lÃ©chargement
+                                <i class="fas fa-home me-1"></i>Espace Téléchargement
                             </a>
                         </li>
                         <li class="breadcrumb-item active text-white" aria-current="page">
@@ -123,7 +127,7 @@
                                        name="search" 
                                        value="{{ request('search') }}"
                                        class="form-control form-control-sm"
-                                       placeholder="Mots-clÃ©s...">
+                                       placeholder="Mots-clés...">
                             </div>
 
                             <!-- Formats -->
@@ -149,10 +153,10 @@
                                         Titre A-Z
                                     </option>
                                     <option value="downloads" {{ request('sort') === 'downloads' ? 'selected' : '' }}>
-                                        Plus tÃ©lÃ©chargÃ©s
+                                        Plus téléchargés
                                     </option>
                                     <option value="recent" {{ request('sort') === 'recent' ? 'selected' : '' }}>
-                                        Plus rÃ©cents
+                                        Plus récents
                                     </option>
                                 </select>
                             </div>
@@ -164,7 +168,7 @@
                                 @if(request()->hasAny(['search', 'format', 'sort']))
                                     <a href="{{ route('ebook.category', $category->slug) }}" 
                                        class="btn btn-outline-secondary btn-sm">
-                                        <i class="fas fa-times me-2"></i>RÃ©initialiser
+                                        <i class="fas fa-times me-2"></i>Réinitialiser
                                     </a>
                                 @endif
                             </div>
@@ -173,7 +177,7 @@
                 </div>
             </div>
 
-            <!-- Liste des tÃ©lÃ©chargements -->
+            <!-- Liste des téléchargements -->
             <div class="col-lg-9">
                 @if($downloadables->count() > 0)
                     <!-- En-tête avec compteur -->
@@ -181,20 +185,10 @@
                         <h4 class="fw-bold mb-0">
                             {{ $downloadables->total() }} ressource(s) disponible(s)
                         </h4>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <input type="radio" class="btn-check" name="view" id="grid-view" checked>
-                            <label class="btn btn-outline-secondary" for="grid-view">
-                                <i class="fas fa-th"></i>
-                            </label>
-                            <input type="radio" class="btn-check" name="view" id="list-view">
-                            <label class="btn btn-outline-secondary" for="list-view">
-                                <i class="fas fa-list"></i>
-                            </label>
-                        </div>
                     </div>
 
-                    <!-- Vue grille (par dÃ©faut) -->
-                    <div id="downloads-grid" class="row g-4">
+                    <!-- Vue grille -->
+                    <div class="row g-4">
                         @foreach($downloadables as $download)
                             <div class="col-lg-4 col-md-6">
                                 <div class="card download-card h-100">
@@ -218,23 +212,6 @@
                                         <div class="stats-badge">
                                             <i class="fas fa-download me-1"></i>{{ number_format($download->download_count) }}
                                         </div>
-
-                                        <!-- Indicateur de permission -->
-                                        <div class="position-absolute" style="bottom: 1rem; left: 1rem;">
-                                            @if($download->user_permission === 'public')
-                                                <span class="badge bg-success permission-icon" title="AccÃ¨s libre">
-                                                    <i class="fas fa-globe"></i>
-                                                </span>
-                                            @elseif($download->user_permission === 'visitor')
-                                                <span class="badge bg-info permission-icon" title="Visiteurs uniquement">
-                                                    <i class="fas fa-eye"></i>
-                                                </span>
-                                            @else
-                                                <span class="badge bg-warning permission-icon" title="Membres uniquement">
-                                                    <i class="fas fa-user"></i>
-                                                </span>
-                                            @endif
-                                        </div>
                                     </div>
                                     
                                     <div class="card-body d-flex flex-column">
@@ -255,105 +232,35 @@
                                         @endif
                                         
                                         <div class="mt-auto">
-                                            @if($download->canBeDownloadedBy(auth()->user()))
-                                                <div class="d-grid gap-2">
-                                                    <a href="{{ route('ebook.show', [$category->slug, $download->slug]) }}" 
-                                                       class="btn btn-outline-primary btn-sm">
-                                                        <i class="fas fa-eye me-2"></i>Voir les dÃ©tails
-                                                    </a>
+                                            <div class="d-grid gap-2">
+                                                <a href="{{ route('ebook.show', [$category->slug, $download->slug]) }}" 
+                                                   class="btn btn-outline-primary btn-sm">
+                                                    <i class="fas fa-eye me-2"></i>Voir les détails
+                                                </a>
+                                                
+                                                @if($download->canBeDownloadedBy(auth()->user()))
                                                     <a href="{{ route('ebook.download', [$category->slug, $download->slug]) }}" 
                                                        class="btn btn-success btn-sm">
-                                                        <i class="fas fa-download me-2"></i>TÃ©lÃ©charger
+                                                        <i class="fas fa-download me-2"></i>Télécharger
                                                     </a>
-                                                </div>
-                                            @else
-                                                <div class="d-grid gap-2">
-                                                    <a href="{{ route('ebook.show', [$category->slug, $download->slug]) }}" 
-                                                       class="btn btn-outline-primary btn-sm">
-                                                        <i class="fas fa-eye me-2"></i>Voir les dÃ©tails
-                                                    </a>
-                                                    <div class="text-center mt-2">
-                                                        <small class="text-muted">
-                                                            <i class="fas fa-lock me-1"></i>
-                                                            @if($download->user_permission === 'user' && !auth()->check())
-                                                                <a href="{{ route('login') }}" class="text-decoration-none">
-                                                                    Connexion requise
-                                                                </a>
-                                                            @else
-                                                                AccÃ¨s restreint
-                                                            @endif
-                                                        </small>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    <!-- Vue liste (cachÃ©e par dÃ©faut) -->
-                    <div id="downloads-list" class="d-none">
-                        @foreach($downloadables as $download)
-                            <div class="card download-card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-3">
-                                        <div class="position-relative">
-                                            @if($download->cover_image)
-                                                <img src="{{ $download->cover_image }}" 
-                                                     class="img-fluid rounded-start h-100" 
-                                                     style="object-fit: cover;"
-                                                     alt="{{ $download->title }}">
-                                            @else
-                                                <div class="bg-light d-flex align-items-center justify-content-center h-100 rounded-start">
-                                                    <i class="fas fa-file-{{ $download->format === 'pdf' ? 'pdf' : ($download->format === 'mp4' ? 'video' : 'alt') }} fa-2x text-muted"></i>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div class="flex-grow-1">
-                                                    <h5 class="card-title fw-bold">{{ $download->title }}</h5>
-                                                    @if($download->short_description)
-                                                        <p class="card-text text-muted">{{ Str::limit($download->short_description, 150) }}</p>
-                                                    @endif
-                                                    <div class="d-flex gap-2 flex-wrap">
-                                                        <span class="badge bg-secondary">{{ strtoupper($download->format) }}</span>
-                                                        @if($download->file_size)
-                                                            <span class="badge bg-light text-dark">{{ $download->file_size }}</span>
-                                                        @endif
-                                                        <span class="badge bg-primary-subtle text-primary">
-                                                            <i class="fas fa-download me-1"></i>{{ number_format($download->download_count) }}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-end ms-3">
-                                                    @if($download->canBeDownloadedBy(auth()->user()))
-                                                        <div class="d-grid gap-2" style="min-width: 150px;">
-                                                            <a href="{{ route('ebook.show', [$category->slug, $download->slug]) }}" 
-                                                               class="btn btn-outline-primary btn-sm">
-                                                                <i class="fas fa-eye me-2"></i>DÃ©tails
-                                                            </a>
-                                                            <a href="{{ route('ebook.download', [$category->slug, $download->slug]) }}" 
-                                                               class="btn btn-success btn-sm">
-                                                                <i class="fas fa-download me-2"></i>TÃ©lÃ©charger
-                                                            </a>
-                                                        </div>
-                                                    @else
-                                                        <div class="d-grid" style="min-width: 150px;">
-                                                            <a href="{{ route('ebook.show', [$category->slug, $download->slug]) }}" 
-                                                               class="btn btn-outline-primary btn-sm">
-                                                                <i class="fas fa-eye me-2"></i>DÃ©tails
-                                                            </a>
-                                                            <small class="text-muted text-center mt-2">
-                                                                <i class="fas fa-lock me-1"></i>AccÃ¨s restreint
+                                                @else
+                                                    <div class="access-message">
+                                                        <div class="mb-2">
+                                                            <i class="fas fa-lock text-warning me-1"></i>
+                                                            <small class="text-muted">
+                                                                {{ $download->getAccessMessage(auth()->user()) }}
                                                             </small>
                                                         </div>
-                                                    @endif
-                                                </div>
+                                                        <div>
+                                                            <a href="{{ route('login') }}" class="btn btn-sm btn-outline-primary me-1">
+                                                                <i class="fas fa-sign-in-alt me-1"></i>Connexion
+                                                            </a>
+                                                            <a href="{{ route('register') }}" class="btn btn-sm btn-primary">
+                                                                <i class="fas fa-user-plus me-1"></i>Inscription
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -371,16 +278,16 @@
                 @else
                     <div class="text-center py-5">
                         <i class="fas fa-search fa-3x text-muted mb-3 opacity-50"></i>
-                        <h4>Aucune ressource trouvÃ©e</h4>
+                        <h4>Aucune ressource trouvée</h4>
                         @if(request()->hasAny(['search', 'format']))
-                            <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
+                            <p class="text-muted mb-3">Aucun résultat ne correspond à vos critères de recherche.</p>
                             <a href="{{ route('ebook.category', $category->slug) }}" class="btn btn-outline-primary">
                                 <i class="fas fa-arrow-left me-2"></i>Voir toutes les ressources
                             </a>
                         @else
-                            <p class="text-muted">Cette catÃ©gorie ne contient pas encore de ressources.</p>
+                            <p class="text-muted">Cette catégorie ne contient pas encore de ressources.</p>
                             <a href="{{ route('ebook.index') }}" class="btn btn-primary">
-                                <i class="fas fa-arrow-left me-2"></i>Retour Ã l'accueil
+                                <i class="fas fa-arrow-left me-2"></i>Retour à l'accueil
                             </a>
                         @endif
                     </div>
@@ -390,7 +297,7 @@
     </div>
 </section>
 
-<!-- Description complÃ¨te de la catÃ©gorie -->
+<!-- Description complète de la catégorie -->
 @if($category->description)
 <section class="py-5 bg-light">
     <div class="container">
@@ -398,7 +305,7 @@
             <div class="col-lg-8 mx-auto">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h5 class="fw-bold mb-3">Ã propos de cette catÃ©gorie</h5>
+                        <h5 class="fw-bold mb-3">À propos de cette catégorie</h5>
                         <div class="content-display">
                             {!! nl2br(e($category->description)) !!}
                         </div>
@@ -414,37 +321,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Gestion des vues grille/liste
-    const gridView = document.getElementById('grid-view');
-    const listView = document.getElementById('list-view');
-    const downloadsGrid = document.getElementById('downloads-grid');
-    const downloadsList = document.getElementById('downloads-list');
-    
-    if (gridView && listView) {
-        gridView.addEventListener('change', function() {
-            if (this.checked) {
-                downloadsGrid.classList.remove('d-none');
-                downloadsList.classList.add('d-none');
-                localStorage.setItem('ebook-view-preference', 'grid');
-            }
-        });
-        
-        listView.addEventListener('change', function() {
-            if (this.checked) {
-                downloadsGrid.classList.add('d-none');
-                downloadsList.classList.remove('d-none');
-                localStorage.setItem('ebook-view-preference', 'list');
-            }
-        });
-        
-        // Restaurer la prÃ©fÃ©rence de vue
-        const savedView = localStorage.getItem('ebook-view-preference');
-        if (savedView === 'list') {
-            listView.checked = true;
-            listView.dispatchEvent(new Event('change'));
-        }
-    }
-
     // Animation des cartes au scroll
     const cards = document.querySelectorAll('.download-card');
     
