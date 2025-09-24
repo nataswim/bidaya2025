@@ -3,7 +3,7 @@ name: Deploy Laravel to o2switch
 on:
   push:
     branches:
-      - main # Déclenche le workflow à chaque push sur la branche principale
+      - main # Déclenche le workflow a chaque push sur la branche principale
 
 jobs:
   deploy:
