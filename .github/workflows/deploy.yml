@@ -32,10 +32,21 @@ jobs:
     - name: Create .env file
       run: |
         cp .env.example .env
-        sed -i "s/APP_KEY=/APP_KEY=${{ secrets.APP_KEY }}/" .env
-        sed -i "s/DB_DATABASE=elha2196_bidaya2025/DB_DATABASE=${{ secrets.DB_DATABASE }}/" .env
-        sed -i "s/DB_USERNAME=elha2196_bidaya/DB_USERNAME=${{ secrets.DB_USERNAME }}/" .env
-        sed -i "s/DB_PASSWORD=/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/" .env
+        echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env.tmp
+        echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env.tmp
+        echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.tmp
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.tmp
+        
+        # Remplacer les valeurs dans le fichier .env
+        while IFS='=' read -r key value; do
+          if grep -q "^${key}=" .env; then
+            # Échapper les caractères spéciaux pour sed
+            escaped_value=$(printf '%s\n' "$value" | sed 's/[[\.*^$(){}?+|/]/\\&/g')
+            sed -i "s/^${key}=.*/${key}=${escaped_value}/" .env
+          fi
+        done < .env.tmp
+        
+        rm .env.tmp
 
     - name: Generate optimized files
       run: |
@@ -53,11 +64,6 @@ jobs:
         script: |
           cd public_html/nataswim.fr
           
-          # Backup actuel si existe
-          if [ -d "releases" ]; then
-            cp -r current backup_$(date +%Y%m%d_%H%M%S) 2>/dev/null || true
-          fi
-          
           # Créer structure de déploiement
           mkdir -p releases/$(date +%Y%m%d_%H%M%S)
           cd releases/$(date +%Y%m%d_%H%M%S)
@@ -68,9 +74,14 @@ jobs:
           # Installation des dépendances
           composer install --no-dev --optimize-autoloader --no-interaction
           
-          # Configuration Laravel
+          # Configuration Laravel avec les bonnes valeurs
           cp .env.example .env
-          php artisan key:generate --force
+          
+          # Remplacer les valeurs sensibles dans .env
+          sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
+          sed -i "s|DB_DATABASE=elha2196_bidaya2025|DB_DATABASE=${{ secrets.DB_DATABASE }}|" .env
+          sed -i "s|DB_USERNAME=elha2196_bidaya|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env
+          sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
           
           # Permissions Laravel
           chmod -R 775 storage bootstrap/cache
@@ -89,9 +100,9 @@ jobs:
           ln -s releases/$(date +%Y%m%d_%H%M%S) current
           
           # Configuration du document root vers current/public
-          if [ ! -L public ]; then
-            rm -rf public 2>/dev/null || true
-            ln -s current/public public
+          if [ ! -L index.php ]; then
+            rm -f index.php 2>/dev/null || true
+            ln -s current/public/index.php index.php
           fi
 
     - name: Clean old releases
