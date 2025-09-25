@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
 
             // AJOUTER cette ligne :
-            SpatiePermissionSeeder::class,
+            //SpatiePermissionSeeder::class,
 
             CategoriesTableSeeder::class,
             TagsTableSeeder::class,
