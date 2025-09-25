@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'DÃ©tail de la permission')
+@section('title', 'Detail de la permission')
 @section('page-title', $permission->name)
-@section('page-description', 'DÃ©tails de la permission systÃ¨me')
+@section('page-description', 'Details de la permission systeme')
 
 @section('content')
 <div class="container-fluid">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
 
-                        <!-- Utilisateurs affectÃ©s indirectement -->
+                        <!-- Utilisateurs affectes indirectement -->
                         @php
                             $affectedUsers = collect();
                             foreach($permission->roles as $role) {
@@ -121,7 +121,7 @@
                             <div class="border-top pt-4">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <h6 class="fw-semibold mb-0">
-                                        <i class="fas fa-users me-2"></i>Utilisateurs affectÃ©s
+                                        <i class="fas fa-users me-2"></i>Utilisateurs affectes
                                     </h6>
                                     <span class="badge bg-info-subtle text-info">
                                         {{ $affectedUsers->count() }} utilisateur(s)
@@ -164,7 +164,7 @@
                                 
                                 @if($affectedUsers->count() > 10)
                                     <div class="mt-3">
-                                        <small class="text-muted">{{ $affectedUsers->count() - 10 }} utilisateur(s) supplÃ©mentaire(s)...</small>
+                                        <small class="text-muted">{{ $affectedUsers->count() - 10 }} utilisateur(s) supplementaire(s)...</small>
                                     </div>
                                 @endif
                             </div>
@@ -173,8 +173,8 @@
                         <div class="border-top pt-4">
                             <div class="text-center py-4">
                                 <i class="fas fa-user-shield fa-2x text-muted mb-3"></i>
-                                <h6>Permission non utilisÃ©e</h6>
-                                <p class="text-muted mb-3">Cette permission n'est assignÃ©e Ã aucun rôle.</p>
+                                <h6>Permission non utilisee</h6>
+                                <p class="text-muted mb-3">Cette permission n'est assignee Ã aucun rôle.</p>
                                 <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-user-shield me-2"></i>Assigner Ã un rôle
                                 </a>
@@ -271,13 +271,13 @@
                 <div class="card-body p-3">
                     <div class="row g-3 small">
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de crÃ©ation</small>
+                            <small class="text-muted d-block">Date de creation</small>
                             <strong>{{ $permission->created_at?->format('d/m/Y H:i') ?? 'N/A' }}</strong>
                         </div>
                         
                         @if($permission->updated_at && $permission->updated_at != $permission->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">DerniÃ¨re modification</small>
+                                <small class="text-muted d-block">Derniere modification</small>
                                 <strong>{{ $permission->updated_at->format('d/m/Y H:i') }}</strong>
                             </div>
                         @endif
@@ -293,7 +293,7 @@
                             <i class="fas fa-edit me-2"></i>Modifier
                         </a>
                         <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-primary">
-                            <i class="fas fa-user-shield me-2"></i>GÃ©rer les rôles
+                            <i class="fas fa-user-shield me-2"></i>Gerer les rôles
                         </a>
                         <a href="{{ route('admin.permissions.index') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
@@ -304,7 +304,7 @@
                         <hr class="my-3">
                         
                         <form method="POST" action="{{ route('admin.permissions.destroy', $permission) }}" 
-                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette permission ? Cette action est irrÃ©versible.')">
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette permission ? Cette action est irreversible.')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger w-100">
@@ -315,7 +315,7 @@
                         <hr class="my-3">
                         <small class="text-muted d-block text-center">
                             <i class="fas fa-info-circle me-1"></i>
-                            Permission utilisÃ©e par {{ $permission->roles()->count() }} rôle(s)
+                            Permission utilisee par {{ $permission->roles()->count() }} rôle(s)
                         </small>
                     @endif
                 </div>

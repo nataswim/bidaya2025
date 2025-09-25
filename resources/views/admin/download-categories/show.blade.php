@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'DÃ©tail de la catÃ©gorie')
+@section('title', 'Detail de la categorie')
 @section('page-title', $downloadCategory->name)
-@section('page-description', 'DÃ©tails de la catÃ©gorie de tÃ©lÃ©chargement')
+@section('page-description', 'Details de la categorie de telechargement')
 
 @section('content')
 <div class="container-fluid">
@@ -18,7 +18,7 @@
                             @endif
                             <div>
                                 <h5 class="mb-1">{{ $downloadCategory->name }}</h5>
-                                <small class="opacity-75">{{ $downloadCategory->downloadables->count() }} tÃ©lÃ©chargement(s)</small>
+                                <small class="opacity-75">{{ $downloadCategory->downloadables->count() }} telechargement(s)</small>
                             </div>
                         </div>
                         <span class="badge bg-light text-dark">
@@ -54,18 +54,18 @@
 
                     @if($downloadCategory->description)
                         <div class="mb-4">
-                            <h6 class="fw-semibold mb-3">Description complÃ¨te</h6>
+                            <h6 class="fw-semibold mb-3">Description complete</h6>
                             <div class="content-display">
                                 {!! nl2br(e($downloadCategory->description)) !!}
                             </div>
                         </div>
                     @endif
 
-                    <!-- Liste des tÃ©lÃ©chargements -->
+                    <!-- Liste des telechargements -->
                     @if($downloadCategory->downloadables->count() > 0)
                         <div class="border-top pt-4">
                             <h6 class="fw-semibold mb-3 text-primary">
-                                <i class="fas fa-download me-2"></i>TÃ©lÃ©chargements dans cette catÃ©gorie
+                                <i class="fas fa-download me-2"></i>Telechargements dans cette categorie
                             </h6>
                             <div class="table-responsive">
                                 <table class="table table-sm">
@@ -75,7 +75,7 @@
                                             <th>Format</th>
                                             <th>Permission</th>
                                             <th>Statut</th>
-                                            <th>TÃ©lÃ©chargements</th>
+                                            <th>Telechargements</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -149,7 +149,7 @@
                         <div class="col-12">
                             <div class="bg-info bg-opacity-10 rounded p-3">
                                 <h4 class="fw-bold text-info mb-1">{{ number_format($downloadCategory->downloadables->sum('download_count')) }}</h4>
-                                <small class="text-muted">TÃ©lÃ©chargements totaux</small>
+                                <small class="text-muted">Telechargements totaux</small>
                             </div>
                         </div>
                     </div>
@@ -167,19 +167,19 @@
                     <div class="row g-3 small">
                         @if($downloadCategory->creator)
                             <div class="col-12">
-                                <small class="text-muted d-block">CrÃ©Ã© par</small>
+                                <small class="text-muted d-block">Cree par</small>
                                 <strong>{{ $downloadCategory->creator->name }}</strong>
                             </div>
                         @endif
                         
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de crÃ©ation</small>
+                            <small class="text-muted d-block">Date de creation</small>
                             <strong>{{ $downloadCategory->created_at->format('d/m/Y H:i') }}</strong>
                         </div>
                         
                         @if($downloadCategory->updated_at && $downloadCategory->updated_at != $downloadCategory->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">DerniÃ¨re modification</small>
+                                <small class="text-muted d-block">Derniere modification</small>
                                 <strong>{{ $downloadCategory->updated_at->format('d/m/Y H:i') }}</strong>
                                 @if($downloadCategory->updater)
                                     <div class="text-muted">par {{ $downloadCategory->updater->name }}</div>
@@ -211,7 +211,7 @@
                     <hr class="my-3">
                     
                     <form method="POST" action="{{ route('admin.download-categories.destroy', $downloadCategory) }}" 
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catÃ©gorie ?')">
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette categorie ?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger w-100">

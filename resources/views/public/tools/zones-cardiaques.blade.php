@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Zones Cardiaques AvancÃ© - FC Max & Zones Entraînement Scientifiques')
-@section('meta_description', 'Calculateur zones cardiaques scientifique avec FC max personnalisÃ©e. MÃ©thodes Karvonen, Tanaka, zones d\'entraînement optimisÃ©es. Personnalisation sport, niveau, objectifs. Evidence-based 2024.')
+@section('title', 'Calculateur Zones Cardiaques Avance - FC Max & Zones Entraînement Scientifiques')
+@section('meta_description', 'Calculateur zones cardiaques scientifique avec FC max personnalisee. Methodes Karvonen, Tanaka, zones d\'entraînement optimisees. Personnalisation sport, niveau, objectifs. Evidence-based 2024.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,8 +16,8 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-monitor text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Optimisez votre entraînement</strong> avec les zones cardiaques scientifiques personnalisÃ©es 
-                    et les derniÃ¨res recherches en physiologie de l'exercice
+                    <strong>Optimisez votre entraînement</strong> avec les zones cardiaques scientifiques personnalisees 
+                    et les dernieres recherches en physiologie de l'exercice
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-calculator me-2"></i>
-                    Calculateur de Zones PersonnalisÃ©es
+                    Calculateur de Zones Personnalisees
                 </h3>
             </div>
             <div class="card-body">
@@ -43,10 +43,10 @@
                     <!-- Sera rempli par JavaScript -->
                 </div>
 
-                <!-- DonnÃ©es de base -->
+                <!-- Donnees de base -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
-                        <label for="age" class="form-label fw-bold">Âge (annÃ©es)</label>
+                        <label for="age" class="form-label fw-bold">Âge (annees)</label>
                         <input type="number" id="age" class="form-control form-control-lg border-primary" 
                                placeholder="30" min="10" max="100">
                     </div>
@@ -54,7 +54,7 @@
                         <label for="restingHr" class="form-label fw-bold">FC repos (bpm)</label>
                         <input type="number" id="restingHr" class="form-control form-control-lg border-danger" 
                                placeholder="65" min="30" max="120">
-                        <small class="text-muted">MesurÃ©e au rÃ©veil</small>
+                        <small class="text-muted">Mesuree au reveil</small>
                     </div>
                     <div class="col-md-4">
                         <label for="gender" class="form-label fw-bold">Sexe</label>
@@ -70,10 +70,10 @@
                     <div class="col-md-6">
                         <label for="formula" class="form-label fw-bold">Formule FC max</label>
                         <select id="formula" class="form-select border-primary">
-                            <option value="tanaka">Tanaka (208 - 0.7 × âge) - RecommandÃ©e</option>
+                            <option value="tanaka">Tanaka (208 - 0.7 × âge) - Recommandee</option>
                             <option value="asstrand">Åstrand (220 - âge) - Classique</option>
                             <option value="gulati">Gulati (206 - 0.88 × âge) - Femmes</option>
-                            <option value="nes">Nes (211 - 0.64 × âge) - AthlÃ¨tes</option>
+                            <option value="nes">Nes (211 - 0.64 × âge) - Athletes</option>
                             <option value="fairbarn">Fairbarn (201 - 0.63 × âge) - Seniors</option>
                             <option value="gellish">Gellish (207 - 0.7 × âge)</option>
                         </select>
@@ -82,7 +82,7 @@
                         <div class="form-check mt-4">
                             <input class="form-check-input" type="checkbox" id="useKnownMax">
                             <label class="form-check-label fw-bold" for="useKnownMax">
-                                J'ai une FC max mesurÃ©e
+                                J'ai une FC max mesuree
                             </label>
                         </div>
                         <input type="number" id="maxHrKnown" class="form-control mt-2 border-success d-none" 
@@ -90,23 +90,23 @@
                     </div>
                 </div>
 
-                <!-- Personnalisation avancÃ©e -->
-                <h5 class="fw-bold mb-3">Personnalisation AvancÃ©e</h5>
+                <!-- Personnalisation avancee -->
+                <h5 class="fw-bold mb-3">Personnalisation Avancee</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <label for="fitnessLevel" class="form-label">Niveau de forme</label>
                         <select id="fitnessLevel" class="form-select border-warning">
-                            <option value="beginner">DÃ©butant</option>
+                            <option value="beginner">Debutant</option>
                             <option value="average" selected>Moyen</option>
-                            <option value="trained">EntraînÃ©</option>
-                            <option value="athlete">AthlÃ¨te</option>
-                            <option value="elite">Ã©lite</option>
+                            <option value="trained">Entraîne</option>
+                            <option value="athlete">Athlete</option>
+                            <option value="elite">elite</option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="sport" class="form-label">Sport principal</label>
                         <select id="sport" class="form-select border-info">
-                            <option value="general" selected>GÃ©nÃ©ral/Fitness</option>
+                            <option value="general" selected>General/Fitness</option>
                             <option value="running">Course Ã pied</option>
                             <option value="cycling">Cyclisme</option>
                             <option value="swimming">Natation</option>
@@ -117,11 +117,11 @@
                     <div class="col-md-4">
                         <label for="trainingGoal" class="form-label">Objectif d'entraînement</label>
                         <select id="trainingGoal" class="form-select border-secondary">
-                            <option value="general" selected>Forme gÃ©nÃ©rale</option>
+                            <option value="general" selected>Forme generale</option>
                             <option value="fat_loss">Perte de graisse</option>
                             <option value="endurance">Endurance</option>
                             <option value="performance">Performance</option>
-                            <option value="recovery">RÃ©cupÃ©ration</option>
+                            <option value="recovery">Recuperation</option>
                         </select>
                     </div>
                 </div>
@@ -135,21 +135,21 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetCalculator()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- RÃ©sultats -->
+        <!-- Resultats -->
         <div id="resultsSection" class="d-none">
-            <!-- MÃ©triques principales -->
+            <!-- Metriques principales -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-chart-line me-2"></i>
-                        Vos Zones Cardiaques PersonnalisÃ©es
+                        Vos Zones Cardiaques Personnalisees
                     </h3>
                 </div>
                 <div class="card-body">
@@ -157,7 +157,7 @@
                         <div class="col-md-3">
                             <div class="card border-danger h-100">
                                 <div class="card-header bg-danger text-white text-center">
-                                    <h6 class="mb-0">FC Max EstimÃ©e</h6>
+                                    <h6 class="mb-0">FC Max Estimee</h6>
                                     <small id="formulaUsed">Formule</small>
                                 </div>
                                 <div class="card-body text-center">
@@ -172,7 +172,7 @@
                         <div class="col-md-3">
                             <div class="card border-primary h-100">
                                 <div class="card-header bg-primary text-white text-center">
-                                    <h6 class="mb-0">RÃ©serve Cardiaque</h6>
+                                    <h6 class="mb-0">Reserve Cardiaque</h6>
                                     <small>HRR</small>
                                 </div>
                                 <div class="card-body text-center">
@@ -216,7 +216,7 @@
                 </div>
             </div>
 
-            <!-- Zones d'entraînement dÃ©taillÃ©es -->
+            <!-- Zones d'entraînement detaillees -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-dark text-white">
                     <h3 class="mb-2">
@@ -234,7 +234,7 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
@@ -249,59 +249,59 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-8">
-                        <h6>Adaptations Cardiovasculaires et MÃ©taboliques par Zone</h6>
+                        <h6>Adaptations Cardiovasculaires et Metaboliques par Zone</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Zone</th>
-                                        <th>SystÃ¨me Ã©nergÃ©tique</th>
+                                        <th>Systeme energetique</th>
                                         <th>RER (VCO2/VO2)</th>
                                         <th>Adaptations Cardiovasculaires</th>
-                                        <th>Adaptations MÃ©taboliques</th>
+                                        <th>Adaptations Metaboliques</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="table-success">
                                         <td><strong>Zone 1</strong></td>
-                                        <td>AÃ©robie lipidique (85%+)</td>
+                                        <td>Aerobie lipidique (85%+)</td>
                                         <td>0.70-0.78</td>
                                         <td>↑ Capillarisation, ↑ VES repos</td>
                                         <td>↑ Enzymes lipolytiques, ↑ Mitochondries</td>
                                     </tr>
                                     <tr class="table-info">
                                         <td>Zone 2</td>
-                                        <td>AÃ©robie mixte (70% lipides)</td>
+                                        <td>Aerobie mixte (70% lipides)</td>
                                         <td>0.78-0.85</td>
-                                        <td>↑ VO2max, ↑ DÃ©bit cardiaque</td>
-                                        <td>↑ Oxydation graisses, ↑ GlycogÃ¨ne musculaire</td>
+                                        <td>↑ VO2max, ↑ Debit cardiaque</td>
+                                        <td>↑ Oxydation graisses, ↑ Glycogene musculaire</td>
                                     </tr>
                                     <tr class="table-primary">
                                         <td>Zone 3</td>
-                                        <td>AÃ©robie glucidique dominant</td>
+                                        <td>Aerobie glucidique dominant</td>
                                         <td>0.85-0.90</td>
                                         <td>↑ FC max, ↑ Extraction O2</td>
-                                        <td>↑ Enzymes glycolytiques, Transition mÃ©tabolique</td>
+                                        <td>↑ Enzymes glycolytiques, Transition metabolique</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>Zone 4</td>
-                                        <td>Transition aÃ©ro-anaÃ©robie</td>
+                                        <td>Transition aero-anaerobie</td>
                                         <td>0.90-0.95</td>
                                         <td>↑ Puissance cardiaque max</td>
                                         <td>↑ Seuil lactique, ↑ Tampon lactate</td>
                                     </tr>
                                     <tr class="table-danger">
                                         <td>Zone 5</td>
-                                        <td>Glycolyse anaÃ©robie (90%+)</td>
+                                        <td>Glycolyse anaerobie (90%+)</td>
                                         <td>0.95-1.10</td>
                                         <td>Stress cardiovasculaire maximal</td>
-                                        <td>↑ VO2max, ↑ CapacitÃ© anaÃ©robie</td>
+                                        <td>↑ VO2max, ↑ Capacite anaerobie</td>
                                     </tr>
                                     <tr class="table-dark">
                                         <td>Zone 6</td>
-                                        <td>PhosphocrÃ©atine + glycolyse</td>
+                                        <td>Phosphocreatine + glycolyse</td>
                                         <td>Variable (&gt;1.00)</td>
-                                        <td>FC max, rÃ©cupÃ©ration critique</td>
+                                        <td>FC max, recuperation critique</td>
                                         <td>↑ Puissance, ↑ Force neuromusculaire</td>
                                     </tr>
                                 </tbody>
@@ -309,10 +309,10 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>Marqueurs Physiologiques ClÃ©s</h6>
+                        <h6>Marqueurs Physiologiques Cles</h6>
                         <ul class="small">
-                            <li><strong>Seuil AÃ©robie (LT1) :</strong> 2 mmol/L lactate, ~Zone 2</li>
-                            <li><strong>Seuil AnaÃ©robie (LT2) :</strong> 4 mmol/L lactate, ~Zone 4</li>
+                            <li><strong>Seuil Aerobie (LT1) :</strong> 2 mmol/L lactate, ~Zone 2</li>
+                            <li><strong>Seuil Anaerobie (LT2) :</strong> 4 mmol/L lactate, ~Zone 4</li>
                             <li><strong>Point de Compensation Respiratoire (RCP) :</strong> ~90% FCmax</li>
                             <li><strong>MLSS :</strong> Maximal Lactate Steady State</li>
                             <li><strong>Critical Power :</strong> Puissance critique soutenue</li>
@@ -325,11 +325,11 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Tests d'effort avec lactatÃ©mie</li>
-                                    <li>SpiromÃ©trie (VCO2/VO2)</li>
+                                    <li>Tests d'effort avec lactatemie</li>
+                                    <li>Spirometrie (VCO2/VO2)</li>
                                     <li>Seuils ventilatoires (VT1/VT2)</li>
-                                    <li>VariabilitÃ© frÃ©quence cardiaque</li>
-                                    <li>Biomarqueurs mÃ©taboliques</li>
+                                    <li>Variabilite frequence cardiaque</li>
+                                    <li>Biomarqueurs metaboliques</li>
                                 </ul>
                             </div>
                         </div>
@@ -338,51 +338,51 @@
             </div>
         </div>
 
-        <!-- MÃ©thodes de Calcul et Validation -->
+        <!-- Methodes de Calcul et Validation -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-cogs me-2"></i>
-                    MÃ©thodes de Calcul et Validation - Recherches 2024
+                    Methodes de Calcul et Validation - Recherches 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>MÃ©thodes de DÃ©termination des Zones</h6>
+                        <h6>Methodes de Determination des Zones</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>MÃ©thode</th>
+                                        <th>Methode</th>
                                         <th>Base Physiologique</th>
-                                        <th>PrÃ©cision</th>
-                                        <th>AccessibilitÃ©</th>
+                                        <th>Precision</th>
+                                        <th>Accessibilite</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="table-success">
-                                        <td><strong>Test LactatÃ©mie</strong></td>
-                                        <td>Seuils LT1/LT2 mesurÃ©s</td>
+                                        <td><strong>Test Lactatemie</strong></td>
+                                        <td>Seuils LT1/LT2 mesures</td>
                                         <td>Gold Standard (±2%)</td>
                                         <td>Laboratoire</td>
                                     </tr>
                                     <tr class="table-info">
-                                        <td>SpiromÃ©trie (VT1/VT2)</td>
+                                        <td>Spirometrie (VT1/VT2)</td>
                                         <td>Seuils ventilatoires</td>
                                         <td>Excellent (±3%)</td>
                                         <td>Laboratoire/Clinique</td>
                                     </tr>
                                     <tr class="table-primary">
                                         <td>Karvonen (HRR)</td>
-                                        <td>RÃ©serve cardiaque</td>
+                                        <td>Reserve cardiaque</td>
                                         <td>Bon (±5-8%)</td>
                                         <td>Large public</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>% FC maximale</td>
                                         <td>Pourcentage FC max</td>
-                                        <td>ModÃ©rÃ© (±8-12%)</td>
+                                        <td>Modere (±8-12%)</td>
                                         <td>Large public</td>
                                     </tr>
                                     <tr class="table-light">
@@ -402,13 +402,13 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Limitations et Ajustements NÃ©cessaires</h6>
+                        <h6>Limitations et Ajustements Necessaires</h6>
                         <ul class="small">
-                            <li><strong>VariabilitÃ© individuelle :</strong> ±10-15 bpm même profil</li>
-                            <li><strong>DÃ©rive cardiaque :</strong> +5-15 bpm aprÃ¨s 30min</li>
+                            <li><strong>Variabilite individuelle :</strong> ±10-15 bpm même profil</li>
+                            <li><strong>Derive cardiaque :</strong> +5-15 bpm apres 30min</li>
                             <li><strong>Conditions environnementales :</strong> Chaleur, altitude</li>
-                            <li><strong>Ã©tat d'entraînement :</strong> Adaptation seuils</li>
-                            <li><strong>MÃ©dicaments :</strong> Bêta-bloquants (-20-40 bpm)</li>
+                            <li><strong>etat d'entraînement :</strong> Adaptation seuils</li>
+                            <li><strong>Medicaments :</strong> Bêta-bloquants (-20-40 bpm)</li>
                             <li><strong>Pathologies :</strong> Cardiopathies, arythmies</li>
                         </ul>
                         
@@ -418,12 +418,12 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Mode d'exercice (course vs vÃ©lo)</li>
-                                    <li>Position corporelle (debout vs allongÃ©)</li>
-                                    <li>TempÃ©rature ambiante (+10-20 bpm)</li>
-                                    <li>Hydratation (dÃ©shydratation +5-15 bpm)</li>
+                                    <li>Mode d'exercice (course vs velo)</li>
+                                    <li>Position corporelle (debout vs allonge)</li>
+                                    <li>Temperature ambiante (+10-20 bpm)</li>
+                                    <li>Hydratation (deshydratation +5-15 bpm)</li>
                                     <li>Stress psychologique</li>
-                                    <li>Fatigue accumulÃ©e</li>
+                                    <li>Fatigue accumulee</li>
                                     <li>Rythme circadien</li>
                                 </ul>
                             </div>
@@ -438,7 +438,7 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-running me-2"></i>
-                    Applications SpÃ©cialisÃ©es par Sport et Population
+                    Applications Specialisees par Sport et Population
                 </h3>
             </div>
             <div class="card-body">
@@ -451,28 +451,28 @@
                                     <tr>
                                         <th>Sport</th>
                                         <th>Zones Prioritaires</th>
-                                        <th>Distribution RecommandÃ©e</th>
-                                        <th>SpÃ©cificitÃ©s</th>
+                                        <th>Distribution Recommandee</th>
+                                        <th>Specificites</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td><strong>Course Longue Distance</strong></td>
                                         <td>Zone 1-2 (80%), Zone 4-5 (20%)</td>
-                                        <td>PolarisÃ©e</td>
-                                        <td>Ã©conomie course, VO2max</td>
+                                        <td>Polarisee</td>
+                                        <td>economie course, VO2max</td>
                                     </tr>
                                     <tr>
                                         <td>Cyclisme Route</td>
                                         <td>Zone 2-3 (70%), Zone 4-5 (25%)</td>
-                                        <td>Tempo + intensitÃ©</td>
+                                        <td>Tempo + intensite</td>
                                         <td>Puissance seuil, FTP</td>
                                     </tr>
                                     <tr>
                                         <td>Natation</td>
                                         <td>Zone 2-3 (60%), Zone 4-6 (35%)</td>
                                         <td>Technique + vitesse</td>
-                                        <td>EfficacitÃ© technique prioritaire</td>
+                                        <td>Efficacite technique prioritaire</td>
                                     </tr>
                                     <tr>
                                         <td>Triathlon</td>
@@ -483,53 +483,53 @@
                                     <tr>
                                         <td>Sports Collectifs</td>
                                         <td>Zone 3-5 (60%), Zone 6 (25%)</td>
-                                        <td>Intermittent haute intensitÃ©</td>
-                                        <td>RÃ©pÃ©tition sprints, rÃ©cupÃ©ration</td>
+                                        <td>Intermittent haute intensite</td>
+                                        <td>Repetition sprints, recuperation</td>
                                     </tr>
                                     <tr>
                                         <td>CrossFit/HIIT</td>
                                         <td>Zone 4-6 (70%), Zone 1-2 (30%)</td>
-                                        <td>Haute intensitÃ© + rÃ©cupÃ©ration</td>
-                                        <td>CapacitÃ© anaÃ©robie, VO2max</td>
+                                        <td>Haute intensite + recuperation</td>
+                                        <td>Capacite anaerobie, VO2max</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>Adaptations par Population SpÃ©ciale</h6>
+                        <h6>Adaptations par Population Speciale</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Population</th>
                                         <th>Ajustements Zones</th>
-                                        <th>PrÃ©cautions</th>
-                                        <th>Monitoring SpÃ©cial</th>
+                                        <th>Precautions</th>
+                                        <th>Monitoring Special</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Seniors (+65 ans)</td>
-                                        <td>Zones 1-3 privilÃ©giÃ©es</td>
-                                        <td>Progression trÃ¨s graduelle</td>
+                                        <td>Zones 1-3 privilegiees</td>
+                                        <td>Progression tres graduelle</td>
                                         <td>PA, symptômes</td>
                                     </tr>
                                     <tr>
                                         <td>Cardiaques</td>
                                         <td>Zones 1-2 exclusivement</td>
-                                        <td>Supervision mÃ©dicale</td>
-                                        <td>ECG, dyspnÃ©e</td>
+                                        <td>Supervision medicale</td>
+                                        <td>ECG, dyspnee</td>
                                     </tr>
                                     <tr>
-                                        <td>DiabÃ©tiques</td>
+                                        <td>Diabetiques</td>
                                         <td>Zones 2-4 optimales</td>
-                                        <td>GlycÃ©mie prÃ©/post</td>
-                                        <td>CGM recommandÃ©</td>
+                                        <td>Glycemie pre/post</td>
+                                        <td>CGM recommande</td>
                                     </tr>
                                     <tr>
                                         <td>Grossesse</td>
-                                        <td>Zones 1-3, Ã©viter Zone 5-6</td>
+                                        <td>Zones 1-3, eviter Zone 5-6</td>
                                         <td>Talk test prioritaire</td>
                                         <td>Bien-être maternel</td>
                                     </tr>
@@ -540,8 +540,8 @@
                                         <td>Fatigue, croissance</td>
                                     </tr>
                                     <tr>
-                                        <td>ObÃ¨ses</td>
-                                        <td>Zone 1-2 prÃ©dominantes</td>
+                                        <td>Obeses</td>
+                                        <td>Zone 1-2 predominantes</td>
                                         <td>Articulations, surcharge</td>
                                         <td>Poids, motivation</td>
                                     </tr>
@@ -553,23 +553,23 @@
             </div>
         </div>
 
-        <!-- PÃ©riodisation et Planification -->
+        <!-- Periodisation et Planification -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-calendar-alt me-2"></i>
-                    PÃ©riodisation et Planification d'Entraînement
+                    Periodisation et Planification d'Entraînement
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-8">
-                        <h6>ModÃ¨les de PÃ©riodisation par Zones</h6>
+                        <h6>Modeles de Periodisation par Zones</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>ModÃ¨le</th>
+                                        <th>Modele</th>
                                         <th>Zone 1-2</th>
                                         <th>Zone 3</th>
                                         <th>Zone 4-5</th>
@@ -579,7 +579,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-success">
-                                        <td><strong>PolarisÃ© (Seiler)</strong></td>
+                                        <td><strong>Polarise (Seiler)</strong></td>
                                         <td>80%</td>
                                         <td>5%</td>
                                         <td>15%</td>
@@ -592,7 +592,7 @@
                                         <td>20%</td>
                                         <td>10%</td>
                                         <td>0%</td>
-                                        <td>DÃ©butants, santÃ© gÃ©nÃ©rale</td>
+                                        <td>Debutants, sante generale</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>Seuil (Tempo)</td>
@@ -611,26 +611,26 @@
                                         <td>Sports collectifs, CrossFit</td>
                                     </tr>
                                     <tr class="table-secondary">
-                                        <td>Blocs ConjuguÃ©s</td>
-                                        <td colspan="4">Variable selon bloc - Succession blocs spÃ©cialisÃ©s</td>
-                                        <td>AthlÃ¨tes Ã©lite, sports multiples</td>
+                                        <td>Blocs Conjugues</td>
+                                        <td colspan="4">Variable selon bloc - Succession blocs specialises</td>
+                                        <td>Athletes elite, sports multiples</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         
-                        <h6 class="mt-4">Phases de DÃ©veloppement Saisonnier</h6>
+                        <h6 class="mt-4">Phases de Developpement Saisonnier</h6>
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <div class="card border-success">
                                     <div class="card-header bg-success text-white text-center">
-                                        <small>Phase PrÃ©paratoire (12-16 semaines)</small>
+                                        <small>Phase Preparatoire (12-16 semaines)</small>
                                     </div>
                                     <div class="card-body">
                                         <ul class="small">
                                             <li><strong>Volume :</strong> ↑ progressif</li>
-                                            <li><strong>IntensitÃ© :</strong> 80% Zone 1-2</li>
-                                            <li><strong>Focus :</strong> Base aÃ©robie</li>
+                                            <li><strong>Intensite :</strong> 80% Zone 1-2</li>
+                                            <li><strong>Focus :</strong> Base aerobie</li>
                                             <li><strong>Adaptations :</strong> Mitochondries, capillaires</li>
                                         </ul>
                                     </div>
@@ -639,12 +639,12 @@
                             <div class="col-md-4">
                                 <div class="card border-warning">
                                     <div class="card-header bg-warning text-dark text-center">
-                                        <small>Phase SpÃ©cifique (8-12 semaines)</small>
+                                        <small>Phase Specifique (8-12 semaines)</small>
                                     </div>
                                     <div class="card-body">
                                         <ul class="small">
                                             <li><strong>Volume :</strong> Maintien/↓</li>
-                                            <li><strong>IntensitÃ© :</strong> ↑ Zone 4-5</li>
+                                            <li><strong>Intensite :</strong> ↑ Zone 4-5</li>
                                             <li><strong>Focus :</strong> Seuils, VO2max</li>
                                             <li><strong>Adaptations :</strong> Puissance, vitesse</li>
                                         </ul>
@@ -654,13 +654,13 @@
                             <div class="col-md-4">
                                 <div class="card border-danger">
                                     <div class="card-header bg-danger text-white text-center">
-                                        <small>Phase CompÃ©titive (4-8 semaines)</small>
+                                        <small>Phase Competitive (4-8 semaines)</small>
                                     </div>
                                     <div class="card-body">
                                         <ul class="small">
                                             <li><strong>Volume :</strong> ↓ significative</li>
-                                            <li><strong>IntensitÃ© :</strong> Maintien/affûtage</li>
-                                            <li><strong>Focus :</strong> Performance, rÃ©cupÃ©ration</li>
+                                            <li><strong>Intensite :</strong> Maintien/affûtage</li>
+                                            <li><strong>Focus :</strong> Performance, recuperation</li>
                                             <li><strong>Adaptations :</strong> Optimisation</li>
                                         </ul>
                                     </div>
@@ -671,12 +671,12 @@
                     <div class="col-md-4">
                         <h6>Principes de Progression</h6>
                         <ul class="small">
-                            <li><strong>RÃ¨gle 10% :</strong> Augmentation volume hebdomadaire</li>
-                            <li><strong>Microcycles :</strong> 3:1 (3 sem progression, 1 sem allÃ©gement)</li>
-                            <li><strong>MÃ©socycles :</strong> 4-6 semaines thÃ©matiques</li>
+                            <li><strong>Regle 10% :</strong> Augmentation volume hebdomadaire</li>
+                            <li><strong>Microcycles :</strong> 3:1 (3 sem progression, 1 sem allegement)</li>
+                            <li><strong>Mesocycles :</strong> 4-6 semaines thematiques</li>
                             <li><strong>Macrocycles :</strong> Planification annuelle</li>
-                            <li><strong>Supercompensation :</strong> Stress + rÃ©cupÃ©ration</li>
-                            <li><strong>SpÃ©cificitÃ© :</strong> Adaptation mode d'exercice</li>
+                            <li><strong>Supercompensation :</strong> Stress + recuperation</li>
+                            <li><strong>Specificite :</strong> Adaptation mode d'exercice</li>
                         </ul>
                         
                         <div class="card mt-3 border-primary">
@@ -687,7 +687,7 @@
                                 <ul class="small">
                                     <li><strong>TRIMP :</strong> Training Impulse</li>
                                     <li><strong>TSS :</strong> Training Stress Score</li>
-                                    <li><strong>HRV :</strong> VariabilitÃ© cardiaque</li>
+                                    <li><strong>HRV :</strong> Variabilite cardiaque</li>
                                     <li><strong>RPE session :</strong> Perception effort</li>
                                     <li><strong>Temps dans zones :</strong> Distribution</li>
                                 </ul>
@@ -700,12 +700,12 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>FC repos Ã©levÃ©e persistante</li>
-                                    <li>HRV diminuÃ©e durablement</li>
-                                    <li>Performance stagnante/dÃ©clin</li>
+                                    <li>FC repos elevee persistante</li>
+                                    <li>HRV diminuee durablement</li>
+                                    <li>Performance stagnante/declin</li>
                                     <li>Fatigue chronique</li>
                                     <li>Troubles sommeil/humeur</li>
-                                    <li>ImmunitÃ© rÃ©duite</li>
+                                    <li>Immunite reduite</li>
                                 </ul>
                             </div>
                         </div>
@@ -731,8 +731,8 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Dispositif</th>
-                                        <th>PrÃ©cision Zones</th>
-                                        <th>FonctionnalitÃ©s</th>
+                                        <th>Precision Zones</th>
+                                        <th>Fonctionnalites</th>
                                         <th>Prix</th>
                                     </tr>
                                 </thead>
@@ -746,13 +746,13 @@
                                     <tr>
                                         <td>Garmin HRM-Pro</td>
                                         <td>±1%</td>
-                                        <td>MÃ©triques course, natation</td>
+                                        <td>Metriques course, natation</td>
                                         <td>€€</td>
                                     </tr>
                                     <tr>
                                         <td>Wahoo TICKR X</td>
                                         <td>±1%</td>
-                                        <td>MÃ©moire interne, ANT+</td>
+                                        <td>Memoire interne, ANT+</td>
                                         <td>€€</td>
                                     </tr>
                                     <tr>
@@ -770,7 +770,7 @@
                                     <tr>
                                         <td>Suunto 9 Peak</td>
                                         <td>±2-4%</td>
-                                        <td>Ultra-endurance, mÃ©tÃ©o</td>
+                                        <td>Ultra-endurance, meteo</td>
                                         <td>€€€</td>
                                     </tr>
                                 </tbody>
@@ -783,19 +783,19 @@
                             <li><strong>Zones Adaptatives :</strong> Ajustement automatique selon forme</li>
                             <li><strong>Intelligence Artificielle :</strong> Apprentissage patterns personnels</li>
                             <li><strong>Fusion Multi-Capteurs :</strong> FC + puissance + allure</li>
-                            <li><strong>PrÃ©diction Performance :</strong> ModÃ¨les physiologiques</li>
-                            <li><strong>Coaching Temps RÃ©el :</strong> Guidance zones optimales</li>
-                            <li><strong>RÃ©cupÃ©ration PrÃ©dictive :</strong> HRV + charge entraînement</li>
+                            <li><strong>Prediction Performance :</strong> Modeles physiologiques</li>
+                            <li><strong>Coaching Temps Reel :</strong> Guidance zones optimales</li>
+                            <li><strong>Recuperation Predictive :</strong> HRV + charge entraînement</li>
                         </ul>
                         
                         <div class="card mt-3 border-info">
                             <div class="card-header bg-info text-white">
-                                <small>Applications SpÃ©cialisÃ©es</small>
+                                <small>Applications Specialisees</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>TrainingPeaks :</strong> Analyse dÃ©taillÃ©e TSS</li>
-                                    <li><strong>HRV4Training :</strong> Zones basÃ©es HRV</li>
+                                    <li><strong>TrainingPeaks :</strong> Analyse detaillee TSS</li>
+                                    <li><strong>HRV4Training :</strong> Zones basees HRV</li>
                                     <li><strong>Polar Flow :</strong> Tests orthostatiques</li>
                                     <li><strong>Garmin Connect IQ :</strong> Zones lactate</li>
                                     <li><strong>Strava Segments :</strong> Analyse comparative</li>
@@ -804,14 +804,14 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>Innovations Ã©mergentes 2024</h6>
+                        <h6>Innovations emergentes 2024</h6>
                         <ul class="small">
                             <li><strong>Capteurs Non-Invasifs :</strong> Radar Doppler portable</li>
-                            <li><strong>IA PrÃ©dictive :</strong> Zones optimales jour J</li>
-                            <li><strong>RÃ©alitÃ© AugmentÃ©e :</strong> Zones overlays visuels</li>
-                            <li><strong>Biofeedback Temps RÃ©el :</strong> Stimulation tactile</li>
-                            <li><strong>IntÃ©gration IoT :</strong> Environnement connectÃ©</li>
-                            <li><strong>TÃ©lÃ©mÃ©decine :</strong> Monitoring cardiaque distant</li>
+                            <li><strong>IA Predictive :</strong> Zones optimales jour J</li>
+                            <li><strong>Realite Augmentee :</strong> Zones overlays visuels</li>
+                            <li><strong>Biofeedback Temps Reel :</strong> Stimulation tactile</li>
+                            <li><strong>Integration IoT :</strong> Environnement connecte</li>
+                            <li><strong>Telemedecine :</strong> Monitoring cardiaque distant</li>
                         </ul>
                         
                         <div class="card mt-3 border-success">
@@ -820,10 +820,10 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>CorrÃ©lation lactatÃ©mie laboratoire</li>
-                                    <li>Validation populations athlÃ¨tes</li>
-                                    <li>Ã©tudes longitudinales performance</li>
-                                    <li>Certification mÃ©dicale ISO</li>
+                                    <li>Correlation lactatemie laboratoire</li>
+                                    <li>Validation populations athletes</li>
+                                    <li>etudes longitudinales performance</li>
+                                    <li>Certification medicale ISO</li>
                                     <li>Protocoles ACSM/ESC</li>
                                 </ul>
                             </div>
@@ -836,10 +836,10 @@
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Artefacts mouvement (±5-10%)</li>
-                                    <li>DÃ©rive tempÃ©rature/humiditÃ©</li>
-                                    <li>InterfÃ©rences Ã©lectromagnÃ©tiques</li>
-                                    <li>Algorithmes propriÃ©taires non validÃ©s</li>
-                                    <li>VariabilitÃ© inter-dispositifs</li>
+                                    <li>Derive temperature/humidite</li>
+                                    <li>Interferences electromagnetiques</li>
+                                    <li>Algorithmes proprietaires non valides</li>
+                                    <li>Variabilite inter-dispositifs</li>
                                 </ul>
                             </div>
                         </div>
@@ -848,29 +848,29 @@
             </div>
         </div>
 
-        <!-- StratÃ©gies d'Entraînement AvancÃ©es -->
+        <!-- Strategies d'Entraînement Avancees -->
         <div class="card">
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-dumbbell me-2"></i>
-                    StratÃ©gies d'Entraînement AvancÃ©es par Zones
+                    Strategies d'Entraînement Avancees par Zones
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <h6>Entraînement PolarisÃ©</h6>
+                        <h6>Entraînement Polarise</h6>
                         <div class="card border-success mb-3">
                             <div class="card-header bg-success text-white">
                                 <small>Principe 80/20 (Seiler)</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>80% Volume :</strong> Zones 1-2 (intensitÃ© faible)</li>
-                                    <li><strong>20% Volume :</strong> Zones 4-5 (intensitÃ© Ã©levÃ©e)</li>
-                                    <li><strong>Zone 3 Ã©vitÃ©e :</strong> "Zone grise" non optimale</li>
-                                    <li><strong>Avantages :</strong> RÃ©cupÃ©ration + adaptations qualitatives</li>
-                                    <li><strong>Applications :</strong> Endurance pure, athlÃ¨tes Ã©lite</li>
+                                    <li><strong>80% Volume :</strong> Zones 1-2 (intensite faible)</li>
+                                    <li><strong>20% Volume :</strong> Zones 4-5 (intensite elevee)</li>
+                                    <li><strong>Zone 3 evitee :</strong> "Zone grise" non optimale</li>
+                                    <li><strong>Avantages :</strong> Recuperation + adaptations qualitatives</li>
+                                    <li><strong>Applications :</strong> Endurance pure, athletes elite</li>
                                 </ul>
                             </div>
                         </div>
@@ -883,9 +883,9 @@
                                 <ul class="small">
                                     <li>4×4min Zone 5 (VO2max)</li>
                                     <li>8×30s Zone 6 (puissance)</li>
-                                    <li>RÃ©cupÃ©ration active Zone 1</li>
-                                    <li>FrÃ©quence : 2-3×/semaine max</li>
-                                    <li>Progression volume avant intensitÃ©</li>
+                                    <li>Recuperation active Zone 1</li>
+                                    <li>Frequence : 2-3×/semaine max</li>
+                                    <li>Progression volume avant intensite</li>
                                 </ul>
                             </div>
                         </div>
@@ -894,7 +894,7 @@
                         <h6>Entraînement Seuil</h6>
                         <div class="card border-primary mb-3">
                             <div class="card-header bg-primary text-white">
-                                <small>DÃ©veloppement Seuil Lactique</small>
+                                <small>Developpement Seuil Lactique</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
@@ -902,53 +902,53 @@
                                     <li><strong>Intervalles Seuil :</strong> 5×8min rec 2min</li>
                                     <li><strong>Tempo Long :</strong> 60-90min Zone 3</li>
                                     <li><strong>Sweet Spot :</strong> 88-94% FCmax</li>
-                                    <li><strong>Progression :</strong> DurÃ©e puis intensitÃ©</li>
+                                    <li><strong>Progression :</strong> Duree puis intensite</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="card border-info">
                             <div class="card-header bg-info text-white">
-                                <small>MÃ©thodologies AvancÃ©es</small>
+                                <small>Methodologies Avancees</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Bi-Threshold (double seuil)</li>
-                                    <li>Fartlek structurÃ©</li>
+                                    <li>Fartlek structure</li>
                                     <li>Pyramides ascendantes/descendantes</li>
-                                    <li>Blocs alternÃ©s intensitÃ©</li>
+                                    <li>Blocs alternes intensite</li>
                                     <li>Entraînement concurrent</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>RÃ©cupÃ©ration et RÃ©gÃ©nÃ©ration</h6>
+                        <h6>Recuperation et Regeneration</h6>
                         <div class="card border-secondary mb-3">
                             <div class="card-header bg-secondary text-white">
                                 <small>Optimisation Zone 1</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>RÃ©cupÃ©ration Active :</strong> 20-45min Zone 1</li>
-                                    <li><strong>AmÃ©lioration Circulation :</strong> Ã©limination lactate</li>
+                                    <li><strong>Recuperation Active :</strong> 20-45min Zone 1</li>
+                                    <li><strong>Amelioration Circulation :</strong> elimination lactate</li>
                                     <li><strong>Activation Parasympathique :</strong> HRV ↑</li>
-                                    <li><strong>FrÃ©quence :</strong> Quotidien si besoin</li>
-                                    <li><strong>ModalitÃ©s :</strong> Marche, vÃ©lo, natation douce</li>
+                                    <li><strong>Frequence :</strong> Quotidien si besoin</li>
+                                    <li><strong>Modalites :</strong> Marche, velo, natation douce</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="card border-warning">
                             <div class="card-header bg-warning text-dark">
-                                <small>StratÃ©gies RÃ©cupÃ©ration</small>
+                                <small>Strategies Recuperation</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Hydratation optimale</li>
                                     <li>Nutrition post-exercice (30min)</li>
-                                    <li>Sommeil qualitÃ© (8-9h athlÃ¨tes)</li>
-                                    <li>Techniques relaxation (mÃ©ditation)</li>
+                                    <li>Sommeil qualite (8-9h athletes)</li>
+                                    <li>Techniques relaxation (meditation)</li>
                                     <li>Massage, compression, froid</li>
                                 </ul>
                             </div>
@@ -957,12 +957,12 @@
                 </div>
                 
                 <div class="alert alert-warning mt-4">
-                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Avertissement MÃ©dical Important</h6>
+                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Avertissement Medical Important</h6>
                     <p class="mb-0">
-                        Ces zones cardiaques sont des estimations basÃ©es sur des formules statistiques. 
-                        En cas de pathologie cardiaque, prise de mÃ©dicaments ou doutes sur votre condition physique, 
-                        consultez un professionnel de santÃ© avant tout programme d'entraînement intense. 
-                        Un test d'effort mÃ©dical reste l'Ã©talon-or pour dÃ©terminer vos zones personnelles.
+                        Ces zones cardiaques sont des estimations basees sur des formules statistiques. 
+                        En cas de pathologie cardiaque, prise de medicaments ou doutes sur votre condition physique, 
+                        consultez un professionnel de sante avant tout programme d'entraînement intense. 
+                        Un test d'effort medical reste l'etalon-or pour determiner vos zones personnelles.
                     </p>
                 </div>
                 
@@ -970,8 +970,8 @@
                     <h6><i class="fas fa-chart-line me-2"></i>Vision 2024-2030</h6>
                     <p class="mb-0">
                         L'avenir de l'entraînement par zones cardiaques tend vers une personnalisation extrême 
-                        intÃ©grant IA, biomarqueurs temps rÃ©el, gÃ©nomique et environnement pour un coaching adaptatif 
-                        optimisant la performance et la santÃ© cardiovasculaire de chaque individu.
+                        integrant IA, biomarqueurs temps reel, genomique et environnement pour un coaching adaptatif 
+                        optimisant la performance et la sante cardiovasculaire de chaque individu.
                     </p>
                 </div>
             </div>
@@ -979,7 +979,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -995,9 +995,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -1007,15 +1007,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -1042,7 +1042,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -1053,12 +1053,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1161,17 +1161,17 @@
 // Configuration des zones d'entraînement
 const zoneDefinitions = {
     recovery: { 
-        name: 'Zone 1 - RÃ©cupÃ©ration Active', 
+        name: 'Zone 1 - Recuperation Active', 
         hrrMin: 50, hrrMax: 60, 
         fcMaxMin: 65, fcMaxMax: 75,
         color: 'success',
         lactateMmol: '< 2',
         metabolism: 'Lipides (>85%)',
         duration: '3-6h+',
-        purpose: 'RÃ©cupÃ©ration, capillarisation'
+        purpose: 'Recuperation, capillarisation'
     },
     aerobic: { 
-        name: 'Zone 2 - AÃ©robie Base', 
+        name: 'Zone 2 - Aerobie Base', 
         hrrMin: 60, hrrMax: 70, 
         fcMaxMin: 75, fcMaxMax: 85,
         color: 'info',
@@ -1181,14 +1181,14 @@ const zoneDefinitions = {
         purpose: 'Endurance fondamentale, VO2'
     },
     tempo: { 
-        name: 'Zone 3 - Tempo/AÃ©robie', 
+        name: 'Zone 3 - Tempo/Aerobie', 
         hrrMin: 70, hrrMax: 80, 
         fcMaxMin: 85, fcMaxMax: 90,
         color: 'primary',
         lactateMmol: '3-4',
         metabolism: 'Mixte (50/50)',
         duration: '1-2h',
-        purpose: 'EfficacitÃ© aÃ©robie, Ã©conomie'
+        purpose: 'Efficacite aerobie, economie'
     },
     threshold: { 
         name: 'Zone 4 - Seuil Lactique', 
@@ -1208,7 +1208,7 @@ const zoneDefinitions = {
         lactateMmol: '6-12',
         metabolism: 'Glucides (>90%)',
         duration: '8-40min',
-        purpose: 'VO2max, capacitÃ© anaÃ©robie'
+        purpose: 'VO2max, capacite anaerobie'
     },
     neuromuscular: { 
         name: 'Zone 6 - Neuromusculaire', 
@@ -1216,7 +1216,7 @@ const zoneDefinitions = {
         fcMaxMin: 100, fcMaxMax: 105,
         color: 'dark',
         lactateMmol: '>12',
-        metabolism: 'PhosphocrÃ©atine',
+        metabolism: 'Phosphocreatine',
         duration: '10s-8min',
         purpose: 'Puissance, vitesse, force'
     }
@@ -1227,7 +1227,7 @@ const maxHrFormulas = {
     asstrand: (age, gender) => 220 - age,
     tanaka: (age, gender) => 208 - (0.7 * age),
     gulati: (age, gender) => 206 - (0.88 * age), // Femmes
-    nes: (age, gender) => 211 - (0.64 * age), // AthlÃ¨tes
+    nes: (age, gender) => 211 - (0.64 * age), // Athletes
     fairbarn: (age, gender) => 201 - (0.63 * age), // Seniors
     gellish: (age, gender) => 207 - (0.7 * age)
 };
@@ -1256,7 +1256,7 @@ function calculateZones() {
     
     // Validation
     if (!age || !restingHr) {
-        showError('Veuillez entrer votre âge et votre frÃ©quence cardiaque de repos.');
+        showError('Veuillez entrer votre âge et votre frequence cardiaque de repos.');
         return;
     }
     
@@ -1266,12 +1266,12 @@ function calculateZones() {
     }
     
     if (restingHr < 30 || restingHr > 120) {
-        showError('La frÃ©quence cardiaque de repos doit être comprise entre 30 et 120 bpm.');
+        showError('La frequence cardiaque de repos doit être comprise entre 30 et 120 bpm.');
         return;
     }
     
     if (useKnownMax && (!maxHrKnown || maxHrKnown < 120 || maxHrKnown > 220)) {
-        showError('La frÃ©quence cardiaque maximale doit être comprise entre 120 et 220 bpm.');
+        showError('La frequence cardiaque maximale doit être comprise entre 120 et 220 bpm.');
         return;
     }
     
@@ -1300,7 +1300,7 @@ function calculateZones() {
         adjustedZones.aerobic.purpose += ', optimisation lipolyse';
     }
     
-    // Calcul des zones avec mÃ©thode Karvonen (HRR) et % FC max
+    // Calcul des zones avec methode Karvonen (HRR) et % FC max
     const zones = Object.keys(adjustedZones).map(key => {
         const zone = adjustedZones[key];
         return {
@@ -1313,14 +1313,14 @@ function calculateZones() {
         };
     });
     
-    // Calcul mÃ©triques additionnelles
-    const lt1 = Math.round((hrr * 0.65) + restingHr); // Premier seuil (aÃ©robie)
-    const lt2 = Math.round((hrr * 0.85) + restingHr); // DeuxiÃ¨me seuil (anaÃ©robie)
+    // Calcul metriques additionnelles
+    const lt1 = Math.round((hrr * 0.65) + restingHr); // Premier seuil (aerobie)
+    const lt2 = Math.round((hrr * 0.85) + restingHr); // Deuxieme seuil (anaerobie)
     
-    // Estimation condition physique basÃ©e sur FC repos
+    // Estimation condition physique basee sur FC repos
     const fitnessAssessment = getFitnessLevel(restingHr, gender);
     
-    // Affichage des rÃ©sultats
+    // Affichage des resultats
     displayResults({
         maxHr: Math.round(maxHr),
         hrr: Math.round(hrr),
@@ -1334,19 +1334,19 @@ function calculateZones() {
     });
 }
 
-// Ã©valuation du niveau de forme
+// evaluation du niveau de forme
 function getFitnessLevel(restingHr, gender) {
     let level = '';
     let color = '';
     
     if (gender === 'male') {
-        if (restingHr < 50) { level = 'AthlÃ¨te excellent'; color = 'success'; }
+        if (restingHr < 50) { level = 'Athlete excellent'; color = 'success'; }
         else if (restingHr < 60) { level = 'Excellent'; color = 'success'; }
         else if (restingHr < 70) { level = 'Bon'; color = 'info'; }
         else if (restingHr < 80) { level = 'Moyen'; color = 'warning'; }
         else { level = 'Faible'; color = 'danger'; }
     } else {
-        if (restingHr < 55) { level = 'AthlÃ¨te excellent'; color = 'success'; }
+        if (restingHr < 55) { level = 'Athlete excellent'; color = 'success'; }
         else if (restingHr < 65) { level = 'Excellent'; color = 'success'; }
         else if (restingHr < 75) { level = 'Bon'; color = 'info'; }
         else if (restingHr < 85) { level = 'Moyen'; color = 'warning'; }
@@ -1364,9 +1364,9 @@ function showError(message) {
     document.getElementById('resultsSection').classList.add('d-none');
 }
 
-// Affichage des rÃ©sultats
+// Affichage des resultats
 function displayResults(results) {
-    // MÃ©triques principales
+    // Metriques principales
     document.getElementById('maxHrResult').textContent = results.maxHr;
     document.getElementById('hrrResult').textContent = results.hrr;
     document.getElementById('formulaUsed').textContent = `Formule ${results.formula}`;
@@ -1380,7 +1380,7 @@ function displayResults(results) {
     fitnessCard.querySelector('.card-header').className = `card-header bg-${results.fitnessColor} ${results.fitnessColor === 'warning' ? 'text-dark' : 'text-white'} text-center`;
     document.getElementById('fitnessLevel').className = `text-${results.fitnessColor}`;
     
-    // Zones dÃ©taillÃ©es
+    // Zones detaillees
     const zonesContainer = document.getElementById('zonesContainer');
     zonesContainer.innerHTML = '';
     
@@ -1412,10 +1412,10 @@ function displayResults(results) {
                             <small><strong>Lactate:</strong> ${zone.lactateMmol} mmol/L</small>
                         </div>
                         <div class="col-6">
-                            <small><strong>DurÃ©e:</strong> ${zone.duration}</small>
+                            <small><strong>Duree:</strong> ${zone.duration}</small>
                         </div>
                         <div class="col-12">
-                            <small><strong>MÃ©tabolisme:</strong> ${zone.metabolism}</small>
+                            <small><strong>Metabolisme:</strong> ${zone.metabolism}</small>
                         </div>
                         <div class="col-12">
                             <small><strong>Objectif:</strong> ${zone.purpose}</small>
@@ -1428,12 +1428,12 @@ function displayResults(results) {
         zonesContainer.appendChild(zoneCard);
     });
     
-    // Afficher la section rÃ©sultats
+    // Afficher la section resultats
     document.getElementById('resultsSection').classList.remove('d-none');
     document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// RÃ©initialisation du calculateur
+// Reinitialisation du calculateur
 function resetCalculator() {
     document.getElementById('age').value = '';
     document.getElementById('restingHr').value = '';

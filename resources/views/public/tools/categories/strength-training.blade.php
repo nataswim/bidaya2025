@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils Force & Musculation - Approche SÃ©curisÃ©e et Progressive Evidence-Based')
-@section('meta_description', 'Outils scientifiques pour musculation sÃ©curisÃ©e : calcul charges, progression graduelle, prÃ©vention blessures. Approche Ã©quilibrÃ©e privilÃ©giant santÃ© et dÃ©veloppement harmonieux.')
+@section('title', 'Outils Force & Musculation - Approche Securisee et Progressive Evidence-Based')
+@section('meta_description', 'Outils scientifiques pour musculation securisee : calcul charges, progression graduelle, prevention blessures. Approche equilibree privilegiant sante et developpement harmonieux.')
 
 @section('content')
 <!-- Section titre -->
@@ -28,13 +28,13 @@
                     Force & Musculation
                 </h1>
                 <p class="lead mb-4">
-                    DÃ©veloppement de la force avec une approche sÃ©curisÃ©e et progressive. 
-                    Outils basÃ©s sur la physiologie musculaire, la biomÃ©canique sÃ©curitaire et la prÃ©vention des blessures.
+                    Developpement de la force avec une approche securisee et progressive. 
+                    Outils bases sur la physiologie musculaire, la biomecanique securitaire et la prevention des blessures.
                 </p>
                 <div class="alert alert-warning border-0 bg-white bg-opacity-25">
                     <small>
                         <i class="fas fa-shield-alt me-2"></i>
-                        <strong>1 outil disponible</strong> - SÃ©curitÃ© et progression graduelle prioritaires
+                        <strong>1 outil disponible</strong> - Securite et progression graduelle prioritaires
                     </small>
                 </div>
             </div>
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<!-- Avertissement sÃ©curitÃ© -->
+<!-- Avertissement securite -->
 <section class="py-4 bg-danger text-white">
     <div class="container">
         <div class="alert alert-light border-0 mb-0">
@@ -57,12 +57,12 @@
                     <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
                 </div>
                 <div class="col-md-11">
-                    <h6 class="fw-bold mb-2 text-danger">SÃ©curitÃ© en Musculation - PrioritÃ© Absolue</h6>
+                    <h6 class="fw-bold mb-2 text-danger">Securite en Musculation - Priorite Absolue</h6>
                     <p class="mb-0 small text-dark">
-                        <strong>La musculation prÃ©sente des risques de blessures graves sans supervision et progression appropriÃ©es.</strong> 
-                        Apprentissage technique obligatoire avec professionnel qualifiÃ©, progression trÃ¨s graduelle, 
-                        Ã©chauffement systÃ©matique et arrêt immÃ©diat en cas de douleur. 
-                        Consultation mÃ©dicale recommandÃ©e avant dÃ©but, particuliÃ¨rement aprÃ¨s 40 ans ou antÃ©cÃ©dents articulaires/cardiaques.
+                        <strong>La musculation presente des risques de blessures graves sans supervision et progression appropriees.</strong> 
+                        Apprentissage technique obligatoire avec professionnel qualifie, progression tres graduelle, 
+                        echauffement systematique et arrêt immediat en cas de douleur. 
+                        Consultation medicale recommandee avant debut, particulierement apres 40 ans ou antecedents articulaires/cardiaques.
                     </p>
                 </div>
             </div>
@@ -70,7 +70,7 @@
     </div>
 </section>
 
-<!-- Outils de la catÃ©gorie -->
+<!-- Outils de la categorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
@@ -87,12 +87,12 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-3">
                                         <h4 class="card-title mb-0 text-dark fw-bold">Calculateur 1RM & Charges d'Entraînement</h4>
-                                        <span class="badge bg-primary ms-2">AvancÃ©</span>
+                                        <span class="badge bg-primary ms-2">Avance</span>
                                     </div>
                                     <p class="card-text text-muted mb-4">
-                                        Estimation de la rÃ©pÃ©tition maximale (1RM) et calcul des pourcentages d'entraînement sÃ©curisÃ©s. 
+                                        Estimation de la repetition maximale (1RM) et calcul des pourcentages d'entraînement securises. 
                                         Planification progressive des charges respectant les principes physiologiques 
-                                        et la prÃ©vention des blessures pour un dÃ©veloppement harmonieux et durable.
+                                        et la prevention des blessures pour un developpement harmonieux et durable.
                                     </p>
                                     <div class="row g-3 mb-4">
                                         <div class="col-md-4">
@@ -110,12 +110,12 @@
                                         <div class="col-md-4">
                                             <div class="d-flex align-items-center">
                                                 <i class="fas fa-heart text-danger me-2"></i>
-                                                <small class="text-danger fw-semibold">SantÃ© prioritaire</small>
+                                                <small class="text-danger fw-semibold">Sante prioritaire</small>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="text-primary fw-bold fs-5">AccÃ©der Ã l'outil →</span>
+                                        <span class="text-primary fw-bold fs-5">Acceder Ã l'outil →</span>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -135,17 +135,17 @@
             <div class="card border-danger">
                 <div class="card-body py-3">
                     <h6 class="text-danger mb-2">
-                        <i class="fas fa-user-tie me-2"></i>Supervision Professionnelle RecommandÃ©e
+                        <i class="fas fa-user-tie me-2"></i>Supervision Professionnelle Recommandee
                     </h6>
                     <p class="small text-muted mb-3">
-                        La musculation nÃ©cessite un apprentissage technique rigoureux. 
-                        L'accompagnement d'un professionnel qualifiÃ© accÃ©lÃ¨re les progrÃ¨s et prÃ©vient les blessures.
+                        La musculation necessite un apprentissage technique rigoureux. 
+                        L'accompagnement d'un professionnel qualifie accelere les progres et previent les blessures.
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
-                        <span class="badge bg-outline-primary">Coach sportif diplômÃ©</span>
-                        <span class="badge bg-outline-success">KinÃ©sithÃ©rapeute</span>
-                        <span class="badge bg-outline-warning">PrÃ©parateur physique</span>
-                        <span class="badge bg-outline-info">Ã©ducateur APA</span>
+                        <span class="badge bg-outline-primary">Coach sportif diplôme</span>
+                        <span class="badge bg-outline-success">Kinesitherapeute</span>
+                        <span class="badge bg-outline-warning">Preparateur physique</span>
+                        <span class="badge bg-outline-info">educateur APA</span>
                     </div>
                 </div>
             </div>
@@ -167,16 +167,16 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
-        <!-- SÃ©curitÃ© en musculation -->
+        <!-- Securite en musculation -->
         <div class="card mb-4">
             <div class="card-header bg-danger text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    SÃ©curitÃ© en Musculation - PrioritÃ© Absolue
+                    Securite en Musculation - Priorite Absolue
                 </h3>
             </div>
             <div class="card-body">
@@ -184,36 +184,36 @@
                     <div class="col-md-6">
                         <h6 class="text-danger">Risques et Accidents Courants</h6>
                         <ul class="small">
-                            <li><strong>Blessures musculaires :</strong> Ã©longations, dÃ©chirures par charge excessive</li>
+                            <li><strong>Blessures musculaires :</strong> elongations, dechirures par charge excessive</li>
                             <li><strong>Traumatismes articulaires :</strong> Entorses, luxations par mauvaise technique</li>
-                            <li><strong>Blessures rachidiennes :</strong> Hernies, tassements vertÃ©braux</li>
-                            <li><strong>Accidents matÃ©riel :</strong> Chute de charges, coincement</li>
+                            <li><strong>Blessures rachidiennes :</strong> Hernies, tassements vertebraux</li>
+                            <li><strong>Accidents materiel :</strong> Chute de charges, coincement</li>
                             <li><strong>Malaises cardiovasculaires :</strong> Manœuvre de Valsalva excessive</li>
                         </ul>
                         
                         <div class="alert alert-danger alert-sm">
                             <h6 class="small">Statistiques Alarmantes</h6>
                             <p class="small mb-0">
-                                La musculation reprÃ©sente 15-25% des blessures sportives, 
-                                souvent graves et invalidantes. <strong>La prÃ©vention est cruciale.</strong>
+                                La musculation represente 15-25% des blessures sportives, 
+                                souvent graves et invalidantes. <strong>La prevention est cruciale.</strong>
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">RÃ¨gles de SÃ©curitÃ© Fondamentales</h6>
+                        <h6 class="text-success">Regles de Securite Fondamentales</h6>
                         <ul class="small">
                             <li><strong>Apprentissage technique :</strong> Mouvement parfait avant charge</li>
-                            <li><strong>Ã©chauffement obligatoire :</strong> 15-20 minutes minimum</li>
+                            <li><strong>echauffement obligatoire :</strong> 15-20 minutes minimum</li>
                             <li><strong>Progression graduelle :</strong> 5-10% augmentation maximum/semaine</li>
-                            <li><strong>Supervision :</strong> PrÃ©sence partenaire ou coach pour exercices lourds</li>
-                            <li><strong>MatÃ©riel vÃ©rifiÃ© :</strong> Ã©tat barres, disques, attaches</li>
-                            <li><strong>Environnement sÃ©curisÃ© :</strong> Espace dÃ©gagÃ©, sol stable</li>
+                            <li><strong>Supervision :</strong> Presence partenaire ou coach pour exercices lourds</li>
+                            <li><strong>Materiel verifie :</strong> etat barres, disques, attaches</li>
+                            <li><strong>Environnement securise :</strong> Espace degage, sol stable</li>
                         </ul>
                         
                         <div class="alert alert-success alert-sm">
                             <h6 class="small">Principe Cardinal</h6>
                             <p class="small mb-0">
-                                <strong>"Mieux vaut sous-estimer ses capacitÃ©s que risquer la blessure."</strong> 
+                                <strong>"Mieux vaut sous-estimer ses capacites que risquer la blessure."</strong> 
                                 La prudence permet la progression long terme.
                             </p>
                         </div>
@@ -221,19 +221,19 @@
                 </div>
                 
                 <div class="alert alert-warning mt-4">
-                    <h6><i class="fas fa-stop me-2"></i>Arrêt ImmÃ©diat Obligatoire</h6>
+                    <h6><i class="fas fa-stop me-2"></i>Arrêt Immediat Obligatoire</h6>
                     <div class="row g-2">
                         <div class="col-md-6">
                             <ul class="small mb-0">
                                 <li>Douleur articulaire aiguë</li>
                                 <li>Sensation de "claquage" musculaire</li>
-                                <li>Vertiges, malaise, nausÃ©es</li>
+                                <li>Vertiges, malaise, nausees</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="small mb-0">
                                 <li>Perte de contrôle technique</li>
-                                <li>Fatigue excessive compromettant sÃ©curitÃ©</li>
+                                <li>Fatigue excessive compromettant securite</li>
                                 <li>Douleur rachidienne (dos, nuque)</li>
                             </ul>
                         </div>
@@ -255,8 +255,8 @@
                     <div class="col-md-6">
                         <h6 class="text-primary">Adaptations Physiologiques</h6>
                         <p class="small">
-                            Le dÃ©veloppement de la force implique des adaptations nerveuses (coordination, recrutement) 
-                            puis structurelles (hypertrophie musculaire). Ces adaptations nÃ©cessitent du temps 
+                            Le developpement de la force implique des adaptations nerveuses (coordination, recrutement) 
+                            puis structurelles (hypertrophie musculaire). Ces adaptations necessitent du temps 
                             et une stimulation progressive pour s'installer durablement.
                         </p>
                         
@@ -264,7 +264,7 @@
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>PÃ©riode</th>
+                                        <th>Periode</th>
                                         <th>Adaptation Principale</th>
                                         <th>Gains Attendus</th>
                                     </tr>
@@ -295,26 +295,26 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Principes de Progression SÃ©curisÃ©e</h6>
+                        <h6 class="text-success">Principes de Progression Securisee</h6>
                         <ul class="small">
-                            <li><strong>Progression linÃ©aire :</strong> Augmentation graduelle et rÃ©guliÃ¨re</li>
-                            <li><strong>PÃ©riodisation :</strong> Alternance phases volume/intensitÃ©</li>
-                            <li><strong>RÃ©cupÃ©ration intÃ©grÃ©e :</strong> 48-72h entre sÃ©ances muscle</li>
-                            <li><strong>Individualisation :</strong> Adaptation selon rÃ©ponse personnelle</li>
+                            <li><strong>Progression lineaire :</strong> Augmentation graduelle et reguliere</li>
+                            <li><strong>Periodisation :</strong> Alternance phases volume/intensite</li>
+                            <li><strong>Recuperation integree :</strong> 48-72h entre seances muscle</li>
+                            <li><strong>Individualisation :</strong> Adaptation selon reponse personnelle</li>
                             <li><strong>Monitoring :</strong> Suivi fatigue, motivation, performances</li>
                         </ul>
                         
                         <h6 class="text-warning mt-3">Signaux de Surcharge</h6>
                         <ul class="small">
-                            <li>Stagnation ou rÃ©gression performances</li>
-                            <li>Fatigue persistante malgrÃ© repos</li>
+                            <li>Stagnation ou regression performances</li>
+                            <li>Fatigue persistante malgre repos</li>
                             <li>Douleurs articulaires chroniques</li>
-                            <li>Troubles du sommeil, irritabilitÃ©</li>
-                            <li>Perte d'envie, dÃ©motivation</li>
+                            <li>Troubles du sommeil, irritabilite</li>
+                            <li>Perte d'envie, demotivation</li>
                         </ul>
                         
                         <div class="alert alert-info alert-sm">
-                            <h6 class="small">Patience NÃ©cessaire</h6>
+                            <h6 class="small">Patience Necessaire</h6>
                             <p class="small mb-0">
                                 Les adaptations durables prennent des mois Ã s'installer. 
                                 Forcer la progression augmente le risque de blessure sans gain.
@@ -325,12 +325,12 @@
             </div>
         </div>
 
-        <!-- PrÃ©vention troubles comportementaux -->
+        <!-- Prevention troubles comportementaux -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-balance-scale me-2"></i>
-                    Approche Ã©quilibrÃ©e et PrÃ©vention des DÃ©rives
+                    Approche equilibree et Prevention des Derives
                 </h3>
             </div>
             <div class="card-body">
@@ -338,37 +338,37 @@
                     <div class="col-md-6">
                         <h6 class="text-warning">Risques Comportementaux</h6>
                         <p class="small">
-                            La musculation peut dÃ©velopper des comportements compulsifs ou une dysmorphie corporelle. 
+                            La musculation peut developper des comportements compulsifs ou une dysmorphie corporelle. 
                             L'obsession du physique, la comparaison constante ou l'entraînement excessif 
                             peuvent nuire au bien-être mental et social.
                         </p>
                         
                         <h6 class="text-danger mt-3">Signaux d'Alarme</h6>
                         <ul class="small">
-                            <li>ImpossibilitÃ© de manquer une sÃ©ance</li>
-                            <li>Entraînement malgrÃ© blessures</li>
+                            <li>Impossibilite de manquer une seance</li>
+                            <li>Entraînement malgre blessures</li>
                             <li>Insatisfaction permanente physique</li>
                             <li>Comparaison obsessionnelle avec autres</li>
-                            <li>NÃ©gligence obligations sociales/professionnelles</li>
-                            <li>Utilisation substances pour "amÃ©liorer" rÃ©sultats</li>
+                            <li>Negligence obligations sociales/professionnelles</li>
+                            <li>Utilisation substances pour "ameliorer" resultats</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Approche Saine RecommandÃ©e</h6>
+                        <h6 class="text-success">Approche Saine Recommandee</h6>
                         <ul class="small">
-                            <li><strong>Objectifs rÃ©alistes :</strong> Progression graduelle sur plusieurs annÃ©es</li>
-                            <li><strong>Ã©quilibre vie :</strong> Musculation complÃ©ment, non centre existence</li>
-                            <li><strong>Plaisir prÃ©servÃ© :</strong> Entraînement source satisfaction</li>
-                            <li><strong>FlexibilitÃ© :</strong> Adaptation selon contraintes vie</li>
+                            <li><strong>Objectifs realistes :</strong> Progression graduelle sur plusieurs annees</li>
+                            <li><strong>equilibre vie :</strong> Musculation complement, non centre existence</li>
+                            <li><strong>Plaisir preserve :</strong> Entraînement source satisfaction</li>
+                            <li><strong>Flexibilite :</strong> Adaptation selon contraintes vie</li>
                             <li><strong>Image corporelle saine :</strong> Acceptation morphologie individuelle</li>
-                            <li><strong>Perspective long terme :</strong> SantÃ© et mobilitÃ© Ã vie</li>
+                            <li><strong>Perspective long terme :</strong> Sante et mobilite Ã vie</li>
                         </ul>
                         
                         <div class="alert alert-success alert-sm">
-                            <h6 class="small">BÃ©nÃ©fices SantÃ© RÃ©els</h6>
+                            <h6 class="small">Benefices Sante Reels</h6>
                             <p class="small mb-0">
-                                Musculation bien pratiquÃ©e amÃ©liore force fonctionnelle, 
-                                densitÃ© osseuse, mÃ©tabolisme et confiance en soi durablement.
+                                Musculation bien pratiquee ameliore force fonctionnelle, 
+                                densite osseuse, metabolisme et confiance en soi durablement.
                             </p>
                         </div>
                     </div>
@@ -377,40 +377,40 @@
                 <div class="alert alert-warning mt-4">
                     <h6><i class="fas fa-hands-helping me-2"></i>Recherche d'Aide Professionnelle</h6>
                     <p class="mb-0 small">
-                        Si la musculation devient source d'anxiÃ©tÃ©, d'obsession ou nuit Ã votre bien-être global, 
-                        <strong>consultez un psychologue spÃ©cialisÃ© en sport ou troubles alimentaires.</strong> 
+                        Si la musculation devient source d'anxiete, d'obsession ou nuit Ã votre bien-être global, 
+                        <strong>consultez un psychologue specialise en sport ou troubles alimentaires.</strong> 
                         Il n'y a aucune honte Ã chercher de l'aide pour maintenir un rapport sain Ã l'exercice. 
-                        Votre Ã©quilibre mental et social est plus important que n'importe quel objectif physique.
+                        Votre equilibre mental et social est plus important que n'importe quel objectif physique.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- MatÃ©riel et environnement -->
+        <!-- Materiel et environnement -->
         <div class="card">
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-tools me-2"></i>
-                    MatÃ©riel et Environnement SÃ©curisÃ©s
+                    Materiel et Environnement Securises
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-secondary">Ã©quipements de SÃ©curitÃ©</h6>
+                        <h6 class="text-secondary">equipements de Securite</h6>
                         <ul class="small">
-                            <li><strong>Barres et disques :</strong> VÃ©rification Ã©tat, serrage colliers</li>
-                            <li><strong>Bancs et supports :</strong> StabilitÃ©, rÃ©glages sÃ©curisÃ©s</li>
+                            <li><strong>Barres et disques :</strong> Verification etat, serrage colliers</li>
+                            <li><strong>Bancs et supports :</strong> Stabilite, reglages securises</li>
                             <li><strong>Câbles et poulies :</strong> Usure, lubrification</li>
-                            <li><strong>HaltÃ¨res :</strong> Serrage, Ã©quilibre</li>
-                            <li><strong>Protections :</strong> Gants, ceinture si appropriÃ©</li>
+                            <li><strong>Halteres :</strong> Serrage, equilibre</li>
+                            <li><strong>Protections :</strong> Gants, ceinture si approprie</li>
                         </ul>
                         
                         <div class="alert alert-warning alert-sm">
-                            <h6 class="small">Attention MatÃ©riel DÃ©faillant</h6>
+                            <h6 class="small">Attention Materiel Defaillant</h6>
                             <p class="small mb-0">
-                                Ne jamais utiliser matÃ©riel douteux. 
-                                Signaler immÃ©diatement tout problÃ¨me au personnel.
+                                Ne jamais utiliser materiel douteux. 
+                                Signaler immediatement tout probleme au personnel.
                             </p>
                         </div>
                     </div>
@@ -418,19 +418,19 @@
                         <h6 class="text-info">Environnement Optimal</h6>
                         <ul class="small">
                             <li><strong>Espace suffisant :</strong> Mouvements libres, pas d'obstacle</li>
-                            <li><strong>Sol stable :</strong> AntidÃ©rapant, niveau</li>
-                            <li><strong>Ã©clairage adaptÃ© :</strong> VisibilitÃ© parfaite</li>
-                            <li><strong>TempÃ©rature :</strong> Ni trop chaud, ni trop froid</li>
-                            <li><strong>Ventilation :</strong> Air renouvelÃ©</li>
-                            <li><strong>ProximitÃ© secours :</strong> Personnel formÃ© disponible</li>
+                            <li><strong>Sol stable :</strong> Antiderapant, niveau</li>
+                            <li><strong>eclairage adapte :</strong> Visibilite parfaite</li>
+                            <li><strong>Temperature :</strong> Ni trop chaud, ni trop froid</li>
+                            <li><strong>Ventilation :</strong> Air renouvele</li>
+                            <li><strong>Proximite secours :</strong> Personnel forme disponible</li>
                         </ul>
                         
-                        <h6 class="text-success mt-3">PrÃ©paration SÃ©ance</h6>
+                        <h6 class="text-success mt-3">Preparation Seance</h6>
                         <ul class="small">
                             <li>Planification exercices et charges</li>
-                            <li>VÃ©rification matÃ©riel nÃ©cessaire</li>
-                            <li>Ã©chauffement spÃ©cifique complet</li>
-                            <li>Hydratation avant/pendant sÃ©ance</li>
+                            <li>Verification materiel necessaire</li>
+                            <li>echauffement specifique complet</li>
+                            <li>Hydratation avant/pendant seance</li>
                             <li>Partenaire ou supervision si exercices lourds</li>
                         </ul>
                     </div>
@@ -440,7 +440,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -456,9 +456,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -468,15 +468,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -503,7 +503,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -514,12 +514,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -647,7 +647,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrÃ©e pour les cards
+    // Animation d'entree pour les cards
     const cards = document.querySelectorAll('.hover-lift');
     
     const observerOptions = {

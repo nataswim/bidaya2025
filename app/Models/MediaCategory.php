@@ -38,7 +38,7 @@ class MediaCategory extends Model
     }
 
     /**
-     * GÃ©nÃ©rer automatiquement le slug
+     * Generer automatiquement le slug
      */
     public function setNameAttribute($value)
     {
@@ -50,7 +50,7 @@ class MediaCategory extends Model
     }
 
     /**
-     * Scope pour les catÃ©gories actives
+     * Scope pour les categories actives
      */
     public function scopeActive($query)
     {
@@ -58,7 +58,7 @@ class MediaCategory extends Model
     }
 
     /**
-     * Scope ordonnÃ©
+     * Scope ordonne
      */
     public function scopeOrdered($query)
     {

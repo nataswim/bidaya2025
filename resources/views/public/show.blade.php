@@ -9,15 +9,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-12">
                 
-                <!-- Card 1: Titre et mÃ©tadonnÃ©es -->
+                <!-- Card 1: Titre et metadonnees -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
                         <h1 class="display-5 fw-bold mb-4">{{ $post->name }}</h1>
                         
-                        <!-- MÃ©tadonnÃ©es -->
+                        <!-- Metadonnees -->
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
                             <span class="badge bg-primary px-3 py-2">
-                                {{ $post->category->name ?? 'ActualitÃ©s' }}
+                                {{ $post->category->name ?? 'Actualites' }}
                             </span>
                             
                             <span class="d-flex align-items-center">
@@ -71,7 +71,7 @@
                                     {!! $post->content !!}
                                 </div>
                             @else
-                                <!-- Message d'accÃ¨s restreint -->
+                                <!-- Message d'acces restreint -->
                                 <div class="content-restricted">
                                     <div class="alert alert-info border-0">
                                         <div class="row align-items-center">
@@ -81,7 +81,7 @@
                                             <div class="col">
                                                 <h5 class="alert-heading mb-2">Contenu exclusif membre</h5>
                                                 <p class="mb-3">
-                                                    Cet article fait partie de nos contenus premium. CrÃ©ez votre compte gratuit pour continuer la lecture.
+                                                    Cet article fait partie de nos contenus premium. Creez votre compte gratuit pour continuer la lecture.
                                                 </p>
                                                 <div class="d-flex gap-2">
                                                     <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     
-                                    <!-- Aperçu tronquÃ© -->
+                                    <!-- Aperçu tronque -->
                                     @if($post->content)
                                         <div class="content-preview position-relative mt-3">
                                             <div class="text-muted p-3 border rounded" style="max-height: 150px; overflow: hidden;">
@@ -136,20 +136,20 @@
                                 <i class="fab fa-linkedin me-1"></i>LinkedIn
                             </a>
                             <button class="btn btn-outline-secondary" 
-                                    onclick="navigator.clipboard.writeText(window.location.href); this.innerHTML='<i class=\'fas fa-check me-1\'></i>CopiÃ© !'; setTimeout(() => this.innerHTML='<i class=\'fas fa-link me-1\'></i>Copier le lien', 2000)">
+                                    onclick="navigator.clipboard.writeText(window.location.href); this.innerHTML='<i class=\'fas fa-check me-1\'></i>Copie !'; setTimeout(() => this.innerHTML='<i class=\'fas fa-link me-1\'></i>Copier le lien', 2000)">
                                 <i class="fas fa-link me-1"></i>Copier le lien
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 6: DerniÃ¨res publications -->
+                <!-- Card 6: Dernieres publications -->
                 @if(isset($recentPosts) && $recentPosts->count() > 0)
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">
                                 <i class="fas fa-newspaper me-2 text-success"></i>
-                                DerniÃ¨res publications
+                                Dernieres publications
                             </h5>
                         </div>
                         <div class="card-body p-0">
@@ -212,15 +212,15 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-folder me-1"></i>CatÃ©gorie:
+                                        <i class="fas fa-folder me-1"></i>Categorie:
                                     </span>
-                                    <strong>{{ $post->category->name ?? 'Non catÃ©gorisÃ©' }}</strong>
+                                    <strong>{{ $post->category->name ?? 'Non categorise' }}</strong>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>PubliÃ© le:
+                                        <i class="fas fa-calendar me-1"></i>Publie le:
                                     </span>
                                     <strong>{{ $post->published_at?->format('d F Y') ?? $post->created_at?->format('d F Y') }}</strong>
                                 </div>

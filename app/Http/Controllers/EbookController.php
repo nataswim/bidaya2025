@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class EbookController extends Controller
 {
     /**
-     * Liste des catÃ©gories d'eBooks
+     * Liste des categories d'eBooks
      */
     public function index()
     {
@@ -41,7 +41,7 @@ class EbookController extends Controller
     }
 
     /**
-     * Affichage d'une catÃ©gorie
+     * Affichage d'une categorie
      */
     public function category($categorySlug, Request $request)
     {
@@ -96,7 +96,7 @@ class EbookController extends Controller
     }
 
     /**
-     * DÃ©tail d'un tÃ©lÃ©chargement
+     * Detail d'un telechargement
      */
     public function show($categorySlug, $downloadableSlug)
     {
@@ -110,7 +110,7 @@ class EbookController extends Controller
             ->with(['category', 'creator'])
             ->firstOrFail();
 
-        // Suggestions d'autres tÃ©lÃ©chargements de la même catÃ©gorie
+        // Suggestions d'autres telechargements de la même categorie
         $relatedDownloads = Downloadable::where('download_category_id', $category->id)
             ->where('id', '!=', $downloadable->id)
             ->active()
@@ -123,7 +123,7 @@ class EbookController extends Controller
     }
 
     /**
-     * TÃ©lÃ©chargement d'un fichier
+     * Telechargement d'un fichier
      */
     public function download($categorySlug, $downloadableSlug, Request $request)
     {
@@ -136,31 +136,31 @@ class EbookController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
-        // VÃ©rifier les permissions
-        $currentUser = auth()->user(); // RÃ©cupÃ©rer une seule fois
+        // Verifier les permissions
+        $currentUser = auth()->user(); // Recuperer une seule fois
         
         if (!$downloadable->canBeDownloadedBy($currentUser)) {
             $message = $downloadable->getAccessMessage($currentUser);
             
             if (!$currentUser && $downloadable->user_permission === 'user') {
                 return redirect()->route('login')
-                    ->with('info', 'Connectez-vous pour tÃ©lÃ©charger ce fichier.');
+                    ->with('info', 'Connectez-vous pour telecharger ce fichier.');
             }
             
             return redirect()->back()
                 ->with('error', $message);
         }
 
-        // VÃ©rifier que le fichier existe
+        // Verifier que le fichier existe
         if (!$downloadable->file_path || !Storage::disk('local')->exists($downloadable->file_path)) {
             return redirect()->back()
-                ->with('error', 'Fichier non trouvÃ©.');
+                ->with('error', 'Fichier non trouve.');
         }
 
-        // IncrÃ©menter le compteur et logger
+        // Incrementer le compteur et logger
         $downloadable->incrementDownloadCount($currentUser, $request);
 
-        // TÃ©lÃ©chargement
+        // Telechargement
         $filePath = Storage::disk('local')->path($downloadable->file_path);
         $fileName = $downloadable->title . '.' . $downloadable->format;
 
@@ -168,7 +168,7 @@ class EbookController extends Controller
     }
 
     /**
-     * Recherche dans les tÃ©lÃ©chargements
+     * Recherche dans les telechargements
      */
     public function search(Request $request)
     {

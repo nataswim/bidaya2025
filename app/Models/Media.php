@@ -51,17 +51,17 @@ class Media extends Model
  */
 public function getUrlAttribute()
 {
-    // VÃ©rifier que le fichier existe
+    // Verifier que le fichier existe
     if (Storage::disk('public')->exists($this->path)) {
         return url('/storage/' . $this->path);
     }
     
-    // Retourner une URL par dÃ©faut si le fichier n'existe pas
+    // Retourner une URL par defaut si le fichier n'existe pas
     return url('/storage/default-image.jpg');
 }
 
     /**
-     * URL complÃ¨te
+     * URL complete
      */
     public function getFullUrlAttribute()
     {
@@ -69,7 +69,7 @@ public function getUrlAttribute()
     }
 
     /**
-     * Taille formatÃ©e
+     * Taille formatee
      */
     public function getFormattedSizeAttribute()
     {
@@ -84,7 +84,7 @@ public function getUrlAttribute()
     }
 
     /**
-     * VÃ©rifier si c'est une image
+     * Verifier si c'est une image
      */
     public function getIsImageAttribute()
     {
@@ -104,7 +104,7 @@ public function getUrlAttribute()
     }
 
     /**
-     * Marquer comme utilisÃ©
+     * Marquer comme utilise
      */
     public function markAsUsed()
     {
@@ -120,7 +120,7 @@ public function getUrlAttribute()
     }
 
     /**
-     * Scope par catÃ©gorie
+     * Scope par categorie
      */
     public function scopeInCategory($query, $categoryId)
     {
@@ -128,7 +128,7 @@ public function getUrlAttribute()
     }
 
     /**
-     * Scope rÃ©cents
+     * Scope recents
      */
     public function scopeRecent($query, $days = 30)
     {

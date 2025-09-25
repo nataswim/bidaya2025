@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title', 'DÃ©tails utilisateur')
+@section('title', 'Details utilisateur')
 
 @section('content')
     <h1 class="text-2xl font-bold mb-4">Profil de {{ $user->name ?? 'Utilisateur' }}</h1>

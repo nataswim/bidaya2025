@@ -1,22 +1,22 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur TDEE AvancÃ© & MÃ©tabolisme - DÃ©pense Ã©nergÃ©tique PersonnalisÃ©e')
-@section('meta_description', 'Calculateur TDEE scientifique avec personnalisation avancÃ©e. Multiples formules BMR, ajustements gÃ©nÃ©tiques, hormonaux, environnementaux. Objectifs nutritionnels optimisÃ©s. Evidence-based 2024.')
+@section('title', 'Calculateur TDEE Avance & Metabolisme - Depense energetique Personnalisee')
+@section('meta_description', 'Calculateur TDEE scientifique avec personnalisation avancee. Multiples formules BMR, ajustements genetiques, hormonaux, environnementaux. Objectifs nutritionnels optimises. Evidence-based 2024.')
 
 @section('content')
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Calculateur TDEE dÃ©pense Ã©nergÃ©tique totale
+            Calculateur TDEE depense energetique totale
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-desktop text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Calculez votre dÃ©pense Ã©nergÃ©tique totale</strong> avec les derniÃ¨res recherches 
-                    en mÃ©tabolisme et personnalisation scientifique avancÃ©e
+                    <strong>Calculez votre depense energetique totale</strong> avec les dernieres recherches 
+                    en metabolisme et personnalisation scientifique avancee
                 </div>
             </div>
         </div>
@@ -27,12 +27,12 @@
 <section class="py-5 bg-light">
     <div class="container">
         
-        <!-- Calculateur TDEE Multi-ParamÃ¨tres -->
+        <!-- Calculateur TDEE Multi-Parametres -->
         <div class="card mb-4 shadow-lg">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-calculator me-2"></i>
-                    Calculateur TDEE Multi-ParamÃ¨tres
+                    Calculateur TDEE Multi-Parametres
                 </h3>
             </div>
             <div class="card-body">
@@ -42,10 +42,10 @@
                     <!-- Sera rempli par JavaScript -->
                 </div>
 
-                <!-- DonnÃ©es de base -->
+                <!-- Donnees de base -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-3">
-                        <label for="age" class="form-label fw-bold">Âge (annÃ©es)</label>
+                        <label for="age" class="form-label fw-bold">Âge (annees)</label>
                         <input type="number" id="age" class="form-control form-control-lg border-primary" 
                                placeholder="30" min="10" max="100">
                     </div>
@@ -85,24 +85,24 @@
                     </div>
                 </div>
 
-                <!-- ActivitÃ© et Lifestyle -->
-                <h5 class="fw-bold mb-3">ActivitÃ© et Lifestyle</h5>
+                <!-- Activite et Lifestyle -->
+                <h5 class="fw-bold mb-3">Activite et Lifestyle</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <label for="activityLevel" class="form-label">Niveau d'activitÃ© physique</label>
+                        <label for="activityLevel" class="form-label">Niveau d'activite physique</label>
                         <select id="activityLevel" class="form-select border-success">
-                            <option value="sedentary">SÃ©dentaire (bureau, pas d'exercice)</option>
-                            <option value="light">LÃ©ger (exercice 1-3j/sem)</option>
-                            <option value="moderate" selected>ModÃ©rÃ© (exercice 3-5j/sem)</option>
+                            <option value="sedentary">Sedentaire (bureau, pas d'exercice)</option>
+                            <option value="light">Leger (exercice 1-3j/sem)</option>
+                            <option value="moderate" selected>Modere (exercice 3-5j/sem)</option>
                             <option value="active">Actif (exercice 6-7j/sem)</option>
-                            <option value="very_active">TrÃ¨s actif (2x/jour ou travail physique)</option>
-                            <option value="extreme">Extrême (athlÃ¨te professionnel)</option>
+                            <option value="very_active">Tres actif (2x/jour ou travail physique)</option>
+                            <option value="extreme">Extrême (athlete professionnel)</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="occupation" class="form-label">Type d'occupation</label>
                         <select id="occupation" class="form-select border-info">
-                            <option value="sedentary" selected>Bureau/SÃ©dentaire</option>
+                            <option value="sedentary" selected>Bureau/Sedentaire</option>
                             <option value="standing">Debout (vente, enseignement)</option>
                             <option value="walking">Marche (infirmier, serveur)</option>
                             <option value="physical">Physique (construction, sport)</option>
@@ -110,35 +110,35 @@
                     </div>
                 </div>
 
-                <!-- ParamÃ¨tres MÃ©taboliques AvancÃ©s -->
-                <h5 class="fw-bold mb-3">ParamÃ¨tres MÃ©taboliques AvancÃ©s</h5>
+                <!-- Parametres Metaboliques Avances -->
+                <h5 class="fw-bold mb-3">Parametres Metaboliques Avances</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
                         <label for="bmrFormula" class="form-label">Formule BMR</label>
                         <select id="bmrFormula" class="form-select border-danger">
-                            <option value="mifflin" selected>Mifflin-St Jeor (RecommandÃ©e)</option>
-                            <option value="harris">Harris-Benedict RÃ©visÃ©e</option>
+                            <option value="mifflin" selected>Mifflin-St Jeor (Recommandee)</option>
+                            <option value="harris">Harris-Benedict Revisee</option>
                             <option value="katch">Katch-McArdle (% graisse requis)</option>
                             <option value="cunningham">Cunningham (masse musculaire)</option>
-                            <option value="owen">Owen (validation rÃ©cente)</option>
+                            <option value="owen">Owen (validation recente)</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="healthCondition" class="form-label">Ã©tat de santÃ©</label>
+                        <label for="healthCondition" class="form-label">etat de sante</label>
                         <select id="healthCondition" class="form-select border-secondary">
-                            <option value="healthy" selected>Bonne santÃ©</option>
+                            <option value="healthy" selected>Bonne sante</option>
                             <option value="hyperthyroid">Hyperthyroïdie</option>
                             <option value="hypothyroid">Hypothyroïdie</option>
-                            <option value="diabetes">DiabÃ¨te</option>
+                            <option value="diabetes">Diabete</option>
                             <option value="pcos">SOPK</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="geneticFactor" class="form-label">Facteur gÃ©nÃ©tique</label>
+                        <label for="geneticFactor" class="form-label">Facteur genetique</label>
                         <select id="geneticFactor" class="form-select border-warning">
-                            <option value="slow">MÃ©tabolisme lent</option>
+                            <option value="slow">Metabolisme lent</option>
                             <option value="average" selected>Moyen</option>
-                            <option value="fast">MÃ©tabolisme rapide</option>
+                            <option value="fast">Metabolisme rapide</option>
                         </select>
                     </div>
                 </div>
@@ -155,29 +155,29 @@
                         <label for="stressLevel" class="form-label">Niveau de stress</label>
                         <select id="stressLevel" class="form-select border-warning">
                             <option value="low">Faible</option>
-                            <option value="moderate" selected>ModÃ©rÃ©</option>
-                            <option value="high">Ã©levÃ©</option>
+                            <option value="moderate" selected>Modere</option>
+                            <option value="high">eleve</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="climateTemp" class="form-label">TempÃ©rature moyenne (°C)</label>
+                        <label for="climateTemp" class="form-label">Temperature moyenne (°C)</label>
                         <input type="number" id="climateTemp" class="form-control border-secondary" 
                                placeholder="20" min="-20" max="50">
                     </div>
                 </div>
 
-                <!-- Impact MÃ©dicamenteux -->
-                <h5 class="fw-bold mb-3">Impact MÃ©dicamenteux</h5>
+                <!-- Impact Medicamenteux -->
+                <h5 class="fw-bold mb-3">Impact Medicamenteux</h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-12">
-                        <label for="medicationImpact" class="form-label">MÃ©dicaments affectant le mÃ©tabolisme</label>
+                        <label for="medicationImpact" class="form-label">Medicaments affectant le metabolisme</label>
                         <select id="medicationImpact" class="form-select border-danger">
                             <option value="none" selected>Aucun impact significatif</option>
-                            <option value="stimulants">Stimulants (cafÃ©ine, ADHD)</option>
+                            <option value="stimulants">Stimulants (cafeine, ADHD)</option>
                             <option value="beta_blockers">Bêta-bloquants</option>
-                            <option value="antidepressants">AntidÃ©presseurs</option>
-                            <option value="corticosteroids">CorticostÃ©roïdes</option>
-                            <option value="thyroid_meds">MÃ©dicaments thyroïdiens</option>
+                            <option value="antidepressants">Antidepresseurs</option>
+                            <option value="corticosteroids">Corticosteroïdes</option>
+                            <option value="thyroid_meds">Medicaments thyroïdiens</option>
                         </select>
                     </div>
                 </div>
@@ -186,26 +186,26 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <button class="btn btn-primary btn-lg fw-bold w-100" onclick="calculateTDEE()">
-                            <i class="fas fa-calculator me-2"></i>Calculer TDEE PersonnalisÃ©
+                            <i class="fas fa-calculator me-2"></i>Calculer TDEE Personnalise
                         </button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetCalculator()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- RÃ©sultats -->
+        <!-- Resultats -->
         <div id="resultsSection" class="d-none">
-            <!-- Profil MÃ©tabolique -->
+            <!-- Profil Metabolique -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-user-chart me-2"></i>
-                        Votre Profil MÃ©tabolique PersonnalisÃ©
+                        Votre Profil Metabolique Personnalise
                     </h3>
                 </div>
                 <div class="card-body">
@@ -214,7 +214,7 @@
                             <div class="card border-danger h-100">
                                 <div class="card-header bg-danger text-white text-center">
                                     <h6 class="mb-0">BMR</h6>
-                                    <small>MÃ©tabolisme de Base</small>
+                                    <small>Metabolisme de Base</small>
                                 </div>
                                 <div class="card-body text-center">
                                     <p class="card-text">
@@ -244,8 +244,8 @@
                         <div class="col-md-3">
                             <div class="card border-success h-100">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h6 class="mb-0">TDEE AjustÃ©</h6>
-                                    <small>PersonnalisÃ©</small>
+                                    <h6 class="mb-0">TDEE Ajuste</h6>
+                                    <small>Personnalise</small>
                                 </div>
                                 <div class="card-body text-center">
                                     <p class="card-text">
@@ -260,7 +260,7 @@
                         <div class="col-md-3">
                             <div class="card border-info h-100">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h6 class="mb-0">Âge MÃ©tabolique</h6>
+                                    <h6 class="mb-0">Âge Metabolique</h6>
                                     <small>Estimation</small>
                                 </div>
                                 <div class="card-body text-center">
@@ -274,9 +274,9 @@
                         </div>
                     </div>
                     
-                    <!-- Ajustements appliquÃ©s -->
+                    <!-- Ajustements appliques -->
                     <div id="adjustmentDetails" class="alert alert-info d-none">
-                        <h6>Ajustements AppliquÃ©s</h6>
+                        <h6>Ajustements Appliques</h6>
                         <ul id="adjustmentsList" class="mb-0">
                             <!-- Sera rempli par JavaScript -->
                         </ul>
@@ -284,12 +284,12 @@
                 </div>
             </div>
 
-            <!-- RÃ©partition de la DÃ©pense Ã©nergÃ©tique -->
+            <!-- Repartition de la Depense energetique -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-warning text-dark">
                     <h3 class="mb-2">
                         <i class="fas fa-chart-pie me-2"></i>
-                        RÃ©partition de la DÃ©pense Ã©nergÃ©tique
+                        Repartition de la Depense energetique
                     </h3>
                 </div>
                 <div class="card-body">
@@ -337,7 +337,7 @@
                                         <span class="fs-4"><strong class="text-info" id="neatBreakdown">0</strong></span>
                                         <small class="d-block">kcal</small>
                                     </p>
-                                    <small class="text-muted">ActivitÃ© spontanÃ©e</small>
+                                    <small class="text-muted">Activite spontanee</small>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                                         <span class="fs-4"><strong class="text-success" id="eatBreakdown">0</strong></span>
                                         <small class="d-block">kcal</small>
                                     </p>
-                                    <small class="text-muted">Exercice planifiÃ©</small>
+                                    <small class="text-muted">Exercice planifie</small>
                                 </div>
                             </div>
                         </div>
@@ -387,7 +387,7 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
@@ -408,9 +408,9 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Formule</th>
-                                        <th>AnnÃ©e</th>
-                                        <th>Population d'Ã©tude</th>
-                                        <th>PrÃ©cision (±%)</th>
+                                        <th>Annee</th>
+                                        <th>Population d'etude</th>
+                                        <th>Precision (±%)</th>
                                         <th>Recommandation 2024</th>
                                     </tr>
                                 </thead>
@@ -423,7 +423,7 @@
                                         <td>Gold Standard actuel</td>
                                     </tr>
                                     <tr class="table-info">
-                                        <td>Harris-Benedict RÃ©visÃ©e</td>
+                                        <td>Harris-Benedict Revisee</td>
                                         <td>1984</td>
                                         <td>Large cohorte mixte</td>
                                         <td>±10-15%</td>
@@ -432,30 +432,30 @@
                                     <tr class="table-primary">
                                         <td>Katch-McArdle</td>
                                         <td>1996</td>
-                                        <td>BasÃ©e sur masse maigre</td>
+                                        <td>Basee sur masse maigre</td>
                                         <td>±3-8%</td>
                                         <td>Optimale si % graisse connu</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>Cunningham</td>
                                         <td>1991</td>
-                                        <td>AthlÃ¨tes et bodybuilders</td>
+                                        <td>Athletes et bodybuilders</td>
                                         <td>±5-12%</td>
-                                        <td>AthlÃ¨tes musclÃ©s</td>
+                                        <td>Athletes muscles</td>
                                     </tr>
                                     <tr>
                                         <td>Owen</td>
                                         <td>1986</td>
-                                        <td>Validation rÃ©cente large</td>
+                                        <td>Validation recente large</td>
                                         <td>±8-15%</td>
-                                        <td>Populations obÃ¨ses</td>
+                                        <td>Populations obeses</td>
                                     </tr>
                                     <tr class="table-secondary">
                                         <td>Harris-Benedict Originale</td>
                                         <td>1919</td>
                                         <td>Caucasiens 1919</td>
                                         <td>±15-25%</td>
-                                        <td>ObsolÃ¨te</td>
+                                        <td>Obsolete</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -465,21 +465,21 @@
                         <h6>Facteurs d'Erreur des Formules</h6>
                         <ul class="small">
                             <li><strong>Composition corporelle :</strong> Muscle vs graisse (±20%)</li>
-                            <li><strong>EthnicitÃ© :</strong> DiffÃ©rences mÃ©taboliques significatives</li>
-                            <li><strong>Âge :</strong> DÃ©clin BMR -1-2%/dÃ©cennie</li>
-                            <li><strong>Pathologies :</strong> Thyroïde, diabÃ¨te, SOPK</li>
-                            <li><strong>MÃ©dicaments :</strong> Impact hormonal/neural</li>
-                            <li><strong>Adaptation mÃ©tabolique :</strong> Restriction calorique</li>
+                            <li><strong>Ethnicite :</strong> Differences metaboliques significatives</li>
+                            <li><strong>Âge :</strong> Declin BMR -1-2%/decennie</li>
+                            <li><strong>Pathologies :</strong> Thyroïde, diabete, SOPK</li>
+                            <li><strong>Medicaments :</strong> Impact hormonal/neural</li>
+                            <li><strong>Adaptation metabolique :</strong> Restriction calorique</li>
                         </ul>
                         
                         <div class="card mt-3 border-primary">
                             <div class="card-header bg-primary text-white">
-                                <small>Technologies PrÃ©cises 2024</small>
+                                <small>Technologies Precises 2024</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>CalorimÃ©trie indirecte :</strong> Gold standard (±2%)</li>
-                                    <li><strong>Doubly Labeled Water :</strong> TDEE rÃ©el (±3%)</li>
+                                    <li><strong>Calorimetrie indirecte :</strong> Gold standard (±2%)</li>
+                                    <li><strong>Doubly Labeled Water :</strong> TDEE reel (±3%)</li>
                                     <li><strong>Room Calorimeter :</strong> Contrôle total (±1%)</li>
                                     <li><strong>Metabolic Cart :</strong> Accessible (±5%)</li>
                                 </ul>
@@ -490,18 +490,18 @@
             </div>
         </div>
 
-        <!-- Composantes TDEE DÃ©taillÃ©es -->
+        <!-- Composantes TDEE Detaillees -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-puzzle-piece me-2"></i>
-                    Composantes TDEE - Recherches RÃ©centes
+                    Composantes TDEE - Recherches Recentes
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>BMR/RMR - MÃ©tabolisme de Base (60-75% TDEE)</h6>
+                        <h6>BMR/RMR - Metabolisme de Base (60-75% TDEE)</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -509,7 +509,7 @@
                                         <th>Organe/Tissu</th>
                                         <th>% BMR</th>
                                         <th>kcal/kg/jour</th>
-                                        <th>VariabilitÃ©</th>
+                                        <th>Variabilite</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -560,12 +560,12 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>NEAT - ThermogenÃ¨se ActivitÃ© Non-Exercice (15-30%)</h6>
+                        <h6>NEAT - Thermogenese Activite Non-Exercice (15-30%)</h6>
                         <ul class="small">
-                            <li><strong>DÃ©finition :</strong> Toute activitÃ© non-exercice conscient</li>
+                            <li><strong>Definition :</strong> Toute activite non-exercice conscient</li>
                             <li><strong>Composantes :</strong> Fidgeting, posture, gestes quotidiens</li>
-                            <li><strong>VariabilitÃ© :</strong> 100-800 kcal/jour entre individus</li>
-                            <li><strong>GÃ©nÃ©tique :</strong> 40-60% hÃ©ritabilitÃ©</li>
+                            <li><strong>Variabilite :</strong> 100-800 kcal/jour entre individus</li>
+                            <li><strong>Genetique :</strong> 40-60% heritabilite</li>
                             <li><strong>Facteurs :</strong> Environnement, stress, saison</li>
                             <li><strong>Adaptation :</strong> ↓20-40% en restriction calorique</li>
                         </ul>
@@ -577,12 +577,12 @@
                                     <tr>
                                         <th>Macronutriment</th>
                                         <th>TEF (%)</th>
-                                        <th>DurÃ©e</th>
+                                        <th>Duree</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>ProtÃ©ines</strong></td>
+                                        <td><strong>Proteines</strong></td>
                                         <td>20-30%</td>
                                         <td>3-6h</td>
                                     </tr>
@@ -609,37 +609,37 @@
             </div>
         </div>
 
-        <!-- Facteurs d'Influence MÃ©tabolique -->
+        <!-- Facteurs d'Influence Metabolique -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-dna me-2"></i>
-                    Facteurs d'Influence sur le MÃ©tabolisme
+                    Facteurs d'Influence sur le Metabolisme
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <h6>Facteurs GÃ©nÃ©tiques et Ã©pigÃ©nÃ©tiques</h6>
+                        <h6>Facteurs Genetiques et epigenetiques</h6>
                         <ul class="small">
-                            <li><strong>GÃ¨nes UCP :</strong> ThermogenÃ¨se mitochondriale</li>
-                            <li><strong>FTO :</strong> RÃ©gulation appÃ©tit (+9% BMR variants)</li>
-                            <li><strong>MC4R :</strong> Contrôle satiÃ©tÃ© centrale</li>
-                            <li><strong>ADRB3 :</strong> Lipolyse et thermogenÃ¨se</li>
-                            <li><strong>HÃ©ritabilitÃ© BMR :</strong> 40-80% selon Ã©tudes</li>
-                            <li><strong>Ã©pigÃ©nÃ©tique :</strong> Modulation lifestyle</li>
+                            <li><strong>Genes UCP :</strong> Thermogenese mitochondriale</li>
+                            <li><strong>FTO :</strong> Regulation appetit (+9% BMR variants)</li>
+                            <li><strong>MC4R :</strong> Contrôle satiete centrale</li>
+                            <li><strong>ADRB3 :</strong> Lipolyse et thermogenese</li>
+                            <li><strong>Heritabilite BMR :</strong> 40-80% selon etudes</li>
+                            <li><strong>epigenetique :</strong> Modulation lifestyle</li>
                         </ul>
                         
                         <div class="card mt-3 border-primary">
                             <div class="card-header bg-primary text-white">
-                                <small>Variants MÃ©taboliques</small>
+                                <small>Variants Metaboliques</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>MÃ©tabolisme rapide :</strong> +10-15% population</li>
-                                    <li><strong>MÃ©tabolisme lent :</strong> -10-20% population</li>
-                                    <li><strong>RÃ©sistants obÃ©sitÃ© :</strong> 5% population</li>
-                                    <li><strong>Susceptibles obÃ©sitÃ© :</strong> 15% population</li>
+                                    <li><strong>Metabolisme rapide :</strong> +10-15% population</li>
+                                    <li><strong>Metabolisme lent :</strong> -10-20% population</li>
+                                    <li><strong>Resistants obesite :</strong> 5% population</li>
+                                    <li><strong>Susceptibles obesite :</strong> 15% population</li>
                                 </ul>
                             </div>
                         </div>
@@ -664,7 +664,7 @@
                                     <tr>
                                         <td>Insuline</td>
                                         <td>±10-20%</td>
-                                        <td>DiabÃ¨te, RÃ©sistance</td>
+                                        <td>Diabete, Resistance</td>
                                     </tr>
                                     <tr>
                                         <td>Cortisol</td>
@@ -674,15 +674,15 @@
                                     <tr>
                                         <td>Leptine</td>
                                         <td>±5-25%</td>
-                                        <td>RÃ©sistance leptine</td>
+                                        <td>Resistance leptine</td>
                                     </tr>
                                     <tr>
                                         <td>GH</td>
                                         <td>±10-20%</td>
-                                        <td>DÃ©ficit/ExcÃ¨s GH</td>
+                                        <td>Deficit/Exces GH</td>
                                     </tr>
                                     <tr>
-                                        <td>TestostÃ©rone</td>
+                                        <td>Testosterone</td>
                                         <td>±8-15%</td>
                                         <td>Hypogonadisme</td>
                                     </tr>
@@ -693,24 +693,24 @@
                     <div class="col-md-4">
                         <h6>Facteurs Environnementaux</h6>
                         <ul class="small">
-                            <li><strong>TempÃ©rature :</strong> Froid ↑5-15%, Chaleur ↑3-8%</li>
+                            <li><strong>Temperature :</strong> Froid ↑5-15%, Chaleur ↑3-8%</li>
                             <li><strong>Altitude :</strong> >2500m ↑10-25% BMR</li>
                             <li><strong>Sommeil :</strong> <6h ↓2-8% BMR</li>
                             <li><strong>Stress chronique :</strong> ↑5-15% cortisol</li>
                             <li><strong>Pollution :</strong> Perturbateurs endocriniens</li>
-                            <li><strong>Microbiome :</strong> ±5-20% extraction Ã©nergÃ©tique</li>
+                            <li><strong>Microbiome :</strong> ±5-20% extraction energetique</li>
                         </ul>
                         
                         <div class="card mt-3 border-warning">
                             <div class="card-header bg-warning text-dark">
-                                <small>Adaptations MÃ©taboliques</small>
+                                <small>Adaptations Metaboliques</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li><strong>Restriction calorique :</strong> ↓15-40% TDEE</li>
                                     <li><strong>Suralimentation :</strong> ↑8-20% TDEE</li>
-                                    <li><strong>Effet yo-yo :</strong> Spirale mÃ©tabolique</li>
-                                    <li><strong>Set-point :</strong> DÃ©fense pondÃ©rale</li>
+                                    <li><strong>Effet yo-yo :</strong> Spirale metabolique</li>
+                                    <li><strong>Set-point :</strong> Defense ponderale</li>
                                 </ul>
                             </div>
                         </div>
@@ -719,12 +719,12 @@
             </div>
         </div>
 
-        <!-- StratÃ©gies d'Optimisation MÃ©tabolique -->
+        <!-- Strategies d'Optimisation Metabolique -->
         <div class="card">
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-rocket me-2"></i>
-                    StratÃ©gies d'Optimisation MÃ©tabolique
+                    Strategies d'Optimisation Metabolique
                 </h3>
             </div>
             <div class="card-body">
@@ -737,11 +737,11 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>ProtÃ©ines Ã©levÃ©es :</strong> 1.6-2.2g/kg (↑TEF 20-30%)</li>
-                                    <li><strong>Repas frÃ©quents :</strong> 4-6 repas/jour</li>
-                                    <li><strong>CafÃ©ine :</strong> 100-400mg (↑BMR 3-11%)</li>
-                                    <li><strong>ThÃ© vert :</strong> EGCG + cafÃ©ine</li>
-                                    <li><strong>Ã©pices :</strong> Capsaïcine, gingembre</li>
+                                    <li><strong>Proteines elevees :</strong> 1.6-2.2g/kg (↑TEF 20-30%)</li>
+                                    <li><strong>Repas frequents :</strong> 4-6 repas/jour</li>
+                                    <li><strong>Cafeine :</strong> 100-400mg (↑BMR 3-11%)</li>
+                                    <li><strong>The vert :</strong> EGCG + cafeine</li>
+                                    <li><strong>epices :</strong> Capsaïcine, gingembre</li>
                                     <li><strong>Eau froide :</strong> 2L (↑BMR 50 kcal)</li>
                                 </ul>
                             </div>
@@ -749,15 +749,15 @@
 
                         <div class="card border-warning">
                             <div class="card-header bg-warning text-dark">
-                                <small>Ã©viter Adaptations NÃ©gatives</small>
+                                <small>eviter Adaptations Negatives</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Ã©viter dÃ©ficits extrêmes (>30%)</li>
-                                    <li>Refeeds pÃ©riodiques (leptine)</li>
+                                    <li>eviter deficits extrêmes (>30%)</li>
+                                    <li>Refeeds periodiques (leptine)</li>
                                     <li>Diet breaks (2-4 semaines)</li>
                                     <li>Cyclage calorique</li>
-                                    <li>Monitoring tempÃ©rature corporelle</li>
+                                    <li>Monitoring temperature corporelle</li>
                                 </ul>
                             </div>
                         </div>
@@ -775,7 +775,7 @@
                                     <li><strong>Cardio LISS :</strong> Optimisation lipolyse</li>
                                     <li><strong>NEAT conscient :</strong> Marche, fidgeting</li>
                                     <li><strong>Exposition froid :</strong> Activation BAT</li>
-                                    <li><strong>RÃ©cupÃ©ration active :</strong> Maintien NEAT</li>
+                                    <li><strong>Recuperation active :</strong> Maintien NEAT</li>
                                 </ul>
                             </div>
                         </div>
@@ -789,8 +789,8 @@
                                     <li>+1kg muscle = +13 kcal/jour BMR</li>
                                     <li>Progression charge progressive</li>
                                     <li>Volume optimal: 10-20 sets/muscle/semaine</li>
-                                    <li>FrÃ©quence: 2-3x/semaine/muscle</li>
-                                    <li>RÃ©cupÃ©ration: 48-72h</li>
+                                    <li>Frequence: 2-3x/semaine/muscle</li>
+                                    <li>Recuperation: 48-72h</li>
                                 </ul>
                             </div>
                         </div>
@@ -803,11 +803,11 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>Sommeil :</strong> 7-9h qualitÃ© (↑leptine)</li>
-                                    <li><strong>LumiÃ¨re :</strong> Exposition matinale</li>
-                                    <li><strong>Horaires repas :</strong> RÃ©gularitÃ©</li>
-                                    <li><strong>Jeûne intermittent :</strong> FlexibilitÃ© mÃ©tabolique</li>
-                                    <li><strong>Stress management :</strong> MÃ©ditation, yoga</li>
+                                    <li><strong>Sommeil :</strong> 7-9h qualite (↑leptine)</li>
+                                    <li><strong>Lumiere :</strong> Exposition matinale</li>
+                                    <li><strong>Horaires repas :</strong> Regularite</li>
+                                    <li><strong>Jeûne intermittent :</strong> Flexibilite metabolique</li>
+                                    <li><strong>Stress management :</strong> Meditation, yoga</li>
                                     <li><strong>Sauna/Froid :</strong> Hormesis thermique</li>
                                 </ul>
                             </div>
@@ -821,10 +821,10 @@
                                 <ul class="small">
                                     <li>Monitoring poids quotidien</li>
                                     <li>Photos progression mensuelle</li>
-                                    <li>Mesures circonfÃ©rences</li>
+                                    <li>Mesures circonferences</li>
                                     <li>Biomarqueurs sanguins (TSH, T3)</li>
                                     <li>Performance exercice</li>
-                                    <li>Humeur et Ã©nergie subjective</li>
+                                    <li>Humeur et energie subjective</li>
                                 </ul>
                             </div>
                         </div>
@@ -832,21 +832,21 @@
                 </div>
                 
                 <div class="alert alert-warning mt-4">
-                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Avertissement MÃ©dical Important</h6>
+                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Avertissement Medical Important</h6>
                     <p class="mb-0">
-                        Les calculs TDEE sont des estimations basÃ©es sur des Ã©quations statistiques. 
-                        En cas de pathologie mÃ©tabolique, troubles alimentaires ou doutes sur votre condition, 
-                        consultez un professionnel de santÃ©. Ã©vitez les dÃ©ficits caloriques extrêmes (&gt;30%) 
-                        sans supervision mÃ©dicale.
+                        Les calculs TDEE sont des estimations basees sur des equations statistiques. 
+                        En cas de pathologie metabolique, troubles alimentaires ou doutes sur votre condition, 
+                        consultez un professionnel de sante. evitez les deficits caloriques extrêmes (&gt;30%) 
+                        sans supervision medicale.
                     </p>
                 </div>
                 
                 <div class="alert alert-success mt-3">
                     <h6><i class="fas fa-chart-line me-2"></i>Vision 2024-2030</h6>
                     <p class="mb-0">
-                        L'avenir du mÃ©tabolisme tend vers une personnalisation extrême intÃ©grant gÃ©nomique, 
-                        Ã©pigÃ©nÃ©tique, microbiome, biomarqueurs temps rÃ©el et IA pour optimiser individuellement 
-                        la dÃ©pense Ã©nergÃ©tique et la composition corporelle.
+                        L'avenir du metabolisme tend vers une personnalisation extrême integrant genomique, 
+                        epigenetique, microbiome, biomarqueurs temps reel et IA pour optimiser individuellement 
+                        la depense energetique et la composition corporelle.
                     </p>
                 </div>
             </div>
@@ -854,7 +854,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -870,9 +870,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -882,15 +882,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -917,7 +917,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -928,12 +928,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1034,14 +1034,14 @@
 
 @push('scripts')
 <script>
-// Configuration des facteurs d'activitÃ©
+// Configuration des facteurs d'activite
 const activityFactors = {
-    sedentary: { factor: 1.2, neat: 200, eat: 0, description: 'SÃ©dentaire (bureau, pas d\'exercice)' },
-    light: { factor: 1.375, neat: 300, eat: 150, description: 'LÃ©ger (exercice 1-3j/sem)' },
-    moderate: { factor: 1.55, neat: 400, eat: 300, description: 'ModÃ©rÃ© (exercice 3-5j/sem)' },
+    sedentary: { factor: 1.2, neat: 200, eat: 0, description: 'Sedentaire (bureau, pas d\'exercice)' },
+    light: { factor: 1.375, neat: 300, eat: 150, description: 'Leger (exercice 1-3j/sem)' },
+    moderate: { factor: 1.55, neat: 400, eat: 300, description: 'Modere (exercice 3-5j/sem)' },
     active: { factor: 1.725, neat: 500, eat: 450, description: 'Actif (exercice 6-7j/sem)' },
-    very_active: { factor: 1.9, neat: 600, eat: 600, description: 'TrÃ¨s actif (2x/jour ou travail physique)' },
-    extreme: { factor: 2.2, neat: 700, eat: 800, description: 'Extrême (athlÃ¨te professionnel)' }
+    very_active: { factor: 1.9, neat: 600, eat: 600, description: 'Tres actif (2x/jour ou travail physique)' },
+    extreme: { factor: 2.2, neat: 700, eat: 800, description: 'Extrême (athlete professionnel)' }
 };
 
 // Formules BMR
@@ -1095,7 +1095,7 @@ function calculateBMR(weight, height, age, gender, formula, bodyFat, muscleMass)
 
 // Calcul du TDEE
 function calculateTDEE() {
-    // RÃ©cupÃ©ration des valeurs
+    // Recuperation des valeurs
     const age = parseInt(document.getElementById('age').value);
     const weight = parseFloat(document.getElementById('weight').value);
     const height = parseFloat(document.getElementById('height').value);
@@ -1139,17 +1139,17 @@ function calculateTDEE() {
     let bmr = calculateBMR(weight, height, age, gender, bmrFormula, bodyFat, muscleMass);
     
     if (!bmr || bmr <= 0) {
-        // Fallback vers Mifflin si formule spÃ©cialisÃ©e impossible
+        // Fallback vers Mifflin si formule specialisee impossible
         bmr = calculateBMR(weight, height, age, gender, 'mifflin');
     }
     
-    // Facteurs d'activitÃ© dÃ©taillÃ©s
+    // Facteurs d'activite detailles
     const activityData = activityFactors[activityLevel];
     
     // Calcul TDEE standard
     const standardTDEE = bmr * activityData.factor;
     
-    // Breakdown dÃ©taillÃ© des composantes TDEE
+    // Breakdown detaille des composantes TDEE
     const tef = standardTDEE * 0.10; // Thermic Effect of Food (8-12%)
     const neat = activityData.neat; // Non-Exercise Activity Thermogenesis
     const eat = activityData.eat; // Exercise Activity Thermogenesis
@@ -1158,7 +1158,7 @@ function calculateTDEE() {
     let adjustmentFactor = 1.0;
     let adjustmentDetails = [];
     
-    // Ajustement condition de santÃ©
+    // Ajustement condition de sante
     switch (healthCondition) {
         case 'hyperthyroid':
             adjustmentFactor *= 1.15;
@@ -1170,7 +1170,7 @@ function calculateTDEE() {
             break;
         case 'diabetes':
             adjustmentFactor *= 0.95;
-            adjustmentDetails.push('DiabÃ¨te: -5%');
+            adjustmentDetails.push('Diabete: -5%');
             break;
         case 'pcos':
             adjustmentFactor *= 0.90;
@@ -1178,19 +1178,19 @@ function calculateTDEE() {
             break;
     }
     
-    // Ajustement gÃ©nÃ©tique
+    // Ajustement genetique
     switch (geneticFactor) {
         case 'fast':
             adjustmentFactor *= 1.10;
-            adjustmentDetails.push('MÃ©tabolisme rapide: +10%');
+            adjustmentDetails.push('Metabolisme rapide: +10%');
             break;
         case 'slow':
             adjustmentFactor *= 0.90;
-            adjustmentDetails.push('MÃ©tabolisme lent: -10%');
+            adjustmentDetails.push('Metabolisme lent: -10%');
             break;
     }
     
-    // Ajustement mÃ©dicaments
+    // Ajustement medicaments
     switch (medicationImpact) {
         case 'stimulants':
             adjustmentFactor *= 1.05;
@@ -1202,22 +1202,22 @@ function calculateTDEE() {
             break;
         case 'antidepressants':
             adjustmentFactor *= 0.93;
-            adjustmentDetails.push('AntidÃ©presseurs: -7%');
+            adjustmentDetails.push('Antidepresseurs: -7%');
             break;
         case 'corticosteroids':
             adjustmentFactor *= 1.08;
-            adjustmentDetails.push('CorticostÃ©roïdes: +8%');
+            adjustmentDetails.push('Corticosteroïdes: +8%');
             break;
         case 'thyroid_meds':
             adjustmentFactor *= 1.12;
-            adjustmentDetails.push('MÃ©dicaments thyroïdiens: +12%');
+            adjustmentDetails.push('Medicaments thyroïdiens: +12%');
             break;
     }
     
     // Ajustement stress
     if (stressLevel === 'high') {
         adjustmentFactor *= 1.03;
-        adjustmentDetails.push('Stress Ã©levÃ©: +3%');
+        adjustmentDetails.push('Stress eleve: +3%');
     } else if (stressLevel === 'low') {
         adjustmentFactor *= 0.98;
         adjustmentDetails.push('Stress faible: -2%');
@@ -1230,11 +1230,11 @@ function calculateTDEE() {
             adjustmentDetails.push('Sommeil insuffisant: -3%');
         } else if (sleepHours > 9) {
             adjustmentFactor *= 1.02;
-            adjustmentDetails.push('Sommeil prolongÃ©: +2%');
+            adjustmentDetails.push('Sommeil prolonge: +2%');
         }
     }
     
-    // Ajustement tempÃ©rature
+    // Ajustement temperature
     if (!isNaN(climateTemp)) {
         if (climateTemp < 10) {
             adjustmentFactor *= 1.05;
@@ -1245,7 +1245,7 @@ function calculateTDEE() {
         }
     }
     
-    // TDEE final ajustÃ©
+    // TDEE final ajuste
     const adjustedTDEE = standardTDEE * adjustmentFactor;
     
     // Estimations pour objectifs
@@ -1273,7 +1273,7 @@ function calculateTDEE() {
         }
     };
     
-    // MÃ©triques mÃ©taboliques additionnelles
+    // Metriques metaboliques additionnelles
     const metabolicAge = age + (adjustmentFactor < 0.95 ? 5 : adjustmentFactor > 1.05 ? -3 : 0);
     const bmrPerKg = Math.round(bmr / weight * 10) / 10;
     const tdeePerKg = Math.round(adjustedTDEE / weight * 10) / 10;
@@ -1316,9 +1316,9 @@ function showError(message) {
     document.getElementById('resultsSection').classList.add('d-none');
 }
 
-// Affichage des rÃ©sultats
+// Affichage des resultats
 function displayResults(results) {
-    // Profil mÃ©tabolique
+    // Profil metabolique
     document.getElementById('bmrResult').textContent = results.bmr;
     document.getElementById('standardTDEE').textContent = results.standardTDEE;
     document.getElementById('adjustedTDEE').textContent = results.adjustedTDEE;
@@ -1327,7 +1327,7 @@ function displayResults(results) {
     document.getElementById('tdeePerKg').textContent = `${results.metrics.tdeePerKg} kcal/kg`;
     document.getElementById('formulaUsed').textContent = `Formule ${results.formula}`;
     
-    // Ajustements appliquÃ©s
+    // Ajustements appliques
     if (results.adjustmentDetails.length > 0) {
         const adjustmentDiv = document.getElementById('adjustmentDetails');
         const adjustmentsList = document.getElementById('adjustmentsList');
@@ -1342,7 +1342,7 @@ function displayResults(results) {
         adjustmentDiv.classList.remove('d-none');
     }
     
-    // Breakdown Ã©nergÃ©tique
+    // Breakdown energetique
     document.getElementById('bmrBreakdown').textContent = results.breakdown.bmr;
     document.getElementById('tefBreakdown').textContent = results.breakdown.tef;
     document.getElementById('neatBreakdown').textContent = results.breakdown.neat;
@@ -1361,8 +1361,8 @@ function displayResults(results) {
     
     const goals = [
         { key: 'maintenance', name: 'Maintien', subtitle: 'Poids stable', color: 'secondary', macros: results.macros.maintenance },
-        { key: 'cutting', name: 'SÃ¨che ModÃ©rÃ©e', subtitle: '-20% (-0.5kg/sem)', color: 'warning', macros: results.macros.cutting },
-        { key: 'extremeCut', name: 'SÃ¨che Agressive', subtitle: '-30% (-1kg/sem)', color: 'danger', macros: null },
+        { key: 'cutting', name: 'Seche Moderee', subtitle: '-20% (-0.5kg/sem)', color: 'warning', macros: results.macros.cutting },
+        { key: 'extremeCut', name: 'Seche Agressive', subtitle: '-30% (-1kg/sem)', color: 'danger', macros: null },
         { key: 'bulking', name: 'Prise de Masse', subtitle: '+15% (+0.3kg/sem)', color: 'success', macros: results.macros.bulking }
     ];
     
@@ -1381,7 +1381,7 @@ function displayResults(results) {
                 </div>
             `;
         } else if (goal.key === 'extremeCut') {
-            macrosHtml = `<small class="text-danger">Supervision recommandÃ©e</small>`;
+            macrosHtml = `<small class="text-danger">Supervision recommandee</small>`;
         }
         
         goalCard.innerHTML = `
@@ -1403,12 +1403,12 @@ function displayResults(results) {
         goalsContainer.appendChild(goalCard);
     });
     
-    // Afficher la section rÃ©sultats
+    // Afficher la section resultats
     document.getElementById('resultsSection').classList.remove('d-none');
     document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// RÃ©initialisation du calculateur
+// Reinitialisation du calculateur
 function resetCalculator() {
     const inputs = ['age', 'weight', 'height', 'bodyFat', 'muscleMass', 'sleepHours', 'climateTemp'];
     inputs.forEach(id => {

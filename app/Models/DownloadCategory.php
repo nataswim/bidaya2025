@@ -40,7 +40,7 @@ class DownloadCategory extends Model
     }
 
     /**
-     * Scope pour les catÃ©gories actives
+     * Scope pour les categories actives
      */
     public function scopeActive($query)
     {
@@ -48,7 +48,7 @@ class DownloadCategory extends Model
     }
 
     /**
-     * Accessor pour l'URL de la catÃ©gorie
+     * Accessor pour l'URL de la categorie
      */
     public function getUrlAttribute()
     {
@@ -56,7 +56,7 @@ class DownloadCategory extends Model
     }
 
     /**
-     * Boot method pour les Ã©vÃ©nements du modÃ¨le
+     * Boot method pour les evenements du modele
      */
     protected static function boot()
     {

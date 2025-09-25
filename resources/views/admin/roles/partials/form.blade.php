@@ -20,7 +20,7 @@
                            class="form-control form-control-lg @error('name') is-invalid @enderror"
                            placeholder="Ex: editor, moderator, contributor"
                            required>
-                    <div class="form-text">Nom technique du rôle (lettres minuscules, underscores autorisÃ©s)</div>
+                    <div class="form-text">Nom technique du rôle (lettres minuscules, underscores autorises)</div>
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -34,8 +34,8 @@
                            id="display_name" 
                            value="{{ old('display_name', isset($role) ? $role->display_name : '') }}"
                            class="form-control form-control-lg @error('display_name') is-invalid @enderror"
-                           placeholder="Ex: Ã©diteur, ModÃ©rateur, Contributeur">
-                    <div class="form-text">Nom affichÃ© aux utilisateurs</div>
+                           placeholder="Ex: editeur, Moderateur, Contributeur">
+                    <div class="form-text">Nom affiche aux utilisateurs</div>
                     @error('display_name')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -53,7 +53,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="editor-role">
                     </div>
-                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique</div>
+                    <div class="form-text">Laisser vide pour generation automatique</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -66,7 +66,7 @@
                               id="description" 
                               rows="4"
                               class="form-control @error('description') is-invalid @enderror"
-                              placeholder="Description dÃ©taillÃ©e du rôle et de ses responsabilitÃ©s...">{{ old('description', isset($role) ? $role->description : '') }}</textarea>
+                              placeholder="Description detaillee du rôle et de ses responsabilites...">{{ old('description', isset($role) ? $role->description : '') }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -79,12 +79,12 @@
                     </h6>
                     
                     @php
-                        // RÃ©cupÃ©ration sÃ©curisÃ©e des permissions
+                        // Recuperation securisee des permissions
                         try {
                             $allPermissions = \App\Models\Permission::orderBy('group')->orderBy('name')->get();
                             $permissionsExist = $allPermissions->count() > 0;
                             
-                            // RÃ©cupÃ©ration des permissions actuelles du rôle
+                            // Recuperation des permissions actuelles du rôle
                             $currentPermissions = [];
                             if (isset($role) && $role && method_exists($role, 'permissions')) {
                                 try {
@@ -163,13 +163,13 @@
                             </div>
                         @enderror
 
-                        <!-- RÃ©sumÃ© des permissions sÃ©lectionnÃ©es -->
+                        <!-- Resume des permissions selectionnees -->
                         <div class="mt-3">
                             <div class="alert alert-light border">
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-info-circle text-primary me-2"></i>
                                     <span id="permissions-summary">
-                                        <span id="selected-count">0</span> permission(s) sÃ©lectionnÃ©e(s)
+                                        <span id="selected-count">0</span> permission(s) selectionnee(s)
                                     </span>
                                 </div>
                             </div>
@@ -178,8 +178,8 @@
                         <div class="alert alert-warning">
                             <i class="fas fa-exclamation-triangle me-2"></i>
                             <strong>Aucune permission disponible</strong><br>
-                            Aucune permission n'a Ã©tÃ© crÃ©Ã©e dans le systÃ¨me. 
-                            <a href="{{ route('admin.permissions.create') }}" class="alert-link">CrÃ©er des permissions</a> d'abord.
+                            Aucune permission n'a ete creee dans le systeme. 
+                            <a href="{{ route('admin.permissions.create') }}" class="alert-link">Creer des permissions</a> d'abord.
                         </div>
                     @endif
                 </div>
@@ -189,16 +189,16 @@
 
     <!-- Sidebar -->
     <div class="col-lg-4">
-        <!-- ParamÃ¨tres du rôle -->
+        <!-- Parametres du rôle -->
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-success text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-cog me-2"></i>ParamÃ¨tres
+                    <i class="fas fa-cog me-2"></i>Parametres
                 </h6>
             </div>
             <div class="card-body p-4">
                 <div class="mb-3">
-                    <label for="level" class="form-label fw-semibold">Niveau d'autoritÃ©</label>
+                    <label for="level" class="form-label fw-semibold">Niveau d'autorite</label>
                     <input type="number" 
                            name="level" 
                            id="level" 
@@ -207,7 +207,7 @@
                            min="1" 
                            max="100"
                            placeholder="1">
-                    <div class="form-text">Plus le niveau est Ã©levÃ©, plus les permissions sont importantes (1-100)</div>
+                    <div class="form-text">Plus le niveau est eleve, plus les permissions sont importantes (1-100)</div>
                     @error('level')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -222,14 +222,14 @@
                            {{ old('is_default', isset($role) ? $role->is_default : false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_default">
                         <i class="fas fa-star text-warning me-1"></i>
-                        Rôle par dÃ©faut
+                        Rôle par defaut
                     </label>
-                    <div class="form-text">AttribuÃ© automatiquement aux nouveaux utilisateurs</div>
+                    <div class="form-text">Attribue automatiquement aux nouveaux utilisateurs</div>
                 </div>
             </div>
         </div>
 
-        <!-- Statistiques (en Ã©dition) -->
+        <!-- Statistiques (en edition) -->
         @if(isset($role) && $role->exists)
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-info text-white p-4">
@@ -265,16 +265,16 @@
             </div>
         @endif
 
-        <!-- Aperçu des permissions sÃ©lectionnÃ©es -->
+        <!-- Aperçu des permissions selectionnees -->
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-gradient-warning text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-eye me-2"></i>Permissions sÃ©lectionnÃ©es
+                    <i class="fas fa-eye me-2"></i>Permissions selectionnees
                 </h6>
             </div>
             <div class="card-body p-4">
                 <div id="selected-permissions" class="text-center text-muted">
-                    <small>Aucune permission sÃ©lectionnÃ©e</small>
+                    <small>Aucune permission selectionnee</small>
                 </div>
             </div>
         </div>
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updatePermissionsCount();
     updateSelectedPermissions();
     
-    // Auto-gÃ©nÃ©ration du slug et display_name
+    // Auto-generation du slug et display_name
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     const displayNameInput = document.getElementById('display_name');
@@ -402,7 +402,7 @@ function updateSelectedPermissions() {
     if (!container) return;
     
     if (selectedCheckboxes.length === 0) {
-        container.innerHTML = '<small class="text-muted">Aucune permission sÃ©lectionnÃ©e</small>';
+        container.innerHTML = '<small class="text-muted">Aucune permission selectionnee</small>';
     } else {
         let html = `<div class="fw-bold text-primary mb-2">${selectedCheckboxes.length} permission(s)</div>`;
         const badges = Array.from(selectedCheckboxes).slice(0, 8).map(cb => {
@@ -420,7 +420,7 @@ function updateSelectedPermissions() {
     }
 }
 
-// Ã©couter les changements sur les checkboxes de permissions
+// ecouter les changements sur les checkboxes de permissions
 document.addEventListener('change', function(e) {
     if (e.target.classList.contains('permission-checkbox')) {
         updatePermissionsCount();

@@ -41,18 +41,18 @@ class StorePostRequest extends FormRequest
     return [
         'name.required' => 'Le titre de l\'article est obligatoire.',
         'content.required' => 'Le contenu de l\'article est obligatoire.',
-        'category_id.required' => 'La catÃ©gorie est obligatoire.',
-        'category_id.exists' => 'La catÃ©gorie sÃ©lectionnÃ©e n\'existe pas.',
+        'category_id.required' => 'La categorie est obligatoire.',
+        'category_id.exists' => 'La categorie selectionnee n\'existe pas.',
         'status.required' => 'Le statut est obligatoire.',
-        'status.in' => 'Le statut doit être "brouillon" ou "publiÃ©".',
-        'visibility.required' => 'La visibilitÃ© est obligatoire.',
-        'visibility.in' => 'La visibilitÃ© doit être "public" ou "authenticated".',
+        'status.in' => 'Le statut doit être "brouillon" ou "publie".',
+        'visibility.required' => 'La visibilite est obligatoire.',
+        'visibility.in' => 'La visibilite doit être "public" ou "authenticated".',
         'type.required' => 'Le type d\'article est obligatoire.',
         'type.in' => 'Le type d\'article n\'est pas valide.',
-        'tags.*.exists' => 'Un ou plusieurs tags sÃ©lectionnÃ©s n\'existent pas.',
-        'image.string' => 'L\'image doit être une chaîne de caractÃ¨res valide.', // ← CHANGÃ©
-        'meta_og_image.string' => 'L\'image Open Graph doit être une chaîne de caractÃ¨res valide.', // ← CHANGÃ©
-        'meta_og_url.string' => 'L\'URL Open Graph doit être une chaîne de caractÃ¨res valide.', // ← CHANGÃ©
+        'tags.*.exists' => 'Un ou plusieurs tags selectionnes n\'existent pas.',
+        'image.string' => 'L\'image doit être une chaîne de caracteres valide.', // ← CHANGe
+        'meta_og_image.string' => 'L\'image Open Graph doit être une chaîne de caracteres valide.', // ← CHANGe
+        'meta_og_url.string' => 'L\'URL Open Graph doit être une chaîne de caracteres valide.', // ← CHANGe
     ];
 }
 
@@ -69,7 +69,7 @@ class StorePostRequest extends FormRequest
             ]);
         }
 
-        // S'assurer que visibility a une valeur par dÃ©faut
+        // S'assurer que visibility a une valeur par defaut
         if (!$this->has('visibility') || empty($this->visibility)) {
             $this->merge([
                 'visibility' => 'public'

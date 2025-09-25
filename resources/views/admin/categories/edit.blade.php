@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
-@section('title', 'Modifier une catÃ©gorie')
-@section('page-title', 'Modifier la catÃ©gorie')
-@section('page-description', 'Modification de la catÃ©gorie : ' . $category->name)
+@section('title', 'Modifier une categorie')
+@section('page-title', 'Modifier la categorie')
+@section('page-description', 'Modification de la categorie : ' . $category->name)
 
 @section('content')
 <div class="container-fluid">
     <form method="POST" action="{{ route('admin.categories.update', $category) }}">
         @method('PUT')
         @include('admin.categories.partials.form', [
-            'submitLabel' => 'Mettre Ã jour la catÃ©gorie',
+            'submitLabel' => 'Mettre Ã jour la categorie',
             'category' => $category
         ])
     </form>
@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration du slug Ã partir du nom
+    // Auto-generation du slug Ã partir du nom
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     

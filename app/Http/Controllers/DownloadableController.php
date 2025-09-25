@@ -17,11 +17,11 @@ class DownloadableController extends Controller
     $user = auth()->user();
     
     if (!$user || !$user->role) {
-        abort(403, 'AccÃ¨s non autorisÃ© - Aucun rôle assignÃ©');
+        abort(403, 'Acces non autorise - Aucun rôle assigne');
     }
     
     if (!$user->hasRole('admin') && !$user->hasRole('editor')) {
-        abort(403, 'AccÃ¨s non autorisÃ©');
+        abort(403, 'Acces non autorise');
     }
 }
 
@@ -92,7 +92,7 @@ class DownloadableController extends Controller
         
         $data = $request->validated();
         
-        // GÃ©rer l'upload du fichier
+        // Gerer l'upload du fichier
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = time() . '_' . \Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
@@ -112,11 +112,11 @@ class DownloadableController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.downloadables.edit', $downloadable)
-                ->with('success', 'TÃ©lÃ©chargement crÃ©Ã© avec succÃ¨s. Vous pouvez continuer Ã l\'Ã©diter.');
+                ->with('success', 'Telechargement cree avec succes. Vous pouvez continuer Ã l\'editer.');
         }
 
         return redirect()->route('admin.downloadables.index')
-            ->with('success', 'TÃ©lÃ©chargement crÃ©Ã© avec succÃ¨s.');
+            ->with('success', 'Telechargement cree avec succes.');
     }
 
     public function show(Downloadable $downloadable)
@@ -125,7 +125,7 @@ class DownloadableController extends Controller
         
         $downloadable->load(['category', 'creator', 'updater']);
         
-        // Statistiques rÃ©centes
+        // Statistiques recentes
         $recentDownloads = DownloadLog::where('downloadable_id', $downloadable->id)
             ->with('user')
             ->orderBy('created_at', 'desc')
@@ -163,7 +163,7 @@ class DownloadableController extends Controller
         
         $data = $request->validated();
         
-        // GÃ©rer l'upload d'un nouveau fichier
+        // Gerer l'upload d'un nouveau fichier
         if ($request->hasFile('file')) {
             // Supprimer l'ancien fichier
             if ($downloadable->file_path && Storage::disk('local')->exists($downloadable->file_path)) {
@@ -188,11 +188,11 @@ class DownloadableController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.downloadables.edit', $downloadable)
-                ->with('success', 'TÃ©lÃ©chargement mis Ã jour avec succÃ¨s.');
+                ->with('success', 'Telechargement mis Ã jour avec succes.');
         }
 
         return redirect()->route('admin.downloadables.index')
-            ->with('success', 'TÃ©lÃ©chargement mis Ã jour avec succÃ¨s.');
+            ->with('success', 'Telechargement mis Ã jour avec succes.');
     }
 
     public function destroy(Downloadable $downloadable)
@@ -207,11 +207,11 @@ class DownloadableController extends Controller
         $downloadable->delete();
 
         return redirect()->route('admin.downloadables.index')
-            ->with('success', 'TÃ©lÃ©chargement supprimÃ© avec succÃ¨s.');
+            ->with('success', 'Telechargement supprime avec succes.');
     }
 
     /**
-     * Dupliquer un tÃ©lÃ©chargement
+     * Dupliquer un telechargement
      */
     public function duplicate(Downloadable $downloadable)
     {
@@ -225,11 +225,11 @@ class DownloadableController extends Controller
         $newDownloadable->save();
 
         return redirect()->route('admin.downloadables.edit', $newDownloadable)
-            ->with('success', 'TÃ©lÃ©chargement dupliquÃ© avec succÃ¨s.');
+            ->with('success', 'Telechargement duplique avec succes.');
     }
 
     /**
-     * Statistiques dÃ©taillÃ©es
+     * Statistiques detaillees
      */
     public function stats()
     {
@@ -273,7 +273,7 @@ class DownloadableController extends Controller
         $downloadableIds = $request->input('downloadables', []);
         
         if (empty($downloadableIds)) {
-            return redirect()->back()->with('error', 'Aucun tÃ©lÃ©chargement sÃ©lectionnÃ©.');
+            return redirect()->back()->with('error', 'Aucun telechargement selectionne.');
         }
         
         $count = 0;
@@ -284,7 +284,7 @@ class DownloadableController extends Controller
                     'status' => 'active',
                     'updated_by' => auth()->id()
                 ]);
-                $message = "{$count} tÃ©lÃ©chargement(s) activÃ©(s).";
+                $message = "{$count} telechargement(s) active(s).";
                 break;
                 
             case 'deactivate':
@@ -292,7 +292,7 @@ class DownloadableController extends Controller
                     'status' => 'inactive',
                     'updated_by' => auth()->id()
                 ]);
-                $message = "{$count} tÃ©lÃ©chargement(s) dÃ©sactivÃ©(s).";
+                $message = "{$count} telechargement(s) desactive(s).";
                 break;
                 
             case 'feature':
@@ -300,7 +300,7 @@ class DownloadableController extends Controller
                     'is_featured' => true,
                     'updated_by' => auth()->id()
                 ]);
-                $message = "{$count} tÃ©lÃ©chargement(s) mis en avant.";
+                $message = "{$count} telechargement(s) mis en avant.";
                 break;
                 
             case 'unfeature':
@@ -308,7 +308,7 @@ class DownloadableController extends Controller
                     'is_featured' => false,
                     'updated_by' => auth()->id()
                 ]);
-                $message = "{$count} tÃ©lÃ©chargement(s) retirÃ©(s) de la une.";
+                $message = "{$count} telechargement(s) retire(s) de la une.";
                 break;
                 
             case 'delete':
@@ -323,7 +323,7 @@ class DownloadableController extends Controller
                         $count++;
                     }
                 }
-                $message = "{$count} tÃ©lÃ©chargement(s) supprimÃ©(s).";
+                $message = "{$count} telechargement(s) supprime(s).";
                 break;
                 
             default:

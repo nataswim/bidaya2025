@@ -27,8 +27,8 @@ class StoreDownloadCategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Le nom de la catÃ©gorie est obligatoire.',
-            'slug.unique' => 'Ce slug est dÃ©jÃ utilisÃ©.',
+            'name.required' => 'Le nom de la categorie est obligatoire.',
+            'slug.unique' => 'Ce slug est dejÃ utilise.',
             'status.required' => 'Le statut est obligatoire.',
             'status.in' => 'Le statut doit être "active" ou "inactive".',
         ];

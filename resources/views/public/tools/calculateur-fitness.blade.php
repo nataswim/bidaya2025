@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Fitness & FrÃ©quence Cardiaque - Zones d\'Entraînement Scientifiques')
-@section('meta_description', 'Optimisez votre entraînement avec notre calculateur fitness scientifique : FC max, zones cardiaques, VO2 max estimÃ©. Formules validÃ©es Tanaka, Gellish, Karvonen pour un entraînement sain et efficace.')
+@section('title', 'Calculateur Fitness & Frequence Cardiaque - Zones d\'Entraînement Scientifiques')
+@section('meta_description', 'Optimisez votre entraînement avec notre calculateur fitness scientifique : FC max, zones cardiaques, VO2 max estime. Formules validees Tanaka, Gellish, Karvonen pour un entraînement sain et efficace.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,15 +9,15 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-heartbeat"></i>
-            Calculateur Fitness & FrÃ©quence Cardiaque
+            Calculateur Fitness & Frequence Cardiaque
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-chart-line text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Optimisez votre entraînement</strong> avec les derniÃ¨res recherches scientifiques 
-                    sur la frÃ©quence cardiaque et les zones d'entraînement
+                    <strong>Optimisez votre entraînement</strong> avec les dernieres recherches scientifiques 
+                    sur la frequence cardiaque et les zones d'entraînement
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
     <div class="container">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
-                <h3 class="text-center mb-4">ParamÃ¨tres Personnels</h3>
+                <h3 class="text-center mb-4">Parametres Personnels</h3>
                 
                 <!-- Messages d'erreur -->
                 <div id="errorMessage" class="alert alert-danger d-none">
@@ -53,7 +53,7 @@
                         </label>
                         <input type="number" id="restingHR" class="form-control form-control-lg border-danger" 
                                placeholder="65" min="30" max="100">
-                        <small class="text-muted">Mesurez au rÃ©veil, au calme</small>
+                        <small class="text-muted">Mesurez au reveil, au calme</small>
                     </div>
                     
                     <div class="col-md-6">
@@ -105,7 +105,7 @@
                         <div class="form-check form-switch mb-3">
                             <input class="form-check-input" type="checkbox" id="useKnownMax">
                             <label class="form-check-label fw-bold" for="useKnownMax">
-                                J'ai une FC Max mesurÃ©e prÃ©cisÃ©ment
+                                J'ai une FC Max mesuree precisement
                             </label>
                         </div>
                         
@@ -114,17 +114,17 @@
                                 <label class="fw-bold mb-2">FC Max connue (bpm)</label>
                                 <input type="number" id="maxHRKnown" class="form-control border-primary" 
                                        placeholder="185" min="100" max="220">
-                                <small class="text-muted">MesurÃ©e lors d'un test d'effort</small>
+                                <small class="text-muted">Mesuree lors d'un test d'effort</small>
                             </div>
                             
                             <div class="col-md-6" id="formulaField">
                                 <label class="fw-bold mb-2">Formule d'estimation</label>
                                 <select id="formula" class="form-select border-primary">
-                                    <option value="tanaka">Tanaka (208 - 0.7 × Âge) - RecommandÃ©e</option>
+                                    <option value="tanaka">Tanaka (208 - 0.7 × Âge) - Recommandee</option>
                                     <option value="gellish">Gellish (207 - 0.7 × Âge)</option>
-                                    <option value="roberts">Roberts (205 - 0.5 × Âge) - AthlÃ¨tes</option>
+                                    <option value="roberts">Roberts (205 - 0.5 × Âge) - Athletes</option>
                                     <option value="nes">Nes (211 - 0.64 × Âge)</option>
-                                    <option value="astrand">Åstrand (220 - Âge) - Moins prÃ©cise</option>
+                                    <option value="astrand">Åstrand (220 - Âge) - Moins precise</option>
                                     <option value="oakland">Oakland (206 - 0.88 × Âge) - Femmes</option>
                                 </select>
                             </div>
@@ -132,17 +132,17 @@
                     </div>
                 </div>
 
-                <!-- IntensitÃ© cible -->
+                <!-- Intensite cible -->
                 <div class="mb-4">
                     <label class="fw-bold mb-3 d-block">
                         <i class="fas fa-bullseye me-2 text-primary"></i>
-                        IntensitÃ© d'entraînement cible : <span id="intensityValue" class="text-primary">70%</span>
+                        Intensite d'entraînement cible : <span id="intensityValue" class="text-primary">70%</span>
                     </label>
                     <input type="range" id="intensity" class="form-range" 
                            min="50" max="100" step="5" value="70">
                     <div class="d-flex justify-content-between text-muted small">
-                        <span>50% (RÃ©cupÃ©ration)</span>
-                        <span>70% (AÃ©robie)</span>
+                        <span>50% (Recuperation)</span>
+                        <span>70% (Aerobie)</span>
                         <span>85% (Seuil)</span>
                         <span>100% (Maximal)</span>
                     </div>
@@ -156,12 +156,12 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg px-4 py-3 fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
 
-                <!-- RÃ©sultats -->
+                <!-- Resultats -->
                 <div id="results" class="d-none">
                     <div class="alert alert-success shadow-sm">
                         <h5 class="alert-heading text-center mb-4">
@@ -196,8 +196,8 @@
                         <div class="alert alert-info mt-3">
                             <i class="fas fa-info-circle me-2"></i>
                             <small>
-                                Ces zones sont calculÃ©es selon la mÃ©thode Karvonen (rÃ©serve cardiaque) pour plus de prÃ©cision. 
-                                Adaptez selon votre ressenti et consultez un professionnel pour un programme personnalisÃ©.
+                                Ces zones sont calculees selon la methode Karvonen (reserve cardiaque) pour plus de precision. 
+                                Adaptez selon votre ressenti et consultez un professionnel pour un programme personnalise.
                             </small>
                         </div>
                     </div>
@@ -207,62 +207,62 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
-        <!-- FrÃ©quence Cardiaque Maximale -->
+        <!-- Frequence Cardiaque Maximale -->
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-heart me-2"></i>
-                    FrÃ©quence Cardiaque Maximale - Recherches 2024
+                    Frequence Cardiaque Maximale - Recherches 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <strong>DÃ©finition :</strong> La FC Max est le nombre maximal de battements que votre cœur peut 
-                    effectuer par minute lors d'un effort intense. C'est la base pour dÃ©finir vos zones d'entraînement.
+                    <strong>Definition :</strong> La FC Max est le nombre maximal de battements que votre cœur peut 
+                    effectuer par minute lors d'un effort intense. C'est la base pour definir vos zones d'entraînement.
                 </div>
                 
-                <h6>Formules de Calcul ValidÃ©es Scientifiquement</h6>
+                <h6>Formules de Calcul Validees Scientifiquement</h6>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead class="table-dark">
                             <tr>
                                 <th>Formule</th>
-                                <th>Ã©quation</th>
-                                <th>FiabilitÃ©</th>
+                                <th>equation</th>
+                                <th>Fiabilite</th>
                                 <th>Population Cible</th>
-                                <th>AnnÃ©e</th>
+                                <th>Annee</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="table-success">
                                 <td><strong>Tanaka et al.</strong></td>
                                 <td>208 - (0.7 × Âge)</td>
-                                <td><span class="badge bg-success">Ã©levÃ©e</span></td>
+                                <td><span class="badge bg-success">elevee</span></td>
                                 <td>Adultes sains 18-81 ans</td>
                                 <td>2001</td>
                             </tr>
                             <tr class="table-primary">
                                 <td><strong>Gellish et al.</strong></td>
                                 <td>207 - (0.7 × Âge)</td>
-                                <td><span class="badge bg-primary">Ã©levÃ©e</span></td>
-                                <td>Adultes en bonne santÃ©</td>
+                                <td><span class="badge bg-primary">elevee</span></td>
+                                <td>Adultes en bonne sante</td>
                                 <td>2007</td>
                             </tr>
                             <tr class="table-info">
                                 <td><strong>Roberts & Landwehr</strong></td>
                                 <td>205 - (0.5 × Âge)</td>
-                                <td><span class="badge bg-info">ModÃ©rÃ©e</span></td>
-                                <td>AthlÃ¨tes expÃ©rimentÃ©s</td>
+                                <td><span class="badge bg-info">Moderee</span></td>
+                                <td>Athletes experimentes</td>
                                 <td>2002</td>
                             </tr>
                             <tr class="table-secondary">
                                 <td><strong>Nes et al.</strong></td>
                                 <td>211 - (0.64 × Âge)</td>
-                                <td><span class="badge bg-secondary">Ã©levÃ©e</span></td>
-                                <td>Adultes en bonne santÃ©</td>
+                                <td><span class="badge bg-secondary">elevee</span></td>
+                                <td>Adultes en bonne sante</td>
                                 <td>2013</td>
                             </tr>
                             <tr class="table-warning">
@@ -275,8 +275,8 @@
                             <tr>
                                 <td><strong>Oakland (Femmes)</strong></td>
                                 <td>206 - (0.88 × Âge)</td>
-                                <td><span class="badge bg-secondary">ModÃ©rÃ©e</span></td>
-                                <td>Femmes spÃ©cifiquement</td>
+                                <td><span class="badge bg-secondary">Moderee</span></td>
+                                <td>Femmes specifiquement</td>
                                 <td>2003</td>
                             </tr>
                         </tbody>
@@ -286,9 +286,9 @@
                 <div class="alert alert-success">
                     <h6>Recommandation Scientifique 2024</h6>
                     <p class="mb-0">
-                        La <strong>formule de Tanaka</strong> est actuellement considÃ©rÃ©e comme la plus prÃ©cise 
-                        pour la population gÃ©nÃ©rale. Cependant, un test d'effort maximal reste l'Ã©talon-or 
-                        pour une mesure prÃ©cise.
+                        La <strong>formule de Tanaka</strong> est actuellement consideree comme la plus precise 
+                        pour la population generale. Cependant, un test d'effort maximal reste l'etalon-or 
+                        pour une mesure precise.
                     </p>
                 </div>
             </div>
@@ -299,19 +299,19 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-layer-group me-2"></i>
-                    Zones d'Entraînement Cardiaque - MÃ©thode Karvonen
+                    Zones d'Entraînement Cardiaque - Methode Karvonen
                 </h3>
             </div>
             <div class="card-body">
                 <p>
-                    Les zones d'entraînement sont calculÃ©es selon la <strong>mÃ©thode Karvonen</strong>, 
-                    plus prÃ©cise que le simple pourcentage de FC Max car elle prend en compte votre FC de repos.
+                    Les zones d'entraînement sont calculees selon la <strong>methode Karvonen</strong>, 
+                    plus precise que le simple pourcentage de FC Max car elle prend en compte votre FC de repos.
                 </p>
                 
                 <div class="card bg-light mb-3">
                     <div class="card-body">
                         <h6>Formule Karvonen :</h6>
-                        <code>FC Cible = FC Repos + ((FC Max - FC Repos) × % IntensitÃ©)</code>
+                        <code>FC Cible = FC Repos + ((FC Max - FC Repos) × % Intensite)</code>
                     </div>
                 </div>
                 
@@ -319,14 +319,14 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Zone 1 : TrÃ¨s LÃ©gÃ¨re</h6>
-                                <small>50-60% FC RÃ©serve</small>
+                                <h6 class="mb-0">Zone 1 : Tres Legere</h6>
+                                <small>50-60% FC Reserve</small>
                             </div>
                             <div class="card-body">
-                                <p><strong>Objectif :</strong> RÃ©cupÃ©ration active, Ã©chauffement</p>
-                                <p><strong>Sensation :</strong> TrÃ¨s facile, conversation fluide</p>
-                                <p><strong>DurÃ©e :</strong> 20-90 minutes</p>
-                                <p><strong>BÃ©nÃ©fices :</strong> Circulation, bien-être gÃ©nÃ©ral</p>
+                                <p><strong>Objectif :</strong> Recuperation active, echauffement</p>
+                                <p><strong>Sensation :</strong> Tres facile, conversation fluide</p>
+                                <p><strong>Duree :</strong> 20-90 minutes</p>
+                                <p><strong>Benefices :</strong> Circulation, bien-être general</p>
                             </div>
                         </div>
                     </div>
@@ -334,14 +334,14 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-info h-100">
                             <div class="card-header bg-info text-white">
-                                <h6 class="mb-0">Zone 2 : LÃ©gÃ¨re</h6>
-                                <small>60-70% FC RÃ©serve</small>
+                                <h6 class="mb-0">Zone 2 : Legere</h6>
+                                <small>60-70% FC Reserve</small>
                             </div>
                             <div class="card-body">
                                 <p><strong>Objectif :</strong> Endurance de base, combustion graisses</p>
                                 <p><strong>Sensation :</strong> Facile, conversation possible</p>
-                                <p><strong>DurÃ©e :</strong> 30-120 minutes</p>
-                                <p><strong>BÃ©nÃ©fices :</strong> Base aÃ©robie, mÃ©tabolisme lipidique</p>
+                                <p><strong>Duree :</strong> 30-120 minutes</p>
+                                <p><strong>Benefices :</strong> Base aerobie, metabolisme lipidique</p>
                             </div>
                         </div>
                     </div>
@@ -349,14 +349,14 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-warning h-100">
                             <div class="card-header bg-warning text-dark">
-                                <h6 class="mb-0">Zone 3 : ModÃ©rÃ©e</h6>
-                                <small>70-80% FC RÃ©serve</small>
+                                <h6 class="mb-0">Zone 3 : Moderee</h6>
+                                <small>70-80% FC Reserve</small>
                             </div>
                             <div class="card-body">
-                                <p><strong>Objectif :</strong> AmÃ©lioration endurance, capacitÃ© aÃ©robie</p>
-                                <p><strong>Sensation :</strong> ModÃ©rÃ©e, conversation difficile</p>
-                                <p><strong>DurÃ©e :</strong> 20-60 minutes</p>
-                                <p><strong>BÃ©nÃ©fices :</strong> EfficacitÃ© cardiovasculaire</p>
+                                <p><strong>Objectif :</strong> Amelioration endurance, capacite aerobie</p>
+                                <p><strong>Sensation :</strong> Moderee, conversation difficile</p>
+                                <p><strong>Duree :</strong> 20-60 minutes</p>
+                                <p><strong>Benefices :</strong> Efficacite cardiovasculaire</p>
                             </div>
                         </div>
                     </div>
@@ -365,13 +365,13 @@
                         <div class="card border-danger h-100">
                             <div class="card-header bg-danger text-white">
                                 <h6 class="mb-0">Zone 4 : Intense</h6>
-                                <small>80-90% FC RÃ©serve</small>
+                                <small>80-90% FC Reserve</small>
                             </div>
                             <div class="card-body">
-                                <p><strong>Objectif :</strong> AmÃ©lioration VMA, capacitÃ© anaÃ©robie</p>
+                                <p><strong>Objectif :</strong> Amelioration VMA, capacite anaerobie</p>
                                 <p><strong>Sensation :</strong> Difficile, quelques mots seulement</p>
-                                <p><strong>DurÃ©e :</strong> 8-40 minutes (fractionnÃ©)</p>
-                                <p><strong>BÃ©nÃ©fices :</strong> Puissance aÃ©robie, seuil lactique</p>
+                                <p><strong>Duree :</strong> 8-40 minutes (fractionne)</p>
+                                <p><strong>Benefices :</strong> Puissance aerobie, seuil lactique</p>
                             </div>
                         </div>
                     </div>
@@ -380,13 +380,13 @@
                         <div class="card border-dark h-100">
                             <div class="card-header bg-dark text-white">
                                 <h6 class="mb-0">Zone 5 : Maximale</h6>
-                                <small>90-100% FC RÃ©serve</small>
+                                <small>90-100% FC Reserve</small>
                             </div>
                             <div class="card-body">
                                 <p><strong>Objectif :</strong> Puissance maximale, vitesse</p>
                                 <p><strong>Sensation :</strong> Extrêmement difficile</p>
-                                <p><strong>DurÃ©e :</strong> 30 secondes - 8 minutes</p>
-                                <p><strong>BÃ©nÃ©fices :</strong> Puissance neuromusculaire</p>
+                                <p><strong>Duree :</strong> 30 secondes - 8 minutes</p>
+                                <p><strong>Benefices :</strong> Puissance neuromusculaire</p>
                             </div>
                         </div>
                     </div>
@@ -399,14 +399,14 @@
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-lungs me-2"></i>
-                    VO2 Max et Ã©valuation de la Condition Physique
+                    VO2 Max et evaluation de la Condition Physique
                 </h3>
             </div>
             <div class="card-body">
                 <p>
-                    Le VO2 Max reprÃ©sente la quantitÃ© maximale d'oxygÃ¨ne que votre corps peut utiliser 
+                    Le VO2 Max represente la quantite maximale d'oxygene que votre corps peut utiliser 
                     par minute et par kilogramme de poids corporel. C'est le meilleur indicateur de 
-                    votre capacitÃ© cardiorespiratoire.
+                    votre capacite cardiorespiratoire.
                 </p>
                 
                 <div class="row g-4">
@@ -416,7 +416,7 @@
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>CatÃ©gorie</th>
+                                        <th>Categorie</th>
                                         <th>Hommes 20-29</th>
                                         <th>Femmes 20-29</th>
                                         <th>Hommes 30-39</th>
@@ -426,12 +426,12 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-success">
-                                        <td><strong>Ã©lite</strong></td>
+                                        <td><strong>elite</strong></td>
                                         <td>&gt; 60</td>
                                         <td>&gt; 56</td>
                                         <td>&gt; 56</td>
                                         <td>&gt; 52</td>
-                                        <td>AthlÃ¨tes de haut niveau</td>
+                                        <td>Athletes de haut niveau</td>
                                     </tr>
                                     <tr class="table-primary">
                                         <td><strong>Excellent</strong></td>
@@ -439,7 +439,7 @@
                                         <td>47-56</td>
                                         <td>48-56</td>
                                         <td>44-52</td>
-                                        <td>TrÃ¨s bonne forme</td>
+                                        <td>Tres bonne forme</td>
                                     </tr>
                                     <tr class="table-info">
                                         <td><strong>Bon</strong></td>
@@ -463,7 +463,7 @@
                                         <td>&lt; 31</td>
                                         <td>&lt; 32</td>
                                         <td>&lt; 28</td>
-                                        <td>AmÃ©lioration nÃ©cessaire</td>
+                                        <td>Amelioration necessaire</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -476,9 +476,9 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>GÃ©nÃ©tique :</strong> 25-50% hÃ©rÃ©ditaire</li>
-                                    <li><strong>Entraînement :</strong> AmÃ©lioration 15-25%</li>
-                                    <li><strong>Âge :</strong> DÃ©clin ~1%/an aprÃ¨s 25 ans</li>
+                                    <li><strong>Genetique :</strong> 25-50% hereditaire</li>
+                                    <li><strong>Entraînement :</strong> Amelioration 15-25%</li>
+                                    <li><strong>Âge :</strong> Declin ~1%/an apres 25 ans</li>
                                     <li><strong>Sexe :</strong> Hommes +10-15% en moyenne</li>
                                     <li><strong>Poids corporel :</strong> Impact sur valeurs relatives</li>
                                 </ul>
@@ -488,7 +488,7 @@
                         <div class="alert alert-warning mt-3">
                             <small>
                                 <strong>Note :</strong> L'estimation VO2 Max par formules est approximative. 
-                                Un test en laboratoire reste l'Ã©talon-or.
+                                Un test en laboratoire reste l'etalon-or.
                             </small>
                         </div>
                     </div>
@@ -496,18 +496,18 @@
             </div>
         </div>
 
-        <!-- VariabilitÃ© FrÃ©quence Cardiaque -->
+        <!-- Variabilite Frequence Cardiaque -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-chart-line me-2"></i>
-                    VariabilitÃ© de la FrÃ©quence Cardiaque (HRV)
+                    Variabilite de la Frequence Cardiaque (HRV)
                 </h3>
             </div>
             <div class="card-body">
                 <p>
                     La HRV mesure les variations temporelles entre chaque battement cardiaque. 
-                    Elle reflÃ¨te l'Ã©quilibre entre les systÃ¨mes nerveux sympathique et parasympathique.
+                    Elle reflete l'equilibre entre les systemes nerveux sympathique et parasympathique.
                 </p>
                 
                 <div class="row g-4">
@@ -518,12 +518,12 @@
                             </div>
                             <div class="card-body">
                                 <ul>
-                                    <li><strong>HRV Ã©levÃ©e :</strong> Bonne rÃ©cupÃ©ration</li>
-                                    <li><strong>VariabilitÃ© stable :</strong> Adaptation optimale</li>
-                                    <li><strong>AmÃ©lioration progressive :</strong> Forme en hausse</li>
+                                    <li><strong>HRV elevee :</strong> Bonne recuperation</li>
+                                    <li><strong>Variabilite stable :</strong> Adaptation optimale</li>
+                                    <li><strong>Amelioration progressive :</strong> Forme en hausse</li>
                                 </ul>
                                 <div class="alert alert-success alert-sm">
-                                    <small>Une HRV Ã©levÃ©e indique gÃ©nÃ©ralement un systÃ¨me nerveux Ã©quilibrÃ©</small>
+                                    <small>Une HRV elevee indique generalement un systeme nerveux equilibre</small>
                                 </div>
                             </div>
                         </div>
@@ -536,7 +536,7 @@
                             </div>
                             <div class="card-body">
                                 <ul>
-                                    <li><strong>HRV trÃ¨s basse :</strong> Fatigue, stress</li>
+                                    <li><strong>HRV tres basse :</strong> Fatigue, stress</li>
                                     <li><strong>Chute brutale :</strong> Sur-entraînement possible</li>
                                     <li><strong>Stagnation :</strong> Besoin d'adaptation</li>
                                 </ul>
@@ -561,16 +561,16 @@
                     <div class="col-md-4">
                         <div class="card bg-light">
                             <div class="card-body">
-                                <h6>PrÃ©vention Sur-entraînement</h6>
-                                <p class="small">DÃ©tection prÃ©coce de la fatigue excessive</p>
+                                <h6>Prevention Sur-entraînement</h6>
+                                <p class="small">Detection precoce de la fatigue excessive</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card bg-light">
                             <div class="card-body">
-                                <h6>Optimisation RÃ©cupÃ©ration</h6>
-                                <p class="small">Ajustement des pÃ©riodes de repos</p>
+                                <h6>Optimisation Recuperation</h6>
+                                <p class="small">Ajustement des periodes de repos</p>
                             </div>
                         </div>
                     </div>
@@ -588,9 +588,9 @@
             </div>
             <div class="card-body">
                 <div class="alert alert-success">
-                    <h6>Principes d'Entraînement Ã©quilibrÃ©</h6>
+                    <h6>Principes d'Entraînement equilibre</h6>
                     <p class="mb-0">
-                        Un entraînement efficace respecte la rÃ¨gle <strong>80/20</strong> : 
+                        Un entraînement efficace respecte la regle <strong>80/20</strong> : 
                         80% du temps dans les zones 1-2 (facile), 20% dans les zones 3-5 (intense).
                     </p>
                 </div>
@@ -599,14 +599,14 @@
                     <div class="col-md-4">
                         <div class="card border-primary h-100">
                             <div class="card-header bg-primary text-white">
-                                <h6 class="mb-0">DÃ©butants</h6>
+                                <h6 class="mb-0">Debutants</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Commencer par zones 1-2 exclusivement</li>
                                     <li>Progression graduelle sur 8-12 semaines</li>
-                                    <li>Ã©coute des signaux corporels</li>
-                                    <li>RÃ©cupÃ©ration entre sÃ©ances</li>
+                                    <li>ecoute des signaux corporels</li>
+                                    <li>Recuperation entre seances</li>
                                     <li>Consulter un professionnel</li>
                                 </ul>
                             </div>
@@ -616,15 +616,15 @@
                     <div class="col-md-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">IntermÃ©diaires</h6>
+                                <h6 class="mb-0">Intermediaires</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Base solide en zones 1-2 (80%)</li>
                                     <li>Introduction progressive zone 3</li>
-                                    <li>1-2 sÃ©ances intenses/semaine max</li>
-                                    <li>Surveillance de la rÃ©cupÃ©ration</li>
-                                    <li>PÃ©riodisation des charges</li>
+                                    <li>1-2 seances intenses/semaine max</li>
+                                    <li>Surveillance de la recuperation</li>
+                                    <li>Periodisation des charges</li>
                                 </ul>
                             </div>
                         </div>
@@ -633,15 +633,15 @@
                     <div class="col-md-4">
                         <div class="card border-warning h-100">
                             <div class="card-header bg-warning text-dark">
-                                <h6 class="mb-0">AvancÃ©s</h6>
+                                <h6 class="mb-0">Avances</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Planification structurÃ©e</li>
+                                    <li>Planification structuree</li>
                                     <li>Utilisation de toutes les zones</li>
                                     <li>Monitoring HRV et FC repos</li>
                                     <li>Cycles de surcompensation</li>
-                                    <li>Suivi professionnel recommandÃ©</li>
+                                    <li>Suivi professionnel recommande</li>
                                 </ul>
                             </div>
                         </div>
@@ -650,13 +650,13 @@
                 
                 <div class="alert alert-danger mt-4">
                     <h6><i class="fas fa-exclamation-triangle me-2"></i>Signaux d'Alarme</h6>
-                    <p class="mb-2">Consultez un professionnel de santÃ© si vous ressentez :</p>
+                    <p class="mb-2">Consultez un professionnel de sante si vous ressentez :</p>
                     <ul class="mb-0">
                         <li>Douleurs thoraciques ou palpitations anormales</li>
-                        <li>Essoufflement excessif au repos ou effort lÃ©ger</li>
-                        <li>Vertiges, malaises ou Ã©vanouissements</li>
-                        <li>FC anormalement Ã©levÃ©e ou basse</li>
-                        <li>Fatigue chronique inexpliquÃ©e</li>
+                        <li>Essoufflement excessif au repos ou effort leger</li>
+                        <li>Vertiges, malaises ou evanouissements</li>
+                        <li>FC anormalement elevee ou basse</li>
+                        <li>Fatigue chronique inexpliquee</li>
                     </ul>
                 </div>
             </div>
@@ -664,7 +664,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -680,9 +680,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -692,15 +692,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -727,7 +727,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -738,12 +738,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -855,7 +855,7 @@ const hrMaxFormulas = {
     'oakland': (age, gender) => gender === 'female' ? 206 - (0.88 * age) : 220 - age
 };
 
-// Mise Ã jour de l'affichage de l'intensitÃ©
+// Mise Ã jour de l'affichage de l'intensite
 document.getElementById('intensity').addEventListener('input', function() {
     document.getElementById('intensityValue').textContent = this.value + '%';
 });
@@ -886,7 +886,7 @@ function calculateMaxHeartRate(age, gender, formula, useKnownMax, knownMax) {
 }
 
 function calculateTargetHR(maxHR, restingHR, intensity) {
-    // MÃ©thode Karvonen (RÃ©serve cardiaque)
+    // Methode Karvonen (Reserve cardiaque)
     const hrReserve = maxHR - restingHR;
     return Math.round(restingHR + (hrReserve * (intensity / 100)));
 }
@@ -901,7 +901,7 @@ function estimateVO2Max(age, gender, fitnessLevel) {
         baseVO2 -= 2;
     }
     
-    // Ajustement par âge (dÃ©clin avec l'âge)
+    // Ajustement par âge (declin avec l'âge)
     const ageNum = parseInt(age);
     if (ageNum > 30) {
         baseVO2 -= Math.floor((ageNum - 30) / 5) * 2;
@@ -921,7 +921,7 @@ function estimateVO2Max(age, gender, fitnessLevel) {
 }
 
 function getVO2Category(vo2max) {
-    if (vo2max >= 60) return { category: 'Ã©lite', color: 'success' };
+    if (vo2max >= 60) return { category: 'elite', color: 'success' };
     if (vo2max >= 50) return { category: 'Excellent', color: 'primary' };
     if (vo2max >= 40) return { category: 'Bon', color: 'info' };
     if (vo2max >= 30) return { category: 'Moyen', color: 'warning' };
@@ -933,7 +933,7 @@ function calculateBMI(weight, height) {
 }
 
 function calculateFitness() {
-    // RÃ©cupÃ©ration des valeurs
+    // Recuperation des valeurs
     const age = document.getElementById('age').value;
     const restingHR = document.getElementById('restingHR').value;
     const weight = document.getElementById('weight').value;
@@ -955,7 +955,7 @@ function calculateFitness() {
     }
     
     if (useKnownMax && !knownMax) {
-        errorDiv.textContent = "Veuillez saisir votre FC Max connue ou dÃ©sÃ©lectionner cette option.";
+        errorDiv.textContent = "Veuillez saisir votre FC Max connue ou deselectionner cette option.";
         errorDiv.classList.remove('d-none');
         document.getElementById('results').classList.add('d-none');
         return;
@@ -971,7 +971,7 @@ function calculateFitness() {
     const vo2max = estimateVO2Max(age, gender, fitnessLevel);
     const vo2Category = getVO2Category(vo2max);
     
-    // Affichage des mÃ©triques principales
+    // Affichage des metriques principales
     const metricsHTML = `
         <div class="col-md-3">
             <div class="card border-primary h-100">
@@ -1029,22 +1029,22 @@ function calculateFitness() {
     
     document.getElementById('metricsCards').innerHTML = metricsHTML;
     
-    // Calcul des zones d'entraînement (mÃ©thode Karvonen)
+    // Calcul des zones d'entraînement (methode Karvonen)
     const restingHRNum = parseInt(restingHR);
     const hrReserve = maxHR - restingHRNum;
     
     const zones = [
         {
-            name: "Zone 1: TrÃ¨s LÃ©gÃ¨re",
+            name: "Zone 1: Tres Legere",
             percentage: "50-60%",
             minHR: Math.round(restingHRNum + (hrReserve * 0.5)),
             maxHR: Math.round(restingHRNum + (hrReserve * 0.6)),
-            objective: "RÃ©cupÃ©ration, Ã©chauffement",
-            sensation: "TrÃ¨s facile, conversation fluide",
+            objective: "Recuperation, echauffement",
+            sensation: "Tres facile, conversation fluide",
             color: "table-success"
         },
         {
-            name: "Zone 2: LÃ©gÃ¨re", 
+            name: "Zone 2: Legere", 
             percentage: "60-70%",
             minHR: Math.round(restingHRNum + (hrReserve * 0.6)),
             maxHR: Math.round(restingHRNum + (hrReserve * 0.7)),
@@ -1053,12 +1053,12 @@ function calculateFitness() {
             color: "table-info"
         },
         {
-            name: "Zone 3: ModÃ©rÃ©e",
+            name: "Zone 3: Moderee",
             percentage: "70-80%", 
             minHR: Math.round(restingHRNum + (hrReserve * 0.7)),
             maxHR: Math.round(restingHRNum + (hrReserve * 0.8)),
-            objective: "AmÃ©lioration endurance, capacitÃ© aÃ©robie",
-            sensation: "ModÃ©rÃ©e, conversation difficile",
+            objective: "Amelioration endurance, capacite aerobie",
+            sensation: "Moderee, conversation difficile",
             color: "table-warning"
         },
         {
@@ -1066,7 +1066,7 @@ function calculateFitness() {
             percentage: "80-90%",
             minHR: Math.round(restingHRNum + (hrReserve * 0.8)),
             maxHR: Math.round(restingHRNum + (hrReserve * 0.9)),
-            objective: "VMA, capacitÃ© anaÃ©robie",
+            objective: "VMA, capacite anaerobie",
             sensation: "Difficile, quelques mots",
             color: "table-danger"
         },
@@ -1093,7 +1093,7 @@ function calculateFitness() {
     
     document.getElementById('zonesTableBody').innerHTML = zonesHTML;
     
-    // Afficher les rÃ©sultats
+    // Afficher les resultats
     document.getElementById('results').classList.remove('d-none');
     document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -1120,7 +1120,7 @@ function resetForm() {
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
-    // Masquer le champ FC Max connue par dÃ©faut
+    // Masquer le champ FC Max connue par defaut
     document.getElementById('knownMaxField').style.display = 'none';
 });
 </script>

@@ -34,7 +34,7 @@
                             @csrf
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault(); this.closest('form').submit();">
-                                DÃ©connexion
+                                Deconnexion
                             </x-dropdown-link>
                         </form>
                     </x-slot>

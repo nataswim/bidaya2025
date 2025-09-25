@@ -15,7 +15,7 @@ class PublicController extends Controller
         $category = $request->input('category');
         $tag = $request->input('tag');
         
-        // Tous les posts publiÃ©s sont listÃ©s (mÃ©tadonnÃ©es visibles)
+        // Tous les posts publies sont listes (metadonnees visibles)
         $query = Post::with(['category', 'tags'])
             ->where('status', 'published')
             ->whereNotNull('published_at')
@@ -30,7 +30,7 @@ class PublicController extends Controller
             });
         }
 
-        // Filtrage par catÃ©gorie
+        // Filtrage par categorie
         if ($category) {
             $query->whereHas('category', function($q) use ($category) {
                 $q->where('slug', $category);
@@ -48,7 +48,7 @@ class PublicController extends Controller
                       ->orderBy('order', 'asc')
                       ->paginate(12);
 
-        // RÃ©cupÃ©rer les catÃ©gories et tags actifs pour les filtres
+        // Recuperer les categories et tags actifs pour les filtres
         $categories = Category::where('status', 'active')
                              ->withCount('posts')
                              ->orderBy('order', 'asc')
@@ -66,21 +66,21 @@ class PublicController extends Controller
 
     public function show(Post $post)
 {
-    // VÃ©rifier si le post est publiÃ© (mÃ©tadonnÃ©es visibles)
+    // Verifier si le post est publie (metadonnees visibles)
     if (!$post->isMetadataVisible()) {
-        abort(404, 'Article non trouvÃ©.');
+        abort(404, 'Article non trouve.');
     }
 
-    // IncrÃ©menter les vues pour tous les visiteurs (même si contenu restreint)
+    // Incrementer les vues pour tous les visiteurs (même si contenu restreint)
     $post->increment('hits');
 
-    // Charger les relations nÃ©cessaires
+    // Charger les relations necessaires
     $post->load(['category', 'tags', 'creator']);
 
-    // DÃ©terminer si le contenu complet est visible
+    // Determiner si le contenu complet est visible
     $contentVisible = $post->isContentVisibleTo(auth()->user());
 
-    // Articles similaires (même catÃ©gorie, mÃ©tadonnÃ©es visibles)
+    // Articles similaires (même categorie, metadonnees visibles)
     $relatedPosts = collect();
     if ($post->category_id) {
         $relatedPosts = Post::where('status', 'published')
@@ -106,7 +106,7 @@ class PublicController extends Controller
         $relatedPosts = $relatedPosts->merge($popularPosts);
     }
 
-    // Posts rÃ©cents pour la sidebar
+    // Posts recents pour la sidebar
     $recentPosts = Post::where('status', 'published')
         ->where('id', '!=', $post->id)
         ->whereNotNull('published_at')
@@ -139,7 +139,7 @@ class PublicController extends Controller
             ->limit(6)
             ->get();
 
-        // Articles rÃ©cents
+        // Articles recents
         $recentPosts = Post::where('status', 'published')
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
@@ -148,7 +148,7 @@ class PublicController extends Controller
             ->limit(8)
             ->get();
 
-        // CatÃ©gories populaires
+        // Categories populaires
         $popularCategories = Category::where('status', 'active')
             ->withCount(['posts' => function($query) {
                 $query->where('status', 'published')
@@ -164,7 +164,7 @@ class PublicController extends Controller
     }
 
     /**
-     * Recherche avancÃ©e
+     * Recherche avancee
      */
     public function search(Request $request)
     {
@@ -248,12 +248,12 @@ class PublicController extends Controller
     }
 
     /**
-     * Affichage par catÃ©gorie
+     * Affichage par categorie
      */
     public function category(Category $category)
     {
         if ($category->status !== 'active') {
-            abort(404, 'CatÃ©gorie non trouvÃ©e.');
+            abort(404, 'Categorie non trouvee.');
         }
 
         $posts = Post::where('status', 'published')
@@ -273,7 +273,7 @@ class PublicController extends Controller
     public function tag(Tag $tag)
     {
         if ($tag->status !== 'active') {
-            abort(404, 'Tag non trouvÃ©.');
+            abort(404, 'Tag non trouve.');
         }
 
         $posts = $tag->posts()

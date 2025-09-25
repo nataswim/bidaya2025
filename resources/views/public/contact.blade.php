@@ -10,8 +10,8 @@
             <div class="col-lg-6">
                 <h1 class="display-4 fw-bold mb-4">Contactez-nous</h1>
                 <p class="lead mb-0">
-                    Nous sommes lÃ pour rÃ©pondre Ã vos questions, suggestions et commentaires. 
-                    N'hÃ©sitez pas Ã nous Ã©crire !
+                    Nous sommes lÃ pour repondre Ã vos questions, suggestions et commentaires. 
+                    N'hesitez pas Ã nous ecrire !
                 </p>
             </div>
             <div class="col-lg-6 text-center">
@@ -38,7 +38,7 @@
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="first_name" class="form-label fw-semibold">PrÃ©nom *</label>
+                                    <label for="first_name" class="form-label fw-semibold">Prenom *</label>
                                     <input type="text" 
                                            name="first_name" 
                                            id="first_name" 
@@ -65,7 +65,7 @@
                                     <label for="subject" class="form-label fw-semibold">Sujet *</label>
                                     <select name="subject" id="subject" class="form-select" required>
                                         <option value="">Choisir un sujet</option>
-                                        <option value="question">Question gÃ©nÃ©rale</option>
+                                        <option value="question">Question generale</option>
                                         <option value="suggestion">Suggestion d'article</option>
                                         <option value="collaboration">Proposition de collaboration</option>
                                         <option value="technique">Support technique</option>
@@ -78,7 +78,7 @@
                                               id="message" 
                                               rows="6" 
                                               class="form-control"
-                                              placeholder="DÃ©crivez votre demande en dÃ©tail..."
+                                              placeholder="Decrivez votre demande en detail..."
                                               required></textarea>
                                 </div>
                                 <div class="col-12">
@@ -119,7 +119,7 @@
                             <div>
                                 <h6 class="fw-semibold mb-1">Email</h6>
                                 <p class="text-muted mb-0">contact@{{ str_replace(['http://', 'https://'], '', config('app.url')) }}</p>
-                                <small class="text-muted">RÃ©ponse sous 24h</small>
+                                <small class="text-muted">Reponse sous 24h</small>
                             </div>
                         </div>
                         
@@ -131,7 +131,7 @@
                             <div>
                                 <h6 class="fw-semibold mb-1">Localisation</h6>
                                 <p class="text-muted mb-0">France</p>
-                                <small class="text-muted">Ã©quipe distribuÃ©e</small>
+                                <small class="text-muted">equipe distribuee</small>
                             </div>
                         </div>
                         
@@ -141,7 +141,7 @@
                                 <i class="fas fa-users text-info"></i>
                             </div>
                             <div>
-                                <h6 class="fw-semibold mb-1">RÃ©seaux sociaux</h6>
+                                <h6 class="fw-semibold mb-1">Reseaux sociaux</h6>
                                 <div class="d-flex gap-2 mt-2">
                                     <a href="#" class="btn btn-sm btn-outline-primary">
                                         <i class="fab fa-twitter"></i>
@@ -161,7 +161,7 @@
                 <!-- FAQ -->
                 <div class="card border-0 shadow-sm">
                     <div class="card-header bg-white border-bottom p-4">
-                        <h5 class="mb-0">Questions frÃ©quentes</h5>
+                        <h5 class="mb-0">Questions frequentes</h5>
                     </div>
                     <div class="card-body p-4">
                         <div class="accordion" id="faqAccordion">
@@ -176,7 +176,7 @@
                                 <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
                                         Absolument ! Nous sommes toujours Ã la recherche de nouveaux contenus. 
-                                        Contactez-nous avec votre idÃ©e.
+                                        Contactez-nous avec votre idee.
                                     </div>
                                 </div>
                             </div>
@@ -186,13 +186,13 @@
                                     <button class="accordion-button collapsed border-0 bg-light" 
                                             data-bs-toggle="collapse" 
                                             data-bs-target="#faq2">
-                                        Comment signaler un problÃ¨me ?
+                                        Comment signaler un probleme ?
                                     </button>
                                 </h2>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
                                         Utilisez le formulaire avec le sujet "Support technique" pour nous signaler 
-                                        tout problÃ¨me rencontrÃ©.
+                                        tout probleme rencontre.
                                     </div>
                                 </div>
                             </div>

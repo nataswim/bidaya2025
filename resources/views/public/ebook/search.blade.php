@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Rechercher - Espace TÃ©lÃ©chargement')
-@section('meta_description', 'Recherchez parmi notre collection de ressources tÃ©lÃ©chargeables : eBooks, guides, vidÃ©os et documents.')
+@section('title', 'Rechercher - Espace Telechargement')
+@section('meta_description', 'Recherchez parmi notre collection de ressources telechargeables : eBooks, guides, videos et documents.')
 
 @push('styles')
 <style>
@@ -81,11 +81,11 @@
                                        name="q" 
                                        value="{{ $query }}"
                                        class="form-control form-control-lg"
-                                       placeholder="Mots-clÃ©s...">
+                                       placeholder="Mots-cles...">
                             </div>
                             <div class="col-md-3">
                                 <select name="category" class="form-select form-select-lg">
-                                    <option value="">Toutes catÃ©gories</option>
+                                    <option value="">Toutes categories</option>
                                     @foreach($categories as $cat)
                                         <option value="{{ $cat->id }}" {{ $categoryId == $cat->id ? 'selected' : '' }}>
                                             {{ $cat->name }}
@@ -116,28 +116,28 @@
     </div>
 </section>
 
-<!-- RÃ©sultats de recherche -->
+<!-- Resultats de recherche -->
 <section class="py-5">
     <div class="container">
-        <!-- En-tête des rÃ©sultats -->
+        <!-- En-tête des resultats -->
         <div class="search-results-header">
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <h2 class="fw-bold mb-2">
                         @if($query || $categoryId || $format)
-                            RÃ©sultats de recherche
+                            Resultats de recherche
                         @else
                             Toutes les ressources
                         @endif
                     </h2>
                     <p class="text-muted mb-0">
-                        {{ $downloadables->total() }} ressource(s) trouvÃ©e(s)
+                        {{ $downloadables->total() }} ressource(s) trouvee(s)
                         @if($query)
                             pour "<strong>{{ $query }}</strong>"
                         @endif
                         @if($categoryId)
                             @php $selectedCategory = $categories->firstWhere('id', $categoryId) @endphp
-                            dans <strong>{{ $selectedCategory->name ?? 'catÃ©gorie inconnue' }}</strong>
+                            dans <strong>{{ $selectedCategory->name ?? 'categorie inconnue' }}</strong>
                         @endif
                         @if($format)
                             au format <strong>{{ strtoupper($format) }}</strong>
@@ -156,7 +156,7 @@
 
         @if($downloadables->count() > 0)
             <div class="row g-4">
-                <!-- Filtres latÃ©raux -->
+                <!-- Filtres lateraux -->
                 <div class="col-lg-3">
                     <div class="filter-sidebar p-4 sticky-top" style="top: 2rem;">
                         <h6 class="fw-bold mb-3">
@@ -166,11 +166,11 @@
                         <form method="GET" action="{{ route('ebook.search') }}">
                             <input type="hidden" name="q" value="{{ $query }}">
                             
-                            <!-- CatÃ©gories -->
+                            <!-- Categories -->
                             <div class="mb-4">
-                                <label class="form-label fw-semibold small">CatÃ©gorie</label>
+                                <label class="form-label fw-semibold small">Categorie</label>
                                 <select name="category" class="form-select form-select-sm">
-                                    <option value="">Toutes catÃ©gories</option>
+                                    <option value="">Toutes categories</option>
                                     @foreach($categories as $cat)
                                         <option value="{{ $cat->id }}" {{ $categoryId == $cat->id ? 'selected' : '' }}>
                                             {{ $cat->name }}
@@ -203,10 +203,10 @@
                                         Titre A-Z
                                     </option>
                                     <option value="downloads" {{ request('sort') === 'downloads' ? 'selected' : '' }}>
-                                        Plus tÃ©lÃ©chargÃ©s
+                                        Plus telecharges
                                     </option>
                                     <option value="recent" {{ request('sort') === 'recent' ? 'selected' : '' }}>
-                                        Plus rÃ©cents
+                                        Plus recents
                                     </option>
                                 </select>
                             </div>
@@ -226,13 +226,13 @@
                                 <div class="col-6">
                                     <div class="bg-primary bg-opacity-10 rounded p-2">
                                         <div class="fw-bold text-primary">{{ $downloadables->total() }}</div>
-                                        <small class="text-muted">RÃ©sultats</small>
+                                        <small class="text-muted">Resultats</small>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="bg-success bg-opacity-10 rounded p-2">
                                         <div class="fw-bold text-success">{{ $categories->count() }}</div>
-                                        <small class="text-muted">CatÃ©gories</small>
+                                        <small class="text-muted">Categories</small>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                     </div>
                 </div>
 
-                <!-- RÃ©sultats -->
+                <!-- Resultats -->
                 <div class="col-lg-9">
                     <div class="row g-4">
                         @foreach($downloadables as $downloadable)
@@ -270,7 +270,7 @@
                                         <!-- Indicateur de permission -->
                                         <div class="position-absolute" style="bottom: 1rem; left: 1rem;">
                                             @if($downloadable->user_permission === 'public')
-                                                <span class="badge bg-success" title="AccÃ¨s libre">
+                                                <span class="badge bg-success" title="Acces libre">
                                                     <i class="fas fa-globe"></i>
                                                 </span>
                                             @elseif($downloadable->user_permission === 'visitor')
@@ -313,18 +313,18 @@
                                                 <div class="d-grid gap-2">
                                                     <a href="{{ route('ebook.show', [$downloadable->category->slug, $downloadable->slug]) }}" 
                                                        class="btn btn-outline-primary btn-sm">
-                                                        <i class="fas fa-eye me-2"></i>Voir les dÃ©tails
+                                                        <i class="fas fa-eye me-2"></i>Voir les details
                                                     </a>
                                                     <a href="{{ route('ebook.download', [$downloadable->category->slug, $downloadable->slug]) }}" 
                                                        class="btn btn-success btn-sm">
-                                                        <i class="fas fa-download me-2"></i>TÃ©lÃ©charger
+                                                        <i class="fas fa-download me-2"></i>Telecharger
                                                     </a>
                                                 </div>
                                             @else
                                                 <div class="d-grid gap-2">
                                                     <a href="{{ route('ebook.show', [$downloadable->category->slug, $downloadable->slug]) }}" 
                                                        class="btn btn-outline-primary btn-sm">
-                                                        <i class="fas fa-eye me-2"></i>Voir les dÃ©tails
+                                                        <i class="fas fa-eye me-2"></i>Voir les details
                                                     </a>
                                                     <div class="text-center mt-2">
                                                         <small class="text-muted">
@@ -334,7 +334,7 @@
                                                                     Connexion requise
                                                                 </a>
                                                             @else
-                                                                AccÃ¨s restreint
+                                                                Acces restreint
                                                             @endif
                                                         </small>
                                                     </div>
@@ -358,9 +358,9 @@
         @else
             <div class="text-center py-5">
                 <i class="fas fa-search fa-3x text-muted mb-3 opacity-50"></i>
-                <h4>Aucune ressource trouvÃ©e</h4>
+                <h4>Aucune ressource trouvee</h4>
                 @if($query || $categoryId || $format)
-                    <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
+                    <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
                     <div class="d-flex gap-2 justify-content-center">
                         <a href="{{ route('ebook.search') }}" class="btn btn-outline-primary">
                             <i class="fas fa-times me-2"></i>Effacer les filtres
@@ -372,7 +372,7 @@
                 @else
                     <p class="text-muted mb-3">Commencez par effectuer une recherche.</p>
                     <a href="{{ route('ebook.index') }}" class="btn btn-primary">
-                        <i class="fas fa-home me-2"></i>DÃ©couvrir les catÃ©gories
+                        <i class="fas fa-home me-2"></i>Decouvrir les categories
                     </a>
                 @endif
             </div>
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selects = filterForm.querySelectorAll('select');
         selects.forEach(select => {
             select.addEventListener('change', function() {
-                // Auto-submit aprÃ¨s un dÃ©lai pour Ã©viter les soumissions multiples
+                // Auto-submit apres un delai pour eviter les soumissions multiples
                 setTimeout(() => {
                     filterForm.submit();
                 }, 300);

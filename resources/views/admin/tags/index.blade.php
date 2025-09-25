@@ -2,7 +2,7 @@
 
 @section('title', 'Gestion des Tags')
 @section('page-title', 'Tags')
-@section('page-description', 'Gestion des Ã©tiquettes d\'articles')
+@section('page-description', 'Gestion des etiquettes d\'articles')
 
 @section('content')
 <div class="container-fluid">
@@ -119,7 +119,7 @@
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" 
                                                                href="{{ route('admin.tags.show', $tag) }}">
-                                                                <i class="fas fa-eye me-2 text-info"></i>Voir dÃ©tails
+                                                                <i class="fas fa-eye me-2 text-info"></i>Voir details
                                                             </a>
                                                         </li>
                                                         <li>
@@ -162,7 +162,7 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
                                         Affichage de {{ $tags->firstItem() }} Ã {{ $tags->lastItem() }} 
-                                        sur {{ $tags->total() }} rÃ©sultat(s)
+                                        sur {{ $tags->total() }} resultat(s)
                                     </div>
                                     {{ $tags->appends(request()->query())->links() }}
                                 </div>
@@ -171,16 +171,16 @@
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-tags fa-3x text-muted mb-3 opacity-25"></i>
-                            <h5>Aucun tag trouvÃ©</h5>
+                            <h5>Aucun tag trouve</h5>
                             @if(request()->hasAny(['search', 'group']))
-                                <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
                                 <a href="{{ route('admin.tags.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir tous les tags
                                 </a>
                             @else
-                                <p class="text-muted mb-3">CrÃ©ez votre premier tag pour organiser vos articles</p>
+                                <p class="text-muted mb-3">Creez votre premier tag pour organiser vos articles</p>
                                 <a href="{{ route('admin.tags.create') }}" class="btn btn-warning">
-                                    <i class="fas fa-plus me-2"></i>CrÃ©er un tag
+                                    <i class="fas fa-plus me-2"></i>Creer un tag
                                 </a>
                             @endif
                         </div>
@@ -217,13 +217,13 @@
                         <div class="col-6">
                             <div class="bg-success bg-opacity-10 rounded p-3">
                                 <h4 class="fw-bold text-success mb-1">{{ $usedTags }}</h4>
-                                <small class="text-muted">UtilisÃ©s</small>
+                                <small class="text-muted">Utilises</small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="bg-warning bg-opacity-10 rounded p-3">
                                 <h4 class="fw-bold text-warning mb-1">{{ $unusedTags }}</h4>
-                                <small class="text-muted">Non utilisÃ©s</small>
+                                <small class="text-muted">Non utilises</small>
                             </div>
                         </div>
                         <div class="col-6">
@@ -261,7 +261,7 @@
                             <small class="text-muted">{{ $tag->posts_count }} articles</small>
                         </div>
                     @empty
-                        <p class="text-muted mb-0">Aucun tag utilisÃ© pour le moment</p>
+                        <p class="text-muted mb-0">Aucun tag utilise pour le moment</p>
                     @endforelse
                 </div>
             </div>
@@ -280,7 +280,7 @@
                         </a>
                         @if($unusedTags > 0)
                             <button class="btn btn-outline-warning" onclick="cleanUnusedTags()">
-                                <i class="fas fa-broom me-2"></i>Nettoyer les tags non utilisÃ©s ({{ $unusedTags }})
+                                <i class="fas fa-broom me-2"></i>Nettoyer les tags non utilises ({{ $unusedTags }})
                             </button>
                         @endif
                         <button class="btn btn-outline-info" onclick="exportTags()">
@@ -336,9 +336,9 @@
 @push('scripts')
 <script>
 function cleanUnusedTags() {
-    if (confirm('Êtes-vous sûr de vouloir supprimer tous les tags non utilisÃ©s ? Cette action est irrÃ©versible.')) {
-        // Simulation - il faudra crÃ©er la route correspondante
-        alert('FonctionnalitÃ© Ã implÃ©menter dans le contrôleur');
+    if (confirm('Êtes-vous sûr de vouloir supprimer tous les tags non utilises ? Cette action est irreversible.')) {
+        // Simulation - il faudra creer la route correspondante
+        alert('Fonctionnalite Ã implementer dans le contrôleur');
         // fetch('/admin/tags/clean-unused', {
         //     method: 'POST',
         //     headers: {
@@ -356,8 +356,8 @@ function cleanUnusedTags() {
 }
 
 function exportTags() {
-    // Simulation - il faudra crÃ©er la route correspondante
-    alert('FonctionnalitÃ© Ã implÃ©menter dans le contrôleur');
+    // Simulation - il faudra creer la route correspondante
+    alert('Fonctionnalite Ã implementer dans le contrôleur');
     // window.open('/admin/tags/export', '_blank');
 }
 </script>

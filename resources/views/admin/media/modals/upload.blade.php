@@ -18,8 +18,8 @@
                          id="uploadZone">
                         <div class="upload-zone-content">
                             <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
-                            <h5 class="text-primary">Glissez-dÃ©posez vos fichiers ici</h5>
-                            <p class="text-muted mb-3">ou cliquez pour sÃ©lectionner</p>
+                            <h5 class="text-primary">Glissez-deposez vos fichiers ici</h5>
+                            <p class="text-muted mb-3">ou cliquez pour selectionner</p>
                             <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('fileInput').click()">
                                 <i class="fas fa-folder-open me-2"></i>Parcourir les fichiers
                             </button>
@@ -36,7 +36,7 @@
                         <div class="upload-overlay position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-3 d-none align-items-center justify-content-center">
                             <div class="text-center">
                                 <i class="fas fa-download fa-2x text-primary mb-2"></i>
-                                <div class="fw-bold text-primary">DÃ©posez vos fichiers ici</div>
+                                <div class="fw-bold text-primary">Deposez vos fichiers ici</div>
                             </div>
                         </div>
                     </div>
@@ -44,16 +44,16 @@
                     <!-- Informations format -->
                     <div class="alert alert-info">
                         <i class="fas fa-info-circle me-2"></i>
-                        <strong>Formats acceptÃ©s :</strong> JPEG, PNG, GIF, WebP • 
+                        <strong>Formats acceptes :</strong> JPEG, PNG, GIF, WebP • 
                         <strong>Taille max :</strong> 5 MB par fichier
                     </div>
 
-                    <!-- Options gÃ©nÃ©rales -->
+                    <!-- Options generales -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <label for="media_category_id" class="form-label">CatÃ©gorie</label>
+                            <label for="media_category_id" class="form-label">Categorie</label>
                             <select name="media_category_id" id="media_category_id" class="form-select">
-                                <option value="">Aucune catÃ©gorie</option>
+                                <option value="">Aucune categorie</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
@@ -61,9 +61,9 @@
                         </div>
                     </div>
 
-                    <!-- PrÃ©visualisation des fichiers -->
+                    <!-- Previsualisation des fichiers -->
                     <div id="filePreview" class="d-none">
-                        <h6 class="fw-semibold mb-3">Fichiers sÃ©lectionnÃ©s</h6>
+                        <h6 class="fw-semibold mb-3">Fichiers selectionnes</h6>
                         <div id="previewContainer" class="row g-3"></div>
                     </div>
 

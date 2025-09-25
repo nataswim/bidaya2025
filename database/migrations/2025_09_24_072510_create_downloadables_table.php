@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('file_size', 50)->nullable(); // Taille du fichier (ex: "2.5 MB")
             $table->string('cover_image')->nullable();
             
-            // CatÃ©gorie
+            // Categorie
             $table->foreignId('download_category_id')->constrained('download_categories')->cascadeOnDelete();
             
-            // Permissions d'accÃ¨s
+            // Permissions d'acces
             $table->enum('user_permission', ['public', 'visitor', 'user'])->default('public')->index();
             
             // Statistiques

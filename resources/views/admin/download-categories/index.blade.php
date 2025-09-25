@@ -1,25 +1,25 @@
 @extends('layouts.admin')
 
-@section('title', 'Gestion des CatÃ©gories de TÃ©lÃ©chargement')
-@section('page-title', 'CatÃ©gories de TÃ©lÃ©chargement')
-@section('page-description', 'Gestion des catÃ©gories d\'eBooks et ressources')
+@section('title', 'Gestion des Categories de Telechargement')
+@section('page-title', 'Categories de Telechargement')
+@section('page-description', 'Gestion des categories d\'eBooks et ressources')
 
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des catÃ©gories -->
+        <!-- Liste des categories -->
         <div class="col-lg-9">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h5 class="mb-1">
-                                <i class="fas fa-folder me-2"></i>CatÃ©gories de TÃ©lÃ©chargement
+                                <i class="fas fa-folder me-2"></i>Categories de Telechargement
                             </h5>
-                            <small class="opacity-75">{{ $categories->total() ?? $categories->count() }} catÃ©gorie(s) au total</small>
+                            <small class="opacity-75">{{ $categories->total() ?? $categories->count() }} categorie(s) au total</small>
                         </div>
                         <a href="{{ route('admin.download-categories.create') }}" class="btn btn-light">
-                            <i class="fas fa-plus me-2"></i>Nouvelle catÃ©gorie
+                            <i class="fas fa-plus me-2"></i>Nouvelle categorie
                         </a>
                     </div>
                 </div>
@@ -65,17 +65,17 @@
                     </form>
                 </div>
 
-                <!-- Liste des catÃ©gories -->
+                <!-- Liste des categories -->
                 <div class="card-body p-0">
                     @if($categories->count() > 0)
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead class="bg-light">
                                     <tr>
-                                        <th class="border-0 px-4 py-3">CatÃ©gorie</th>
+                                        <th class="border-0 px-4 py-3">Categorie</th>
                                         <th class="border-0 px-4 py-3">Statut</th>
-                                        <th class="border-0 px-4 py-3">TÃ©lÃ©chargements</th>
-                                        <th class="border-0 px-4 py-3">CrÃ©ateur</th>
+                                        <th class="border-0 px-4 py-3">Telechargements</th>
+                                        <th class="border-0 px-4 py-3">Createur</th>
                                         <th class="border-0 px-4 py-3">Date</th>
                                         <th class="border-0 px-4 py-3 text-end">Actions</th>
                                     </tr>
@@ -143,7 +143,7 @@
                                                         </div>
                                                     </div>
                                                 @else
-                                                    <span class="text-muted">CrÃ©ateur inconnu</span>
+                                                    <span class="text-muted">Createur inconnu</span>
                                                 @endif
                                             </td>
                                             
@@ -189,7 +189,7 @@
                                                         <li>
                                                             <form method="POST" 
                                                                   action="{{ route('admin.download-categories.destroy', $category) }}" 
-                                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catÃ©gorie ?')">
+                                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette categorie ?')">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" 
@@ -213,7 +213,7 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
                                         Affichage de {{ $categories->firstItem() }} Ã {{ $categories->lastItem() }} 
-                                        sur {{ $categories->total() }} rÃ©sultat(s)
+                                        sur {{ $categories->total() }} resultat(s)
                                     </div>
                                     {{ $categories->appends(request()->query())->links() }}
                                 </div>
@@ -222,16 +222,16 @@
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-folder fa-3x text-muted mb-3 opacity-25"></i>
-                            <h5>Aucune catÃ©gorie trouvÃ©e</h5>
+                            <h5>Aucune categorie trouvee</h5>
                             @if(request()->hasAny(['search', 'status']))
-                                <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
                                 <a href="{{ route('admin.download-categories.index') }}" class="btn btn-outline-primary">
-                                    <i class="fas fa-arrow-left me-2"></i>Voir toutes les catÃ©gories
+                                    <i class="fas fa-arrow-left me-2"></i>Voir toutes les categories
                                 </a>
                             @else
-                                <p class="text-muted mb-3">Commencez par crÃ©er votre premiÃ¨re catÃ©gorie</p>
+                                <p class="text-muted mb-3">Commencez par creer votre premiere categorie</p>
                                 <a href="{{ route('admin.download-categories.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus me-2"></i>CrÃ©er une catÃ©gorie
+                                    <i class="fas fa-plus me-2"></i>Creer une categorie
                                 </a>
                             @endif
                         </div>
@@ -242,7 +242,7 @@
 
         <!-- Sidebar statistiques -->
         <div class="col-lg-3">
-            <!-- Statistiques gÃ©nÃ©rales -->
+            <!-- Statistiques generales -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
@@ -296,10 +296,10 @@
                 <div class="card-body p-3">
                     <div class="d-grid gap-2">
                         <a href="{{ route('admin.download-categories.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus me-2"></i>Nouvelle catÃ©gorie
+                            <i class="fas fa-plus me-2"></i>Nouvelle categorie
                         </a>
                         <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-info">
-                            <i class="fas fa-download me-2"></i>GÃ©rer les fichiers
+                            <i class="fas fa-download me-2"></i>Gerer les fichiers
                         </a>
                         <a href="{{ route('admin.downloadables.stats') }}" class="btn btn-outline-success">
                             <i class="fas fa-chart-line me-2"></i>Statistiques

@@ -74,7 +74,7 @@
                                     </label>
                                 </div>
                                 <a href="{{ route('password.request') }}" class="text-decoration-none">
-                                    Mot de passe oubliÃ© ?
+                                    Mot de passe oublie ?
                                 </a>
                             </div>
 
@@ -89,7 +89,7 @@
                             <div class="text-center">
                                 <span class="text-muted">Pas encore de compte ?</span>
                                 <a href="{{ route('register') }}" class="text-decoration-none fw-semibold">
-                                    CrÃ©er un compte
+                                    Creer un compte
                                 </a>
                             </div>
                         </form>

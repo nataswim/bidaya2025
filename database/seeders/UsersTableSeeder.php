@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::create([
-    'name' => 'Super Admin', // ✅ AjoutÃ©
+    'name' => 'Super Admin', // ✅ Ajoute
     'username' => 'admin',
     'first_name' => 'Super',
     'last_name' => 'Admin',

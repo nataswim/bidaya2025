@@ -1,22 +1,22 @@
 @extends('layouts.public')
 
-@section('title', 'PrÃ©dicteur Performance Natation - Calcul Temps IntermÃ©diaires & Allures')
-@section('meta_description', 'PrÃ©dicteur performance natation scientifique. Calcul temps intermÃ©diaires, allures, stratÃ©gies course. Crawl, papillon, brasse, dos, 4 nages. Formules validÃ©es par l\'analyse biomÃ©canique.')
+@section('title', 'Predicteur Performance Natation - Calcul Temps Intermediaires & Allures')
+@section('meta_description', 'Predicteur performance natation scientifique. Calcul temps intermediaires, allures, strategies course. Crawl, papillon, brasse, dos, 4 nages. Formules validees par l\'analyse biomecanique.')
 
 @section('content')
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            PrÃ©dicteur de Performance Natation
+            Predicteur de Performance Natation
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-info-circle text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Outil de prÃ©diction avancÃ© :</strong> Estimez vos temps intermÃ©diaires et stratÃ©gies de course 
-                    avec des formules scientifiques validÃ©es par l'analyse biomÃ©canique moderne
+                    <strong>Outil de prediction avance :</strong> Estimez vos temps intermediaires et strategies de course 
+                    avec des formules scientifiques validees par l'analyse biomecanique moderne
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     Calculateur de Performance
                 </h2>
                 <p class="mb-0 mt-2 opacity-75">
-                    Entrez vos donnÃ©es pour prÃ©dire vos temps de course
+                    Entrez vos donnees pour predire vos temps de course
                 </p>
             </div>
 
@@ -73,11 +73,11 @@
                         </select>
                     </div>
 
-                    <!-- Temps de rÃ©fÃ©rence (pour styles normaux) -->
+                    <!-- Temps de reference (pour styles normaux) -->
                     <div id="normalStyleInputs" class="col-12">
                         <label for="referenceTime" class="form-label fw-bold text-primary d-flex align-items-center gap-2 mb-3">
                             <i class="fas fa-clock text-warning"></i>
-                            Temps de rÃ©fÃ©rence 50m (en secondes)
+                            Temps de reference 50m (en secondes)
                         </label>
                         <div class="input-group input-group-lg">
                             <span class="input-group-text bg-primary text-white border-primary" style="border-width: 2px;">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <!-- Temps quatre nages (cachÃ© par dÃ©faut) -->
+                    <!-- Temps quatre nages (cache par defaut) -->
                     <div id="medleyInputs" class="col-12 d-none">
                         <div class="alert alert-warning border-0 mb-3">
                             <strong>Mode Quatre Nages :</strong> Entrez vos temps pour chaque nage
@@ -114,32 +114,32 @@
             </div>
         </div>
 
-        <!-- RÃ©sultats -->
+        <!-- Resultats -->
         <div id="resultsSection" class="d-none">
             <!-- Temps Total -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
-                        <i class="fas fa-trophy me-2"></i>Performance EstimÃ©e
+                        <i class="fas fa-trophy me-2"></i>Performance Estimee
                     </h3>
                 </div>
                 <div class="card-body text-center">
                     <div class="alert alert-success border-0 py-4">
                         <i class="fas fa-trophy text-warning me-2" style="font-size: 2rem;"></i>
                         <div>
-                            <h4 class="fw-bold text-success mb-0">Temps Total PrÃ©dit</h4>
+                            <h4 class="fw-bold text-success mb-0">Temps Total Predit</h4>
                             <span class="display-5 fw-bold text-success" id="totalTime">--:--:--</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tableau des temps intermÃ©diaires -->
+            <!-- Tableau des temps intermediaires -->
             <div class="card border-0 shadow-lg mb-4">
                 <div class="card-header text-white py-3" style="background: #198754;">
                     <h3 class="h4 mb-0 d-flex align-items-center gap-2">
                         <i class="fas fa-chart-line text-warning"></i>
-                        Allures et Temps IntermÃ©diaires
+                        Allures et Temps Intermediaires
                     </h3>
                 </div>
                 <div class="card-body p-0">
@@ -178,7 +178,7 @@
                 <div class="d-flex align-items-center gap-2 mb-3">
                     <i class="fas fa-info-circle text-primary" style="font-size: 1.5rem;"></i>
                     <h2 class="h4 fw-semibold mb-0 text-primary">
-                        Notes Importantes sur les PrÃ©dictions
+                        Notes Importantes sur les Predictions
                     </h2>
                 </div>
                 <div class="row g-3">
@@ -186,15 +186,15 @@
                         <ul class="list-unstyled">
                             <li class="mb-2">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                Formules basÃ©es sur l'analyse biomÃ©canique et donnÃ©es de performance Ã©lites
+                                Formules basees sur l'analyse biomecanique et donnees de performance elites
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                Progression physiologique constante et endurance adaptÃ©e Ã chaque distance
+                                Progression physiologique constante et endurance adaptee Ã chaque distance
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                SpÃ©cificitÃ©s biomÃ©caniques intÃ©grÃ©es pour chaque style de nage
+                                Specificites biomecaniques integrees pour chaque style de nage
                             </li>
                         </ul>
                     </div>
@@ -202,7 +202,7 @@
                         <ul class="list-unstyled">
                             <li class="mb-2">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                Transitions et spÃ©cificitÃ©s considÃ©rÃ©es pour le quatre nages
+                                Transitions et specificites considerees pour le quatre nages
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-exclamation-triangle text-warning me-2"></i>
@@ -210,7 +210,7 @@
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-info-circle text-info me-2"></i>
-                                Conditions optimales supposÃ©es (bassin 50m, eau 26-28°C)
+                                Conditions optimales supposees (bassin 50m, eau 26-28°C)
                             </li>
                         </ul>
                     </div>
@@ -230,33 +230,33 @@
                 <div class="alert alert-info border-0">
                     <h6><i class="fas fa-lightbulb me-2"></i>Recherche 2024</h6>
                     <p class="mb-0">
-                        L'analyse biomÃ©canique moderne rÃ©vÃ¨le que l'efficacitÃ© propulsive varie de 15-25% entre les styles de nage, 
-                        impactant directement les stratÃ©gies de course optimales.
+                        L'analyse biomecanique moderne revele que l'efficacite propulsive varie de 15-25% entre les styles de nage, 
+                        impactant directement les strategies de course optimales.
                     </p>
                 </div>
 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Facteurs BiomÃ©caniques ClÃ©s par Style</h6>
+                        <h6>Facteurs Biomecaniques Cles par Style</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Style</th>
-                                        <th>EfficacitÃ© Propulsive</th>
-                                        <th>Coût Ã©nergÃ©tique</th>
-                                        <th>FrÃ©quence Optimale</th>
+                                        <th>Efficacite Propulsive</th>
+                                        <th>Coût energetique</th>
+                                        <th>Frequence Optimale</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td><strong>Crawl</strong></td>
                                         <td>85-90%</td>
-                                        <td>RÃ©fÃ©rence (100%)</td>
+                                        <td>Reference (100%)</td>
                                         <td>45-65 cycles/min</td>
                                     </tr>
                                     <tr>
-                                        <td>Dos crawlÃ©</td>
+                                        <td>Dos crawle</td>
                                         <td>80-85%</td>
                                         <td>+8-12%</td>
                                         <td>40-60 cycles/min</td>
@@ -280,17 +280,17 @@
                     <div class="col-md-6">
                         <h6>Variables Physiologiques Impact Performance</h6>
                         <ul class="small">
-                            <li><strong>VO2max spÃ©cifique :</strong> CapacitÃ© aÃ©robie en natation (±15% vs terrestre)</li>
-                            <li><strong>Seuil lactique :</strong> IntensitÃ© soutenable sans accumulation</li>
-                            <li><strong>Puissance anaÃ©robie :</strong> Sprints et fins de course</li>
-                            <li><strong>Ã©conomie gestuelle :</strong> Coût Ã©nergÃ©tique par mÃ¨tre nagÃ©</li>
-                            <li><strong>FlexibilitÃ© active :</strong> Amplitude articulaire fonctionnelle</li>
+                            <li><strong>VO2max specifique :</strong> Capacite aerobie en natation (±15% vs terrestre)</li>
+                            <li><strong>Seuil lactique :</strong> Intensite soutenable sans accumulation</li>
+                            <li><strong>Puissance anaerobie :</strong> Sprints et fins de course</li>
+                            <li><strong>economie gestuelle :</strong> Coût energetique par metre nage</li>
+                            <li><strong>Flexibilite active :</strong> Amplitude articulaire fonctionnelle</li>
                         </ul>
 
                         <div class="alert alert-success">
                             <small>
                                 <strong>Innovation 2024 :</strong> Les capteurs inertiels sous-marins permettent 
-                                une analyse biomÃ©canique prÃ©cise en conditions rÃ©elles de course.
+                                une analyse biomecanique precise en conditions reelles de course.
                             </small>
                         </div>
                     </div>
@@ -308,22 +308,22 @@
             </div>
             <div class="card-body">
                 <p class="lead">
-                    La <strong>performance en natation</strong> est le rÃ©sultat d'une interaction complexe entre des facteurs 
-                    biomÃ©caniques, physiologiques, psychologiques et environnementaux. L'efficacitÃ© du mouvement est primordiale 
-                    dans ce milieu rÃ©sistant qu'est l'eau.
+                    La <strong>performance en natation</strong> est le resultat d'une interaction complexe entre des facteurs 
+                    biomecaniques, physiologiques, psychologiques et environnementaux. L'efficacite du mouvement est primordiale 
+                    dans ce milieu resistant qu'est l'eau.
                 </p>
 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>L'ImpÃ©ratif de la Technique</h6>
+                        <h6>L'Imperatif de la Technique</h6>
                         <p class="small">
-                            Au cœur de toute <strong>performance en natation</strong> rÃ©side la <strong>technique de nage</strong>. 
-                            Une dÃ©faillance technique, même minime, engendre une augmentation significative de la traînÃ©e.
+                            Au cœur de toute <strong>performance en natation</strong> reside la <strong>technique de nage</strong>. 
+                            Une defaillance technique, même minime, engendre une augmentation significative de la traînee.
                         </p>
                         <ul class="small">
-                            <li><strong>Hydrodynamisme :</strong> Position du corps alignÃ©e, profilÃ©e et stable</li>
-                            <li><strong>Propulsion :</strong> Coordination prÃ©cise bras-jambes-tronc</li>
-                            <li><strong>Respiration :</strong> Synchronisation sans perturbation de l'Ã©quilibre</li>
+                            <li><strong>Hydrodynamisme :</strong> Position du corps alignee, profilee et stable</li>
+                            <li><strong>Propulsion :</strong> Coordination precise bras-jambes-tronc</li>
+                            <li><strong>Respiration :</strong> Synchronisation sans perturbation de l'equilibre</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -332,9 +332,9 @@
                             <div class="col-12">
                                 <div class="card border-success">
                                     <div class="card-body">
-                                        <h6 class="card-title small">CapacitÃ©s AÃ©robies</h6>
+                                        <h6 class="card-title small">Capacites Aerobies</h6>
                                         <p class="card-text small">
-                                            VO2 max Ã©levÃ©e et capacitÃ© Ã maintenir une intensitÃ© soutenue sans accumulation excessive de lactate.
+                                            VO2 max elevee et capacite Ã maintenir une intensite soutenue sans accumulation excessive de lactate.
                                         </p>
                                     </div>
                                 </div>
@@ -342,9 +342,9 @@
                             <div class="col-12">
                                 <div class="card border-warning">
                                     <div class="card-body">
-                                        <h6 class="card-title small">CapacitÃ©s AnaÃ©robies</h6>
+                                        <h6 class="card-title small">Capacites Anaerobies</h6>
                                         <p class="card-text small">
-                                            Puissance anaÃ©robie et tolÃ©rance au lactate pour les sprints et fins de course.
+                                            Puissance anaerobie et tolerance au lactate pour les sprints et fins de course.
                                         </p>
                                     </div>
                                 </div>
@@ -362,8 +362,8 @@
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Concentration et focus technique</li>
-                                    <li>Gestion du stress de compÃ©tition</li>
-                                    <li>StratÃ©gie de course adaptative</li>
+                                    <li>Gestion du stress de competition</li>
+                                    <li>Strategie de course adaptative</li>
                                 </ul>
                             </div>
                         </div>
@@ -375,9 +375,9 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>TempÃ©rature de l'eau (26-28°C optimal)</li>
-                                    <li>QualitÃ© du bassin (turbulences, profondeur)</li>
-                                    <li>Conditions de compÃ©tition</li>
+                                    <li>Temperature de l'eau (26-28°C optimal)</li>
+                                    <li>Qualite du bassin (turbulences, profondeur)</li>
+                                    <li>Conditions de competition</li>
                                 </ul>
                             </div>
                         </div>
@@ -389,8 +389,8 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>DonnÃ©es d'entraînement rigoureuses</li>
-                                    <li>Ã©valuation technique rÃ©guliÃ¨re</li>
+                                    <li>Donnees d'entraînement rigoureuses</li>
+                                    <li>evaluation technique reguliere</li>
                                     <li>Ajustement programmatique continu</li>
                                 </ul>
                             </div>
@@ -401,40 +401,40 @@
                 <div class="alert alert-success mt-4">
                     <h6><i class="fas fa-check-circle me-2"></i>Principe Fondamental</h6>
                     <p class="mb-0">
-                        La performance en natation n'est pas le fruit d'une seule qualitÃ©, mais d'une synergie maîtrisÃ©e entre 
-                        technique irrÃ©prochable, condition physique adaptÃ©e, prÃ©paration mentale solide et approche analytique rigoureuse.
+                        La performance en natation n'est pas le fruit d'une seule qualite, mais d'une synergie maîtrisee entre 
+                        technique irreprochable, condition physique adaptee, preparation mentale solide et approche analytique rigoureuse.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- StratÃ©gies de Course -->
+        <!-- Strategies de Course -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-tactic me-2"></i>
-                    StratÃ©gies de Course et Optimisation Performance
+                    Strategies de Course et Optimisation Performance
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>StratÃ©gies de RÃ©partition d'Effort</h6>
+                        <h6>Strategies de Repartition d'Effort</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Distance</th>
-                                        <th>StratÃ©gie Optimale</th>
-                                        <th>RÃ©partition</th>
-                                        <th>Points ClÃ©s</th>
+                                        <th>Strategie Optimale</th>
+                                        <th>Repartition</th>
+                                        <th>Points Cles</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td><strong>50m</strong></td>
                                         <td>All-out</td>
-                                        <td>100% dÃ¨s le dÃ©part</td>
+                                        <td>100% des le depart</td>
                                         <td>Technique parfaite sous lactate max</td>
                                     </tr>
                                     <tr>
@@ -447,13 +447,13 @@
                                         <td>200m</td>
                                         <td>Even split</td>
                                         <td>25-25-25-25%</td>
-                                        <td>RÃ©gularitÃ© avec finish</td>
+                                        <td>Regularite avec finish</td>
                                     </tr>
                                     <tr>
                                         <td>400m+</td>
                                         <td>Progressive</td>
                                         <td>Build-up</td>
-                                        <td>MontÃ©e progressive, sprint final</td>
+                                        <td>Montee progressive, sprint final</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -462,20 +462,20 @@
                     <div class="col-md-6">
                         <h6>Technologies d'Analyse Performance 2024</h6>
                         <ul class="small">
-                            <li><strong>Capteurs inertiels Ã©tanches :</strong> Analyse 3D en temps rÃ©el</li>
-                            <li><strong>CamÃ©ras sous-marines HD :</strong> BiomÃ©canique dÃ©taillÃ©e</li>
-                            <li><strong>Lactate portable :</strong> Mesure mÃ©tabolique instantanÃ©e</li>
-                            <li><strong>Applications IA :</strong> Correction technique automatisÃ©e</li>
-                            <li><strong>Wearables aquatiques :</strong> Monitoring cardiaque prÃ©cis</li>
+                            <li><strong>Capteurs inertiels etanches :</strong> Analyse 3D en temps reel</li>
+                            <li><strong>Cameras sous-marines HD :</strong> Biomecanique detaillee</li>
+                            <li><strong>Lactate portable :</strong> Mesure metabolique instantanee</li>
+                            <li><strong>Applications IA :</strong> Correction technique automatisee</li>
+                            <li><strong>Wearables aquatiques :</strong> Monitoring cardiaque precis</li>
                         </ul>
 
-                        <h6 class="mt-3">MÃ©triques ClÃ©s Ã Surveiller</h6>
+                        <h6 class="mt-3">Metriques Cles Ã Surveiller</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>MÃ©trique</th>
-                                        <th>UnitÃ©</th>
+                                        <th>Metrique</th>
+                                        <th>Unite</th>
                                         <th>Objectif</th>
                                     </tr>
                                 </thead>
@@ -487,11 +487,11 @@
                                     </tr>
                                     <tr>
                                         <td>Distance par coup</td>
-                                        <td>MÃ¨tres</td>
+                                        <td>Metres</td>
                                         <td>Maximiser</td>
                                     </tr>
                                     <tr>
-                                        <td>FrÃ©quence de bras</td>
+                                        <td>Frequence de bras</td>
                                         <td>Cycles/min</td>
                                         <td>Optimiser</td>
                                     </tr>
@@ -513,18 +513,18 @@
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-dumbbell me-2"></i>
-                    Entraînement et PrÃ©paration Moderne
+                    Entraînement et Preparation Moderne
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <h6>PÃ©riodisation Moderne</h6>
+                        <h6>Periodisation Moderne</h6>
                         <ul class="small">
-                            <li><strong>Phase AÃ©robie (12-16 sem) :</strong> Volume, technique, endurance</li>
-                            <li><strong>Phase Mixte (6-8 sem) :</strong> Seuil, rÃ©sistance lactique</li>
-                            <li><strong>Phase AnaÃ©robie (4-6 sem) :</strong> Vitesse, puissance</li>
-                            <li><strong>Phase Affûtage (2-3 sem) :</strong> Maintien + rÃ©cupÃ©ration</li>
+                            <li><strong>Phase Aerobie (12-16 sem) :</strong> Volume, technique, endurance</li>
+                            <li><strong>Phase Mixte (6-8 sem) :</strong> Seuil, resistance lactique</li>
+                            <li><strong>Phase Anaerobie (4-6 sem) :</strong> Vitesse, puissance</li>
+                            <li><strong>Phase Affûtage (2-3 sem) :</strong> Maintien + recuperation</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
@@ -544,13 +544,13 @@
                                         <td>Z1</td>
                                         <td>50-60%</td>
                                         <td>&lt;2 mmol/L</td>
-                                        <td>RÃ©cupÃ©ration</td>
+                                        <td>Recuperation</td>
                                     </tr>
                                     <tr>
                                         <td>Z2</td>
                                         <td>60-70%</td>
                                         <td>2-3 mmol/L</td>
-                                        <td>AÃ©robie</td>
+                                        <td>Aerobie</td>
                                     </tr>
                                     <tr>
                                         <td>Z3</td>
@@ -575,30 +575,30 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>RÃ©cupÃ©ration et RÃ©gÃ©nÃ©ration</h6>
+                        <h6>Recuperation et Regeneration</h6>
                         <ul class="small">
-                            <li><strong>Sommeil :</strong> 8-9h pour nageurs Ã©lites</li>
-                            <li><strong>Nutrition :</strong> Hydratation optimale prÃ©/post</li>
-                            <li><strong>ThÃ©rapies :</strong> Massage, cryothÃ©rapie, compression</li>
-                            <li><strong>MobilitÃ© :</strong> Ã©tirements spÃ©cifiques Ã©paules</li>
+                            <li><strong>Sommeil :</strong> 8-9h pour nageurs elites</li>
+                            <li><strong>Nutrition :</strong> Hydratation optimale pre/post</li>
+                            <li><strong>Therapies :</strong> Massage, cryotherapie, compression</li>
+                            <li><strong>Mobilite :</strong> etirements specifiques epaules</li>
                             <li><strong>Mental :</strong> Visualisation, relaxation</li>
                         </ul>
 
                         <div class="alert alert-warning">
                             <small>
-                                <strong>Conseil 2024 :</strong> L'analyse HRV (variabilitÃ© cardiaque) 
-                                permet un monitoring prÃ©cis de l'Ã©tat de rÃ©cupÃ©ration quotidien.
+                                <strong>Conseil 2024 :</strong> L'analyse HRV (variabilite cardiaque) 
+                                permet un monitoring precis de l'etat de recuperation quotidien.
                             </small>
                         </div>
                     </div>
                 </div>
                 
                 <div class="alert alert-info mt-3">
-                    <h6><i class="fas fa-info-circle me-2"></i>Important - SÃ©curitÃ©</h6>
+                    <h6><i class="fas fa-info-circle me-2"></i>Important - Securite</h6>
                     <p class="mb-0">
-                        Ces prÃ©dictions sont des estimations basÃ©es sur des modÃ¨les scientifiques. Les performances rÃ©elles 
+                        Ces predictions sont des estimations basees sur des modeles scientifiques. Les performances reelles 
                         peuvent varier selon l'entraînement, les conditions et la forme physique. Consultez un entraîneur 
-                        qualifiÃ© pour un programme personnalisÃ©.
+                        qualifie pour un programme personnalise.
                     </p>
                 </div>
             </div>
@@ -606,7 +606,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -622,9 +622,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -634,15 +634,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -669,7 +669,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -680,12 +680,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -821,7 +821,7 @@ function addFinalPercentage(time) {
     return time * 1.049;
 }
 
-// Initialisation des sÃ©lecteurs
+// Initialisation des selecteurs
 function initializeSelectors() {
     const styleSelect = document.getElementById('swimmingStyle');
     const distanceSelect = document.getElementById('distance');
@@ -889,7 +889,7 @@ function setupMedleyFields(distance) {
         
         fieldsContainer.appendChild(col);
         
-        // Gestionnaire d'Ã©vÃ©nement
+        // Gestionnaire d'evenement
         const input = col.querySelector('input');
         input.addEventListener('input', (e) => {
             medleyTimes[field.key] = e.target.value;
@@ -899,7 +899,7 @@ function setupMedleyFields(distance) {
     });
 }
 
-// Calcul des prÃ©dictions
+// Calcul des predictions
 function calculatePredictedTimes(style, distance, referenceTime50m) {
     const predictions = [];
     
@@ -923,7 +923,7 @@ function calculatePredictedTimes(style, distance, referenceTime50m) {
                     distance: 100,
                     time: addFinalPercentage(time50m + 2.49),
                     timeFormatted: formatTime(addFinalPercentage(time50m + 2.49)),
-                    label: "2Ã¨me 50m"
+                    label: "2eme 50m"
                 }
             );
             break;
@@ -937,7 +937,7 @@ function calculatePredictedTimes(style, distance, referenceTime50m) {
                     distance: (i + 1) * 50,
                     time,
                     timeFormatted: formatTime(time),
-                    label: `${i + 1}${i === 0 ? 'er' : 'Ã¨me'} 50m`
+                    label: `${i + 1}${i === 0 ? 'er' : 'eme'} 50m`
                 });
             });
             break;
@@ -950,7 +950,7 @@ function calculatePredictedTimes(style, distance, referenceTime50m) {
                     distance: (i + 1) * 100,
                     time,
                     timeFormatted: formatTime(time),
-                    label: `${i + 1}${i === 0 ? 'er' : 'Ã¨me'} 100m`
+                    label: `${i + 1}${i === 0 ? 'er' : 'eme'} 100m`
                 });
             });
             break;
@@ -963,7 +963,7 @@ function calculatePredictedTimes(style, distance, referenceTime50m) {
                     distance: (i + 1) * 100,
                     time,
                     timeFormatted: formatTime(time),
-                    label: `${i + 1}${i === 0 ? 'er' : 'Ã¨me'} 100m`
+                    label: `${i + 1}${i === 0 ? 'er' : 'eme'} 100m`
                 });
             });
             break;
@@ -977,7 +977,7 @@ function calculatePredictedTimes(style, distance, referenceTime50m) {
                     distance: (i + 1) * 100,
                     time,
                     timeFormatted: formatTime(time),
-                    label: `${i + 1}${i === 0 ? 'er' : 'Ã¨me'} 100m`
+                    label: `${i + 1}${i === 0 ? 'er' : 'eme'} 100m`
                 });
             });
             break;
@@ -986,7 +986,7 @@ function calculatePredictedTimes(style, distance, referenceTime50m) {
     return predictions;
 }
 
-// Calcul spÃ©cifique pour le quatre nages
+// Calcul specifique pour le quatre nages
 function calculateMedleyPredictions(distance) {
     const predictions = [];
     const keys = distance === 200 
@@ -1009,7 +1009,7 @@ function calculateMedleyPredictions(distance) {
             distance: (index + 1) * (distance === 400 ? 100 : 50),
             time,
             timeFormatted: formatTime(time),
-            label: `${styles[index]} ${index + 1}${index === 0 ? 'er' : 'Ã¨me'} ${distance === 400 ? '100m' : '50m'}`
+            label: `${styles[index]} ${index + 1}${index === 0 ? 'er' : 'eme'} ${distance === 400 ? '100m' : '50m'}`
         });
     });
     
@@ -1055,20 +1055,20 @@ function calculatePerformance() {
         }
         
         if (predictions.length === 0) {
-            showError('Aucune prÃ©diction n\'a pu être calculÃ©e.');
+            showError('Aucune prediction n\'a pu être calculee.');
             return;
         }
         
         // Masquer les erreurs
         errorDiv.classList.add('d-none');
         
-        // Calculer et afficher les rÃ©sultats
+        // Calculer et afficher les resultats
         const totalTime = calculateTotalTime(predictions);
         displayResults(predictions, totalTime);
         
     } catch (error) {
         console.error('Erreur lors du calcul:', error);
-        showError('Une erreur s\'est produite lors du calcul. Veuillez vÃ©rifier vos donnÃ©es.');
+        showError('Une erreur s\'est produite lors du calcul. Veuillez verifier vos donnees.');
     }
 }
 
@@ -1080,12 +1080,12 @@ function showError(message) {
     document.getElementById('resultsSection').classList.add('d-none');
 }
 
-// Affichage des rÃ©sultats
+// Affichage des resultats
 function displayResults(predictions, totalTime) {
     // Afficher le temps total
     document.getElementById('totalTime').textContent = formatTime(totalTime);
     
-    // Remplir le tableau des prÃ©dictions
+    // Remplir le tableau des predictions
     const tbody = document.getElementById('predictionsBody');
     tbody.innerHTML = '';
     
@@ -1104,7 +1104,7 @@ function displayResults(predictions, totalTime) {
         tbody.appendChild(row);
     });
     
-    // Afficher la section rÃ©sultats
+    // Afficher la section resultats
     document.getElementById('resultsSection').classList.remove('d-none');
     document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

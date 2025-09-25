@@ -16,29 +16,29 @@ class DefaultRolesSeeder extends Seeder
         try {
             DB::beginTransaction();
 
-            $this->command->info('Adaptation du systÃ¨me de rôles existant...');
+            $this->command->info('Adaptation du systeme de rôles existant...');
             
-            // Afficher l'Ã©tat actuel
+            // Afficher l'etat actuel
             $this->showCurrentState();
 
             // 1. Ajuster les niveaux des rôles existants
             $this->adjustExistingRolesLevels();
 
-            // 2. CrÃ©er le rôle visitor
+            // 2. Creer le rôle visitor
             $this->createVisitorRole();
 
-            // 3. Ajouter les permissions de visibilitÃ©
+            // 3. Ajouter les permissions de visibilite
             $this->createVisibilityPermissions();
 
-            // 4. RÃ©organiser les permissions par rôle
+            // 4. Reorganiser les permissions par rôle
             $this->assignVisibilityPermissions();
 
-            // 5. Mettre visitor comme rôle par dÃ©faut
+            // 5. Mettre visitor comme rôle par defaut
             $this->setVisitorAsDefault();
 
             DB::commit();
             
-            $this->command->info('SystÃ¨me de visibilitÃ© configurÃ© avec succÃ¨s !');
+            $this->command->info('Systeme de visibilite configure avec succes !');
             $this->showFinalState();
 
         } catch (\Exception $e) {
@@ -50,37 +50,37 @@ class DefaultRolesSeeder extends Seeder
 
     private function showCurrentState()
     {
-        $this->command->info('Ã©tat actuel :');
+        $this->command->info('etat actuel :');
         Role::orderBy('level')->get()->each(function($role) {
             $usersCount = $role->users()->count();
-            $defaultMarker = $role->is_default ? ' (PAR DÃ©FAUT)' : '';
+            $defaultMarker = $role->is_default ? ' (PAR DeFAUT)' : '';
             $this->command->info('  - ' . $role->name . ' (niveau ' . $role->level . ')' . $defaultMarker . ' - ' . $usersCount . ' utilisateur(s)');
         });
     }
 
     private function adjustExistingRolesLevels()
     {
-        $this->command->info('RÃ©organisation des niveaux de rôles...');
+        $this->command->info('Reorganisation des niveaux de rôles...');
 
-        // Nouvelle hiÃ©rarchie: visitor(1) < user(10) < editor(50) < admin(100)
+        // Nouvelle hierarchie: visitor(1) < user(10) < editor(50) < admin(100)
         $roleUpdates = [
             'Admin' => [
                 'level' => 100, 
                 'name' => 'admin', 
                 'slug' => 'admin',
-                'description' => 'AccÃ¨s complet au systÃ¨me avec gestion des utilisateurs'
+                'description' => 'Acces complet au systeme avec gestion des utilisateurs'
             ],
             'Editor' => [
                 'level' => 50, 
                 'name' => 'editor', 
                 'slug' => 'editor',
-                'description' => 'RÃ©dacteur pouvant crÃ©er et modifier du contenu'
+                'description' => 'Redacteur pouvant creer et modifier du contenu'
             ],
             'User' => [
                 'level' => 10, 
                 'name' => 'user', 
                 'slug' => 'user',
-                'description' => 'Utilisateur vÃ©rifiÃ© avec accÃ¨s au contenu premium'
+                'description' => 'Utilisateur verifie avec acces au contenu premium'
             ],
         ];
 
@@ -95,13 +95,13 @@ class DefaultRolesSeeder extends Seeder
 
     private function createVisitorRole()
     {
-        $this->command->info('CrÃ©ation du rôle Visitor...');
+        $this->command->info('Creation du rôle Visitor...');
 
         $visitorData = [
             'name' => 'visitor',
             'slug' => 'visitor',
             'display_name' => 'Visiteur',
-            'description' => 'Utilisateur nouvellement inscrit avec accÃ¨s limitÃ© au contenu public uniquement',
+            'description' => 'Utilisateur nouvellement inscrit avec acces limite au contenu public uniquement',
             'level' => 1,
             'is_default' => false,
         ];
@@ -112,7 +112,7 @@ class DefaultRolesSeeder extends Seeder
         );
 
         if ($visitor->wasRecentlyCreated) {
-            $this->command->info('  ✓ Rôle Visiteur crÃ©Ã© (niveau 1)');
+            $this->command->info('  ✓ Rôle Visiteur cree (niveau 1)');
         } else {
             $visitor->update($visitorData);
             $this->command->info('  ✓ Rôle Visiteur mis Ã jour');
@@ -121,21 +121,21 @@ class DefaultRolesSeeder extends Seeder
 
     private function createVisibilityPermissions()
     {
-        $this->command->info('Ajout des permissions de visibilitÃ©...');
+        $this->command->info('Ajout des permissions de visibilite...');
 
         $newPermissions = [
             [
                 'name' => 'view.public.content',
                 'slug' => Str::slug('view.public.content'),
                 'display_name' => 'Voir le contenu public',
-                'description' => 'AccÃ¨s au contenu public du site (intro, mÃ©tadonnÃ©es)',
+                'description' => 'Acces au contenu public du site (intro, metadonnees)',
                 'group' => 'content'
             ],
             [
                 'name' => 'view.premium.content',
                 'slug' => Str::slug('view.premium.content'),
                 'display_name' => 'Voir le contenu premium',
-                'description' => 'AccÃ¨s au contenu complet des articles restreints',
+                'description' => 'Acces au contenu complet des articles restreints',
                 'group' => 'content'
             ],
             [
@@ -148,8 +148,8 @@ class DefaultRolesSeeder extends Seeder
             [
                 'name' => 'admin.access',
                 'slug' => Str::slug('admin.access'),
-                'display_name' => 'AccÃ¨s administration',
-                'description' => 'AccÃ¨s au panel d\'administration',
+                'display_name' => 'Acces administration',
+                'description' => 'Acces au panel d\'administration',
                 'group' => 'admin'
             ]
         ];
@@ -163,7 +163,7 @@ class DefaultRolesSeeder extends Seeder
             
             if ($permission->wasRecentlyCreated) {
                 $created++;
-                $this->command->info('  ✓ Permission crÃ©Ã©e : ' . $permission->name);
+                $this->command->info('  ✓ Permission creee : ' . $permission->name);
             }
         }
 
@@ -175,9 +175,9 @@ class DefaultRolesSeeder extends Seeder
             
             if (!$permission->display_name) {
                 $displayNames = [
-                    'Manage Users' => 'GÃ©rer les utilisateurs',
-                    'Manage Posts' => 'GÃ©rer les articles',
-                    'Manage Categories' => 'GÃ©rer les catÃ©gories'
+                    'Manage Users' => 'Gerer les utilisateurs',
+                    'Manage Posts' => 'Gerer les articles',
+                    'Manage Categories' => 'Gerer les categories'
                 ];
                 $updates['display_name'] = $displayNames[$permission->name] ?? $permission->name;
             }
@@ -192,7 +192,7 @@ class DefaultRolesSeeder extends Seeder
             }
         }
 
-        $this->command->info('  ✓ ' . $created . ' nouvelles permissions ajoutÃ©es');
+        $this->command->info('  ✓ ' . $created . ' nouvelles permissions ajoutees');
     }
 
     private function assignVisibilityPermissions()
@@ -230,7 +230,7 @@ class DefaultRolesSeeder extends Seeder
         foreach ($rolePermissions as $roleName => $permissionNames) {
             $role = Role::where('name', $roleName)->first();
             if (!$role) {
-                $this->command->warn('  ⚠ Rôle ' . $roleName . ' non trouvÃ©');
+                $this->command->warn('  ⚠ Rôle ' . $roleName . ' non trouve');
                 continue;
             }
 
@@ -243,44 +243,44 @@ class DefaultRolesSeeder extends Seeder
 
     private function setVisitorAsDefault()
     {
-        $this->command->info('Configuration du rôle par dÃ©faut...');
+        $this->command->info('Configuration du rôle par defaut...');
 
-        // Retirer le dÃ©faut de tous les rôles
+        // Retirer le defaut de tous les rôles
         Role::where('is_default', true)->update(['is_default' => false]);
 
-        // Mettre visitor en dÃ©faut
+        // Mettre visitor en defaut
         $visitor = Role::where('name', 'visitor')->first();
         if ($visitor) {
             $visitor->update(['is_default' => true]);
-            $this->command->info('  ✓ Visiteur dÃ©fini comme rôle par dÃ©faut pour les nouvelles inscriptions');
+            $this->command->info('  ✓ Visiteur defini comme rôle par defaut pour les nouvelles inscriptions');
         }
     }
 
     private function showFinalState()
     {
         $this->command->info('');
-        $this->command->info('=== SYSTÃ¨ME DE VISIBILITÃ© CONFIGURÃ© ===');
+        $this->command->info('=== SYSTeME DE VISIBILITe CONFIGURe ===');
         
         Role::with('permissions')->orderBy('level')->get()->each(function($role) {
             $permissionsCount = $role->permissions->count();
             $usersCount = $role->users()->count();
-            $defaultMarker = $role->is_default ? ' [DÃ©FAUT]' : '';
+            $defaultMarker = $role->is_default ? ' [DeFAUT]' : '';
             
             $this->command->info($role->display_name . ' (niveau ' . $role->level . ')' . $defaultMarker);
             $this->command->info('   └─ ' . $permissionsCount . ' permissions | ' . $usersCount . ' utilisateur(s)');
             
-            // Montrer les permissions de visibilitÃ©
+            // Montrer les permissions de visibilite
             $visibilityPerms = $role->permissions->whereIn('name', ['view.public.content', 'view.premium.content']);
             if ($visibilityPerms->count() > 0) {
-                $this->command->info('   └─ VisibilitÃ© : ' . $visibilityPerms->pluck('display_name')->implode(', '));
+                $this->command->info('   └─ Visibilite : ' . $visibilityPerms->pluck('display_name')->implode(', '));
             }
         });
 
         $this->command->info('');
-        $this->command->info('RÃ¨GLES DE VISIBILITÃ© :');
+        $this->command->info('ReGLES DE VISIBILITe :');
         $this->command->info('   • VISITOR : Voit intro/titre des articles, contenu public uniquement');
         $this->command->info('   • USER+ : Voit le contenu complet des articles premium');
-        $this->command->info('   • ADMIN : Peut promouvoir visitor → user pour dÃ©bloquer le contenu');
+        $this->command->info('   • ADMIN : Peut promouvoir visitor → user pour debloquer le contenu');
 
         $totalUsers = User::count();
         $usersWithoutRole = User::whereNull('role_id')->count();

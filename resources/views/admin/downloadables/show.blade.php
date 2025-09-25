@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'DÃ©tail du tÃ©lÃ©chargement')
+@section('title', 'Detail du telechargement')
 @section('page-title', $downloadable->title)
-@section('page-description', 'DÃ©tails du fichier tÃ©lÃ©chargeable')
+@section('page-description', 'Details du fichier telechargeable')
 
 @section('content')
 <div class="container-fluid">
@@ -90,7 +90,7 @@
 
                     @if($downloadable->long_description)
                         <div class="mb-4">
-                            <h6 class="fw-semibold mb-3">Description complÃ¨te</h6>
+                            <h6 class="fw-semibold mb-3">Description complete</h6>
                             <div class="content-display">
                                 {!! $downloadable->long_description !!}
                             </div>
@@ -120,7 +120,7 @@
                                 
                                 @if($downloadable->meta_keywords)
                                     <div class="col-12">
-                                        <small class="text-muted d-block">Mots-clÃ©s</small>
+                                        <small class="text-muted d-block">Mots-cles</small>
                                         <div>
                                             @foreach(explode(',', $downloadable->meta_keywords) as $keyword)
                                                 <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
@@ -134,12 +134,12 @@
                 </div>
             </div>
 
-            <!-- Statistiques de tÃ©lÃ©chargement -->
+            <!-- Statistiques de telechargement -->
             @if($recentDownloads->count() > 0)
                 <div class="card border-0 shadow-sm mt-4">
                     <div class="card-header bg-gradient-info text-white p-4">
                         <h6 class="mb-0">
-                            <i class="fas fa-chart-line me-2"></i>TÃ©lÃ©chargements rÃ©cents
+                            <i class="fas fa-chart-line me-2"></i>Telechargements recents
                         </h6>
                     </div>
                     <div class="card-body p-0">
@@ -237,12 +237,12 @@
                 </div>
             </div>
 
-            <!-- CatÃ©gorie -->
+            <!-- Categorie -->
             @if($downloadable->category)
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-gradient-info text-white p-3">
                         <h6 class="mb-0">
-                            <i class="fas fa-folder me-2"></i>CatÃ©gorie
+                            <i class="fas fa-folder me-2"></i>Categorie
                         </h6>
                     </div>
                     <div class="card-body p-3">
@@ -270,7 +270,7 @@
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-warning text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-shield-alt me-2"></i>Permissions d'accÃ¨s
+                        <i class="fas fa-shield-alt me-2"></i>Permissions d'acces
                     </h6>
                 </div>
                 <div class="card-body p-3">
@@ -285,13 +285,13 @@
                             <div class="bg-info bg-opacity-10 rounded p-3">
                                 <i class="fas fa-eye fa-2x text-info mb-2"></i>
                                 <h6 class="fw-bold text-info">Visiteur</h6>
-                                <small class="text-muted">RÃ©servÃ© aux non-connectÃ©s</small>
+                                <small class="text-muted">Reserve aux non-connectes</small>
                             </div>
                         @else
                             <div class="bg-warning bg-opacity-10 rounded p-3">
                                 <i class="fas fa-user fa-2x text-warning mb-2"></i>
                                 <h6 class="fw-bold text-warning">Membre</h6>
-                                <small class="text-muted">RÃ©servÃ© aux utilisateurs connectÃ©s</small>
+                                <small class="text-muted">Reserve aux utilisateurs connectes</small>
                             </div>
                         @endif
                     </div>
@@ -309,19 +309,19 @@
                     <div class="row g-3 small">
                         @if($downloadable->creator)
                             <div class="col-12">
-                                <small class="text-muted d-block">CrÃ©Ã© par</small>
+                                <small class="text-muted d-block">Cree par</small>
                                 <strong>{{ $downloadable->creator->name }}</strong>
                             </div>
                         @endif
                         
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de crÃ©ation</small>
+                            <small class="text-muted d-block">Date de creation</small>
                             <strong>{{ $downloadable->created_at->format('d/m/Y H:i') }}</strong>
                         </div>
                         
                         @if($downloadable->updated_at && $downloadable->updated_at != $downloadable->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">DerniÃ¨re modification</small>
+                                <small class="text-muted d-block">Derniere modification</small>
                                 <strong>{{ $downloadable->updated_at->format('d/m/Y H:i') }}</strong>
                                 @if($downloadable->updater)
                                     <div class="text-muted">par {{ $downloadable->updater->name }}</div>
@@ -358,7 +358,7 @@
                     <hr class="my-3">
                     
                     <form method="POST" action="{{ route('admin.downloadables.destroy', $downloadable) }}" 
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce tÃ©lÃ©chargement ?')">
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce telechargement ?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger w-100">

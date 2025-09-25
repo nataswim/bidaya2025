@@ -1,4 +1,4 @@
-// SÃ©lecteur de mÃ©dias rÃ©utilisable
+// Selecteur de medias reutilisable
 class MediaFieldSelector {
     constructor() {
         this.currentFieldId = null;
@@ -6,7 +6,7 @@ class MediaFieldSelector {
         this.modal = null;
     }
 
-    // Ouvrir le sÃ©lecteur pour un champ spÃ©cifique
+    // Ouvrir le selecteur pour un champ specifique
     openForField(fieldId, previewElementId = null) {
         this.currentFieldId = fieldId;
         this.previewElementId = previewElementId;
@@ -26,7 +26,7 @@ class MediaFieldSelector {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">
-                                <i class="fas fa-images me-2"></i>SÃ©lectionner une image
+                                <i class="fas fa-images me-2"></i>Selectionner une image
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
@@ -41,7 +41,7 @@ class MediaFieldSelector {
                                     </div>
                                     <div class="col-md-4">
                                         <select id="mediaFieldCategory" class="form-select">
-                                            <option value="">Toutes les catÃ©gories</option>
+                                            <option value="">Toutes les categories</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">
@@ -114,7 +114,7 @@ class MediaFieldSelector {
             this.renderMedias(data.data || []);
         } catch (error) {
             console.error('Erreur:', error);
-            this.showError('Erreur lors du chargement des mÃ©dias');
+            this.showError('Erreur lors du chargement des medias');
         }
     }
 
@@ -125,10 +125,10 @@ class MediaFieldSelector {
             grid.innerHTML = `
                 <div class="col-12 text-center py-4">
                     <i class="fas fa-images fa-3x text-muted mb-3"></i>
-                    <h5 class="text-muted">Aucune image trouvÃ©e</h5>
-                    <p class="text-muted">Uploadez des images dans votre mÃ©diathÃ¨que.</p>
+                    <h5 class="text-muted">Aucune image trouvee</h5>
+                    <p class="text-muted">Uploadez des images dans votre mediatheque.</p>
                     <a href="/admin/media" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-upload me-2"></i>GÃ©rer les mÃ©dias
+                        <i class="fas fa-upload me-2"></i>Gerer les medias
                     </a>
                 </div>
             `;
@@ -165,10 +165,10 @@ class MediaFieldSelector {
     if (field) {
         field.value = imageUrl;
         
-        // Supprimer toute validation personnalisÃ©e
+        // Supprimer toute validation personnalisee
         field.setCustomValidity('');
         
-        // DÃ©clencher les Ã©vÃ©nements
+        // Declencher les evenements
         field.dispatchEvent(new Event('input', { bubbles: true }));
         field.dispatchEvent(new Event('change', { bubbles: true }));
     }
@@ -190,7 +190,7 @@ class MediaFieldSelector {
     }
 
     this.hideModal();
-    this.showNotification('Image sÃ©lectionnÃ©e avec succÃ¨s');
+    this.showNotification('Image selectionnee avec succes');
 }
 
 

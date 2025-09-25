@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('title', 'CrÃ©er un article')
+@section('title', 'Creer un article')
 @section('page-title', 'Nouvel article')
-@section('page-description', 'CrÃ©ation d\'un nouvel article')
+@section('page-description', 'Creation d\'un nouvel article')
 
 @section('content')
 <div class="container-fluid">
     <form method="POST" action="{{ route('admin.posts.store') }}">
         @include('admin.posts.partials.form', [
-            'submitLabel' => 'CrÃ©er l\'article',
+            'submitLabel' => 'Creer l\'article',
             'categories' => $categories,
             'tags' => $tags
         ])
@@ -43,7 +43,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration du slug Ã partir du titre
+    // Auto-generation du slug Ã partir du titre
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     

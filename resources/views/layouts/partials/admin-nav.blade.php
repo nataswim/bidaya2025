@@ -38,12 +38,12 @@
 
 
 
-            <!-- NOUVEAU : Section MÃ©dias -->
+            <!-- NOUVEAU : Section Medias -->
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.media.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.media.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-images me-3"></i>
-                    <span>MÃ©dias</span>
+                    <span>Medias</span>
                     @php
                         $mediaCount = App\Models\Media::count();
                     @endphp
@@ -65,7 +65,7 @@
                 <a href="{{ route('admin.categories.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.categories.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-folder me-3"></i>
-                    <span>CatÃ©gories</span>
+                    <span>Categories</span>
                 </a>
             </li>
             <li class="nav-item mb-1">

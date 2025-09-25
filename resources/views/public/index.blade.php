@@ -9,7 +9,7 @@
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">Nos Articles</h1>
-                <p class="lead mb-0">DÃ©couvrez nos derniers contenus sur le dÃ©veloppement web, les technologies modernes et les bonnes pratiques.</p>
+                <p class="lead mb-0">Decouvrez nos derniers contenus sur le developpement web, les technologies modernes et les bonnes pratiques.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <div class="bg-white bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 
@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-3">
                 <select name="category" class="form-select">
-                    <option value="">Toutes les catÃ©gories</option>
+                    <option value="">Toutes les categories</option>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->slug }}" {{ $category === $cat->slug ? 'selected' : '' }}>
                             {{ $cat->name }} ({{ $cat->posts_count ?? 0 }})
@@ -84,12 +84,12 @@
                 <div class="mb-4">
                     <div class="alert alert-info border-0">
                         <i class="fas fa-info-circle me-2"></i>
-                        {{ $posts->total() }} rÃ©sultat(s) trouvÃ©(s)
+                        {{ $posts->total() }} resultat(s) trouve(s)
                         @if($search)
                             pour "<strong>{{ $search }}</strong>"
                         @endif
                         @if($category)
-                            dans la catÃ©gorie "<strong>{{ $categories->where('slug', $category)->first()->name ?? $category }}</strong>"
+                            dans la categorie "<strong>{{ $categories->where('slug', $category)->first()->name ?? $category }}</strong>"
                         @endif
                     </div>
                 </div>
@@ -138,15 +138,15 @@
                             </div>
                             
                             <div class="card-body d-flex flex-column p-4">
-                                <!-- MÃ©tadonnÃ©es -->
+                                <!-- Metadonnees -->
                                 <div class="mb-3">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <span class="badge bg-primary-subtle text-primary">
-                                            {{ $post->category->name ?? 'Non catÃ©gorisÃ©' }}
+                                            {{ $post->category->name ?? 'Non categorise' }}
                                         </span>
                                         <small class="text-muted d-flex align-items-center">
                                             <i class="fas fa-calendar me-1"></i>
-                                            {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') ?? 'Non datÃ©' }}
+                                            {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') ?? 'Non date' }}
                                         </small>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     </p>
                                 @endif
                                 
-                                <!-- Footer avec informations de visibilitÃ© -->
+                                <!-- Footer avec informations de visibilite -->
                                 <div class="mt-auto">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center text-muted">
@@ -201,18 +201,18 @@
                 </div>
             @endif
         @else
-            <!-- Ã©tat vide -->
+            <!-- etat vide -->
             <div class="text-center py-5">
                 <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" 
                      style="width: 120px; height: 120px;">
                     <i class="fas fa-search text-muted fa-3x"></i>
                 </div>
-                <h3 class="fw-bold mb-3">Aucun article trouvÃ©</h3>
+                <h3 class="fw-bold mb-3">Aucun article trouve</h3>
                 <p class="text-muted mb-4">
                     @if($search || $category || ($tag ?? ''))
-                        Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.
+                        Aucun resultat ne correspond Ã vos criteres de recherche.
                     @else
-                        Il n'y a pas encore d'articles publiÃ©s.
+                        Il n'y a pas encore d'articles publies.
                     @endif
                 </p>
                 @if($search || $category || ($tag ?? ''))
@@ -231,13 +231,13 @@
         <div class="container-lg text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="fw-bold mb-3">AccÃ©dez Ã tous nos contenus</h2>
+                    <h2 class="fw-bold mb-3">Accedez Ã tous nos contenus</h2>
                     <p class="lead mb-4">
-                        Rejoignez notre communautÃ© pour dÃ©bloquer les articles exclusifs et bÃ©nÃ©ficier de contenus premium.
+                        Rejoignez notre communaute pour debloquer les articles exclusifs et beneficier de contenus premium.
                     </p>
                     <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
                         <a href="{{ route('register') }}" class="btn btn-light btn-lg">
-                            <i class="fas fa-user-plus me-2"></i>CrÃ©er un compte gratuit
+                            <i class="fas fa-user-plus me-2"></i>Creer un compte gratuit
                         </a>
                         <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">
                             <i class="fas fa-sign-in-alt me-2"></i>Se connecter

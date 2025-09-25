@@ -1,22 +1,22 @@
 @extends('layouts.public')
 
-@section('title', 'ChronomÃ¨tre Pro Entraîneurs & Configuration AvancÃ©e - Outil Professionnel')
-@section('meta_description', 'ChronomÃ¨tre professionnel multi-nageurs avec configuration avancÃ©e, export CSV, sauvegarde automatique, raccourcis clavier et sons. Outil indispensable pour entraîneurs professionnels.')
+@section('title', 'Chronometre Pro Entraîneurs & Configuration Avancee - Outil Professionnel')
+@section('meta_description', 'Chronometre professionnel multi-nageurs avec configuration avancee, export CSV, sauvegarde automatique, raccourcis clavier et sons. Outil indispensable pour entraîneurs professionnels.')
 
 @section('content')
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            ChronomÃ¨tre Multi-Pro Pour Coachs
+            Chronometre Multi-Pro Pour Coachs
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-cogs text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>ChronomÃ©trage professionnel multi-nageurs avec fonctionnalitÃ©s avancÃ©es :</strong><br>
-                    Configuration personnalisable, export CSV, sauvegarde automatique et interface optimisÃ©e pour entraîneurs
+                    <strong>Chronometrage professionnel multi-nageurs avec fonctionnalites avancees :</strong><br>
+                    Configuration personnalisable, export CSV, sauvegarde automatique et interface optimisee pour entraîneurs
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                     Prêt
                 </div>
                 <div id="saveSuccess" class="alert alert-success py-1 px-3 mb-0 d-none">
-                    <i class="fas fa-save me-2"></i>Course sauvegardÃ©e !
+                    <i class="fas fa-save me-2"></i>Course sauvegardee !
                 </div>
             </div>
             
@@ -64,9 +64,9 @@
     <h6><i class="fas fa-keyboard me-2"></i>Raccourcis Clavier :</h6>
     <div class="row small">
         <div class="col-md-6">
-            <strong>Espace :</strong> DÃ©marrer/Pause<br>
+            <strong>Espace :</strong> Demarrer/Pause<br>
             <strong>Chiffres 1-8 :</strong> Passage nageur<br>
-            <strong>Shift + Chiffres :</strong> ArrivÃ©e nageur
+            <strong>Shift + Chiffres :</strong> Arrivee nageur
         </div>
         <div class="col-md-6">
             <strong>Ctrl+R :</strong> Reset<br>
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-<!-- ChronomÃ¨tre Principal -->
+<!-- Chronometre Principal -->
 <section class="py-5 bg-light">
     <div class="container">
         <!-- Affichage principal du temps -->
@@ -88,7 +88,7 @@
                     </div>
                     <div class="d-flex justify-content-center gap-3">
                         <button id="startStopBtn" class="btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg">
-                            <i class="fas fa-play me-2"></i>DÃ©part
+                            <i class="fas fa-play me-2"></i>Depart
                         </button>
                         <button id="resetBtn" class="btn btn-dark btn-lg px-5 py-3 fw-bold shadow-lg">
                             <i class="fas fa-redo me-2"></i>Reset
@@ -103,7 +103,7 @@
             <!-- Sera rempli par JavaScript -->
         </div>
 
-        <!-- RÃ©sultats Finaux -->
+        <!-- Resultats Finaux -->
         <div id="finalResults" class="card shadow-lg border-0 mb-4 d-none">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-0">
@@ -118,7 +118,7 @@
                                 <th class="text-center py-3">Pos</th>
                                 <th class="text-center py-3">Nageur</th>
                                 <th class="text-center py-3">Temps Final</th>
-                                <th class="text-center py-3">DiffÃ©rence</th>
+                                <th class="text-center py-3">Difference</th>
                                 <th class="text-center py-3">Passages</th>
                                 <th class="text-center py-3">Moyenne</th>
                             </tr>
@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        <!-- DÃ©tails des Temps -->
+        <!-- Details des Temps -->
         <div id="lapDetails" class="d-none">
             <!-- Sera rempli par JavaScript -->
         </div>
@@ -144,7 +144,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title">
-                    <i class="fas fa-cog me-2"></i>Configuration ChronomÃ¨tre Pro
+                    <i class="fas fa-cog me-2"></i>Configuration Chronometre Pro
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
@@ -161,20 +161,20 @@
                         <option value="6">6 nageurs</option>
                         <option value="8">8 nageurs</option>
                     </select>
-                    <div class="form-text">Nombre de nageurs Ã chronomÃ©trer simultanÃ©ment</div>
+                    <div class="form-text">Nombre de nageurs Ã chronometrer simultanement</div>
                 </div>
                 
                 <div class="mb-4">
                     <label class="form-label fw-bold">
                         <i class="fas fa-stopwatch me-2 text-success"></i>
-                        PrÃ©cision du chronomÃ¨tre
+                        Precision du chronometre
                     </label>
                     <select id="precisionSelect" class="form-select form-select-lg">
-                        <option value="10" selected>CentiÃ¨mes (0.01s) - CompÃ©tition</option>
-                        <option value="100">DixiÃ¨mes (0.1s) - Entraînement</option>
+                        <option value="10" selected>Centiemes (0.01s) - Competition</option>
+                        <option value="100">Dixiemes (0.1s) - Entraînement</option>
                         <option value="1000">Secondes (1s) - Loisir</option>
                     </select>
-                    <div class="form-text">Plus la prÃ©cision est Ã©levÃ©e, plus la mesure est fine</div>
+                    <div class="form-text">Plus la precision est elevee, plus la mesure est fine</div>
                 </div>
                 
                 <div class="row">
@@ -223,7 +223,7 @@
                 <h5 class="modal-title">Confirmation Reset</h5>
             </div>
             <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir remettre le chronomÃ¨tre Ã zÃ©ro ? Toutes les donnÃ©es non sauvegardÃ©es seront perdues.</p>
+                <p>Êtes-vous sûr de vouloir remettre le chronometre Ã zero ? Toutes les donnees non sauvegardees seront perdues.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -233,23 +233,23 @@
     </div>
 </div>
 
-<!-- Informations Ã©ducatives -->
+<!-- Informations educatives -->
 <section class="py-5">
     <div class="container">
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-star me-2"></i>
-                    FonctionnalitÃ©s Professionnelles
+                    Fonctionnalites Professionnelles
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6><i class="fas fa-cog me-2 text-primary"></i>Configuration AvancÃ©e</h6>
+                        <h6><i class="fas fa-cog me-2 text-primary"></i>Configuration Avancee</h6>
                         <ul>
-                            <li>Gestion de 2 Ã 8 nageurs simultanÃ©ment</li>
-                            <li>PrÃ©cision ajustable (centiÃ¨mes Ã secondes)</li>
+                            <li>Gestion de 2 Ã 8 nageurs simultanement</li>
+                            <li>Precision ajustable (centiemes Ã secondes)</li>
                             <li>Noms de nageurs personnalisables</li>
                             <li>Interface adaptative selon le nombre</li>
                         </ul>
@@ -258,26 +258,26 @@
                         <h6><i class="fas fa-keyboard me-2 text-success"></i>Raccourcis Professionnels</h6>
                         <ul>
                             <li>Contrôle clavier complet</li>
-                            <li>Passages rapides par numÃ©ro</li>
-                            <li>ArrivÃ©es avec Shift+NumÃ©ro</li>
+                            <li>Passages rapides par numero</li>
+                            <li>Arrivees avec Shift+Numero</li>
                             <li>Sauvegarde et export directs</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6><i class="fas fa-save me-2 text-warning"></i>Gestion des DonnÃ©es</h6>
+                        <h6><i class="fas fa-save me-2 text-warning"></i>Gestion des Donnees</h6>
                         <ul>
                             <li>Sauvegarde locale automatique</li>
-                            <li>Export CSV dÃ©taillÃ©</li>
-                            <li>Historique des 10 derniÃ¨res courses</li>
-                            <li>DonnÃ©es persistantes navigateur</li>
+                            <li>Export CSV detaille</li>
+                            <li>Historique des 10 dernieres courses</li>
+                            <li>Donnees persistantes navigateur</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-volume-up me-2 text-info"></i>Notifications Audio</h6>
                         <ul>
                             <li>Sons distincts par action</li>
-                            <li>DÃ©part, passage, arrivÃ©e</li>
-                            <li>Activation/dÃ©sactivation facile</li>
+                            <li>Depart, passage, arrivee</li>
+                            <li>Activation/desactivation facile</li>
                             <li>Compatible avec concentration</li>
                         </ul>
                     </div>
@@ -302,10 +302,10 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>SÃ©ries chronomÃ©trÃ©es multiples</li>
+                                    <li>Series chronometrees multiples</li>
                                     <li>Suivi progression individuelle</li>
                                     <li>Analyse comparative groupes</li>
-                                    <li>DonnÃ©es pour planification</li>
+                                    <li>Donnees pour planification</li>
                                 </ul>
                             </div>
                         </div>
@@ -313,14 +313,14 @@
                     <div class="col-md-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">CompÃ©titions Locales</h6>
+                                <h6 class="mb-0">Competitions Locales</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>ChronomÃ©trage backup officiel</li>
-                                    <li>VÃ©rification temps automatique</li>
-                                    <li>Export direct rÃ©sultats</li>
-                                    <li>Gestion plusieurs sÃ©ries</li>
+                                    <li>Chronometrage backup officiel</li>
+                                    <li>Verification temps automatique</li>
+                                    <li>Export direct resultats</li>
+                                    <li>Gestion plusieurs series</li>
                                 </ul>
                             </div>
                         </div>
@@ -328,14 +328,14 @@
                     <div class="col-md-4">
                         <div class="card border-warning h-100">
                             <div class="card-header bg-warning text-dark">
-                                <h6 class="mb-0">Tests et Ã©valuations</h6>
+                                <h6 class="mb-0">Tests et evaluations</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Tests standardisÃ©s (T30, 400m)</li>
-                                    <li>Ã©valuations techniques</li>
-                                    <li>Suivi performance saisonniÃ¨re</li>
-                                    <li>Analyses statistiques poussÃ©es</li>
+                                    <li>Tests standardises (T30, 400m)</li>
+                                    <li>evaluations techniques</li>
+                                    <li>Suivi performance saisonniere</li>
+                                    <li>Analyses statistiques poussees</li>
                                 </ul>
                             </div>
                         </div>
@@ -349,7 +349,7 @@
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-arrow-up me-2"></i>
-                    Avantages vs ChronomÃ¨tre Standard
+                    Avantages vs Chronometre Standard
                 </h3>
             </div>
             <div class="card-body">
@@ -357,7 +357,7 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                             <tr>
-                                <th>FonctionnalitÃ©</th>
+                                <th>Fonctionnalite</th>
                                 <th class="text-center">Standard</th>
                                 <th class="text-center">Pro</th>
                                 <th>Avantage Pro</th>
@@ -371,8 +371,8 @@
                                 <td>Adaptation Ã tout contexte</td>
                             </tr>
                             <tr>
-                                <td><strong>PrÃ©cision</strong></td>
-                                <td class="text-center">CentiÃ¨mes</td>
+                                <td><strong>Precision</strong></td>
+                                <td class="text-center">Centiemes</td>
                                 <td class="text-center"><span class="badge bg-success">Configurable</span></td>
                                 <td>Optimisation selon usage</td>
                             </tr>
@@ -380,25 +380,25 @@
                                 <td><strong>Raccourcis clavier</strong></td>
                                 <td class="text-center">Basiques</td>
                                 <td class="text-center"><span class="badge bg-success">Complets</span></td>
-                                <td>EfficacitÃ© maximale</td>
+                                <td>Efficacite maximale</td>
                             </tr>
                             <tr>
                                 <td><strong>Sauvegarde</strong></td>
                                 <td class="text-center">-</td>
                                 <td class="text-center"><span class="badge bg-success">Auto + Manuel</span></td>
-                                <td>SÃ©curitÃ© des donnÃ©es</td>
+                                <td>Securite des donnees</td>
                             </tr>
                             <tr>
-                                <td><strong>Export donnÃ©es</strong></td>
+                                <td><strong>Export donnees</strong></td>
                                 <td class="text-center">-</td>
-                                <td class="text-center"><span class="badge bg-success">CSV dÃ©taillÃ©</span></td>
+                                <td class="text-center"><span class="badge bg-success">CSV detaille</span></td>
                                 <td>Analyse post-course</td>
                             </tr>
                             <tr>
                                 <td><strong>Interface</strong></td>
                                 <td class="text-center">Fixe</td>
                                 <td class="text-center"><span class="badge bg-success">Adaptative</span></td>
-                                <td>UX optimisÃ©e</td>
+                                <td>UX optimisee</td>
                             </tr>
                         </tbody>
                     </table>
@@ -408,7 +408,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -424,9 +424,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -436,15 +436,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -471,7 +471,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -482,12 +482,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -655,7 +655,7 @@ class ChronometerPro {
     initializeSwimmers() {
         this.swimmers = Array.from({ length: this.config.swimmerCount }, (_, i) => ({
             id: i + 1,
-            name: `AthlÃ¨te ${i + 1}`,
+            name: `Athlete ${i + 1}`,
             laps: [],
             finishTime: null
         }));
@@ -686,7 +686,7 @@ class ChronometerPro {
                                 <span class="lap-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">0</span>
                             </button>
                             <button class="finish-btn btn btn-warning btn-lg fw-bold" data-swimmer="${swimmer.id}">
-                                <i class="fas fa-trophy me-2"></i>ArrivÃ©e
+                                <i class="fas fa-trophy me-2"></i>Arrivee
                             </button>
                         </div>
                         <div class="mt-3 p-3 bg-light rounded">
@@ -705,7 +705,7 @@ class ChronometerPro {
         document.getElementById('startStopBtn').addEventListener('click', () => this.toggleTimer());
         document.getElementById('resetBtn').addEventListener('click', () => this.showResetConfirm());
         
-        // Configuration - VERSION CORRIGÃ©E
+        // Configuration - VERSION CORRIGeE
         document.getElementById('configBtn').addEventListener('click', (e) => {
             e.preventDefault();
             console.log('Configuration clicked'); // Debug
@@ -720,7 +720,7 @@ class ChronometerPro {
         document.getElementById('saveRaceBtn').addEventListener('click', () => this.saveRace());
         document.getElementById('exportCSVBtn').addEventListener('click', () => this.exportCSV());
         
-        // Confirmation reset - VERSION CORRIGÃ©E
+        // Confirmation reset - VERSION CORRIGeE
         document.getElementById('confirmResetBtn').addEventListener('click', () => {
             this.confirmReset();
         });
@@ -736,7 +736,7 @@ class ChronometerPro {
             });
         });
         
-        // Fermeture des modals en cliquant Ã l'extÃ©rieur
+        // Fermeture des modals en cliquant Ã l'exterieur
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
                 e.target.style.display = 'none';
@@ -744,7 +744,7 @@ class ChronometerPro {
             }
         });
         
-        // Ã©vÃ©nements dÃ©lÃ©guÃ©s pour les nageurs
+        // evenements delegues pour les nageurs
         document.getElementById('swimmersContainer').addEventListener('click', (e) => {
             if (e.target.classList.contains('lap-btn') || e.target.closest('.lap-btn')) {
                 const btn = e.target.classList.contains('lap-btn') ? e.target : e.target.closest('.lap-btn');
@@ -763,7 +763,7 @@ class ChronometerPro {
                 const swimmerId = parseInt(e.target.dataset.swimmer);
                 const swimmer = this.swimmers.find(s => s.id === swimmerId);
                 if (swimmer) {
-                    swimmer.name = e.target.value || `AthlÃ¨te ${swimmerId}`;
+                    swimmer.name = e.target.value || `Athlete ${swimmerId}`;
                 }
             }
         });
@@ -814,18 +814,18 @@ class ChronometerPro {
         });
     }
     
-    // VERSION CORRIGÃ©E - Sans dÃ©pendance Bootstrap
+    // VERSION CORRIGeE - Sans dependance Bootstrap
     showConfigModal() {
         console.log('Opening config modal'); // Debug
         
-        // PrÃ©-remplir les valeurs actuelles
+        // Pre-remplir les valeurs actuelles
         document.getElementById('swimmerCountSelect').value = this.config.swimmerCount;
         document.getElementById('precisionSelect').value = this.config.precision;
         document.getElementById('soundEnabledCheck').checked = this.config.soundEnabled;
         document.getElementById('autoSaveCheck').checked = this.config.autoSave;
         document.getElementById('showHelpCheck').checked = this.config.showKeyboardHelp;
         
-        // Afficher le modal (mÃ©thode native)
+        // Afficher le modal (methode native)
         const modal = document.getElementById('configModal');
         modal.style.display = 'block';
         modal.classList.add('show');
@@ -884,7 +884,7 @@ class ChronometerPro {
         this.hideConfigModal();
         
         // Notification de sauvegarde
-        alert('Configuration sauvegardÃ©e avec succÃ¨s !');
+        alert('Configuration sauvegardee avec succes !');
     }
     
     confirmReset() {
@@ -955,7 +955,7 @@ class ChronometerPro {
         this.updateSwimmerDisplay(swimmerId);
         this.playSound('finish');
         
-        // VÃ©rifier si tous les nageurs ont fini
+        // Verifier si tous les nageurs ont fini
         const finishedCount = this.swimmers.filter(s => s.finishTime !== null).length;
         if (finishedCount === this.swimmers.length) {
             this.endRace();
@@ -969,11 +969,11 @@ class ChronometerPro {
         this.isRunning = false;
         this.raceFinished = true;
         
-        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-check me-2"></i>TerminÃ©';
+        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-check me-2"></i>Termine';
         document.getElementById('startStopBtn').className = 'btn btn-success btn-lg px-5 py-3 fw-bold shadow-lg';
         document.getElementById('startStopBtn').disabled = true;
         
-        document.getElementById('statusBadge').textContent = 'TerminÃ©';
+        document.getElementById('statusBadge').textContent = 'Termine';
         document.getElementById('statusBadge').className = 'badge fs-5 px-3 py-2 bg-danger';
         
         document.getElementById('raceActions').classList.remove('d-none');
@@ -990,14 +990,14 @@ class ChronometerPro {
         this.isRunning = false;
         this.raceFinished = false;
         
-        // RÃ©initialiser les nageurs
+        // Reinitialiser les nageurs
         this.swimmers.forEach(swimmer => {
             swimmer.laps = [];
             swimmer.finishTime = null;
         });
         
-        // RÃ©initialiser l'interface
-        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-play me-2"></i>DÃ©part';
+        // Reinitialiser l'interface
+        document.getElementById('startStopBtn').innerHTML = '<i class="fas fa-play me-2"></i>Depart';
         document.getElementById('startStopBtn').className = 'btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg';
         document.getElementById('startStopBtn').disabled = false;
         
@@ -1049,7 +1049,7 @@ class ChronometerPro {
         const finishBtn = swimmerElement.querySelector('.finish-btn');
         
         if (swimmer.finishTime) {
-            statusElement.textContent = 'ArrivÃ©';
+            statusElement.textContent = 'Arrive';
             statusElement.className = 'status badge bg-success';
             finishBtn.innerHTML = `<i class="fas fa-trophy me-2"></i>${this.formatTime(swimmer.finishTime)}`;
             finishBtn.disabled = true;
@@ -1116,7 +1116,7 @@ class ChronometerPro {
             card.className = 'card border-0 shadow-sm mb-4';
             card.innerHTML = `
                 <div class="card-header py-3" style="background: ${color}; color: white;">
-                    <h5 class="mb-0 fw-bold">${swimmer.name} - DÃ©tails des Temps de Passage</h5>
+                    <h5 class="mb-0 fw-bold">${swimmer.name} - Details des Temps de Passage</h5>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -1124,7 +1124,7 @@ class ChronometerPro {
                             <thead class="table-light">
                                 <tr>
                                     <th class="text-center fw-bold py-3">Passage</th>
-                                    <th class="text-center fw-bold py-3">Temps IntermÃ©diaire</th>
+                                    <th class="text-center fw-bold py-3">Temps Intermediaire</th>
                                     <th class="text-center fw-bold py-3">Total</th>
                                 </tr>
                             </thead>
@@ -1241,7 +1241,7 @@ class ChronometerPro {
             
             savedRaces.push(raceData);
             
-            // Garder seulement les 10 derniÃ¨res courses
+            // Garder seulement les 10 dernieres courses
             if (savedRaces.length > 10) {
                 savedRaces.shift();
             }
@@ -1271,7 +1271,7 @@ class ChronometerPro {
         const bestTime = finishedSwimmers[0].finishTime;
         
         const csvContent = [
-            ['Position', 'Nageur', 'Temps Final', 'DiffÃ©rence', 'Passages', 'Temps Moyen', 'DÃ©tails Passages'],
+            ['Position', 'Nageur', 'Temps Final', 'Difference', 'Passages', 'Temps Moyen', 'Details Passages'],
             ...finishedSwimmers.map((swimmer, index) => {
                 const diff = swimmer.finishTime - bestTime;
                 const diffText = diff === 0 ? '-' : this.formatTime(diff);
@@ -1318,7 +1318,7 @@ class ChronometerPro {
     }
 }
 
-// Initialiser le chronomÃ¨tre Pro au chargement de la page
+// Initialiser le chronometre Pro au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
     new ChronometerPro();
 });

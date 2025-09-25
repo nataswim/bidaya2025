@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('title', 'CrÃ©er un utilisateur')
+@section('title', 'Creer un utilisateur')
 @section('page-title', 'Nouvel utilisateur')
-@section('page-description', 'CrÃ©ation d\'un nouveau compte utilisateur')
+@section('page-description', 'Creation d\'un nouveau compte utilisateur')
 
 @section('content')
 <div class="container-fluid">
     <form method="POST" action="{{ route('admin.users.store') }}">
         @include('admin.users.partials.form', [
-            'submitLabel' => 'CrÃ©er l\'utilisateur',
+            'submitLabel' => 'Creer l\'utilisateur',
             'roles' => $roles
         ])
     </form>
@@ -42,7 +42,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // GÃ©nÃ©ration automatique du username Ã partir du nom
+    // Generation automatique du username Ã partir du nom
     const nameInput = document.getElementById('name');
     const usernameInput = document.getElementById('username');
     

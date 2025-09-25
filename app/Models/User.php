@@ -30,7 +30,7 @@ class User extends Authenticatable
         'preferences' => 'array',
     ];
 
-    // DÃ©finir des valeurs par dÃ©faut
+    // Definir des valeurs par defaut
     protected $attributes = [
         'status' => 'active',
         'locale' => 'fr',
@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function hasRole($roleSlug): bool
 {
-    // VÃ©rification de sÃ©curitÃ©
+    // Verification de securite
     if (!$this->role) {
         return false;
     }

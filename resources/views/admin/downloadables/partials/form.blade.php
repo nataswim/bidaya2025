@@ -6,13 +6,13 @@
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-gradient-primary text-white p-4">
                 <h5 class="mb-0">
-                    <i class="fas fa-download me-2"></i>Informations du tÃ©lÃ©chargement
+                    <i class="fas fa-download me-2"></i>Informations du telechargement
                 </h5>
             </div>
             <div class="card-body p-4">
                 <!-- Titre -->
                 <div class="mb-4">
-                    <label for="title" class="form-label fw-semibold">Titre du tÃ©lÃ©chargement *</label>
+                    <label for="title" class="form-label fw-semibold">Titre du telechargement *</label>
                     <input type="text" 
                            name="title" 
                            id="title" 
@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="slug-automatique">
                     </div>
-                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique Ã partir du titre</div>
+                    <div class="form-text">Laisser vide pour generation automatique Ã partir du titre</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -58,7 +58,7 @@
                            accept=".pdf,.epub,.mp4,.zip,.doc,.docx"
                            {{ !isset($downloadable) ? 'required' : '' }}>
                     <div class="form-text">
-                        Formats acceptÃ©s : PDF, EPUB, MP4, ZIP, DOC, DOCX (max 100MB)
+                        Formats acceptes : PDF, EPUB, MP4, ZIP, DOC, DOCX (max 100MB)
                     </div>
                     @if(isset($downloadable) && $downloadable->file_path)
                         <div class="mt-2 p-2 bg-light rounded">
@@ -80,18 +80,18 @@
                 <div class="mb-4">
                     <label for="format" class="form-label fw-semibold">Format *</label>
                     <select name="format" id="format" class="form-select @error('format') is-invalid @enderror" required>
-                        <option value="">SÃ©lectionner un format</option>
+                        <option value="">Selectionner un format</option>
                         <option value="pdf" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'pdf' ? 'selected' : '' }}>
                             PDF - Document portable
                         </option>
                         <option value="epub" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'epub' ? 'selected' : '' }}>
-                            EPUB - Livre Ã©lectronique
+                            EPUB - Livre electronique
                         </option>
                         <option value="mp4" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'mp4' ? 'selected' : '' }}>
-                            MP4 - VidÃ©o
+                            MP4 - Video
                         </option>
                         <option value="zip" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'zip' ? 'selected' : '' }}>
-                            ZIP - Archive compressÃ©e
+                            ZIP - Archive compressee
                         </option>
                         <option value="doc" {{ old('format', isset($downloadable) ? $downloadable->format : '') === 'doc' ? 'selected' : '' }}>
                             DOC - Word (ancien format)
@@ -113,26 +113,26 @@
                               rows="3"
                               class="form-control @error('short_description') is-invalid @enderror"
                               maxlength="1000"
-                              placeholder="RÃ©sumÃ© du contenu...">{{ old('short_description', isset($downloadable) ? $downloadable->short_description : '') }}</textarea>
-                    <div class="form-text">Description affichÃ©e dans les listes (max 1000 caractÃ¨res)</div>
+                              placeholder="Resume du contenu...">{{ old('short_description', isset($downloadable) ? $downloadable->short_description : '') }}</textarea>
+                    <div class="form-text">Description affichee dans les listes (max 1000 caracteres)</div>
                     @error('short_description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Description complÃ¨te avec Quill -->
+                <!-- Description complete avec Quill -->
                 <div class="mb-4">
-                    <label for="long_description" class="form-label fw-semibold">Description complÃ¨te</label>
+                    <label for="long_description" class="form-label fw-semibold">Description complete</label>
                     
-                    <!-- Conteneur pour l'Ã©diteur Quill -->
+                    <!-- Conteneur pour l'editeur Quill -->
                     <div id="description-editor" style="height: 200px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
-                    <!-- Textarea cachÃ©e pour Laravel -->
+                    <!-- Textarea cachee pour Laravel -->
                     <textarea name="long_description" 
                               id="long_description" 
                               class="d-none @error('long_description') is-invalid @enderror">{{ old('long_description', isset($downloadable) ? $downloadable->long_description : '') }}</textarea>
                               
-                    <div class="form-text">Description dÃ©taillÃ©e affichÃ©e sur la page du tÃ©lÃ©chargement</div>
+                    <div class="form-text">Description detaillee affichee sur la page du telechargement</div>
                     @error('long_description')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
@@ -140,11 +140,11 @@
             </div>
         </div>
 
-        <!-- SEO et mÃ©tadonnÃ©es -->
+        <!-- SEO et metadonnees -->
         <div class="card border-0 shadow-sm mt-4">
             <div class="card-header bg-gradient-info text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-search me-2"></i>SEO et MÃ©tadonnÃ©es
+                    <i class="fas fa-search me-2"></i>SEO et Metadonnees
                 </h6>
             </div>
             <div class="card-body p-4">
@@ -157,13 +157,13 @@
                                value="{{ old('meta_title', isset($downloadable) ? $downloadable->meta_title : '') }}"
                                class="form-control @error('meta_title') is-invalid @enderror"
                                maxlength="255"
-                               placeholder="Titre optimisÃ© pour les moteurs de recherche">
+                               placeholder="Titre optimise pour les moteurs de recherche">
                         @error('meta_title')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="meta_keywords" class="form-label fw-semibold">Mots-clÃ©s</label>
+                        <label for="meta_keywords" class="form-label fw-semibold">Mots-cles</label>
                         <input type="text" 
                                name="meta_keywords" 
                                id="meta_keywords" 
@@ -181,7 +181,7 @@
                                   rows="3"
                                   class="form-control @error('meta_description') is-invalid @enderror"
                                   maxlength="500"
-                                  placeholder="Description qui apparaîtra dans les rÃ©sultats de recherche...">{{ old('meta_description', isset($downloadable) ? $downloadable->meta_description : '') }}</textarea>
+                                  placeholder="Description qui apparaîtra dans les resultats de recherche...">{{ old('meta_description', isset($downloadable) ? $downloadable->meta_description : '') }}</textarea>
                         @error('meta_description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -202,9 +202,9 @@
             </div>
             <div class="card-body p-4">
                 <div class="mb-3">
-                    <label for="download_category_id" class="form-label fw-semibold">CatÃ©gorie *</label>
+                    <label for="download_category_id" class="form-label fw-semibold">Categorie *</label>
                     <select name="download_category_id" id="download_category_id" class="form-select @error('download_category_id') is-invalid @enderror" required>
-                        <option value="">SÃ©lectionner une catÃ©gorie</option>
+                        <option value="">Selectionner une categorie</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" 
                                     {{ old('download_category_id', isset($downloadable) ? $downloadable->download_category_id : request('category')) == $category->id ? 'selected' : '' }}>
@@ -254,31 +254,31 @@
                            class="form-check-input">
                     <label for="is_featured" class="form-check-label">
                         <i class="fas fa-star text-warning me-1"></i>
-                        TÃ©lÃ©chargement mis en avant
+                        Telechargement mis en avant
                     </label>
                 </div>
             </div>
         </div>
 
-        <!-- Permissions d'accÃ¨s -->
+        <!-- Permissions d'acces -->
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-warning text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-shield-alt me-2"></i>Permissions d'accÃ¨s
+                    <i class="fas fa-shield-alt me-2"></i>Permissions d'acces
                 </h6>
             </div>
             <div class="card-body p-4">
                 <div class="mb-3">
-                    <label for="user_permission" class="form-label fw-semibold">Niveau d'accÃ¨s requis</label>
+                    <label for="user_permission" class="form-label fw-semibold">Niveau d'acces requis</label>
                     <select name="user_permission" id="user_permission" class="form-select @error('user_permission') is-invalid @enderror" required>
                         <option value="public" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : 'public') === 'public' ? 'selected' : '' }}>
                             <i class="fas fa-globe"></i> Public - Accessible Ã tous
                         </option>
                         <option value="visitor" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : '') === 'visitor' ? 'selected' : '' }}>
-                            <i class="fas fa-eye"></i> Visiteur - Non-connectÃ©s uniquement
+                            <i class="fas fa-eye"></i> Visiteur - Non-connectes uniquement
                         </option>
                         <option value="user" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : '') === 'user' ? 'selected' : '' }}>
-                            <i class="fas fa-user"></i> Utilisateur - Membres validÃ©s
+                            <i class="fas fa-user"></i> Utilisateur - Membres valides
                         </option>
                     </select>
                     
@@ -289,11 +289,11 @@
                                 <div class="d-flex align-items-start">
                                     <i class="fas fa-globe text-success me-2 mt-1"></i>
                                     <div>
-                                        <strong class="text-success">AccÃ¨s public</strong>
+                                        <strong class="text-success">Acces public</strong>
                                         <div class="small text-muted mt-1">
-                                            • TÃ©lÃ©chargeable par tous les visiteurs<br>
+                                            • Telechargeable par tous les visiteurs<br>
                                             • Aucune connexion requise<br>
-                                            • IdÃ©al pour le contenu promotionnel
+                                            • Ideal pour le contenu promotionnel
                                         </div>
                                     </div>
                                 </div>
@@ -302,10 +302,10 @@
                                 <div class="d-flex align-items-start">
                                     <i class="fas fa-eye text-info me-2 mt-1"></i>
                                     <div>
-                                        <strong class="text-info">AccÃ¨s visiteur</strong>
+                                        <strong class="text-info">Acces visiteur</strong>
                                         <div class="small text-muted mt-1">
-                                            • RÃ©servÃ© aux non-connectÃ©s<br>
-                                            • Incite Ã dÃ©couvrir sans inscription<br>
+                                            • Reserve aux non-connectes<br>
+                                            • Incite Ã decouvrir sans inscription<br>
                                             • Utile pour du contenu d'accroche
                                         </div>
                                     </div>
@@ -315,9 +315,9 @@
                                 <div class="d-flex align-items-start">
                                     <i class="fas fa-user text-warning me-2 mt-1"></i>
                                     <div>
-                                        <strong class="text-warning">AccÃ¨s membre</strong>
+                                        <strong class="text-warning">Acces membre</strong>
                                         <div class="small text-muted mt-1">
-                                            • RÃ©servÃ© aux utilisateurs connectÃ©s et validÃ©s<br>
+                                            • Reserve aux utilisateurs connectes et valides<br>
                                             • Exclut les comptes "visitor"<br>
                                             • Contenu premium et exclusif
                                         </div>
@@ -357,7 +357,7 @@
                             <i class="fas fa-images"></i>
                         </button>
                     </div>
-                    <div class="form-text">SÃ©lectionnez depuis la mÃ©diathÃ¨que ou saisissez une URL</div>
+                    <div class="form-text">Selectionnez depuis la mediatheque ou saisissez une URL</div>
                     @error('cover_image')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -432,7 +432,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration du slug
+    // Auto-generation du slug
     const titleInput = document.getElementById('title');
     const slugInput = document.getElementById('slug');
     
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ['clean']
             ]
         },
-        placeholder: 'Description dÃ©taillÃ©e du tÃ©lÃ©chargement...'
+        placeholder: 'Description detaillee du telechargement...'
     });
 
     // Synchroniser Quill avec le textarea
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const fileName = this.files[0].name;
             const extension = fileName.split('.').pop().toLowerCase();
             
-            // Auto-sÃ©lectionner le format
+            // Auto-selectionner le format
             if (['pdf', 'epub', 'mp4', 'zip', 'doc', 'docx'].includes(extension)) {
                 formatSelect.value = extension === 'doc' || extension === 'docx' ? extension : extension;
             }
@@ -535,10 +535,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Fonction pour le sÃ©lecteur de mÃ©dias (supposÃ© être dÃ©fini ailleurs)
+// Fonction pour le selecteur de medias (suppose être defini ailleurs)
 function openMediaSelector(inputId, previewId) {
-    // Cette fonction devrait ouvrir un modal de sÃ©lection de mÃ©dias
-    console.log('Ouvrir le sÃ©lecteur de mÃ©dias pour', inputId);
+    // Cette fonction devrait ouvrir un modal de selection de medias
+    console.log('Ouvrir le selecteur de medias pour', inputId);
 }
 </script>
 @endpush

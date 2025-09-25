@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration du slug Ã partir du nom (mais pas en Ã©dition par dÃ©faut)
+    // Auto-generation du slug Ã partir du nom (mais pas en edition par defaut)
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     

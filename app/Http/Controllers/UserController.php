@@ -14,7 +14,7 @@ class UserController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'AccÃ¨s non autorisÃ©');
+            abort(403, 'Acces non autorise');
         }
     }
 
@@ -52,14 +52,14 @@ class UserController extends Controller
     $data = $request->validated();
     $data['password'] = Hash::make($data['password']);
 
-    // DÃ©finir des valeurs par dÃ©faut pour les champs obligatoires
+    // Definir des valeurs par defaut pour les champs obligatoires
     $data = array_merge([
         'locale' => 'fr',
         'timezone' => 'Europe/Paris',
         'status' => 'active',
     ], $data);
 
-    // Nettoyer les valeurs vides qui peuvent poser problÃ¨me
+    // Nettoyer les valeurs vides qui peuvent poser probleme
     if (empty($data['locale'])) {
         $data['locale'] = 'fr';
     }
@@ -72,7 +72,7 @@ class UserController extends Controller
         $data['status'] = 'active';
     }
 
-    // Assigner le rôle par dÃ©faut si aucun rôle n'est spÃ©cifiÃ©
+    // Assigner le rôle par defaut si aucun rôle n'est specifie
     if (empty($data['role_id'])) {
         $defaultRole = Role::where('is_default', true)->first();
         $data['role_id'] = $defaultRole?->id;
@@ -89,7 +89,7 @@ class UserController extends Controller
     User::create($data);
 
     return redirect()->route('admin.users.index')
-        ->with('success', 'Utilisateur crÃ©Ã© avec succÃ¨s.');
+        ->with('success', 'Utilisateur cree avec succes.');
 }
 
 
@@ -123,7 +123,7 @@ class UserController extends Controller
         unset($data['password']);
     }
 
-    // DÃ©finir des valeurs par dÃ©faut pour les champs obligatoires
+    // Definir des valeurs par defaut pour les champs obligatoires
     if (empty($data['locale'])) {
         $data['locale'] = 'fr';
     }
@@ -147,7 +147,7 @@ class UserController extends Controller
     $user->update($data);
 
     return redirect()->route('admin.users.index')
-        ->with('success', 'Utilisateur mis Ã jour avec succÃ¨s.');
+        ->with('success', 'Utilisateur mis Ã jour avec succes.');
 }
 
     public function destroy(User $user)
@@ -157,6 +157,6 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')
-            ->with('success', 'Utilisateur supprimÃ© avec succÃ¨s.');
+            ->with('success', 'Utilisateur supprime avec succes.');
     }
 }

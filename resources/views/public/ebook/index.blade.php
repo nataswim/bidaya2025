@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Espace TÃ©lÃ©chargement - Ressources et eBooks')
-@section('meta_description', 'DÃ©couvrez notre collection de ressources tÃ©lÃ©chargeables : eBooks, guides, vidÃ©os et documents pour votre dÃ©veloppement personnel et professionnel.')
+@section('title', 'Espace Telechargement - Ressources et eBooks')
+@section('meta_description', 'Decouvrez notre collection de ressources telechargeables : eBooks, guides, videos et documents pour votre developpement personnel et professionnel.')
 
 @push('styles')
 <style>
@@ -60,14 +60,14 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">Espace TÃ©lÃ©chargement</h1>
+                <h1 class="display-4 fw-bold mb-4">Espace Telechargement</h1>
                 <p class="lead mb-4">
-                    DÃ©couvrez notre collection de ressources exclusives : eBooks, guides pratiques, 
-                    vidÃ©os de formation et documents pour booster votre dÃ©veloppement.
+                    Decouvrez notre collection de ressources exclusives : eBooks, guides pratiques, 
+                    videos de formation et documents pour booster votre developpement.
                 </p>
                 <div class="d-flex gap-3">
                     <a href="#categories" class="btn btn-light btn-lg">
-                        <i class="fas fa-folder me-2"></i>Explorer les catÃ©gories
+                        <i class="fas fa-folder me-2"></i>Explorer les categories
                     </a>
                     <a href="#featured" class="btn btn-outline-light btn-lg">
                         <i class="fas fa-star me-2"></i>Contenus vedettes
@@ -86,13 +86,13 @@
                         <div class="col-6">
                             <div class="text-center">
                                 <h3 class="fw-bold mb-1">{{ $categories->count() }}</h3>
-                                <small class="opacity-75">CatÃ©gories</small>
+                                <small class="opacity-75">Categories</small>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="text-center">
                                 <h3 class="fw-bold mb-1">{{ \App\Models\Downloadable::sum('download_count') }}</h3>
-                                <small class="opacity-75">TÃ©lÃ©chargements</small>
+                                <small class="opacity-75">Telechargements</small>
                             </div>
                         </div>
                     </div>
@@ -102,14 +102,14 @@
     </div>
 </section>
 
-<!-- Section CatÃ©gories -->
+<!-- Section Categories -->
 <section id="categories" class="py-5">
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">CatÃ©gories de Ressources</h2>
+                <h2 class="fw-bold mb-3">Categories de Ressources</h2>
                 <p class="text-muted">
-                    Explorez nos diffÃ©rentes catÃ©gories pour trouver exactement ce que vous cherchez
+                    Explorez nos differentes categories pour trouver exactement ce que vous cherchez
                 </p>
             </div>
         </div>
@@ -136,7 +136,7 @@
                                 </div>
                                 <a href="{{ route('ebook.category', $category->slug) }}" 
                                    class="btn btn-outline-primary">
-                                    Explorer cette catÃ©gorie
+                                    Explorer cette categorie
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </a>
                             </div>
@@ -147,14 +147,14 @@
         @else
             <div class="text-center py-5">
                 <i class="fas fa-folder-open fa-3x text-muted mb-3 opacity-50"></i>
-                <h4>Aucune catÃ©gorie disponible</h4>
-                <p class="text-muted">Les catÃ©gories seront bientôt disponibles.</p>
+                <h4>Aucune categorie disponible</h4>
+                <p class="text-muted">Les categories seront bientôt disponibles.</p>
             </div>
         @endif
     </div>
 </section>
 
-<!-- Section TÃ©lÃ©chargements Vedettes -->
+<!-- Section Telechargements Vedettes -->
 @if($featuredDownloads->count() > 0)
 <section id="featured" class="py-5 bg-light">
     <div class="container">
@@ -164,7 +164,7 @@
                     <i class="fas fa-star text-warning me-2"></i>Ressources Vedettes
                 </h2>
                 <p class="text-muted">
-                    Nos contenus les plus populaires et recommandÃ©s
+                    Nos contenus les plus populaires et recommandes
                 </p>
             </div>
         </div>
@@ -213,18 +213,18 @@
                                     <div class="d-grid gap-2">
                                         <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}" 
                                            class="btn btn-outline-primary">
-                                            <i class="fas fa-eye me-2"></i>Voir les dÃ©tails
+                                            <i class="fas fa-eye me-2"></i>Voir les details
                                         </a>
                                         <a href="{{ route('ebook.download', [$download->category->slug, $download->slug]) }}" 
                                            class="btn btn-success">
-                                            <i class="fas fa-download me-2"></i>TÃ©lÃ©charger
+                                            <i class="fas fa-download me-2"></i>Telecharger
                                         </a>
                                     </div>
                                 @else
                                     <div class="d-grid gap-2">
                                         <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}" 
                                            class="btn btn-outline-primary">
-                                            <i class="fas fa-eye me-2"></i>Voir les dÃ©tails
+                                            <i class="fas fa-eye me-2"></i>Voir les details
                                         </a>
                                         <div class="text-center">
                                             <small class="text-muted">
@@ -244,17 +244,17 @@
 </section>
 @endif
 
-<!-- Section TÃ©lÃ©chargements RÃ©cents -->
+<!-- Section Telechargements Recents -->
 @if($recentDownloads->count() > 0)
 <section class="py-5">
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-3">
-                    <i class="fas fa-clock text-info me-2"></i>Ajouts RÃ©cents
+                    <i class="fas fa-clock text-info me-2"></i>Ajouts Recents
                 </h2>
                 <p class="text-muted">
-                    DÃ©couvrez nos derniÃ¨res ressources ajoutÃ©es
+                    Decouvrez nos dernieres ressources ajoutees
                 </p>
             </div>
         </div>
@@ -315,17 +315,17 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Envie d'accÃ©der Ã plus de contenus ?</h3>
+                <h3 class="fw-bold mb-3">Envie d'acceder Ã plus de contenus ?</h3>
                 <p class="mb-0">
-                    CrÃ©ez votre compte pour accÃ©der Ã notre bibliothÃ¨que complÃ¨te de ressources exclusives 
-                    et recevoir les nouveautÃ©s en avant-premiÃ¨re.
+                    Creez votre compte pour acceder Ã notre bibliotheque complete de ressources exclusives 
+                    et recevoir les nouveautes en avant-premiere.
                 </p>
             </div>
             <div class="col-lg-4 text-center">
                 @guest
                     <div class="d-grid gap-2">
                         <a href="{{ route('register') }}" class="btn btn-light btn-lg">
-                            <i class="fas fa-user-plus me-2"></i>CrÃ©er un compte
+                            <i class="fas fa-user-plus me-2"></i>Creer un compte
                         </a>
                         <a href="{{ route('login') }}" class="btn btn-outline-light">
                             <i class="fas fa-sign-in-alt me-2"></i>Se connecter

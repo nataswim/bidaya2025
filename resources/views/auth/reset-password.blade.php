@@ -38,7 +38,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button>
-                {{ __('RÃ©initialiser le mot de passe') }}
+                {{ __('Reinitialiser le mot de passe') }}
             </x-primary-button>
         </div>
     </form>

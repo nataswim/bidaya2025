@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Convertisseur Kcal ↔ Macronutriments AvancÃ© - Calculs MÃ©taboliques 2024')
-@section('meta_description', 'Convertisseur calories-macronutriments scientifique 2024. Calculs BMR, TDEE, TEF avec algorithmes personnalisÃ©s. RÃ©partitions Ã©quilibrÃ©e, low-carb, high-protein. Recherches mÃ©taboliques actualisÃ©es.')
+@section('title', 'Convertisseur Kcal ↔ Macronutriments Avance - Calculs Metaboliques 2024')
+@section('meta_description', 'Convertisseur calories-macronutriments scientifique 2024. Calculs BMR, TDEE, TEF avec algorithmes personnalises. Repartitions equilibree, low-carb, high-protein. Recherches metaboliques actualisees.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,7 +9,7 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-calculator text-warning"></i>
-            Convertisseur Kcal ↔ Macronutriments AvancÃ©
+            Convertisseur Kcal ↔ Macronutriments Avance
             <i class="fas fa-fire text-danger"></i>
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
@@ -17,8 +17,8 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-chart-line text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Calculez vos apports et dÃ©penses Ã©nergÃ©tiques</strong> avec les derniÃ¨res recherches 
-                    scientifiques en mÃ©tabolisme et nutrition personnalisÃ©e
+                    <strong>Calculez vos apports et depenses energetiques</strong> avec les dernieres recherches 
+                    scientifiques en metabolisme et nutrition personnalisee
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                             <label class="form-check-label fw-bold" for="kcalToMacros">
                                 <i class="fas fa-arrow-right me-2"></i>Calories → Macronutriments
                             </label>
-                            <small class="d-block text-muted">RÃ©partition selon diffÃ©rents rÃ©gimes alimentaires</small>
+                            <small class="d-block text-muted">Repartition selon differents regimes alimentaires</small>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -55,18 +55,18 @@
                             <label class="form-check-label fw-bold" for="macrosToKcal">
                                 <i class="fas fa-arrow-left me-2"></i>Macronutriments → Calories
                             </label>
-                            <small class="d-block text-muted">Calcul prÃ©cis avec pourcentages</small>
+                            <small class="d-block text-muted">Calcul precis avec pourcentages</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Calculateur Ã©nergÃ©tique -->
+        <!-- Calculateur energetique -->
         <div class="card mb-4 shadow-lg">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
-                    <i class="fas fa-calculator me-2"></i>Calculateur Ã©nergÃ©tique
+                    <i class="fas fa-calculator me-2"></i>Calculateur energetique
                 </h3>
             </div>
             <div class="card-body">
@@ -76,7 +76,7 @@
                     <h5 class="fw-bold text-success mb-3">Conversion Calories → Macronutriments</h5>
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Ã©nergie totale (kcal)</label>
+                            <label class="form-label fw-bold">energie totale (kcal)</label>
                             <input type="number" id="totalKcal" class="form-control form-control-lg border-success" 
                                    placeholder="Ex: 2000" min="500" max="5000">
                             <small class="text-muted">Entre 500 et 5000 kcal</small>
@@ -88,7 +88,7 @@
                     <h5 class="fw-bold text-primary mb-3">Conversion Macronutriments → Calories</h5>
                     <div class="row g-3 mb-4">
                         <div class="col-md-4">
-                            <label class="form-label fw-bold">ProtÃ©ines (g)</label>
+                            <label class="form-label fw-bold">Proteines (g)</label>
                             <input type="number" id="proteinGrams" class="form-control form-control-lg border-primary" 
                                    placeholder="Ex: 120" min="0" max="500">
                             <small class="text-muted">4 kcal/g</small>
@@ -108,9 +108,9 @@
                     </div>
                 </div>
 
-                <!-- DonnÃ©es personnelles pour calcul mÃ©tabolique -->
+                <!-- Donnees personnelles pour calcul metabolique -->
                 <h5 class="fw-bold text-secondary mb-3">
-                    <i class="fas fa-user me-2"></i>DonnÃ©es personnelles (calcul mÃ©tabolique avancÃ©)
+                    <i class="fas fa-user me-2"></i>Donnees personnelles (calcul metabolique avance)
                 </h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-2">
@@ -133,13 +133,13 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label">Niveau d'activitÃ©</label>
+                        <label class="form-label">Niveau d'activite</label>
                         <select id="activityLevel" class="form-select">
-                            <option value="sedentary" selected>SÃ©dentaire</option>
-                            <option value="light">LÃ©gÃ¨re</option>
-                            <option value="moderate">ModÃ©rÃ©e</option>
+                            <option value="sedentary" selected>Sedentaire</option>
+                            <option value="light">Legere</option>
+                            <option value="moderate">Moderee</option>
                             <option value="active">Active</option>
-                            <option value="veryActive">TrÃ¨s active</option>
+                            <option value="veryActive">Tres active</option>
                         </select>
                     </div>
                 </div>
@@ -153,20 +153,20 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- RÃ©sultats de Conversion -->
+        <!-- Resultats de Conversion -->
         <div id="conversionResults" class="d-none">
-            <!-- RÃ©sultats Calories → Macros -->
+            <!-- Resultats Calories → Macros -->
             <div id="kcalToMacrosResults" class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
-                        <i class="fas fa-chart-pie me-2"></i>RÃ©partitions RecommandÃ©es
+                        <i class="fas fa-chart-pie me-2"></i>Repartitions Recommandees
                     </h3>
                 </div>
                 <div class="card-body">
@@ -174,11 +174,11 @@
                         <div class="col-md-4">
                             <div class="card border-primary h-100">
                                 <div class="card-header bg-primary text-white text-center">
-                                    <h6 class="mb-0">RÃ©gime Ã©quilibrÃ©</h6>
+                                    <h6 class="mb-0">Regime equilibre</h6>
                                     <small>25% P / 25% L / 50% G</small>
                                 </div>
                                 <div class="card-body text-center">
-                                    <p class="mb-2"><strong class="text-primary" id="balancedProtein">0g</strong> protÃ©ines</p>
+                                    <p class="mb-2"><strong class="text-primary" id="balancedProtein">0g</strong> proteines</p>
                                     <p class="mb-2"><strong class="text-warning" id="balancedFat">0g</strong> lipides</p>
                                     <p class="mb-0"><strong class="text-info" id="balancedCarb">0g</strong> glucides</p>
                                 </div>
@@ -191,7 +191,7 @@
                                     <small>30% P / 50% L / 20% G</small>
                                 </div>
                                 <div class="card-body text-center">
-                                    <p class="mb-2"><strong class="text-primary" id="lowCarbProtein">0g</strong> protÃ©ines</p>
+                                    <p class="mb-2"><strong class="text-primary" id="lowCarbProtein">0g</strong> proteines</p>
                                     <p class="mb-2"><strong class="text-warning" id="lowCarbFat">0g</strong> lipides</p>
                                     <p class="mb-0"><strong class="text-info" id="lowCarbCarb">0g</strong> glucides</p>
                                 </div>
@@ -204,7 +204,7 @@
                                     <small>35% P / 25% L / 40% G</small>
                                 </div>
                                 <div class="card-body text-center">
-                                    <p class="mb-2"><strong class="text-primary" id="highProteinProtein">0g</strong> protÃ©ines</p>
+                                    <p class="mb-2"><strong class="text-primary" id="highProteinProtein">0g</strong> proteines</p>
                                     <p class="mb-2"><strong class="text-warning" id="highProteinFat">0g</strong> lipides</p>
                                     <p class="mb-0"><strong class="text-info" id="highProteinCarb">0g</strong> glucides</p>
                                 </div>
@@ -214,11 +214,11 @@
                 </div>
             </div>
 
-            <!-- RÃ©sultats Macros → Calories -->
+            <!-- Resultats Macros → Calories -->
             <div id="macrosToKcalResults" class="card mb-4 shadow-lg d-none">
                 <div class="card-header bg-info text-white">
                     <h3 class="mb-2">
-                        <i class="fas fa-fire me-2"></i>Analyse Ã©nergÃ©tique
+                        <i class="fas fa-fire me-2"></i>Analyse energetique
                     </h3>
                 </div>
                 <div class="card-body">
@@ -226,7 +226,7 @@
                         <div class="col-md-6">
                             <div class="card border-success h-100">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">Total Ã©nergÃ©tique</h5>
+                                    <h5 class="card-title">Total energetique</h5>
                                     <p class="card-text">
                                         <span class="fs-2"><strong class="text-success" id="totalCalories">0</strong></span>
                                         <span class="d-block">kcal</span>
@@ -237,9 +237,9 @@
                         <div class="col-md-6">
                             <div class="card border-info h-100">
                                 <div class="card-body">
-                                    <h6 class="card-title">RÃ©partition Ã©nergÃ©tique</h6>
+                                    <h6 class="card-title">Repartition energetique</h6>
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>ProtÃ©ines:</span>
+                                        <span>Proteines:</span>
                                         <strong class="text-primary" id="proteinPercent">0%</strong>
                                     </div>
                                     <div class="d-flex justify-content-between mb-1">
@@ -257,11 +257,11 @@
                 </div>
             </div>
 
-            <!-- Analyse MÃ©tabolique -->
+            <!-- Analyse Metabolique -->
             <div id="metabolicResults" class="card mb-4 shadow-lg d-none">
                 <div class="card-header bg-warning text-dark">
                     <h3 class="mb-2">
-                        <i class="fas fa-heartbeat me-2"></i>Analyse MÃ©tabolique PersonnalisÃ©e
+                        <i class="fas fa-heartbeat me-2"></i>Analyse Metabolique Personnalisee
                     </h3>
                 </div>
                 <div class="card-body">
@@ -274,7 +274,7 @@
                                         <span class="fs-4"><strong class="text-primary" id="bmrMifflin">0</strong></span>
                                         <small class="d-block">kcal/jour</small>
                                     </p>
-                                    <small class="text-muted">MÃ©tabolisme de base</small>
+                                    <small class="text-muted">Metabolisme de base</small>
                                 </div>
                             </div>
                         </div>
@@ -286,7 +286,7 @@
                                         <span class="fs-4"><strong class="text-success" id="tdeeTotal">0</strong></span>
                                         <small class="d-block">kcal/jour</small>
                                     </p>
-                                    <small class="text-muted">DÃ©pense totale</small>
+                                    <small class="text-muted">Depense totale</small>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +298,7 @@
                                         <span class="fs-5"><strong class="text-warning" id="neatValue">0</strong></span>
                                         <small class="d-block">kcal/jour</small>
                                     </p>
-                                    <small class="text-muted">ActivitÃ© spontanÃ©e</small>
+                                    <small class="text-muted">Activite spontanee</small>
                                 </div>
                             </div>
                         </div>
@@ -317,7 +317,7 @@
                     </div>
                     
                     <div class="alert alert-info mt-3">
-                        <h6><i class="fas fa-info-circle me-2"></i>InterprÃ©tation</h6>
+                        <h6><i class="fas fa-info-circle me-2"></i>Interpretation</h6>
                         <p class="small mb-0" id="metabolicInterpretation">
                             <!-- Sera rempli par JavaScript -->
                         </p>
@@ -328,35 +328,35 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
-        <!-- Coefficients Ã©nergÃ©tiques ActualisÃ©s -->
+        <!-- Coefficients energetiques Actualises -->
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-flask me-2"></i>
-                    Coefficients Ã©nergÃ©tiques - Recherches 2024
+                    Coefficients energetiques - Recherches 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Valeurs Ã©nergÃ©tiques ActualisÃ©es</h6>
+                        <h6>Valeurs energetiques Actualisees</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Macronutriment</th>
                                         <th>Standard (kcal/g)</th>
-                                        <th>MÃ©tabolisable (kcal/g)</th>
+                                        <th>Metabolisable (kcal/g)</th>
                                         <th>TEF (%)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>ProtÃ©ines</strong></td>
+                                        <td><strong>Proteines</strong></td>
                                         <td>4.0</td>
                                         <td>3.2-3.8</td>
                                         <td>20-30%</td>
@@ -392,18 +392,18 @@
                     <div class="col-md-6">
                         <h6>Facteurs de Correction Modernes</h6>
                         <ul class="small">
-                            <li><strong>QualitÃ© protÃ©ique :</strong> DIAAS vs PDCAAS (2024)</li>
-                            <li><strong>Index glycÃ©mique :</strong> Impact sur TEF des glucides</li>
+                            <li><strong>Qualite proteique :</strong> DIAAS vs PDCAAS (2024)</li>
+                            <li><strong>Index glycemique :</strong> Impact sur TEF des glucides</li>
                             <li><strong>Forme des lipides :</strong> MCT vs LCT vs PUFA</li>
-                            <li><strong>Transformation alimentaire :</strong> Ultra-transformÃ© vs naturel</li>
-                            <li><strong>Timing nutritionnel :</strong> Chronobiologie mÃ©tabolique</li>
-                            <li><strong>Micronutriments :</strong> Cofacteurs mÃ©taboliques</li>
+                            <li><strong>Transformation alimentaire :</strong> Ultra-transforme vs naturel</li>
+                            <li><strong>Timing nutritionnel :</strong> Chronobiologie metabolique</li>
+                            <li><strong>Micronutriments :</strong> Cofacteurs metaboliques</li>
                         </ul>
                         
                         <div class="alert alert-info">
                             <small>
-                                <strong>Innovation 2024 :</strong> Les nouveaux algorithmes intÃ¨grent 
-                                la variabilitÃ© inter-individuelle du mÃ©tabolisme (±15-20%).
+                                <strong>Innovation 2024 :</strong> Les nouveaux algorithmes integrent 
+                                la variabilite inter-individuelle du metabolisme (±15-20%).
                             </small>
                         </div>
                     </div>
@@ -411,27 +411,27 @@
             </div>
         </div>
 
-        <!-- Composantes de la DÃ©pense Ã©nergÃ©tique -->
+        <!-- Composantes de la Depense energetique -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-chart-line me-2"></i>
-                    Composantes de la DÃ©pense Ã©nergÃ©tique Totale
+                    Composantes de la Depense energetique Totale
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-8">
-                        <h6>Breakdown Ã©nergÃ©tique DÃ©taillÃ© (% TDEE)</h6>
+                        <h6>Breakdown energetique Detaille (% TDEE)</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Composante</th>
-                                        <th>SÃ©dentaire</th>
+                                        <th>Sedentaire</th>
                                         <th>Actif</th>
-                                        <th>AthlÃ¨te</th>
-                                        <th>VariabilitÃ©</th>
+                                        <th>Athlete</th>
+                                        <th>Variabilite</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -464,7 +464,7 @@
                                         <td>±20-50%</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>SPA (ActivitÃ© spontanÃ©e)</strong></td>
+                                        <td><strong>SPA (Activite spontanee)</strong></td>
                                         <td>2-8%</td>
                                         <td>2-8%</td>
                                         <td>2-8%</td>
@@ -478,22 +478,22 @@
                             <h6><i class="fas fa-exclamation-triangle me-2"></i>Recherche 2024</h6>
                             <p class="small mb-0">
                                 La composante NEAT varie jusqu'Ã 800 kcal/jour entre individus de même profil, 
-                                expliquant les diffÃ©rences mÃ©taboliques majeures.
+                                expliquant les differences metaboliques majeures.
                             </p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>Facteurs d'Influence MÃ©tabolique</h6>
+                        <h6>Facteurs d'Influence Metabolique</h6>
                         <ul class="small">
-                            <li><strong>GÃ©nÃ©tique :</strong> 40-60% de la variation BMR</li>
+                            <li><strong>Genetique :</strong> 40-60% de la variation BMR</li>
                             <li><strong>Composition corporelle :</strong> Masse musculaire vs graisseuse</li>
-                            <li><strong>Âge :</strong> -1-2% BMR par dÃ©cennie aprÃ¨s 30 ans</li>
+                            <li><strong>Âge :</strong> -1-2% BMR par decennie apres 30 ans</li>
                             <li><strong>Sexe :</strong> Hommes +10-15% BMR vs femmes</li>
-                            <li><strong>ThermorÃ©gulation :</strong> Adaptation au froid/chaud</li>
-                            <li><strong>Ã©tat nutritionnel :</strong> Restriction/suralimentation</li>
+                            <li><strong>Thermoregulation :</strong> Adaptation au froid/chaud</li>
+                            <li><strong>etat nutritionnel :</strong> Restriction/suralimentation</li>
                             <li><strong>Hormones :</strong> Thyroïde, leptine, cortisol</li>
-                            <li><strong>MÃ©dicaments :</strong> Impact sur mÃ©tabolisme</li>
-                            <li><strong>Pathologies :</strong> DiabÃ¨te, SOPK, hypothyroïdie</li>
+                            <li><strong>Medicaments :</strong> Impact sur metabolisme</li>
+                            <li><strong>Pathologies :</strong> Diabete, SOPK, hypothyroïdie</li>
                         </ul>
                         
                         <div class="card mt-3 border-secondary">
@@ -502,10 +502,10 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>CalorimÃ©trie indirecte :</strong> RMR prÃ©cis</li>
+                                    <li><strong>Calorimetrie indirecte :</strong> RMR precis</li>
                                     <li><strong>Doubly Labeled Water :</strong> TDEE gold standard</li>
-                                    <li><strong>Wearables avancÃ©s :</strong> Estimation NEAT/EAT</li>
-                                    <li><strong>Monitors mÃ©taboliques :</strong> TEF en temps rÃ©el</li>
+                                    <li><strong>Wearables avances :</strong> Estimation NEAT/EAT</li>
+                                    <li><strong>Monitors metaboliques :</strong> TEF en temps reel</li>
                                 </ul>
                             </div>
                         </div>
@@ -514,64 +514,64 @@
             </div>
         </div>
 
-        <!-- Calculs Ã©nergÃ©tiques par Aliment -->
+        <!-- Calculs energetiques par Aliment -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-apple-alt me-2"></i>
-                    Calculs Ã©nergÃ©tiques par Aliment, Repas et Jour
+                    Calculs energetiques par Aliment, Repas et Jour
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>MÃ©thodes de Calcul PrÃ©cises</h6>
+                        <h6>Methodes de Calcul Precises</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>MÃ©thode</th>
-                                        <th>PrÃ©cision</th>
+                                        <th>Methode</th>
+                                        <th>Precision</th>
                                         <th>Application</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>CalorimÃ©trie bombe</td>
+                                        <td>Calorimetrie bombe</td>
                                         <td>±0.1%</td>
                                         <td>Recherche alimentaire</td>
                                     </tr>
                                     <tr>
                                         <td>Facteurs Atwater</td>
                                         <td>±5-10%</td>
-                                        <td>Ã©tiquetage commercial</td>
+                                        <td>etiquetage commercial</td>
                                     </tr>
                                     <tr>
-                                        <td>Atwater spÃ©cifiques</td>
+                                        <td>Atwater specifiques</td>
                                         <td>±3-5%</td>
                                         <td>Bases nutritionnelles</td>
                                     </tr>
                                     <tr>
                                         <td>Analyse proximale</td>
                                         <td>±2-5%</td>
-                                        <td>Laboratoires agrÃ©Ã©s</td>
+                                        <td>Laboratoires agrees</td>
                                     </tr>
                                     <tr>
                                         <td>Spectroscopie NIR</td>
                                         <td>±1-3%</td>
-                                        <td>Contrôle qualitÃ© industriel</td>
+                                        <td>Contrôle qualite industriel</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6>VariabilitÃ© Ã©nergÃ©tique des Aliments</h6>
+                        <h6>Variabilite energetique des Aliments</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>CatÃ©gorie d'Aliment</th>
+                                        <th>Categorie d'Aliment</th>
                                         <th>Variation kcal/100g</th>
                                         <th>Facteurs d'Influence</th>
                                     </tr>
@@ -580,25 +580,25 @@
                                     <tr>
                                         <td>Fruits</td>
                                         <td>±15-25%</td>
-                                        <td>MaturitÃ©, variÃ©tÃ©, saison</td>
+                                        <td>Maturite, variete, saison</td>
                                     </tr>
                                     <tr>
-                                        <td>LÃ©gumes</td>
+                                        <td>Legumes</td>
                                         <td>±10-20%</td>
-                                        <td>Mode culture, prÃ©paration</td>
+                                        <td>Mode culture, preparation</td>
                                     </tr>
                                     <tr>
                                         <td>Viandes</td>
                                         <td>±20-40%</td>
-                                        <td>Partie, Ã©levage, cuisson</td>
+                                        <td>Partie, elevage, cuisson</td>
                                     </tr>
                                     <tr>
-                                        <td>CÃ©rÃ©ales</td>
+                                        <td>Cereales</td>
                                         <td>±5-15%</td>
                                         <td>Raffinage, transformation</td>
                                     </tr>
                                     <tr>
-                                        <td>Produits transformÃ©s</td>
+                                        <td>Produits transformes</td>
                                         <td>±30-50%</td>
                                         <td>Recette, additifs, process</td>
                                     </tr>
@@ -619,7 +619,7 @@
                                     <li><strong>Base :</strong> Macronutriments × coefficients</li>
                                     <li><strong>Correction :</strong> Fibres, alcool, acides organiques</li>
                                     <li><strong>Ajustement :</strong> Transformation, cuisson</li>
-                                    <li><strong>PrÃ©cision :</strong> ±5-15% selon aliment</li>
+                                    <li><strong>Precision :</strong> ±5-15% selon aliment</li>
                                 </ul>
                                 <div class="text-center mt-2 bg-light p-2 rounded">
                                     <strong class="text-primary">Exemple : 1 pomme (150g)</strong><br/>
@@ -637,11 +637,11 @@
                                 <ul class="small">
                                     <li><strong>Sommation :</strong> Σ calories individuelles</li>
                                     <li><strong>Interactions :</strong> Effet matrice alimentaire</li>
-                                    <li><strong>TEF combinÃ© :</strong> Synergie macronutriments</li>
-                                    <li><strong>PrÃ©cision :</strong> ±10-20% selon complexitÃ©</li>
+                                    <li><strong>TEF combine :</strong> Synergie macronutriments</li>
+                                    <li><strong>Precision :</strong> ±10-20% selon complexite</li>
                                 </ul>
                                 <div class="text-center mt-2 bg-light p-2 rounded">
-                                    <strong class="text-warning">Exemple : Petit-dÃ©jeuner</strong><br />
+                                    <strong class="text-warning">Exemple : Petit-dejeuner</strong><br />
                                     <small>520 kcal ± 85 kcal</small>
                                 </div>
                             </div>
@@ -650,14 +650,14 @@
                     <div class="col-md-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white text-center">
-                                <h6 class="mb-0">Niveau JournÃ©e</h6>
+                                <h6 class="mb-0">Niveau Journee</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li><strong>Total :</strong> Σ repas + collations</li>
                                     <li><strong>Rythme :</strong> Chronobiologie nutritionnelle</li>
                                     <li><strong>Adaptation :</strong> TEF journalier global</li>
-                                    <li><strong>PrÃ©cision :</strong> ±15-25% population gÃ©nÃ©rale</li>
+                                    <li><strong>Precision :</strong> ±15-25% population generale</li>
                                 </ul>
                                 <div class="text-center mt-2 bg-light p-2 rounded">
                                     <strong class="text-success">Exemple : Apport quotidien</strong><br/>
@@ -675,33 +675,33 @@
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-microchip me-2"></i>
-                    Technologies et Innovations MÃ©taboliques 2024
+                    Technologies et Innovations Metaboliques 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>Outils de Mesure AvancÃ©s</h6>
+                        <h6>Outils de Mesure Avances</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Technologie</th>
-                                        <th>ParamÃ¨tre MesurÃ©</th>
-                                        <th>PrÃ©cision</th>
+                                        <th>Parametre Mesure</th>
+                                        <th>Precision</th>
                                         <th>Coût</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>MetaboFlex Pro</td>
-                                        <td>RMR en temps rÃ©el</td>
+                                        <td>RMR en temps reel</td>
                                         <td>±3%</td>
                                         <td>€€€</td>
                                     </tr>
                                     <tr>
                                         <td>Lumen device</td>
-                                        <td>Ratio RQ mÃ©tabolique</td>
+                                        <td>Ratio RQ metabolique</td>
                                         <td>±5%</td>
                                         <td>€€</td>
                                     </tr>
@@ -719,13 +719,13 @@
                                     </tr>
                                     <tr>
                                         <td>CGM (Continuous Glucose)</td>
-                                        <td>RÃ©ponse glycÃ©mique</td>
+                                        <td>Reponse glycemique</td>
                                         <td>±8%</td>
                                         <td>€</td>
                                     </tr>
                                     <tr>
                                         <td>Whoop/Oura Ring</td>
-                                        <td>DÃ©pense estimÃ©e 24h</td>
+                                        <td>Depense estimee 24h</td>
                                         <td>±15-25%</td>
                                         <td>€</td>
                                     </tr>
@@ -736,25 +736,25 @@
                     <div class="col-md-6">
                         <h6>Innovations Algorithmiques</h6>
                         <ul class="small">
-                            <li><strong>IA prÃ©dictive :</strong> ModÃ¨les personnalisÃ©s basÃ©s sur historique</li>
-                            <li><strong>Machine Learning :</strong> Ajustement continu selon rÃ©ponse individuelle</li>
-                            <li><strong>Digital Twins :</strong> Jumeaux numÃ©riques mÃ©taboliques</li>
+                            <li><strong>IA predictive :</strong> Modeles personnalises bases sur historique</li>
+                            <li><strong>Machine Learning :</strong> Ajustement continu selon reponse individuelle</li>
+                            <li><strong>Digital Twins :</strong> Jumeaux numeriques metaboliques</li>
                             <li><strong>Computer Vision :</strong> Estimation portions par photo</li>
-                            <li><strong>Blockchain nutrition :</strong> TraçabilitÃ© Ã©nergÃ©tique aliments</li>
+                            <li><strong>Blockchain nutrition :</strong> Traçabilite energetique aliments</li>
                             <li><strong>Capteurs IoT :</strong> Monitoring environnemental continu</li>
                         </ul>
                         
                         <div class="card mt-3 border-info">
                             <div class="card-header bg-info text-white">
-                                <small>Applications Ã©mergentes 2024</small>
+                                <small>Applications emergentes 2024</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li><strong>MyFitnessPal AI :</strong> Reconnaissance alimentaire automatique</li>
-                                    <li><strong>Nutrino/Suggestic :</strong> Recommandations personnalisÃ©es IA</li>
-                                    <li><strong>DayTwo :</strong> Nutrition basÃ©e sur microbiome</li>
-                                    <li><strong>Habit :</strong> Tests gÃ©nÃ©tiques + coaching mÃ©tabolique</li>
-                                    <li><strong>Virta Health :</strong> ThÃ©rapie mÃ©tabolique digitale</li>
+                                    <li><strong>Nutrino/Suggestic :</strong> Recommandations personnalisees IA</li>
+                                    <li><strong>DayTwo :</strong> Nutrition basee sur microbiome</li>
+                                    <li><strong>Habit :</strong> Tests genetiques + coaching metabolique</li>
+                                    <li><strong>Virta Health :</strong> Therapie metabolique digitale</li>
                                 </ul>
                             </div>
                         </div>
@@ -774,36 +774,36 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <h6>StratÃ©gies d'Optimisation MÃ©tabolique</h6>
+                        <h6>Strategies d'Optimisation Metabolique</h6>
                         <ul class="small">
                             <li><strong>Timing nutritionnel :</strong> Synchronisation circadienne</li>
-                            <li><strong>FrÃ©quence repas :</strong> 3-6 repas selon profil</li>
+                            <li><strong>Frequence repas :</strong> 3-6 repas selon profil</li>
                             <li><strong>Hydratation :</strong> Impact sur TEF (+3-5%)</li>
-                            <li><strong>TempÃ©rature aliments :</strong> ThermogenÃ¨se adaptative</li>
-                            <li><strong>Mastication :</strong> Augmentation TEF mÃ©canique</li>
-                            <li><strong>ActivitÃ© post-prandiale :</strong> Marche digestive</li>
+                            <li><strong>Temperature aliments :</strong> Thermogenese adaptative</li>
+                            <li><strong>Mastication :</strong> Augmentation TEF mecanique</li>
+                            <li><strong>Activite post-prandiale :</strong> Marche digestive</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <h6>Personnalisation selon Profil</h6>
                         <ul class="small">
-                            <li><strong>AthlÃ¨tes :</strong> PÃ©riodisation Ã©nergÃ©tique</li>
-                            <li><strong>SÃ©dentaires :</strong> Focus sur NEAT et TEF</li>
-                            <li><strong>Seniors :</strong> PrÃ©vention sarcopÃ©nie</li>
-                            <li><strong>MÃ©taboliquement malades :</strong> Restriction contrôlÃ©e</li>
-                            <li><strong>Femmes enceintes :</strong> Besoins Ã©volutifs</li>
-                            <li><strong>Pathologies :</strong> Adaptations spÃ©cifiques</li>
+                            <li><strong>Athletes :</strong> Periodisation energetique</li>
+                            <li><strong>Sedentaires :</strong> Focus sur NEAT et TEF</li>
+                            <li><strong>Seniors :</strong> Prevention sarcopenie</li>
+                            <li><strong>Metaboliquement malades :</strong> Restriction contrôlee</li>
+                            <li><strong>Femmes enceintes :</strong> Besoins evolutifs</li>
+                            <li><strong>Pathologies :</strong> Adaptations specifiques</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <h6>Surveillance et Ajustements</h6>
                         <ul class="small">
-                            <li><strong>Biomarqueurs :</strong> Suivi mÃ©tabolique rÃ©gulier</li>
+                            <li><strong>Biomarqueurs :</strong> Suivi metabolique regulier</li>
                             <li><strong>Composition corporelle :</strong> DEXA bi-annuel</li>
                             <li><strong>Performance :</strong> Tests fonctionnels</li>
-                            <li><strong>Bien-être :</strong> Ã©nergie, sommeil, humeur</li>
-                            <li><strong>Adaptation mÃ©tabolique :</strong> PrÃ©vention plateaux</li>
-                            <li><strong>FlexibilitÃ© mÃ©tabolique :</strong> Tests substrats</li>
+                            <li><strong>Bien-être :</strong> energie, sommeil, humeur</li>
+                            <li><strong>Adaptation metabolique :</strong> Prevention plateaux</li>
+                            <li><strong>Flexibilite metabolique :</strong> Tests substrats</li>
                         </ul>
                     </div>
                 </div>
@@ -811,9 +811,9 @@
                 <div class="alert alert-success mt-4">
                     <h6><i class="fas fa-rocket me-2"></i>Vision 2024</h6>
                     <p class="mb-0">
-                        L'avenir de la nutrition Ã©nergÃ©tique tend vers une approche hyper-personnalisÃ©e intÃ©grant 
-                        gÃ©nÃ©tique, microbiome, lifestyle et rÃ©ponses mÃ©taboliques individuelles pour une prÃ©cision 
-                        optimale des apports et dÃ©penses Ã©nergÃ©tiques.
+                        L'avenir de la nutrition energetique tend vers une approche hyper-personnalisee integrant 
+                        genetique, microbiome, lifestyle et reponses metaboliques individuelles pour une precision 
+                        optimale des apports et depenses energetiques.
                     </p>
                 </div>
             </div>
@@ -830,23 +830,23 @@
             <div class="card-body">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <h6>Coefficients Ã©nergÃ©tiques Standards</h6>
+                        <h6>Coefficients energetiques Standards</h6>
                         <ul class="small">
-                            <li><strong>1g de protÃ©ine = 4 kcal</strong> (digestibilitÃ© 95%)</li>
-                            <li><strong>1g de glucide = 4 kcal</strong> (digestibilitÃ© 98%)</li>
-                            <li><strong>1g de lipide = 9 kcal</strong> (digestibilitÃ© 95%)</li>
-                            <li><strong>1g d'alcool = 7 kcal</strong> (mÃ©tabolisme prioritaire)</li>
+                            <li><strong>1g de proteine = 4 kcal</strong> (digestibilite 95%)</li>
+                            <li><strong>1g de glucide = 4 kcal</strong> (digestibilite 98%)</li>
+                            <li><strong>1g de lipide = 9 kcal</strong> (digestibilite 95%)</li>
+                            <li><strong>1g d'alcool = 7 kcal</strong> (metabolisme prioritaire)</li>
                             <li><strong>1g de fibres = 2 kcal</strong> (fermentation colique)</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6>RÃ©partitions Classiques ActualisÃ©es</h6>
+                        <h6>Repartitions Classiques Actualisees</h6>
                         <ul class="small">
-                            <li><strong>Ã©quilibrÃ©e :</strong> 25% protÃ©ines, 25% lipides, 50% glucides</li>
-                            <li><strong>MÃ©diterranÃ©enne :</strong> 15% protÃ©ines, 35% lipides, 50% glucides</li>
-                            <li><strong>DASH :</strong> 20% protÃ©ines, 25% lipides, 55% glucides</li>
-                            <li><strong>CÃ©togÃ¨ne :</strong> 25% protÃ©ines, 70% lipides, 5% glucides</li>
-                            <li><strong>Sportif endurance :</strong> 15% protÃ©ines, 25% lipides, 60% glucides</li>
+                            <li><strong>equilibree :</strong> 25% proteines, 25% lipides, 50% glucides</li>
+                            <li><strong>Mediterraneenne :</strong> 15% proteines, 35% lipides, 50% glucides</li>
+                            <li><strong>DASH :</strong> 20% proteines, 25% lipides, 55% glucides</li>
+                            <li><strong>Cetogene :</strong> 25% proteines, 70% lipides, 5% glucides</li>
+                            <li><strong>Sportif endurance :</strong> 15% proteines, 25% lipides, 60% glucides</li>
                         </ul>
                     </div>
                 </div>
@@ -854,8 +854,8 @@
                 <div class="alert alert-info mt-3">
                     <h6><i class="fas fa-exclamation-circle me-2"></i>Important</h6>
                     <p class="small mb-0">
-                        Ces calculs sont des estimations. Pour un suivi prÃ©cis, particuliÃ¨rement en cas de pathologie 
-                        ou d'objectifs spÃ©cifiques, consultez un professionnel de la nutrition.
+                        Ces calculs sont des estimations. Pour un suivi precis, particulierement en cas de pathologie 
+                        ou d'objectifs specifiques, consultez un professionnel de la nutrition.
                     </p>
                 </div>
             </div>
@@ -863,7 +863,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -879,9 +879,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -891,15 +891,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -926,7 +926,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -937,12 +937,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1064,12 +1064,12 @@ class KcalMacroConverter {
             macrosInputs.classList.remove('d-none');
         }
         
-        // Masquer les rÃ©sultats lors du changement de mode
+        // Masquer les resultats lors du changement de mode
         document.getElementById('conversionResults').classList.add('d-none');
     }
     
     calculateBMR(weight, height, age, gender) {
-        // Formule Mifflin-St Jeor (plus prÃ©cise)
+        // Formule Mifflin-St Jeor (plus precise)
         if (gender === 'male') {
             return 10 * weight + 6.25 * height - 5 * age + 5;
         } else {
@@ -1095,7 +1095,7 @@ class KcalMacroConverter {
         const bmr = this.calculateBMR(weight, height, age, gender);
         const tdee = this.calculateTDEE(bmr, activityLevel);
         
-        // Composantes Ã©nergÃ©tiques avancÃ©es
+        // Composantes energetiques avancees
         const neat = tdee * 0.15; // NEAT (Non-Exercise Activity Thermogenesis)
         const tef = tdee * 0.10;  // TEF (Thermic Effect of Food)
         
@@ -1141,7 +1141,7 @@ class KcalMacroConverter {
     }
     
     displayKcalToMacrosResults(results) {
-        // RÃ©gime Ã©quilibrÃ©
+        // Regime equilibre
         document.getElementById('balancedProtein').textContent = `${results.balanced.protein}g`;
         document.getElementById('balancedFat').textContent = `${results.balanced.fat}g`;
         document.getElementById('balancedCarb').textContent = `${results.balanced.carb}g`;
@@ -1176,10 +1176,10 @@ class KcalMacroConverter {
         document.getElementById('neatValue').textContent = metrics.neat;
         document.getElementById('tefValue').textContent = metrics.tef;
         
-        // InterprÃ©tation
-        let interpretation = `Votre mÃ©tabolisme de base est de ${metrics.bmr} kcal/jour. `;
-        interpretation += `Avec votre niveau d'activitÃ©, vos besoins totaux sont estimÃ©s Ã ${metrics.tdee} kcal/jour. `;
-        interpretation += `L'activitÃ© non-sportive reprÃ©sente environ ${metrics.neat} kcal et l'effet thermique des aliments ${metrics.tef} kcal.`;
+        // Interpretation
+        let interpretation = `Votre metabolisme de base est de ${metrics.bmr} kcal/jour. `;
+        interpretation += `Avec votre niveau d'activite, vos besoins totaux sont estimes Ã ${metrics.tdee} kcal/jour. `;
+        interpretation += `L'activite non-sportive represente environ ${metrics.neat} kcal et l'effet thermique des aliments ${metrics.tef} kcal.`;
         
         document.getElementById('metabolicInterpretation').textContent = interpretation;
         document.getElementById('metabolicResults').classList.remove('d-none');
@@ -1191,7 +1191,7 @@ let converter;
 function calculateConversion() {
     if (!converter) converter = new KcalMacroConverter();
     
-    // RÃ©cupÃ©ration des donnÃ©es personnelles
+    // Recuperation des donnees personnelles
     const weight = parseFloat(document.getElementById('weight').value) || 0;
     const height = parseFloat(document.getElementById('height').value) || 0;
     const age = parseInt(document.getElementById('age').value) || 0;
@@ -1223,7 +1223,7 @@ function calculateConversion() {
         converter.displayMacrosToKcalResults(results);
     }
     
-    // Calculs mÃ©taboliques si donnÃ©es disponibles
+    // Calculs metaboliques si donnees disponibles
     if (weight > 0 && height > 0 && age > 0) {
         const metrics = converter.calculateAdvancedMetrics(weight, height, age, gender, activityLevel);
         if (metrics) {
@@ -1231,13 +1231,13 @@ function calculateConversion() {
         }
     }
     
-    // Afficher les rÃ©sultats
+    // Afficher les resultats
     document.getElementById('conversionResults').classList.remove('d-none');
     document.getElementById('conversionResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function resetForm() {
-    // RÃ©initialiser tous les champs
+    // Reinitialiser tous les champs
     document.getElementById('totalKcal').value = '';
     document.getElementById('proteinGrams').value = '';
     document.getElementById('fatGrams').value = '';
@@ -1248,12 +1248,12 @@ function resetForm() {
     document.getElementById('gender').value = 'male';
     document.getElementById('activityLevel').value = 'sedentary';
     
-    // RÃ©initialiser le mode
+    // Reinitialiser le mode
     document.getElementById('kcalToMacros').checked = true;
     document.getElementById('kcalToMacrosInputs').classList.remove('d-none');
     document.getElementById('macrosToKcalInputs').classList.add('d-none');
     
-    // Masquer les rÃ©sultats
+    // Masquer les resultats
     document.getElementById('conversionResults').classList.add('d-none');
 }
 

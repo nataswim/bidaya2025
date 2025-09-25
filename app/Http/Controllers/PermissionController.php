@@ -12,7 +12,7 @@ class PermissionController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'AccÃ¨s non autorisÃ©');
+            abort(403, 'Acces non autorise');
         }
     }
 
@@ -46,7 +46,7 @@ class PermissionController extends Controller
         Permission::create($request->validated());
 
         return redirect()->route('admin.permissions.index')
-            ->with('success', 'Permission crÃ©Ã©e avec succÃ¨s.');
+            ->with('success', 'Permission creee avec succes.');
     }
 
     public function show(Permission $permission)
@@ -70,22 +70,22 @@ class PermissionController extends Controller
         $permission->update($request->validated());
 
         return redirect()->route('admin.permissions.index')
-            ->with('success', 'Permission mise Ã jour avec succÃ¨s.');
+            ->with('success', 'Permission mise Ã jour avec succes.');
     }
 
     public function destroy(Permission $permission)
     {
         $this->checkAdminAccess();
         
-        // VÃ©rifier les dÃ©pendances avec les rôles
+        // Verifier les dependances avec les rôles
         if ($permission->roles()->count() > 0) {
             return redirect()->route('admin.permissions.index')
-                ->with('error', 'Impossible de supprimer une permission assignÃ©e Ã des rôles.');
+                ->with('error', 'Impossible de supprimer une permission assignee Ã des rôles.');
         }
         
         $permission->delete();
 
         return redirect()->route('admin.permissions.index')
-            ->with('success', 'Permission supprimÃ©e avec succÃ¨s.');
+            ->with('success', 'Permission supprimee avec succes.');
     }
 }

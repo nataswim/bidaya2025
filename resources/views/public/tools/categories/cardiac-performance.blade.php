@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Outils Performance Cardiaque & Zones d\'Entraînement - Physiologie Evidence-Based')
-@section('meta_description', 'Outils scientifiques pour optimiser votre entraînement cardiaque : zones d\'entraînement personnalisÃ©es et cohÃ©rence cardiaque. Approche physiologique sÃ©curisÃ©e et evidence-based.')
+@section('meta_description', 'Outils scientifiques pour optimiser votre entraînement cardiaque : zones d\'entraînement personnalisees et coherence cardiaque. Approche physiologique securisee et evidence-based.')
 
 @section('content')
 <!-- Section titre -->
@@ -29,12 +29,12 @@
                 </h1>
                 <p class="lead mb-4">
                     Optimisez votre entraînement cardiovasculaire avec une approche physiologique scientifique. 
-                    Outils basÃ©s sur la recherche en cardiologie du sport et la variabilitÃ© cardiaque pour un entraînement sÃ©curisÃ© et efficace.
+                    Outils bases sur la recherche en cardiologie du sport et la variabilite cardiaque pour un entraînement securise et efficace.
                 </p>
                 <div class="alert alert-warning border-0 bg-white bg-opacity-25">
                     <small>
                         <i class="fas fa-stethoscope me-2"></i>
-                        <strong>2 outils disponibles</strong> - Approche mÃ©dicale sÃ©curisÃ©e et personnalisÃ©e
+                        <strong>2 outils disponibles</strong> - Approche medicale securisee et personnalisee
                     </small>
                 </div>
             </div>
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<!-- Avertissement mÃ©dical important -->
+<!-- Avertissement medical important -->
 <section class="py-4 bg-warning">
     <div class="container">
         <div class="alert alert-dark border-0 mb-0">
@@ -57,12 +57,12 @@
                     <i class="fas fa-user-md fa-2x text-dark"></i>
                 </div>
                 <div class="col-md-11">
-                    <h6 class="fw-bold mb-2">Avertissement MÃ©dical Important</h6>
+                    <h6 class="fw-bold mb-2">Avertissement Medical Important</h6>
                     <p class="mb-0 small">
-                        <strong>L'entraînement cardiaque nÃ©cessite une approche prudente et personnalisÃ©e.</strong> 
-                        Consultez un mÃ©decin du sport avant de dÃ©buter tout programme d'entraînement intensif, 
-                        particuliÃ¨rement si vous avez des antÃ©cÃ©dents cardiovasculaires, ressentez des douleurs thoraciques, 
-                        des palpitations ou tout symptôme inhabituel. Ces outils ne remplacent pas un suivi mÃ©dical professionnel.
+                        <strong>L'entraînement cardiaque necessite une approche prudente et personnalisee.</strong> 
+                        Consultez un medecin du sport avant de debuter tout programme d'entraînement intensif, 
+                        particulierement si vous avez des antecedents cardiovasculaires, ressentez des douleurs thoraciques, 
+                        des palpitations ou tout symptôme inhabituel. Ces outils ne remplacent pas un suivi medical professionnel.
                     </p>
                 </div>
             </div>
@@ -70,12 +70,12 @@
     </div>
 </section>
 
-<!-- Outils de la catÃ©gorie -->
+<!-- Outils de la categorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
             
-            <!-- 1. Zones Cardiaques AvancÃ©es -->
+            <!-- 1. Zones Cardiaques Avancees -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.heart-rate-zones') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -86,15 +86,15 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">Zones Cardiaques AvancÃ©es</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">Zones Cardiaques Avancees</h5>
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Calcul personnalisÃ© des zones d'entraînement avec 6 formules FC max validÃ©es scientifiquement. 
-                                        IntÃ©gration FC repos, HRV et adaptation individuelle pour optimisation sÃ©curisÃ©e de l'entraînement.
+                                        Calcul personnalise des zones d'entraînement avec 6 formules FC max validees scientifiquement. 
+                                        Integration FC repos, HRV et adaptation individuelle pour optimisation securisee de l'entraînement.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>8-12 min</small>
@@ -107,7 +107,7 @@
                 </a>
             </div>
 
-            <!-- 2. CohÃ©rence Cardiaque -->
+            <!-- 2. Coherence Cardiaque -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.coherence-cardiaque') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -118,15 +118,15 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">CohÃ©rence Cardiaque</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">Coherence Cardiaque</h5>
                                         <span class="badge bg-info ms-2">Bien-être</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Simulateur et guide de pratique cohÃ©rence cardiaque pour gestion du stress, 
-                                        rÃ©cupÃ©ration et optimisation du systÃ¨me nerveux autonome. Technique validÃ©e scientifiquement.
+                                        Simulateur et guide de pratique coherence cardiaque pour gestion du stress, 
+                                        recuperation et optimisation du systeme nerveux autonome. Technique validee scientifiquement.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-15 min</small>
@@ -145,7 +145,7 @@
         <div class="row g-3 mt-5">
             <div class="col-md-6">
                 <a href="{{ route('tools.category.nutrition') }}" class="btn btn-outline-danger btn-lg w-100">
-                    <i class="fas fa-arrow-left me-2"></i>Nutrition & Ã©nergie
+                    <i class="fas fa-arrow-left me-2"></i>Nutrition & energie
                 </a>
             </div>
             <div class="col-md-6">
@@ -157,7 +157,7 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
@@ -175,18 +175,18 @@
                         <h6 class="text-danger">Fonction Cardiaque de Base</h6>
                         <p class="small">
                             Le cœur est une pompe musculaire qui s'adapte remarquablement Ã l'entraînement. 
-                            La frÃ©quence cardiaque (FC) reflÃ¨te l'intensitÃ© de l'effort et permet de quantifier 
+                            La frequence cardiaque (FC) reflete l'intensite de l'effort et permet de quantifier 
                             la charge cardiovasculaire. L'adaptation cardiaque se manifeste par une baisse 
-                            de la FC de repos et une amÃ©lioration de l'efficacitÃ© de pompage.
+                            de la FC de repos et une amelioration de l'efficacite de pompage.
                         </p>
                         
                         <h6 class="text-primary mt-3">Adaptations Ã l'Entraînement</h6>
                         <ul class="small">
-                            <li><strong>Bradycardie de repos :</strong> FC repos diminuÃ©e (athlÃ¨tes 40-60 bpm)</li>
-                            <li><strong>Volume d'Ã©jection :</strong> Augmentation du volume sanguin Ã©jectÃ©</li>
-                            <li><strong>DÃ©bit cardiaque :</strong> Optimisation efficacitÃ© Ã©nergÃ©tique</li>
-                            <li><strong>RÃ©cupÃ©ration :</strong> Retour plus rapide Ã la FC basale</li>
-                            <li><strong>VariabilitÃ© :</strong> AmÃ©lioration HRV (Heart Rate Variability)</li>
+                            <li><strong>Bradycardie de repos :</strong> FC repos diminuee (athletes 40-60 bpm)</li>
+                            <li><strong>Volume d'ejection :</strong> Augmentation du volume sanguin ejecte</li>
+                            <li><strong>Debit cardiaque :</strong> Optimisation efficacite energetique</li>
+                            <li><strong>Recuperation :</strong> Retour plus rapide Ã la FC basale</li>
+                            <li><strong>Variabilite :</strong> Amelioration HRV (Heart Rate Variability)</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -197,7 +197,7 @@
                                     <tr>
                                         <th>Zone</th>
                                         <th>% FC max</th>
-                                        <th>MÃ©tabolisme</th>
+                                        <th>Metabolisme</th>
                                         <th>Adaptations</th>
                                     </tr>
                                 </thead>
@@ -205,31 +205,31 @@
                                     <tr class="table-success">
                                         <td>Zone 1</td>
                                         <td>50-60%</td>
-                                        <td>AÃ©robie facile</td>
-                                        <td>RÃ©cupÃ©ration active</td>
+                                        <td>Aerobie facile</td>
+                                        <td>Recuperation active</td>
                                     </tr>
                                     <tr class="table-info">
                                         <td>Zone 2</td>
                                         <td>60-70%</td>
-                                        <td>AÃ©robie base</td>
+                                        <td>Aerobie base</td>
                                         <td>Endurance fondamentale</td>
                                     </tr>
                                     <tr class="table-primary">
                                         <td>Zone 3</td>
                                         <td>70-80%</td>
-                                        <td>AÃ©robie intensif</td>
-                                        <td>Seuil aÃ©robie</td>
+                                        <td>Aerobie intensif</td>
+                                        <td>Seuil aerobie</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>Zone 4</td>
                                         <td>80-90%</td>
                                         <td>Seuil lactique</td>
-                                        <td>Puissance mÃ©tabolique</td>
+                                        <td>Puissance metabolique</td>
                                     </tr>
                                     <tr class="table-danger">
                                         <td>Zone 5</td>
                                         <td>90-100%</td>
-                                        <td>AnaÃ©robie</td>
+                                        <td>Anaerobie</td>
                                         <td>VO2 max, puissance</td>
                                     </tr>
                                 </tbody>
@@ -237,10 +237,10 @@
                         </div>
                         
                         <div class="alert alert-warning alert-sm mt-3">
-                            <h6 class="small">Principe de SpÃ©cificitÃ©</h6>
+                            <h6 class="small">Principe de Specificite</h6>
                             <p class="small mb-0">
-                                Chaque zone dÃ©veloppe des adaptations spÃ©cifiques. Un entraînement 
-                                Ã©quilibrÃ© utilise toutes les zones selon la pÃ©riodisation et les objectifs.
+                                Chaque zone developpe des adaptations specifiques. Un entraînement 
+                                equilibre utilise toutes les zones selon la periodisation et les objectifs.
                             </p>
                         </div>
                     </div>
@@ -259,22 +259,22 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-primary">Formules FC Max ValidÃ©es</h6>
+                        <h6 class="text-primary">Formules FC Max Validees</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
                                         <th>Formule</th>
-                                        <th>Ã©quation</th>
+                                        <th>equation</th>
                                         <th>Population</th>
-                                        <th>PrÃ©cision</th>
+                                        <th>Precision</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Astrand</td>
                                         <td>220 - âge</td>
-                                        <td>GÃ©nÃ©rale</td>
+                                        <td>Generale</td>
                                         <td>±12 bpm</td>
                                     </tr>
                                     <tr>
@@ -292,7 +292,7 @@
                                     <tr>
                                         <td>Nes</td>
                                         <td>211 - (0.64 × âge)</td>
-                                        <td>AthlÃ¨tes</td>
+                                        <td>Athletes</td>
                                         <td>±7 bpm</td>
                                     </tr>
                                 </tbody>
@@ -302,33 +302,33 @@
                         <div class="alert alert-info alert-sm">
                             <h6 class="small">Test d'Effort - Gold Standard</h6>
                             <p class="small mb-0">
-                                Le test d'effort maximal en laboratoire reste la mÃ©thode de rÃ©fÃ©rence 
-                                pour dÃ©terminer la FC max rÃ©elle. Les formules donnent des estimations.
+                                Le test d'effort maximal en laboratoire reste la methode de reference 
+                                pour determiner la FC max reelle. Les formules donnent des estimations.
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success">Facteurs de Personnalisation</h6>
                         <ul class="small">
-                            <li><strong>GÃ©nÃ©tique :</strong> VariabilitÃ© individuelle importante (±15-20 bpm)</li>
-                            <li><strong>Condition physique :</strong> AthlÃ¨tes vs sÃ©dentaires</li>
-                            <li><strong>Discipline sportive :</strong> SpÃ©cificitÃ©s mÃ©taboliques</li>
-                            <li><strong>Environnement :</strong> Altitude, tempÃ©rature, humiditÃ©</li>
-                            <li><strong>Ã©tat de forme :</strong> Fatigue, stress, maladie</li>
-                            <li><strong>MÃ©dication :</strong> Bêta-bloquants, stimulants</li>
+                            <li><strong>Genetique :</strong> Variabilite individuelle importante (±15-20 bpm)</li>
+                            <li><strong>Condition physique :</strong> Athletes vs sedentaires</li>
+                            <li><strong>Discipline sportive :</strong> Specificites metaboliques</li>
+                            <li><strong>Environnement :</strong> Altitude, temperature, humidite</li>
+                            <li><strong>etat de forme :</strong> Fatigue, stress, maladie</li>
+                            <li><strong>Medication :</strong> Bêta-bloquants, stimulants</li>
                         </ul>
                         
-                        <h6 class="text-warning mt-3">FC de RÃ©serve (Karvonen)</h6>
+                        <h6 class="text-warning mt-3">FC de Reserve (Karvonen)</h6>
                         <p class="small">
-                            MÃ©thode plus prÃ©cise utilisant FC repos : 
-                            <strong>Zone = [(FC max - FC repos) × %intensitÃ©] + FC repos</strong>
+                            Methode plus precise utilisant FC repos : 
+                            <strong>Zone = [(FC max - FC repos) × %intensite] + FC repos</strong>
                         </p>
                         
                         <div class="alert alert-success alert-sm">
                             <h6 class="small">Monitoring Continue</h6>
                             <p class="small mb-0">
-                                La FC de repos matinale est un excellent indicateur de rÃ©cupÃ©ration 
-                                et d'adaptation. Une Ã©lÃ©vation persistante peut signaler fatigue ou maladie.
+                                La FC de repos matinale est un excellent indicateur de recuperation 
+                                et d'adaptation. Une elevation persistante peut signaler fatigue ou maladie.
                             </p>
                         </div>
                     </div>
@@ -336,33 +336,33 @@
             </div>
         </div>
 
-        <!-- CohÃ©rence cardiaque et HRV -->
+        <!-- Coherence cardiaque et HRV -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-wave-square me-2"></i>
-                    CohÃ©rence Cardiaque et VariabilitÃ©
+                    Coherence Cardiaque et Variabilite
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info">Qu'est-ce que la CohÃ©rence Cardiaque ?</h6>
+                        <h6 class="text-info">Qu'est-ce que la Coherence Cardiaque ?</h6>
                         <p class="small">
-                            La cohÃ©rence cardiaque est un Ã©tat physiologique où le rythme cardiaque, 
-                            la respiration et la pression artÃ©rielle se synchronisent naturellement. 
+                            La coherence cardiaque est un etat physiologique où le rythme cardiaque, 
+                            la respiration et la pression arterielle se synchronisent naturellement. 
                             Cette pratique respiratoire (5 secondes inspiration, 5 secondes expiration) 
-                            optimise le systÃ¨me nerveux autonome et favorise l'Ã©quilibre sympathique-parasympathique.
+                            optimise le systeme nerveux autonome et favorise l'equilibre sympathique-parasympathique.
                         </p>
                         
-                        <h6 class="text-success mt-3">BÃ©nÃ©fices Scientifiquement DÃ©montrÃ©s</h6>
+                        <h6 class="text-success mt-3">Benefices Scientifiquement Demontres</h6>
                         <ul class="small">
-                            <li><strong>Gestion du stress :</strong> RÃ©duction cortisol et anxiÃ©tÃ©</li>
-                            <li><strong>RÃ©cupÃ©ration :</strong> Activation parasympathique accÃ©lÃ©rÃ©e</li>
-                            <li><strong>Performance cognitive :</strong> AmÃ©lioration focus et concentration</li>
-                            <li><strong>SantÃ© cardiovasculaire :</strong> AmÃ©lioration HRV et pression artÃ©rielle</li>
-                            <li><strong>Sommeil :</strong> QualitÃ© et efficacitÃ© du sommeil amÃ©liorÃ©es</li>
-                            <li><strong>RÃ©gulation Ã©motionnelle :</strong> Meilleure gestion des Ã©motions</li>
+                            <li><strong>Gestion du stress :</strong> Reduction cortisol et anxiete</li>
+                            <li><strong>Recuperation :</strong> Activation parasympathique acceleree</li>
+                            <li><strong>Performance cognitive :</strong> Amelioration focus et concentration</li>
+                            <li><strong>Sante cardiovasculaire :</strong> Amelioration HRV et pression arterielle</li>
+                            <li><strong>Sommeil :</strong> Qualite et efficacite du sommeil ameliorees</li>
+                            <li><strong>Regulation emotionnelle :</strong> Meilleure gestion des emotions</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -372,8 +372,8 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Phase</th>
-                                        <th>DurÃ©e</th>
-                                        <th>FrÃ©quence</th>
+                                        <th>Duree</th>
+                                        <th>Frequence</th>
                                         <th>Timing</th>
                                     </tr>
                                 </thead>
@@ -382,10 +382,10 @@
                                         <td>Initiation</td>
                                         <td>3-5 min</td>
                                         <td>2-3×/jour</td>
-                                        <td>Matin, aprÃ¨s-midi, soir</td>
+                                        <td>Matin, apres-midi, soir</td>
                                     </tr>
                                     <tr>
-                                        <td>DÃ©veloppement</td>
+                                        <td>Developpement</td>
                                         <td>5-10 min</td>
                                         <td>3×/jour</td>
                                         <td>Routines fixes</td>
@@ -397,10 +397,10 @@
                                         <td>Selon besoins</td>
                                     </tr>
                                     <tr>
-                                        <td>Situations spÃ©ciales</td>
+                                        <td>Situations speciales</td>
                                         <td>3-5 min</td>
                                         <td>Ã la demande</td>
-                                        <td>Stress, prÃ©-compÃ©tition</td>
+                                        <td>Stress, pre-competition</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -411,7 +411,7 @@
                             <p class="small mb-0">
                                 <strong>Respiration 5-5 :</strong> 5 secondes inspiration, 5 secondes expiration, 
                                 soit 6 cycles par minute. Position confortable, attention sur le cœur, 
-                                respiration abdominale douce et rÃ©guliÃ¨re.
+                                respiration abdominale douce et reguliere.
                             </p>
                         </div>
                     </div>
@@ -419,12 +419,12 @@
             </div>
         </div>
 
-        <!-- PrÃ©vention et sÃ©curitÃ© -->
+        <!-- Prevention et securite -->
         <div class="card">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    SÃ©curitÃ© et PrÃ©vention en Entraînement Cardiaque
+                    Securite et Prevention en Entraînement Cardiaque
                 </h3>
             </div>
             <div class="card-body">
@@ -432,45 +432,45 @@
                     <div class="col-md-6">
                         <h6 class="text-danger">Signaux d'Alarme Ã Surveiller</h6>
                         <ul class="small">
-                            <li><strong>Douleur thoracique :</strong> Pendant ou aprÃ¨s l'effort</li>
-                            <li><strong>Essoufflement excessif :</strong> DisproportionnÃ© Ã l'effort</li>
-                            <li><strong>Palpitations :</strong> Rythme irrÃ©gulier ou trÃ¨s rapide</li>
-                            <li><strong>Vertiges/malaises :</strong> Pendant ou aprÃ¨s l'exercice</li>
-                            <li><strong>Fatigue inhabituelle :</strong> Persistante malgrÃ© le repos</li>
-                            <li><strong>FC anormale :</strong> TrÃ¨s Ã©levÃ©e au repos ou qui ne descend pas</li>
+                            <li><strong>Douleur thoracique :</strong> Pendant ou apres l'effort</li>
+                            <li><strong>Essoufflement excessif :</strong> Disproportionne Ã l'effort</li>
+                            <li><strong>Palpitations :</strong> Rythme irregulier ou tres rapide</li>
+                            <li><strong>Vertiges/malaises :</strong> Pendant ou apres l'exercice</li>
+                            <li><strong>Fatigue inhabituelle :</strong> Persistante malgre le repos</li>
+                            <li><strong>FC anormale :</strong> Tres elevee au repos ou qui ne descend pas</li>
                         </ul>
                         
                         <div class="alert alert-danger alert-sm">
-                            <h6 class="small">Action ImmÃ©diate Requise</h6>
+                            <h6 class="small">Action Immediate Requise</h6>
                             <p class="small mb-0">
                                 En cas de douleur thoracique, malaise, ou tout symptôme cardiaque suspect : 
-                                <strong>arrêt immÃ©diat de l'activitÃ© et consultation mÃ©dicale urgente.</strong>
+                                <strong>arrêt immediat de l'activite et consultation medicale urgente.</strong>
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">Bonnes Pratiques de SÃ©curitÃ©</h6>
+                        <h6 class="text-success">Bonnes Pratiques de Securite</h6>
                         <ul class="small">
-                            <li><strong>Ã©chauffement progressif :</strong> 10-15 minutes minimum</li>
+                            <li><strong>echauffement progressif :</strong> 10-15 minutes minimum</li>
                             <li><strong>Progression graduelle :</strong> Augmentation 10% max/semaine</li>
-                            <li><strong>Hydratation adequate :</strong> Avant, pendant, aprÃ¨s effort</li>
-                            <li><strong>RÃ©cupÃ©ration surveillÃ©e :</strong> FC doit descendre normalement</li>
-                            <li><strong>Ã©coute corporelle :</strong> Respecter fatigue et signaux</li>
-                            <li><strong>Suivi mÃ©dical :</strong> Bilan cardiologique rÃ©gulier</li>
+                            <li><strong>Hydratation adequate :</strong> Avant, pendant, apres effort</li>
+                            <li><strong>Recuperation surveillee :</strong> FC doit descendre normalement</li>
+                            <li><strong>ecoute corporelle :</strong> Respecter fatigue et signaux</li>
+                            <li><strong>Suivi medical :</strong> Bilan cardiologique regulier</li>
                         </ul>
                         
                         <h6 class="text-primary mt-3">Populations Ã Risque</h6>
                         <p class="small">
-                            Hommes >45 ans, femmes >55 ans, antÃ©cÃ©dents familiaux, hypertension, 
-                            diabÃ¨te, obÃ©sitÃ©, tabagisme nÃ©cessitent un suivi mÃ©dical renforcÃ© 
+                            Hommes >45 ans, femmes >55 ans, antecedents familiaux, hypertension, 
+                            diabete, obesite, tabagisme necessitent un suivi medical renforce 
                             avant tout programme d'entraînement intensif.
                         </p>
                         
                         <div class="alert alert-info alert-sm">
-                            <h6 class="small">Test d'Effort RecommandÃ©</h6>
+                            <h6 class="small">Test d'Effort Recommande</h6>
                             <p class="small mb-0">
-                                Un test d'effort sous surveillance mÃ©dicale est recommandÃ© pour Ã©valuer 
-                                la rÃ©ponse cardiaque Ã l'exercice et dÃ©tecter d'Ã©ventuelles anomalies.
+                                Un test d'effort sous surveillance medicale est recommande pour evaluer 
+                                la reponse cardiaque Ã l'exercice et detecter d'eventuelles anomalies.
                             </p>
                         </div>
                     </div>
@@ -479,10 +479,10 @@
                 <div class="alert alert-warning mt-4">
                     <h6><i class="fas fa-stethoscope me-2"></i>Rappel Important</h6>
                     <p class="mb-0 small">
-                        L'entraînement cardiaque doit toujours privilÃ©gier la sÃ©curitÃ© et la progression graduelle. 
-                        <strong>Aucun objectif de performance ne justifie de prendre des risques pour sa santÃ©.</strong> 
-                        En cas de doute, consultez toujours un professionnel de santÃ© qualifiÃ©. 
-                        Ces outils sont des aides Ã l'entraînement, non des substituts Ã l'accompagnement mÃ©dical.
+                        L'entraînement cardiaque doit toujours privilegier la securite et la progression graduelle. 
+                        <strong>Aucun objectif de performance ne justifie de prendre des risques pour sa sante.</strong> 
+                        En cas de doute, consultez toujours un professionnel de sante qualifie. 
+                        Ces outils sont des aides Ã l'entraînement, non des substituts Ã l'accompagnement medical.
                     </p>
                 </div>
             </div>
@@ -491,7 +491,7 @@
 </section>
 
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -505,9 +505,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -517,15 +517,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -552,7 +552,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -563,12 +563,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -677,7 +677,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrÃ©e pour les cards
+    // Animation d'entree pour les cards
     const cards = document.querySelectorAll('.hover-lift');
     
     const observerOptions = {

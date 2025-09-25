@@ -44,7 +44,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Validation des mots de passe (optionnels en Ã©dition)
+    // Validation des mots de passe (optionnels en edition)
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('password_confirmation');
     

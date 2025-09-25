@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration conditionnelle en Ã©dition
+    // Auto-generation conditionnelle en edition
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     const displayNameInput = document.getElementById('display_name');
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isDefaultCheckbox.addEventListener('change', function() {
             if (this.checked && !originalIsDefault) {
-                const confirmed = confirm('DÃ©finir ce rôle comme dÃ©faut remplacera le rôle par dÃ©faut actuel. Continuer ?');
+                const confirmed = confirm('Definir ce rôle comme defaut remplacera le rôle par defaut actuel. Continuer ?');
                 if (!confirmed) {
                     this.checked = false;
                 }
@@ -142,7 +142,7 @@ function updateSelectedPermissions() {
     if (!container) return;
     
     if (selectedCheckboxes.length === 0) {
-        container.innerHTML = '<small class="text-muted">Aucune permission sÃ©lectionnÃ©e</small>';
+        container.innerHTML = '<small class="text-muted">Aucune permission selectionnee</small>';
     } else {
         let html = `<div class="fw-bold text-primary mb-2">${selectedCheckboxes.length} permission(s)</div>`;
         const badges = Array.from(selectedCheckboxes).slice(0, 10).map(cb => {
@@ -162,7 +162,7 @@ function updateSelectedPermissions() {
     checkGroupToggles();
 }
 
-// Ã©couter les changements sur les checkboxes de permissions
+// ecouter les changements sur les checkboxes de permissions
 document.addEventListener('change', function(e) {
     if (e.target.classList.contains('permission-checkbox')) {
         updateSelectedPermissions();

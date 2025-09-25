@@ -65,7 +65,7 @@
                                         <td class="p-4">
                                             @if($payment->status === 'completed')
                                                 <span class="badge bg-success">
-                                                    <i class="fas fa-check me-1"></i>PayÃ©
+                                                    <i class="fas fa-check me-1"></i>Paye
                                                 </span>
                                             @elseif($payment->status === 'pending')
                                                 <span class="badge bg-warning">
@@ -84,7 +84,7 @@
                                                 </span>
                                             @elseif($payment->admin_status === 'approved')
                                                 <span class="badge bg-success">
-                                                    <i class="fas fa-check-circle me-1"></i>ApprouvÃ©
+                                                    <i class="fas fa-check-circle me-1"></i>Approuve
                                                 </span>
                                                 @if($payment->processed_at)
                                                     <br>
@@ -94,7 +94,7 @@
                                                 @endif
                                             @elseif($payment->admin_status === 'rejected')
                                                 <span class="badge bg-danger">
-                                                    <i class="fas fa-times-circle me-1"></i>RejetÃ©
+                                                    <i class="fas fa-times-circle me-1"></i>Rejete
                                                 </span>
                                                 @if($payment->processed_at)
                                                     <br>
@@ -116,7 +116,7 @@
                                             
                                             @if($payment->processedBy)
                                                 <div class="small text-muted mt-1">
-                                                    TraitÃ© par {{ $payment->processedBy->name }}
+                                                    Traite par {{ $payment->processedBy->name }}
                                                 </div>
                                             @endif
                                         </td>
@@ -127,13 +127,13 @@
                         </div>
 
                     @else
-                        <!-- Ã©tat vide -->
+                        <!-- etat vide -->
                         <div class="text-center py-5">
                             <div class="mb-4">
                                 <i class="fas fa-receipt fa-4x text-muted"></i>
                             </div>
-                            <h5 class="text-muted mb-3">Aucun paiement effectuÃ©</h5>
-                            <p class="text-muted mb-4">Vous n'avez encore effectuÃ© aucun paiement pour un accÃ¨s premium.</p>
+                            <h5 class="text-muted mb-3">Aucun paiement effectue</h5>
+                            <p class="text-muted mb-4">Vous n'avez encore effectue aucun paiement pour un acces premium.</p>
                             <a href="{{ route('payments.index') }}" class="btn btn-primary">
                                 <i class="fas fa-crown me-2"></i>Passer Premium maintenant
                             </a>
@@ -143,7 +143,7 @@
                 </div>
                 
                 @if($payments->count() > 0)
-                    <!-- RÃ©sumÃ© en bas -->
+                    <!-- Resume en bas -->
                     <div class="card-footer bg-light border-top p-4">
                         <div class="row text-center">
                             <div class="col-md-3">
@@ -151,11 +151,11 @@
                                 <strong>{{ $payments->count() }}</strong>
                             </div>
                             <div class="col-md-3">
-                                <div class="small text-muted">PayÃ©s</div>
+                                <div class="small text-muted">Payes</div>
                                 <strong class="text-success">{{ $payments->where('status', 'completed')->count() }}</strong>
                             </div>
                             <div class="col-md-3">
-                                <div class="small text-muted">ApprouvÃ©s</div>
+                                <div class="small text-muted">Approuves</div>
                                 <strong class="text-success">{{ $payments->where('admin_status', 'approved')->count() }}</strong>
                             </div>
                             <div class="col-md-3">

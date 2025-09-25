@@ -12,7 +12,7 @@
     background-color: var(--bs-light) !important;
 }
 
-// Boutons personnalisÃ©s
+// Boutons personnalises
 .btn-gradient-primary {
     background: linear-gradient(135deg, #0ea5e9, #3b82f6);
     border: none;
@@ -93,7 +93,7 @@
     }
 }
 
-// Badges personnalisÃ©s
+// Badges personnalises
 .badge-aqua {
     background-color: #0ea5e9;
     color: white;
@@ -104,7 +104,7 @@
     color: white;
 }
 
-// Tables responsives amÃ©liorÃ©es
+// Tables responsives ameliorees
 .table-responsive-stack {
     @media (max-width: 767.98px) {
         .table {
@@ -135,7 +135,7 @@
     }
 }
 
-// Alertes personnalisÃ©es
+// Alertes personnalisees
 .alert-aqua {
     background-color: rgba(14, 165, 233, 0.1);
     border-color: rgba(14, 165, 233, 0.2);
@@ -150,7 +150,7 @@
 }
 
 
-// Form controls amÃ©liorÃ©s
+// Form controls ameliores
 .form-control:focus,
 .form-select:focus {
     border-color: #0ea5e9;
@@ -166,7 +166,7 @@
     color: #0ea5e9;
 }
 
-// Pagination personnalisÃ©e
+// Pagination personnalisee
 .page-link {
     color: #0ea5e9;
     
@@ -224,7 +224,7 @@
     animation: fadeIn 0.6s ease-out;
 }
 
-// Dark mode support (prÃ©paration)
+// Dark mode support (preparation)
 @media (prefers-color-scheme: dark) {
     .auto-dark {
         .card {

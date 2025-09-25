@@ -25,8 +25,8 @@ class StoreMediaCategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Le nom de la catÃ©gorie est obligatoire.',
-            'color.regex' => 'La couleur doit être au format hexadÃ©cimal (#000000).',
+            'name.required' => 'Le nom de la categorie est obligatoire.',
+            'color.regex' => 'La couleur doit être au format hexadecimal (#000000).',
         ];
     }
 }

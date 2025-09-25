@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Simulateur CohÃ©rence Cardiaque - Respiration GuidÃ©e Scientifique')
-@section('meta_description', 'Simulateur de cohÃ©rence cardiaque avec respiration guidÃ©e 3-6-5. Outil scientifique validÃ© pour rÃ©duire le stress, amÃ©liorer la variabilitÃ© cardiaque et favoriser le bien-être. Gratuit et sans inscription.')
+@section('title', 'Simulateur Coherence Cardiaque - Respiration Guidee Scientifique')
+@section('meta_description', 'Simulateur de coherence cardiaque avec respiration guidee 3-6-5. Outil scientifique valide pour reduire le stress, ameliorer la variabilite cardiaque et favoriser le bien-être. Gratuit et sans inscription.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,10 +9,10 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-heartbeat"></i>
-            CohÃ©rence Cardiaque
+            Coherence Cardiaque
             <span class="badge bg-warning text-dark fs-6">PRO</span>
         </h1>
-        <p class="lead fs-4">Retrouvez votre Ã©quilibre intÃ©rieur grâce Ã la respiration guidÃ©e scientifique</p>
+        <p class="lead fs-4">Retrouvez votre equilibre interieur grâce Ã la respiration guidee scientifique</p>
         
         <!-- Instructions -->
         <div id="instructionsAlert" class="alert alert-info border-0 shadow-sm" 
@@ -22,7 +22,7 @@
                 <div class="text-start text-dark">
                     <strong>Instructions :</strong> 
                     Suivez le rythme du cercle et des sons. Inspirez quand le cercle grandit (bleu), 
-                    expirez quand il se contracte (vert). Concentrez-vous sur votre respiration et dÃ©tendez-vous.
+                    expirez quand il se contracte (vert). Concentrez-vous sur votre respiration et detendez-vous.
                     <br />
                     <strong>Raccourcis :</strong> 
                     <kbd class="ms-2">Espace</kbd> Start/Pause • 
@@ -46,13 +46,13 @@
                     Prêt
                 </div>
                 <div id="celebrationAlert" class="alert alert-success py-1 px-3 mb-0 d-none">
-                    <i class="fas fa-heart me-2"></i>Session terminÃ©e !
+                    <i class="fas fa-heart me-2"></i>Session terminee !
                 </div>
             </div>
             
             <div class="d-flex gap-2">
                 <button id="settingsBtn" class="btn btn-outline-secondary">
-                    <i class="fas fa-cog me-2"></i>ParamÃ¨tres
+                    <i class="fas fa-cog me-2"></i>Parametres
                 </button>
                 <button id="soundToggle" class="btn btn-outline-info">
                     <i class="fas fa-volume-up"></i>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <p id="cycleInfo" class="text-muted mb-0">
-                        Cycle 0 / 30 • 0% terminÃ©
+                        Cycle 0 / 30 • 0% termine
                     </p>
                 </div>
 
@@ -144,7 +144,7 @@
                  style="background: linear-gradient(135deg, #004f59 0%, #006170 100%);">
                 <h3 class="h4 mb-0 d-flex align-items-center gap-2">
                     <i class="fas fa-heart"></i>
-                    Bienfaits de la CohÃ©rence Cardiaque
+                    Bienfaits de la Coherence Cardiaque
                 </h3>
             </div>
             <div class="card-body p-4">
@@ -152,22 +152,22 @@
                     <div class="col-md-4">
                         <div class="text-center">
                             <i class="fas fa-brain text-primary mb-3" style="font-size: 2rem;"></i>
-                            <h5>RÃ©duction du Stress</h5>
-                            <p class="text-muted">Diminue le cortisol et active le systÃ¨me nerveux parasympathique</p>
+                            <h5>Reduction du Stress</h5>
+                            <p class="text-muted">Diminue le cortisol et active le systeme nerveux parasympathique</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="text-center">
                             <i class="fas fa-heart text-danger mb-3" style="font-size: 2rem;"></i>
-                            <h5>RÃ©gulation Cardiaque</h5>
-                            <p class="text-muted">AmÃ©liore la variabilitÃ© de la frÃ©quence cardiaque</p>
+                            <h5>Regulation Cardiaque</h5>
+                            <p class="text-muted">Ameliore la variabilite de la frequence cardiaque</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="text-center">
                             <i class="fas fa-lungs text-success mb-3" style="font-size: 2rem;"></i>
                             <h5>Meilleure Respiration</h5>
-                            <p class="text-muted">Optimise l'oxygÃ©nation et la dÃ©tente profonde</p>
+                            <p class="text-muted">Optimise l'oxygenation et la detente profonde</p>
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title">
-                    <i class="fas fa-cog me-2"></i>Configuration - CohÃ©rence Cardiaque
+                    <i class="fas fa-cog me-2"></i>Configuration - Coherence Cardiaque
                 </h5>
                 <button type="button" class="btn-close btn-close-white" onclick="closeSettings()"></button>
             </div>
@@ -190,11 +190,11 @@
                 <div class="mb-4">
                     <label class="form-label fw-bold">
                         <i class="fas fa-lungs me-2 text-primary"></i>
-                        DurÃ©e d'inspiration (secondes)
+                        Duree d'inspiration (secondes)
                     </label>
                     <select id="inspirationSelect" class="form-select form-select-lg">
                         <option value="3000">3 secondes</option>
-                        <option value="4000" selected>4 secondes (recommandÃ©)</option>
+                        <option value="4000" selected>4 secondes (recommande)</option>
                         <option value="5000">5 secondes</option>
                     </select>
                 </div>
@@ -202,11 +202,11 @@
                 <div class="mb-4">
                     <label class="form-label fw-bold">
                         <i class="fas fa-lungs me-2 text-success"></i>
-                        DurÃ©e d'expiration (secondes)
+                        Duree d'expiration (secondes)
                     </label>
                     <select id="expirationSelect" class="form-select form-select-lg">
                         <option value="5000">5 secondes</option>
-                        <option value="6000" selected>6 secondes (recommandÃ©)</option>
+                        <option value="6000" selected>6 secondes (recommande)</option>
                         <option value="7000">7 secondes</option>
                         <option value="8000">8 secondes</option>
                     </select>
@@ -215,12 +215,12 @@
                 <div class="mb-4">
                     <label class="form-label fw-bold">
                         <i class="fas fa-clock me-2 text-info"></i>
-                        DurÃ©e totale de la session
+                        Duree totale de la session
                     </label>
                     <select id="durationSelect" class="form-select form-select-lg">
                         <option value="60000">1 minute (test)</option>
                         <option value="180000">3 minutes</option>
-                        <option value="300000" selected>5 minutes (recommandÃ©)</option>
+                        <option value="300000" selected>5 minutes (recommande)</option>
                         <option value="600000">10 minutes</option>
                         <option value="900000">15 minutes</option>
                     </select>
@@ -270,7 +270,7 @@
         <div class="text-center text-white">
             <i class="fas fa-heart mb-3" style="font-size: 3rem;"></i>
             <h2 class="display-5 fw-bold mb-3">Votre bien-être au quotidien</h2>
-            <p class="lead fs-4">Pratiquez 3 fois par jour pour des rÃ©sultats optimaux</p>
+            <p class="lead fs-4">Pratiquez 3 fois par jour pour des resultats optimaux</p>
             <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
                 <div class="bg-white bg-opacity-10 rounded-pill px-4 py-2">5 minutes le matin</div>
                 <div class="bg-white bg-opacity-10 rounded-pill px-4 py-2">5 minutes avant un repas</div>
@@ -280,7 +280,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -296,9 +296,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -308,15 +308,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -343,7 +343,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -354,12 +354,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -433,7 +433,7 @@
         <div class="text-center mb-5">
             <i class="fas fa-heart text-primary mb-3" style="font-size: 3rem;"></i>
             <h2 class="display-5 fw-bold mb-3">Fondements Scientifiques</h2>
-            <p class="lead text-muted">La CohÃ©rence Cardiaque : Ã©tat des Connaissances 2025</p>
+            <p class="lead text-muted">La Coherence Cardiaque : etat des Connaissances 2025</p>
         </div>
 
         <div class="row justify-content-center">
@@ -445,25 +445,25 @@
                         <div class="d-flex align-items-center justify-content-center">
                             <i class="fas fa-brain me-3" style="font-size: 2rem;"></i>
                             <h1 class="h2 mb-0 text-center">
-                                La CohÃ©rence Cardiaque : Fondements Scientifiques et Applications ThÃ©rapeutiques
+                                La Coherence Cardiaque : Fondements Scientifiques et Applications Therapeutiques
                             </h1>
                         </div>
-                        <p class="text-center mb-0 mt-2 opacity-75">Ã©tat des Connaissances 2025</p>
+                        <p class="text-center mb-0 mt-2 opacity-75">etat des Connaissances 2025</p>
                     </div>
                     
                     <div class="card-body p-5" style="line-height: 1.8;">
                         
-                        <!-- RÃ©sumÃ© ExÃ©cutif -->
+                        <!-- Resume Executif -->
                         <div class="alert alert-primary border-0 mb-5" style="background: rgba(59, 130, 246, 0.1);">
                             <h2 class="alert-heading text-primary h4">
                                 <i class="fas fa-info-circle me-2"></i>
-                                RÃ©sumÃ© ExÃ©cutif
+                                Resume Executif
                             </h2>
                             <p class="mb-0">
-                                La cohÃ©rence cardiaque, scientifiquement dÃ©signÃ©e sous le terme de <strong>"biofeedback de variabilitÃ© de la frÃ©quence cardiaque" (HRVB)</strong>, 
-                                reprÃ©sente une technique de rÃ©gulation psychophysiologique basÃ©e sur l'optimisation de l'arythmie sinusale respiratoire (ASR). 
-                                Les recherches rÃ©centes, notamment une mÃ©ta-analyse de 2024 analysant <strong>1,8 million de sessions utilisateurs</strong>, 
-                                confirment l'efficacitÃ© de cette approche dans la gestion du stress, de l'anxiÃ©tÃ© et de diverses pathologies.
+                                La coherence cardiaque, scientifiquement designee sous le terme de <strong>"biofeedback de variabilite de la frequence cardiaque" (HRVB)</strong>, 
+                                represente une technique de regulation psychophysiologique basee sur l'optimisation de l'arythmie sinusale respiratoire (ASR). 
+                                Les recherches recentes, notamment une meta-analyse de 2024 analysant <strong>1,8 million de sessions utilisateurs</strong>, 
+                                confirment l'efficacite de cette approche dans la gestion du stress, de l'anxiete et de diverses pathologies.
                             </p>
                         </div>
 
@@ -471,7 +471,7 @@
                         <div class="mb-5">
                             <h2 class="text-primary mb-4 h3">
                                 <span class="badge bg-primary me-3">1</span>
-                                Introduction et DÃ©finitions
+                                Introduction et Definitions
                             </h2>
                             
                             <div class="row g-4 mb-4">
@@ -480,10 +480,10 @@
                                         <div class="card-body p-4">
                                             <h4 class="text-success h5 mb-3">1.1 Contexte Scientifique</h4>
                                             <p class="mb-0">
-                                                La cohÃ©rence cardiaque est apparue au tournant des annÃ©es 2000 dans le cadre des travaux scientifiques 
-                                                sur la variabilitÃ© de la frÃ©quence cardiaque : alors que la frÃ©quence cardiaque varie de maniÃ¨re chaotique 
-                                                habituellement, il est apparu que ces variations deviennent <strong>cohÃ©rentes et plus amples</strong> lors 
-                                                des exercices de cohÃ©rence cardiaque.
+                                                La coherence cardiaque est apparue au tournant des annees 2000 dans le cadre des travaux scientifiques 
+                                                sur la variabilite de la frequence cardiaque : alors que la frequence cardiaque varie de maniere chaotique 
+                                                habituellement, il est apparu que ces variations deviennent <strong>coherentes et plus amples</strong> lors 
+                                                des exercices de coherence cardiaque.
                                             </p>
                                         </div>
                                     </div>
@@ -493,9 +493,9 @@
                                         <div class="card-body p-4">
                                             <h4 class="text-primary h5 mb-3">1.2 Terminologie Scientifique</h4>
                                             <ul class="list-unstyled mb-0">
-                                                <li><strong class="text-primary">CohÃ©rence cardiaque</strong> : Terme de vulgarisation scientifique</li>
+                                                <li><strong class="text-primary">Coherence cardiaque</strong> : Terme de vulgarisation scientifique</li>
                                                 <li><strong class="text-success">HRVB</strong> : Terminologie scientifique officielle</li>
-                                                <li><strong class="text-warning">ASR</strong> : PhÃ©nomÃ¨ne physiologique sous-jacent</li>
+                                                <li><strong class="text-warning">ASR</strong> : Phenomene physiologique sous-jacent</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -505,8 +505,8 @@
                             <div class="alert alert-info border-0">
                                 <p class="mb-0">
                                     <i class="fas fa-info-circle me-2 text-info"></i>
-                                    L'expression « cohÃ©rence cardiaque » est plutôt Ã destination du public, tandis que l'expression retenue par les scientifiques est 
-                                    <strong> « biofeedback de variabilitÃ© de la frÃ©quence cardiaque »</strong>, en anglais : « Heart Rate Variability Biofeedback » ou HRVB.
+                                    L'expression « coherence cardiaque » est plutôt Ã destination du public, tandis que l'expression retenue par les scientifiques est 
+                                    <strong> « biofeedback de variabilite de la frequence cardiaque »</strong>, en anglais : « Heart Rate Variability Biofeedback » ou HRVB.
                                 </p>
                             </div>
                         </div>
@@ -515,14 +515,14 @@
                         <div class="mb-5">
                             <h2 class="text-primary mb-4 h3">
                                 <span class="badge bg-primary me-3">2</span>
-                                Bases Physiologiques et MÃ©canismes
+                                Bases Physiologiques et Mecanismes
                             </h2>
 
                             <div class="mb-4">
                                 <h4 class="text-success h5 mb-3">2.1 L'Arythmie Sinusale Respiratoire (ASR)</h4>
                                 <p class="mb-3">
-                                    Ce phÃ©nomÃ¨ne est appelÃ© « arythmie sinusale respiratoire » (ASR) dans le monde biomÃ©dical, ou « cohÃ©rence cardiaque » par le grand public. 
-                                    L'amplitude de l'ASR est mesurÃ©e par la diffÃ©rence entre le rythme cardiaque maximum pendant l'inspiration et le rythme cardiaque minimum pendant l'expiration.
+                                    Ce phenomene est appele « arythmie sinusale respiratoire » (ASR) dans le monde biomedical, ou « coherence cardiaque » par le grand public. 
+                                    L'amplitude de l'ASR est mesuree par la difference entre le rythme cardiaque maximum pendant l'inspiration et le rythme cardiaque minimum pendant l'expiration.
                                 </p>
                                 
                                 <div class="row g-3">
@@ -530,14 +530,14 @@
                                         <div class="card border-0 text-center p-3" style="background: rgba(59, 130, 246, 0.1);">
                                             <i class="fas fa-lungs text-primary mb-2" style="font-size: 1.5rem;"></i>
                                             <h6 class="fw-bold text-primary">Inspiration</h6>
-                                            <p class="small mb-0">Augmentation de la frÃ©quence cardiaque<br/>(diminution du tonus vagal)</p>
+                                            <p class="small mb-0">Augmentation de la frequence cardiaque<br/>(diminution du tonus vagal)</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="card border-0 text-center p-3" style="background: rgba(16, 185, 129, 0.1);">
                                             <i class="fas fa-lungs text-success mb-2" style="font-size: 1.5rem;"></i>
                                             <h6 class="fw-bold text-success">Expiration</h6>
-                                            <p class="small mb-0">Diminution de la frÃ©quence cardiaque<br/>(activation parasympathique)</p>
+                                            <p class="small mb-0">Diminution de la frequence cardiaque<br/>(activation parasympathique)</p>
                                         </div>
                                     </div>
                                 </div>
@@ -553,7 +553,7 @@
                                                      style="width: 50px; height: 50px;">
                                                     <strong>3</strong>
                                                 </div>
-                                                <p class="small mb-0">sÃ©ances par jour</p>
+                                                <p class="small mb-0">seances par jour</p>
                                             </div>
                                             <div class="col-4">
                                                 <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2" 
@@ -567,7 +567,7 @@
                                                      style="width: 50px; height: 50px;">
                                                     <strong>5</strong>
                                                 </div>
-                                                <p class="small mb-0">minutes par sÃ©ance</p>
+                                                <p class="small mb-0">minutes par seance</p>
                                             </div>
                                         </div>
                                     </div>
@@ -575,11 +575,11 @@
                             </div>
                         </div>
 
-                        <!-- Recherches RÃ©centes -->
+                        <!-- Recherches Recentes -->
                         <div class="mb-5">
                             <h2 class="text-primary mb-4 h3">
                                 <span class="badge bg-primary me-3">3</span>
-                                Recherches RÃ©centes et MÃ©ta-analyses
+                                Recherches Recentes et Meta-analyses
                             </h2>
 
                             <div class="row g-4 mb-4">
@@ -590,9 +590,9 @@
                                                  style="width: 70px; height: 70px;">
                                                 <strong>0.83</strong>
                                             </div>
-                                            <h6 class="fw-bold">Stress & AnxiÃ©tÃ©</h6>
-                                            <p class="text-muted small mb-2">Effet important confirmÃ©</p>
-                                            <span class="badge bg-success">MÃ©ta-analyse 2017</span>
+                                            <h6 class="fw-bold">Stress & Anxiete</h6>
+                                            <p class="text-muted small mb-2">Effet important confirme</p>
+                                            <span class="badge bg-success">Meta-analyse 2017</span>
                                         </div>
                                     </div>
                                 </div>
@@ -603,9 +603,9 @@
                                                  style="width: 70px; height: 70px;">
                                                 <strong>0.38</strong>
                                             </div>
-                                            <h6 class="fw-bold">DÃ©pression</h6>
-                                            <p class="text-muted small mb-2">Effet modÃ©rÃ© sur 794 participants</p>
-                                            <span class="badge bg-primary">14 Ã©tudes (2021)</span>
+                                            <h6 class="fw-bold">Depression</h6>
+                                            <p class="text-muted small mb-2">Effet modere sur 794 participants</p>
+                                            <span class="badge bg-primary">14 etudes (2021)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -616,8 +616,8 @@
                                                  style="width: 70px; height: 70px;">
                                                 <strong>58</strong>
                                             </div>
-                                            <h6 class="fw-bold">Ã©tudes AnalysÃ©es</h6>
-                                            <p class="text-muted small mb-2">MÃ©ta-analyse globale</p>
+                                            <h6 class="fw-bold">etudes Analysees</h6>
+                                            <p class="text-muted small mb-2">Meta-analyse globale</p>
                                             <span class="badge bg-warning text-dark">ECR (2020)</span>
                                         </div>
                                     </div>
@@ -629,8 +629,8 @@
                                                  style="width: 70px; height: 70px; font-size: 0.9rem;">
                                                 <strong>1.8M</strong>
                                             </div>
-                                            <h6 class="fw-bold">Sessions AnalysÃ©es</h6>
-                                            <p class="text-muted small mb-2">Plus grande Ã©tude jamais rÃ©alisÃ©e</p>
+                                            <h6 class="fw-bold">Sessions Analysees</h6>
+                                            <p class="text-muted small mb-2">Plus grande etude jamais realisee</p>
                                             <span class="badge bg-danger">Cohorte 2024</span>
                                         </div>
                                     </div>
@@ -642,7 +642,7 @@
                         <div class="mb-5">
                             <h2 class="text-primary mb-4 h3">
                                 <span class="badge bg-primary me-3">4</span>
-                                Applications Cliniques ValidÃ©es
+                                Applications Cliniques Validees
                             </h2>
 
                             <div class="row g-4">
@@ -654,13 +654,13 @@
                                                 <h5 class="text-danger mb-0">4.1 Pathologies Cardiovasculaires</h5>
                                             </div>
                                             <p class="mb-3">
-                                                Cette technique a fait son entrÃ©e dans les services hospitaliers, en particulier ceux dÃ©diÃ©s Ã la rÃ©adaptation cardiaque, 
-                                                car les Ã©tudes ont objectivÃ© ses bÃ©nÃ©fices dont la <strong>rÃ©duction des rÃ©cidives d'infarctus</strong>.
+                                                Cette technique a fait son entree dans les services hospitaliers, en particulier ceux dedies Ã la readaptation cardiaque, 
+                                                car les etudes ont objective ses benefices dont la <strong>reduction des recidives d'infarctus</strong>.
                                             </p>
                                             <div class="list-group list-group-flush">
-                                                <div class="list-group-item border-0 px-0 py-2">✓ RÃ©adaptation post-infarctus</div>
-                                                <div class="list-group-item border-0 px-0 py-2">✓ PrÃ©vention des rÃ©cidives cardiovasculaires</div>
-                                                <div class="list-group-item border-0 px-0 py-2">✓ AmÃ©lioration de la variabilitÃ© cardiaque</div>
+                                                <div class="list-group-item border-0 px-0 py-2">✓ Readaptation post-infarctus</div>
+                                                <div class="list-group-item border-0 px-0 py-2">✓ Prevention des recidives cardiovasculaires</div>
+                                                <div class="list-group-item border-0 px-0 py-2">✓ Amelioration de la variabilite cardiaque</div>
                                             </div>
                                         </div>
                                     </div>
@@ -674,12 +674,12 @@
                                                 <h5 class="text-warning mb-0">4.2 Troubles Anxieux et PTSD</h5>
                                             </div>
                                             <p class="mb-3">
-                                                Cette technique peut être utilisÃ©e pour toutes les formes d'anxiÃ©tÃ© et particuliÃ¨rement les formes avec une activation 
-                                                du systÃ¨me sympathique comme les <strong>paniques, le stress, le syndrome de stress post-traumatique</strong>.
+                                                Cette technique peut être utilisee pour toutes les formes d'anxiete et particulierement les formes avec une activation 
+                                                du systeme sympathique comme les <strong>paniques, le stress, le syndrome de stress post-traumatique</strong>.
                                             </p>
                                             <div class="alert alert-warning border-0 py-2 px-3">
                                                 <small>
-                                                    <strong>SpÃ©cialitÃ© :</strong> Forte expression cardio-respiratoire des troubles anxieux
+                                                    <strong>Specialite :</strong> Forte expression cardio-respiratoire des troubles anxieux
                                                 </small>
                                             </div>
                                         </div>
@@ -692,11 +692,11 @@
                         <div class="mb-5">
                             <h2 class="text-primary mb-4 h3">
                                 <span class="badge bg-primary me-3">5</span>
-                                MÃ©canismes d'Action et Effets Biologiques
+                                Mecanismes d'Action et Effets Biologiques
                             </h2>
 
                             <div class="alert alert-success border-0 mb-4" style="background: rgba(16, 185, 129, 0.1);">
-                                <h5 class="text-success mb-3">5.2 Effets Hormonaux DocumentÃ©s</h5>
+                                <h5 class="text-success mb-3">5.2 Effets Hormonaux Documentes</h5>
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <h6 class="text-success mb-3">✓ Augmentation</h6>
@@ -707,7 +707,7 @@
                                             </li>
                                             <li class="mb-2">
                                                 <span class="badge bg-success me-2">IgA</span>
-                                                DÃ©fense immunitaire
+                                                Defense immunitaire
                                             </li>
                                             <li class="mb-2">
                                                 <span class="badge bg-success me-2">Ocytocine</span>
@@ -715,7 +715,7 @@
                                             </li>
                                             <li class="mb-2">
                                                 <span class="badge bg-success me-2">Ondes α</span>
-                                                MÃ©morisation et apprentissage
+                                                Memorisation et apprentissage
                                             </li>
                                         </ul>
                                     </div>
@@ -728,15 +728,15 @@
                                             </li>
                                             <li class="mb-2">
                                                 <span class="badge bg-danger me-2">Sympathique</span>
-                                                ActivitÃ© du systÃ¨me nerveux
+                                                Activite du systeme nerveux
                                             </li>
                                             <li class="mb-2">
-                                                <span class="badge bg-danger me-2">AnxiÃ©tÃ©</span>
-                                                Via dopamine et sÃ©rotonine
+                                                <span class="badge bg-danger me-2">Anxiete</span>
+                                                Via dopamine et serotonine
                                             </li>
                                             <li class="mb-2">
-                                                <span class="badge bg-danger me-2">DÃ©pression</span>
-                                                AmÃ©lioration des neurotransmetteurs
+                                                <span class="badge bg-danger me-2">Depression</span>
+                                                Amelioration des neurotransmetteurs
                                             </li>
                                         </ul>
                                     </div>
@@ -755,24 +755,24 @@
                                 <div class="col-lg-6">
                                     <div class="card border-0 h-100" style="background: rgba(16, 185, 129, 0.1);">
                                         <div class="card-body p-4">
-                                            <h5 class="text-success mb-3">6.1 Indications ValidÃ©es</h5>
+                                            <h5 class="text-success mb-3">6.1 Indications Validees</h5>
                                             
                                             <div class="mb-3">
-                                                <h6 class="text-success">Niveau de preuve Ã©levÃ© :</h6>
+                                                <h6 class="text-success">Niveau de preuve eleve :</h6>
                                                 <ul class="list-unstyled small">
-                                                    <li>• Gestion du stress et de l'anxiÃ©tÃ©</li>
-                                                    <li>• RÃ©adaptation cardiovasculaire</li>
-                                                    <li>• AmÃ©lioration de la performance</li>
+                                                    <li>• Gestion du stress et de l'anxiete</li>
+                                                    <li>• Readaptation cardiovasculaire</li>
+                                                    <li>• Amelioration de la performance</li>
                                                     <li>• Troubles anxieux avec composante somatique</li>
                                                 </ul>
                                             </div>
 
                                             <div>
-                                                <h6 class="text-warning">Niveau de preuve modÃ©rÃ© :</h6>
+                                                <h6 class="text-warning">Niveau de preuve modere :</h6>
                                                 <ul class="list-unstyled small">
-                                                    <li>• DÃ©pression (en complÃ©ment)</li>
+                                                    <li>• Depression (en complement)</li>
                                                     <li>• Stress post-traumatique</li>
-                                                    <li>• Troubles du sommeil liÃ©s au stress</li>
+                                                    <li>• Troubles du sommeil lies au stress</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -782,15 +782,15 @@
                                 <div class="col-lg-6">
                                     <div class="card border-0 h-100" style="background: rgba(220, 53, 69, 0.1);">
                                         <div class="card-body p-4">
-                                            <h5 class="text-danger mb-3">6.2 PrÃ©cautions Importantes</h5>
+                                            <h5 class="text-danger mb-3">6.2 Precautions Importantes</h5>
                                             
                                             <div class="alert alert-danger border-0 py-2 mb-3">
                                                 <h6 class="text-danger mb-2">Recommandations :</h6>
                                                 <ul class="list-unstyled small mb-0">
-                                                    <li>• Ne pas remplacer un traitement mÃ©dical</li>
+                                                    <li>• Ne pas remplacer un traitement medical</li>
                                                     <li>• Supervision professionnelle pour pathologies graves</li>
-                                                    <li>• Adaptation selon l'âge et les capacitÃ©s</li>
-                                                    <li>• Technique complÃ©mentaire, non substitutive</li>
+                                                    <li>• Adaptation selon l'âge et les capacites</li>
+                                                    <li>• Technique complementaire, non substitutive</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -807,37 +807,37 @@
                             </h2>
 
                             <div class="alert alert-primary border-0 mb-4" style="background: rgba(59, 130, 246, 0.1);">
-                                <h5 class="text-primary mb-3">SynthÃ¨se Scientifique</h5>
+                                <h5 class="text-primary mb-3">Synthese Scientifique</h5>
                                 <p class="mb-3">
-                                    La cohÃ©rence cardiaque, basÃ©e sur l'optimisation de l'arythmie sinusale respiratoire, reprÃ©sente une 
-                                    <strong> approche thÃ©rapeutique non-invasive</strong> dont l'efficacitÃ© est soutenue par des preuves scientifiques croissantes. 
-                                    Les mÃ©ta-analyses rÃ©centes confirment son utilitÃ© dans la gestion du stress, de l'anxiÃ©tÃ© et de diverses pathologies cardiovasculaires et psychiatriques.
+                                    La coherence cardiaque, basee sur l'optimisation de l'arythmie sinusale respiratoire, represente une 
+                                    <strong> approche therapeutique non-invasive</strong> dont l'efficacite est soutenue par des preuves scientifiques croissantes. 
+                                    Les meta-analyses recentes confirment son utilite dans la gestion du stress, de l'anxiete et de diverses pathologies cardiovasculaires et psychiatriques.
                                 </p>
                                 <p class="mb-0">
-                                    La cohÃ©rence cardiaque s'impose ainsi comme un <strong>outil thÃ©rapeutique complÃ©mentaire prÃ©cieux</strong>, 
-                                    Ã condition d'être utilisÃ©e dans un cadre scientifique rigoureux et en complÃ©ment d'une prise en charge appropriÃ©e.
+                                    La coherence cardiaque s'impose ainsi comme un <strong>outil therapeutique complementaire precieux</strong>, 
+                                    Ã condition d'être utilisee dans un cadre scientifique rigoureux et en complement d'une prise en charge appropriee.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- RÃ©fÃ©rences -->
+                        <!-- References -->
                         <div class="border-top pt-4">
-                            <h5 class="text-muted mb-3">RÃ©fÃ©rences Bibliographiques</h5>
+                            <h5 class="text-muted mb-3">References Bibliographiques</h5>
                             <div class="row g-3 small text-muted">
                                 <div class="col-md-6">
-                                    <p class="mb-1">• <strong>Inserm</strong> (2023) - "La cohÃ©rence cardiaque, une technique pour amÃ©liorer sa santÃ©, vraiment ?" Canal DÃ©tox</p>
+                                    <p class="mb-1">• <strong>Inserm</strong> (2023) - "La coherence cardiaque, une technique pour ameliorer sa sante, vraiment ?" Canal Detox</p>
                                     <p class="mb-1">• <strong>Scientific Reports</strong> (2021) - "A meta-analysis on heart rate variability biofeedback and depressive symptoms"</p>
                                     <p class="mb-1">• <strong>Psychophysiology</strong> (2024) - "Real-time heart rate variability biofeedback amplitude"</p>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="mb-1">• <strong>Applied Psychophysiology and Biofeedback</strong> (2024) - "The Effect of Heart Rate Variability Biofeedback Training"</p>
                                     <p class="mb-1">• <strong>Psychological Medicine</strong> (2017) - "Heart rate variability biofeedback training on stress and anxiety: meta-analysis"</p>
-                                    <p class="mb-1">• <strong>UniversitÃ© de Lausanne</strong> (2025) - "La cohÃ©rence cardiaque, une rÃ©alitÃ© physiologique?"</p>
+                                    <p class="mb-1">• <strong>Universite de Lausanne</strong> (2025) - "La coherence cardiaque, une realite physiologique?"</p>
                                 </div>
                             </div>
                             <p class="small text-muted mt-3 mb-0">
-                                <em>Note : Cet article reflÃ¨te l'Ã©tat des connaissances scientifiques en fÃ©vrier 2025. 
-                                Les recherches dans ce domaine Ã©voluant rapidement, il est recommandÃ© de consulter les publications les plus rÃ©centes.</em>
+                                <em>Note : Cet article reflete l'etat des connaissances scientifiques en fevrier 2025. 
+                                Les recherches dans ce domaine evoluant rapidement, il est recommande de consulter les publications les plus recentes.</em>
                             </p>
                         </div>
 
@@ -950,7 +950,7 @@ class HeartCoherenceSimulator {
             instructionsAlert: document.getElementById('instructionsAlert')
         };
         
-        // Masquer/afficher les vibrations selon la compatibilitÃ©
+        // Masquer/afficher les vibrations selon la compatibilite
         const vibrationContainer = document.getElementById('vibrationContainer');
         if (!navigator.vibrate) {
             vibrationContainer.style.display = 'none';
@@ -963,7 +963,7 @@ class HeartCoherenceSimulator {
         this.elements.settingsBtn.addEventListener('click', () => this.openSettings());
         this.elements.soundToggle.addEventListener('click', () => this.toggleSound());
         
-        // Ã©vÃ©nements pour les raccourcis
+        // evenements pour les raccourcis
         window.addEventListener('heartCoherenceToggle', () => this.toggle());
         window.addEventListener('heartCoherenceReset', () => this.reset());
     }
@@ -1008,7 +1008,7 @@ class HeartCoherenceSimulator {
         this.elements.progressBar.style.width = `${progress}%`;
         
         // Informations cycle
-        this.elements.cycleInfo.textContent = `Cycle ${this.completedCycles} / ${this.totalCycles} • ${Math.round(progress)}% terminÃ©`;
+        this.elements.cycleInfo.textContent = `Cycle ${this.completedCycles} / ${this.totalCycles} • ${Math.round(progress)}% termine`;
         
         // Temps inspiration/expiration
         this.elements.inspirationTime.textContent = `${this.config.inspirationTime / 1000}s`;
@@ -1037,7 +1037,7 @@ class HeartCoherenceSimulator {
         const text = this.elements.breathingText;
         const time = this.elements.breathingTime;
         
-        // Supprimer les classes prÃ©cÃ©dentes
+        // Supprimer les classes precedentes
         circle.classList.remove('breathing-circle-inhale', 'breathing-circle-exhale');
         
         switch (this.currentPhase) {
@@ -1072,9 +1072,9 @@ class HeartCoherenceSimulator {
             this.elements.toggleBtn.innerHTML = '<i class="fas fa-pause me-2"></i>Pause';
             this.elements.toggleBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
         } else if (this.isFinished) {
-            this.elements.statusBadge.textContent = 'TerminÃ©';
+            this.elements.statusBadge.textContent = 'Termine';
             this.elements.statusBadge.className = 'badge fs-6 px-3 py-2 bg-warning text-dark';
-            this.elements.toggleBtn.innerHTML = '<i class="fas fa-check me-2"></i>TerminÃ©';
+            this.elements.toggleBtn.innerHTML = '<i class="fas fa-check me-2"></i>Termine';
             this.elements.toggleBtn.disabled = true;
         } else {
             this.elements.statusBadge.textContent = 'En pause';
@@ -1144,7 +1144,7 @@ class HeartCoherenceSimulator {
             
             const previousPhase = this.currentPhase;
             
-            // DÃ©terminer la phase actuelle
+            // Determiner la phase actuelle
             if (this.cycleTime < this.config.inspirationTime) {
                 this.currentPhase = 'inhale';
             } else if (this.cycleTime < this.cycleLength) {
@@ -1156,7 +1156,7 @@ class HeartCoherenceSimulator {
                 this.currentPhase = 'inhale';
             }
             
-            // DÃ©clencher sons et vibrations lors des changements de phase
+            // Declencher sons et vibrations lors des changements de phase
             if (previousPhase !== this.currentPhase && (this.currentPhase === 'inhale' || this.currentPhase === 'exhale')) {
                 this.playSound(this.currentPhase);
                 
@@ -1217,7 +1217,7 @@ class HeartCoherenceSimulator {
         this.isFinished = true;
         this.updateStatus();
         
-        // Afficher cÃ©lÃ©bration
+        // Afficher celebration
         this.elements.celebrationAlert.classList.remove('d-none');
         this.elements.celebrationAlert.classList.add('celebration');
         
@@ -1234,7 +1234,7 @@ class HeartCoherenceSimulator {
     }
     
     openSettings() {
-        // PrÃ©-remplir les valeurs
+        // Pre-remplir les valeurs
         document.getElementById('inspirationSelect').value = this.config.inspirationTime;
         document.getElementById('expirationSelect').value = this.config.expirationTime;
         document.getElementById('durationSelect').value = this.config.totalDuration;
@@ -1266,7 +1266,7 @@ function saveSettings() {
     simulator.config.vibrationEnabled = document.getElementById('vibrationEnabledCheck').checked;
     
     simulator.saveConfig();
-    simulator.reset(); // Appliquer les nouveaux paramÃ¨tres
+    simulator.reset(); // Appliquer les nouveaux parametres
     
     closeSettings();
 }

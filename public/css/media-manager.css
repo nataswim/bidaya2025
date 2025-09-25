@@ -30,7 +30,7 @@
     display: flex !important;
 }
 
-/* Grille des mÃ©dias */
+/* Grille des medias */
 .media-grid {
     min-height: 400px;
 }
@@ -78,7 +78,7 @@
     font-size: 0.75rem;
 }
 
-/* PrÃ©visualisation upload */
+/* Previsualisation upload */
 .file-preview-item {
     position: relative;
     border: 2px solid #e9ecef;
@@ -121,7 +121,7 @@
     font-size: 0.75rem;
 }
 
-/* Formulaires dans les prÃ©visualisations */
+/* Formulaires dans les previsualisations */
 .file-form {
     background: white;
     padding: 0.75rem;
@@ -165,7 +165,7 @@
     justify-content: center;
 }
 
-/* SÃ©lection multiple */
+/* Selection multiple */
 .media-item.selected {
     border: 3px solid var(--bs-primary);
     transform: scale(0.95);
@@ -201,7 +201,7 @@
     }
 }
 
-/* Couleurs spÃ©cifiques */
+/* Couleurs specifiques */
 .text-primary-custom {
     color: #6366f1 !important;
 }
@@ -214,7 +214,7 @@
     border-color: #6366f1 !important;
 }
 
-/* Messages d'Ã©tat */
+/* Messages d'etat */
 .status-badge {
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;

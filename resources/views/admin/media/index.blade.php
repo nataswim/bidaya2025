@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Gestion des mÃ©dias')
+@section('title', 'Gestion des medias')
 
 @section('content')
 <div class="container-fluid py-4">
@@ -9,15 +9,15 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <h1 class="h3 mb-0">Gestion des mÃ©dias</h1>
-                    <p class="text-muted mb-0">GÃ©rez vos images et fichiers multimÃ©dias</p>
+                    <h1 class="h3 mb-0">Gestion des medias</h1>
+                    <p class="text-muted mb-0">Gerez vos images et fichiers multimedias</p>
                 </div>
                 <div class="d-flex gap-2">
                     <button type="button" 
                             class="btn btn-outline-primary" 
                             data-bs-toggle="modal" 
                             data-bs-target="#categoryModal">
-                        <i class="fas fa-folder-plus me-2"></i>Nouvelle catÃ©gorie
+                        <i class="fas fa-folder-plus me-2"></i>Nouvelle categorie
                     </button>
                     <button type="button" 
                             class="btn btn-primary" 
@@ -54,7 +54,7 @@
                                 </div>
                                 <div>
                                     <div class="fw-bold fs-4">{{ $stats['total_size_formatted'] }}</div>
-                                    <small class="text-muted">Espace utilisÃ©</small>
+                                    <small class="text-muted">Espace utilise</small>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div>
                                     <div class="fw-bold fs-4">{{ $stats['categories_count'] }}</div>
-                                    <small class="text-muted">CatÃ©gories</small>
+                                    <small class="text-muted">Categories</small>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col-md-3">
                     <select name="category" class="form-select">
-                        <option value="">Toutes les catÃ©gories</option>
+                        <option value="">Toutes les categories</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" 
                                     {{ $categoryId == $category->id ? 'selected' : '' }}>
@@ -137,7 +137,7 @@
                             <i class="fas fa-times me-1"></i>Reset
                         </a>
                         <a href="{{ route('admin.media.categories') }}" class="btn btn-outline-info">
-                            <i class="fas fa-cog me-1"></i>CatÃ©gories
+                            <i class="fas fa-cog me-1"></i>Categories
                         </a>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <!-- Grille des mÃ©dias -->
+    <!-- Grille des medias -->
     <div class="card border-0 shadow-sm">
         <div class="card-body p-0">
             @if($media->count() > 0)
@@ -171,12 +171,12 @@
                                             <div class="d-flex gap-1">
                                                 <button class="btn btn-sm btn-light rounded-circle" 
                                                         onclick="viewMedia({{ $item->id }})"
-                                                        title="Voir les dÃ©tails">
+                                                        title="Voir les details">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-primary rounded-circle" 
                                                         onclick="selectMedia({{ $item->id }})"
-                                                        title="SÃ©lectionner">
+                                                        title="Selectionner">
                                                     <i class="fas fa-check"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-danger rounded-circle" 
@@ -187,7 +187,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- Badge catÃ©gorie -->
+                                        <!-- Badge categorie -->
                                         @if($item->category)
                                             <span class="position-absolute top-0 start-0 m-2 badge" 
                                                   style="background-color: {{ $item->category->color }}">
@@ -228,10 +228,10 @@
                     <div class="mb-4">
                         <i class="fas fa-images fa-4x text-muted opacity-50"></i>
                     </div>
-                    <h5 class="text-muted">Aucun mÃ©dia trouvÃ©</h5>
+                    <h5 class="text-muted">Aucun media trouve</h5>
                     <p class="text-muted mb-4">
                         @if($search || $categoryId)
-                            Aucun rÃ©sultat pour les critÃ¨res sÃ©lectionnÃ©s.
+                            Aucun resultat pour les criteres selectionnes.
                         @else
                             Commencez par uploader vos premiers fichiers.
                         @endif
@@ -251,10 +251,10 @@
 <!-- Modal Upload -->
 @include('admin.media.modals.upload')
 
-<!-- Modal CatÃ©gorie -->
+<!-- Modal Categorie -->
 @include('admin.media.modals.category')
 
-<!-- Modal DÃ©tails -->
+<!-- Modal Details -->
 @include('admin.media.modals.details')
 @endsection
 

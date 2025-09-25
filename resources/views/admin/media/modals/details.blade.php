@@ -1,11 +1,11 @@
-<!-- Modal DÃ©tails Media -->
+<!-- Modal Details Media -->
 <div class="modal fade" id="mediaDetailsModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
                     <i class="fas fa-info-circle text-info me-2"></i>
-                    DÃ©tails du mÃ©dia
+                    Details du media
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
@@ -25,7 +25,7 @@
                                    href="" 
                                    target="_blank" 
                                    class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-external-link-alt me-1"></i>Voir en taille rÃ©elle
+                                    <i class="fas fa-external-link-alt me-1"></i>Voir en taille reelle
                                 </a>
                                 <button type="button" 
                                         class="btn btn-outline-success btn-sm"
@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <!-- Informations et Ã©dition -->
+                    <!-- Informations et edition -->
                     <div class="col-md-7">
                         <form id="updateMediaForm" method="POST">
                             @csrf
@@ -61,15 +61,15 @@
                                            name="alt_text" 
                                            id="detailsAltText" 
                                            class="form-control"
-                                           placeholder="Description pour l'accessibilitÃ©">
+                                           placeholder="Description pour l'accessibilite">
                                 </div>
 
                                 <div class="col-12">
                                     <label for="detailsCategory" class="form-label fw-semibold">
-                                        CatÃ©gorie
+                                        Categorie
                                     </label>
                                     <select name="media_category_id" id="detailsCategory" class="form-select">
-                                        <option value="">Aucune catÃ©gorie</option>
+                                        <option value="">Aucune categorie</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -104,7 +104,7 @@
                                                 <strong>Type :</strong> <span id="detailsMimeType"></span>
                                             </div>
                                             <div class="col-6">
-                                                <strong>UploadÃ© le :</strong> <span id="detailsCreatedAt"></span>
+                                                <strong>Uploade le :</strong> <span id="detailsCreatedAt"></span>
                                             </div>
                                             <div class="col-6">
                                                 <strong>Par :</strong> <span id="detailsUploader"></span>

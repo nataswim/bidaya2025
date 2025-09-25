@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils Nutrition & Ã©nergie Sportive - Calculateurs Evidence-Based')
-@section('meta_description', 'Outils scientifiques pour optimiser votre nutrition sportive : conversion calories-macros, besoins Ã©nergÃ©tiques personnalisÃ©s, hydratation. Approche Ã©quilibrÃ©e et evidence-based.')
+@section('title', 'Outils Nutrition & energie Sportive - Calculateurs Evidence-Based')
+@section('meta_description', 'Outils scientifiques pour optimiser votre nutrition sportive : conversion calories-macros, besoins energetiques personnalises, hydratation. Approche equilibree et evidence-based.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active text-white" aria-current="page">
-                    Nutrition & Ã©nergie
+                    Nutrition & energie
                 </li>
             </ol>
         </nav>
@@ -25,16 +25,16 @@
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">
                     <i class="fas fa-apple-alt me-3"></i>
-                    Nutrition & Ã©nergie Sportive
+                    Nutrition & energie Sportive
                 </h1>
                 <p class="lead mb-4">
-                    Optimisez votre nutrition sportive avec une approche scientifique Ã©quilibrÃ©e. 
-                    Outils basÃ©s sur les recommandations nutritionnelles internationales et la physiologie Ã©nergÃ©tique.
+                    Optimisez votre nutrition sportive avec une approche scientifique equilibree. 
+                    Outils bases sur les recommandations nutritionnelles internationales et la physiologie energetique.
                 </p>
                 <div class="alert alert-warning border-0 bg-white bg-opacity-25">
                     <small>
                         <i class="fas fa-info-circle me-2"></i>
-                        <strong>3 outils disponibles</strong> - Approche Ã©quilibrÃ©e et santÃ©-centrÃ©e
+                        <strong>3 outils disponibles</strong> - Approche equilibree et sante-centree
                     </small>
                 </div>
             </div>
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<!-- Outils de la catÃ©gorie -->
+<!-- Outils de la categorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
@@ -68,11 +68,11 @@
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Calculs Ã©nergÃ©tiques prÃ©cis et rÃ©partition macronutriments adaptÃ©e aux objectifs sportifs. 
-                                        Multiple stratÃ©gies nutritionnelles evidence-based pour optimiser performance et rÃ©cupÃ©ration.
+                                        Calculs energetiques precis et repartition macronutriments adaptee aux objectifs sportifs. 
+                                        Multiple strategies nutritionnelles evidence-based pour optimiser performance et recuperation.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -97,14 +97,14 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
                                         <h5 class="card-title mb-0 text-dark fw-bold">Besoins Caloriques Sportifs</h5>
-                                        <span class="badge bg-primary ms-2">AvancÃ©</span>
+                                        <span class="badge bg-primary ms-2">Avance</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Adaptation des besoins Ã©nergÃ©tiques selon l'activitÃ© physique, les objectifs et la pÃ©riodisation. 
-                                        Calculs personnalisÃ©s pour maintenir performance et santÃ© optimales.
+                                        Adaptation des besoins energetiques selon l'activite physique, les objectifs et la periodisation. 
+                                        Calculs personnalises pour maintenir performance et sante optimales.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>6-10 min</small>
@@ -132,11 +132,11 @@
                                         <span class="badge bg-success ms-2">Essentiel</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Besoins hydriques personnalisÃ©s selon l'environnement, l'activitÃ© et les caractÃ©ristiques individuelles. 
-                                        StratÃ©gies d'hydratation prÃ©, pendant et post-effort evidence-based.
+                                        Besoins hydriques personnalises selon l'environnement, l'activite et les caracteristiques individuelles. 
+                                        Strategies d'hydratation pre, pendant et post-effort evidence-based.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>3-5 min</small>
@@ -155,7 +155,7 @@
         <div class="row g-3 mt-5">
             <div class="col-md-6">
                 <a href="{{ route('tools.index') }}" class="btn btn-outline-success btn-lg w-100">
-                    <i class="fas fa-arrow-left me-2"></i>Retour aux CatÃ©gories
+                    <i class="fas fa-arrow-left me-2"></i>Retour aux Categories
                 </a>
             </div>
             <div class="col-md-6">
@@ -178,10 +178,10 @@
                 <div class="col-md-11">
                     <h6 class="fw-bold mb-2">Approche Nutrition Responsable</h6>
                     <p class="mb-0 small">
-                        Nos outils visent Ã optimiser la performance et la santÃ©, non Ã promouvoir des restrictions alimentaires. 
-                        <strong>Une nutrition Ã©quilibrÃ©e et adaptÃ©e Ã vos besoins est essentielle.</strong> 
-                        Consultez un nutritionniste du sport pour un accompagnement personnalisÃ©, particuliÃ¨rement si vous avez des objectifs spÃ©cifiques 
-                        ou des prÃ©occupations concernant votre relation Ã l'alimentation.
+                        Nos outils visent Ã optimiser la performance et la sante, non Ã promouvoir des restrictions alimentaires. 
+                        <strong>Une nutrition equilibree et adaptee Ã vos besoins est essentielle.</strong> 
+                        Consultez un nutritionniste du sport pour un accompagnement personnalise, particulierement si vous avez des objectifs specifiques 
+                        ou des preoccupations concernant votre relation Ã l'alimentation.
                     </p>
                 </div>
             </div>
@@ -189,7 +189,7 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
@@ -204,16 +204,16 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-success">Fondamentaux Ã©nergÃ©tiques</h6>
+                        <h6 class="text-success">Fondamentaux energetiques</h6>
                         <p class="small">
-                            La nutrition sportive repose sur l'Ã©quilibre entre apports et dÃ©penses Ã©nergÃ©tiques, 
+                            La nutrition sportive repose sur l'equilibre entre apports et depenses energetiques, 
                             l'optimisation de la composition corporelle et la maximisation de la performance. 
-                            Elle vise le maintien de la santÃ© globale avant tout.
+                            Elle vise le maintien de la sante globale avant tout.
                         </p>
                         
-                        <h6 class="text-primary mt-3">PÃ©riodisation Nutritionnelle</h6>
+                        <h6 class="text-primary mt-3">Periodisation Nutritionnelle</h6>
                         <p class="small">
-                            L'adaptation des apports selon les phases d'entraînement (volume, intensitÃ©, rÃ©cupÃ©ration) 
+                            L'adaptation des apports selon les phases d'entraînement (volume, intensite, recuperation) 
                             optimise les adaptations physiologiques et la progression. Cette approche respecte 
                             les besoins variables du corps selon la charge d'entraînement.
                         </p>
@@ -221,15 +221,15 @@
                     <div class="col-md-6">
                         <h6 class="text-warning">Individualisation</h6>
                         <p class="small">
-                            Chaque individu a des besoins nutritionnels uniques selon sa gÃ©nÃ©tique, son mÃ©tabolisme, 
-                            ses prÃ©fÃ©rences alimentaires et son mode de vie. Les recommandations gÃ©nÃ©rales servent 
-                            de point de dÃ©part, non de prescriptions rigides.
+                            Chaque individu a des besoins nutritionnels uniques selon sa genetique, son metabolisme, 
+                            ses preferences alimentaires et son mode de vie. Les recommandations generales servent 
+                            de point de depart, non de prescriptions rigides.
                         </p>
                         
                         <h6 class="text-info mt-3">Approche Holistique</h6>
                         <p class="small">
-                            La nutrition sportive intÃ¨gre performance, santÃ©, plaisir alimentaire et durabilitÃ©. 
-                            Une approche Ã©quilibrÃ©e favorise l'adhÃ©sion long terme et prÃ©vient les comportements 
+                            La nutrition sportive integre performance, sante, plaisir alimentaire et durabilite. 
+                            Une approche equilibree favorise l'adhesion long terme et previent les comportements 
                             alimentaires dysfonctionnels.
                         </p>
                     </div>
@@ -259,13 +259,13 @@
                                     <strong>Rôle :</strong> Carburant principal muscles et cerveau
                                 </p>
                                 <p class="small mb-2">
-                                    <strong>Besoins sportifs :</strong> 5-12g/kg selon intensitÃ©
+                                    <strong>Besoins sportifs :</strong> 5-12g/kg selon intensite
                                 </p>
                                 <p class="small mb-2">
-                                    <strong>Timing optimal :</strong> PrÃ©/pendant/post effort
+                                    <strong>Timing optimal :</strong> Pre/pendant/post effort
                                 </p>
                                 <p class="small mb-0">
-                                    <strong>Sources :</strong> CÃ©rÃ©ales complÃ¨tes, fruits, lÃ©gumes
+                                    <strong>Sources :</strong> Cereales completes, fruits, legumes
                                 </p>
                             </div>
                         </div>
@@ -275,21 +275,21 @@
                         <div class="card border-danger">
                             <div class="card-header bg-danger text-white">
                                 <h6 class="mb-0">
-                                    <i class="fas fa-drumstick-bite me-2"></i>ProtÃ©ines
+                                    <i class="fas fa-drumstick-bite me-2"></i>Proteines
                                 </h6>
                             </div>
                             <div class="card-body">
                                 <p class="small mb-2">
-                                    <strong>Rôle :</strong> Construction, rÃ©paration, rÃ©cupÃ©ration
+                                    <strong>Rôle :</strong> Construction, reparation, recuperation
                                 </p>
                                 <p class="small mb-2">
                                     <strong>Besoins sportifs :</strong> 1.2-2.0g/kg selon discipline
                                 </p>
                                 <p class="small mb-2">
-                                    <strong>Timing optimal :</strong> Post-effort et rÃ©partition journaliÃ¨re
+                                    <strong>Timing optimal :</strong> Post-effort et repartition journaliere
                                 </p>
                                 <p class="small mb-0">
-                                    <strong>Sources :</strong> Viandes, poissons, lÃ©gumineuses, produits laitiers
+                                    <strong>Sources :</strong> Viandes, poissons, legumineuses, produits laitiers
                                 </p>
                             </div>
                         </div>
@@ -304,16 +304,16 @@
                             </div>
                             <div class="card-body">
                                 <p class="small mb-2">
-                                    <strong>Rôle :</strong> Ã©nergie, hormones, vitamines liposolubles
+                                    <strong>Rôle :</strong> energie, hormones, vitamines liposolubles
                                 </p>
                                 <p class="small mb-2">
-                                    <strong>Besoins sportifs :</strong> 20-35% apports Ã©nergÃ©tiques
+                                    <strong>Besoins sportifs :</strong> 20-35% apports energetiques
                                 </p>
                                 <p class="small mb-2">
-                                    <strong>Timing optimal :</strong> Distance des sÃ©ances intenses
+                                    <strong>Timing optimal :</strong> Distance des seances intenses
                                 </p>
                                 <p class="small mb-0">
-                                    <strong>Sources :</strong> Huiles, olÃ©agineux, poissons gras, avocat
+                                    <strong>Sources :</strong> Huiles, oleagineux, poissons gras, avocat
                                 </p>
                             </div>
                         </div>
@@ -322,12 +322,12 @@
             </div>
         </div>
 
-        <!-- Hydratation stratÃ©gies -->
+        <!-- Hydratation strategies -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-tint me-2"></i>
-                    StratÃ©gies d'Hydratation Sportive
+                    Strategies d'Hydratation Sportive
                 </h3>
             </div>
             <div class="card-body">
@@ -335,9 +335,9 @@
                     <div class="col-md-6">
                         <h6 class="text-info">Physiologie de l'Hydratation</h6>
                         <p class="small">
-                            L'eau reprÃ©sente 50-70% du poids corporel et joue un rôle crucial dans la thermorÃ©gulation, 
-                            le transport des nutriments et l'Ã©limination des dÃ©chets mÃ©taboliques. 
-                            Une dÃ©shydratation de 2% peut rÃ©duire la performance de 10-15%.
+                            L'eau represente 50-70% du poids corporel et joue un rôle crucial dans la thermoregulation, 
+                            le transport des nutriments et l'elimination des dechets metaboliques. 
+                            Une deshydratation de 2% peut reduire la performance de 10-15%.
                         </p>
                         
                         <div class="table-responsive">
@@ -346,23 +346,23 @@
                                     <tr>
                                         <th>Phase</th>
                                         <th>Objectif</th>
-                                        <th>StratÃ©gie</th>
+                                        <th>Strategie</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>PrÃ©-effort</td>
+                                        <td>Pre-effort</td>
                                         <td>Optimiser statut hydrique</td>
                                         <td>400-600ml 2-3h avant</td>
                                     </tr>
                                     <tr>
                                         <td>Pendant effort</td>
-                                        <td>Maintenir Ã©quilibre</td>
+                                        <td>Maintenir equilibre</td>
                                         <td>150-250ml/15-20min</td>
                                     </tr>
                                     <tr>
                                         <td>Post-effort</td>
-                                        <td>Restaurer dÃ©ficit</td>
+                                        <td>Restaurer deficit</td>
                                         <td>150% pertes hydriques</td>
                                     </tr>
                                 </tbody>
@@ -374,17 +374,17 @@
                         <ul class="small">
                             <li><strong>Taux de sudation :</strong> Variable selon individu (0.5-3L/h)</li>
                             <li><strong>Composition sueur :</strong> Sodium 200-700mg/L</li>
-                            <li><strong>Conditions environnementales :</strong> TempÃ©rature, humiditÃ©, altitude</li>
-                            <li><strong>IntensitÃ© effort :</strong> Plus intense = besoins supÃ©rieurs</li>
+                            <li><strong>Conditions environnementales :</strong> Temperature, humidite, altitude</li>
+                            <li><strong>Intensite effort :</strong> Plus intense = besoins superieurs</li>
                             <li><strong>Acclimatation :</strong> Adaptation progressive aux conditions</li>
                         </ul>
                         
                         <div class="alert alert-warning alert-sm mt-3">
-                            <h6 class="small">Signaux d'Alarme DÃ©shydratation</h6>
+                            <h6 class="small">Signaux d'Alarme Deshydratation</h6>
                             <p class="small mb-0">
-                                Soif intense, urine foncÃ©e, fatigue marquÃ©e, crampes, nausÃ©es, 
-                                diminution performance. <strong>L'hyperhydratation est Ã©galement dangereuse</strong> 
-                                (hyponatrÃ©mie).
+                                Soif intense, urine foncee, fatigue marquee, crampes, nausees, 
+                                diminution performance. <strong>L'hyperhydratation est egalement dangereuse</strong> 
+                                (hyponatremie).
                             </p>
                         </div>
                     </div>
@@ -392,82 +392,82 @@
             </div>
         </div>
 
-        <!-- SupplÃ©mentation evidence-based -->
+        <!-- Supplementation evidence-based -->
         <div class="card">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-pills me-2"></i>
-                    SupplÃ©mentation Sportive Evidence-Based
+                    Supplementation Sportive Evidence-Based
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
                     <h6><i class="fas fa-info-circle me-2"></i>Principe Fondamental</h6>
                     <p class="mb-0 small">
-                        La supplÃ©mentation ne doit jamais remplacer une alimentation Ã©quilibrÃ©e. 
-                        Elle peut être utile dans des contextes spÃ©cifiques mais nÃ©cessite une Ã©valuation individuelle. 
-                        <strong>Consultez un professionnel de santÃ© avant toute supplÃ©mentation.</strong>
+                        La supplementation ne doit jamais remplacer une alimentation equilibree. 
+                        Elle peut être utile dans des contextes specifiques mais necessite une evaluation individuelle. 
+                        <strong>Consultez un professionnel de sante avant toute supplementation.</strong>
                     </p>
                 </div>
                 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-success">SupplÃ©ments Ã EfficacitÃ© DÃ©montrÃ©e</h6>
+                        <h6 class="text-success">Supplements Ã Efficacite Demontree</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>SupplÃ©ment</th>
-                                        <th>BÃ©nÃ©fice</th>
+                                        <th>Supplement</th>
+                                        <th>Benefice</th>
                                         <th>Dosage</th>
                                         <th>Timing</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>CrÃ©atine</td>
+                                        <td>Creatine</td>
                                         <td>Puissance, force</td>
                                         <td>3-5g/jour</td>
                                         <td>Quotidien</td>
                                     </tr>
                                     <tr>
-                                        <td>CafÃ©ine</td>
+                                        <td>Cafeine</td>
                                         <td>Endurance, focus</td>
                                         <td>3-6mg/kg</td>
-                                        <td>30-60min prÃ©-effort</td>
+                                        <td>30-60min pre-effort</td>
                                     </tr>
                                     <tr>
                                         <td>Bêta-alanine</td>
                                         <td>Tampon lactique</td>
                                         <td>3-5g/jour</td>
-                                        <td>DivisÃ© en prises</td>
+                                        <td>Divise en prises</td>
                                     </tr>
                                     <tr>
                                         <td>Nitrates</td>
-                                        <td>EfficacitÃ© O2</td>
+                                        <td>Efficacite O2</td>
                                         <td>5-9mmol</td>
-                                        <td>2-3h prÃ©-effort</td>
+                                        <td>2-3h pre-effort</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-warning">PrÃ©cautions et Recommandations</h6>
+                        <h6 class="text-warning">Precautions et Recommandations</h6>
                         <ul class="small">
-                            <li><strong>SÃ©curitÃ© d'abord :</strong> VÃ©rifier absence de contre-indications mÃ©dicales</li>
-                            <li><strong>QualitÃ© produits :</strong> Choisir marques certifiÃ©es anti-dopage</li>
-                            <li><strong>ProgressivitÃ© :</strong> Tester en entraînement, jamais en compÃ©tition</li>
-                            <li><strong>Individualisation :</strong> RÃ©ponses variables selon les personnes</li>
-                            <li><strong>Surveillance :</strong> Monitoring effets et ajustements nÃ©cessaires</li>
+                            <li><strong>Securite d'abord :</strong> Verifier absence de contre-indications medicales</li>
+                            <li><strong>Qualite produits :</strong> Choisir marques certifiees anti-dopage</li>
+                            <li><strong>Progressivite :</strong> Tester en entraînement, jamais en competition</li>
+                            <li><strong>Individualisation :</strong> Reponses variables selon les personnes</li>
+                            <li><strong>Surveillance :</strong> Monitoring effets et ajustements necessaires</li>
                         </ul>
                         
                         <div class="alert alert-danger alert-sm mt-3">
-                            <h6 class="small">SupplÃ©ments Ã Ã©viter ou Questionner</h6>
+                            <h6 class="small">Supplements Ã eviter ou Questionner</h6>
                             <p class="small mb-0">
-                                Brûleurs de graisse, dÃ©tox, mÃ©ga-doses vitamines, produits non rÃ©glementÃ©s. 
-                                <strong>MÃ©fiez-vous des promesses miraculeuses</strong> et privilÃ©giez toujours 
-                                l'approche nutritionnelle complÃ¨te.
+                                Brûleurs de graisse, detox, mega-doses vitamines, produits non reglementes. 
+                                <strong>Mefiez-vous des promesses miraculeuses</strong> et privilegiez toujours 
+                                l'approche nutritionnelle complete.
                             </p>
                         </div>
                     </div>
@@ -477,7 +477,7 @@
     </div>
 </section>
 
-<!-- Section dÃ©veloppement responsable -->
+<!-- Section developpement responsable -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="card">
@@ -493,22 +493,22 @@
                         <h6 class="text-success">Signaux d'Alarme Ã Surveiller</h6>
                         <ul class="small">
                             <li>Obsession du calcul calorique ou des macronutriments</li>
-                            <li>Restriction alimentaire sÃ©vÃ¨re ou Ã©vitement de groupes d'aliments</li>
-                            <li>CulpabilitÃ© intense aprÃ¨s avoir mangÃ© certains aliments</li>
-                            <li>Isolation sociale liÃ©e aux contraintes alimentaires</li>
-                            <li>Fatigue chronique, irritabilitÃ©, troubles du sommeil</li>
+                            <li>Restriction alimentaire severe ou evitement de groupes d'aliments</li>
+                            <li>Culpabilite intense apres avoir mange certains aliments</li>
+                            <li>Isolation sociale liee aux contraintes alimentaires</li>
+                            <li>Fatigue chronique, irritabilite, troubles du sommeil</li>
                             <li>Perte de plaisir alimentaire ou peur de manger</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-primary">Approche Ã©quilibrÃ©e RecommandÃ©e</h6>
+                        <h6 class="text-primary">Approche equilibree Recommandee</h6>
                         <ul class="small">
-                            <li>FlexibilitÃ© et adaptation selon les situations</li>
-                            <li>Plaisir alimentaire et convivialitÃ© prÃ©servÃ©s</li>
-                            <li>Ã©coute des signaux de faim et satiÃ©tÃ©</li>
-                            <li>VariÃ©tÃ© alimentaire et dÃ©couverte de nouveaux goûts</li>
-                            <li>Objectifs rÃ©alistes et progression graduelle</li>
-                            <li>Soutien professionnel si nÃ©cessaire</li>
+                            <li>Flexibilite et adaptation selon les situations</li>
+                            <li>Plaisir alimentaire et convivialite preserves</li>
+                            <li>ecoute des signaux de faim et satiete</li>
+                            <li>Variete alimentaire et decouverte de nouveaux goûts</li>
+                            <li>Objectifs realistes et progression graduelle</li>
+                            <li>Soutien professionnel si necessaire</li>
                         </ul>
                     </div>
                 </div>
@@ -516,10 +516,10 @@
                 <div class="alert alert-warning mt-4">
                     <h6><i class="fas fa-hands-helping me-2"></i>Ressources et Soutien</h6>
                     <p class="mb-0 small">
-                        Si vous ressentez des difficultÃ©s avec votre relation Ã l'alimentation, 
-                        n'hÃ©sitez pas Ã consulter un nutritionniste du sport, un diÃ©tÃ©ticien ou un psychologue spÃ©cialisÃ©. 
+                        Si vous ressentez des difficultes avec votre relation Ã l'alimentation, 
+                        n'hesitez pas Ã consulter un nutritionniste du sport, un dieteticien ou un psychologue specialise. 
                         <strong>Votre bien-être global prime toujours sur la performance sportive.</strong> 
-                        Une approche nutritionnelle saine et durable favorise Ã la fois la santÃ© et la performance Ã long terme.
+                        Une approche nutritionnelle saine et durable favorise Ã la fois la sante et la performance Ã long terme.
                     </p>
                 </div>
             </div>
@@ -528,7 +528,7 @@
 </section>
 
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -542,9 +542,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -554,15 +554,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -589,7 +589,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -600,12 +600,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -711,7 +711,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrÃ©e pour les cards
+    // Animation d'entree pour les cards
     const cards = document.querySelectorAll('.hover-lift');
     
     const observerOptions = {

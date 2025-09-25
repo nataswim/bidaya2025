@@ -8,7 +8,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ordre qui respecte les dÃ©pendances (FK)
+        // Ordre qui respecte les dependances (FK)
         $this->call([
             RolesTableSeeder::class,
             PermissionsTableSeeder::class,

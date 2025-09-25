@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils SantÃ© & Composition Corporelle - Analyse Scientifique Evidence-Based')
-@section('meta_description', 'Collection d\'outils scientifiques pour analyser votre santÃ© et composition corporelle : IMC, masse grasse, TDEE, indices fitness. BasÃ©s sur les recherches 2024.')
+@section('title', 'Outils Sante & Composition Corporelle - Analyse Scientifique Evidence-Based')
+@section('meta_description', 'Collection d\'outils scientifiques pour analyser votre sante et composition corporelle : IMC, masse grasse, TDEE, indices fitness. Bases sur les recherches 2024.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active text-white" aria-current="page">
-                    SantÃ© & Composition Corporelle
+                    Sante & Composition Corporelle
                 </li>
             </ol>
         </nav>
@@ -25,11 +25,11 @@
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">
                     <i class="fas fa-heartbeat me-3"></i>
-                    SantÃ© & Composition Corporelle
+                    Sante & Composition Corporelle
                 </h1>
                 <p class="lead mb-4">
-                    Analysez votre santÃ© et composition corporelle avec prÃ©cision scientifique. 
-                    Outils basÃ©s sur les derniÃ¨res recherches en physiologie et mÃ©decine du sport.
+                    Analysez votre sante et composition corporelle avec precision scientifique. 
+                    Outils bases sur les dernieres recherches en physiologie et medecine du sport.
                 </p>
                 <div class="alert alert-info border-0 bg-white bg-opacity-25">
                     <small>
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<!-- Outils de la catÃ©gorie -->
+<!-- Outils de la categorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
@@ -69,10 +69,10 @@
                                     </div>
                                     <p class="card-text text-muted mb-3">
                                         IMC traditionnel + alternatives modernes (BRI, WHtR, RFM) selon 
-                                        les nouvelles recommandations AMA 2024. Analyse complÃ¨te et interprÃ©tation.
+                                        les nouvelles recommandations AMA 2024. Analyse complete et interpretation.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>2-3 min</small>
@@ -97,14 +97,14 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
                                         <h5 class="card-title mb-0 text-dark fw-bold">Calculateur Masse Grasse</h5>
-                                        <span class="badge bg-primary ms-2">AvancÃ©</span>
+                                        <span class="badge bg-primary ms-2">Avance</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Multiples mÃ©thodes : plis cutanÃ©s (Jackson-Pollock), circonfÃ©rences 
-                                        (Navy), bioimpÃ©dance. Ã©valuation prÃ©cise composition corporelle.
+                                        Multiples methodes : plis cutanes (Jackson-Pollock), circonferences 
+                                        (Navy), bioimpedance. evaluation precise composition corporelle.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -117,7 +117,7 @@
                 </a>
             </div>
 
-            <!-- 3. Calculateur TDEE & MÃ©tabolisme -->
+            <!-- 3. Calculateur TDEE & Metabolisme -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.tdee-calculator') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -128,15 +128,15 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <h5 class="card-title mb-0 text-dark fw-bold">Calculateur TDEE & MÃ©tabolisme</h5>
+                                        <h5 class="card-title mb-0 text-dark fw-bold">Calculateur TDEE & Metabolisme</h5>
                                         <span class="badge bg-warning ms-2">Pro</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        DÃ©pense Ã©nergÃ©tique totale personnalisÃ©e avec facteurs gÃ©nÃ©tiques, 
-                                        mÃ©taboliques et environnementaux. Multiple formules validÃ©es.
+                                        Depense energetique totale personnalisee avec facteurs genetiques, 
+                                        metaboliques et environnementaux. Multiple formules validees.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>8-12 min</small>
@@ -164,11 +164,11 @@
                                         <span class="badge bg-success ms-2">Essentiel</span>
                                     </div>
                                     <p class="card-text text-muted mb-3">
-                                        Ã©valuation condition physique globale et indices de santÃ© : FC repos, 
-                                        rÃ©cupÃ©ration, tests standardisÃ©s. Vue d'ensemble santÃ© cardiovasculaire.
+                                        evaluation condition physique globale et indices de sante : FC repos, 
+                                        recuperation, tests standardises. Vue d'ensemble sante cardiovasculaire.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">AccÃ©der Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>4-6 min</small>
@@ -186,7 +186,7 @@
         <!-- Retour Ã l'index -->
         <div class="text-center mt-5">
             <a href="{{ route('tools.index') }}" class="btn btn-outline-primary btn-lg">
-                <i class="fas fa-arrow-left me-2"></i>Retour aux CatÃ©gories
+                <i class="fas fa-arrow-left me-2"></i>Retour aux Categories
             </a>
         </div>
     </div>
@@ -205,30 +205,30 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 className="text-primary">SantÃ© Globale</h6>
+                        <h6 className="text-primary">Sante Globale</h6>
                         <p class="small">
                             L'analyse de la composition corporelle va au-delÃ du simple poids. Elle permet 
-                            d'Ã©valuer les risques cardiovasculaires, mÃ©taboliques et la santÃ© gÃ©nÃ©rale 
-                            selon les standards mÃ©dicaux actuels.
+                            d'evaluer les risques cardiovasculaires, metaboliques et la sante generale 
+                            selon les standards medicaux actuels.
                         </p>
                         
                         <h6 className="text-success mt-3">Performance Sportive</h6>
                         <p class="small">
-                            Pour les sportifs, connaître sa composition corporelle optimise les stratÃ©gies 
-                            d'entraînement, de nutrition et aide Ã dÃ©finir des objectifs rÃ©alistes et sains.
+                            Pour les sportifs, connaître sa composition corporelle optimise les strategies 
+                            d'entraînement, de nutrition et aide Ã definir des objectifs realistes et sains.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 className="text-warning">Suivi Progression</h6>
                         <p class="small">
-                            Les outils modernes permettent un suivi prÃ©cis des changements corporels, 
+                            Les outils modernes permettent un suivi precis des changements corporels, 
                             distinguant perte de graisse, gain musculaire et variations hydriques.
                         </p>
                         
                         <h6 className="text-info mt-3">Approche Scientifique 2024</h6>
                         <p class="small">
-                            Nos calculateurs intÃ¨grent les derniÃ¨res recherches et recommandations 
-                            des organismes de santÃ© internationaux pour une analyse evidence-based.
+                            Nos calculateurs integrent les dernieres recherches et recommandations 
+                            des organismes de sante internationaux pour une analyse evidence-based.
                         </p>
                     </div>
                 </div>
@@ -238,7 +238,7 @@
 </section>
 
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -252,9 +252,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -264,15 +264,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -299,7 +299,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -310,12 +310,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>

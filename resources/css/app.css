@@ -4,7 +4,7 @@
 
 @layer components {
 
-/* Styles personnalisÃ©s pour les composants */
+/* Styles personnalises pour les composants */
 .prose {
     @apply text-gray-700 leading-relaxed;
 }
@@ -35,9 +35,9 @@
     @apply mb-2;
 }
 
-/* Animations personnalisÃ©es */
+/* Animations personnalisees */
 .fade-in {
-/* Animations personnalisÃ©es */
+/* Animations personnalisees */
 .fade-in {
     animation: fadeIn 0.3s ease-in-out;
 }

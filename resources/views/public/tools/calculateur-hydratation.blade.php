@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Besoins Hydriques - Hydratation PersonnalisÃ©e Scientifique')
-@section('meta_description', 'Calculez vos besoins en eau quotidiens selon votre activitÃ©, climat et santÃ©. MÃ©thodes IOM et scientifiques validÃ©es. Recommandations personnalisÃ©es pour sportifs et populations spÃ©ciales.')
+@section('title', 'Calculateur Besoins Hydriques - Hydratation Personnalisee Scientifique')
+@section('meta_description', 'Calculez vos besoins en eau quotidiens selon votre activite, climat et sante. Methodes IOM et scientifiques validees. Recommandations personnalisees pour sportifs et populations speciales.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,7 +9,7 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-tint text-info"></i>
-            Calculateur d'Hydratation AvancÃ©
+            Calculateur d'Hydratation Avance
             <i class="fas fa-thermometer-half text-warning"></i>
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
@@ -17,8 +17,8 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-chart-line text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Optimisez votre hydratation</strong> avec les recommandations scientifiques personnalisÃ©es 
-                    et les derniÃ¨res recherches en physiologie hydrique
+                    <strong>Optimisez votre hydratation</strong> avec les recommandations scientifiques personnalisees 
+                    et les dernieres recherches en physiologie hydrique
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-calculator me-2"></i>
-                    Calculateur PersonnalisÃ© Multi-Facteurs
+                    Calculateur Personnalise Multi-Facteurs
                 </h3>
             </div>
             <div class="card-body p-4">
@@ -42,9 +42,9 @@
                     <!-- Sera rempli par JavaScript -->
                 </div>
 
-                <!-- DonnÃ©es Personnelles -->
+                <!-- Donnees Personnelles -->
                 <h5 class="fw-bold text-primary mb-3">
-                    <i class="fas fa-user me-2"></i>DonnÃ©es Personnelles
+                    <i class="fas fa-user me-2"></i>Donnees Personnelles
                 </h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-3">
@@ -60,7 +60,7 @@
                         <small class="text-muted">Entre 120 et 220 cm</small>
                     </div>
                     <div class="col-md-3">
-                        <label class="form-label fw-bold">Âge (annÃ©es)</label>
+                        <label class="form-label fw-bold">Âge (annees)</label>
                         <input type="number" id="age" class="form-control form-control-lg border-primary" 
                                placeholder="30" min="5" max="100">
                         <small class="text-muted">Entre 5 et 100 ans</small>
@@ -74,22 +74,22 @@
                     </div>
                 </div>
 
-                <!-- ActivitÃ© Physique -->
+                <!-- Activite Physique -->
                 <h5 class="fw-bold text-warning mb-3">
-                    <i class="fas fa-running me-2"></i>ActivitÃ© Physique
+                    <i class="fas fa-running me-2"></i>Activite Physique
                 </h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <label class="form-label fw-bold">Heures d'activitÃ©/jour</label>
+                        <label class="form-label fw-bold">Heures d'activite/jour</label>
                         <input type="number" id="activityHours" class="form-control border-warning" 
                                placeholder="1.5" step="0.5" min="0" max="8">
                         <small class="text-muted">Entre 0 et 8 heures par jour</small>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-bold">IntensitÃ© d'activitÃ©</label>
+                        <label class="form-label fw-bold">Intensite d'activite</label>
                         <select id="activityIntensity" class="form-select border-warning">
-                            <option value="light">LÃ©gÃ¨re (marche, yoga)</option>
-                            <option value="moderate" selected>ModÃ©rÃ©e (jogging, natation)</option>
+                            <option value="light">Legere (marche, yoga)</option>
+                            <option value="moderate" selected>Moderee (jogging, natation)</option>
                             <option value="intense">Intense (course, HIIT)</option>
                             <option value="extreme">Extrême (ultra-endurance)</option>
                         </select>
@@ -102,13 +102,13 @@
                 </h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
-                        <label class="form-label fw-bold">TempÃ©rature (°C)</label>
+                        <label class="form-label fw-bold">Temperature (°C)</label>
                         <input type="number" id="temperature" class="form-control border-danger" 
                                placeholder="20" min="-20" max="50">
                         <small class="text-muted">Entre -20 et 50°C</small>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label fw-bold">HumiditÃ© (%)</label>
+                        <label class="form-label fw-bold">Humidite (%)</label>
                         <input type="number" id="humidity" class="form-control border-info" 
                                placeholder="50" min="0" max="100">
                         <small class="text-muted">Entre 0 et 100%</small>
@@ -121,18 +121,18 @@
                     </div>
                 </div>
 
-                <!-- Conditions de SantÃ© -->
+                <!-- Conditions de Sante -->
                 <h5 class="fw-bold text-success mb-3">
-                    <i class="fas fa-heartbeat me-2"></i>Conditions de SantÃ©
+                    <i class="fas fa-heartbeat me-2"></i>Conditions de Sante
                 </h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <label class="form-label fw-bold">Ã©tat de santÃ©</label>
+                        <label class="form-label fw-bold">etat de sante</label>
                         <select id="healthCondition" class="form-select border-success">
-                            <option value="healthy" selected>Bonne santÃ©</option>
-                            <option value="fever">FiÃ¨vre/Infection</option>
-                            <option value="diabetes">DiabÃ¨te</option>
-                            <option value="kidney">Insuffisance rÃ©nale</option>
+                            <option value="healthy" selected>Bonne sante</option>
+                            <option value="fever">Fievre/Infection</option>
+                            <option value="diabetes">Diabete</option>
+                            <option value="kidney">Insuffisance renale</option>
                             <option value="heart">Insuffisance cardiaque</option>
                         </select>
                     </div>
@@ -155,20 +155,20 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg px-4 py-3 fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- RÃ©sultats -->
+        <!-- Resultats -->
         <div id="results" class="d-none">
-            <!-- RÃ©sultats Principaux -->
+            <!-- Resultats Principaux -->
             <div class="card shadow-lg border-0 mt-4">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
-                        <i class="fas fa-tint me-2"></i>Vos Besoins Hydriques PersonnalisÃ©s
+                        <i class="fas fa-tint me-2"></i>Vos Besoins Hydriques Personnalises
                     </h3>
                 </div>
                 <div class="card-body">
@@ -176,10 +176,10 @@
                         <!-- Sera rempli par JavaScript -->
                     </div>
                     
-                    <!-- RÃ©partition des ajustements -->
+                    <!-- Repartition des ajustements -->
                     <div class="card bg-light mb-4">
                         <div class="card-body">
-                            <h6 class="fw-bold mb-3">RÃ©partition des Ajustements</h6>
+                            <h6 class="fw-bold mb-3">Repartition des Ajustements</h6>
                             <div class="row g-2" id="adjustmentsBreakdown">
                                 <!-- Sera rempli par JavaScript -->
                             </div>
@@ -189,7 +189,7 @@
                     <!-- Protocole Sportif -->
                     <div id="sportsProtocol" class="alert alert-info d-none">
                         <h6 class="fw-bold">
-                            <i class="fas fa-dumbbell me-2"></i>Protocole Sportif RecommandÃ©
+                            <i class="fas fa-dumbbell me-2"></i>Protocole Sportif Recommande
                         </h6>
                         <div class="row g-2" id="sportsBreakdown">
                             <!-- Sera rempli par JavaScript -->
@@ -202,7 +202,7 @@
             <div class="card shadow-lg border-0 mt-4">
                 <div class="card-header bg-info text-white">
                     <h3 class="mb-2">
-                        <i class="fas fa-balance-scale me-2"></i>Balance Hydrique EstimÃ©e
+                        <i class="fas fa-balance-scale me-2"></i>Balance Hydrique Estimee
                     </h3>
                 </div>
                 <div class="card-body">
@@ -221,7 +221,7 @@
                                 </div>
                                 
                                 <div class="d-flex justify-content-between mb-1">
-                                    <span>CutanÃ©e + Sudation</span>
+                                    <span>Cutanee + Sudation</span>
                                     <span id="skinLoss" class="fw-bold">0.0L</span>
                                 </div>
                                 <div class="progress mb-2" style="height: 20px;">
@@ -237,7 +237,7 @@
                                 </div>
                                 
                                 <div class="d-flex justify-content-between mb-1">
-                                    <span>FÃ©cale (5%)</span>
+                                    <span>Fecale (5%)</span>
                                     <span id="fecalLoss" class="fw-bold">0.0L</span>
                                 </div>
                                 <div class="progress" style="height: 20px;">
@@ -253,7 +253,7 @@
                                         <strong id="totalLosses">0.0L</strong>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <span>Apports recommandÃ©s :</span>
+                                        <span>Apports recommandes :</span>
                                         <strong class="text-success" id="totalIntake">0.0L</strong>
                                     </div>
                                     <hr>
@@ -266,7 +266,7 @@
                         </div>
                         
                         <div class="col-md-6">
-                            <h6 class="fw-bold mb-3">Sources d'Apports RecommandÃ©es</h6>
+                            <h6 class="fw-bold mb-3">Sources d'Apports Recommandees</h6>
                             <div class="table-responsive">
                                 <table class="table table-sm">
                                     <thead class="table-dark">
@@ -288,7 +288,7 @@
                                     <i class="fas fa-lightbulb me-2"></i>Conseils Pratiques
                                 </h6>
                                 <ul class="small mb-0">
-                                    <li>RÃ©partir les apports tout au long de la journÃ©e</li>
+                                    <li>Repartir les apports tout au long de la journee</li>
                                     <li>Surveiller la couleur des urines (jaune pâle = optimal)</li>
                                     <li>Augmenter les apports par temps chaud/exercice</li>
                                     <li>Ne pas attendre d'avoir soif pour boire</li>
@@ -302,7 +302,7 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         <!-- Recommandations par Âge -->
@@ -325,7 +325,7 @@
                                         <th>Hommes (L/jour)</th>
                                         <th>Femmes (L/jour)</th>
                                         <th>ml/kg/jour</th>
-                                        <th>SpÃ©cificitÃ©s</th>
+                                        <th>Specificites</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -345,20 +345,20 @@
                                         <td>1-3 ans</td>
                                         <td colspan="2" class="text-center">1.3L</td>
                                         <td>100ml/kg</td>
-                                        <td>Surveillance rÃ©nale immature</td>
+                                        <td>Surveillance renale immature</td>
                                     </tr>
                                     <tr>
                                         <td>4-8 ans</td>
                                         <td colspan="2" class="text-center">1.7L</td>
                                         <td>80ml/kg</td>
-                                        <td>ActivitÃ© physique croissante</td>
+                                        <td>Activite physique croissante</td>
                                     </tr>
                                     <tr>
                                         <td>9-13 ans</td>
                                         <td>2.4L</td>
                                         <td>2.1L</td>
                                         <td>60ml/kg</td>
-                                        <td>PubertÃ©, croissance</td>
+                                        <td>Puberte, croissance</td>
                                     </tr>
                                     <tr>
                                         <td>14-18 ans</td>
@@ -372,7 +372,7 @@
                                         <td><strong>3.7L</strong></td>
                                         <td><strong>2.7L</strong></td>
                                         <td><strong>35ml/kg</strong></td>
-                                        <td><strong>Adulte rÃ©fÃ©rence</strong></td>
+                                        <td><strong>Adulte reference</strong></td>
                                     </tr>
                                     <tr>
                                         <td>65+ ans</td>
@@ -393,7 +393,7 @@
                                         <td>-</td>
                                         <td><strong>+0.7L (3.4L)</strong></td>
                                         <td>+20ml/kg</td>
-                                        <td>Production lactÃ©e</td>
+                                        <td>Production lactee</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -403,33 +403,33 @@
                         <h6>Populations Ã Risque</h6>
                         <div class="card border-danger mb-3">
                             <div class="card-header bg-danger text-white">
-                                <small>Risque DÃ©shydratation Ã©levÃ©</small>
+                                <small>Risque Deshydratation eleve</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Nourrissons (&lt;1 an)</li>
-                                    <li>Personnes âgÃ©es (&gt;65 ans)</li>
-                                    <li>DiabÃ©tiques (polyurie)</li>
-                                    <li>Insuffisants rÃ©naux</li>
+                                    <li>Personnes âgees (&gt;65 ans)</li>
+                                    <li>Diabetiques (polyurie)</li>
+                                    <li>Insuffisants renaux</li>
                                     <li>Femmes enceintes/allaitantes</li>
-                                    <li>AthlÃ¨tes d'endurance</li>
-                                    <li>Travailleurs exposÃ©s chaleur</li>
+                                    <li>Athletes d'endurance</li>
+                                    <li>Travailleurs exposes chaleur</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="card border-warning">
                             <div class="card-header bg-warning text-dark">
-                                <small>Surveillance RenforcÃ©e</small>
+                                <small>Surveillance Renforcee</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Couleur urine (paille claire)</li>
-                                    <li>FrÃ©quence mictionnelle (6-8/jour)</li>
-                                    <li>Pli cutanÃ© (Ã©lasticitÃ©)</li>
+                                    <li>Frequence mictionnelle (6-8/jour)</li>
+                                    <li>Pli cutane (elasticite)</li>
                                     <li>Poids corporel (variations)</li>
                                     <li>Symptômes neurologiques</li>
-                                    <li>Pression artÃ©rielle</li>
+                                    <li>Pression arterielle</li>
                                 </ul>
                             </div>
                         </div>
@@ -457,33 +457,33 @@
                                         <th>Facteur</th>
                                         <th>Condition</th>
                                         <th>Ajustement</th>
-                                        <th>MÃ©canisme</th>
+                                        <th>Mecanisme</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>TempÃ©rature</td>
+                                        <td>Temperature</td>
                                         <td>&gt;25°C</td>
                                         <td>+50ml/°C</td>
-                                        <td>Sudation thermorÃ©gulation</td>
+                                        <td>Sudation thermoregulation</td>
                                     </tr>
                                     <tr>
-                                        <td>HumiditÃ©</td>
+                                        <td>Humidite</td>
                                         <td>&gt;70%</td>
                                         <td>+200ml</td>
-                                        <td>InefficacitÃ© Ã©vaporation</td>
+                                        <td>Inefficacite evaporation</td>
                                     </tr>
                                     <tr>
                                         <td>Altitude</td>
                                         <td>&gt;2500m</td>
                                         <td>+500-750ml</td>
-                                        <td>Hyperventilation, diurÃ¨se</td>
+                                        <td>Hyperventilation, diurese</td>
                                     </tr>
                                     <tr>
                                         <td>Froid intense</td>
                                         <td>&lt;0°C</td>
                                         <td>+200-400ml</td>
-                                        <td>DiurÃ¨se induite par froid</td>
+                                        <td>Diurese induite par froid</td>
                                     </tr>
                                     <tr>
                                         <td>Climatisation</td>
@@ -495,7 +495,7 @@
                                         <td>Chauffage</td>
                                         <td>Air sec hiver</td>
                                         <td>+200ml</td>
-                                        <td>Ã©vaporation cutanÃ©e</td>
+                                        <td>evaporation cutanee</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -515,40 +515,40 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>FiÃ¨vre</td>
+                                        <td>Fievre</td>
                                         <td>+10-15%/°C</td>
                                         <td>+500-750ml</td>
-                                        <td>Balance hydro-Ã©lectrolytique</td>
+                                        <td>Balance hydro-electrolytique</td>
                                     </tr>
                                     <tr>
                                         <td>Vomissements</td>
                                         <td>Pertes directes</td>
-                                        <td>+150ml/Ã©pisode</td>
-                                        <td>Ã©lectrolytes, pH</td>
+                                        <td>+150ml/episode</td>
+                                        <td>electrolytes, pH</td>
                                     </tr>
                                     <tr>
-                                        <td>DiarrhÃ©e</td>
+                                        <td>Diarrhee</td>
                                         <td>Pertes massives</td>
                                         <td>+200ml/selle</td>
                                         <td>SRO, hospitalisation</td>
                                     </tr>
                                     <tr>
-                                        <td>DiabÃ¨te</td>
+                                        <td>Diabete</td>
                                         <td>Polyurie osmotique</td>
                                         <td>+500ml</td>
-                                        <td>GlycÃ©mie, cÃ©tonurie</td>
+                                        <td>Glycemie, cetonurie</td>
                                     </tr>
                                     <tr class="table-warning">
-                                        <td>Insuffisance rÃ©nale</td>
-                                        <td>RÃ©tention hydrique</td>
+                                        <td>Insuffisance renale</td>
+                                        <td>Retention hydrique</td>
                                         <td><strong>-300-500ml</strong></td>
-                                        <td>CrÃ©atinine, œdÃ¨mes</td>
+                                        <td>Creatinine, œdemes</td>
                                     </tr>
                                     <tr class="table-warning">
                                         <td>Insuffisance cardiaque</td>
                                         <td>Congestion</td>
                                         <td><strong>-200-400ml</strong></td>
-                                        <td>Poids, dyspnÃ©e</td>
+                                        <td>Poids, dyspnee</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -558,12 +558,12 @@
             </div>
         </div>
 
-        <!-- EfficacitÃ© des Boissons -->
+        <!-- Efficacite des Boissons -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-glass-water me-2"></i>
-                    EfficacitÃ© des Boissons - Index d'Hydratation 2024
+                    Efficacite des Boissons - Index d'Hydratation 2024
                 </h3>
             </div>
             <div class="card-body">
@@ -576,45 +576,45 @@
                                     <tr>
                                         <th>Boisson</th>
                                         <th>Index Hydratation</th>
-                                        <th>RÃ©tention 4h (%)</th>
-                                        <th>Ã©lectrolytes</th>
+                                        <th>Retention 4h (%)</th>
+                                        <th>electrolytes</th>
                                         <th>Recommandation Usage</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="table-primary">
                                         <td><strong>Eau pure</strong></td>
-                                        <td>1.00 (rÃ©fÃ©rence)</td>
+                                        <td>1.00 (reference)</td>
                                         <td>60%</td>
                                         <td>Faible</td>
-                                        <td>Hydratation gÃ©nÃ©rale</td>
+                                        <td>Hydratation generale</td>
                                     </tr>
                                     <tr class="table-success">
-                                        <td>Lait Ã©crÃ©mÃ©</td>
+                                        <td>Lait ecreme</td>
                                         <td><strong>1.54</strong></td>
                                         <td>78%</td>
                                         <td>Na+, K+, Ca++</td>
-                                        <td>RÃ©cupÃ©ration optimale</td>
+                                        <td>Recuperation optimale</td>
                                     </tr>
                                     <tr>
                                         <td>Lait entier</td>
                                         <td>1.50</td>
                                         <td>75%</td>
-                                        <td>Ã©lectrolytes + protÃ©ines</td>
-                                        <td>Post-exercice prolongÃ©</td>
+                                        <td>electrolytes + proteines</td>
+                                        <td>Post-exercice prolonge</td>
                                     </tr>
                                     <tr class="table-info">
                                         <td>SRO (OMS)</td>
                                         <td>1.46</td>
                                         <td>72%</td>
                                         <td>Na+ 75mmol/L</td>
-                                        <td>RÃ©hydratation thÃ©rapeutique</td>
+                                        <td>Rehydratation therapeutique</td>
                                     </tr>
                                     <tr>
                                         <td>Jus orange</td>
                                         <td>1.33</td>
                                         <td>68%</td>
-                                        <td>K+ Ã©levÃ©</td>
+                                        <td>K+ eleve</td>
                                         <td>Apport vitamines</td>
                                     </tr>
                                     <tr>
@@ -625,31 +625,31 @@
                                         <td>Exercice &gt;1h</td>
                                     </tr>
                                     <tr>
-                                        <td>ThÃ©</td>
+                                        <td>The</td>
                                         <td>1.15</td>
                                         <td>62%</td>
-                                        <td>K+, polyphÃ©nols</td>
+                                        <td>K+, polyphenols</td>
                                         <td>Hydratation quotidienne</td>
                                     </tr>
                                     <tr>
-                                        <td>CafÃ©</td>
+                                        <td>Cafe</td>
                                         <td>1.03</td>
                                         <td>58%</td>
                                         <td>Faible</td>
-                                        <td>ModÃ©ration (&lt;400mg cafÃ©ine)</td>
+                                        <td>Moderation (&lt;400mg cafeine)</td>
                                     </tr>
                                     <tr class="table-warning">
-                                        <td>BiÃ¨re (4%)</td>
+                                        <td>Biere (4%)</td>
                                         <td><strong>0.62</strong></td>
                                         <td>35%</td>
                                         <td>Variable</td>
-                                        <td>Ã©viter post-exercice</td>
+                                        <td>eviter post-exercice</td>
                                     </tr>
                                     <tr class="table-danger">
                                         <td>Alcool fort</td>
                                         <td><strong>0.30</strong></td>
                                         <td>15%</td>
-                                        <td>DÃ©shydratant</td>
+                                        <td>Deshydratant</td>
                                         <td>Contre-productif</td>
                                     </tr>
                                 </tbody>
@@ -657,16 +657,16 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>Facteurs d'EfficacitÃ©</h6>
+                        <h6>Facteurs d'Efficacite</h6>
                         <div class="card bg-light">
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>OsmolalitÃ© :</strong> 250-320 mOsm/kg optimale</li>
-                                    <li><strong>Sodium :</strong> 20-50 mmol/L pour rÃ©tention</li>
+                                    <li><strong>Osmolalite :</strong> 250-320 mOsm/kg optimale</li>
+                                    <li><strong>Sodium :</strong> 20-50 mmol/L pour retention</li>
                                     <li><strong>Potassium :</strong> Restauration intracellulaire</li>
                                     <li><strong>Glucides :</strong> 6-8% facilitent absorption</li>
-                                    <li><strong>ProtÃ©ines :</strong> RÃ©tention prolongÃ©e</li>
-                                    <li><strong>TempÃ©rature :</strong> 8-15°C absorption optimale</li>
+                                    <li><strong>Proteines :</strong> Retention prolongee</li>
+                                    <li><strong>Temperature :</strong> 8-15°C absorption optimale</li>
                                 </ul>
                             </div>
                         </div>
@@ -680,8 +680,8 @@
                                     <li><strong>&lt;1h exercice :</strong> Eau pure suffisante</li>
                                     <li><strong>1-2h exercice :</strong> Boisson sportive</li>
                                     <li><strong>&gt;2h exercice :</strong> SRO ou lait</li>
-                                    <li><strong>Ultra-endurance :</strong> StratÃ©gie multi-boissons</li>
-                                    <li><strong>RÃ©cupÃ©ration :</strong> 150% pertes sudorales</li>
+                                    <li><strong>Ultra-endurance :</strong> Strategie multi-boissons</li>
+                                    <li><strong>Recuperation :</strong> 150% pertes sudorales</li>
                                 </ul>
                             </div>
                         </div>
@@ -695,45 +695,45 @@
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-microscope me-2"></i>
-                    Biomarqueurs et Ã©valuation du Statut Hydrique
+                    Biomarqueurs et evaluation du Statut Hydrique
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-8">
-                        <h6>Biomarqueurs de l'Ã©tat d'Hydratation</h6>
+                        <h6>Biomarqueurs de l'etat d'Hydratation</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Biomarqueur</th>
-                                        <th>MÃ©thode</th>
+                                        <th>Methode</th>
                                         <th>Euhydratation</th>
-                                        <th>DÃ©shydratation LÃ©gÃ¨re</th>
-                                        <th>DÃ©shydratation SÃ©vÃ¨re</th>
-                                        <th>PrÃ©cision</th>
+                                        <th>Deshydratation Legere</th>
+                                        <th>Deshydratation Severe</th>
+                                        <th>Precision</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="table-success">
-                                        <td>OsmolalitÃ© plasmatique</td>
-                                        <td>OsmomÃ¨tre</td>
+                                        <td>Osmolalite plasmatique</td>
+                                        <td>Osmometre</td>
                                         <td>275-295 mOsm/kg</td>
                                         <td>295-305 mOsm/kg</td>
                                         <td>&gt;305 mOsm/kg</td>
                                         <td><strong>Gold standard</strong></td>
                                     </tr>
                                     <tr>
-                                        <td>OsmolalitÃ© urinaire</td>
-                                        <td>RÃ©fractomÃ¨tre</td>
+                                        <td>Osmolalite urinaire</td>
+                                        <td>Refractometre</td>
                                         <td>&lt;700 mOsm/kg</td>
                                         <td>700-1000 mOsm/kg</td>
                                         <td>&gt;1000 mOsm/kg</td>
-                                        <td>TrÃ¨s bonne</td>
+                                        <td>Tres bonne</td>
                                     </tr>
                                     <tr>
-                                        <td>DensitÃ© urinaire</td>
-                                        <td>DensimÃ¨tre</td>
+                                        <td>Densite urinaire</td>
+                                        <td>Densimetre</td>
                                         <td>&lt;1.020</td>
                                         <td>1.020-1.025</td>
                                         <td>&gt;1.025</td>
@@ -741,10 +741,10 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Couleur urinaire</strong></td>
-                                        <td>Ã©chelle 1-8</td>
+                                        <td>echelle 1-8</td>
                                         <td><strong>1-3 (paille claire)</strong></td>
                                         <td>4-5 (jaune)</td>
-                                        <td>6-8 (foncÃ©)</td>
+                                        <td>6-8 (fonce)</td>
                                         <td>Pratique</td>
                                     </tr>
                                     <tr>
@@ -757,52 +757,52 @@
                                     </tr>
                                     <tr class="table-warning">
                                         <td><strong>Perte de poids</strong></td>
-                                        <td>Balance prÃ©cise</td>
+                                        <td>Balance precise</td>
                                         <td>&lt;1%</td>
                                         <td><strong>1-3%</strong></td>
                                         <td><strong>&gt;3%</strong></td>
                                         <td><strong>Excellente</strong></td>
                                     </tr>
                                     <tr>
-                                        <td>Pli cutanÃ©</td>
+                                        <td>Pli cutane</td>
                                         <td>Test clinique</td>
                                         <td>&lt;2 secondes</td>
                                         <td>2-4 secondes</td>
                                         <td>&gt;4 secondes</td>
-                                        <td>ModÃ©rÃ©e</td>
+                                        <td>Moderee</td>
                                     </tr>
                                     <tr>
                                         <td>Soif subjective</td>
-                                        <td>Ã©chelle 1-9</td>
+                                        <td>echelle 1-9</td>
                                         <td>1-3</td>
                                         <td>4-6</td>
                                         <td>7-9</td>
-                                        <td>RetardÃ©e</td>
+                                        <td>Retardee</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6>ConsÃ©quences de la DÃ©shydratation</h6>
+                        <h6>Consequences de la Deshydratation</h6>
                         <div class="card border-warning mb-3">
                             <div class="card-header bg-warning text-dark">
-                                <small>DÃ©shydratation 1-2% Poids Corporel</small>
+                                <small>Deshydratation 1-2% Poids Corporel</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Diminution performance physique</li>
-                                    <li>AltÃ©ration thermorÃ©gulation</li>
-                                    <li>Fatigue prÃ©coce</li>
-                                    <li>Concentration rÃ©duite</li>
-                                    <li>Humeur altÃ©rÃ©e</li>
+                                    <li>Alteration thermoregulation</li>
+                                    <li>Fatigue precoce</li>
+                                    <li>Concentration reduite</li>
+                                    <li>Humeur alteree</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="card border-danger mb-3">
                             <div class="card-header bg-danger text-white">
-                                <small>DÃ©shydratation 3-5% Poids Corporel</small>
+                                <small>Deshydratation 3-5% Poids Corporel</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
@@ -810,22 +810,22 @@
                                     <li>Hyperthermie dangereuse</li>
                                     <li>Troubles cardiovasculaires</li>
                                     <li>Crampes musculaires</li>
-                                    <li>NausÃ©es, cÃ©phalÃ©es</li>
+                                    <li>Nausees, cephalees</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="card border-dark">
                             <div class="card-header bg-dark text-white">
-                                <small>DÃ©shydratation &gt;5% - URGENCE</small>
+                                <small>Deshydratation &gt;5% - URGENCE</small>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Collapsus cardiovasculaire</li>
-                                    <li>Insuffisance rÃ©nale aiguë</li>
+                                    <li>Insuffisance renale aiguë</li>
                                     <li>Troubles neurologiques</li>
-                                    <li>Choc hypovolÃ©mique</li>
-                                    <li>Pronostic vital engagÃ©</li>
+                                    <li>Choc hypovolemique</li>
+                                    <li>Pronostic vital engage</li>
                                 </ul>
                             </div>
                         </div>
@@ -834,7 +834,7 @@
                             <h6><i class="fas fa-exclamation-triangle me-2"></i>Important</h6>
                             <p class="small mb-0">
                                 En cas de pathologie chronique, consulter un professionnel 
-                                de santÃ© avant de modifier significativement ses apports hydriques.
+                                de sante avant de modifier significativement ses apports hydriques.
                             </p>
                         </div>
                     </div>
@@ -859,9 +859,9 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>RÃ©veil :</strong> 250-500ml au lever</li>
+                                    <li><strong>Reveil :</strong> 250-500ml au lever</li>
                                     <li><strong>Avant repas :</strong> 250ml (30min avant)</li>
-                                    <li><strong>RÃ©partition :</strong> Toutes les heures</li>
+                                    <li><strong>Repartition :</strong> Toutes les heures</li>
                                     <li><strong>Surveillance :</strong> Couleur urine</li>
                                     <li><strong>Adaptation :</strong> Selon saison/climat</li>
                                 </ul>
@@ -876,10 +876,10 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>PrÃ©-exercice :</strong> 5-7ml/kg (2-4h avant)</li>
+                                    <li><strong>Pre-exercice :</strong> 5-7ml/kg (2-4h avant)</li>
                                     <li><strong>Pendant :</strong> 150-250ml/15-20min</li>
                                     <li><strong>Post-exercice :</strong> 150% pertes sudorales</li>
-                                    <li><strong>TempÃ©rature :</strong> 8-15°C optimal</li>
+                                    <li><strong>Temperature :</strong> 8-15°C optimal</li>
                                     <li><strong>Monitoring :</strong> Perte de poids</li>
                                 </ul>
                             </div>
@@ -889,15 +889,15 @@
                     <div class="col-md-4">
                         <div class="card border-danger h-100">
                             <div class="card-header bg-danger text-white">
-                                <h6 class="mb-0">Situations SpÃ©ciales</h6>
+                                <h6 class="mb-0">Situations Speciales</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li><strong>FiÃ¨vre :</strong> +500-750ml/jour</li>
+                                    <li><strong>Fievre :</strong> +500-750ml/jour</li>
                                     <li><strong>Altitude :</strong> +500ml si &gt;2500m</li>
                                     <li><strong>Chaleur :</strong> +50ml par °C &gt;25°C</li>
                                     <li><strong>Vol long :</strong> 150ml/h de vol</li>
-                                    <li><strong>Âge :</strong> Surveillance renforcÃ©e &gt;65 ans</li>
+                                    <li><strong>Âge :</strong> Surveillance renforcee &gt;65 ans</li>
                                 </ul>
                             </div>
                         </div>
@@ -905,19 +905,19 @@
                 </div>
                 
                 <div class="alert alert-success mt-4">
-                    <h6><i class="fas fa-check-circle me-2"></i>RÃ¨gles d'Or de l'Hydratation</h6>
+                    <h6><i class="fas fa-check-circle me-2"></i>Regles d'Or de l'Hydratation</h6>
                     <div class="row g-2">
                         <div class="col-md-6">
                             <ul class="small mb-0">
                                 <li>Boire avant d'avoir soif</li>
-                                <li>RÃ©partir les apports sur la journÃ©e</li>
-                                <li>Adapter selon l'activitÃ© et le climat</li>
+                                <li>Repartir les apports sur la journee</li>
+                                <li>Adapter selon l'activite et le climat</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="small mb-0">
-                                <li>Surveiller les signes de dÃ©shydratation</li>
-                                <li>PrivilÃ©gier l'eau pour l'hydratation gÃ©nÃ©rale</li>
+                                <li>Surveiller les signes de deshydratation</li>
+                                <li>Privilegier l'eau pour l'hydratation generale</li>
                                 <li>Consulter en cas de pathologie chronique</li>
                             </ul>
                         </div>
@@ -928,7 +928,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -944,9 +944,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -956,15 +956,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -991,7 +991,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -1002,12 +1002,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1119,7 +1119,7 @@ const baseNeedsConfig = {
     }
 };
 
-// Facteurs d'intensitÃ© d'activitÃ© (litres par heure)
+// Facteurs d'intensite d'activite (litres par heure)
 const intensityFactors = {
     light: 0.4,     // 400ml/h
     moderate: 0.6,  // 600ml/h  
@@ -1148,7 +1148,7 @@ function getBaseNeeds(age, gender) {
 }
 
 function calculateHydration() {
-    // RÃ©cupÃ©ration des valeurs
+    // Recuperation des valeurs
     const weight = parseFloat(document.getElementById('weight').value);
     const height = parseFloat(document.getElementById('height').value);
     const age = parseInt(document.getElementById('age').value);
@@ -1187,7 +1187,7 @@ function calculateHydration() {
     // Masquer les erreurs
     errorDiv.classList.add('d-none');
     
-    // Calcul base selon mÃ©thode IOM
+    // Calcul base selon methode IOM
     let baseNeeds = getBaseNeeds(age, gender);
     
     // Ajustement grossesse/allaitement
@@ -1195,19 +1195,19 @@ function calculateHydration() {
         baseNeeds += 0.5; // Moyenne grossesse (+0.3L) et allaitement (+0.7L)
     }
     
-    // Calcul alternatif basÃ© sur poids
+    // Calcul alternatif base sur poids
     const weightBasedNeeds = age >= 65 ? (weight * 30) / 1000 : (weight * 35) / 1000;
     
-    // Ajustements activitÃ© physique
+    // Ajustements activite physique
     const activityAdjustment = activityHours * intensityFactors[activityIntensity];
     
     // Ajustements climatiques
     let climateAdjustment = 0;
     if (temperature > 25) {
-        climateAdjustment += (temperature - 25) * 0.05; // +50ml par degrÃ© >25°C
+        climateAdjustment += (temperature - 25) * 0.05; // +50ml par degre >25°C
     }
     if (humidity > 70) {
-        climateAdjustment += 0.2; // +200ml si humiditÃ© Ã©levÃ©e
+        climateAdjustment += 0.2; // +200ml si humidite elevee
     }
     if (altitude > 2500) {
         climateAdjustment += 0.5; // +500ml en altitude
@@ -1216,9 +1216,9 @@ function calculateHydration() {
     // Ajustements pathologiques
     let healthAdjustment = 0;
     switch (healthCondition) {
-        case 'fever': healthAdjustment = 0.6; break; // +600ml fiÃ¨vre
-        case 'diabetes': healthAdjustment = 0.5; break; // +500ml diabÃ¨te
-        case 'kidney': healthAdjustment = -0.4; break; // -400ml insuffisance rÃ©nale
+        case 'fever': healthAdjustment = 0.6; break; // +600ml fievre
+        case 'diabetes': healthAdjustment = 0.5; break; // +500ml diabete
+        case 'kidney': healthAdjustment = -0.4; break; // -400ml insuffisance renale
         case 'heart': healthAdjustment = -0.3; break; // -300ml insuffisance cardiaque
         default: healthAdjustment = 0;
     }
@@ -1227,13 +1227,13 @@ function calculateHydration() {
     const totalNeedsIOM = baseNeeds + activityAdjustment + climateAdjustment + healthAdjustment;
     const totalNeedsWeight = weightBasedNeeds + activityAdjustment + climateAdjustment + healthAdjustment;
     
-    // RÃ©partition dans la journÃ©e
-    const hourlyIntake = (totalNeedsIOM / 16) * 1000; // Sur 16h Ã©veillÃ©es, en ml
+    // Repartition dans la journee
+    const hourlyIntake = (totalNeedsIOM / 16) * 1000; // Sur 16h eveillees, en ml
     
     // Protocole sportif
     const preWorkout = activityHours > 0 ? 0.5 : 0;
     const duringWorkout = activityHours * intensityFactors[activityIntensity];
-    const postWorkout = activityHours > 0 ? 0.75 : 0; // 150% rÃ¨gle
+    const postWorkout = activityHours > 0 ? 0.75 : 0; // 150% regle
     
     // Statut hydratation
     let hydrationStatus = 'Optimal';
@@ -1245,18 +1245,18 @@ function calculateHydration() {
         hydrationStatus = 'Risque surhydratation';
         statusColor = 'warning';
     } else if (healthCondition === 'kidney' || healthCondition === 'heart') {
-        hydrationStatus = 'Surveillance mÃ©dicale';
+        hydrationStatus = 'Surveillance medicale';
         statusColor = 'info';
     }
     
-    // Pertes hydriques estimÃ©es
+    // Pertes hydriques estimees
     const urinaryLoss = totalNeedsIOM * 0.6; // 60%
     const respiratoryLoss = totalNeedsIOM * 0.15; // 15%
     const skinLoss = (totalNeedsIOM * 0.20) + (activityAdjustment * 0.8); // 20% + sudation
     const fecalLoss = totalNeedsIOM * 0.05; // 5%
     const totalLosses = urinaryLoss + respiratoryLoss + skinLoss + fecalLoss;
     
-    // Affichage des rÃ©sultats
+    // Affichage des resultats
     displayResults({
         totalNeedsIOM: Math.round(totalNeedsIOM * 100) / 100,
         totalNeedsWeight: Math.round(totalNeedsWeight * 100) / 100,
@@ -1282,7 +1282,7 @@ function calculateHydration() {
 }
 
 function displayResults(results) {
-    // RÃ©sultats principaux
+    // Resultats principaux
     document.getElementById('mainResults').innerHTML = `
         <div class="col-md-3">
             <div class="card border-primary h-100">
@@ -1302,7 +1302,7 @@ function displayResults(results) {
         <div class="col-md-3">
             <div class="card border-info h-100">
                 <div class="card-header bg-info text-white text-center">
-                    <h6 class="mb-0">MÃ©thode Poids</h6>
+                    <h6 class="mb-0">Methode Poids</h6>
                     <small>35ml/kg (30ml/kg +65ans)</small>
                 </div>
                 <div class="card-body text-center">
@@ -1318,7 +1318,7 @@ function displayResults(results) {
             <div class="card border-warning h-100">
                 <div class="card-header bg-warning text-dark text-center">
                     <h6 class="mb-0">Apport Horaire</h6>
-                    <small>16h Ã©veillÃ©es</small>
+                    <small>16h eveillees</small>
                 </div>
                 <div class="card-body text-center">
                     <p class="card-text fs-3">
@@ -1333,7 +1333,7 @@ function displayResults(results) {
             <div class="card border-${results.statusColor} h-100">
                 <div class="card-header bg-${results.statusColor} ${results.statusColor === 'warning' ? 'text-dark' : 'text-white'} text-center">
                     <h6 class="mb-0">Statut</h6>
-                    <small>Ã©valuation</small>
+                    <small>evaluation</small>
                 </div>
                 <div class="card-body text-center">
                     <p class="card-text fs-6">
@@ -1344,7 +1344,7 @@ function displayResults(results) {
         </div>
     `;
     
-    // RÃ©partition des ajustements
+    // Repartition des ajustements
     document.getElementById('adjustmentsBreakdown').innerHTML = `
         <div class="col-md-3">
             <div class="d-flex justify-content-between">
@@ -1354,7 +1354,7 @@ function displayResults(results) {
         </div>
         <div class="col-md-3">
             <div class="d-flex justify-content-between">
-                <span>ActivitÃ© :</span>
+                <span>Activite :</span>
                 <strong class="text-warning">+${results.activityAdjustment}L</strong>
             </div>
         </div>
@@ -1366,7 +1366,7 @@ function displayResults(results) {
         </div>
         <div class="col-md-3">
             <div class="d-flex justify-content-between">
-                <span>SantÃ© :</span>
+                <span>Sante :</span>
                 <strong class="${results.healthAdjustment >= 0 ? 'text-success' : 'text-secondary'}">
                     ${results.healthAdjustment >= 0 ? '+' : ''}${results.healthAdjustment}L
                 </strong>
@@ -1379,7 +1379,7 @@ function displayResults(results) {
         document.getElementById('sportsProtocol').classList.remove('d-none');
         document.getElementById('sportsBreakdown').innerHTML = `
             <div class="col-md-4">
-                <strong>PrÃ©-exercice :</strong> ${results.preWorkout}L (2-3h avant)
+                <strong>Pre-exercice :</strong> ${results.preWorkout}L (2-3h avant)
             </div>
             <div class="col-md-4">
                 <strong>Pendant exercice :</strong> ${results.duringWorkout}L
@@ -1424,13 +1424,13 @@ function displayResults(results) {
             <td>${(results.totalNeedsIOM * 0.2).toFixed(1)}L</td>
         </tr>
         <tr>
-            <td>Eau mÃ©tabolique</td>
+            <td>Eau metabolique</td>
             <td>~300ml</td>
             <td>0.3L</td>
         </tr>
     `;
     
-    // Afficher les rÃ©sultats
+    // Afficher les resultats
     document.getElementById('results').classList.remove('d-none');
     document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -1455,7 +1455,7 @@ function resetForm() {
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
-    // Masquer le conteneur grossesse par dÃ©faut
+    // Masquer le conteneur grossesse par defaut
     document.getElementById('pregnancyContainer').style.display = 'none';
 });
 </script>

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'DÃ©tail de l\'article')
+@section('title', 'Detail de l\'article')
 @section('page-title', $post->name)
-@section('page-description', 'DÃ©tails de l\'article')
+@section('page-description', 'Details de l\'article')
 
 @section('content')
 <div class="container-fluid">
@@ -95,7 +95,7 @@
                                 
                                 @if($post->meta_keywords)
                                     <div class="col-12">
-                                        <small class="text-muted d-block">Mots-clÃ©s</small>
+                                        <small class="text-muted d-block">Mots-cles</small>
                                         <div>
                                             @foreach(explode(',', $post->meta_keywords) as $keyword)
                                                 <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
@@ -148,12 +148,12 @@
                 </div>
             </div>
 
-            <!-- CatÃ©gorie -->
+            <!-- Categorie -->
             @if($post->category)
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-gradient-info text-white p-3">
                         <h6 class="mb-0">
-                            <i class="fas fa-folder me-2"></i>CatÃ©gorie
+                            <i class="fas fa-folder me-2"></i>Categorie
                         </h6>
                     </div>
                     <div class="card-body p-3">
@@ -204,19 +204,19 @@
                     <div class="row g-3 small">
                         @if($post->creator)
                             <div class="col-12">
-                                <small class="text-muted d-block">CrÃ©Ã© par</small>
+                                <small class="text-muted d-block">Cree par</small>
                                 <strong>{{ $post->creator->name }}</strong>
                             </div>
                         @endif
                         
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de crÃ©ation</small>
+                            <small class="text-muted d-block">Date de creation</small>
                             <strong>{{ $post->created_at->format('d/m/Y H:i') }}</strong>
                         </div>
                         
                         @if($post->updated_at && $post->updated_at != $post->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">DerniÃ¨re modification</small>
+                                <small class="text-muted d-block">Derniere modification</small>
                                 <strong>{{ $post->updated_at->format('d/m/Y H:i') }}</strong>
                             </div>
                         @endif

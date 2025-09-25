@@ -11,11 +11,11 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; // Ã adapter si tu veux restreindre l'accÃ¨s
+        return true; // Ã adapter si tu veux restreindre l'acces
     }
 
     /**
-     * RÃ¨gles de validation basÃ©es sur la migration Category.
+     * Regles de validation basees sur la migration Category.
      */
     public function rules(): array
     {

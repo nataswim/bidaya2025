@@ -2,7 +2,7 @@
 
 @section('title', 'Gestion des Permissions')
 @section('page-title', 'Permissions')
-@section('page-description', 'Gestion des permissions systÃ¨me')
+@section('page-description', 'Gestion des permissions systeme')
 
 @section('content')
 <div class="container-fluid">
@@ -14,9 +14,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h5 class="mb-1">
-                                <i class="fas fa-key me-2"></i>Permissions systÃ¨me
+                                <i class="fas fa-key me-2"></i>Permissions systeme
                             </h5>
-                            <small class="opacity-75">{{ $permissions->total() ?? $permissions->count() }} permission(s) configurÃ©e(s)</small>
+                            <small class="opacity-75">{{ $permissions->total() ?? $permissions->count() }} permission(s) configuree(s)</small>
                         </div>
                         <a href="{{ route('admin.permissions.create') }}" class="btn btn-light">
                             <i class="fas fa-plus me-2"></i>Nouvelle permission
@@ -52,8 +52,8 @@
                         <div class="col-md-3">
                             <select name="usage" class="form-select">
                                 <option value="">Toutes</option>
-                                <option value="used" {{ request('usage') === 'used' ? 'selected' : '' }}>UtilisÃ©es</option>
-                                <option value="unused" {{ request('usage') === 'unused' ? 'selected' : '' }}>Non utilisÃ©es</option>
+                                <option value="used" {{ request('usage') === 'used' ? 'selected' : '' }}>Utilisees</option>
+                                <option value="unused" {{ request('usage') === 'unused' ? 'selected' : '' }}>Non utilisees</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -71,7 +71,7 @@
                     </form>
                 </div>
 
-                <!-- Permissions groupÃ©es -->
+                <!-- Permissions groupees -->
                 <div class="card-body p-0">
                     @if($permissions->count() > 0)
                         @php
@@ -115,7 +115,7 @@
                                                                 </span>
                                                             @else
                                                                 <span class="badge bg-secondary-subtle text-secondary small">
-                                                                    Non utilisÃ©e
+                                                                    Non utilisee
                                                                 </span>
                                                             @endif
                                                         </div>
@@ -158,7 +158,7 @@
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" 
                                                                href="{{ route('admin.permissions.show', $permission) }}">
-                                                                <i class="fas fa-eye me-2 text-info"></i>Voir dÃ©tails
+                                                                <i class="fas fa-eye me-2 text-info"></i>Voir details
                                                             </a>
                                                         </li>
                                                         <li>
@@ -185,7 +185,7 @@
                                                             <li><hr class="dropdown-divider"></li>
                                                             <li>
                                                                 <span class="dropdown-item text-muted">
-                                                                    <i class="fas fa-info-circle me-2"></i>UtilisÃ©e par {{ $permission->roles()->count() }} rôle(s)
+                                                                    <i class="fas fa-info-circle me-2"></i>Utilisee par {{ $permission->roles()->count() }} rôle(s)
                                                                 </span>
                                                             </li>
                                                         @endif
@@ -204,7 +204,7 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
                                         Affichage de {{ $permissions->firstItem() }} Ã {{ $permissions->lastItem() }} 
-                                        sur {{ $permissions->total() }} rÃ©sultat(s)
+                                        sur {{ $permissions->total() }} resultat(s)
                                     </div>
                                     {{ $permissions->appends(request()->query())->links() }}
                                 </div>
@@ -213,16 +213,16 @@
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-key fa-3x text-muted mb-3 opacity-25"></i>
-                            <h5>Aucune permission trouvÃ©e</h5>
+                            <h5>Aucune permission trouvee</h5>
                             @if(request()->hasAny(['search', 'group', 'usage']))
-                                <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
                                 <a href="{{ route('admin.permissions.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir toutes les permissions
                                 </a>
                             @else
-                                <p class="text-muted mb-3">CrÃ©ez vos premiÃ¨res permissions pour contrôler les accÃ¨s</p>
+                                <p class="text-muted mb-3">Creez vos premieres permissions pour contrôler les acces</p>
                                 <a href="{{ route('admin.permissions.create') }}" class="btn btn-warning">
-                                    <i class="fas fa-plus me-2"></i>CrÃ©er une permission
+                                    <i class="fas fa-plus me-2"></i>Creer une permission
                                 </a>
                             @endif
                         </div>
@@ -233,7 +233,7 @@
 
         <!-- Sidebar statistiques -->
         <div class="col-lg-4">
-            <!-- Statistiques gÃ©nÃ©rales -->
+            <!-- Statistiques generales -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-primary text-white p-3">
                     <h6 class="mb-0">
@@ -258,13 +258,13 @@
                         <div class="col-6">
                             <div class="bg-success bg-opacity-10 rounded p-3">
                                 <h4 class="fw-bold text-success mb-1">{{ $usedPermissions }}</h4>
-                                <small class="text-muted">UtilisÃ©es</small>
+                                <small class="text-muted">Utilisees</small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="bg-warning bg-opacity-10 rounded p-3">
                                 <h4 class="fw-bold text-warning mb-1">{{ $unusedPermissions }}</h4>
-                                <small class="text-muted">Non utilisÃ©es</small>
+                                <small class="text-muted">Non utilisees</small>
                             </div>
                         </div>
                         <div class="col-6">
@@ -277,7 +277,7 @@
                 </div>
             </div>
 
-            <!-- Groupes les plus utilisÃ©s -->
+            <!-- Groupes les plus utilises -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
@@ -308,7 +308,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="text-muted mb-0">Aucun groupe configurÃ©</p>
+                        <p class="text-muted mb-0">Aucun groupe configure</p>
                     @endforelse
                 </div>
             </div>
@@ -326,11 +326,11 @@
                             <i class="fas fa-plus me-2"></i>Nouvelle permission
                         </a>
                         <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-primary">
-                            <i class="fas fa-user-shield me-2"></i>GÃ©rer les rôles
+                            <i class="fas fa-user-shield me-2"></i>Gerer les rôles
                         </a>
                         @if($unusedPermissions > 0)
                             <button class="btn btn-outline-warning" onclick="showUnusedPermissions()">
-                                <i class="fas fa-exclamation-triangle me-2"></i>{{ $unusedPermissions }} non utilisÃ©es
+                                <i class="fas fa-exclamation-triangle me-2"></i>{{ $unusedPermissions }} non utilisees
                             </button>
                         @endif
                         <button class="btn btn-outline-info" onclick="exportPermissions()">
@@ -380,8 +380,8 @@ function showUnusedPermissions() {
 }
 
 function exportPermissions() {
-    // Simuler l'export - Ã implÃ©menter dans le contrôleur
-    alert('FonctionnalitÃ© Ã implÃ©menter dans le contrôleur');
+    // Simuler l'export - Ã implementer dans le contrôleur
+    alert('Fonctionnalite Ã implementer dans le contrôleur');
 }
 </script>
 @endpush

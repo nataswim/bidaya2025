@@ -6,19 +6,19 @@
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-gradient-primary text-white p-4">
                 <h5 class="mb-0">
-                    <i class="fas fa-folder me-2"></i>Informations de la catÃ©gorie
+                    <i class="fas fa-folder me-2"></i>Informations de la categorie
                 </h5>
             </div>
             <div class="card-body p-4">
                 <!-- Nom -->
                 <div class="mb-4">
-                    <label for="name" class="form-label fw-semibold">Nom de la catÃ©gorie *</label>
+                    <label for="name" class="form-label fw-semibold">Nom de la categorie *</label>
                     <input type="text" 
                            name="name" 
                            id="name" 
                            value="{{ old('name', isset($category) ? $category->name : '') }}"
                            class="form-control form-control-lg @error('name') is-invalid @enderror"
-                           placeholder="Ex: eBooks Fitness, VidÃ©os Nutrition..."
+                           placeholder="Ex: eBooks Fitness, Videos Nutrition..."
                            required>
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="slug-automatique">
                     </div>
-                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique Ã partir du nom</div>
+                    <div class="form-text">Laisser vide pour generation automatique Ã partir du nom</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -51,21 +51,21 @@
                               rows="3"
                               class="form-control @error('short_description') is-invalid @enderror"
                               maxlength="500"
-                              placeholder="Description affichÃ©e dans les listes...">{{ old('short_description', isset($category) ? $category->short_description : '') }}</textarea>
-                    <div class="form-text">Maximum 500 caractÃ¨res</div>
+                              placeholder="Description affichee dans les listes...">{{ old('short_description', isset($category) ? $category->short_description : '') }}</textarea>
+                    <div class="form-text">Maximum 500 caracteres</div>
                     @error('short_description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Description complÃ¨te -->
+                <!-- Description complete -->
                 <div class="mb-4">
-                    <label for="description" class="form-label fw-semibold">Description complÃ¨te</label>
+                    <label for="description" class="form-label fw-semibold">Description complete</label>
                     <textarea name="description" 
                               id="description" 
                               rows="6"
                               class="form-control @error('description') is-invalid @enderror"
-                              placeholder="Description dÃ©taillÃ©e de la catÃ©gorie...">{{ old('description', isset($category) ? $category->description : '') }}</textarea>
+                              placeholder="Description detaillee de la categorie...">{{ old('description', isset($category) ? $category->description : '') }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -107,7 +107,7 @@
                            value="{{ old('order', isset($category) ? $category->order : 0) }}"
                            class="form-control @error('order') is-invalid @enderror"
                            placeholder="0">
-                    <div class="form-text">Plus le nombre est petit, plus la catÃ©gorie apparaît en premier</div>
+                    <div class="form-text">Plus le nombre est petit, plus la categorie apparaît en premier</div>
                     @error('order')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -182,7 +182,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration du slug
+    // Auto-generation du slug
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialiser l'aperçu si une icône existe dÃ©jÃ
+    // Initialiser l'aperçu si une icône existe dejÃ
     if (iconInput.value) {
         iconInput.dispatchEvent(new Event('input'));
     }

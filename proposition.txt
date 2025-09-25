@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('order')->nullable()->index();
             $table->string('status')->default('Active')->index();
             
-            // Audit fields - utilisation de foreignId pour cohÃ©rence avec users
+            // Audit fields - utilisation de foreignId pour coherence avec users
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('users')
@@ -151,7 +151,7 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('categories')
                 ->nullOnDelete();
-            $table->string('category_name')->nullable(); // DÃ©normalisation pour performance
+            $table->string('category_name')->nullable(); // Denormalisation pour performance
             
             // Feature and media
             $table->boolean('is_featured')->default(false)->index();
@@ -237,11 +237,11 @@ return new class extends Migration
                 ->constrained('tags')
                 ->cascadeOnDelete();
             
-            // Morphs crÃ©e automatiquement taggable_id (unsignedBigInteger) 
-            // et taggable_type (string) avec les index appropriÃ©s
+            // Morphs cree automatiquement taggable_id (unsignedBigInteger) 
+            // et taggable_type (string) avec les index appropries
             $table->morphs('taggable');
             
-            // Index unique pour Ã©viter les doublons
+            // Index unique pour eviter les doublons
             $table->unique(['tag_id', 'taggable_id', 'taggable_type'], 'taggables_unique');
             
             // Pas de timestamps sur une table pivot simple
@@ -277,10 +277,10 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100)->unique();
             $table->string('slug', 120)->unique()->index();
-            $table->string('display_name', 100)->nullable(); // Nom affichÃ© Ã l'utilisateur
+            $table->string('display_name', 100)->nullable(); // Nom affiche Ã l'utilisateur
             $table->text('description')->nullable();
-            $table->integer('level')->default(0)->index(); // HiÃ©rarchie des rôles
-            $table->boolean('is_default')->default(false); // Rôle par dÃ©faut pour nouveaux users
+            $table->integer('level')->default(0)->index(); // Hierarchie des rôles
+            $table->boolean('is_default')->default(false); // Rôle par defaut pour nouveaux users
             $table->timestamps();
             
             $table->index(['level', 'is_default']);
@@ -373,7 +373,7 @@ return new class extends Migration
             $table->string('last_login_ip', 45)->nullable()->after('last_login_at');
             $table->unsignedInteger('login_count')->default(0)->after('last_login_ip');
             
-            // PrÃ©fÃ©rences utilisateur
+            // Preferences utilisateur
             $table->json('preferences')->nullable()->after('login_count');
             $table->string('locale', 5)->default('fr')->after('preferences');
             $table->string('timezone', 50)->default('Europe/Paris')->after('locale');
@@ -421,7 +421,7 @@ class RoleSeeder extends Seeder
                 'name' => 'Super Admin',
                 'slug' => 'super-admin',
                 'display_name' => 'Super Administrateur',
-                'description' => 'AccÃ¨s complet au systÃ¨me',
+                'description' => 'Acces complet au systeme',
                 'level' => 100,
                 'is_default' => false,
             ],
@@ -436,8 +436,8 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'Editor',
                 'slug' => 'editor',
-                'display_name' => 'Ã©diteur',
-                'description' => 'Peut crÃ©er et Ã©diter du contenu',
+                'display_name' => 'editeur',
+                'description' => 'Peut creer et editer du contenu',
                 'level' => 60,
                 'is_default' => false,
             ],
@@ -445,7 +445,7 @@ class RoleSeeder extends Seeder
                 'name' => 'Author',
                 'slug' => 'author',
                 'display_name' => 'Auteur',
-                'description' => 'Peut crÃ©er du contenu',
+                'description' => 'Peut creer du contenu',
                 'level' => 40,
                 'is_default' => false,
             ],

@@ -15,7 +15,7 @@ class MediaManager {
     }
 
     setupEventListeners() {
-        // Gestion des fichiers sÃ©lectionnÃ©s
+        // Gestion des fichiers selectionnes
         const fileInput = document.getElementById('fileInput');
         if (fileInput) {
             fileInput.addEventListener('change', (e) => {
@@ -54,7 +54,7 @@ class MediaManager {
 
         const overlay = uploadZone.querySelector('.upload-overlay');
 
-        // PrÃ©venir les comportements par dÃ©faut
+        // Prevenir les comportements par defaut
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             uploadZone.addEventListener(eventName, this.preventDefaults, false);
             document.body.addEventListener(eventName, this.preventDefaults, false);
@@ -100,7 +100,7 @@ class MediaManager {
     }
 
     setupModals() {
-        // Configuration des modals Bootstrap si nÃ©cessaire
+        // Configuration des modals Bootstrap si necessaire
         const modals = document.querySelectorAll('.modal');
         modals.forEach(modal => {
             modal.addEventListener('show.bs.modal', (e) => {
@@ -120,7 +120,7 @@ class MediaManager {
 
         Array.from(files).forEach(file => {
             if (!this.allowedTypes.includes(file.type)) {
-                errors.push(`${file.name}: Type de fichier non autorisÃ©`);
+                errors.push(`${file.name}: Type de fichier non autorise`);
                 return;
             }
 
@@ -172,7 +172,7 @@ class MediaManager {
                                 <input type="text" 
                                        name="names[${index}]" 
                                        class="form-control form-control-sm" 
-                                       placeholder="Nom personnalisÃ©"
+                                       placeholder="Nom personnalise"
                                        value="${this.cleanFileName(file.name)}">
                             </div>
                             <div>
@@ -258,7 +258,7 @@ class MediaManager {
         
         document.body.appendChild(alertDiv);
         
-        // Auto-supprimer aprÃ¨s 5 secondes
+        // Auto-supprimer apres 5 secondes
         setTimeout(() => {
             if (alertDiv.parentNode) {
                 alertDiv.remove();
@@ -267,7 +267,7 @@ class MediaManager {
     }
 }
 
-// Fonctions globales pour les actions des mÃ©dias
+// Fonctions globales pour les actions des medias
 function viewMedia(mediaId) {
     fetch(`/admin/media/${mediaId}`)
         .then(response => response.text())
@@ -277,7 +277,7 @@ function viewMedia(mediaId) {
         })
         .catch(error => {
             console.error('Erreur:', error);
-            mediaManager.showAlert('Erreur', 'Impossible de charger les dÃ©tails du mÃ©dia', 'danger');
+            mediaManager.showAlert('Erreur', 'Impossible de charger les details du media', 'danger');
         });
 }
 
@@ -286,7 +286,7 @@ function selectMedia(mediaId) {
     if (mediaItem) {
         mediaItem.classList.toggle('selected');
         
-        // Si c'est dans un contexte de sÃ©lection (modal), gÃ©rer la sÃ©lection
+        // Si c'est dans un contexte de selection (modal), gerer la selection
         if (window.mediaSelector) {
             window.mediaSelector.toggleSelection(mediaId);
         }
@@ -294,7 +294,7 @@ function selectMedia(mediaId) {
 }
 
 function deleteMedia(mediaId) {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer ce mÃ©dia ? Cette action est irrÃ©versible.')) {
+    if (!confirm('Êtes-vous sûr de vouloir supprimer ce media ? Cette action est irreversible.')) {
         return;
     }
 
@@ -318,11 +318,11 @@ function copyToClipboard(elementId) {
         
         try {
             document.execCommand('copy');
-            mediaManager.showAlert('SuccÃ¨s', 'URL copiÃ©e dans le presse-papiers', 'success');
+            mediaManager.showAlert('Succes', 'URL copiee dans le presse-papiers', 'success');
         } catch (err) {
             // Fallback pour les navigateurs modernes
             navigator.clipboard.writeText(element.value).then(() => {
-                mediaManager.showAlert('SuccÃ¨s', 'URL copiÃ©e dans le presse-papiers', 'success');
+                mediaManager.showAlert('Succes', 'URL copiee dans le presse-papiers', 'success');
             }).catch(() => {
                 mediaManager.showAlert('Erreur', 'Impossible de copier l\'URL', 'danger');
             });
@@ -339,8 +339,8 @@ function updateMedia() {
 
 function deleteMediaFromDetails() {
     const form = document.getElementById('updateMediaForm');
-    if (form && confirm('Êtes-vous sûr de vouloir supprimer ce mÃ©dia ?')) {
-        // Changer la mÃ©thode pour DELETE
+    if (form && confirm('Êtes-vous sûr de vouloir supprimer ce media ?')) {
+        // Changer la methode pour DELETE
         const methodInput = form.querySelector('input[name="_method"]');
         if (methodInput) {
             methodInput.value = 'DELETE';
@@ -349,7 +349,7 @@ function deleteMediaFromDetails() {
     }
 }
 
-// Classe pour la sÃ©lection de mÃ©dias (utilisÃ©e dans d'autres pages)
+// Classe pour la selection de medias (utilisee dans d'autres pages)
 class MediaSelector {
     constructor(options = {}) {
         this.options = {
@@ -374,7 +374,7 @@ class MediaSelector {
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">SÃ©lectionner des mÃ©dias</h5>
+                            <h5 class="modal-title">Selectionner des medias</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
@@ -384,7 +384,7 @@ class MediaSelector {
                                 </div>
                                 <div class="col-md-3">
                                     <select id="mediaCategoryFilter" class="form-select">
-                                        <option value="">Toutes les catÃ©gories</option>
+                                        <option value="">Toutes les categories</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -394,7 +394,7 @@ class MediaSelector {
                                 </div>
                             </div>
                             <div id="mediaGrid" class="row g-3">
-                                <!-- Contenu chargÃ© via AJAX -->
+                                <!-- Contenu charge via AJAX -->
                             </div>
                             <div id="mediaLoadMore" class="text-center mt-3 d-none">
                                 <button type="button" class="btn btn-outline-primary" onclick="this.loadMore()">
@@ -403,10 +403,10 @@ class MediaSelector {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <span id="selectionCount" class="text-muted me-auto">0 sÃ©lectionnÃ©(s)</span>
+                            <span id="selectionCount" class="text-muted me-auto">0 selectionne(s)</span>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                             <button type="button" class="btn btn-primary" onclick="this.confirmSelection()">
-                                SÃ©lectionner
+                                Selectionner
                             </button>
                         </div>
                     </div>
@@ -483,14 +483,14 @@ class MediaSelector {
         const overlay = item.querySelector('.selection-overlay');
         
         if (this.selectedItems.includes(mediaId)) {
-            // DÃ©sÃ©lectionner
+            // Deselectionner
             this.selectedItems = this.selectedItems.filter(id => id !== mediaId);
             item.classList.remove('selected');
             overlay.classList.add('d-none');
         } else {
-            // SÃ©lectionner
+            // Selectionner
             if (!this.options.multiple) {
-                // Mode simple : dÃ©sÃ©lectionner les autres
+                // Mode simple : deselectionner les autres
                 this.selectedItems = [];
                 document.querySelectorAll('.media-selector-item.selected').forEach(el => {
                     el.classList.remove('selected');
@@ -509,7 +509,7 @@ class MediaSelector {
 
     updateSelectionCount() {
         const count = document.getElementById('selectionCount');
-        count.textContent = `${this.selectedItems.length} sÃ©lectionnÃ©(s)`;
+        count.textContent = `${this.selectedItems.length} selectionne(s)`;
     }
 
     confirmSelection() {
@@ -527,11 +527,11 @@ let mediaSelector;
 document.addEventListener('DOMContentLoaded', function() {
     mediaManager = new MediaManager();
     
-    // Initialiser le sÃ©lecteur de mÃ©dias si nÃ©cessaire
+    // Initialiser le selecteur de medias si necessaire
     window.mediaSelector = mediaSelector;
 });
 
-// Fonction utilitaire pour ouvrir le sÃ©lecteur de mÃ©dias
+// Fonction utilitaire pour ouvrir le selecteur de medias
 function openMediaSelector(options = {}) {
     if (!mediaSelector) {
         mediaSelector = new MediaSelector(options);

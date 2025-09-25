@@ -16,12 +16,12 @@ class MediaController extends Controller
     private function checkAdminAccess()
     {
         if (!auth()->user()->hasRole('admin')) {
-            abort(403, 'AccÃ¨s non autorisÃ©');
+            abort(403, 'Acces non autorise');
         }
     }
 
     /**
-     * Index des mÃ©dias
+     * Index des medias
      */
     public function index(Request $request)
     {
@@ -77,15 +77,15 @@ class MediaController extends Controller
 
         $count = count($uploadedFiles);
         $message = $count === 1 
-            ? 'Fichier uploadÃ© avec succÃ¨s.' 
-            : "{$count} fichiers uploadÃ©s avec succÃ¨s.";
+            ? 'Fichier uploade avec succes.' 
+            : "{$count} fichiers uploades avec succes.";
 
         return redirect()->route('admin.media.index')
             ->with('success', $message);
     }
 
     /**
- * Afficher un mÃ©dia
+ * Afficher un media
  */
 public function show(Media $media)
 {
@@ -98,7 +98,7 @@ public function show(Media $media)
 }
 
     /**
-     * Mettre Ã jour un mÃ©dia
+     * Mettre Ã jour un media
      */
     public function update(Request $request, Media $media)
     {
@@ -116,11 +116,11 @@ public function show(Media $media)
         ]));
 
         return redirect()->route('admin.media.show', $media)
-            ->with('success', 'MÃ©dia mis Ã jour avec succÃ¨s.');
+            ->with('success', 'Media mis Ã jour avec succes.');
     }
 
     /**
-     * Supprimer un mÃ©dia
+     * Supprimer un media
      */
     public function destroy(Media $media)
     {
@@ -129,11 +129,11 @@ public function show(Media $media)
         $media->delete();
 
         return redirect()->route('admin.media.index')
-            ->with('success', 'MÃ©dia supprimÃ© avec succÃ¨s.');
+            ->with('success', 'Media supprime avec succes.');
     }
 
     /**
-     * API pour sÃ©lectionner des mÃ©dias (modal)
+     * API pour selectionner des medias (modal)
      */
     public function api(Request $request)
     {
@@ -166,7 +166,7 @@ public function show(Media $media)
     }
 
     /**
-     * Gestion des catÃ©gories
+     * Gestion des categories
      */
     public function categories()
     {
@@ -180,7 +180,7 @@ public function show(Media $media)
     }
 
     /**
-     * CrÃ©er une catÃ©gorie
+     * Creer une categorie
      */
     public function storeCategory(StoreMediaCategoryRequest $request)
     {
@@ -189,7 +189,7 @@ public function show(Media $media)
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
-        // VÃ©rifier l'unicitÃ© du slug
+        // Verifier l'unicite du slug
         $originalSlug = $data['slug'];
         $counter = 1;
         while (MediaCategory::where('slug', $data['slug'])->exists()) {
@@ -200,39 +200,39 @@ public function show(Media $media)
         MediaCategory::create($data);
 
         return redirect()->route('admin.media.categories')
-            ->with('success', 'CatÃ©gorie crÃ©Ã©e avec succÃ¨s.');
+            ->with('success', 'Categorie creee avec succes.');
     }
 
     /**
-     * Supprimer une catÃ©gorie
+     * Supprimer une categorie
      */
     public function destroyCategory(MediaCategory $category)
     {
         $this->checkAdminAccess();
         
-        // VÃ©rifier s'il y a des mÃ©dias dans cette catÃ©gorie
+        // Verifier s'il y a des medias dans cette categorie
         if ($category->media()->count() > 0) {
             return redirect()->back()
-                ->with('error', 'Impossible de supprimer une catÃ©gorie contenant des mÃ©dias.');
+                ->with('error', 'Impossible de supprimer une categorie contenant des medias.');
         }
 
         $category->delete();
 
         return redirect()->route('admin.media.categories')
-            ->with('success', 'CatÃ©gorie supprimÃ©e avec succÃ¨s.');
+            ->with('success', 'Categorie supprimee avec succes.');
     }
 
-    // ========== MÃ©THODES PRIVÃ©ES ==========
+    // ========== MeTHODES PRIVeES ==========
 
     /**
      * Upload d'un fichier
      */
     private function uploadFile(UploadedFile $file, ?int $categoryId = null, ?string $customName = null, ?string $altText = null): Media
     {
-        // GÃ©nÃ©rer un nom unique pour le fichier
+        // Generer un nom unique pour le fichier
         $fileName = $this->generateUniqueFileName($file);
         
-        // CrÃ©er le dossier media s'il n'existe pas
+        // Creer le dossier media s'il n'existe pas
         $mediaPath = 'media';
         if (!Storage::disk('public')->exists($mediaPath)) {
             Storage::disk('public')->makeDirectory($mediaPath);
@@ -244,10 +244,10 @@ public function show(Media $media)
         // Stocker le fichier
         Storage::disk('public')->putFileAs($mediaPath, $file, $fileName);
         
-        // RÃ©cupÃ©rer les mÃ©tadonnÃ©es
+        // Recuperer les metadonnees
         $metadata = $this->extractMetadata($file, $filePath);
         
-        // CrÃ©er l'enregistrement en base
+        // Creer l'enregistrement en base
         return Media::create([
             'name' => $customName ?: $this->cleanFileName($file->getClientOriginalName()),
             'file_name' => $fileName,
@@ -262,7 +262,7 @@ public function show(Media $media)
     }
 
     /**
-     * GÃ©nÃ©rer un nom de fichier unique
+     * Generer un nom de fichier unique
      */
     private function generateUniqueFileName(UploadedFile $file): string
     {
@@ -283,13 +283,13 @@ public function show(Media $media)
     }
 
     /**
-     * Extraire les mÃ©tadonnÃ©es du fichier
+     * Extraire les metadonnees du fichier
      */
     private function extractMetadata(UploadedFile $file, string $storedPath): array
     {
         $metadata = [];
         
-        // Si c'est une image, rÃ©cupÃ©rer les dimensions
+        // Si c'est une image, recuperer les dimensions
         if (str_starts_with($file->getMimeType(), 'image/')) {
             $fullPath = Storage::disk('public')->path($storedPath);
             
@@ -307,7 +307,7 @@ public function show(Media $media)
     }
 
     /**
-     * Obtenir les statistiques des mÃ©dias
+     * Obtenir les statistiques des medias
      */
     private function getMediaStats(): array
     {

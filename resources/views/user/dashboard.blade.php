@@ -62,11 +62,11 @@
                                 </h5>
                                 <p class="mb-2">
                                     Votre paiement de <strong>{{ $completedPayment->formatted_price }}</strong> pour 
-                                    <strong>{{ $completedPayment->plan_name }}</strong> a Ã©tÃ© reçu avec succÃ¨s.
+                                    <strong>{{ $completedPayment->plan_name }}</strong> a ete reçu avec succes.
                                 </p>
                                 <p class="mb-0 small text-muted">
-                                    Un administrateur validera votre accÃ¨s premium prochainement. 
-                                    Vous recevrez une notification dÃ¨s l'activation.
+                                    Un administrateur validera votre acces premium prochainement. 
+                                    Vous recevrez une notification des l'activation.
                                 </p>
                             </div>
                         </div>
@@ -80,11 +80,11 @@
                             </div>
                             <div class="flex-fill">
                                 <h5 class="alert-heading mb-2">
-                                    <i class="fas fa-lock"></i> AccÃ¨s limitÃ© - Compte Visiteur
+                                    <i class="fas fa-lock"></i> Acces limite - Compte Visiteur
                                 </h5>
                                 <p class="mb-3">
-                                    Votre compte vous donne accÃ¨s au contenu public uniquement. 
-                                    Pour dÃ©bloquer tous les articles et contenus premium, passez Ã un compte utilisateur.
+                                    Votre compte vous donne acces au contenu public uniquement. 
+                                    Pour debloquer tous les articles et contenus premium, passez Ã un compte utilisateur.
                                 </p>
                                 <div class="d-flex gap-2 flex-wrap">
                                     <a href="{{ route('payments.index') }}" class="btn btn-primary">
@@ -117,8 +117,8 @@
                                 <i class="fas fa-crown"></i> Compte Premium Actif
                             </h5>
                             <p class="mb-0">
-                                FÃ©licitations ! Vous avez accÃ¨s Ã tous les contenus premium de la plateforme.
-                                Profitez pleinement de votre expÃ©rience utilisateur.
+                                Felicitations ! Vous avez acces Ã tous les contenus premium de la plateforme.
+                                Profitez pleinement de votre experience utilisateur.
                             </p>
                         </div>
                     </div>
@@ -144,10 +144,10 @@
                 ],
                 [
                     'title' => 'Articles lus',
-                    'value' => '0', // Ã implÃ©menter selon vos besoins
+                    'value' => '0', // Ã implementer selon vos besoins
                     'icon' => 'fas fa-book-reader',
                     'color' => 'info',
-                    'description' => 'Articles consultÃ©s'
+                    'description' => 'Articles consultes'
                 ],
                 [
                     'title' => 'Jours actif',
@@ -176,12 +176,12 @@
     </div>
 
     <div class="row g-4">
-        <!-- Articles rÃ©cents -->
+        <!-- Articles recents -->
         <div class="col-lg-8">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white border-bottom p-4">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Articles rÃ©cents</h5>
+                        <h5 class="mb-0">Articles recents</h5>
                         <a href="{{ route('public.index') }}" class="btn btn-sm btn-outline-primary">
                             Voir tous les articles
                         </a>
@@ -214,7 +214,7 @@
                                 </h6>
                                 <div class="d-flex align-items-center text-muted">
                                     <span class="badge bg-primary-subtle text-primary me-2">
-                                        {{ $article->category->name ?? 'Non catÃ©gorisÃ©' }}
+                                        {{ $article->category->name ?? 'Non categorise' }}
                                     </span>
                                     <small>{{ $article->published_at->format('d/m/Y') }}</small>
                                 </div>
@@ -226,8 +226,8 @@
                     @empty
                         <div class="p-5 text-center text-muted">
                             <i class="fas fa-newspaper fa-3x mb-3 opacity-50"></i>
-                            <div>Aucun article publiÃ© rÃ©cemment</div>
-                            <small>Revenez bientôt pour dÃ©couvrir nos nouveaux contenus</small>
+                            <div>Aucun article publie recemment</div>
+                            <small>Revenez bientôt pour decouvrir nos nouveaux contenus</small>
                         </div>
                     @endforelse
                 </div>
@@ -283,7 +283,7 @@
                             <i class="fas fa-newspaper me-2"></i>
                             <div>
                                 <div class="fw-semibold">Parcourir les articles</div>
-                                <small class="opacity-75">DÃ©couvrir les derniers contenus</small>
+                                <small class="opacity-75">Decouvrir les derniers contenus</small>
                             </div>
                         </a>
                         
@@ -293,7 +293,7 @@
                                 <i class="fas fa-crown me-2"></i>
                                 <div>
                                     <div class="fw-semibold">Passer Premium</div>
-                                    <small class="opacity-75">DÃ©bloquer tous les contenus</small>
+                                    <small class="opacity-75">Debloquer tous les contenus</small>
                                 </div>
                             </a>
                         @endif
@@ -312,7 +312,7 @@
                                 <i class="fas fa-cog me-2"></i>
                                 <div>
                                     <div class="fw-semibold">Administration</div>
-                                    <small class="opacity-75">GÃ©rer la plateforme</small>
+                                    <small class="opacity-75">Gerer la plateforme</small>
                                 </div>
                             </a>
                         @endif
@@ -321,7 +321,7 @@
                             <i class="fas fa-envelope me-2"></i>
                             <div>
                                 <div class="fw-semibold">Nous contacter</div>
-                                <small class="opacity-75">Une question ? Ã©crivez-nous</small>
+                                <small class="opacity-75">Une question ? ecrivez-nous</small>
                             </div>
                         </a>
                     </div>

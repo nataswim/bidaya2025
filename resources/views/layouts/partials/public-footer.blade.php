@@ -14,8 +14,8 @@
                         <h5 class="mb-0 text-white">{{ config('app.name') }}</h5>
                     </div>
                     <p class="text-light opacity-75 mb-4">
-                        Votre plateforme de rÃ©fÃ©rence pour le dÃ©veloppement web et les technologies modernes. 
-                        Nous partageons nos connaissances pour faire grandir la communautÃ©.
+                        Votre plateforme de reference pour le developpement web et les technologies modernes. 
+                        Nous partageons nos connaissances pour faire grandir la communaute.
                     </p>
                     <div class="d-flex gap-3">
                         <a href="#" class="btn btn-outline-light btn-sm rounded-circle" style="width: 40px; height: 40px;">
@@ -60,9 +60,9 @@
                     </ul>
                 </div>
 
-                <!-- CatÃ©gories -->
+                <!-- Categories -->
                 <div class="col-lg-2 col-md-6">
-                    <h6 class="text-white fw-semibold mb-3">CatÃ©gories</h6>
+                    <h6 class="text-white fw-semibold mb-3">Categories</h6>
                     <ul class="list-unstyled">
                         @php
                             $footerCategories = App\Models\Category::where('status', 'active')->limit(5)->get();
@@ -76,7 +76,7 @@
                             </li>
                         @empty
                             <li class="mb-2">
-                                <span class="text-light opacity-50">Aucune catÃ©gorie</span>
+                                <span class="text-light opacity-50">Aucune categorie</span>
                             </li>
                         @endforelse
                     </ul>
@@ -84,7 +84,7 @@
 
                 <!-- Newsletter -->
                 <div class="col-lg-4">
-                    <h6 class="text-white fw-semibold mb-3">Restez connectÃ©</h6>
+                    <h6 class="text-white fw-semibold mb-3">Restez connecte</h6>
                     <p class="text-light opacity-75 mb-3">
                         Recevez nos derniers articles directement dans votre boîte mail.
                     </p>
@@ -101,7 +101,7 @@
                     </form>
                     <div class="d-flex align-items-center text-light opacity-75">
                         <i class="fas fa-shield-alt me-2"></i>
-                        <small>Vos donnÃ©es sont protÃ©gÃ©es. Aucun spam.</small>
+                        <small>Vos donnees sont protegees. Aucun spam.</small>
                     </div>
                 </div>
             </div>
@@ -114,19 +114,19 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <p class="mb-0 text-light opacity-75">
-                        &copy; {{ date('Y') }} {{ config('app.name') }}. Tous droits rÃ©servÃ©s.
+                        &copy; {{ date('Y') }} {{ config('app.name') }}. Tous droits reserves.
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
                     <div class="d-flex flex-wrap justify-content-md-end gap-4">
                         <a href="#" class="text-light opacity-75 text-decoration-none hover-opacity-100">
-                            Politique de confidentialitÃ©
+                            Politique de confidentialite
                         </a>
                         <a href="#" class="text-light opacity-75 text-decoration-none hover-opacity-100">
                             Conditions d'utilisation
                         </a>
                         <a href="#" class="text-light opacity-75 text-decoration-none hover-opacity-100">
-                            Mentions lÃ©gales
+                            Mentions legales
                         </a>
                     </div>
                 </div>

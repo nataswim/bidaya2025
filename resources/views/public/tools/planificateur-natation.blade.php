@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Planificateur d\'Entraînement Natation - Programme Scientifique Aquatique')
-@section('meta_description', 'Planificateur natation scientifique avec rÃ©partition optimisÃ©e. Estimez le nombre de sÃ©ances hebdomadaires selon votre objectif et niveau. BasÃ© sur les derniÃ¨res recherches en sciences aquatiques.')
+@section('meta_description', 'Planificateur natation scientifique avec repartition optimisee. Estimez le nombre de seances hebdomadaires selon votre objectif et niveau. Base sur les dernieres recherches en sciences aquatiques.')
 
 @section('content')
 <!-- Section titre -->
@@ -15,7 +15,7 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-clock text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Estimez le nombre de sÃ©ances hebdomadaires</strong> basÃ© sur les derniÃ¨res recherches 
+                    <strong>Estimez le nombre de seances hebdomadaires</strong> base sur les dernieres recherches 
                     en sciences aquatiques pour optimiser votre progression
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="d-flex align-items-start">
                 <i class="fas fa-chart-line text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Combien de sÃ©ances de natation par semaine ? 
+                    <strong>Combien de seances de natation par semaine ? 
                 </div>
             </div>
         </div>
@@ -35,12 +35,12 @@
 <section class="py-5 bg-light">
     <div class="container">
         
-        <!-- Planificateur PersonnalisÃ© -->
+        <!-- Planificateur Personnalise -->
         <div class="card mb-4 shadow-lg">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-user-cog me-2"></i>
-                    Planificateur PersonnalisÃ© - MÃ©thode Evidence-Based
+                    Planificateur Personnalise - Methode Evidence-Based
                 </h3>
             </div>
             <div class="card-body">
@@ -58,49 +58,49 @@
                         <select id="goal" class="form-select form-select-lg border-primary">
                             <option value="">-- Choisir un objectif --</option>
                             <option value="remise-forme">Remise en forme</option>
-                            <option value="endurance">AmÃ©liorer l'endurance</option>
+                            <option value="endurance">Ameliorer l'endurance</option>
                             <option value="perte-poids">Perte de poids</option>
-                            <option value="competition">PrÃ©paration compÃ©tition</option>
+                            <option value="competition">Preparation competition</option>
                         </select>
-                        <small class="text-muted">SÃ©lectionnez votre objectif principal</small>
+                        <small class="text-muted">Selectionnez votre objectif principal</small>
                     </div>
                     <div class="col-md-6">
                         <label for="experience" class="form-label fw-bold">
-                            <i class="fas fa-medal me-2"></i>Niveau d'expÃ©rience
+                            <i class="fas fa-medal me-2"></i>Niveau d'experience
                         </label>
                         <select id="experience" class="form-select form-select-lg border-primary">
-                            <option value="">-- SÃ©lectionner votre niveau --</option>
-                            <option value="debutant">DÃ©butant (moins de 1 an)</option>
-                            <option value="intermediaire">IntermÃ©diaire (1-3 ans)</option>
-                            <option value="avance">AvancÃ© (plus de 3 ans)</option>
+                            <option value="">-- Selectionner votre niveau --</option>
+                            <option value="debutant">Debutant (moins de 1 an)</option>
+                            <option value="intermediaire">Intermediaire (1-3 ans)</option>
+                            <option value="avance">Avance (plus de 3 ans)</option>
                         </select>
-                        <small class="text-muted">BasÃ© sur votre expÃ©rience en natation</small>
+                        <small class="text-muted">Base sur votre experience en natation</small>
                     </div>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-md-6">
                         <button class="btn btn-primary btn-lg fw-bold w-100" onclick="generatePlan()">
-                            <i class="fas fa-calculator me-2"></i>GÃ©nÃ©rer mon plan personnalisÃ©
+                            <i class="fas fa-calculator me-2"></i>Generer mon plan personnalise
                         </button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg fw-bold w-100" onclick="resetPlanner()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- RÃ©sultats du Planificateur -->
+        <!-- Resultats du Planificateur -->
         <div id="planResults" class="d-none">
             <!-- Plan Principal -->
             <div class="card mb-4 shadow-lg">
                 <div class="card-header bg-success text-white">
                     <h3 class="mb-2">
                         <i class="fas fa-check-circle me-2"></i>
-                        Recommandation PersonnalisÃ©e
+                        Recommandation Personnalisee
                     </h3>
                 </div>
                 <div class="card-body">
@@ -111,7 +111,7 @@
                         </p>
                         <p class="mb-0">
                             <span class="fs-3"><strong class="text-success" id="totalSessions">0</strong></span>
-                            <span class="fs-5"> sÃ©ances par semaine</span>
+                            <span class="fs-5"> seances par semaine</span>
                         </p>
                     </div>
                     
@@ -124,7 +124,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="techniqueSessions">0</strong></span>
-                                        <small class="d-block">sÃ©ances/sem</small>
+                                        <small class="d-block">seances/sem</small>
                                     </p>
                                     <small class="text-muted">30% du volume total</small>
                                 </div>
@@ -138,7 +138,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="enduranceSessions">0</strong></span>
-                                        <small class="d-block">sÃ©ances/sem</small>
+                                        <small class="d-block">seances/sem</small>
                                     </p>
                                     <small class="text-muted">40% du volume total</small>
                                 </div>
@@ -152,7 +152,7 @@
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="speedSessions">0</strong></span>
-                                        <small class="d-block">sÃ©ances/sem</small>
+                                        <small class="d-block">seances/sem</small>
                                     </p>
                                     <small class="text-muted">20% du volume total</small>
                                 </div>
@@ -161,12 +161,12 @@
                         <div class="col-md-3">
                             <div class="card border-secondary h-100">
                                 <div class="card-header bg-secondary text-white text-center">
-                                    <h6 class="mb-0">RÃ©cupÃ©ration</h6>
+                                    <h6 class="mb-0">Recuperation</h6>
                                 </div>
                                 <div class="card-body text-center">
                                     <p class="card-text">
                                         <span class="fs-4"><strong id="recoverySessions">0</strong></span>
-                                        <small class="d-block">sÃ©ances/sem</small>
+                                        <small class="d-block">seances/sem</small>
                                     </p>
                                     <small class="text-muted">10% du volume total</small>
                                 </div>
@@ -179,7 +179,7 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
@@ -193,21 +193,21 @@
             </div>
             <div class="card-body">
                 <p>
-                    Les recommandations s'appuient sur les derniÃ¨res recherches en biomÃ©canique aquatique,
-                    physiologie de l'exercice et sciences du sport aquatique publiÃ©es en 2024-2025.
+                    Les recommandations s'appuient sur les dernieres recherches en biomecanique aquatique,
+                    physiologie de l'exercice et sciences du sport aquatique publiees en 2024-2025.
                 </p>
 
                 <div class="alert alert-info border-0">
-                    <h6><i class="fas fa-lightbulb me-2"></i>DonnÃ©es clÃ©s 2024</h6>
+                    <h6><i class="fas fa-lightbulb me-2"></i>Donnees cles 2024</h6>
                     <p class="mb-0">
-                        Les nageurs Ã©lites passent 65-70% de leur temps en zones aÃ©robies,
-                        avec seulement 15-20% en haute intensitÃ©. L'efficacitÃ© technique reprÃ©sente 40% de la performance.
+                        Les nageurs elites passent 65-70% de leur temps en zones aerobies,
+                        avec seulement 15-20% en haute intensite. L'efficacite technique represente 40% de la performance.
                     </p>
                 </div>
 
                 <div class="row g-4 mt-3">
                     <div class="col-md-6">
-                        <h6>PÃ©riodisation Aquatique Moderne</h6>
+                        <h6>Periodisation Aquatique Moderne</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -220,7 +220,7 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>Base</strong></td>
-                                        <td>Technique + AÃ©robie</td>
+                                        <td>Technique + Aerobie</td>
                                         <td>70-80%</td>
                                     </tr>
                                     <tr>
@@ -237,16 +237,16 @@
                             </table>
                         </div>
                         <p class="small text-muted">
-                            La pÃ©riodisation inverse montre des rÃ©sultats prometteurs pour
-                            l'amÃ©lioration rapide de la vitesse de nage.
+                            La periodisation inverse montre des resultats prometteurs pour
+                            l'amelioration rapide de la vitesse de nage.
                         </p>
                     </div>
 
                     <div class="col-md-6">
                         <h6>Zones d'Entraînement Scientifiques</h6>
                         <ul class="small">
-                            <li><strong>Zone 1 (RÃ©cupÃ©ration) :</strong> 60-70% FC Max</li>
-                            <li><strong>Zone 2 (AÃ©robie) :</strong> 70-80% FC Max</li>
+                            <li><strong>Zone 1 (Recuperation) :</strong> 60-70% FC Max</li>
+                            <li><strong>Zone 2 (Aerobie) :</strong> 70-80% FC Max</li>
                             <li><strong>Zone 3 (Seuil) :</strong> 80-90% FC Max</li>
                             <li><strong>Zone 4 (VO2 Max) :</strong> 90-95% FC Max</li>
                             <li><strong>Zone 5 (Neuromusculaire) :</strong> 95%+ FC Max</li>
@@ -254,7 +254,7 @@
                         <div class="alert alert-warning">
                             <small>
                                 <strong>Innovation 2024 :</strong> Les capteurs de lactates portables
-                                permettent un monitoring prÃ©cis en temps rÃ©el.
+                                permettent un monitoring precis en temps reel.
                             </small>
                         </div>
                     </div>
@@ -262,24 +262,24 @@
             </div>
         </div>
 
-        <!-- BiomÃ©canique et EfficacitÃ© -->
+        <!-- Biomecanique et Efficacite -->
         <div class="card mb-4">
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-cogs me-2"></i>
-                    BiomÃ©canique et EfficacitÃ© Technique
+                    Biomecanique et Efficacite Technique
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6>ParamÃ¨tres BiomÃ©caniques ClÃ©s</h6>
+                        <h6>Parametres Biomecaniques Cles</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>ParamÃ¨tre</th>
-                                        <th>Ã©lite</th>
+                                        <th>Parametre</th>
+                                        <th>elite</th>
                                         <th>Amateur</th>
                                     </tr>
                                 </thead>
@@ -290,12 +290,12 @@
                                         <td>1.5-2.0m</td>
                                     </tr>
                                     <tr>
-                                        <td>FrÃ©quence de Bras</td>
+                                        <td>Frequence de Bras</td>
                                         <td>35-45 cycles/min</td>
                                         <td>40-55 cycles/min</td>
                                     </tr>
                                     <tr>
-                                        <td>Index d'EfficacitÃ©</td>
+                                        <td>Index d'Efficacite</td>
                                         <td><strong>85-95%</strong></td>
                                         <td>65-75%</td>
                                     </tr>
@@ -306,14 +306,14 @@
                     <div class="col-md-6">
                         <h6>Technologies d'Analyse 2024</h6>
                         <ul class="small">
-                            <li><strong>Capteurs inertiels :</strong> Analyse 3D en temps rÃ©el</li>
+                            <li><strong>Capteurs inertiels :</strong> Analyse 3D en temps reel</li>
                             <li><strong>IA d'analyse technique :</strong> Correction automatique</li>
-                            <li><strong>CamÃ©ras sous-marines :</strong> BiomÃ©canique prÃ©cise</li>
-                            <li><strong>Wearables aquatiques :</strong> MÃ©triques continues</li>
+                            <li><strong>Cameras sous-marines :</strong> Biomecanique precise</li>
+                            <li><strong>Wearables aquatiques :</strong> Metriques continues</li>
                         </ul>
                         <div class="alert alert-success">
                             <small>
-                                <strong>RÃ©sultat 2024 :</strong> L'amÃ©lioration technique peut augmenter
+                                <strong>Resultat 2024 :</strong> L'amelioration technique peut augmenter
                                 la vitesse de 8-12% sans augmenter la charge d'entraînement.
                             </small>
                         </div>
@@ -322,12 +322,12 @@
             </div>
         </div>
 
-        <!-- Physiologie SpÃ©cifique -->
+        <!-- Physiologie Specifique -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-heartbeat me-2"></i>
-                    Physiologie Aquatique AvancÃ©e
+                    Physiologie Aquatique Avancee
                 </h3>
             </div>
             <div class="card-body">
@@ -336,32 +336,32 @@
                         <h6>Adaptations Cardio-Respiratoires</h6>
                         <ul class="small">
                             <li><strong>Bradycardie d'immersion :</strong> -20 Ã -30 bpm en eau</li>
-                            <li><strong>CapacitÃ© pulmonaire :</strong> +15-25% chez nageurs</li>
-                            <li><strong>EfficacitÃ© VO2 :</strong> Meilleure extraction O2</li>
-                            <li><strong>ThermorÃ©gulation :</strong> Adaptation mÃ©tabolique</li>
+                            <li><strong>Capacite pulmonaire :</strong> +15-25% chez nageurs</li>
+                            <li><strong>Efficacite VO2 :</strong> Meilleure extraction O2</li>
+                            <li><strong>Thermoregulation :</strong> Adaptation metabolique</li>
                         </ul>
 
                         <h6 class="mt-3">Adaptations Neuromusculaires</h6>
                         <ul class="small">
-                            <li>Coordination inter-musculaire optimisÃ©e</li>
-                            <li>Proprioception aquatique dÃ©veloppÃ©e</li>
-                            <li>Puissance propulsive spÃ©cifique</li>
-                            <li>RÃ©sistance Ã la fatigue lactique</li>
+                            <li>Coordination inter-musculaire optimisee</li>
+                            <li>Proprioception aquatique developpee</li>
+                            <li>Puissance propulsive specifique</li>
+                            <li>Resistance Ã la fatigue lactique</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6>Nutrition Aquatique SpÃ©cialisÃ©e</h6>
+                        <h6>Nutrition Aquatique Specialisee</h6>
                         <ul class="small">
-                            <li><strong>Hydratation :</strong> Paradoxe de la dÃ©shydratation en piscine</li>
-                            <li><strong>ThermorÃ©gulation :</strong> Besoins Ã©nergÃ©tiques modifiÃ©s</li>
+                            <li><strong>Hydratation :</strong> Paradoxe de la deshydratation en piscine</li>
+                            <li><strong>Thermoregulation :</strong> Besoins energetiques modifies</li>
                             <li><strong>Timing :</strong> Fenêtre d'absorption post-entraînement</li>
-                            <li><strong>Ã©lectrolytes :</strong> Pertes minÃ©rales par sudation</li>
+                            <li><strong>electrolytes :</strong> Pertes minerales par sudation</li>
                         </ul>
 
                         <div class="alert alert-warning">
                             <small>
-                                <strong>DÃ©couverte 2024 :</strong> Les nageurs perdent jusqu'Ã 500ml
-                                de sueur par heure en piscine chauffÃ©e, nÃ©cessitant une hydratation active.
+                                <strong>Decouverte 2024 :</strong> Les nageurs perdent jusqu'Ã 500ml
+                                de sueur par heure en piscine chauffee, necessitant une hydratation active.
                             </small>
                         </div>
                     </div>
@@ -376,7 +376,7 @@
                     <div class="card-header bg-warning text-dark">
                         <h3 class="mb-2">
                             <i class="fas fa-chart-line me-2"></i>
-                            Recommandations DÃ©taillÃ©es par Niveau
+                            Recommandations Detaillees par Niveau
                         </h3>
                     </div>
                     <div class="card-body">
@@ -385,40 +385,40 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Niveau</th>
-                                        <th>Volume/SÃ©ance</th>
-                                        <th>IntensitÃ© Distribution</th>
+                                        <th>Volume/Seance</th>
+                                        <th>Intensite Distribution</th>
                                         <th>Focus Principal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>DÃ©butant</strong></td>
+                                        <td><strong>Debutant</strong></td>
                                         <td>1000-1500m</td>
                                         <td>85% Z1-Z2, 15% Z3+</td>
                                         <td>Technique + Respiration</td>
                                     </tr>
                                     <tr>
-                                        <td>IntermÃ©diaire</td>
+                                        <td>Intermediaire</td>
                                         <td>1500-2500m</td>
                                         <td>75% Z1-Z2, 25% Z3+</td>
-                                        <td>Endurance + EfficacitÃ©</td>
+                                        <td>Endurance + Efficacite</td>
                                     </tr>
                                     <tr>
-                                        <td>AvancÃ©</td>
+                                        <td>Avance</td>
                                         <td>2500-4000m</td>
                                         <td>70% Z1-Z2, 30% Z3+</td>
-                                        <td>Performance + SpÃ©cificitÃ©</td>
+                                        <td>Performance + Specificite</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <h6 class="mt-3">Progression SaisonniÃ¨re</h6>
+                        <h6 class="mt-3">Progression Saisonniere</h6>
                         <ul class="small">
-                            <li><strong>Phase 1 (8-12 sem) :</strong> Base technique et aÃ©robie</li>
-                            <li><strong>Phase 2 (6-8 sem) :</strong> DÃ©veloppement seuil et vitesse</li>
-                            <li><strong>Phase 3 (2-4 sem) :</strong> Affûtage et compÃ©tition</li>
-                            <li><strong>Phase 4 (2-3 sem) :</strong> RÃ©cupÃ©ration active</li>
+                            <li><strong>Phase 1 (8-12 sem) :</strong> Base technique et aerobie</li>
+                            <li><strong>Phase 2 (6-8 sem) :</strong> Developpement seuil et vitesse</li>
+                            <li><strong>Phase 3 (2-4 sem) :</strong> Affûtage et competition</li>
+                            <li><strong>Phase 4 (2-3 sem) :</strong> Recuperation active</li>
                         </ul>
                     </div>
                 </div>
@@ -431,22 +431,22 @@
                     </div>
                     <div class="card-body">
                         <ul class="small">
-                            <li>Perte d'efficacitÃ© technique soudaine</li>
-                            <li>Augmentation de la frÃ©quence de bras</li>
-                            <li>Essoufflement prÃ©coce inhabituel</li>
+                            <li>Perte d'efficacite technique soudaine</li>
+                            <li>Augmentation de la frequence de bras</li>
+                            <li>Essoufflement precoce inhabituel</li>
                             <li>Douleurs articulaires persistantes</li>
-                            <li>DÃ©motivation pour l'eau</li>
+                            <li>Demotivation pour l'eau</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="card border-info">
                     <div class="card-header bg-info text-white">
-                        <h6 class="mb-0">Ã©quipement RecommandÃ© 2024</h6>
+                        <h6 class="mb-0">equipement Recommande 2024</h6>
                     </div>
                     <div class="card-body">
                         <ul class="small">
-                            <li>Montre Ã©tanche avec GPS piscine</li>
+                            <li>Montre etanche avec GPS piscine</li>
                             <li>Tempo Trainer Pro</li>
                             <li>Plaquettes techniques (FINIS)</li>
                             <li>Tuba frontal pour technique</li>
@@ -457,12 +457,12 @@
             </div>
         </div>
 
-        <!-- MÃ©thodes d'Entraînement Innovantes -->
+        <!-- Methodes d'Entraînement Innovantes -->
         <div class="card mb-4">
             <div class="card-header bg-dark text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-rocket me-2"></i>
-                    MÃ©thodes d'Entraînement Innovantes 2024
+                    Methodes d'Entraînement Innovantes 2024
                 </h3>
             </div>
             <div class="card-body">
@@ -474,9 +474,9 @@
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>SÃ©ries avec restriction respiratoire</li>
-                                    <li>AmÃ©lioration tolÃ©rance lactique</li>
-                                    <li>DÃ©veloppement capacitÃ© anaÃ©robie</li>
+                                    <li>Series avec restriction respiratoire</li>
+                                    <li>Amelioration tolerance lactique</li>
+                                    <li>Developpement capacite anaerobie</li>
                                     <li>Protocoles 50-75-100m sans respirer</li>
                                 </ul>
                             </div>
@@ -485,14 +485,14 @@
                     <div class="col-md-4">
                         <div class="card border-warning h-100">
                             <div class="card-header bg-warning text-dark">
-                                <h6 class="mb-0">Nage en RÃ©sistance</h6>
+                                <h6 class="mb-0">Nage en Resistance</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
                                     <li>Parachutes aquatiques</li>
-                                    <li>Ã©lastiques de rÃ©sistance</li>
-                                    <li>Nage en combinaison lestÃ©e</li>
-                                    <li>DÃ©veloppement puissance spÃ©cifique</li>
+                                    <li>elastiques de resistance</li>
+                                    <li>Nage en combinaison lestee</li>
+                                    <li>Developpement puissance specifique</li>
                                 </ul>
                             </div>
                         </div>
@@ -500,14 +500,14 @@
                     <div class="col-md-4">
                         <div class="card border-success h-100">
                             <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Training AssistÃ©</h6>
+                                <h6 class="mb-0">Training Assiste</h6>
                             </div>
                             <div class="card-body">
                                 <ul class="small">
-                                    <li>Nage tractÃ©e (sur-vitesse)</li>
+                                    <li>Nage tractee (sur-vitesse)</li>
                                     <li>Palmes techniques courtes</li>
-                                    <li>AmÃ©lioration coordination</li>
-                                    <li>Ã©ducation sensations vitesse</li>
+                                    <li>Amelioration coordination</li>
+                                    <li>education sensations vitesse</li>
                                 </ul>
                             </div>
                         </div>
@@ -516,12 +516,12 @@
             </div>
         </div>
 
-        <!-- Conseils GÃ©nÃ©raux -->
+        <!-- Conseils Generaux -->
         <div class="card mb-4">
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-lightbulb me-2"></i>
-                    Conseils GÃ©nÃ©raux Evidence-Based
+                    Conseils Generaux Evidence-Based
                 </h3>
             </div>
             <div class="card-body">
@@ -529,104 +529,104 @@
                     <div class="col-md-4">
                         <h6>Technique</h6>
                         <ul class="small">
-                            <li>PrivilÃ©gier la distance par cycle</li>
-                            <li>Respiration bilatÃ©rale obligatoire</li>
+                            <li>Privilegier la distance par cycle</li>
+                            <li>Respiration bilaterale obligatoire</li>
                             <li>Position hydrodynamique constante</li>
-                            <li>Ã©ducatifs techniques 20% du volume</li>
-                            <li>Analyse vidÃ©o mensuelle</li>
+                            <li>educatifs techniques 20% du volume</li>
+                            <li>Analyse video mensuelle</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <h6>Entraînement</h6>
                         <ul class="small">
-                            <li>Ã©chauffement progressif 400-600m</li>
-                            <li>RÃ©cupÃ©ration active entre sÃ©ries</li>
-                            <li>VariÃ©tÃ© des nages (4 nages)</li>
+                            <li>echauffement progressif 400-600m</li>
+                            <li>Recuperation active entre series</li>
+                            <li>Variete des nages (4 nages)</li>
                             <li>Test T30 mensuel pour CSS</li>
                             <li>Progression volume +10%/semaine max</li>
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h6>RÃ©cupÃ©ration</h6>
+                        <h6>Recuperation</h6>
                         <ul class="small">
-                            <li>Ã©tirements post-entraînement</li>
+                            <li>etirements post-entraînement</li>
                             <li>Douche chaude puis froide</li>
-                            <li>Hydratation immÃ©diate</li>
-                            <li>Nage rÃ©cupÃ©ration 200-400m</li>
-                            <li>Massage des Ã©paules rÃ©gulier</li>
+                            <li>Hydratation immediate</li>
+                            <li>Nage recuperation 200-400m</li>
+                            <li>Massage des epaules regulier</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PrÃ©vention des Blessures -->
+        <!-- Prevention des Blessures -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    PrÃ©vention des Blessures Aquatiques
+                    Prevention des Blessures Aquatiques
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-warning border-0">
-                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Statistique clÃ©</h6>
+                    <h6><i class="fas fa-exclamation-triangle me-2"></i>Statistique cle</h6>
                     <p class="mb-0">
-                        80% des blessures en natation concernent l'Ã©paule (swimmer's shoulder).
+                        80% des blessures en natation concernent l'epaule (swimmer's shoulder).
                         L'incidence est de 0.3-0.5 blessures pour 1000h d'entraînement.
                     </p>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <h6>Facteurs de Risque IdentifiÃ©s</h6>
+                        <h6>Facteurs de Risque Identifies</h6>
                         <ul class="small">
                             <li>Volume d'entraînement excessif soudain</li>
-                            <li>Technique dÃ©faillante (rattrapÃ© court)</li>
-                            <li>DÃ©sÃ©quilibres musculaires Ã©paules/dos</li>
-                            <li>Manque d'Ã©chauffement spÃ©cifique</li>
+                            <li>Technique defaillante (rattrape court)</li>
+                            <li>Desequilibres musculaires epaules/dos</li>
+                            <li>Manque d'echauffement specifique</li>
                             <li>Surutilisation plaquettes/pullboy</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h6>StratÃ©gies PrÃ©ventives</h6>
+                        <h6>Strategies Preventives</h6>
                         <ul class="small">
-                            <li>Renforcement spÃ©cifique coiffe des rotateurs</li>
+                            <li>Renforcement specifique coiffe des rotateurs</li>
                             <li>Travail proprioception aquatique</li>
-                            <li>Rotation d'Ã©paule complÃ¨te</li>
-                            <li>Ã©tirements capsule postÃ©rieure</li>
+                            <li>Rotation d'epaule complete</li>
+                            <li>etirements capsule posterieure</li>
                             <li>Monitoring charge d'entraînement</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="alert alert-info mt-3">
-                    <h6><i class="fas fa-info-circle me-2"></i>Important - SÃ©curitÃ©</h6>
+                    <h6><i class="fas fa-info-circle me-2"></i>Important - Securite</h6>
                     <p class="mb-0">
-                        En cas de douleur persistante, de technique dÃ©faillante ou de stagnation, 
-                        consultez un professionnel qualifiÃ© (maître-nageur, entraîneur). 
+                        En cas de douleur persistante, de technique defaillante ou de stagnation, 
+                        consultez un professionnel qualifie (maître-nageur, entraîneur). 
                         La progression graduelle et la technique correcte sont prioritaires sur le volume.
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- RÃ©fÃ©rences Scientifiques -->
+        <!-- References Scientifiques -->
         <div class="card">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-book me-2"></i>
-                    RÃ©fÃ©rences Scientifiques
+                    References Scientifiques
                 </h3>
             </div>
             <div class="card-body">
                 <p>
-                    Ce planificateur intÃ¨gre les derniÃ¨res recherches en sciences aquatiques
-                    publiÃ©es en 2024-2025 dans des revues scientifiques de rÃ©fÃ©rence :
+                    Ce planificateur integre les dernieres recherches en sciences aquatiques
+                    publiees en 2024-2025 dans des revues scientifiques de reference :
                 </p>
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <h6>BiomÃ©canique Aquatique</h6>
+                        <h6>Biomecanique Aquatique</h6>
                         <ul class="small">
                             <li>Journal of Biomechanics</li>
                             <li>Sports Biomechanics</li>
@@ -654,8 +654,8 @@
                 <div class="alert alert-success mt-3">
                     <h6><i class="fas fa-chart-line me-2"></i>Conclusion Evidence-Based</h6>
                     <p class="mb-0">
-                        La performance en natation rÃ©sulte d'une synergie entre technique irrÃ©prochable (40% de la performance), 
-                        condition physique adaptÃ©e et approche mÃ©thodologique rigoureuse basÃ©e sur la science.
+                        La performance en natation resulte d'une synergie entre technique irreprochable (40% de la performance), 
+                        condition physique adaptee et approche methodologique rigoureuse basee sur la science.
                     </p>
                 </div>
             </div>
@@ -663,7 +663,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -679,9 +679,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -691,15 +691,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -726,7 +726,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -737,12 +737,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -838,7 +838,7 @@
 
 @push('scripts')
 <script>
-// Base de donnÃ©es des plans d'entraînement
+// Base de donnees des plans d'entraînement
 const trainingPlans = {
     'remise-forme': {
         'debutant': 2,
@@ -865,16 +865,16 @@ const trainingPlans = {
 // Descriptions des objectifs
 const goalDescriptions = {
     'remise-forme': 'Remise en forme',
-    'endurance': 'AmÃ©liorer l\'endurance',
+    'endurance': 'Ameliorer l\'endurance',
     'perte-poids': 'Perte de poids',
-    'competition': 'PrÃ©paration compÃ©tition'
+    'competition': 'Preparation competition'
 };
 
 // Descriptions des niveaux
 const experienceDescriptions = {
-    'debutant': 'dÃ©butant',
-    'intermediaire': 'intermÃ©diaire',
-    'avance': 'avancÃ©'
+    'debutant': 'debutant',
+    'intermediaire': 'intermediaire',
+    'avance': 'avance'
 };
 
 function generatePlan() {
@@ -884,23 +884,23 @@ function generatePlan() {
     
     // Validation
     if (!goal || !experience) {
-        showError('Veuillez sÃ©lectionner un objectif et un niveau d\'expÃ©rience.');
+        showError('Veuillez selectionner un objectif et un niveau d\'experience.');
         return;
     }
     
     // Masquer les erreurs
     errorDiv.classList.add('d-none');
     
-    // RÃ©cupÃ©rer le nombre de sÃ©ances
+    // Recuperer le nombre de seances
     const totalSessions = trainingPlans[goal][experience];
     
-    // Calculer la rÃ©partition selon les pourcentages scientifiques
+    // Calculer la repartition selon les pourcentages scientifiques
     const techniqueSessions = Math.round(totalSessions * 0.3); // 30% Technique
     const enduranceSessions = Math.round(totalSessions * 0.4); // 40% Endurance
     const speedSessions = Math.round(totalSessions * 0.2); // 20% Vitesse
-    const recoverySessions = Math.max(0, Math.round(totalSessions * 0.1)); // 10% RÃ©cupÃ©ration
+    const recoverySessions = Math.max(0, Math.round(totalSessions * 0.1)); // 10% Recuperation
     
-    // Afficher les rÃ©sultats
+    // Afficher les resultats
     displayResults(goal, experience, totalSessions, {
         technique: techniqueSessions,
         endurance: enduranceSessions,
@@ -921,7 +921,7 @@ function displayResults(goal, experience, totalSessions, distribution) {
     document.getElementById('planDescription').innerHTML = `
         Pour votre objectif <strong class="text-primary">${goalDescriptions[goal]}</strong> et niveau 
         <strong class="text-warning">${experienceDescriptions[experience]}</strong>, 
-        il est recommandÃ© de nager :
+        il est recommande de nager :
     `;
     
     document.getElementById('totalSessions').textContent = totalSessions;
@@ -930,7 +930,7 @@ function displayResults(goal, experience, totalSessions, distribution) {
     document.getElementById('speedSessions').textContent = distribution.speed;
     document.getElementById('recoverySessions').textContent = distribution.recovery;
     
-    // Afficher la section rÃ©sultats
+    // Afficher la section resultats
     document.getElementById('planResults').classList.remove('d-none');
     document.getElementById('planResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -942,7 +942,7 @@ function resetPlanner() {
     document.getElementById('planResults').classList.add('d-none');
 }
 
-// GÃ©nÃ©ration automatique si les deux champs sont remplis
+// Generation automatique si les deux champs sont remplis
 document.getElementById('goal').addEventListener('change', checkAutoGenerate);
 document.getElementById('experience').addEventListener('change', checkAutoGenerate);
 
@@ -951,7 +951,7 @@ function checkAutoGenerate() {
     const experience = document.getElementById('experience').value;
     
     if (goal && experience) {
-        setTimeout(generatePlan, 300); // DÃ©lai pour Ã©viter les gÃ©nÃ©rations trop frÃ©quentes
+        setTimeout(generatePlan, 300); // Delai pour eviter les generations trop frequentes
     }
 }
 </script>

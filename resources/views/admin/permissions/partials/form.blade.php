@@ -38,7 +38,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="posts-create">
                     </div>
-                    <div class="form-text">Identifiant technique unique (gÃ©nÃ©ration automatique)</div>
+                    <div class="form-text">Identifiant technique unique (generation automatique)</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -51,7 +51,7 @@
                               id="description" 
                               rows="4"
                               class="form-control @error('description') is-invalid @enderror"
-                              placeholder="Description dÃ©taillÃ©e de ce que permet cette permission...">{{ old('description', isset($permission) ? $permission->description : '') }}</textarea>
+                              placeholder="Description detaillee de ce que permet cette permission...">{{ old('description', isset($permission) ? $permission->description : '') }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -69,7 +69,7 @@
                                 <div class="card-body p-3">
                                     <h6 class="small fw-semibold text-primary mb-2">Gestion des articles</h6>
                                     <ul class="small mb-0">
-                                        <li><code>posts.create</code> - CrÃ©er des articles</li>
+                                        <li><code>posts.create</code> - Creer des articles</li>
                                         <li><code>posts.edit</code> - Modifier les articles</li>
                                         <li><code>posts.delete</code> - Supprimer les articles</li>
                                     </ul>
@@ -81,9 +81,9 @@
                                 <div class="card-body p-3">
                                     <h6 class="small fw-semibold text-success mb-2">Administration</h6>
                                     <ul class="small mb-0">
-                                        <li><code>admin.access</code> - AccÃ¨s au panel admin</li>
-                                        <li><code>users.manage</code> - GÃ©rer les utilisateurs</li>
-                                        <li><code>settings.edit</code> - Modifier les paramÃ¨tres</li>
+                                        <li><code>admin.access</code> - Acces au panel admin</li>
+                                        <li><code>users.manage</code> - Gerer les utilisateurs</li>
+                                        <li><code>settings.edit</code> - Modifier les parametres</li>
                                     </ul>
                                 </div>
                             </div>
@@ -96,11 +96,11 @@
 
     <!-- Sidebar -->
     <div class="col-lg-4">
-        <!-- Groupe et catÃ©gorisation -->
+        <!-- Groupe et categorisation -->
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-info text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-layer-group me-2"></i>CatÃ©gorisation
+                    <i class="fas fa-layer-group me-2"></i>Categorisation
                 </h6>
             </div>
             <div class="card-body p-4">
@@ -141,7 +141,7 @@
             </div>
         </div>
 
-        <!-- Statistiques (en Ã©dition) -->
+        <!-- Statistiques (en edition) -->
         @if(isset($permission))
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-4">
@@ -167,7 +167,7 @@
                     
                     @if($permission->roles()->count() > 0)
                         <div class="mt-3 pt-3 border-top">
-                            <small class="text-muted d-block mb-2">AssignÃ©e aux rôles :</small>
+                            <small class="text-muted d-block mb-2">Assignee aux rôles :</small>
                             <div class="d-flex flex-wrap gap-1">
                                 @foreach($permission->roles()->limit(5)->get() as $role)
                                     <span class="badge bg-primary-subtle text-primary">
@@ -195,11 +195,11 @@
             </div>
             <div class="card-body p-4">
                 <ul class="small mb-0">
-                    <li class="mb-2">Utilisez une nomenclature cohÃ©rente (module.action)</li>
-                    <li class="mb-2">Soyez spÃ©cifique dans les descriptions</li>
+                    <li class="mb-2">Utilisez une nomenclature coherente (module.action)</li>
+                    <li class="mb-2">Soyez specifique dans les descriptions</li>
                     <li class="mb-2">Groupez les permissions par module</li>
-                    <li class="mb-2">Ã©vitez les permissions trop gÃ©nÃ©riques</li>
-                    <li class="mb-0">Testez les permissions aprÃ¨s crÃ©ation</li>
+                    <li class="mb-2">evitez les permissions trop generiques</li>
+                    <li class="mb-0">Testez les permissions apres creation</li>
                 </ul>
             </div>
         </div>

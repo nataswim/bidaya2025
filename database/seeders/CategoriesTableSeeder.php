@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
     {
         Category::insert([
             [
-                'name' => 'ActualitÃ©s', 
+                'name' => 'Actualites', 
                 'slug' => 'actualites', 
                 'status' => 'active',
                 'created_at' => now(),

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Masse Grasse AvancÃ© & Composition Corporelle - Analyse Scientifique')
-@section('meta_description', 'Calculez votre pourcentage de masse grasse avec 4 mÃ©thodes validÃ©es : US Navy, Deurenberg, Jackson-Pollock, Covert Bailey. Normes par âge/sexe et conseils santÃ©.')
+@section('title', 'Calculateur Masse Grasse Avance & Composition Corporelle - Analyse Scientifique')
+@section('meta_description', 'Calculez votre pourcentage de masse grasse avec 4 methodes validees : US Navy, Deurenberg, Jackson-Pollock, Covert Bailey. Normes par âge/sexe et conseils sante.')
 
 @section('content')
 <!-- Section titre -->
@@ -9,14 +9,14 @@
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             <i class="fas fa-weight"></i>
-            Calculateur de Masse Grasse AvancÃ©
+            Calculateur de Masse Grasse Avance
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-microscope text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    Analysez votre composition corporelle avec 4 mÃ©thodes validÃ©es scientifiquement et les derniÃ¨res recherches en adipositÃ©
+                    Analysez votre composition corporelle avec 4 methodes validees scientifiquement et les dernieres recherches en adiposite
                 </div>
             </div>
         </div>
@@ -28,9 +28,9 @@
     <div class="container">
         <div class="card shadow-lg border-0">
             <div class="card-body p-5">
-                <h3 class="text-center mb-4">Calculateur Multi-MÃ©thodes</h3>
+                <h3 class="text-center mb-4">Calculateur Multi-Methodes</h3>
                 
-                <!-- DonnÃ©es de base -->
+                <!-- Donnees de base -->
                 <div class="row g-3 mb-4">
                     <div class="col-md-3">
                         <label class="fw-bold mb-2">Sexe</label>
@@ -56,10 +56,10 @@
                     </div>
                 </div>
 
-                <!-- Mesures circonfÃ©rentielles -->
+                <!-- Mesures circonferentielles -->
                 <h5 class="fw-bold mb-3 text-warning">
                     <i class="fas fa-ruler-combined me-2"></i>
-                    Mesures CirconfÃ©rentielles (cm)
+                    Mesures Circonferentielles (cm)
                 </h5>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
@@ -84,13 +84,13 @@
                         <label class="fw-bold mb-2">Tour de poignet (optionnel)</label>
                         <input type="number" id="wrist" class="form-control form-control-lg border-info" 
                                placeholder="17" min="10" step="0.5">
-                        <small class="text-muted">Pour mÃ©thode Covert Bailey</small>
+                        <small class="text-muted">Pour methode Covert Bailey</small>
                     </div>
                     <div class="col-md-4">
                         <label class="fw-bold mb-2">Tour d'avant-bras (optionnel)</label>
                         <input type="number" id="forearm" class="form-control form-control-lg border-info" 
                                placeholder="28" min="15" step="0.5">
-                        <small class="text-muted">Pour mÃ©thode Covert Bailey</small>
+                        <small class="text-muted">Pour methode Covert Bailey</small>
                     </div>
                 </div>
 
@@ -102,12 +102,12 @@
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-secondary btn-lg px-4 py-3 fw-bold w-100" onclick="resetForm()">
-                            <i class="fas fa-redo me-2"></i>RÃ©initialiser
+                            <i class="fas fa-redo me-2"></i>Reinitialiser
                         </button>
                     </div>
                 </div>
 
-                <!-- RÃ©sultats -->
+                <!-- Resultats -->
                 <div id="results" class="d-none">
                     <div class="alert alert-success">
                         <h5 class="alert-heading">
@@ -115,11 +115,11 @@
                         </h5>
                         
                         <div class="row g-3 mt-3" id="resultsContent">
-                            <!-- Les rÃ©sultats seront injectÃ©s ici par JavaScript -->
+                            <!-- Les resultats seront injectes ici par JavaScript -->
                         </div>
                         
                         <div id="categoryInfo" class="mt-3">
-                            <!-- Informations sur la catÃ©gorie seront injectÃ©es ici -->
+                            <!-- Informations sur la categorie seront injectees ici -->
                         </div>
                     </div>
                 </div>
@@ -128,14 +128,14 @@
     </div>
 </section>
 
-<!-- MÃ©thodes de Calcul -->
+<!-- Methodes de Calcul -->
 <section class="py-5">
     <div class="container">
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-flask me-2"></i>
-                    MÃ©thodes de Calcul UtilisÃ©es
+                    Methodes de Calcul Utilisees
                 </h3>
             </div>
             <div class="card-body">
@@ -148,8 +148,8 @@
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Principe :</strong> CirconfÃ©rences corporelles</p>
-                                <p><strong>PrÃ©cision :</strong> ±3-5% vs DEXA</p>
+                                <p><strong>Principe :</strong> Circonferences corporelles</p>
+                                <p><strong>Precision :</strong> ±3-5% vs DEXA</p>
                                 <p><strong>Avantages :</strong> Simple, accessible, reproductible</p>
                                 <p><strong>Mesures requises :</strong> Cou, taille, hanches (femmes)</p>
                             </div>
@@ -164,9 +164,9 @@
                             </div>
                             <div class="card-body">
                                 <p><strong>Principe :</strong> IMC + âge + sexe</p>
-                                <p><strong>PrÃ©cision :</strong> ±4-6% population gÃ©nÃ©rale</p>
-                                <p><strong>Avantages :</strong> TrÃ¨s simple, largement utilisÃ©e</p>
-                                <p><strong>Limitation :</strong> BasÃ©e sur population europÃ©enne</p>
+                                <p><strong>Precision :</strong> ±4-6% population generale</p>
+                                <p><strong>Avantages :</strong> Tres simple, largement utilisee</p>
+                                <p><strong>Limitation :</strong> Basee sur population europeenne</p>
                             </div>
                         </div>
                     </div>
@@ -178,9 +178,9 @@
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Principe :</strong> Approximation simplifiÃ©e</p>
-                                <p><strong>PrÃ©cision :</strong> ±4-7% avec plis cutanÃ©s complets</p>
-                                <p><strong>Version utilisÃ©e :</strong> Estimation basÃ©e IMC</p>
+                                <p><strong>Principe :</strong> Approximation simplifiee</p>
+                                <p><strong>Precision :</strong> ±4-7% avec plis cutanes complets</p>
+                                <p><strong>Version utilisee :</strong> Estimation basee IMC</p>
                                 <p><strong>Usage :</strong> Comparaison relative</p>
                             </div>
                         </div>
@@ -193,9 +193,9 @@
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <p><strong>Principe :</strong> Multi-circonfÃ©rences</p>
-                                <p><strong>PrÃ©cision :</strong> ±3-6% si mesures prÃ©cises</p>
-                                <p><strong>Avantages :</strong> ConsidÃ¨re ossature</p>
+                                <p><strong>Principe :</strong> Multi-circonferences</p>
+                                <p><strong>Precision :</strong> ±3-6% si mesures precises</p>
+                                <p><strong>Avantages :</strong> Considere ossature</p>
                                 <p><strong>Mesures :</strong> Poignet, avant-bras additionnels</p>
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>CatÃ©gorie</th>
+                                        <th>Categorie</th>
                                         <th>20-39 ans</th>
                                         <th>40-59 ans</th>
                                         <th>60+ ans</th>
@@ -236,7 +236,7 @@
                                         <td>&lt; 8%</td>
                                     </tr>
                                     <tr class="table-primary">
-                                        <td><strong>AthlÃ©tique</strong></td>
+                                        <td><strong>Athletique</strong></td>
                                         <td>8-19%</td>
                                         <td>8-19%</td>
                                         <td>8-19%</td>
@@ -260,7 +260,7 @@
                                         <td>24-29%</td>
                                     </tr>
                                     <tr class="table-danger">
-                                        <td><strong>Ã©levÃ©</strong></td>
+                                        <td><strong>eleve</strong></td>
                                         <td>&gt; 25%</td>
                                         <td>&gt; 28%</td>
                                         <td>&gt; 30%</td>
@@ -277,7 +277,7 @@
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>CatÃ©gorie</th>
+                                        <th>Categorie</th>
                                         <th>20-39 ans</th>
                                         <th>40-59 ans</th>
                                         <th>60+ ans</th>
@@ -291,7 +291,7 @@
                                         <td>&lt; 16%</td>
                                     </tr>
                                     <tr class="table-primary">
-                                        <td><strong>AthlÃ©tique</strong></td>
+                                        <td><strong>Athletique</strong></td>
                                         <td>16-24%</td>
                                         <td>16-24%</td>
                                         <td>16-24%</td>
@@ -315,7 +315,7 @@
                                         <td>31-36%</td>
                                     </tr>
                                     <tr class="table-danger">
-                                        <td><strong>Ã©levÃ©</strong></td>
+                                        <td><strong>eleve</strong></td>
                                         <td>&gt; 32%</td>
                                         <td>&gt; 35%</td>
                                         <td>&gt; 37%</td>
@@ -329,17 +329,17 @@
                 <div class="alert alert-info mt-3">
                     <i class="fas fa-info-circle me-2"></i>
                     <strong>Important :</strong> Ces normes sont indicatives et peuvent varier selon l'origine ethnique, 
-                    le niveau d'activitÃ© physique et les objectifs personnels.
+                    le niveau d'activite physique et les objectifs personnels.
                 </div>
             </div>
         </div>
 
-        <!-- Implications SantÃ© -->
+        <!-- Implications Sante -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-heartbeat me-2"></i>
-                    Implications pour la SantÃ©
+                    Implications pour la Sante
                 </h3>
             </div>
             <div class="card-body">
@@ -353,12 +353,12 @@
                                 <h6>Risques :</h6>
                                 <ul class="small">
                                     <li>Dysfonctions hormonales</li>
-                                    <li>SystÃ¨me immunitaire affaibli</li>
+                                    <li>Systeme immunitaire affaibli</li>
                                     <li>Troubles de la reproduction</li>
-                                    <li>FragilitÃ© osseuse</li>
+                                    <li>Fragilite osseuse</li>
                                 </ul>
                                 <div class="alert alert-danger alert-sm">
-                                    <small><strong>Action :</strong> Consultation mÃ©dicale recommandÃ©e</small>
+                                    <small><strong>Action :</strong> Consultation medicale recommandee</small>
                                 </div>
                             </div>
                         </div>
@@ -369,12 +369,12 @@
                                 <h6 class="mb-0">Niveau Optimal</h6>
                             </div>
                             <div class="card-body">
-                                <h6>BÃ©nÃ©fices :</h6>
+                                <h6>Benefices :</h6>
                                 <ul class="small">
-                                    <li>Ã©quilibre hormonal optimal</li>
+                                    <li>equilibre hormonal optimal</li>
                                     <li>Performance physique maximale</li>
-                                    <li>Risque mÃ©tabolique minimal</li>
-                                    <li>LongÃ©vitÃ© favorisÃ©e</li>
+                                    <li>Risque metabolique minimal</li>
+                                    <li>Longevite favorisee</li>
                                 </ul>
                                 <div class="alert alert-success alert-sm">
                                     <small><strong>Maintien :</strong> Poursuivre habitudes actuelles</small>
@@ -385,18 +385,18 @@
                     <div class="col-md-4">
                         <div class="card border-warning h-100">
                             <div class="card-header bg-warning text-dark">
-                                <h6 class="mb-0">Masse Grasse Ã©levÃ©e</h6>
+                                <h6 class="mb-0">Masse Grasse elevee</h6>
                             </div>
                             <div class="card-body">
                                 <h6>Risques :</h6>
                                 <ul class="small">
-                                    <li>Syndrome mÃ©tabolique</li>
-                                    <li>DiabÃ¨te type 2</li>
+                                    <li>Syndrome metabolique</li>
+                                    <li>Diabete type 2</li>
                                     <li>Maladies cardiovasculaires</li>
                                     <li>Inflammation chronique</li>
                                 </ul>
                                 <div class="alert alert-warning alert-sm">
-                                    <small><strong>Action :</strong> Programme de rÃ©duction progressif</small>
+                                    <small><strong>Action :</strong> Programme de reduction progressif</small>
                                 </div>
                             </div>
                         </div>
@@ -410,7 +410,7 @@
             <div class="card-header bg-info text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-cogs me-2"></i>
-                    Technologies Modernes d'Ã©valuation
+                    Technologies Modernes d'evaluation
                 </h3>
             </div>
             <div class="card-body">
@@ -420,10 +420,10 @@
                             <table class="table table-sm table-hover">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>MÃ©thode</th>
-                                        <th>PrÃ©cision</th>
+                                        <th>Methode</th>
+                                        <th>Precision</th>
                                         <th>Coût</th>
-                                        <th>AccessibilitÃ©</th>
+                                        <th>Accessibilite</th>
                                         <th>Temps</th>
                                     </tr>
                                 </thead>
@@ -436,14 +436,14 @@
                                         <td>10-15min</td>
                                     </tr>
                                     <tr class="table-info">
-                                        <td><strong>BIA Multi-frÃ©quence</strong></td>
+                                        <td><strong>BIA Multi-frequence</strong></td>
                                         <td>±3-5%</td>
                                         <td>€€</td>
                                         <td>Large</td>
                                         <td>2min</td>
                                     </tr>
                                     <tr class="table-primary">
-                                        <td><strong>Plis cutanÃ©s (7 sites)</strong></td>
+                                        <td><strong>Plis cutanes (7 sites)</strong></td>
                                         <td>±3-5%</td>
                                         <td>€</td>
                                         <td>Large</td>
@@ -460,7 +460,7 @@
                                         <td><strong>Bod Pod (ADP)</strong></td>
                                         <td>±2-3%</td>
                                         <td>€€€</td>
-                                        <td>Centre spÃ©cialisÃ©</td>
+                                        <td>Centre specialise</td>
                                         <td>5min</td>
                                     </tr>
                                 </tbody>
@@ -479,7 +479,7 @@
                                 <span class="badge bg-info">±3%</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Wearables bioÃ©lectriques</span>
+                                <span>Wearables bioelectriques</span>
                                 <span class="badge bg-secondary">±4%</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
@@ -490,8 +490,8 @@
                         
                         <div class="alert alert-success mt-3">
                             <small>
-                                <strong>Tendance 2024 :</strong> IntÃ©gration multi-modale pour 
-                                une prÃ©cision Ã©quivalente au DEXA Ã domicile.
+                                <strong>Tendance 2024 :</strong> Integration multi-modale pour 
+                                une precision equivalente au DEXA Ã domicile.
                             </small>
                         </div>
                     </div>
@@ -501,7 +501,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -517,9 +517,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -529,15 +529,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -564,7 +564,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -575,12 +575,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -733,7 +733,7 @@ function calculateBodyFat() {
         }
     }
     
-    // Arrondir tous les rÃ©sultats
+    // Arrondir tous les resultats
     Object.keys(results).forEach(key => {
         if (results[key] !== null && !isNaN(results[key])) {
             results[key] = Math.round(results[key] * 10) / 10;
@@ -742,7 +742,7 @@ function calculateBodyFat() {
         }
     });
     
-    // DÃ©terminer la catÃ©gorie (basÃ©e sur US Navy ou Deurenberg)
+    // Determiner la categorie (basee sur US Navy ou Deurenberg)
     const primaryBodyFat = results.usNavy || results.deurenberg;
     let category = '';
     let categoryColor = '';
@@ -756,14 +756,14 @@ function calculateBodyFat() {
                 healthRisk = 'Risques hormonaux et immunitaires';
             }
             else if (primaryBodyFat < 14) { 
-                category = 'AthlÃ©tique'; 
+                category = 'Athletique'; 
                 categoryColor = 'primary'; 
                 healthRisk = 'Optimal pour la performance';
             }
             else if (primaryBodyFat < 18) { 
                 category = 'Excellent'; 
                 categoryColor = 'success'; 
-                healthRisk = 'SantÃ© optimale';
+                healthRisk = 'Sante optimale';
             }
             else if (primaryBodyFat < 25) { 
                 category = 'Bon'; 
@@ -773,12 +773,12 @@ function calculateBodyFat() {
             else if (primaryBodyFat < 30) { 
                 category = 'Moyen'; 
                 categoryColor = 'warning'; 
-                healthRisk = 'Surveillance recommandÃ©e';
+                healthRisk = 'Surveillance recommandee';
             }
             else { 
-                category = 'Ã©levÃ©'; 
+                category = 'eleve'; 
                 categoryColor = 'danger'; 
-                healthRisk = 'Risques mÃ©taboliques';
+                healthRisk = 'Risques metaboliques';
             }
         } else {
             if (primaryBodyFat < 16) { 
@@ -787,14 +787,14 @@ function calculateBodyFat() {
                 healthRisk = 'Risques hormonaux et reproduction';
             }
             else if (primaryBodyFat < 21) { 
-                category = 'AthlÃ©tique'; 
+                category = 'Athletique'; 
                 categoryColor = 'primary'; 
                 healthRisk = 'Optimal pour la performance';
             }
             else if (primaryBodyFat < 25) { 
                 category = 'Excellent'; 
                 categoryColor = 'success'; 
-                healthRisk = 'SantÃ© optimale';
+                healthRisk = 'Sante optimale';
             }
             else if (primaryBodyFat < 32) { 
                 category = 'Bon'; 
@@ -804,12 +804,12 @@ function calculateBodyFat() {
             else if (primaryBodyFat < 38) { 
                 category = 'Moyen'; 
                 categoryColor = 'warning'; 
-                healthRisk = 'Surveillance recommandÃ©e';
+                healthRisk = 'Surveillance recommandee';
             }
             else { 
-                category = 'Ã©levÃ©'; 
+                category = 'eleve'; 
                 categoryColor = 'danger'; 
-                healthRisk = 'Risques mÃ©taboliques';
+                healthRisk = 'Risques metaboliques';
             }
         }
     }
@@ -875,7 +875,7 @@ function displayResults(results, category, categoryColor, healthRisk, bmi) {
                         <p class="card-text fs-5">
                             <strong class="text-info">${results.jackson}%</strong>
                         </p>
-                        <small class="text-muted">Estimation simplifiÃ©e</small>
+                        <small class="text-muted">Estimation simplifiee</small>
                     </div>
                 </div>
             </div>
@@ -894,7 +894,7 @@ function displayResults(results, category, categoryColor, healthRisk, bmi) {
                         <p class="card-text fs-5">
                             <strong class="text-secondary">${results.covert}%</strong>
                         </p>
-                        <small class="text-muted">Multi-circonfÃ©rences</small>
+                        <small class="text-muted">Multi-circonferences</small>
                     </div>
                 </div>
             </div>
@@ -903,19 +903,19 @@ function displayResults(results, category, categoryColor, healthRisk, bmi) {
     
     document.getElementById('resultsContent').innerHTML = resultsHTML;
     
-    // Informations catÃ©gorie
+    // Informations categorie
     if (category) {
         document.getElementById('categoryInfo').innerHTML = `
             <div class="card border-${categoryColor}">
                 <div class="card-header bg-${categoryColor} ${categoryColor === 'warning' ? 'text-dark' : 'text-white'}">
                     <h6 class="mb-0">
                         <i class="fas fa-info-circle me-2"></i>
-                        Ã©valuation : ${category}
+                        evaluation : ${category}
                     </h6>
                 </div>
                 <div class="card-body">
-                    <p class="mb-2"><strong>Implications santÃ© :</strong> ${healthRisk}</p>
-                    <p class="mb-0"><strong>IMC de rÃ©fÃ©rence :</strong> ${bmi.toFixed(1)}</p>
+                    <p class="mb-2"><strong>Implications sante :</strong> ${healthRisk}</p>
+                    <p class="mb-0"><strong>IMC de reference :</strong> ${bmi.toFixed(1)}</p>
                 </div>
             </div>
         `;
@@ -937,14 +937,14 @@ function resetForm() {
     document.getElementById('forearm').value = '';
     document.getElementById('results').classList.add('d-none');
     
-    // RÃ©afficher le champ hanches si nÃ©cessaire
+    // Reafficher le champ hanches si necessaire
     const hipField = document.getElementById('hipField');
     hipField.style.display = 'block';
 }
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
-    // DÃ©marrer avec le champ hanches visible (dÃ©faut homme)
+    // Demarrer avec le champ hanches visible (defaut homme)
     const hipField = document.getElementById('hipField');
     hipField.style.display = 'block';
 });

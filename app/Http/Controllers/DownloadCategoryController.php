@@ -72,7 +72,7 @@ class DownloadCategoryController extends Controller
         $category = DownloadCategory::create($data);
 
         return redirect()->route('admin.download-categories.index')
-            ->with('success', 'CatÃ©gorie crÃ©Ã©e avec succÃ¨s.');
+            ->with('success', 'Categorie creee avec succes.');
     }
 
     public function show(DownloadCategory $downloadCategory)
@@ -105,27 +105,27 @@ class DownloadCategoryController extends Controller
         $downloadCategory->update($data);
 
         return redirect()->route('admin.download-categories.index')
-            ->with('success', 'CatÃ©gorie mise Ã jour avec succÃ¨s.');
+            ->with('success', 'Categorie mise Ã jour avec succes.');
     }
 
     public function destroy(DownloadCategory $downloadCategory)
     {
         $this->checkAdminAccess();
         
-        // VÃ©rifier s'il y a des tÃ©lÃ©chargements associÃ©s
+        // Verifier s'il y a des telechargements associes
         if ($downloadCategory->downloadables()->count() > 0) {
             return redirect()->route('admin.download-categories.index')
-                ->with('error', 'Impossible de supprimer une catÃ©gorie contenant des tÃ©lÃ©chargements.');
+                ->with('error', 'Impossible de supprimer une categorie contenant des telechargements.');
         }
         
         $downloadCategory->delete();
 
         return redirect()->route('admin.download-categories.index')
-            ->with('success', 'CatÃ©gorie supprimÃ©e avec succÃ¨s.');
+            ->with('success', 'Categorie supprimee avec succes.');
     }
 
     /**
-     * Statistiques des catÃ©gories
+     * Statistiques des categories
      */
     public function stats()
     {

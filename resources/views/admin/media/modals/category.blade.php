@@ -1,11 +1,11 @@
-<!-- Modal Nouvelle CatÃ©gorie -->
+<!-- Modal Nouvelle Categorie -->
 <div class="modal fade" id="categoryModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
                     <i class="fas fa-folder-plus text-success me-2"></i>
-                    Nouvelle catÃ©gorie
+                    Nouvelle categorie
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
@@ -16,13 +16,13 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="categoryName" class="form-label fw-semibold">
-                                Nom de la catÃ©gorie *
+                                Nom de la categorie *
                             </label>
                             <input type="text" 
                                    name="name" 
                                    id="categoryName" 
                                    class="form-control"
-                                   placeholder="Ex: Photos de blog, BanniÃ¨res..."
+                                   placeholder="Ex: Photos de blog, Bannieres..."
                                    required>
                         </div>
 
@@ -34,7 +34,7 @@
                                       id="categoryDescription" 
                                       class="form-control" 
                                       rows="3"
-                                      placeholder="Description optionnelle de la catÃ©gorie"></textarea>
+                                      placeholder="Description optionnelle de la categorie"></textarea>
                         </div>
 
                         <div class="col-md-6">
@@ -77,7 +77,7 @@
                                        value="1"
                                        checked>
                                 <label for="categoryActive" class="form-check-label">
-                                    CatÃ©gorie active
+                                    Categorie active
                                 </label>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                         Annuler
                     </button>
                     <button type="submit" class="btn btn-success">
-                        <i class="fas fa-plus me-2"></i>CrÃ©er la catÃ©gorie
+                        <i class="fas fa-plus me-2"></i>Creer la categorie
                     </button>
                 </div>
             </form>

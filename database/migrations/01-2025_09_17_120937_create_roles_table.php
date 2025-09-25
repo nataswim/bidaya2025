@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * ExÃ©cute les migrations.
+     * Execute les migrations.
      */
     public function up(): void
     {
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_default')->default(false)->index();
             $table->timestamps();
 
-            // Index supplÃ©mentaire combinÃ©
+            // Index supplementaire combine
             $table->index(['level', 'is_default']);
         });
     }

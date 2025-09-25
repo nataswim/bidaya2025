@@ -87,7 +87,7 @@
                                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                     @csrf
                                     <button type="submit" class="dropdown-item py-2 text-danger">
-                                        <i class="fas fa-sign-out-alt me-2"></i>Se dÃ©connecter
+                                        <i class="fas fa-sign-out-alt me-2"></i>Se deconnecter
                                     </button>
                                 </form>
                             </li>

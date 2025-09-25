@@ -53,7 +53,7 @@ Route::get('/outils/calculateur-tdee', [ToolController::class, 'tdeeCalculator']
 Route::get('/outils/planificateur-triathlon', [ToolController::class, 'triathlonPlanner'])->name('tools.triathlon-planner');
 Route::get('/outils/efficacite-technique-natation', [ToolController::class, 'swimmingEfficiency'])->name('tools.swimming-efficiency');
 
-// Routes outils par catÃ©gories
+// Routes outils par categories
 Route::get('/outils', [ToolController::class, 'index'])->name('tools.index');
 Route::get('/outils/categorie/sante-composition-corporelle', [ToolController::class, 'healthBodyComposition'])->name('tools.category.health');
 Route::get('/outils/categorie/nutrition-energie', [ToolController::class, 'nutritionEnergy'])->name('tools.category.nutrition');
@@ -128,19 +128,19 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::post('/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.users.demote');
 
 
-// ========== ROUTES MÃ©DIAS ==========
+// ========== ROUTES MeDIAS ==========
     
-    // Gestion principale des mÃ©dias
+    // Gestion principale des medias
     Route::get('media', [MediaController::class, 'index'])->name('media.index');
     Route::post('media', [MediaController::class, 'store'])->name('media.store');
     Route::get('media/{media}', [MediaController::class, 'show'])->name('media.show');
     Route::put('media/{media}', [MediaController::class, 'update'])->name('media.update');
     Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
     
-    // API pour sÃ©lection des mÃ©dias (utilisÃ©e dans les modals)
+    // API pour selection des medias (utilisee dans les modals)
     Route::get('media-api', [MediaController::class, 'api'])->name('media.api');
     
-    // Gestion des catÃ©gories de mÃ©dias
+    // Gestion des categories de medias
     Route::get('media-categories', [MediaController::class, 'categories'])->name('media.categories');
     Route::post('media-categories', [MediaController::class, 'storeCategory'])->name('media.categories.store');
     Route::delete('media-categories/{category}', [MediaController::class, 'destroyCategory'])->name('media.categories.destroy');
@@ -150,11 +150,11 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::post('payments/{payment}/approve', [AdminPaymentController::class, 'approve'])->name('payments.approve');
     Route::post('payments/{payment}/reject', [AdminPaymentController::class, 'reject'])->name('payments.reject');
 
-    // Gestion des catÃ©gories de tÃ©lÃ©chargement
+    // Gestion des categories de telechargement
     Route::resource('download-categories', DownloadCategoryController::class);
     Route::get('download-categories-stats', [DownloadCategoryController::class, 'stats'])->name('download-categories.stats');
     
-    // Gestion des tÃ©lÃ©chargements
+    // Gestion des telechargements
     Route::resource('downloadables', DownloadableController::class);
     Route::post('downloadables/{downloadable}/duplicate', [DownloadableController::class, 'duplicate'])->name('downloadables.duplicate');
     Route::get('downloadables-stats', [DownloadableController::class, 'stats'])->name('downloadables.stats');

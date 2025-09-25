@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
-        {{ __('Cette zone est sÃ©curisÃ©e. Veuillez confirmer votre mot de passe avant de continuer.') }}
+        {{ __('Cette zone est securisee. Veuillez confirmer votre mot de passe avant de continuer.') }}
     </div>
 
     <!-- Status -->

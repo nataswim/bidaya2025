@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             
-            if (confirm('Êtes-vous sûr de vouloir supprimer cet Ã©lÃ©ment ? Cette action est irrÃ©versible.')) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet element ? Cette action est irreversible.')) {
                 if (this.tagName === 'BUTTON' && this.closest('form')) {
                     this.closest('form').submit();
                 } else if (this.tagName === 'A') {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Auto-gÃ©nÃ©ration des slugs
+    // Auto-generation des slugs
     const nameInputs = document.querySelectorAll('input[name="name"]');
     const slugInputs = document.querySelectorAll('input[name="slug"]');
     
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // PrÃ©visualisation d'images
+    // Previsualisation d'images
     document.querySelectorAll('input[name="image"]').forEach(input => {
         input.addEventListener('input', function() {
             const previewContainer = this.closest('.form-group')?.querySelector('.image-preview');
@@ -81,20 +81,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Notifications toast
     initializeToasts();
     
-    // Tables responsives amÃ©liorÃ©es
+    // Tables responsives ameliorees
     enhanceResponsiveTables();
     
-    // Filtres en temps rÃ©el
+    // Filtres en temps reel
     initializeLiveFilters();
 });
 
-// Fonction de gÃ©nÃ©ration de slug
+// Fonction de generation de slug
 function generateSlug(text) {
     return text
         .toLowerCase()
         .trim()
         .replace(/[Ãáâãäå]/g, 'a')
-        .replace(/[Ã¨Ã©êë]/g, 'e')
+        .replace(/[eeêë]/g, 'e')
         .replace(/[ìíîï]/g, 'i')
         .replace(/[òóôõö]/g, 'o')
         .replace(/[ùúûü]/g, 'u')
@@ -124,7 +124,7 @@ function showSaveIndicator() {
     const indicator = document.createElement('div');
     indicator.className = 'position-fixed top-0 end-0 m-3 alert alert-success alert-dismissible fade show';
     indicator.innerHTML = `
-        <i class="fas fa-check me-2"></i>Brouillon sauvegardÃ©
+        <i class="fas fa-check me-2"></i>Brouillon sauvegarde
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
     document.body.appendChild(indicator);
@@ -143,7 +143,7 @@ function initializeToasts() {
     });
 }
 
-// Tables responsives amÃ©liorÃ©es
+// Tables responsives ameliorees
 function enhanceResponsiveTables() {
     const tables = document.querySelectorAll('.table-responsive-stack table');
     tables.forEach(table => {
@@ -161,7 +161,7 @@ function enhanceResponsiveTables() {
     });
 }
 
-// Filtres en temps rÃ©el
+// Filtres en temps reel
 function initializeLiveFilters() {
     const searchInputs = document.querySelectorAll('input[name="search"]');
     searchInputs.forEach(input => {
@@ -187,7 +187,7 @@ function filterTable(searchTerm) {
     });
 }
 
-// Upload de fichiers avec prÃ©visualisation
+// Upload de fichiers avec previsualisation
 function initializeFileUploads() {
     document.querySelectorAll('input[type="file"]').forEach(input => {
         input.addEventListener('change', function(e) {
@@ -218,7 +218,7 @@ function initializeFileUploads() {
 function openModal(modalId, data = {}) {
     const modal = document.getElementById(modalId);
     if (modal) {
-        // Remplir les champs avec les donnÃ©es
+        // Remplir les champs avec les donnees
         Object.keys(data).forEach(key => {
             const field = modal.querySelector(`[name="${key}"]`);
             if (field) {
@@ -230,7 +230,7 @@ function openModal(modalId, data = {}) {
     }
 }
 
-// Export des donnÃ©es
+// Export des donnees
 function exportData(format, endpoint) {
     const form = document.createElement('form');
     form.method = 'POST';
@@ -254,7 +254,7 @@ function exportData(format, endpoint) {
     document.body.removeChild(form);
 }
 
-// Validation côtÃ© client amÃ©liorÃ©e
+// Validation côte client amelioree
 function initializeFormValidation() {
     const forms = document.querySelectorAll('form[data-validate]');
     forms.forEach(form => {
@@ -314,7 +314,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// ThÃ¨me sombre/clair
+// Theme sombre/clair
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -330,7 +330,7 @@ function initializeThemeToggle() {
             icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         });
         
-        // Charger le thÃ¨me sauvegardÃ©
+        // Charger le theme sauvegarde
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
     }

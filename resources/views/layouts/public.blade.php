@@ -6,14 +6,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Accueil') - {{ config('app.name') }}</title>
     
-    <!-- PrÃ©chargement des polices -->
+    <!-- Prechargement des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- SEO Meta -->
-    <meta name="description" content="@yield('meta_description', 'Votre plateforme de rÃ©fÃ©rence pour le dÃ©veloppement web et les technologies modernes')">
-    <meta name="keywords" content="@yield('meta_keywords', 'dÃ©veloppement web, Laravel, PHP, technologies')">
+    <meta name="description" content="@yield('meta_description', 'Votre plateforme de reference pour le developpement web et les technologies modernes')">
+    <meta name="keywords" content="@yield('meta_keywords', 'developpement web, Laravel, PHP, technologies')">
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">

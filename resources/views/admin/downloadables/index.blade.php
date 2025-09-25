@@ -1,20 +1,20 @@
 @extends('layouts.admin')
 
-@section('title', 'Gestion des TÃ©lÃ©chargements')
-@section('page-title', 'TÃ©lÃ©chargements')
-@section('page-description', 'Gestion des fichiers tÃ©lÃ©chargeables')
+@section('title', 'Gestion des Telechargements')
+@section('page-title', 'Telechargements')
+@section('page-description', 'Gestion des fichiers telechargeables')
 
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des tÃ©lÃ©chargements -->
+        <!-- Liste des telechargements -->
         <div class="col-lg-9">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h5 class="mb-1">
-                                <i class="fas fa-download me-2"></i>TÃ©lÃ©chargements
+                                <i class="fas fa-download me-2"></i>Telechargements
                             </h5>
                             <small class="opacity-75">{{ $downloadables->total() ?? $downloadables->count() }} fichier(s) au total</small>
                         </div>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="col-md-2">
                             <select name="category" class="form-select">
-                                <option value="">Toute catÃ©gorie</option>
+                                <option value="">Toute categorie</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
@@ -99,7 +99,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="select-all">
                                         <label class="form-check-label fw-semibold" for="select-all">
-                                            SÃ©lectionner tout
+                                            Selectionner tout
                                         </label>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                         <select name="action" class="form-select form-select-sm">
                                             <option value="">Actions en lot</option>
                                             <option value="activate">Activer</option>
-                                            <option value="deactivate">DÃ©sactiver</option>
+                                            <option value="deactivate">Desactiver</option>
                                             <option value="feature">Mettre en avant</option>
                                             <option value="unfeature">Retirer de la une</option>
                                             <option value="delete">Supprimer</option>
@@ -123,7 +123,7 @@
                     </div>
                 @endif
 
-                <!-- TÃ©lÃ©chargements -->
+                <!-- Telechargements -->
                 <div class="card-body p-0">
                     @if($downloadables->count() > 0)
                         <div class="table-responsive">
@@ -134,7 +134,7 @@
                                             <input type="checkbox" class="form-check-input" id="master-checkbox">
                                         </th>
                                         <th class="border-0 px-4 py-3">Fichier</th>
-                                        <th class="border-0 px-4 py-3">CatÃ©gorie</th>
+                                        <th class="border-0 px-4 py-3">Categorie</th>
                                         <th class="border-0 px-4 py-3">Format</th>
                                         <th class="border-0 px-4 py-3">Permission</th>
                                         <th class="border-0 px-4 py-3">Statut</th>
@@ -190,7 +190,7 @@
                                                         {{ $downloadable->category->name }}
                                                     </span>
                                                 @else
-                                                    <span class="text-muted">Non catÃ©gorisÃ©</span>
+                                                    <span class="text-muted">Non categorise</span>
                                                 @endif
                                             </td>
                                             
@@ -293,7 +293,7 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
                                         Affichage de {{ $downloadables->firstItem() }} Ã {{ $downloadables->lastItem() }} 
-                                        sur {{ $downloadables->total() }} rÃ©sultat(s)
+                                        sur {{ $downloadables->total() }} resultat(s)
                                     </div>
                                     {{ $downloadables->appends(request()->query())->links() }}
                                 </div>
@@ -302,16 +302,16 @@
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-download fa-3x text-muted mb-3 opacity-25"></i>
-                            <h5>Aucun tÃ©lÃ©chargement trouvÃ©</h5>
+                            <h5>Aucun telechargement trouve</h5>
                             @if(request()->hasAny(['search', 'status', 'permission', 'category', 'format']))
-                                <p class="text-muted mb-3">Aucun rÃ©sultat ne correspond Ã vos critÃ¨res de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
                                 <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-primary">
-                                    <i class="fas fa-arrow-left me-2"></i>Voir tous les tÃ©lÃ©chargements
+                                    <i class="fas fa-arrow-left me-2"></i>Voir tous les telechargements
                                 </a>
                             @else
-                                <p class="text-muted mb-3">Commencez par crÃ©er votre premier fichier tÃ©lÃ©chargeable</p>
+                                <p class="text-muted mb-3">Commencez par creer votre premier fichier telechargeable</p>
                                 <a href="{{ route('admin.downloadables.create') }}" class="btn btn-primary">
-                                    <i class="fas fa-plus me-2"></i>CrÃ©er un tÃ©lÃ©chargement
+                                    <i class="fas fa-plus me-2"></i>Creer un telechargement
                                 </a>
                             @endif
                         </div>
@@ -322,7 +322,7 @@
 
         <!-- Sidebar statistiques -->
         <div class="col-lg-3">
-            <!-- Statistiques gÃ©nÃ©rales -->
+            <!-- Statistiques generales -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
@@ -379,10 +379,10 @@
                             <i class="fas fa-plus me-2"></i>Nouveau fichier
                         </a>
                         <a href="{{ route('admin.download-categories.index') }}" class="btn btn-outline-warning">
-                            <i class="fas fa-folder me-2"></i>GÃ©rer les catÃ©gories
+                            <i class="fas fa-folder me-2"></i>Gerer les categories
                         </a>
                         <a href="{{ route('admin.downloadables.stats') }}" class="btn btn-outline-success">
-                            <i class="fas fa-chart-line me-2"></i>Statistiques dÃ©taillÃ©es
+                            <i class="fas fa-chart-line me-2"></i>Statistiques detaillees
                         </a>
                         <a href="{{ route('ebook.index') }}" target="_blank" class="btn btn-outline-secondary">
                             <i class="fas fa-external-link-alt me-2"></i>Voir le site public
@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (checkedBoxes.length === 0) {
                 e.preventDefault();
-                alert('Veuillez sÃ©lectionner au moins un Ã©lÃ©ment.');
+                alert('Veuillez selectionner au moins un element.');
                 return;
             }
             
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (actionSelect.value === 'delete') {
-                if (!confirm('Êtes-vous sûr de vouloir supprimer les Ã©lÃ©ments sÃ©lectionnÃ©s ?')) {
+                if (!confirm('Êtes-vous sûr de vouloir supprimer les elements selectionnes ?')) {
                     e.preventDefault();
                 }
             }

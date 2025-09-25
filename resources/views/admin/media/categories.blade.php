@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'CatÃ©gories de mÃ©dias')
+@section('title', 'Categories de medias')
 
 @section('content')
 <div class="container-fluid py-4">
@@ -8,18 +8,18 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <h1 class="h3 mb-0">CatÃ©gories de mÃ©dias</h1>
-                    <p class="text-muted mb-0">Organisez vos mÃ©dias en catÃ©gories</p>
+                    <h1 class="h3 mb-0">Categories de medias</h1>
+                    <p class="text-muted mb-0">Organisez vos medias en categories</p>
                 </div>
                 <div class="d-flex gap-2">
                     <a href="{{ route('admin.media.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour aux mÃ©dias
+                        <i class="fas fa-arrow-left me-2"></i>Retour aux medias
                     </a>
                     <button type="button" 
                             class="btn btn-primary" 
                             data-bs-toggle="modal" 
                             data-bs-target="#categoryModal">
-                        <i class="fas fa-plus me-2"></i>Nouvelle catÃ©gorie
+                        <i class="fas fa-plus me-2"></i>Nouvelle categorie
                     </button>
                 </div>
             </div>
@@ -31,12 +31,12 @@
                             <table class="table table-hover mb-0">
                                 <thead class="bg-light">
                                     <tr>
-                                        <th class="ps-4">CatÃ©gorie</th>
+                                        <th class="ps-4">Categorie</th>
                                         <th>Description</th>
-                                        <th class="text-center">MÃ©dias</th>
+                                        <th class="text-center">Medias</th>
                                         <th class="text-center">Ordre</th>
                                         <th class="text-center">Statut</th>
-                                        <th class="text-center">CrÃ©Ã©e le</th>
+                                        <th class="text-center">Creee le</th>
                                         <th class="text-center pe-4">Actions</th>
                                     </tr>
                                 </thead>
@@ -83,13 +83,13 @@
                                                 <div class="d-flex justify-content-center gap-1">
                                                     <a href="{{ route('admin.media.index', ['category' => $category->id]) }}" 
                                                        class="btn btn-outline-primary btn-sm"
-                                                       title="Voir les mÃ©dias">
+                                                       title="Voir les medias">
                                                         <i class="fas fa-images"></i>
                                                     </a>
                                                     @if($category->media_count === 0)
                                                         <form method="POST" 
                                                               action="{{ route('admin.media.categories.destroy', $category) }}"
-                                                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catÃ©gorie ?')"
+                                                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette categorie ?')"
                                                               class="d-inline">
                                                             @csrf
                                                             @method('DELETE')
@@ -102,7 +102,7 @@
                                                     @else
                                                         <button type="button" 
                                                                 class="btn btn-outline-secondary btn-sm"
-                                                                title="Contient des mÃ©dias"
+                                                                title="Contient des medias"
                                                                 disabled>
                                                             <i class="fas fa-lock"></i>
                                                         </button>
@@ -119,13 +119,13 @@
                             <div class="mb-4">
                                 <i class="fas fa-folder fa-4x text-muted opacity-50"></i>
                             </div>
-                            <h5 class="text-muted">Aucune catÃ©gorie crÃ©Ã©e</h5>
-                            <p class="text-muted mb-4">CrÃ©ez votre premiÃ¨re catÃ©gorie pour organiser vos mÃ©dias.</p>
+                            <h5 class="text-muted">Aucune categorie creee</h5>
+                            <p class="text-muted mb-4">Creez votre premiere categorie pour organiser vos medias.</p>
                             <button type="button" 
                                     class="btn btn-primary" 
                                     data-bs-toggle="modal" 
                                     data-bs-target="#categoryModal">
-                                <i class="fas fa-plus me-2"></i>CrÃ©er une catÃ©gorie
+                                <i class="fas fa-plus me-2"></i>Creer une categorie
                             </button>
                         </div>
                     @endif
@@ -135,7 +135,7 @@
     </div>
 </div>
 
-<!-- Modal CatÃ©gorie -->
+<!-- Modal Categorie -->
 @include('admin.media.modals.category')
 @endsection
 

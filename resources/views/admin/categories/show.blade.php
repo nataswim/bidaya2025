@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'DÃ©tail de la catÃ©gorie')
+@section('title', 'Detail de la categorie')
 @section('page-title', $category->name)
-@section('page-description', 'DÃ©tails de la catÃ©gorie')
+@section('page-description', 'Details de la categorie')
 
 @section('content')
 <div class="container-fluid">
@@ -86,7 +86,7 @@
                                 
                                 @if($category->meta_keywords)
                                     <div class="col-12">
-                                        <small class="text-muted d-block">Mots-clÃ©s</small>
+                                        <small class="text-muted d-block">Mots-cles</small>
                                         <div>
                                             @foreach(explode(',', $category->meta_keywords) as $keyword)
                                                 <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
@@ -98,11 +98,11 @@
                         </div>
                     @endif
 
-                    <!-- Articles rÃ©cents de cette catÃ©gorie -->
+                    <!-- Articles recents de cette categorie -->
                     @if($category->posts()->count() > 0)
                         <div class="border-top pt-4">
                             <h6 class="fw-semibold mb-3">
-                                <i class="fas fa-file-alt me-2"></i>Articles rÃ©cents
+                                <i class="fas fa-file-alt me-2"></i>Articles recents
                             </h6>
                             <div class="list-group list-group-flush">
                                 @foreach($category->posts()->latest()->take(5)->get() as $post)
@@ -187,19 +187,19 @@
                     <div class="row g-3 small">
                         @if($category->creator)
                             <div class="col-12">
-                                <small class="text-muted d-block">CrÃ©Ã© par</small>
+                                <small class="text-muted d-block">Cree par</small>
                                 <strong>{{ $category->creator->name }}</strong>
                             </div>
                         @endif
                         
                         <div class="col-12">
-                            <small class="text-muted d-block">Date de crÃ©ation</small>
+                            <small class="text-muted d-block">Date de creation</small>
                             <strong>{{ $category->created_at->format('d/m/Y H:i') }}</strong>
                         </div>
                         
                         @if($category->updated_at && $category->updated_at != $category->created_at)
                             <div class="col-12">
-                                <small class="text-muted d-block">DerniÃ¨re modification</small>
+                                <small class="text-muted d-block">Derniere modification</small>
                                 <strong>{{ $category->updated_at->format('d/m/Y H:i') }}</strong>
                             </div>
                         @endif
@@ -225,7 +225,7 @@
                     <hr class="my-3">
                     
                     <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" 
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catÃ©gorie ?')">
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette categorie ?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger w-100">

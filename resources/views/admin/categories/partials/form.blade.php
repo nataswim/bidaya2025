@@ -6,19 +6,19 @@
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-gradient-info text-white p-4">
                 <h5 class="mb-0">
-                    <i class="fas fa-folder me-2"></i>Informations de la catÃ©gorie
+                    <i class="fas fa-folder me-2"></i>Informations de la categorie
                 </h5>
             </div>
             <div class="card-body p-4">
                 <!-- Nom -->
                 <div class="mb-4">
-                    <label for="name" class="form-label fw-semibold">Nom de la catÃ©gorie *</label>
+                    <label for="name" class="form-label fw-semibold">Nom de la categorie *</label>
                     <input type="text" 
                            name="name" 
                            id="name" 
                            value="{{ old('name', $category->name ?? '') }}"
                            class="form-control form-control-lg @error('name') is-invalid @enderror"
-                           placeholder="Ex: DÃ©veloppement Web"
+                           placeholder="Ex: Developpement Web"
                            required>
                     @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -27,7 +27,7 @@
 
                 <!-- Slug -->
                 <div class="mb-4">
-                    <label for="slug" class="form-label fw-semibold">URL personnalisÃ©e (Slug)</label>
+                    <label for="slug" class="form-label fw-semibold">URL personnalisee (Slug)</label>
                     <div class="input-group">
                         <span class="input-group-text bg-light">{{ url('/categories') }}/</span>
                         <input type="text" 
@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="developpement-web">
                     </div>
-                    <div class="form-text">Laisser vide pour gÃ©nÃ©ration automatique</div>
+                    <div class="form-text">Laisser vide pour generation automatique</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -50,7 +50,7 @@
                               id="description" 
                               rows="4"
                               class="form-control @error('description') is-invalid @enderror"
-                              placeholder="Description dÃ©taillÃ©e de la catÃ©gorie...">{{ old('description', $category->description ?? '') }}</textarea>
+                              placeholder="Description detaillee de la categorie...">{{ old('description', $category->description ?? '') }}</textarea>
                     @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -59,7 +59,7 @@
                 <!-- Section SEO -->
                 <div class="border-top pt-4">
                     <h6 class="fw-semibold mb-3 text-primary">
-                        <i class="fas fa-search me-2"></i>RÃ©fÃ©rencement (SEO)
+                        <i class="fas fa-search me-2"></i>Referencement (SEO)
                     </h6>
                     
                     <div class="row g-3">
@@ -70,7 +70,7 @@
                                    id="meta_title" 
                                    value="{{ old('meta_title', $category->meta_title ?? '') }}"
                                    class="form-control @error('meta_title') is-invalid @enderror"
-                                   placeholder="Titre optimisÃ© pour les moteurs de recherche">
+                                   placeholder="Titre optimise pour les moteurs de recherche">
                             @error('meta_title')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -82,14 +82,14 @@
                                       id="meta_description" 
                                       rows="3"
                                       class="form-control @error('meta_description') is-invalid @enderror"
-                                      placeholder="Description courte pour les rÃ©sultats de recherche">{{ old('meta_description', $category->meta_description ?? '') }}</textarea>
+                                      placeholder="Description courte pour les resultats de recherche">{{ old('meta_description', $category->meta_description ?? '') }}</textarea>
                             @error('meta_description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         
                         <div class="col-12">
-                            <label for="meta_keywords" class="form-label">Mots-clÃ©s</label>
+                            <label for="meta_keywords" class="form-label">Mots-cles</label>
                             <input type="text" 
                                    name="meta_keywords" 
                                    id="meta_keywords" 
@@ -112,7 +112,7 @@
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-success text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-toggle-on me-2"></i>Statut et visibilitÃ©
+                    <i class="fas fa-toggle-on me-2"></i>Statut et visibilite
                 </h6>
             </div>
             <div class="card-body p-4">
@@ -140,7 +140,7 @@
                            class="form-control @error('order') is-invalid @enderror"
                            placeholder="0"
                            min="0">
-                    <div class="form-text">Plus le nombre est petit, plus la catÃ©gorie sera affichÃ©e en premier</div>
+                    <div class="form-text">Plus le nombre est petit, plus la categorie sera affichee en premier</div>
                     @error('order')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -163,7 +163,7 @@
                        value="{{ old('group_name', $category->group_name ?? '') }}"
                        class="form-control @error('group_name') is-invalid @enderror"
                        placeholder="Ex: Technologies">
-                <div class="form-text">Grouper les catÃ©gories similaires ensemble</div>
+                <div class="form-text">Grouper les categories similaires ensemble</div>
                 @error('group_name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -198,7 +198,7 @@
                 <i class="fas fa-images"></i>
             </button>
         </div>
-        <div class="form-text">SÃ©lectionnez depuis la mÃ©diathÃ¨que ou saisissez une URL</div>
+        <div class="form-text">Selectionnez depuis la mediatheque ou saisissez une URL</div>
         @error('image')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

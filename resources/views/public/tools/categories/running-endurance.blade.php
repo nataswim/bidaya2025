@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils Course Ã Pied & Endurance - Planification SÃ©curisÃ©e Evidence-Based')
-@section('meta_description', 'Outils scientifiques pour course Ã pied et endurance : planification progressive, prÃ©vention blessures, approche sÃ©curisÃ©e. BiomÃ©canique et physiologie de l\'endurance evidence-based.')
+@section('title', 'Outils Course Ã Pied & Endurance - Planification Securisee Evidence-Based')
+@section('meta_description', 'Outils scientifiques pour course Ã pied et endurance : planification progressive, prevention blessures, approche securisee. Biomecanique et physiologie de l\'endurance evidence-based.')
 
 @section('content')
 <!-- Section titre -->
@@ -28,13 +28,13 @@
                     Course Ã Pied & Endurance
                 </h1>
                 <p class="lead mb-4">
-                    Planification intelligente et sÃ©curisÃ©e pour la course Ã pied. 
-                    Approche progressive basÃ©e sur la biomÃ©canique, la physiologie de l'endurance et la prÃ©vention des blessures.
+                    Planification intelligente et securisee pour la course Ã pied. 
+                    Approche progressive basee sur la biomecanique, la physiologie de l'endurance et la prevention des blessures.
                 </p>
                 <div class="alert alert-info border-0 bg-white bg-opacity-75">
                     <small>
                         <i class="fas fa-route me-2"></i>
-                        <strong>1 outil disponible</strong> - Planification progressive et sÃ©curisÃ©e
+                        <strong>1 outil disponible</strong> - Planification progressive et securisee
                     </small>
                 </div>
             </div>
@@ -59,10 +59,10 @@
                 <div class="col-md-11">
                     <h6 class="fw-bold mb-2 text-danger">Progression Graduelle Obligatoire</h6>
                     <p class="mb-0 small text-dark">
-                        <strong>La course Ã pied prÃ©sente un risque Ã©levÃ© de blessures sans progression appropriÃ©e.</strong> 
-                        Augmentation maximum 10% du volume/semaine, respect des signaux corporels, Ã©quipement adaptÃ© et 
-                        consultation mÃ©dicale recommandÃ©e avant tout programme d'entraînement, particuliÃ¨rement aprÃ¨s 40 ans 
-                        ou en cas d'antÃ©cÃ©dents cardiovasculaires, articulaires ou de sÃ©dentaritÃ© prolongÃ©e.
+                        <strong>La course Ã pied presente un risque eleve de blessures sans progression appropriee.</strong> 
+                        Augmentation maximum 10% du volume/semaine, respect des signaux corporels, equipement adapte et 
+                        consultation medicale recommandee avant tout programme d'entraînement, particulierement apres 40 ans 
+                        ou en cas d'antecedents cardiovasculaires, articulaires ou de sedentarite prolongee.
                     </p>
                 </div>
             </div>
@@ -70,7 +70,7 @@
     </div>
 </section>
 
-<!-- Outils de la catÃ©gorie -->
+<!-- Outils de la categorie -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row g-4">
@@ -87,24 +87,24 @@
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-3">
                                         <h4 class="card-title mb-0 text-dark fw-bold">Planificateur Course Ã Pied</h4>
-                                        <span class="badge bg-primary ms-2">AvancÃ©</span>
+                                        <span class="badge bg-primary ms-2">Avance</span>
                                     </div>
                                     <p class="card-text text-muted mb-4">
-                                        Plans d'entraînement personnalisÃ©s avec progression graduelle sÃ©curisÃ©e. 
+                                        Plans d'entraînement personnalises avec progression graduelle securisee. 
                                         Planification intelligente respectant les principes physiologiques, 
-                                        la prÃ©vention des blessures et l'adaptation individuelle pour un dÃ©veloppement durable.
+                                        la prevention des blessures et l'adaptation individuelle pour un developpement durable.
                                     </p>
                                     <div class="row g-3 mb-4">
                                         <div class="col-md-4">
                                             <div class="d-flex align-items-center">
                                                 <i class="fas fa-shield-alt text-success me-2"></i>
-                                                <small class="text-success fw-semibold">Progression sÃ©curisÃ©e</small>
+                                                <small class="text-success fw-semibold">Progression securisee</small>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="d-flex align-items-center">
                                                 <i class="fas fa-user-md text-info me-2"></i>
-                                                <small class="text-info fw-semibold">Approche mÃ©dicale</small>
+                                                <small class="text-info fw-semibold">Approche medicale</small>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -115,7 +115,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="text-primary fw-bold fs-5">AccÃ©der Ã l'outil →</span>
+                                        <span class="text-primary fw-bold fs-5">Acceder Ã l'outil →</span>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>10-15 min</small>
@@ -130,15 +130,15 @@
 
         </div>
 
-        <!-- Message outils complÃ©mentaires -->
+        <!-- Message outils complementaires -->
         <div class="text-center mt-5">
             <div class="card border-warning">
                 <div class="card-body py-3">
                     <h6 class="text-warning mb-2">
-                        <i class="fas fa-tools me-2"></i>Outils ComplÃ©mentaires RecommandÃ©s
+                        <i class="fas fa-tools me-2"></i>Outils Complementaires Recommandes
                     </h6>
                     <p class="small text-muted mb-3">
-                        Pour une approche complÃ¨te de la course Ã pied, combinez avec nos autres outils :
+                        Pour une approche complete de la course Ã pied, combinez avec nos autres outils :
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <a href="{{ route('tools.category.cardiac') }}" class="btn btn-outline-danger btn-sm">
@@ -171,35 +171,35 @@
     </div>
 </section>
 
-<!-- Contenu Ã©ducatif -->
+<!-- Contenu educatif -->
 <section class="py-5">
     <div class="container">
         
-        <!-- BiomÃ©canique de la course -->
+        <!-- Biomecanique de la course -->
         <div class="card mb-4">
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-cogs me-2"></i>
-                    BiomÃ©canique et Technique de Course
+                    Biomecanique et Technique de Course
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-warning">Cycle de Course et EfficacitÃ©</h6>
+                        <h6 class="text-warning">Cycle de Course et Efficacite</h6>
                         <p class="small">
-                            La course implique des impacts rÃ©pÃ©tÃ©s (2-3x le poids du corps) et une coordination complexe. 
-                            L'efficacitÃ© rÃ©sulte de l'Ã©quilibre entre Ã©conomie gestuelle, absorption des chocs 
-                            et propulsion. La technique naturelle est gÃ©nÃ©ralement la plus efficace pour chaque individu.
+                            La course implique des impacts repetes (2-3x le poids du corps) et une coordination complexe. 
+                            L'efficacite resulte de l'equilibre entre economie gestuelle, absorption des chocs 
+                            et propulsion. La technique naturelle est generalement la plus efficace pour chaque individu.
                         </p>
                         
-                        <h6 class="text-primary mt-3">ParamÃ¨tres Techniques ClÃ©s</h6>
+                        <h6 class="text-primary mt-3">Parametres Techniques Cles</h6>
                         <ul class="small">
                             <li><strong>Cadence :</strong> 170-190 pas/minute optimal pour la plupart</li>
-                            <li><strong>Longueur foulÃ©e :</strong> Adaptation naturelle selon vitesse</li>
-                            <li><strong>Attaque pied :</strong> Talon, mÃ©dio-pied ou avant-pied selon morphologie</li>
-                            <li><strong>Posture :</strong> LÃ©gÃ¨re inclinaison avant, core engagÃ©</li>
-                            <li><strong>Balancement bras :</strong> Mouvement naturel, dÃ©contractÃ©</li>
+                            <li><strong>Longueur foulee :</strong> Adaptation naturelle selon vitesse</li>
+                            <li><strong>Attaque pied :</strong> Talon, medio-pied ou avant-pied selon morphologie</li>
+                            <li><strong>Posture :</strong> Legere inclinaison avant, core engage</li>
+                            <li><strong>Balancement bras :</strong> Mouvement naturel, decontracte</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -208,17 +208,17 @@
                             <h6 class="small">Principe Fondamental</h6>
                             <p class="small mb-0">
                                 <strong>Ne pas forcer de changements techniques majeurs.</strong> 
-                                La technique de course est largement dÃ©terminÃ©e par la morphologie individuelle. 
-                                Les modifications doivent être progressives et accompagnÃ©es.
+                                La technique de course est largement determinee par la morphologie individuelle. 
+                                Les modifications doivent être progressives et accompagnees.
                             </p>
                         </div>
                         
                         <h6 class="text-info mt-3">Facteurs Individuels</h6>
                         <ul class="small">
                             <li>Morphologie (taille, proportions membres)</li>
-                            <li>FlexibilitÃ© articulaire (cheville, hanche, thorax)</li>
+                            <li>Flexibilite articulaire (cheville, hanche, thorax)</li>
                             <li>Historique blessures et adaptations</li>
-                            <li>Condition physique et expÃ©rience</li>
+                            <li>Condition physique et experience</li>
                             <li>Type de terrain habituel</li>
                         </ul>
                         
@@ -226,7 +226,7 @@
                             <h6 class="small">Changements Techniques</h6>
                             <p class="small mb-0">
                                 Toute modification technique peut initialement augmenter le risque de blessure. 
-                                Progression trÃ¨s graduelle et surveillance nÃ©cessaires.
+                                Progression tres graduelle et surveillance necessaires.
                             </p>
                         </div>
                     </div>
@@ -234,12 +234,12 @@
             </div>
         </div>
 
-        <!-- PrÃ©vention des blessures -->
+        <!-- Prevention des blessures -->
         <div class="card mb-4">
             <div class="card-header bg-danger text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    PrÃ©vention des Blessures en Course Ã Pied
+                    Prevention des Blessures en Course Ã Pied
                 </h3>
             </div>
             <div class="card-body">
@@ -251,7 +251,7 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Blessure</th>
-                                        <th>FrÃ©quence</th>
+                                        <th>Frequence</th>
                                         <th>Cause Principale</th>
                                     </tr>
                                 </thead>
@@ -264,10 +264,10 @@
                                     <tr>
                                         <td>Syndrome rotulien</td>
                                         <td>10-15%</td>
-                                        <td>DÃ©sÃ©quilibres musculaires</td>
+                                        <td>Desequilibres musculaires</td>
                                     </tr>
                                     <tr>
-                                        <td>PÃ©riostite tibiale</td>
+                                        <td>Periostite tibiale</td>
                                         <td>8-12%</td>
                                         <td>Augmentation brutale volume</td>
                                     </tr>
@@ -286,30 +286,30 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success">StratÃ©gies PrÃ©ventives Evidence-Based</h6>
+                        <h6 class="text-success">Strategies Preventives Evidence-Based</h6>
                         <ul class="small">
-                            <li><strong>RÃ¨gle des 10% :</strong> Augmentation hebdomadaire maximum</li>
-                            <li><strong>Renforcement ciblÃ© :</strong> Muscles stabilisateurs (hanches, core)</li>
-                            <li><strong>MobilitÃ© rÃ©guliÃ¨re :</strong> Ã©tirements dynamiques prÃ©-course</li>
-                            <li><strong>RÃ©cupÃ©ration programmÃ©e :</strong> Jours de repos obligatoires</li>
-                            <li><strong>Ã©coute corporelle :</strong> Arrêt si douleur persistante</li>
-                            <li><strong>Surfaces variÃ©es :</strong> Ã©viter monotonie (asphalte uniquement)</li>
+                            <li><strong>Regle des 10% :</strong> Augmentation hebdomadaire maximum</li>
+                            <li><strong>Renforcement cible :</strong> Muscles stabilisateurs (hanches, core)</li>
+                            <li><strong>Mobilite reguliere :</strong> etirements dynamiques pre-course</li>
+                            <li><strong>Recuperation programmee :</strong> Jours de repos obligatoires</li>
+                            <li><strong>ecoute corporelle :</strong> Arrêt si douleur persistante</li>
+                            <li><strong>Surfaces variees :</strong> eviter monotonie (asphalte uniquement)</li>
                         </ul>
                         
-                        <h6 class="text-warning mt-3">Ã©quipement PrÃ©ventif</h6>
+                        <h6 class="text-warning mt-3">equipement Preventif</h6>
                         <div class="alert alert-info alert-sm">
                             <h6 class="small">Chaussures de Course</h6>
                             <p class="small mb-0">
-                                Ã©lÃ©ment prÃ©ventif crucial : changement tous les 500-800km, 
-                                choix selon type de foulÃ©e et morphologie. 
-                                <strong>Conseil spÃ©cialisÃ© en magasin recommandÃ©.</strong>
+                                element preventif crucial : changement tous les 500-800km, 
+                                choix selon type de foulee et morphologie. 
+                                <strong>Conseil specialise en magasin recommande.</strong>
                             </p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="alert alert-danger mt-4">
-                    <h6><i class="fas fa-stop me-2"></i>Signaux d'Arrêt ImmÃ©diat</h6>
+                    <h6><i class="fas fa-stop me-2"></i>Signaux d'Arrêt Immediat</h6>
                     <div class="row g-2">
                         <div class="col-md-6">
                             <ul class="small mb-0">
@@ -322,7 +322,7 @@
                             <ul class="small mb-0">
                                 <li>Boiterie ou compensation gestuelle</li>
                                 <li>Douleur nocturne ou au repos</li>
-                                <li>Symptômes systÃ©miques (fiÃ¨vre, malaise)</li>
+                                <li>Symptômes systemiques (fievre, malaise)</li>
                             </ul>
                         </div>
                     </div>
@@ -341,10 +341,10 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-primary">SystÃ¨mes Ã©nergÃ©tiques</h6>
+                        <h6 class="text-primary">Systemes energetiques</h6>
                         <p class="small">
-                            L'endurance sollicite principalement le systÃ¨me aÃ©robie, avec contribution 
-                            anaÃ©robie selon l'intensitÃ©. Les adaptations cardiovasculaires, 
+                            L'endurance sollicite principalement le systeme aerobie, avec contribution 
+                            anaerobie selon l'intensite. Les adaptations cardiovasculaires, 
                             respiratoires et musculaires s'installent progressivement (6-12 semaines minimum).
                         </p>
                         
@@ -353,29 +353,29 @@
                                 <thead>
                                     <tr>
                                         <th>Distance</th>
-                                        <th>SystÃ¨me Principal</th>
-                                        <th>DurÃ©e Effort</th>
+                                        <th>Systeme Principal</th>
+                                        <th>Duree Effort</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>5km</td>
-                                        <td>AÃ©robie + AnaÃ©robie</td>
+                                        <td>Aerobie + Anaerobie</td>
                                         <td>15-30 min</td>
                                     </tr>
                                     <tr>
                                         <td>10km</td>
-                                        <td>AÃ©robie dominant</td>
+                                        <td>Aerobie dominant</td>
                                         <td>30-60 min</td>
                                     </tr>
                                     <tr>
                                         <td>Semi-marathon</td>
-                                        <td>AÃ©robie (95%)</td>
+                                        <td>Aerobie (95%)</td>
                                         <td>1h-2h30</td>
                                     </tr>
                                     <tr>
                                         <td>Marathon</td>
-                                        <td>AÃ©robie (98%)</td>
+                                        <td>Aerobie (98%)</td>
                                         <td>2h30-6h</td>
                                     </tr>
                                 </tbody>
@@ -388,7 +388,7 @@
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th>PÃ©riode</th>
+                                        <th>Periode</th>
                                         <th>Adaptations</th>
                                         <th>Manifestations</th>
                                     </tr>
@@ -397,32 +397,32 @@
                                     <tr>
                                         <td>2-4 semaines</td>
                                         <td>Neuromusculaires</td>
-                                        <td>Coordination, efficacitÃ©</td>
+                                        <td>Coordination, efficacite</td>
                                     </tr>
                                     <tr>
                                         <td>4-8 semaines</td>
                                         <td>Cardiovasculaires</td>
-                                        <td>FC repos, dÃ©bit cardiaque</td>
+                                        <td>FC repos, debit cardiaque</td>
                                     </tr>
                                     <tr>
                                         <td>8-16 semaines</td>
-                                        <td>MÃ©taboliques</td>
+                                        <td>Metaboliques</td>
                                         <td>Enzymes, mitochondries</td>
                                     </tr>
                                     <tr>
                                         <td>3-6 mois</td>
                                         <td>Structurelles</td>
-                                        <td>DensitÃ© capillaire, VO2 max</td>
+                                        <td>Densite capillaire, VO2 max</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         
                         <div class="alert alert-success alert-sm">
-                            <h6 class="small">Patience NÃ©cessaire</h6>
+                            <h6 class="small">Patience Necessaire</h6>
                             <p class="small mb-0">
                                 Les adaptations physiologiques demandent du temps. 
-                                Forcer la progression peut causer blessures sans bÃ©nÃ©fice supplÃ©mentaire.
+                                Forcer la progression peut causer blessures sans benefice supplementaire.
                             </p>
                         </div>
                     </div>
@@ -430,59 +430,59 @@
             </div>
         </div>
 
-        <!-- Approche Ã©quilibrÃ©e -->
+        <!-- Approche equilibree -->
         <div class="card">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-balance-scale me-2"></i>
-                    Approche Ã©quilibrÃ©e de la Course Ã Pied
+                    Approche equilibree de la Course Ã Pied
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-success">BÃ©nÃ©fices SantÃ© DÃ©montrÃ©s</h6>
+                        <h6 class="text-success">Benefices Sante Demontres</h6>
                         <ul class="small">
-                            <li><strong>Cardiovasculaire :</strong> RÃ©duction risque maladies cardiaques (-30-40%)</li>
-                            <li><strong>MÃ©tabolique :</strong> AmÃ©lioration sensibilitÃ© insuline, contrôle poids</li>
-                            <li><strong>Osseux :</strong> PrÃ©vention ostÃ©oporose, renforcement squelette</li>
-                            <li><strong>Mental :</strong> RÃ©duction stress, anxiÃ©tÃ©, amÃ©lioration humeur</li>
-                            <li><strong>Cognitif :</strong> NeuroplasticitÃ©, mÃ©moire, concentration</li>
-                            <li><strong>LongÃ©vitÃ© :</strong> Augmentation espÃ©rance de vie en bonne santÃ©</li>
+                            <li><strong>Cardiovasculaire :</strong> Reduction risque maladies cardiaques (-30-40%)</li>
+                            <li><strong>Metabolique :</strong> Amelioration sensibilite insuline, contrôle poids</li>
+                            <li><strong>Osseux :</strong> Prevention osteoporose, renforcement squelette</li>
+                            <li><strong>Mental :</strong> Reduction stress, anxiete, amelioration humeur</li>
+                            <li><strong>Cognitif :</strong> Neuroplasticite, memoire, concentration</li>
+                            <li><strong>Longevite :</strong> Augmentation esperance de vie en bonne sante</li>
                         </ul>
                         
                         <div class="alert alert-info alert-sm">
                             <h6 class="small">Dose Optimale</h6>
                             <p class="small mb-0">
-                                150min/semaine d'activitÃ© modÃ©rÃ©e ou 75min d'activitÃ© intense 
-                                pour bÃ©nÃ©fices santÃ© maximaux selon l'OMS.
+                                150min/semaine d'activite moderee ou 75min d'activite intense 
+                                pour benefices sante maximaux selon l'OMS.
                             </p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-warning">PrÃ©vention Comportements Dysfonctionnels</h6>
+                        <h6 class="text-warning">Prevention Comportements Dysfonctionnels</h6>
                         <p class="small">
                             La course peut devenir compulsive ou excessive. Signaux d'alerte : 
-                            impossibilitÃ© de repos, course malgrÃ© blessures, nÃ©gligence obligations sociales/professionnelles.
+                            impossibilite de repos, course malgre blessures, negligence obligations sociales/professionnelles.
                         </p>
                         
-                        <h6 class="text-info mt-3">Ã©quilibre Sain</h6>
+                        <h6 class="text-info mt-3">equilibre Sain</h6>
                         <ul class="small">
-                            <li>Plaisir de courir prÃ©servÃ©</li>
-                            <li>FlexibilitÃ© dans la planification</li>
-                            <li>Repos acceptÃ© sans culpabilitÃ©</li>
-                            <li>Objectifs rÃ©alistes et adaptables</li>
-                            <li>Vie sociale et familiale respectÃ©e</li>
-                            <li>Ã©coute des signaux corporels</li>
+                            <li>Plaisir de courir preserve</li>
+                            <li>Flexibilite dans la planification</li>
+                            <li>Repos accepte sans culpabilite</li>
+                            <li>Objectifs realistes et adaptables</li>
+                            <li>Vie sociale et familiale respectee</li>
+                            <li>ecoute des signaux corporels</li>
                         </ul>
                         
                         <div class="alert alert-warning">
-                            <h6><i class="fas fa-heart me-2"></i>PrioritÃ© Bien-être</h6>
+                            <h6><i class="fas fa-heart me-2"></i>Priorite Bien-être</h6>
                             <p class="mb-0 small">
                                 La course doit enrichir votre vie, non la contrôler. 
-                                <strong>Si courir devient une obsession ou source d'anxiÃ©tÃ©, 
-                                cherchez l'aide d'un professionnel.</strong> SantÃ© mentale et physique 
-                                sont indissociables pour un dÃ©veloppement harmonieux.
+                                <strong>Si courir devient une obsession ou source d'anxiete, 
+                                cherchez l'aide d'un professionnel.</strong> Sante mentale et physique 
+                                sont indissociables pour un developpement harmonieux.
                             </p>
                         </div>
                     </div>
@@ -492,7 +492,7 @@
     </div>
 </section>
 
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -506,9 +506,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -518,15 +518,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -553,7 +553,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -564,12 +564,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -676,7 +676,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation d'entrÃ©e pour les cards
+    // Animation d'entree pour les cards
     const cards = document.querySelectorAll('.hover-lift');
     
     const observerOptions = {

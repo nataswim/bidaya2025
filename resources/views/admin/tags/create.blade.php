@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('title', 'CrÃ©er un tag')
+@section('title', 'Creer un tag')
 @section('page-title', 'Nouveau tag')
-@section('page-description', 'CrÃ©ation d\'un nouveau tag')
+@section('page-description', 'Creation d\'un nouveau tag')
 
 @section('content')
 <div class="container-fluid">
     <form method="POST" action="{{ route('admin.tags.store') }}">
         @include('admin.tags.partials.form', [
-            'submitLabel' => 'CrÃ©er le tag'
+            'submitLabel' => 'Creer le tag'
         ])
     </form>
 </div>
@@ -37,7 +37,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-gÃ©nÃ©ration du slug Ã partir du nom
+    // Auto-generation du slug Ã partir du nom
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     

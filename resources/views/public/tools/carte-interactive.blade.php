@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Carte Interactive Lieux Entraînement - Piscines & Salles Sport')
-@section('meta_description', 'Trouvez facilement les piscines, salles de sport et lieux d\'entraînement prÃ¨s de chez vous avec notre carte interactive. GÃ©olocalisation, recherche et itinÃ©raires inclus.')
+@section('meta_description', 'Trouvez facilement les piscines, salles de sport et lieux d\'entraînement pres de chez vous avec notre carte interactive. Geolocalisation, recherche et itineraires inclus.')
 
 @section('content')
 <!-- Section titre -->
@@ -17,7 +17,7 @@
                 <i class="fas fa-clock text-info me-3 mt-1"></i>
                 <div class="text-dark">
                     <strong>Explorez et trouvez</strong> les meilleurs spots pour vos entraînements de natation, 
-                    course Ã pied ou triathlon prÃ¨s de chez vous
+                    course Ã pied ou triathlon pres de chez vous
                 </div>
             </div>
         </div>
@@ -46,12 +46,12 @@
                     <option value="satellite">Satellite</option>
                 </select>
                 <button id="directionsButton" class="btn btn-success btn-lg shadow-sm d-none">
-                    <i class="fas fa-route me-2"></i>ItinÃ©raire Google Maps
+                    <i class="fas fa-route me-2"></i>Itineraire Google Maps
                 </button>
             </div>
         </div>
         
-        <!-- Messages d'erreur/succÃ¨s -->
+        <!-- Messages d'erreur/succes -->
         <div id="alertContainer"></div>
     </div>
 </section>
@@ -61,7 +61,7 @@
     <div class="container">
         <div id="mapContainer" class="shadow-lg" 
              style="height: 80vh; width: 100%; border-radius: 0.75rem; overflow: hidden; border: 1px solid #dee2e6;">
-            <!-- La carte Leaflet sera initialisÃ©e ici -->
+            <!-- La carte Leaflet sera initialisee ici -->
         </div>
     </div>
 </section>
@@ -86,10 +86,10 @@
                         <div class="card border-primary h-100">
                             <div class="card-body">
                                 <h6 class="card-title text-primary">
-                                    <i class="fas fa-location-arrow me-2"></i>GÃ©olocalisation
+                                    <i class="fas fa-location-arrow me-2"></i>Geolocalisation
                                 </h6>
                                 <p class="card-text">
-                                    Ã l'ouverture, la carte tente de dÃ©tecter votre position actuelle pour vous centrer automatiquement.
+                                    Ã l'ouverture, la carte tente de detecter votre position actuelle pour vous centrer automatiquement.
                                 </p>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                     <i class="fas fa-search me-2"></i>Recherche
                                 </h6>
                                 <p class="card-text">
-                                    Utilisez la barre de recherche pour trouver des piscines, salles de sport, parcs ou tout autre lieu spÃ©cifique.
+                                    Utilisez la barre de recherche pour trouver des piscines, salles de sport, parcs ou tout autre lieu specifique.
                                 </p>
                             </div>
                         </div>
@@ -125,10 +125,10 @@
                         <div class="card border-info h-100">
                             <div class="card-body">
                                 <h6 class="card-title text-info">
-                                    <i class="fas fa-route me-2"></i>ItinÃ©raire
+                                    <i class="fas fa-route me-2"></i>Itineraire
                                 </h6>
                                 <p class="card-text">
-                                    Si votre position est dÃ©tectÃ©e et que vous avez recherchÃ© un lieu, obtenez un itinÃ©raire via Google Maps.
+                                    Si votre position est detectee et que vous avez recherche un lieu, obtenez un itineraire via Google Maps.
                                 </p>
                             </div>
                         </div>
@@ -138,8 +138,8 @@
                 <div class="alert alert-success mt-4">
                     <h6><i class="fas fa-lightbulb me-2"></i>Conseil Pro</h6>
                     <p class="mb-0">
-                        Pour de meilleurs rÃ©sultats de recherche, soyez spÃ©cifique : "Piscine municipale + nom de ville" 
-                        ou "Salle de sport + adresse prÃ©cise".
+                        Pour de meilleurs resultats de recherche, soyez specifique : "Piscine municipale + nom de ville" 
+                        ou "Salle de sport + adresse precise".
                     </p>
                 </div>
             </div>
@@ -155,7 +155,7 @@
             </div>
             <div class="card-body">
                 <p class="lead">
-                    AprÃ¨s avoir trouvÃ© votre lieu idÃ©al, profitez de nos autres outils pour maximiser votre potentiel :
+                    Apres avoir trouve votre lieu ideal, profitez de nos autres outils pour maximiser votre potentiel :
                 </p>
                 <div class="row g-3">
                     <div class="col-md-3">
@@ -213,9 +213,9 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="text-warning">ExtÃ©rieur</h6>
+                        <h6 class="text-warning">Exterieur</h6>
                         <div class="d-flex flex-wrap gap-1">
-                            <button class="btn btn-outline-warning btn-sm search-suggestion" data-search="parcours santÃ©">Parcours santÃ©</button>
+                            <button class="btn btn-outline-warning btn-sm search-suggestion" data-search="parcours sante">Parcours sante</button>
                             <button class="btn btn-outline-warning btn-sm search-suggestion" data-search="piste cyclable">Piste cyclable</button>
                             <button class="btn btn-outline-warning btn-sm search-suggestion" data-search="parc public">Parc public</button>
                         </div>
@@ -225,7 +225,7 @@
         </div>
     </div>
 </section>
-<!-- Section CrÃ©dit et Contact -->
+<!-- Section Credit et Contact -->
      <div class="card mb-4">
             <a href="{{ route('tools.index') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Essayer d'autres outils
@@ -241,9 +241,9 @@
                 <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-info mb-2">DÃ©veloppement & Expertise</h6>
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
-                            Contenus et outils dÃ©veloppÃ©s par 
+                            Contenus et outils developpes par 
                             <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -253,15 +253,15 @@
                             </a>
                         </p>
                         <p class="small text-light opacity-75">
-                            Expert en sciences du sport, physiologie de l'exercice et dÃ©veloppement 
+                            Expert en sciences du sport, physiologie de l'exercice et developpement 
                             d'outils d'aide Ã la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & AmÃ©lioration</h6>
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggÃ©rer 
-                            de nouveaux outils, n'hÃ©sitez pas Ã nous contacter.
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas Ã nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -288,7 +288,7 @@
                 </div>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches 2024 intÃ©grÃ©es</small>
+                    <small class="text-light opacity-75">Recherches 2024 integrees</small>
                 </div>
             </div>
         </div>
@@ -299,12 +299,12 @@
 
 
 
-<!-- DerniÃ¨res Publications -->
+<!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>DerniÃ¨res Publications
+                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -437,14 +437,14 @@ class InteractiveMap {
     }
     
     initializeMap() {
-        // Initialiser la carte centrÃ©e sur Paris par dÃ©faut
+        // Initialiser la carte centree sur Paris par defaut
         this.map = L.map('mapContainer', {
             center: [48.8566, 2.3522],
             zoom: 13,
             zoomControl: true
         });
         
-        // Couche de tuiles par dÃ©faut (OpenStreetMap)
+        // Couche de tuiles par defaut (OpenStreetMap)
         this.streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             maxZoom: 19
@@ -456,7 +456,7 @@ class InteractiveMap {
             maxZoom: 19
         });
         
-        // Icônes personnalisÃ©es
+        // Icônes personnalisees
         this.userIcon = L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
             iconSize: [25, 41],
@@ -475,14 +475,14 @@ class InteractiveMap {
             shadowSize: [41, 41]
         });
         
-        console.log('Carte initialisÃ©e avec succÃ¨s');
+        console.log('Carte initialisee avec succes');
     }
     
     setupEventListeners() {
         // Bouton de recherche
         document.getElementById('searchButton').addEventListener('click', () => this.handleSearch());
         
-        // Recherche au clavier (EntrÃ©e)
+        // Recherche au clavier (Entree)
         document.getElementById('searchInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 this.handleSearch();
@@ -503,7 +503,7 @@ class InteractiveMap {
             });
         });
         
-        // Bouton d'itinÃ©raire
+        // Bouton d'itineraire
         document.getElementById('directionsButton').addEventListener('click', () => {
             this.openDirections();
         });
@@ -511,27 +511,27 @@ class InteractiveMap {
     
     requestGeolocation() {
         if (navigator.geolocation) {
-            this.showAlert('info', 'Tentative de gÃ©olocalisation en cours...', 2000);
+            this.showAlert('info', 'Tentative de geolocalisation en cours...', 2000);
             
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     this.userLocation = [position.coords.latitude, position.coords.longitude];
                     this.addUserMarker();
                     this.map.setView(this.userLocation, 15);
-                    this.showAlert('success', 'Position dÃ©tectÃ©e avec succÃ¨s !', 3000);
+                    this.showAlert('success', 'Position detectee avec succes !', 3000);
                     this.updateDirectionsButton();
                 },
                 (error) => {
-                    let errorMessage = 'Erreur de gÃ©olocalisation : ';
+                    let errorMessage = 'Erreur de geolocalisation : ';
                     switch (error.code) {
                         case error.PERMISSION_DENIED:
-                            errorMessage += 'AccÃ¨s refusÃ© par l\'utilisateur.';
+                            errorMessage += 'Acces refuse par l\'utilisateur.';
                             break;
                         case error.POSITION_UNAVAILABLE:
                             errorMessage += 'Position indisponible.';
                             break;
                         case error.TIMEOUT:
-                            errorMessage += 'DÃ©lai d\'attente dÃ©passÃ©.';
+                            errorMessage += 'Delai d\'attente depasse.';
                             break;
                         default:
                             errorMessage += 'Erreur inconnue.';
@@ -546,7 +546,7 @@ class InteractiveMap {
                 }
             );
         } else {
-            this.showAlert('error', 'La gÃ©olocalisation n\'est pas supportÃ©e par votre navigateur.', 5000);
+            this.showAlert('error', 'La geolocalisation n\'est pas supportee par votre navigateur.', 5000);
         }
     }
     
@@ -601,9 +601,9 @@ class InteractiveMap {
                 this.map.setView(this.selectedLocation, 16);
                 this.updateDirectionsButton();
                 
-                this.showAlert('success', `Lieu trouvÃ© : ${this.locationName}`, 4000);
+                this.showAlert('success', `Lieu trouve : ${this.locationName}`, 4000);
             } else {
-                this.showAlert('error', 'Lieu non trouvÃ©. Veuillez affiner votre recherche ou essayer un autre terme.', 5000);
+                this.showAlert('error', 'Lieu non trouve. Veuillez affiner votre recherche ou essayer un autre terme.', 5000);
                 this.selectedLocation = null;
                 this.locationName = '';
                 this.removeSelectedMarker();
@@ -611,7 +611,7 @@ class InteractiveMap {
             }
         } catch (error) {
             console.error('Erreur de recherche:', error);
-            this.showAlert('error', 'Erreur lors de la recherche. Veuillez vÃ©rifier votre connexion et rÃ©essayer.', 5000);
+            this.showAlert('error', 'Erreur lors de la recherche. Veuillez verifier votre connexion et reessayer.', 5000);
         } finally {
             this.isSearching = false;
             this.updateSearchButton(false);
@@ -710,7 +710,7 @@ class InteractiveMap {
         
         alertContainer.appendChild(alert);
         
-        // Auto-dismiss aprÃ¨s la durÃ©e spÃ©cifiÃ©e
+        // Auto-dismiss apres la duree specifiee
         if (duration > 0) {
             setTimeout(() => {
                 if (alert && alert.parentNode) {
@@ -723,11 +723,11 @@ class InteractiveMap {
 
 // Initialiser la carte au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
-    // Attendre que Leaflet soit complÃ¨tement chargÃ©
+    // Attendre que Leaflet soit completement charge
     if (typeof L !== 'undefined') {
         new InteractiveMap();
     } else {
-        // Fallback si Leaflet n'est pas encore chargÃ©
+        // Fallback si Leaflet n'est pas encore charge
         setTimeout(() => {
             new InteractiveMap();
         }, 100);

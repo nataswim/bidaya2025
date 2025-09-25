@@ -40,16 +40,16 @@
                     <select name="payment_status" class="form-select">
                         <option value="">Tous les statuts</option>
                         <option value="pending" {{ request('payment_status') == 'pending' ? 'selected' : '' }}>En attente</option>
-                        <option value="completed" {{ request('payment_status') == 'completed' ? 'selected' : '' }}>PayÃ©</option>
-                        <option value="failed" {{ request('payment_status') == 'failed' ? 'selected' : '' }}>Ã©chouÃ©</option>
+                        <option value="completed" {{ request('payment_status') == 'completed' ? 'selected' : '' }}>Paye</option>
+                        <option value="failed" {{ request('payment_status') == 'failed' ? 'selected' : '' }}>echoue</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <select name="admin_status" class="form-select">
                         <option value="">Toutes les validations</option>
                         <option value="pending" {{ request('admin_status') == 'pending' ? 'selected' : '' }}>En validation</option>
-                        <option value="approved" {{ request('admin_status') == 'approved' ? 'selected' : '' }}>ApprouvÃ©</option>
-                        <option value="rejected" {{ request('admin_status') == 'rejected' ? 'selected' : '' }}>RejetÃ©</option>
+                        <option value="approved" {{ request('admin_status') == 'approved' ? 'selected' : '' }}>Approuve</option>
+                        <option value="rejected" {{ request('admin_status') == 'rejected' ? 'selected' : '' }}>Rejete</option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -124,7 +124,7 @@
                             <td class="py-3">
                                 @if($payment->status === 'completed')
                                     <span class="badge bg-success-subtle text-success">
-                                        <i class="fas fa-check-circle me-1"></i>PayÃ©
+                                        <i class="fas fa-check-circle me-1"></i>Paye
                                     </span>
                                 @elseif($payment->status === 'pending')
                                     <span class="badge bg-warning-subtle text-warning">
@@ -144,7 +144,7 @@
                                 @elseif($payment->admin_status === 'approved')
                                     <div>
                                         <span class="badge bg-success-subtle text-success">
-                                            <i class="fas fa-check-circle me-1"></i>ApprouvÃ©
+                                            <i class="fas fa-check-circle me-1"></i>Approuve
                                         </span>
                                         @if($payment->processed_at)
                                             <br>
@@ -156,7 +156,7 @@
                                 @elseif($payment->admin_status === 'rejected')
                                     <div>
                                         <span class="badge bg-danger-subtle text-danger">
-                                            <i class="fas fa-times-circle me-1"></i>RejetÃ©
+                                            <i class="fas fa-times-circle me-1"></i>Rejete
                                         </span>
                                         @if($payment->processed_at)
                                             <br>
@@ -197,12 +197,12 @@
                                 @elseif($payment->admin_status === 'approved')
                                     <small class="text-success">
                                         <i class="fas fa-user-check me-1"></i>
-                                        TraitÃ© par {{ $payment->processedBy->name }}
+                                        Traite par {{ $payment->processedBy->name }}
                                     </small>
                                 @elseif($payment->admin_status === 'rejected')
                                     <small class="text-danger">
                                         <i class="fas fa-user-times me-1"></i>
-                                        RejetÃ© par {{ $payment->processedBy->name ?? 'Admin' }}
+                                        Rejete par {{ $payment->processedBy->name ?? 'Admin' }}
                                     </small>
                                 @endif
                             </td>
@@ -225,7 +225,7 @@
                                         <div class="modal-body">
                                             <div class="alert alert-warning">
                                                 <i class="fas fa-exclamation-triangle me-2"></i>
-                                                Cette action changera le statut du paiement en "rejetÃ©".
+                                                Cette action changera le statut du paiement en "rejete".
                                             </div>
                                             
                                             <div class="mb-3">
@@ -239,7 +239,7 @@
                                                 <textarea name="reason" 
                                                           class="form-control" 
                                                           rows="4" 
-                                                          placeholder="Expliquez pourquoi ce paiement est rejetÃ©..."
+                                                          placeholder="Expliquez pourquoi ce paiement est rejete..."
                                                           required></textarea>
                                             </div>
                                         </div>
@@ -270,18 +270,18 @@
             @endif
 
         @else
-            <!-- Ã©tat vide -->
+            <!-- etat vide -->
             <div class="card-body">
                 <div class="text-center py-5">
                     <div class="mb-4">
                         <i class="fas fa-credit-card fa-4x text-muted"></i>
                     </div>
-                    <h5 class="text-muted mb-3">Aucun paiement trouvÃ©</h5>
+                    <h5 class="text-muted mb-3">Aucun paiement trouve</h5>
                     <p class="text-muted">
                         @if($status === 'pending')
                             Il n'y a actuellement aucun paiement en attente de validation.
                         @else
-                            Aucun paiement ne correspond aux critÃ¨res sÃ©lectionnÃ©s.
+                            Aucun paiement ne correspond aux criteres selectionnes.
                         @endif
                     </p>
                 </div>
@@ -310,7 +310,7 @@
                         <i class="fas fa-check-circle fa-2x"></i>
                     </div>
                     <h4 class="mb-1">{{ $payments->where('admin_status', 'approved')->count() }}</h4>
-                    <small class="text-muted">ApprouvÃ©s</small>
+                    <small class="text-muted">Approuves</small>
                 </div>
             </div>
         </div>
@@ -332,7 +332,7 @@
                         <i class="fas fa-euro-sign fa-2x"></i>
                     </div>
                     <h4 class="mb-1">{{ number_format($payments->where('status', 'completed')->sum('amount_paid') / 100, 0) }}€</h4>
-                    <small class="text-muted">Total encaissÃ©</small>
+                    <small class="text-muted">Total encaisse</small>
                 </div>
             </div>
         </div>
