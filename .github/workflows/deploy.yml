@@ -23,17 +23,6 @@ jobs:
     - name: Install Composer dependencies
       run: composer install --no-dev --optimize-autoloader --no-interaction
 
-    - name: Create production .env
-      run: |
-        cp .env.example .env
-        sed -i "s|APP_ENV=.*|APP_ENV=production|" .env
-        sed -i "s|APP_DEBUG=.*|APP_DEBUG=false|" .env
-        sed -i "s|APP_URL=.*|APP_URL=https://nataswim.fr|" .env
-        sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
-        sed -i "s|DB_DATABASE=elha2196_bidaya2025|DB_DATABASE=${{ secrets.DB_DATABASE }}|" .env
-        sed -i "s|DB_USERNAME=elha2196_bidaya|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env
-        sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
-
     - name: Deploy to O2Switch
       uses: appleboy/ssh-action@v1.0.3
       with:
@@ -43,15 +32,14 @@ jobs:
         port: 22
         timeout: 60s
         script: |
-          # Aller dans le bon dossier (nataswim.fr, pas public_html/nataswim.fr)
           cd nataswim.fr
           
-          # Backup current if exists
+          # Backup current release
           if [ -d "current" ]; then
             mv current backup_$(date +%Y%m%d_%H%M%S)
           fi
           
-          # Clone fresh copy
+          # Fresh deployment
           rm -rf temp_deploy
           git clone https://github.com/nataswim/bidaya2025.git temp_deploy
           cd temp_deploy
@@ -59,7 +47,7 @@ jobs:
           # Install dependencies
           composer install --no-dev --optimize-autoloader --no-interaction
           
-          # Copy .env with production values
+          # Configure .env for production
           cp .env.example .env
           sed -i "s|APP_ENV=.*|APP_ENV=production|" .env
           sed -i "s|APP_DEBUG=.*|APP_DEBUG=false|" .env
@@ -69,35 +57,19 @@ jobs:
           sed -i "s|DB_USERNAME=elha2196_bidaya|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env  
           sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
           
-          # Set permissions
+          # Laravel setup
           chmod -R 775 storage bootstrap/cache
-          
-          # Run migrations
           php artisan migrate --force
-          
-          # Cache configuration
+          php artisan storage:link
           php artisan config:cache
           php artisan route:cache
           php artisan view:cache
           
-          # Make it current
+          # Switch to new release (atomic deployment)
           cd ..
-          rm -rf current
           mv temp_deploy current
-          
-          # Create web access (Laravel's public folder becomes web root)
-          rm -f index.php .htaccess
-          ln -s current/public/index.php index.php
-          ln -s current/public/.htaccess .htaccess
-          
-          # Copy all public assets
-          cp -r current/public/* . 2>/dev/null || true
-          # Remove the copied index.php and .htaccess to keep our symlinks
-          rm -f index.php .htaccess
-          ln -s current/public/index.php index.php  
-          ln -s current/public/.htaccess .htaccess
 
-    - name: Clean old releases
+    - name: Clean old releases  
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.SSH_HOST }}
