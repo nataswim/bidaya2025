@@ -18,10 +18,41 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: 8.3
-        extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, json
+        extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json, mbstring, pdo
+
+    - name: Cache Composer dependencies
+      uses: actions/cache@v3
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
     - name: Install Composer dependencies
       run: composer install --no-dev --optimize-autoloader --no-interaction
+
+    - name: Create .env file
+      run: |
+        cp .env.example .env
+        echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env.tmp
+        echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env.tmp
+        echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.tmp
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.tmp
+        
+        # Remplacer les valeurs dans le fichier .env
+        while IFS='=' read -r key value; do
+          if grep -q "^${key}=" .env; then
+            # Échapper les caractères spéciaux pour sed
+            escaped_value=$(printf '%s\n' "$value" | sed 's/[[\.*^$(){}?+|/]/\\&/g')
+            sed -i "s/^${key}=.*/${key}=${escaped_value}/" .env
+          fi
+        done < .env.tmp
+        
+        rm .env.tmp
+
+    - name: Generate optimized files
+      run: |
+        php artisan config:cache
+        php artisan route:cache
+        php artisan view:cache
 
     - name: Deploy to O2Switch
       uses: appleboy/ssh-action@v1.0.3
@@ -33,57 +64,54 @@ jobs:
         script: |
           cd public_html/nataswim.fr
           
-          # Backup si existe
-          if [ -d "current" ]; then
-            cp -r current backup_$(date +%Y%m%d_%H%M%S) 2>/dev/null || true
-          fi
+          # Créer structure de déploiement
+          mkdir -p releases/$(date +%Y%m%d_%H%M%S)
+          cd releases/$(date +%Y%m%d_%H%M%S)
           
-          # Nouveau déploiement
-          rm -rf temp_deploy
-          git clone https://github.com/nataswim/bidaya2025.git temp_deploy
-          cd temp_deploy
+          # Clone du repository
+          git clone https://github.com/nataswim/bidaya2025.git .
           
-          # Installation
+          # Installation des dépendances
           composer install --no-dev --optimize-autoloader --no-interaction
           
-          # Configuration .env
+          # Configuration Laravel avec les bonnes valeurs
           cp .env.example .env
-          echo "APP_KEY=${{ secrets.APP_KEY }}" > .env.temp
-          echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env.temp
-          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.temp  
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.temp
           
-          # Merger les configurations
-          cat .env.example > .env
-          while IFS='=' read -r key value; do
-            if [ ! -z "$value" ]; then
-              grep -v "^$key=" .env > .env.new || true
-              echo "$key=$value" >> .env.new
-              mv .env.new .env
-            fi
-          done < .env.temp
-          rm .env.temp
+          # Remplacer les valeurs sensibles dans .env
+          sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
+          sed -i "s|DB_DATABASE=elha2196_bidaya2025|DB_DATABASE=${{ secrets.DB_DATABASE }}|" .env
+          sed -i "s|DB_USERNAME=elha2196_bidaya|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env
+          sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
           
-          # Permissions
+          # Permissions Laravel
           chmod -R 775 storage bootstrap/cache
           
-          # Migrations
+          # Migrations (si nécessaire)
           php artisan migrate --force
           
-          # Cache
+          # Optimisations
           php artisan config:cache
-          php artisan route:cache  
+          php artisan route:cache
           php artisan view:cache
           
-          # Remplacer l'ancien
-          cd ..
-          rm -rf old_current
-          if [ -d "current" ]; then
-            mv current old_current
-          fi
-          mv temp_deploy current
+          # Mise à jour du symlink
+          cd ../../
+          rm -f current
+          ln -s releases/$(date +%Y%m%d_%H%M%S) current
           
-          # Symlink vers public
-          rm -f index.php .htaccess
-          ln -s current/public/index.php index.php
-          ln -s current/public/.htaccess .htaccess
+          # Configuration du document root vers current/public
+          if [ ! -L index.php ]; then
+            rm -f index.php 2>/dev/null || true
+            ln -s current/public/index.php index.php
+          fi
+
+    - name: Clean old releases
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd public_html/nataswim.fr/releases
+          ls -t | tail -n +6 | xargs rm -rf 2>/dev/null || true
