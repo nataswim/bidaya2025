@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-name: Deploy to O2Switch
+name: Deploy O2Switch
 
 on:
   push:
