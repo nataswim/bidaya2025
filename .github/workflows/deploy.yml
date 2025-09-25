@@ -34,48 +34,77 @@ jobs:
         sed -i "s|DB_USERNAME=elha2196_bidaya|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env
         sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
 
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-        chmod 600 ~/.ssh/deploy_key
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-    - name: Deploy via rsync
-      run: |
-        rsync -avz --delete \
-          --exclude='.git' \
-          --exclude='node_modules' \
-          --exclude='.github' \
-          -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
-          ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/nataswim.fr/temp_deploy/
-
-    - name: Finalize deployment
-      run: |
-        ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd public_html/nataswim.fr
+    - name: Deploy to O2Switch
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 60s
+        script: |
+          # Aller dans le bon dossier (nataswim.fr, pas public_html/nataswim.fr)
+          cd nataswim.fr
           
-          # Backup current
+          # Backup current if exists
           if [ -d "current" ]; then
             mv current backup_$(date +%Y%m%d_%H%M%S)
           fi
           
-          # Move temp to current
-          mv temp_deploy current
+          # Clone fresh copy
+          rm -rf temp_deploy
+          git clone https://github.com/nataswim/bidaya2025.git temp_deploy
+          cd temp_deploy
+          
+          # Install dependencies
+          composer install --no-dev --optimize-autoloader --no-interaction
+          
+          # Copy .env with production values
+          cp .env.example .env
+          sed -i "s|APP_ENV=.*|APP_ENV=production|" .env
+          sed -i "s|APP_DEBUG=.*|APP_DEBUG=false|" .env
+          sed -i "s|APP_URL=.*|APP_URL=https://nataswim.fr|" .env
+          sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
+          sed -i "s|DB_DATABASE=elha2196_bidaya2025|DB_DATABASE=${{ secrets.DB_DATABASE }}|" .env
+          sed -i "s|DB_USERNAME=elha2196_bidaya|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env  
+          sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
           
           # Set permissions
-          cd current
           chmod -R 775 storage bootstrap/cache
           
-          # Laravel commands
+          # Run migrations
           php artisan migrate --force
+          
+          # Cache configuration
           php artisan config:cache
           php artisan route:cache
           php artisan view:cache
           
-          # Web access
+          # Make it current
           cd ..
+          rm -rf current
+          mv temp_deploy current
+          
+          # Create web access (Laravel's public folder becomes web root)
           rm -f index.php .htaccess
           ln -s current/public/index.php index.php
           ln -s current/public/.htaccess .htaccess
-        EOF
+          
+          # Copy all public assets
+          cp -r current/public/* . 2>/dev/null || true
+          # Remove the copied index.php and .htaccess to keep our symlinks
+          rm -f index.php .htaccess
+          ln -s current/public/index.php index.php  
+          ln -s current/public/.htaccess .htaccess
+
+    - name: Clean old releases
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd nataswim.fr
+          # Keep only last 3 backups
+          ls -t | grep "backup_" | tail -n +4 | xargs rm -rf 2>/dev/null || true
