@@ -429,6 +429,7 @@
 <!-- Inclure Quill.js -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="{{ asset('js/media-selector.js') }}"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -474,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
         quill.root.innerHTML = longDescriptionTextarea.value;
     }
     
-    // Mettre Ã jour le textarea quand Quill change
+    // Mettre à jour le textarea quand Quill change
     quill.on('text-change', function() {
         longDescriptionTextarea.value = quill.root.innerHTML;
     });
@@ -488,57 +489,55 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function updatePermissionHelp() {
-        // Cacher toutes les aides
         Object.values(helpDivs).forEach(div => {
             if (div) div.style.display = 'none';
         });
         
-        // Afficher l'aide correspondante
         const selectedValue = permissionSelect.value;
         if (helpDivs[selectedValue]) {
             helpDivs[selectedValue].style.display = 'block';
         }
     }
 
-    permissionSelect.addEventListener('change', updatePermissionHelp);
-    updatePermissionHelp(); // Initialiser
+    if (permissionSelect) {
+        permissionSelect.addEventListener('change', updatePermissionHelp);
+        updatePermissionHelp(); // Initialiser
+    }
 
     // Aperçu de l'image de couverture
     const coverInput = document.getElementById('cover_image');
     const coverPreview = document.getElementById('coverPreview');
     const coverPreviewContainer = document.getElementById('currentCoverPreview');
     
-    coverInput.addEventListener('input', function() {
-        const imageUrl = this.value.trim();
-        if (imageUrl) {
-            coverPreview.src = imageUrl;
-            coverPreviewContainer.classList.remove('d-none');
-        } else {
-            coverPreviewContainer.classList.add('d-none');
-        }
-    });
+    if (coverInput && coverPreview && coverPreviewContainer) {
+        coverInput.addEventListener('input', function() {
+            const imageUrl = this.value.trim();
+            if (imageUrl) {
+                coverPreview.src = imageUrl;
+                coverPreviewContainer.classList.remove('d-none');
+            } else {
+                coverPreviewContainer.classList.add('d-none');
+            }
+        });
+    }
 
     // Validation du format de fichier
     const fileInput = document.getElementById('file');
     const formatSelect = document.getElementById('format');
     
-    fileInput.addEventListener('change', function() {
-        if (this.files.length > 0) {
-            const fileName = this.files[0].name;
-            const extension = fileName.split('.').pop().toLowerCase();
-            
-            // Auto-selectionner le format
-            if (['pdf', 'epub', 'mp4', 'zip', 'doc', 'docx'].includes(extension)) {
-                formatSelect.value = extension === 'doc' || extension === 'docx' ? extension : extension;
+    if (fileInput && formatSelect) {
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const fileName = this.files[0].name;
+                const extension = fileName.split('.').pop().toLowerCase();
+                
+                // Auto-sélectionner le format
+                if (['pdf', 'epub', 'mp4', 'zip', 'doc', 'docx'].includes(extension)) {
+                    formatSelect.value = extension;
+                }
             }
-        }
-    });
+        });
+    }
 });
-
-// Fonction pour le selecteur de medias (suppose être defini ailleurs)
-function openMediaSelector(inputId, previewId) {
-    // Cette fonction devrait ouvrir un modal de selection de medias
-    console.log('Ouvrir le selecteur de medias pour', inputId);
-}
 </script>
 @endpush
