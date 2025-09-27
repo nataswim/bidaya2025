@@ -27,16 +27,15 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="text-center">
-                    <div class="position-relative d-inline-block">
-                        <div class="bg-white bg-opacity-10 rounded-circle p-4" style="width: 250px; height: 250px;">
-                            <div class="bg-white bg-opacity-20 rounded-circle p-4 h-100 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-water text-white" style="font-size: 3.5rem;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="text-center">
+        <div class="position-relative d-inline-block bg-white rounded-circle">
+            <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}" 
+                 alt="nataswim application pour tous" 
+                 class="img-fluid" 
+                 style="max-width: 250px; height: auto;">
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </section>
@@ -376,12 +375,7 @@
         @else
             <div class="alert alert-success d-inline-flex align-items-center px-4 py-3">
                 <i class="fas fa-check-circle me-2"></i>
-                <span class="fw-medium">Bienvenue dans la communaute aquatique, {{ auth()->user()->first_name ?: auth()->user()->name }} !</span>
-            </div>
-            <div class="mt-3">
-                <a href="{{ route('public.index') }}" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-swimmer me-2"></i>Decouvrir nos entraînements
-                </a>
+                <span class="fw-medium">Bienvenue dans la communaute, {{ auth()->user()->first_name ?: auth()->user()->name }} !</span>
             </div>
         @endguest
     </div>

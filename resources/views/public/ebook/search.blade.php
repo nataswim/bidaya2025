@@ -6,7 +6,7 @@
 @push('styles')
 <style>
 .search-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(116deg, #0f5c78 0%, #016170 100%);
     padding: 2rem 0;
     color: white;
 }

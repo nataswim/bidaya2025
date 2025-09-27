@@ -4,7 +4,11 @@ git add .
 git commit -m "déploiement"
 git push origin main
 
+puis 
 
+ssh elha2196@ecran.o2switch.net
+cd /home/elha2196/nataswim.fr/current
+git pull origin main
 
  procédure de déploiement manuel en un document de type **cahier technique** pour assurer la cohérence et la fiabilité de vos mises à jour.
 
