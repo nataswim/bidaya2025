@@ -188,7 +188,7 @@
                             <div class="text-center py-4">
                                 <i class="fas fa-users fa-2x text-muted mb-3"></i>
                                 <h6>Aucun utilisateur</h6>
-                                <p class="text-muted mb-0">Ce rôle n'est assigne Ã aucun utilisateur.</p>
+                                <p class="text-muted mb-0">Ce rôle n'est assigne A aucun utilisateur.</p>
                             </div>
                         </div>
                     @endif
@@ -300,7 +300,7 @@
                             <i class="fas fa-users me-2"></i>Voir les utilisateurs
                         </a>
                         <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                         </a>
                     </div>
                     

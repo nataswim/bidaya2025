@@ -67,7 +67,7 @@
                     
                     @if(!isset($user))
                         <div class="alert alert-info">
-                            <i class="fas fa-info-circle me-2"></i>
+                            <i class="fas fa-water me-2"></i>
                             Le mot de passe doit contenir au moins 8 caracteres.
                         </div>
                     @else
@@ -242,7 +242,7 @@
 
                 <div class="form-text">
                     <small class="text-muted">
-                        <i class="fas fa-info-circle me-1"></i>
+                        <i class="fas fa-water me-1"></i>
                         Les utilisateurs inactifs ne peuvent pas se connecter
                     </small>
                 </div>
@@ -283,7 +283,7 @@
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-gradient-secondary text-white p-4">
                 <h6 class="mb-0">
-                    <i class="fas fa-globe me-2"></i>Localisation
+                    <i class="fas fa-water me-2"></i>Localisation
                 </h6>
             </div>
             <div class="card-body p-4">
@@ -324,7 +324,7 @@
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                        <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                     </a>
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">

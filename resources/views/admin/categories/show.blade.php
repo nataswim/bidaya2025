@@ -144,7 +144,7 @@
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-info-circle me-2"></i>Informations
+                        <i class="fas fa-water me-2"></i>Informations
                     </h6>
                 </div>
                 <div class="card-body p-3">
@@ -218,7 +218,7 @@
                             <i class="fas fa-external-link-alt me-2"></i>Voir sur le site
                         </a>
                         <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                         </a>
                     </div>
                     

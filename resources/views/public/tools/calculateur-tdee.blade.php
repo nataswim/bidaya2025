@@ -867,7 +867,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -883,14 +883,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -933,7 +933,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -995,7 +995,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

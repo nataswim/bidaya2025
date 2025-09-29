@@ -325,7 +325,7 @@ function initializeThemeToggle() {
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Mettre Ã jour l'icône
+            // Mettre A jour l'icône
             const icon = this.querySelector('i');
             icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         });

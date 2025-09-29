@@ -264,7 +264,7 @@
                     
                     <div class="mt-3 pt-3 border-top">
                         <small class="text-muted">
-                            <i class="fas fa-info-circle me-1"></i>
+                            <i class="fas fa-water me-1"></i>
                             Total: {{ $totalPermissions }} permissions
                         </small>
                     </div>

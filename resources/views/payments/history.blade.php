@@ -89,7 +89,7 @@
                                                 @if($payment->processed_at)
                                                     <br>
                                                     <small class="text-muted">
-                                                        Le {{ $payment->processed_at->format('d/m/Y Ã H:i') }}
+                                                        Le {{ $payment->processed_at->format('d/m/Y A H:i') }}
                                                     </small>
                                                 @endif
                                             @elseif($payment->admin_status === 'rejected')
@@ -99,7 +99,7 @@
                                                 @if($payment->processed_at)
                                                     <br>
                                                     <small class="text-muted">
-                                                        Le {{ $payment->processed_at->format('d/m/Y Ã H:i') }}
+                                                        Le {{ $payment->processed_at->format('d/m/Y A H:i') }}
                                                     </small>
                                                 @endif
                                             @endif

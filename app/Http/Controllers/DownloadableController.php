@@ -112,7 +112,7 @@ class DownloadableController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.downloadables.edit', $downloadable)
-                ->with('success', 'Telechargement cree avec succes. Vous pouvez continuer Ã l\'editer.');
+                ->with('success', 'Telechargement cree avec succes. Vous pouvez continuer A l\'editer.');
         }
 
         return redirect()->route('admin.downloadables.index')
@@ -188,11 +188,11 @@ class DownloadableController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.downloadables.edit', $downloadable)
-                ->with('success', 'Telechargement mis Ã jour avec succes.');
+                ->with('success', 'Telechargement mis A jour avec succes.');
         }
 
         return redirect()->route('admin.downloadables.index')
-            ->with('success', 'Telechargement mis Ã jour avec succes.');
+            ->with('success', 'Telechargement mis A jour avec succes.');
     }
 
     public function destroy(Downloadable $downloadable)

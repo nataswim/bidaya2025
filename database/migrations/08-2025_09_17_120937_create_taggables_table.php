@@ -19,7 +19,7 @@ return new class extends Migration
                   ->constrained('tags')
                   ->cascadeOnDelete();
 
-            // Colonnes morphables (permettent d'associer un tag Ã plusieurs modeles)
+            // Colonnes morphables (permettent d'associer un tag A plusieurs modeles)
             $table->morphs('taggable'); // cree taggable_id (bigint) + taggable_type (string)
 
             // Empêcher les doublons

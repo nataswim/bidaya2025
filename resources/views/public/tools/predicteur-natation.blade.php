@@ -13,7 +13,7 @@
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
-                <i class="fas fa-info-circle text-info me-3 mt-1"></i>
+                <i class="fas fa-water text-info me-3 mt-1"></i>
                 <div class="text-dark">
                     <strong>Outil de prediction avance :</strong> Estimez vos temps intermediaires et strategies de course 
                     avec des formules scientifiques validees par l'analyse biomecanique moderne
@@ -176,7 +176,7 @@
         <div class="card border-0 shadow-sm mb-5" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="card-body p-4">
                 <div class="d-flex align-items-center gap-2 mb-3">
-                    <i class="fas fa-info-circle text-primary" style="font-size: 1.5rem;"></i>
+                    <i class="fas fa-water text-primary" style="font-size: 1.5rem;"></i>
                     <h2 class="h4 fw-semibold mb-0 text-primary">
                         Notes Importantes sur les Predictions
                     </h2>
@@ -190,7 +190,7 @@
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-check-circle text-success me-2"></i>
-                                Progression physiologique constante et endurance adaptee Ã chaque distance
+                                Progression physiologique constante et endurance adaptee A chaque distance
                             </li>
                             <li class="mb-2">
                                 <i class="fas fa-check-circle text-success me-2"></i>
@@ -209,7 +209,7 @@
                                 Variations individuelles possibles : ±5-8% selon entraînement
                             </li>
                             <li class="mb-2">
-                                <i class="fas fa-info-circle text-info me-2"></i>
+                                <i class="fas fa-water text-info me-2"></i>
                                 Conditions optimales supposees (bassin 50m, eau 26-28°C)
                             </li>
                         </ul>
@@ -334,7 +334,7 @@
                                     <div class="card-body">
                                         <h6 class="card-title small">Capacites Aerobies</h6>
                                         <p class="card-text small">
-                                            VO2 max elevee et capacite Ã maintenir une intensite soutenue sans accumulation excessive de lactate.
+                                            VO2 max elevee et capacite A maintenir une intensite soutenue sans accumulation excessive de lactate.
                                         </p>
                                     </div>
                                 </div>
@@ -469,7 +469,7 @@
                             <li><strong>Wearables aquatiques :</strong> Monitoring cardiaque precis</li>
                         </ul>
 
-                        <h6 class="mt-3">Metriques Cles Ã Surveiller</h6>
+                        <h6 class="mt-3">Metriques Cles A Surveiller</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -594,7 +594,7 @@
                 </div>
                 
                 <div class="alert alert-info mt-3">
-                    <h6><i class="fas fa-info-circle me-2"></i>Important - Securite</h6>
+                    <h6><i class="fas fa-water me-2"></i>Important - Securite</h6>
                     <p class="mb-0">
                         Ces predictions sont des estimations basees sur des modeles scientifiques. Les performances reelles 
                         peuvent varier selon l'entraînement, les conditions et la forme physique. Consultez un entraîneur 
@@ -619,7 +619,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -635,14 +635,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -685,7 +685,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -747,7 +747,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -832,7 +832,7 @@ function initializeSelectors() {
     updateDistances(); // Initialisation
 }
 
-// Mise Ã jour des distances selon le style
+// Mise A jour des distances selon le style
 function updateDistances() {
     const style = document.getElementById('swimmingStyle').value;
     const distanceSelect = document.getElementById('distance');
@@ -849,7 +849,7 @@ function updateDistances() {
     updateInputs();
 }
 
-// Mise Ã jour des champs de saisie
+// Mise A jour des champs de saisie
 function updateInputs() {
     const style = document.getElementById('swimmingStyle').value;
     const distance = parseInt(document.getElementById('distance').value);

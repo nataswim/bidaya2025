@@ -46,7 +46,7 @@
 
                     @if($post->image)
                         <div class="mb-4">
-                            <h6 class="fw-semibold mb-3">Image Ã la une</h6>
+                            <h6 class="fw-semibold mb-3">Image A la une</h6>
                             <img src="{{ $post->image }}" 
                                  alt="{{ $post->name }}" 
                                  class="img-fluid rounded shadow-sm"
@@ -116,7 +116,7 @@
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
-                        <i class="fas fa-info-circle me-2"></i>Informations de publication
+                        <i class="fas fa-water me-2"></i>Informations de publication
                     </h6>
                 </div>
                 <div class="card-body p-3">
@@ -235,7 +235,7 @@
                             <i class="fas fa-external-link-alt me-2"></i>Voir sur le site
                         </a>
                         <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                         </a>
                     </div>
                     

@@ -28,7 +28,7 @@ class StoreDownloadCategoryRequest extends FormRequest
     {
         return [
             'name.required' => 'Le nom de la categorie est obligatoire.',
-            'slug.unique' => 'Ce slug est dejÃ utilise.',
+            'slug.unique' => 'Ce slug est dejA utilise.',
             'status.required' => 'Le statut est obligatoire.',
             'status.in' => 'Le statut doit être "active" ou "inactive".',
         ];

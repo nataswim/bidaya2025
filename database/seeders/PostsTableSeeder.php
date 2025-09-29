@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
             [
                 'name' => 'Bienvenue sur notre blog',
                 'slug' => 'bienvenue-sur-notre-blog',
-                'intro' => 'Decouvrez notre nouveau blog dedie Ã la technologie et au developpement.',
+                'intro' => 'Decouvrez notre nouveau blog dedie A la technologie et au developpement.',
                 'content' => 'Ceci est le premier article de notre blog. Nous y partagerons nos connaissances et experiences.',
                 'category_id' => 1,
                 'category_name' => 'Actualites',
@@ -23,7 +23,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'name' => 'Introduction Ã Laravel 12',
+                'name' => 'Introduction A Laravel 12',
                 'slug' => 'introduction-laravel-12',
                 'intro' => 'Decouvrez les nouvelles fonctionnalites de Laravel 12.',
                 'content' => 'Laravel 12 apporte de nombreuses ameliorations...',

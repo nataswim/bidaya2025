@@ -285,7 +285,7 @@
             @endif
 
             <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary">
-                <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                <i class="fas fa-arrow-left me-2"></i>Retour A la liste
             </a>
         </div>
         
@@ -333,7 +333,7 @@
                 <p>Êtes-vous sûr de vouloir <strong>{{ $user->status === 'active' ? 'desactiver' : 'activer' }}</strong> le compte de <strong>{{ $user->name }}</strong> ?</p>
                 @if($user->status === 'active')
                     <div class="alert alert-warning">
-                        <i class="fas fa-info-circle me-2"></i>
+                        <i class="fas fa-water me-2"></i>
                         L'utilisateur ne pourra plus se connecter une fois le compte desactive.
                     </div>
                 @endif

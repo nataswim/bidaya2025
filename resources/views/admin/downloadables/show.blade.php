@@ -13,7 +13,7 @@
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-download fa-2x me-3"></i>
+                            <i class="fas fa-water fa-2x me-3"></i>
                             <div>
                                 <h5 class="mb-1">{{ $downloadable->title }}</h5>
                                 <small class="opacity-75">{{ $downloadable->format_display }}</small>
@@ -277,9 +277,9 @@
                     <div class="text-center">
                         @if($downloadable->user_permission === 'public')
                             <div class="bg-success bg-opacity-10 rounded p-3">
-                                <i class="fas fa-globe fa-2x text-success mb-2"></i>
+                                <i class="fas fa-water fa-2x text-success mb-2"></i>
                                 <h6 class="fw-bold text-success">Public</h6>
-                                <small class="text-muted">Accessible Ã tous les visiteurs</small>
+                                <small class="text-muted">Accessible A tous les visiteurs</small>
                             </div>
                         @elseif($downloadable->user_permission === 'visitor')
                             <div class="bg-info bg-opacity-10 rounded p-3">
@@ -351,7 +351,7 @@
                             </button>
                         </form>
                         <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                         </a>
                     </div>
                     

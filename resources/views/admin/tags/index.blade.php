@@ -161,7 +161,7 @@
                             <div class="mt-4">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
-                                        Affichage de {{ $tags->firstItem() }} Ã {{ $tags->lastItem() }} 
+                                        Affichage de {{ $tags->firstItem() }} A {{ $tags->lastItem() }} 
                                         sur {{ $tags->total() }} resultat(s)
                                     </div>
                                     {{ $tags->appends(request()->query())->links() }}
@@ -173,7 +173,7 @@
                             <i class="fas fa-tags fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucun tag trouve</h5>
                             @if(request()->hasAny(['search', 'group']))
-                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                                 <a href="{{ route('admin.tags.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir tous les tags
                                 </a>
@@ -284,7 +284,7 @@
                             </button>
                         @endif
                         <button class="btn btn-outline-info" onclick="exportTags()">
-                            <i class="fas fa-download me-2"></i>Exporter la liste
+                            <i class="fas fa-water me-2"></i>Exporter la liste
                         </button>
                     </div>
                 </div>
@@ -338,7 +338,7 @@
 function cleanUnusedTags() {
     if (confirm('Êtes-vous sûr de vouloir supprimer tous les tags non utilises ? Cette action est irreversible.')) {
         // Simulation - il faudra creer la route correspondante
-        alert('Fonctionnalite Ã implementer dans le contrôleur');
+        alert('Fonctionnalite A implementer dans le contrôleur');
         // fetch('/admin/tags/clean-unused', {
         //     method: 'POST',
         //     headers: {
@@ -357,7 +357,7 @@ function cleanUnusedTags() {
 
 function exportTags() {
     // Simulation - il faudra creer la route correspondante
-    alert('Fonctionnalite Ã implementer dans le contrôleur');
+    alert('Fonctionnalite A implementer dans le contrôleur');
     // window.open('/admin/tags/export', '_blank');
 }
 </script>

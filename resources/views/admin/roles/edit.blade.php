@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.roles.update', $role) }}">
         @method('PUT')
         @include('admin.roles.partials.form', [
-            'submitLabel' => 'Mettre Ã jour le rôle',
+            'submitLabel' => 'Mettre A jour le rôle',
             'role' => $role
         ])
     </form>

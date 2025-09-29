@@ -334,7 +334,7 @@
                                         <td>55-65</td>
                                     </tr>
                                     <tr class="table-danger">
-                                        <td>Ã ameliorer</td>
+                                        <td>A ameliorer</td>
                                         <td>&gt; 85</td>
                                         <td>&gt; 75</td>
                                         <td>&gt; 65</td>
@@ -469,7 +469,7 @@
                         </ul>
                         
                         <div className="alert alert-info alert-sm">
-                            <small><strong>Exercice cle :</strong> Nage Ã 3 temps (3 coups + respiration) pour maximiser la glisse</small>
+                            <small><strong>Exercice cle :</strong> Nage A 3 temps (3 coups + respiration) pour maximiser la glisse</small>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -539,7 +539,7 @@
                 <div class="alert alert-warning mt-4">
                     <h6><i class="fas fa-heart me-2"></i>Approche equilibree</h6>
                     <p class="mb-0">
-                        Ces metriques sont des outils d'aide Ã l'amelioration technique, non des objectifs en soi. 
+                        Ces metriques sont des outils d'aide A l'amelioration technique, non des objectifs en soi. 
                         L'efficacite en natation resulte d'un equilibre entre technique, condition physique et plaisir de nager. 
                         Une obsession des chiffres peut nuire au developpement technique naturel. Privilegiez la progression 
                         graduelle avec l'accompagnement d'un coach qualifie.
@@ -563,7 +563,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -579,14 +579,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -629,7 +629,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -691,7 +691,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -927,12 +927,12 @@ function evaluateMetric(value, norm, lowerIsBetter = false) {
         if (value <= norm.excellent) return { label: 'Excellent', color: 'success' };
         if (value <= norm.good) return { label: 'Bon', color: 'info' };
         if (value <= norm.average) return { label: 'Moyen', color: 'warning' };
-        return { label: 'Ã ameliorer', color: 'danger' };
+        return { label: 'A ameliorer', color: 'danger' };
     } else {
         if (value >= norm.excellent) return { label: 'Excellent', color: 'success' };
         if (value >= norm.good) return { label: 'Bon', color: 'info' };
         if (value >= norm.average) return { label: 'Moyen', color: 'warning' };
-        return { label: 'Ã ameliorer', color: 'danger' };
+        return { label: 'A ameliorer', color: 'danger' };
     }
 }
 
@@ -955,7 +955,7 @@ function evaluateFrequency(frequency, ideal) {
     if (diff <= 3) return { label: 'Optimal', color: 'success' };
     if (diff <= 6) return { label: 'Bon', color: 'info' };
     if (diff <= 10) return { label: 'Acceptable', color: 'warning' };
-    return { label: 'Ã ajuster', color: 'danger' };
+    return { label: 'A ajuster', color: 'danger' };
 }
 
 // evaluation globale
@@ -977,14 +977,14 @@ function getGlobalAssessment(dpsRating, swolfRating, results) {
         };
     } else if (goodCount >= 1) {
         return {
-            title: 'Efficacite Technique Ã Developper',
+            title: 'Efficacite Technique A Developper',
             text: `Votre technique presente des axes d'amelioration interessants. Un travail technique regulier vous permettra de progresser significativement.`,
             color: 'warning'
         };
     } else {
         return {
             title: 'Focus sur la Technique',
-            text: `Concentrez-vous sur les fondamentaux techniques. Un accompagnement par un coach vous aidera Ã developper une nage plus efficace.`,
+            text: `Concentrez-vous sur les fondamentaux techniques. Un accompagnement par un coach vous aidera A developper une nage plus efficace.`,
             color: 'danger'
         };
     }
@@ -1002,7 +1002,7 @@ function displayNormativeComparison(results, norm) {
                         <h6 class="card-title mb-1">DPS - Distance Par Stroke</h6>
                         <div class="progress mb-2" style="height: 20px;">
                             <div class="progress-bar bg-danger" style="width: 25%">
-                                <small>Ã ameliorer: &lt;${norm.dps.average.toFixed(1)}m</small>
+                                <small>A ameliorer: &lt;${norm.dps.average.toFixed(1)}m</small>
                             </div>
                             <div class="progress-bar bg-warning" style="width: 25%">
                                 <small>Moyen: ${norm.dps.average.toFixed(1)}m</small>
@@ -1033,7 +1033,7 @@ function displayNormativeComparison(results, norm) {
                                 <small>Moyen: ${norm.swolf.good}-${norm.swolf.average}</small>
                             </div>
                             <div class="progress-bar bg-danger" style="width: 25%">
-                                <small>Ã ameliorer: ${norm.swolf.average}+</small>
+                                <small>A ameliorer: ${norm.swolf.average}+</small>
                             </div>
                         </div>
                         <p class="mb-0 small">Votre SWOLF: <strong>${results.adjustedSwolf}</strong> (ajuste 50m)</p>
@@ -1062,7 +1062,7 @@ function displayImprovementTargets(results, norm) {
                 <span class="badge bg-warning rounded-pill">${swolfTarget}</span>
             </li>
             <li class="list-group-item">
-                <small class="text-muted">Objectifs realisables Ã court terme (4-6 semaines)</small>
+                <small class="text-muted">Objectifs realisables A court terme (4-6 semaines)</small>
             </li>
         </ul>
     `;
@@ -1083,7 +1083,7 @@ function displayTechnicalRecommendations(results, dpsRating, swolfRating, freque
                 'Travaillez la position haute du corps (tête alignee, epaules stables)',
                 'Ameliorez l\'entree de main (extension maximale, penetration propre)',
                 'Developpez la phase d\'appui (prise d\'eau profonde, avant-bras vertical)',
-                'Exercice recommande: Nage Ã 3 temps pour maximiser la glisse'
+                'Exercice recommande: Nage A 3 temps pour maximiser la glisse'
             ]
         });
     }

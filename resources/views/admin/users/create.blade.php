@@ -42,7 +42,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Generation automatique du username Ã partir du nom
+    // Generation automatique du username A partir du nom
     const nameInput = document.getElementById('name');
     const usernameInput = document.getElementById('username');
     

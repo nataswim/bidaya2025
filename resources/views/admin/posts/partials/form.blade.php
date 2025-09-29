@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="slug-automatique">
                     </div>
-                    <div class="form-text">Laisser vide pour generation automatique Ã partir du titre</div>
+                    <div class="form-text">Laisser vide pour generation automatique A partir du titre</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -193,7 +193,7 @@
                     </label>
                     <select name="visibility" id="visibility" class="form-select @error('visibility') is-invalid @enderror">
                         <option value="public" {{ old('visibility', isset($post) ? $post->visibility : 'public') === 'public' ? 'selected' : '' }}>
-                            <i class="fas fa-globe"></i> Public - Accessible Ã tous les visiteurs
+                            <i class="fas fa-water"></i> Public - Accessible A tous les visiteurs
                         </option>
                         <option value="authenticated" {{ old('visibility', isset($post) ? $post->visibility : '') === 'authenticated' ? 'selected' : '' }}>
                             <i class="fas fa-lock"></i> Membres uniquement - Connexion requise
@@ -205,7 +205,7 @@
                         <div id="visibility-help" class="mt-2 p-3 rounded" style="background-color: #f8f9fa;">
                             <div id="public-help" style="display: none;">
                                 <div class="d-flex align-items-start">
-                                    <i class="fas fa-globe text-success me-2 mt-1"></i>
+                                    <i class="fas fa-water text-success me-2 mt-1"></i>
                                     <div>
                                         <strong class="text-success">Acces public</strong>
                                         <div class="small text-muted mt-1">
@@ -224,7 +224,7 @@
                                         <div class="small text-muted mt-1">
                                             • Titre et introduction visibles par tous<br>
                                             • Contenu complet reserve aux membres<br>
-                                            • Incite Ã l'inscription sur votre site
+                                            • Incite A l'inscription sur votre site
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@
                 <div class="mb-3">
                     <div class="border rounded p-3 bg-light">
                         <h6 class="small fw-semibold mb-2">
-                            <i class="fas fa-info-circle text-primary me-1"></i>Impact de la visibilite
+                            <i class="fas fa-water text-primary me-1"></i>Impact de la visibilite
                         </h6>
                         <div id="visibility-impact">
                             <div id="public-impact" style="display: none;">
@@ -387,7 +387,7 @@
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header bg-gradient-info text-white p-4">
         <h6 class="mb-0">
-            <i class="fas fa-image me-2"></i>Image Ã la une
+            <i class="fas fa-image me-2"></i>Image A la une
         </h6>
     </div>
     <div class="card-body p-4">
@@ -448,7 +448,7 @@
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                        <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                     </a>
                     <div class="d-flex gap-2">
                         <button type="submit" name="action" value="save" class="btn btn-primary">

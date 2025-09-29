@@ -34,7 +34,7 @@
                 <div class="alert alert-warning border-0 bg-white bg-opacity-25">
                     <small>
                         <i class="fas fa-water me-2"></i>
-                        <strong>6 outils disponibles</strong> - De l'initiation Ã l'expertise technique
+                        <strong>6 outils disponibles</strong> - De l'initiation A l'expertise technique
                     </small>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                                         Modeles mathematiques valides pour planification objetifs et evaluation progression.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -126,7 +126,7 @@
                                         Structure progressive respectant les principes physiologiques et techniques.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>8-12 min</small>
@@ -158,7 +158,7 @@
                                         Periodisation equilibree et gestion des transitions specifiques.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>10-15 min</small>
@@ -178,7 +178,7 @@
                         <div class="card-body p-4">
                             <div class="d-flex align-items-start">
                                 <div class="bg-warning bg-opacity-10 rounded-3 p-3 me-3">
-                                    <i class="fas fa-tachometer-alt text-warning" style="font-size: 1.5rem;"></i>
+                                    <i class="fas fa-water text-warning" style="font-size: 1.5rem;"></i>
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-2">
@@ -187,10 +187,10 @@
                                     </div>
                                     <p class="card-text text-muted mb-3">
                                         Vitesse de Nage Critique et seuils metaboliques personnalises. 
-                                        Determination zones d'entraînement specifiques Ã la natation.
+                                        Determination zones d'entraînement specifiques A la natation.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>6-10 min</small>
@@ -222,7 +222,7 @@
                                         Comparaisons normatives et recommandations d'amelioration.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>3-5 min</small>
@@ -254,7 +254,7 @@
                                         Interface optimisee pour suivi seances et calculs automatiques.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>En temps reel</small>
@@ -438,7 +438,7 @@
                         <p class="small">
                             L'immersion modifie la distribution sanguine (effet de compression hydrostatique) 
                             et la thermoregulation. La FC en natation est generalement 10-15 bpm inferieure 
-                            Ã la course Ã allure equivalente.
+                            A la course A allure equivalente.
                         </p>
                         
                         <h6 class="text-success mt-3">Respiration en Natation</h6>
@@ -532,7 +532,7 @@
                             <li>Temps degrades malgre l'effort</li>
                             <li>Irritabilite, troubles de l'humeur</li>
                             <li>Appetit diminue, perte de poids</li>
-                            <li>Blessures Ã repetition</li>
+                            <li>Blessures A repetition</li>
                         </ul>
                         
                         <div class="alert alert-warning mt-3">
@@ -562,7 +562,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -578,14 +578,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -629,7 +629,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -691,7 +691,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

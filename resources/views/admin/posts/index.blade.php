@@ -14,7 +14,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h5 class="mb-1">
-                                <i class="fas fa-newspaper me-2"></i>Articles
+                                <i class="fas fa-water me-2"></i>Articles
                             </h5>
                             <small class="opacity-75">{{ $posts->total() ?? $posts->count() }} article(s) au total</small>
                         </div>
@@ -54,7 +54,7 @@
                             <select name="visibility" class="form-select">
                                 <option value="">Toute visibilite</option>
                                 <option value="public" {{ request('visibility') === 'public' ? 'selected' : '' }}>
-                                    <i class="fas fa-globe"></i> Public
+                                    <i class="fas fa-water"></i> Public
                                 </option>
                                 <option value="authenticated" {{ request('visibility') === 'authenticated' ? 'selected' : '' }}>
                                     <i class="fas fa-lock"></i> Membres
@@ -130,7 +130,7 @@
                                                         @endif
                                                         @if($post->is_featured)
                                                             <span class="badge bg-warning-subtle text-warning ms-2">
-                                                                <i class="fas fa-star me-1"></i>Ã la une
+                                                                <i class="fas fa-star me-1"></i>A la une
                                                             </span>
                                                         @endif
                                                     </div>
@@ -151,8 +151,8 @@
                                                             <i class="fas fa-lock me-1"></i>Membres
                                                         </span>
                                                     @else
-                                                        <span class="badge bg-success-subtle text-success" title="Contenu accessible Ã tous">
-                                                            <i class="fas fa-globe me-1"></i>Public
+                                                        <span class="badge bg-success-subtle text-success" title="Contenu accessible A tous">
+                                                            <i class="fas fa-water me-1"></i>Public
                                                         </span>
                                                     @endif
                                                 </div>
@@ -268,7 +268,7 @@
                             <div class="card-footer bg-white border-top p-4">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
-                                        Affichage de {{ $posts->firstItem() }} Ã {{ $posts->lastItem() }} 
+                                        Affichage de {{ $posts->firstItem() }} A {{ $posts->lastItem() }} 
                                         sur {{ $posts->total() }} resultat(s)
                                     </div>
                                     {{ $posts->appends(request()->query())->links() }}
@@ -277,10 +277,10 @@
                         @endif
                     @else
                         <div class="text-center py-5">
-                            <i class="fas fa-newspaper fa-3x text-muted mb-3 opacity-25"></i>
+                            <i class="fas fa-water fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucun article trouve</h5>
                             @if(request()->hasAny(['search', 'status', 'visibility', 'category']))
-                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                                 <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir tous les articles
                                 </a>
@@ -355,7 +355,7 @@
                         <div class="mb-3">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <span class="fw-semibold text-success">
-                                    <i class="fas fa-globe me-1"></i>Public
+                                    <i class="fas fa-water me-1"></i>Public
                                 </span>
                                 <span class="badge bg-success-subtle text-success">{{ $publicPosts }}</span>
                             </div>

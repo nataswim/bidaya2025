@@ -84,7 +84,7 @@
                                 </h5>
                                 <p class="mb-3">
                                     Votre compte vous donne acces au contenu public uniquement. 
-                                    Pour debloquer tous les articles et contenus premium, passez Ã un compte utilisateur.
+                                    Pour debloquer tous les articles et contenus premium, passez A un compte utilisateur.
                                 </p>
                                 <div class="d-flex gap-2 flex-wrap">
                                     <a href="{{ route('payments.index') }}" class="btn btn-primary">
@@ -117,7 +117,7 @@
                                 <i class="fas fa-crown"></i> Compte Premium Actif
                             </h5>
                             <p class="mb-0">
-                                Felicitations ! Vous avez acces Ã tous les contenus premium de la plateforme.
+                                Felicitations ! Vous avez acces A tous les contenus premium de la plateforme.
                                 Profitez pleinement de votre experience utilisateur.
                             </p>
                         </div>
@@ -144,7 +144,7 @@
                 ],
                 [
                     'title' => 'Articles lus',
-                    'value' => '0', // Ã implementer selon vos besoins
+                    'value' => '0', // A implementer selon vos besoins
                     'icon' => 'fas fa-book-reader',
                     'color' => 'info',
                     'description' => 'Articles consultes'
@@ -225,7 +225,7 @@
                         </div>
                     @empty
                         <div class="p-5 text-center text-muted">
-                            <i class="fas fa-newspaper fa-3x mb-3 opacity-50"></i>
+                            <i class="fas fa-water fa-3x mb-3 opacity-50"></i>
                             <div>Aucun article publie recemment</div>
                             <small>Revenez bientôt pour decouvrir nos nouveaux contenus</small>
                         </div>
@@ -280,7 +280,7 @@
                 <div class="card-body p-4">
                     <div class="d-grid gap-3">
                         <a href="{{ route('public.index') }}" class="btn btn-outline-primary text-start">
-                            <i class="fas fa-newspaper me-2"></i>
+                            <i class="fas fa-water me-2"></i>
                             <div>
                                 <div class="fw-semibold">Parcourir les articles</div>
                                 <small class="opacity-75">Decouvrir les derniers contenus</small>

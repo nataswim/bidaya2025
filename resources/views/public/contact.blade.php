@@ -10,8 +10,8 @@
             <div class="col-lg-6">
                 <h1 class="display-4 fw-bold mb-4">Contactez-nous</h1>
                 <p class="lead mb-0">
-                    Nous sommes lÃ pour repondre Ã vos questions, suggestions et commentaires. 
-                    N'hesitez pas Ã nous ecrire !
+                    Nous sommes lA pour repondre A vos questions, suggestions et commentaires. 
+                    N'hesitez pas A nous ecrire !
                 </p>
             </div>
             <div class="col-lg-6 text-center">
@@ -175,7 +175,7 @@
                                 </h2>
                                 <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Absolument ! Nous sommes toujours Ã la recherche de nouveaux contenus. 
+                                        Absolument ! Nous sommes toujours A la recherche de nouveaux contenus. 
                                         Contactez-nous avec votre idee.
                                     </div>
                                 </div>

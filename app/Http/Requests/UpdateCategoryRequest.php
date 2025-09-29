@@ -11,7 +11,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; // Ã adapter si tu veux restreindre l'acces
+        return true; // A adapter si tu veux restreindre l'acces
     }
 
     /**

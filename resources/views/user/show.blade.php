@@ -8,5 +8,5 @@
     <p><strong>Email :</strong> {{ $user->email ?? '' }}</p>
     <p><strong>Date d’inscription :</strong> {{ $user->created_at ?? '' }}</p>
 
-    <a href="{{ route('user.index') }}" class="text-blue-600 hover:underline mt-4 inline-block">← Retour Ã la liste</a>
+    <a href="{{ route('user.index') }}" class="text-blue-600 hover:underline mt-4 inline-block">← Retour A la liste</a>
 @endsection

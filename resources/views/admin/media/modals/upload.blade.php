@@ -35,7 +35,7 @@
                         <!-- Indicateur de survol -->
                         <div class="upload-overlay position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-3 d-none align-items-center justify-content-center">
                             <div class="text-center">
-                                <i class="fas fa-download fa-2x text-primary mb-2"></i>
+                                <i class="fas fa-water fa-2x text-primary mb-2"></i>
                                 <div class="fw-bold text-primary">Deposez vos fichiers ici</div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
 
                     <!-- Informations format -->
                     <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i>
+                        <i class="fas fa-water me-2"></i>
                         <strong>Formats acceptes :</strong> JPEG, PNG, GIF, WebP • 
                         <strong>Taille max :</strong> 5 MB par fichier
                     </div>

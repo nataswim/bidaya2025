@@ -19,7 +19,7 @@
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('user.dashboard') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('user.dashboard') }}">
-                        <i class="fas fa-tachometer-alt me-2"></i>Mon Espace Personnel
+                        <i class="fas fa-water me-2"></i>Mon Espace Personnel
                     </a>
                 </li>
  
@@ -33,9 +33,21 @@
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('home') }}">
-                        <i class="fas fa-globe me-2"></i>Voir Le Contenu
+                        <i class="fas fa-water me-2"></i>Voir Le Contenu
                     </a>
                 </li>
+
+
+
+<li class="nav-item">
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('user.training.index') }}">
+                        <i class="fas fa-water me-2"></i>Musculation
+                    </a>
+                </li>
+
+
+
             </ul>
             
             <!-- Section utilisateur -->
@@ -66,7 +78,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item py-2" href="{{ route('home') }}">
-                                <i class="fas fa-globe text-success me-2"></i>Parcourir Le Site 
+                                <i class="fas fa-water text-success me-2"></i>Parcourir Le Site 
                             </a>
                         </li>
                         @if(auth()->user()->hasRole('admin'))

@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
-                    <i class="fas fa-info-circle text-info me-2"></i>
+                    <i class="fas fa-water text-info me-2"></i>
                     Details du media
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

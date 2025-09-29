@@ -212,7 +212,7 @@
                             <div class="card-footer bg-white border-top p-4">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
-                                        Affichage de {{ $categories->firstItem() }} Ã {{ $categories->lastItem() }} 
+                                        Affichage de {{ $categories->firstItem() }} A {{ $categories->lastItem() }} 
                                         sur {{ $categories->total() }} resultat(s)
                                     </div>
                                     {{ $categories->appends(request()->query())->links() }}
@@ -224,7 +224,7 @@
                             <i class="fas fa-folder fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucune categorie trouvee</h5>
                             @if(request()->hasAny(['search', 'status']))
-                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                                 <a href="{{ route('admin.download-categories.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir toutes les categories
                                 </a>
@@ -299,7 +299,7 @@
                             <i class="fas fa-plus me-2"></i>Nouvelle categorie
                         </a>
                         <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-info">
-                            <i class="fas fa-download me-2"></i>Gerer les fichiers
+                            <i class="fas fa-water me-2"></i>Gerer les fichiers
                         </a>
                         <a href="{{ route('admin.downloadables.stats') }}" class="btn btn-outline-success">
                             <i class="fas fa-chart-line me-2"></i>Statistiques

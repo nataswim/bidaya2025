@@ -51,7 +51,7 @@
                         <i class="fas fa-save me-2"></i>Sauvegarder
                     </button>
                     <button id="exportCSVBtn" class="btn btn-success">
-                        <i class="fas fa-download me-2"></i>Export CSV
+                        <i class="fas fa-water me-2"></i>Export CSV
                     </button>
                 </div>
             </div>
@@ -161,7 +161,7 @@
                         <option value="6">6 nageurs</option>
                         <option value="8">8 nageurs</option>
                     </select>
-                    <div class="form-text">Nombre de nageurs Ã chronometrer simultanement</div>
+                    <div class="form-text">Nombre de nageurs A chronometrer simultanement</div>
                 </div>
                 
                 <div class="mb-4">
@@ -223,7 +223,7 @@
                 <h5 class="modal-title">Confirmation Reset</h5>
             </div>
             <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir remettre le chronometre Ã zero ? Toutes les donnees non sauvegardees seront perdues.</p>
+                <p>Êtes-vous sûr de vouloir remettre le chronometre A zero ? Toutes les donnees non sauvegardees seront perdues.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -248,8 +248,8 @@
                     <div class="col-md-6">
                         <h6><i class="fas fa-cog me-2 text-primary"></i>Configuration Avancee</h6>
                         <ul>
-                            <li>Gestion de 2 Ã 8 nageurs simultanement</li>
-                            <li>Precision ajustable (centiemes Ã secondes)</li>
+                            <li>Gestion de 2 A 8 nageurs simultanement</li>
+                            <li>Precision ajustable (centiemes A secondes)</li>
                             <li>Noms de nageurs personnalisables</li>
                             <li>Interface adaptative selon le nombre</li>
                         </ul>
@@ -368,7 +368,7 @@
                                 <td><strong>Nombre de nageurs</strong></td>
                                 <td class="text-center">3 fixe</td>
                                 <td class="text-center"><span class="badge bg-success">2-8 variable</span></td>
-                                <td>Adaptation Ã tout contexte</td>
+                                <td>Adaptation A tout contexte</td>
                             </tr>
                             <tr>
                                 <td><strong>Precision</strong></td>
@@ -421,7 +421,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -437,14 +437,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -487,7 +487,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -549,7 +549,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -736,7 +736,7 @@ class ChronometerPro {
             });
         });
         
-        // Fermeture des modals en cliquant Ã l'exterieur
+        // Fermeture des modals en cliquant A l'exterieur
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
                 e.target.style.display = 'none';

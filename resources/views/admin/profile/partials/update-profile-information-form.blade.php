@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Mettez Ã jour les informations de votre profil et votre adresse e-mail.') }}
+            {{ __('Mettez A jour les informations de votre profil et votre adresse e-mail.') }}
         </p>
     </header>
 
@@ -38,7 +38,7 @@
 
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 font-medium text-sm text-green-600">
-                            {{ __('Un nouveau lien de verification a ete envoye Ã votre adresse e-mail.') }}
+                            {{ __('Un nouveau lien de verification a ete envoye A votre adresse e-mail.') }}
                         </p>
                     @endif
                 </div>

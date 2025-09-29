@@ -191,7 +191,7 @@
                             </div>
                             
                             <div class="stats-badge">
-                                <i class="fas fa-download me-1"></i>{{ number_format($download->download_count) }}
+                                <i class="fas fa-water me-1"></i>{{ number_format($download->download_count) }}
                             </div>
                         </div>
                         
@@ -217,7 +217,7 @@
                                         </a>
                                         <a href="{{ route('ebook.download', [$download->category->slug, $download->slug]) }}" 
                                            class="btn btn-success">
-                                            <i class="fas fa-download me-2"></i>Telecharger
+                                            <i class="fas fa-water me-2"></i>Telecharger
                                         </a>
                                     </div>
                                 @else
@@ -315,9 +315,9 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Envie d'acceder Ã plus de contenus ?</h3>
+                <h3 class="fw-bold mb-3">Envie d'acceder A plus de contenus ?</h3>
                 <p class="mb-0">
-                    Creez votre compte pour acceder Ã notre bibliotheque complete de ressources exclusives 
+                    Creez votre compte pour acceder A notre bibliotheque complete de ressources exclusives 
                     et recevoir les nouveautes en avant-premiere.
                 </p>
             </div>
@@ -335,7 +335,7 @@
                     <div class="text-center">
                         <p class="mb-2">Bienvenue {{ auth()->user()->name }} !</p>
                         <a href="{{ route('user.dashboard') }}" class="btn btn-light">
-                            <i class="fas fa-tachometer-alt me-2"></i>Mon espace
+                            <i class="fas fa-water me-2"></i>Mon espace
                         </a>
                     </div>
                 @endguest

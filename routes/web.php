@@ -17,6 +17,10 @@ use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\EbookController;
 use App\Http\Controllers\DownloadCategoryController;
 use App\Http\Controllers\DownloadableController;
+use App\Http\Controllers\ExercicePublicController;
+use App\Http\Controllers\HomeController;
+
+
 
 // Routes publiques
 Route::view('/', 'public.home')->name('home');
@@ -31,6 +35,21 @@ Route::prefix('ebook')->name('ebook.')->group(function () {
     Route::get('/{category}/{downloadable}', [EbookController::class, 'show'])->name('show');
     Route::get('/{category}/{downloadable}/telecharger', [EbookController::class, 'download'])->name('download');
 });
+
+// Routes publiques pour les exercices
+Route::prefix('exercices')->name('exercices.')->group(function () {
+    Route::get('/', [ExercicePublicController::class, 'index'])->name('index');
+    Route::get('/recherche', [ExercicePublicController::class, 'search'])->name('search');
+    Route::get('/{exercice}', [ExercicePublicController::class, 'show'])->name('show');
+});
+
+
+// Routes publiques pour les plans d'entraînement (après les exercices)
+Route::prefix('plans')->name('plans.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\PlanPublicController::class, 'index'])->name('index');
+    Route::get('/{plan}', [\App\Http\Controllers\PlanPublicController::class, 'show'])->name('show');
+});
+
 
 // Routes outils
 Route::get('/outils/calculateur-imc', [ToolController::class, 'bmiCalculator'])->name('tools.bmi');
@@ -103,8 +122,24 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::view('/show', 'user.show')->name('show');
     Route::view('profile/edit', 'user.profile.edit')->name('profile.edit');
     
-    // NOUVELLE ROUTE pour traiter la mise Ã jour du profil
+    // NOUVELLE ROUTE pour traiter la mise A jour du profil
     Route::put('profile', [ProfileController::class, 'updateUserProfile'])->name('profile.update');
+// Ajoutez ces routes dans le groupe user existant, après la route profile.update :
+
+// ========== ROUTES ENTRAÎNEMENT UTILISATEUR ==========
+
+// Plans d'entraînement
+Route::get('training', [\App\Http\Controllers\User\TrainingController::class, 'index'])->name('training.index');
+Route::get('training/mes-plans', [\App\Http\Controllers\User\TrainingController::class, 'mesPlans'])->name('training.mes-plans');
+Route::get('training/plans/{plan}', [\App\Http\Controllers\User\TrainingController::class, 'show'])->name('training.show');
+Route::get('training/plans/{plan}/cycles/{cycle}', [\App\Http\Controllers\User\TrainingController::class, 'cycle'])->name('training.cycle');
+Route::get('training/plans/{plan}/cycles/{cycle}/seances/{seance}', [\App\Http\Controllers\User\TrainingController::class, 'seance'])->name('training.seance');
+Route::get('training/exercices/{exercice}', [\App\Http\Controllers\User\TrainingController::class, 'exercice'])->name('training.exercice');
+
+// Actions utilisateur sur les plans
+Route::post('training/plans/{plan}/commencer', [\App\Http\Controllers\User\TrainingController::class, 'commencer'])->name('training.commencer');
+Route::patch('training/plans/{plan}/statut', [\App\Http\Controllers\User\TrainingController::class, 'updateStatut'])->name('training.update-statut');
+
 
 });
 
@@ -128,6 +163,7 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::post('/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.users.demote');
 
 
+
 // ========== ROUTES MeDIAS ==========
     
     // Gestion principale des medias
@@ -144,6 +180,44 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::get('media-categories', [MediaController::class, 'categories'])->name('media.categories');
     Route::post('media-categories', [MediaController::class, 'storeCategory'])->name('media.categories.store');
     Route::delete('media-categories/{category}', [MediaController::class, 'destroyCategory'])->name('media.categories.destroy');
+
+
+// ========== ROUTES ENTRAÎNEMENT ADMIN ==========
+
+// Gestion des exercices
+Route::resource('training/exercices', \App\Http\Controllers\Admin\ExerciceController::class)
+    ->names('training.exercices');
+
+// Gestion des séries
+Route::resource('training/series', \App\Http\Controllers\Admin\SerieController::class)
+    ->names('training.series');
+
+// Gestion des séances
+Route::resource('training/seances', \App\Http\Controllers\Admin\SeanceController::class)
+    ->names('training.seances');
+
+// Gestion des cycles
+Route::resource('training/cycles', \App\Http\Controllers\Admin\CycleController::class)
+    ->names('training.cycles');
+
+// Gestion des plans
+Route::resource('training/plans', \App\Http\Controllers\Admin\PlanController::class)
+    ->names('training.plans');
+
+// Gestion des assignations de plans
+Route::get('training/plans/{plan}/assignations', [\App\Http\Controllers\Admin\PlanController::class, 'assignations'])
+    ->name('training.plans.assignations');
+Route::post('training/plans/{plan}/assign-user', [\App\Http\Controllers\Admin\PlanController::class, 'assignUser'])
+    ->name('training.plans.assign-user');
+Route::delete('training/plans/{plan}/unassign-user/{user}', [\App\Http\Controllers\Admin\PlanController::class, 'unassignUser'])
+    ->name('training.plans.unassign-user');
+Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Controllers\Admin\PlanController::class, 'updateAssignation'])
+    ->name('training.plans.update-assignation');
+
+
+
+
+
 
     // ROUTES ADMIN PAIEMENTS
     Route::get('payments', [AdminPaymentController::class, 'index'])->name('payments.index');

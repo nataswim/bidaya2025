@@ -33,7 +33,7 @@
                 </p>
                 <div class="alert alert-info border-0 bg-white bg-opacity-25">
                     <small>
-                        <i class="fas fa-info-circle me-2"></i>
+                        <i class="fas fa-water me-2"></i>
                         <strong>4 outils disponibles</strong> - De l'essentiel au niveau professionnel
                     </small>
                 </div>
@@ -72,7 +72,7 @@
                                         les nouvelles recommandations AMA 2024. Analyse complete et interpretation.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>2-3 min</small>
@@ -104,7 +104,7 @@
                                         (Navy), bioimpedance. evaluation precise composition corporelle.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -136,7 +136,7 @@
                                         metaboliques et environnementaux. Multiple formules validees.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>8-12 min</small>
@@ -168,7 +168,7 @@
                                         recuperation, tests standardises. Vue d'ensemble sante cardiovasculaire.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>4-6 min</small>
@@ -183,7 +183,7 @@
 
         </div>
 
-        <!-- Retour Ã l'index -->
+        <!-- Retour A l'index -->
         <div class="text-center mt-5">
             <a href="{{ route('tools.index') }}" class="btn btn-outline-primary btn-lg">
                 <i class="fas fa-arrow-left me-2"></i>Retour aux Categories
@@ -207,7 +207,7 @@
                     <div class="col-md-6">
                         <h6 className="text-primary">Sante Globale</h6>
                         <p class="small">
-                            L'analyse de la composition corporelle va au-delÃ du simple poids. Elle permet 
+                            L'analyse de la composition corporelle va au-delA du simple poids. Elle permet 
                             d'evaluer les risques cardiovasculaires, metaboliques et la sante generale 
                             selon les standards medicaux actuels.
                         </p>
@@ -215,7 +215,7 @@
                         <h6 className="text-success mt-3">Performance Sportive</h6>
                         <p class="small">
                             Pour les sportifs, connaître sa composition corporelle optimise les strategies 
-                            d'entraînement, de nutrition et aide Ã definir des objectifs realistes et sains.
+                            d'entraînement, de nutrition et aide A definir des objectifs realistes et sains.
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -249,7 +249,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -265,14 +265,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -315,7 +315,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -377,7 +377,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

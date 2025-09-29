@@ -8,7 +8,7 @@
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-water"></i>
             Calculateur de Vitesse de Nage Critique (VNC)
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
@@ -120,7 +120,7 @@
                         </div>
                         
                         <div class="alert alert-info mt-3">
-                            <i class="fas fa-info-circle me-2"></i>
+                            <i class="fas fa-water me-2"></i>
                             <small>
                                 Ces zones sont des estimations basees sur votre VNC. Adaptez selon votre ressenti 
                                 et les conseils de votre entraîneur.
@@ -169,7 +169,7 @@
                     </div>
                     <div class="col-md-6">
                         <h6>
-                            <i class="fas fa-bullseye me-2 text-success"></i>Pourquoi s'entraîner Ã la VNC ?
+                            <i class="fas fa-bullseye me-2 text-success"></i>Pourquoi s'entraîner A la VNC ?
                         </h6>
                         <ul>
                             <li><strong>Amelioration du seuil :</strong> Repousse votre limite lactique</li>
@@ -199,7 +199,7 @@
             </div>
             <div class="card-body">
                 <p>
-                    L'entraînement Ã differentes intensites permet de cibler des adaptations physiologiques 
+                    L'entraînement A differentes intensites permet de cibler des adaptations physiologiques 
                     specifiques. Voici le detail de chaque zone :
                 </p>
                 
@@ -225,7 +225,7 @@
                             </div>
                             <div class="card-body">
                                 <p><strong>Intensite :</strong> 105-115% VNC</p>
-                                <p><strong>Sensation :</strong> Facile Ã modere, soutenable longtemps</p>
+                                <p><strong>Sensation :</strong> Facile A modere, soutenable longtemps</p>
                                 <p><strong>Objectif :</strong> Developper la base aerobie et l'efficacite energetique</p>
                                 <p><strong>Usage :</strong> Series longues, fond</p>
                             </div>
@@ -372,7 +372,7 @@
                 </div>
                 
                 <div class="alert alert-info mt-3">
-                    <i class="fas fa-info-circle me-2"></i>
+                    <i class="fas fa-water me-2"></i>
                     <small>
                         La VNC reste un outil de reference utilise par les entraîneurs du monde entier 
                         pour optimiser les performances de leurs nageurs.
@@ -396,7 +396,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -412,14 +412,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -462,7 +462,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -524,7 +524,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -617,7 +617,7 @@ function calculateVNC() {
             min: vnc * 1.05,
             max: vnc * 1.15,
             objectif: "Base aerobie, efficacite energetique",
-            sensation: "Facile Ã modere, longue duree",
+            sensation: "Facile A modere, longue duree",
             color: "table-success"
         },
         {

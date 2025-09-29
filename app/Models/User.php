@@ -72,4 +72,59 @@ class User extends Authenticatable
 {
     return $this->hasMany(Payment::class);
 }
+// Ajoutez ces relations à votre modèle User existant
+
+public function plans()
+{
+    return $this->belongsToMany(Plan::class, 'user_plans')
+                ->withPivot('date_debut', 'date_fin_prevue', 'statut', 'progression_pourcentage', 'notes_utilisateur', 'preferences', 'assigned_by')
+                ->withTimestamps()
+                ->using(UserPlan::class);
+}
+
+public function plansAssignes()
+{
+    return $this->hasMany(UserPlan::class, 'assigned_by');
+}
+
+public function exercicesCreated()
+{
+    return $this->hasMany(Exercice::class, 'created_by');
+}
+
+public function seriesCreated()
+{
+    return $this->hasMany(Serie::class, 'created_by');
+}
+
+public function seancesCreated()
+{
+    return $this->hasMany(Seance::class, 'created_by');
+}
+
+public function cyclesCreated()
+{
+    return $this->hasMany(Cycle::class, 'created_by');
+}
+
+public function plansCreated()
+{
+    return $this->hasMany(Plan::class, 'created_by');
+}
+
+// Méthodes utiles pour l'entraînement
+public function hasActivePlan(): bool
+{
+    return $this->plans()->wherePivot('statut', 'en_cours')->exists();
+}
+
+public function getCurrentPlan()
+{
+    return $this->plans()->wherePivot('statut', 'en_cours')->first();
+}
+
+public function canAccessTraining(): bool
+{
+    return $this->hasRole('user') || $this->hasRole('editor') || $this->hasRole('admin');
+}
 }

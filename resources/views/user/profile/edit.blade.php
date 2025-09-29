@@ -219,7 +219,7 @@
                                     </div>
                                     @if(auth()->user()->last_login_at)
                                         <div>
-                                            <strong>Derniere connexion :</strong> {{ auth()->user()->last_login_at->format('d/m/Y Ã H:i') }}
+                                            <strong>Derniere connexion :</strong> {{ auth()->user()->last_login_at->format('d/m/Y A H:i') }}
                                         </div>
                                     @endif
                                 </div>

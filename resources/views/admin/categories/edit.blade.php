@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.categories.update', $category) }}">
         @method('PUT')
         @include('admin.categories.partials.form', [
-            'submitLabel' => 'Mettre Ã jour la categorie',
+            'submitLabel' => 'Mettre A jour la categorie',
             'category' => $category
         ])
     </form>
@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-generation du slug Ã partir du nom
+    // Auto-generation du slug A partir du nom
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     

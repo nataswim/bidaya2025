@@ -94,7 +94,7 @@
                                         Integration FC repos, HRV et adaptation individuelle pour optimisation securisee de l'entraînement.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>8-12 min</small>
@@ -126,7 +126,7 @@
                                         recuperation et optimisation du systeme nerveux autonome. Technique validee scientifiquement.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-15 min</small>
@@ -174,18 +174,18 @@
                     <div class="col-md-6">
                         <h6 class="text-danger">Fonction Cardiaque de Base</h6>
                         <p class="small">
-                            Le cœur est une pompe musculaire qui s'adapte remarquablement Ã l'entraînement. 
+                            Le cœur est une pompe musculaire qui s'adapte remarquablement A l'entraînement. 
                             La frequence cardiaque (FC) reflete l'intensite de l'effort et permet de quantifier 
                             la charge cardiovasculaire. L'adaptation cardiaque se manifeste par une baisse 
                             de la FC de repos et une amelioration de l'efficacite de pompage.
                         </p>
                         
-                        <h6 class="text-primary mt-3">Adaptations Ã l'Entraînement</h6>
+                        <h6 class="text-primary mt-3">Adaptations A l'Entraînement</h6>
                         <ul class="small">
                             <li><strong>Bradycardie de repos :</strong> FC repos diminuee (athletes 40-60 bpm)</li>
                             <li><strong>Volume d'ejection :</strong> Augmentation du volume sanguin ejecte</li>
                             <li><strong>Debit cardiaque :</strong> Optimisation efficacite energetique</li>
-                            <li><strong>Recuperation :</strong> Retour plus rapide Ã la FC basale</li>
+                            <li><strong>Recuperation :</strong> Retour plus rapide A la FC basale</li>
                             <li><strong>Variabilite :</strong> Amelioration HRV (Heart Rate Variability)</li>
                         </ul>
                     </div>
@@ -399,7 +399,7 @@
                                     <tr>
                                         <td>Situations speciales</td>
                                         <td>3-5 min</td>
-                                        <td>Ã la demande</td>
+                                        <td>A la demande</td>
                                         <td>Stress, pre-competition</td>
                                     </tr>
                                 </tbody>
@@ -430,10 +430,10 @@
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-danger">Signaux d'Alarme Ã Surveiller</h6>
+                        <h6 class="text-danger">Signaux d'Alarme A Surveiller</h6>
                         <ul class="small">
                             <li><strong>Douleur thoracique :</strong> Pendant ou apres l'effort</li>
-                            <li><strong>Essoufflement excessif :</strong> Disproportionne Ã l'effort</li>
+                            <li><strong>Essoufflement excessif :</strong> Disproportionne A l'effort</li>
                             <li><strong>Palpitations :</strong> Rythme irregulier ou tres rapide</li>
                             <li><strong>Vertiges/malaises :</strong> Pendant ou apres l'exercice</li>
                             <li><strong>Fatigue inhabituelle :</strong> Persistante malgre le repos</li>
@@ -459,7 +459,7 @@
                             <li><strong>Suivi medical :</strong> Bilan cardiologique regulier</li>
                         </ul>
                         
-                        <h6 class="text-primary mt-3">Populations Ã Risque</h6>
+                        <h6 class="text-primary mt-3">Populations A Risque</h6>
                         <p class="small">
                             Hommes >45 ans, femmes >55 ans, antecedents familiaux, hypertension, 
                             diabete, obesite, tabagisme necessitent un suivi medical renforce 
@@ -470,7 +470,7 @@
                             <h6 class="small">Test d'Effort Recommande</h6>
                             <p class="small mb-0">
                                 Un test d'effort sous surveillance medicale est recommande pour evaluer 
-                                la reponse cardiaque Ã l'exercice et detecter d'eventuelles anomalies.
+                                la reponse cardiaque A l'exercice et detecter d'eventuelles anomalies.
                             </p>
                         </div>
                     </div>
@@ -482,7 +482,7 @@
                         L'entraînement cardiaque doit toujours privilegier la securite et la progression graduelle. 
                         <strong>Aucun objectif de performance ne justifie de prendre des risques pour sa sante.</strong> 
                         En cas de doute, consultez toujours un professionnel de sante qualifie. 
-                        Ces outils sont des aides Ã l'entraînement, non des substituts Ã l'accompagnement medical.
+                        Ces outils sont des aides A l'entraînement, non des substituts A l'accompagnement medical.
                     </p>
                 </div>
             </div>
@@ -502,7 +502,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -518,14 +518,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -568,7 +568,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -630,7 +630,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

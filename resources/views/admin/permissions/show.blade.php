@@ -174,9 +174,9 @@
                             <div class="text-center py-4">
                                 <i class="fas fa-user-shield fa-2x text-muted mb-3"></i>
                                 <h6>Permission non utilisee</h6>
-                                <p class="text-muted mb-3">Cette permission n'est assignee Ã aucun rôle.</p>
+                                <p class="text-muted mb-3">Cette permission n'est assignee A aucun rôle.</p>
                                 <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-primary">
-                                    <i class="fas fa-user-shield me-2"></i>Assigner Ã un rôle
+                                    <i class="fas fa-user-shield me-2"></i>Assigner A un rôle
                                 </a>
                             </div>
                         </div>
@@ -296,7 +296,7 @@
                             <i class="fas fa-user-shield me-2"></i>Gerer les rôles
                         </a>
                         <a href="{{ route('admin.permissions.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                         </a>
                     </div>
                     
@@ -314,7 +314,7 @@
                     @else
                         <hr class="my-3">
                         <small class="text-muted d-block text-center">
-                            <i class="fas fa-info-circle me-1"></i>
+                            <i class="fas fa-water me-1"></i>
                             Permission utilisee par {{ $permission->roles()->count() }} rôle(s)
                         </small>
                     @endif

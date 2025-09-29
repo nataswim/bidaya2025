@@ -108,7 +108,7 @@
                     @if($downloadable->canBeDownloadedBy(auth()->user()))
                         <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
                            class="btn btn-success btn-lg">
-                            <i class="fas fa-download me-2"></i>Télécharger maintenant
+                            <i class="fas fa-water me-2"></i>Télécharger maintenant
                         </a>
                     @else
                         <div class="access-alert">
@@ -166,7 +166,7 @@
                     <div class="card download-info-card mb-5">
                         <div class="card-body p-5">
                             <h3 class="fw-bold mb-4">
-                                <i class="fas fa-info-circle text-primary me-2"></i>Description
+                                <i class="fas fa-water text-primary me-2"></i>Description
                             </h3>
                             <div class="content-display">
                                 {!! $downloadable->long_description !!}
@@ -213,7 +213,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <i class="fas fa-download fa-2x text-primary me-3"></i>
+                                    <i class="fas fa-water fa-2x text-primary me-3"></i>
                                     <div>
                                         <h6 class="fw-bold mb-1">Téléchargements</h6>
                                         <span class="text-muted">{{ number_format($downloadable->download_count) }}</span>
@@ -245,7 +245,7 @@
                             @if($downloadable->canBeDownloadedBy(auth()->user()))
                                 <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
                                    class="btn btn-success">
-                                    <i class="fas fa-download me-2"></i>Télécharger
+                                    <i class="fas fa-water me-2"></i>Télécharger
                                 </a>
                             @else
                                 <div class="access-alert">
@@ -343,7 +343,7 @@
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title fw-bold mb-2">{{ Str::limit($related->title, 60) }}</h6>
                             <small class="text-muted mb-3">
-                                <i class="fas fa-download me-1"></i>{{ number_format($related->download_count) }} téléchargements
+                                <i class="fas fa-water me-1"></i>{{ number_format($related->download_count) }} téléchargements
                             </small>
                             <div class="mt-auto">
                                 <a href="{{ route('ebook.show', [$category->slug, $related->slug]) }}" 

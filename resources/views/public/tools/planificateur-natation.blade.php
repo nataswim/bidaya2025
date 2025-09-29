@@ -335,7 +335,7 @@
                     <div class="col-md-6">
                         <h6>Adaptations Cardio-Respiratoires</h6>
                         <ul class="small">
-                            <li><strong>Bradycardie d'immersion :</strong> -20 Ã -30 bpm en eau</li>
+                            <li><strong>Bradycardie d'immersion :</strong> -20 A -30 bpm en eau</li>
                             <li><strong>Capacite pulmonaire :</strong> +15-25% chez nageurs</li>
                             <li><strong>Efficacite VO2 :</strong> Meilleure extraction O2</li>
                             <li><strong>Thermoregulation :</strong> Adaptation metabolique</li>
@@ -346,7 +346,7 @@
                             <li>Coordination inter-musculaire optimisee</li>
                             <li>Proprioception aquatique developpee</li>
                             <li>Puissance propulsive specifique</li>
-                            <li>Resistance Ã la fatigue lactique</li>
+                            <li>Resistance A la fatigue lactique</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -360,7 +360,7 @@
 
                         <div class="alert alert-warning">
                             <small>
-                                <strong>Decouverte 2024 :</strong> Les nageurs perdent jusqu'Ã 500ml
+                                <strong>Decouverte 2024 :</strong> Les nageurs perdent jusqu'A 500ml
                                 de sueur par heure en piscine chauffee, necessitant une hydratation active.
                             </small>
                         </div>
@@ -601,7 +601,7 @@
                 </div>
                 
                 <div class="alert alert-info mt-3">
-                    <h6><i class="fas fa-info-circle me-2"></i>Important - Securite</h6>
+                    <h6><i class="fas fa-water me-2"></i>Important - Securite</h6>
                     <p class="mb-0">
                         En cas de douleur persistante, de technique defaillante ou de stagnation, 
                         consultez un professionnel qualifie (maître-nageur, entraîneur). 
@@ -676,7 +676,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -692,14 +692,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -742,7 +742,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -804,7 +804,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.downloadables.update', $downloadable) }}" enctype="multipart/form-data">
         @method('PUT')
         @include('admin.downloadables.partials.form', [
-            'submitLabel' => 'Mettre Ã jour le telechargement',
+            'submitLabel' => 'Mettre A jour le telechargement',
             'downloadable' => $downloadable,
             'categories' => $categories
         ])

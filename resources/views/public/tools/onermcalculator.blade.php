@@ -217,7 +217,7 @@
                 <div class="alert alert-info border-0">
                     <h6><i class="fas fa-lightbulb me-2"></i>Decouverte majeure 2024</h6>
                     <p class="mb-0">
-                        Une seule serie de 6-12 repetitions Ã 70-85% 1RM, 2-3 fois par semaine, 
+                        Une seule serie de 6-12 repetitions A 70-85% 1RM, 2-3 fois par semaine, 
                         peut produire des gains significatifs de force chez les pratiquants entraînes.
                     </p>
                 </div>
@@ -498,7 +498,7 @@
                         <div class="alert alert-info">
                             <small>
                                 <strong>Recherche 2024 :</strong> RIR 0-4 optimal pour hypertrophie. 
-                                Au-delÃ de 4 RIR, les gains diminuent significativement (-40%).
+                                Au-delA de 4 RIR, les gains diminuent significativement (-40%).
                             </small>
                         </div>
 
@@ -528,7 +528,7 @@
                             <div class="col-md-6">
                                 <h6>Techniques d'Intensification</h6>
                                 <ul class="small">
-                                    <li><strong>Drop Sets :</strong> Reduction charge 15-25% Ã l'echec</li>
+                                    <li><strong>Drop Sets :</strong> Reduction charge 15-25% A l'echec</li>
                                     <li><strong>Rest-Pause :</strong> 10-15s repos apres echec, continuer</li>
                                     <li><strong>Cluster Sets :</strong> Repos intra-serie (10-20s)</li>
                                     <li><strong>Tempo Negatif :</strong> Phase excentrique ralentie (3-5s)</li>
@@ -608,7 +608,7 @@
                                     <li><strong>Plateformes de force :</strong> Tests saut, CMJ</li>
                                     <li><strong>Accelerometrie :</strong> evaluation puissance</li>
                                     <li><strong>Compression pneumatique :</strong> Recuperation active</li>
-                                    <li><strong>Cryotherapie corps entier :</strong> -110°C Ã -140°C</li>
+                                    <li><strong>Cryotherapie corps entier :</strong> -110°C A -140°C</li>
                                 </ul>
                             </div>
                         </div>
@@ -690,10 +690,10 @@
                 </div>
 
                 <div class="alert alert-info mt-4">
-                    <h6><i class="fas fa-info-circle me-2"></i>Principe de Specificite SAID</h6>
+                    <h6><i class="fas fa-water me-2"></i>Principe de Specificite SAID</h6>
                     <p class="mb-0">
                         <strong>(Specific Adaptations to Imposed Demands) :</strong> Les adaptations sont specifiques aux contraintes imposees. 
-                        Pour maximiser la force, entraînez-vous Ã haute intensite. Pour l'hypertrophie, privilegiez le volume et le stress metabolique.
+                        Pour maximiser la force, entraînez-vous A haute intensite. Pour l'hypertrophie, privilegiez le volume et le stress metabolique.
                     </p>
                 </div>
             </div>
@@ -789,7 +789,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Cryotherapie</td>
-                                        <td>10-15min Ã 10-15°C</td>
+                                        <td>10-15min A 10-15°C</td>
                                         <td>⭐⭐⭐⭐</td>
                                         <td>Vasoconstriction, ↓inflammation</td>
                                     </tr>
@@ -862,7 +862,7 @@
                             <li><strong>Historique blessures :</strong> Zones de faiblesse persistantes</li>
                         </ul>
 
-                        <h6 class="mt-3">Zones Ã Risque Specifiques</h6>
+                        <h6 class="mt-3">Zones A Risque Specifiques</h6>
                         <div class="table-responsive">
                             <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -915,7 +915,7 @@
                                 <ol class="small mb-0">
                                     <li><strong>Activation generale (3-5min) :</strong> Velo, rameur leger</li>
                                     <li><strong>Mobilite dynamique (5-7min) :</strong> Mouvements articulaires</li>
-                                    <li><strong>Activation specifique (3-5min) :</strong> Mouvements exercices Ã vide</li>
+                                    <li><strong>Activation specifique (3-5min) :</strong> Mouvements exercices A vide</li>
                                     <li><strong>Montee en charge (5-8min) :</strong> 40-60-80% intensite cible</li>
                                 </ol>
                             </div>
@@ -1011,7 +1011,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -1027,14 +1027,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -1077,7 +1077,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1139,7 +1139,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

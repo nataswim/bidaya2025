@@ -69,7 +69,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ route('home') }}">
-                            <i class="fas fa-globe me-2"></i>Voir le site
+                            <i class="fas fa-water me-2"></i>Voir le site
                         </a>
                     </li>
                     <li><hr class="dropdown-divider"></li>

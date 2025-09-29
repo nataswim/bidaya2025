@@ -18,10 +18,10 @@
                     </p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center">
                         <a href="{{ route('home') }}" class="btn btn-primary">
-                            <i class="fas fa-home me-2"></i>Retour Ã l'accueil
+                            <i class="fas fa-home me-2"></i>Retour A l'accueil
                         </a>
                         <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
-                            <i class="fas fa-newspaper me-2"></i>Voir les articles
+                            <i class="fas fa-water me-2"></i>Voir les articles
                         </a>
                     </div>
                 </div>

@@ -254,7 +254,7 @@
                                         <i class="fas fa-running me-2"></i>Calculateur Vitesse Critique Course
                                     </h6>
                                     <p class="card-text small">
-                                        Seuils physiologiques course Ã pied. 
+                                        Seuils physiologiques course A pied. 
                                         Zones d'entraînement specifiques endurance.
                                     </p>
                                     <span class="badge bg-warning">Priorite 2</span>
@@ -527,7 +527,7 @@
                         <div class="alert alert-info alert-sm">
                             <h6 class="small">evolution Continue</h6>
                             <p class="small mb-0">
-                                Les outils existants sont regulierement mis Ã jour selon 
+                                Les outils existants sont regulierement mis A jour selon 
                                 l'evolution des connaissances scientifiques et retours utilisateurs.
                             </p>
                         </div>
@@ -566,7 +566,7 @@
                     <div class="col-md-6">
                         <h6 class="text-info">Engagement Qualite</h6>
                         <p class="small">
-                            Nous nous engageons Ã maintenir les standards eleves de qualite scientifique 
+                            Nous nous engageons A maintenir les standards eleves de qualite scientifique 
                             et de securite utilisateur qui caracterisent nos outils actuels. 
                             Aucun outil ne sera publie sans validation rigoureuse.
                         </p>
@@ -599,7 +599,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -615,14 +615,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -665,7 +665,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -727,7 +727,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

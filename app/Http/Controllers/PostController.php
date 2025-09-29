@@ -112,7 +112,7 @@ class PostController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.posts.edit', $post)
-                ->with('success', 'Article cree avec succes. Vous pouvez continuer Ã l\'editer.');
+                ->with('success', 'Article cree avec succes. Vous pouvez continuer A l\'editer.');
         }
 
         return redirect()->route('admin.posts.index')
@@ -154,7 +154,7 @@ class PostController extends Controller
         // Gerer la date de publication
         if ($data['status'] === 'published') {
             if (empty($data['published_at']) && $post->status !== 'published') {
-                // Premier passage de brouillon Ã publie
+                // Premier passage de brouillon A publie
                 $data['published_at'] = now();
             }
         } else {
@@ -167,7 +167,7 @@ class PostController extends Controller
         // Informations de modification
         $data['updated_by'] = auth()->id();
         
-        // Mettre Ã jour le post
+        // Mettre A jour le post
         $post->update($data);
         
         // Synchroniser les tags
@@ -181,11 +181,11 @@ class PostController extends Controller
         
         if ($action === 'save_and_continue') {
             return redirect()->route('admin.posts.edit', $post)
-                ->with('success', 'Article mis Ã jour avec succes.');
+                ->with('success', 'Article mis A jour avec succes.');
         }
 
         return redirect()->route('admin.posts.index')
-            ->with('success', 'Article mis Ã jour avec succes.');
+            ->with('success', 'Article mis A jour avec succes.');
     }
 
     public function destroy(Post $post)

@@ -70,7 +70,7 @@ class PermissionController extends Controller
         $permission->update($request->validated());
 
         return redirect()->route('admin.permissions.index')
-            ->with('success', 'Permission mise Ã jour avec succes.');
+            ->with('success', 'Permission mise A jour avec succes.');
     }
 
     public function destroy(Permission $permission)
@@ -80,7 +80,7 @@ class PermissionController extends Controller
         // Verifier les dependances avec les rôles
         if ($permission->roles()->count() > 0) {
             return redirect()->route('admin.permissions.index')
-                ->with('error', 'Impossible de supprimer une permission assignee Ã des rôles.');
+                ->with('error', 'Impossible de supprimer une permission assignee A des rôles.');
         }
         
         $permission->delete();

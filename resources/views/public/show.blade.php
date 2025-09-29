@@ -148,7 +148,7 @@
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">
-                                <i class="fas fa-newspaper me-2 text-success"></i>
+                                <i class="fas fa-water me-2 text-success"></i>
                                 Dernieres publications
                             </h5>
                         </div>
@@ -203,7 +203,7 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
-                            <i class="fas fa-info-circle me-2 text-info"></i>
+                            <i class="fas fa-water me-2 text-info"></i>
                             Informations de l'article
                         </h5>
                     </div>
@@ -254,7 +254,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-edit me-1"></i>Mise Ã jour:
+                                        <i class="fas fa-edit me-1"></i>Mise A jour:
                                     </span>
                                     <strong>{{ $post->updated_at->format('d/m/Y') }}</strong>
                                 </div>

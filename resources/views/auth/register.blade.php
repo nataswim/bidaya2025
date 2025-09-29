@@ -119,7 +119,7 @@
 
                             <!-- Login Link -->
                             <div class="text-center">
-                                <span class="text-muted">DejÃ membre ?</span>
+                                <span class="text-muted">DejA membre ?</span>
                                 <a href="{{ route('login') }}" class="text-decoration-none fw-semibold">
                                     Se connecter
                                 </a>
@@ -131,7 +131,7 @@
                 <!-- Retour accueil -->
                 <div class="text-center mt-4">
                     <a href="{{ route('home') }}" class="text-muted text-decoration-none">
-                        <i class="fas fa-arrow-left me-2"></i>Retour Ã l'accueil
+                        <i class="fas fa-arrow-left me-2"></i>Retour A l'accueil
                     </a>
                 </div>
             </div>

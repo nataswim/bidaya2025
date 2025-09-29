@@ -6,7 +6,7 @@
         <div class="card border-0 shadow-sm">
             <div class="card-header bg-gradient-primary text-white p-4">
                 <h5 class="mb-0">
-                    <i class="fas fa-download me-2"></i>Informations du telechargement
+                    <i class="fas fa-water me-2"></i>Informations du telechargement
                 </h5>
             </div>
             <div class="card-body p-4">
@@ -37,7 +37,7 @@
                                class="form-control @error('slug') is-invalid @enderror"
                                placeholder="slug-automatique">
                     </div>
-                    <div class="form-text">Laisser vide pour generation automatique Ã partir du titre</div>
+                    <div class="form-text">Laisser vide pour generation automatique A partir du titre</div>
                     @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -272,7 +272,7 @@
                     <label for="user_permission" class="form-label fw-semibold">Niveau d'acces requis</label>
                     <select name="user_permission" id="user_permission" class="form-select @error('user_permission') is-invalid @enderror" required>
                         <option value="public" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : 'public') === 'public' ? 'selected' : '' }}>
-                            <i class="fas fa-globe"></i> Public - Accessible Ã tous
+                            <i class="fas fa-water"></i> Public - Accessible A tous
                         </option>
                         <option value="visitor" {{ old('user_permission', isset($downloadable) ? $downloadable->user_permission : '') === 'visitor' ? 'selected' : '' }}>
                             <i class="fas fa-eye"></i> Visiteur - Non-connectes uniquement
@@ -287,7 +287,7 @@
                         <div id="permission-help" class="mt-2 p-3 rounded" style="background-color: #f8f9fa;">
                             <div id="public-help" style="display: none;">
                                 <div class="d-flex align-items-start">
-                                    <i class="fas fa-globe text-success me-2 mt-1"></i>
+                                    <i class="fas fa-water text-success me-2 mt-1"></i>
                                     <div>
                                         <strong class="text-success">Acces public</strong>
                                         <div class="small text-muted mt-1">
@@ -305,7 +305,7 @@
                                         <strong class="text-info">Acces visiteur</strong>
                                         <div class="small text-muted mt-1">
                                             • Reserve aux non-connectes<br>
-                                            • Incite Ã decouvrir sans inscription<br>
+                                            • Incite A decouvrir sans inscription<br>
                                             • Utile pour du contenu d'accroche
                                         </div>
                                     </div>

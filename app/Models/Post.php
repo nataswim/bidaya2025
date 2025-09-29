@@ -104,19 +104,19 @@ class Post extends Model
 
 
 /**
- * Determiner le message Ã afficher pour l'acces restreint
+ * Determiner le message A afficher pour l'acces restreint
  */
 public function getAccessMessage($user = null): string
 {
     if (!$user) {
-        return 'Connectez-vous pour acceder Ã ce contenu premium.';
+        return 'Connectez-vous pour acceder A ce contenu premium.';
     }
     
     if ($user->hasRole('visitor')) {
         return 'Votre compte doit être valide par un administrateur pour acceder aux contenus premium.';
     }
     
-    return 'Acces non autorise Ã ce contenu.';
+    return 'Acces non autorise A ce contenu.';
 }
 
 

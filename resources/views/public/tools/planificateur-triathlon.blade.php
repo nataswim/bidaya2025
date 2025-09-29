@@ -85,7 +85,7 @@
                             <option value="balanced" selected>equilibre</option>
                             <option value="swimming">Natation</option>
                             <option value="cycling">Cyclisme</option>
-                            <option value="running">Course Ã pied</option>
+                            <option value="running">Course A pied</option>
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -179,7 +179,7 @@
                             <div class="card border-danger">
                                 <div class="card-header bg-danger text-white text-center">
                                     <h6 class="mb-0">
-                                        <i class="fas fa-running me-2"></i>Course Ã pied
+                                        <i class="fas fa-running me-2"></i>Course A pied
                                     </h6>
                                 </div>
                                 <div class="card-body text-center">
@@ -270,7 +270,7 @@
                 </p>
 
                 <div class="alert alert-info">
-                    <h6><i class="fas fa-lightbulb me-2"></i>Mise Ã jour Recherche 2024</h6>
+                    <h6><i class="fas fa-lightbulb me-2"></i>Mise A jour Recherche 2024</h6>
                     <p class="mb-0">
                         La "variabilite de l'entraînement" (alternance d'intensite/volume) est cruciale pour eviter 
                         le surentraînement et maximiser les gains dans chaque discipline tout en preservant la sante.
@@ -333,9 +333,9 @@
                     <div class="col-md-6">
                         <h6>Adaptations Physiologiques Croisees</h6>
                         <ul class="small">
-                            <li><strong>Natation :</strong> Efficacite propulsive, adaptation Ã l'hypoxie, proprioception aquatique</li>
+                            <li><strong>Natation :</strong> Efficacite propulsive, adaptation A l'hypoxie, proprioception aquatique</li>
                             <li><strong>Cyclisme :</strong> Puissance aerobie, endurance musculaire des jambes, position aerodynamique</li>
-                            <li><strong>Course Ã pied :</strong> economie de course, resistance aux chocs, adaptation post-velo</li>
+                            <li><strong>Course A pied :</strong> economie de course, resistance aux chocs, adaptation post-velo</li>
                             <li><strong>Physiologie Integree :</strong> Amelioration VO2 Max generale, gestion fatigue neuromusculaire</li>
                         </ul>
                         
@@ -545,7 +545,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#running-injuries">
-                                        <i class="fas fa-running text-danger me-2"></i>Blessures Course Ã pied
+                                        <i class="fas fa-running text-danger me-2"></i>Blessures Course A pied
                                     </button>
                                 </h2>
                                 <div id="running-injuries" class="accordion-collapse collapse" data-bs-parent="#injuryAccordion">
@@ -678,7 +678,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <h6><i class="fas fa-running text-danger me-2"></i>Course Ã pied</h6>
+                        <h6><i class="fas fa-running text-danger me-2"></i>Course A pied</h6>
                         <ul class="small">
                             <li><strong>economie de course :</strong> Technique plus importante que VO2max</li>
                             <li><strong>Adaptation post-velo :</strong> Jambes lourdes 5-10 premieres minutes</li>
@@ -717,7 +717,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -733,14 +733,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -783,7 +783,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -845,7 +845,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -1057,7 +1057,7 @@ function displayPlan(plan, goal, experience, timeAvailable, season) {
     document.getElementById('planResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Mise Ã jour du focus selon la saison
+// Mise A jour du focus selon la saison
 function updateFocusText(season) {
     const focusTexts = {
         preparation: {
@@ -1146,7 +1146,7 @@ function distributeWorkouts(plan, season) {
     const baseSchedule = [
         { primary: 'Natation technique', secondary: '', duration: '45-60min', intensity: 'Moderee', intensityColor: 'warning' },
         { primary: 'Cyclisme endurance', secondary: '', duration: '60-90min', intensity: 'Faible', intensityColor: 'success' },
-        { primary: 'Course Ã pied', secondary: 'Renforcement', duration: '30-45min + 20min', intensity: 'Moderee', intensityColor: 'warning' },
+        { primary: 'Course A pied', secondary: 'Renforcement', duration: '30-45min + 20min', intensity: 'Moderee', intensityColor: 'warning' },
         { primary: 'Natation intensite', secondary: '', duration: '45-60min', intensity: 'elevee', intensityColor: 'danger' },
         { primary: 'Brick (Velo + Course)', secondary: '', duration: '90-120min', intensity: 'elevee', intensityColor: 'danger' },
         { primary: 'Cyclisme long', secondary: '', duration: '2-4h', intensity: 'Faible-Moderee', intensityColor: 'info' },

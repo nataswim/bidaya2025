@@ -115,7 +115,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="text-primary fw-bold fs-5">Acceder Ã l'outil →</span>
+                                        <span class="text-primary fw-bold fs-5">Acceder A l'outil →</span>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -316,7 +316,7 @@
                         <div class="alert alert-info alert-sm">
                             <h6 class="small">Patience Necessaire</h6>
                             <p class="small mb-0">
-                                Les adaptations durables prennent des mois Ã s'installer. 
+                                Les adaptations durables prennent des mois A s'installer. 
                                 Forcer la progression augmente le risque de blessure sans gain.
                             </p>
                         </div>
@@ -361,7 +361,7 @@
                             <li><strong>Plaisir preserve :</strong> Entraînement source satisfaction</li>
                             <li><strong>Flexibilite :</strong> Adaptation selon contraintes vie</li>
                             <li><strong>Image corporelle saine :</strong> Acceptation morphologie individuelle</li>
-                            <li><strong>Perspective long terme :</strong> Sante et mobilite Ã vie</li>
+                            <li><strong>Perspective long terme :</strong> Sante et mobilite A vie</li>
                         </ul>
                         
                         <div class="alert alert-success alert-sm">
@@ -377,9 +377,9 @@
                 <div class="alert alert-warning mt-4">
                     <h6><i class="fas fa-hands-helping me-2"></i>Recherche d'Aide Professionnelle</h6>
                     <p class="mb-0 small">
-                        Si la musculation devient source d'anxiete, d'obsession ou nuit Ã votre bien-être global, 
+                        Si la musculation devient source d'anxiete, d'obsession ou nuit A votre bien-être global, 
                         <strong>consultez un psychologue specialise en sport ou troubles alimentaires.</strong> 
-                        Il n'y a aucune honte Ã chercher de l'aide pour maintenir un rapport sain Ã l'exercice. 
+                        Il n'y a aucune honte A chercher de l'aide pour maintenir un rapport sain A l'exercice. 
                         Votre equilibre mental et social est plus important que n'importe quel objectif physique.
                     </p>
                 </div>
@@ -453,7 +453,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -469,14 +469,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -519,7 +519,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -581,7 +581,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

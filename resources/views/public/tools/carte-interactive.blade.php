@@ -17,7 +17,7 @@
                 <i class="fas fa-clock text-info me-3 mt-1"></i>
                 <div class="text-dark">
                     <strong>Explorez et trouvez</strong> les meilleurs spots pour vos entraînements de natation, 
-                    course Ã pied ou triathlon pres de chez vous
+                    course A pied ou triathlon pres de chez vous
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                                     <i class="fas fa-location-arrow me-2"></i>Geolocalisation
                                 </h6>
                                 <p class="card-text">
-                                    Ã l'ouverture, la carte tente de detecter votre position actuelle pour vous centrer automatiquement.
+                                    A l'ouverture, la carte tente de detecter votre position actuelle pour vous centrer automatiquement.
                                 </p>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -254,14 +254,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -304,7 +304,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -366,7 +366,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -567,7 +567,7 @@ class InteractiveMap {
         const query = document.getElementById('searchInput').value.trim();
         
         if (!query) {
-            this.showAlert('warning', 'Veuillez entrer un lieu Ã rechercher.', 3000);
+            this.showAlert('warning', 'Veuillez entrer un lieu A rechercher.', 3000);
             return;
         }
         
@@ -697,8 +697,8 @@ class InteractiveMap {
             'success': 'fas fa-check-circle',
             'error': 'fas fa-exclamation-circle',
             'warning': 'fas fa-exclamation-triangle',
-            'info': 'fas fa-info-circle'
-        }[type] || 'fas fa-info-circle';
+            'info': 'fas fa-water'
+        }[type] || 'fas fa-water';
         
         const alert = document.createElement('div');
         alert.className = `alert ${alertClass} alert-dismissible fade show shadow-sm`;

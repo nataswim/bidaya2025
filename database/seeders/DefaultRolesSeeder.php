@@ -115,7 +115,7 @@ class DefaultRolesSeeder extends Seeder
             $this->command->info('  ✓ Rôle Visiteur cree (niveau 1)');
         } else {
             $visitor->update($visitorData);
-            $this->command->info('  ✓ Rôle Visiteur mis Ã jour');
+            $this->command->info('  ✓ Rôle Visiteur mis A jour');
         }
     }
 
@@ -167,7 +167,7 @@ class DefaultRolesSeeder extends Seeder
             }
         }
 
-        // Mettre Ã jour les permissions existantes avec display_name et slug manquants
+        // Mettre A jour les permissions existantes avec display_name et slug manquants
         $existingPermissions = Permission::whereIn('name', ['Manage Users', 'Manage Posts', 'Manage Categories'])->get();
         
         foreach ($existingPermissions as $permission) {
@@ -188,7 +188,7 @@ class DefaultRolesSeeder extends Seeder
             
             if (!empty($updates)) {
                 $permission->update($updates);
-                $this->command->info('  ✓ Permission mise Ã jour : ' . $permission->name);
+                $this->command->info('  ✓ Permission mise A jour : ' . $permission->name);
             }
         }
 

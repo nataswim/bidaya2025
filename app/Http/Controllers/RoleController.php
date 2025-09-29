@@ -83,7 +83,7 @@ class RoleController extends Controller
         }
 
         return redirect()->route('admin.roles.index')
-            ->with('success', 'Rôle mis Ã jour avec succes.');
+            ->with('success', 'Rôle mis A jour avec succes.');
     }
 
     public function destroy(Role $role)
@@ -93,7 +93,7 @@ class RoleController extends Controller
         // Verifier les dependances avec les utilisateurs
         if ($role->users()->count() > 0) {
             return redirect()->route('admin.roles.index')
-                ->with('error', 'Impossible de supprimer un rôle assigne Ã des utilisateurs.');
+                ->with('error', 'Impossible de supprimer un rôle assigne A des utilisateurs.');
         }
         
         // Empêcher la suppression du rôle par defaut

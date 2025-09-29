@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.permissions.update', $permission) }}">
         @method('PUT')
         @include('admin.permissions.partials.form', [
-            'submitLabel' => 'Mettre Ã jour la permission',
+            'submitLabel' => 'Mettre A jour la permission',
             'permission' => $permission
         ])
     </form>

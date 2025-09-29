@@ -4,11 +4,11 @@
 
 @section('content')
 <!-- En-tête de section -->
-<section class="bg-gradient-primary text-white py-5">
+<section class="bg-primary text-white py-5">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-5 fw-bold mb-3">Nos Articles</h1>
+                <h1 class="display-5 fw-bold mb-3">Articles</h1>
                 <p class="lead mb-0">Decouvrez nos derniers contenus sur le developpement web, les technologies modernes et les bonnes pratiques.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
@@ -83,7 +83,7 @@
             @if($search || $category || ($tag ?? ''))
                 <div class="mb-4">
                     <div class="alert alert-info border-0">
-                        <i class="fas fa-info-circle me-2"></i>
+                        <i class="fas fa-water me-2"></i>
                         {{ $posts->total() }} resultat(s) trouve(s)
                         @if($search)
                             pour "<strong>{{ $search }}</strong>"
@@ -118,7 +118,7 @@
                                 <div class="position-absolute top-0 end-0 p-3">
                                     @if($post->is_featured)
                                         <span class="badge bg-warning text-dark mb-2 d-block">
-                                            <i class="fas fa-star me-1"></i>Ã la une
+                                            <i class="fas fa-star me-1"></i>A la une
                                         </span>
                                     @endif
                                     
@@ -210,7 +210,7 @@
                 <h3 class="fw-bold mb-3">Aucun article trouve</h3>
                 <p class="text-muted mb-4">
                     @if($search || $category || ($tag ?? ''))
-                        Aucun resultat ne correspond Ã vos criteres de recherche.
+                        Aucun resultat ne correspond A vos criteres de recherche.
                     @else
                         Il n'y a pas encore d'articles publies.
                     @endif
@@ -231,7 +231,7 @@
         <div class="container-lg text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="fw-bold mb-3">Accedez Ã tous nos contenus</h2>
+                    <h2 class="fw-bold mb-3">Accedez aux contenus</h2>
                     <p class="lead mb-4">
                         Rejoignez notre communaute pour debloquer les articles exclusifs et beneficier de contenus premium.
                     </p>

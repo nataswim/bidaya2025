@@ -185,7 +185,7 @@
                                                             <li><hr class="dropdown-divider"></li>
                                                             <li>
                                                                 <span class="dropdown-item text-muted">
-                                                                    <i class="fas fa-info-circle me-2"></i>Utilisee par {{ $permission->roles()->count() }} rôle(s)
+                                                                    <i class="fas fa-water me-2"></i>Utilisee par {{ $permission->roles()->count() }} rôle(s)
                                                                 </span>
                                                             </li>
                                                         @endif
@@ -203,7 +203,7 @@
                             <div class="card-footer bg-white border-top p-4">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
-                                        Affichage de {{ $permissions->firstItem() }} Ã {{ $permissions->lastItem() }} 
+                                        Affichage de {{ $permissions->firstItem() }} A {{ $permissions->lastItem() }} 
                                         sur {{ $permissions->total() }} resultat(s)
                                     </div>
                                     {{ $permissions->appends(request()->query())->links() }}
@@ -215,7 +215,7 @@
                             <i class="fas fa-key fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucune permission trouvee</h5>
                             @if(request()->hasAny(['search', 'group', 'usage']))
-                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                                 <a href="{{ route('admin.permissions.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir toutes les permissions
                                 </a>
@@ -334,7 +334,7 @@
                             </button>
                         @endif
                         <button class="btn btn-outline-info" onclick="exportPermissions()">
-                            <i class="fas fa-download me-2"></i>Exporter la liste
+                            <i class="fas fa-water me-2"></i>Exporter la liste
                         </button>
                     </div>
                 </div>
@@ -380,8 +380,8 @@ function showUnusedPermissions() {
 }
 
 function exportPermissions() {
-    // Simuler l'export - Ã implementer dans le contrôleur
-    alert('Fonctionnalite Ã implementer dans le contrôleur');
+    // Simuler l'export - A implementer dans le contrôleur
+    alert('Fonctionnalite A implementer dans le contrôleur');
 }
 </script>
 @endpush

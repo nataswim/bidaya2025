@@ -12,13 +12,13 @@
             Coherence Cardiaque
             <span class="badge bg-warning text-dark fs-6">PRO</span>
         </h1>
-        <p class="lead fs-4">Retrouvez votre equilibre interieur grâce Ã la respiration guidee scientifique</p>
+        <p class="lead fs-4">Retrouvez votre equilibre interieur grâce A la respiration guidee scientifique</p>
         
         <!-- Instructions -->
         <div id="instructionsAlert" class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
-                <i class="fas fa-info-circle text-info me-3 mt-1"></i>
+                <i class="fas fa-water text-info me-3 mt-1"></i>
                 <div class="text-start text-dark">
                     <strong>Instructions :</strong> 
                     Suivez le rythme du cercle et des sons. Inspirez quand le cercle grandit (bleu), 
@@ -240,7 +240,7 @@
                         <div class="form-check form-switch mb-3">
                             <input type="checkbox" id="showInstructionsCheck" class="form-check-input" checked>
                             <label class="form-check-label" for="showInstructionsCheck">
-                                <i class="fas fa-info-circle me-2"></i>
+                                <i class="fas fa-water me-2"></i>
                                 Afficher les instructions
                             </label>
                         </div>
@@ -293,7 +293,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -309,14 +309,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -359,7 +359,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -421,7 +421,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -456,7 +456,7 @@
                         <!-- Resume Executif -->
                         <div class="alert alert-primary border-0 mb-5" style="background: rgba(59, 130, 246, 0.1);">
                             <h2 class="alert-heading text-primary h4">
-                                <i class="fas fa-info-circle me-2"></i>
+                                <i class="fas fa-water me-2"></i>
                                 Resume Executif
                             </h2>
                             <p class="mb-0">
@@ -504,8 +504,8 @@
 
                             <div class="alert alert-info border-0">
                                 <p class="mb-0">
-                                    <i class="fas fa-info-circle me-2 text-info"></i>
-                                    L'expression « coherence cardiaque » est plutôt Ã destination du public, tandis que l'expression retenue par les scientifiques est 
+                                    <i class="fas fa-water me-2 text-info"></i>
+                                    L'expression « coherence cardiaque » est plutôt A destination du public, tandis que l'expression retenue par les scientifiques est 
                                     <strong> « biofeedback de variabilite de la frequence cardiaque »</strong>, en anglais : « Heart Rate Variability Biofeedback » ou HRVB.
                                 </p>
                             </div>
@@ -654,7 +654,7 @@
                                                 <h5 class="text-danger mb-0">4.1 Pathologies Cardiovasculaires</h5>
                                             </div>
                                             <p class="mb-3">
-                                                Cette technique a fait son entree dans les services hospitaliers, en particulier ceux dedies Ã la readaptation cardiaque, 
+                                                Cette technique a fait son entree dans les services hospitaliers, en particulier ceux dedies A la readaptation cardiaque, 
                                                 car les etudes ont objective ses benefices dont la <strong>reduction des recidives d'infarctus</strong>.
                                             </p>
                                             <div class="list-group list-group-flush">
@@ -815,7 +815,7 @@
                                 </p>
                                 <p class="mb-0">
                                     La coherence cardiaque s'impose ainsi comme un <strong>outil therapeutique complementaire precieux</strong>, 
-                                    Ã condition d'être utilisee dans un cadre scientifique rigoureux et en complement d'une prise en charge appropriee.
+                                    A condition d'être utilisee dans un cadre scientifique rigoureux et en complement d'une prise en charge appropriee.
                                 </p>
                             </div>
                         </div>

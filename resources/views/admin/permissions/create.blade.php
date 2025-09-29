@@ -37,7 +37,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-generation du slug Ã partir du nom
+    // Auto-generation du slug A partir du nom
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     const groupInput = document.getElementById('group');

@@ -23,7 +23,7 @@ class MediaManager {
             });
         }
 
-        // Reset du formulaire Ã la fermeture du modal
+        // Reset du formulaire A la fermeture du modal
         const uploadModal = document.getElementById('uploadModal');
         if (uploadModal) {
             uploadModal.addEventListener('hidden.bs.modal', () => {
@@ -104,7 +104,7 @@ class MediaManager {
         const modals = document.querySelectorAll('.modal');
         modals.forEach(modal => {
             modal.addEventListener('show.bs.modal', (e) => {
-                // Actions Ã effectuer lors de l'ouverture des modals
+                // Actions A effectuer lors de l'ouverture des modals
             });
         });
     }

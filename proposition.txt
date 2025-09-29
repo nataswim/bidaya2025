@@ -277,7 +277,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100)->unique();
             $table->string('slug', 120)->unique()->index();
-            $table->string('display_name', 100)->nullable(); // Nom affiche Ã l'utilisateur
+            $table->string('display_name', 100)->nullable(); // Nom affiche A l'utilisateur
             $table->text('description')->nullable();
             $table->integer('level')->default(0)->index(); // Hierarchie des rôles
             $table->boolean('is_default')->default(false); // Rôle par defaut pour nouveaux users

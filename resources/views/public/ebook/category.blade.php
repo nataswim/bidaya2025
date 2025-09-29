@@ -210,7 +210,7 @@
                                         </div>
                                         
                                         <div class="stats-badge">
-                                            <i class="fas fa-download me-1"></i>{{ number_format($download->download_count) }}
+                                            <i class="fas fa-water me-1"></i>{{ number_format($download->download_count) }}
                                         </div>
                                     </div>
                                     
@@ -241,7 +241,7 @@
                                                 @if($download->canBeDownloadedBy(auth()->user()))
                                                     <a href="{{ route('ebook.download', [$category->slug, $download->slug]) }}" 
                                                        class="btn btn-success btn-sm">
-                                                        <i class="fas fa-download me-2"></i>Télécharger
+                                                        <i class="fas fa-water me-2"></i>Télécharger
                                                     </a>
                                                 @else
                                                     <div class="access-message">

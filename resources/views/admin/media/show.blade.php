@@ -57,7 +57,7 @@
                     <div class="card border-0 shadow-sm mt-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">
-                                <i class="fas fa-info-circle text-info me-2"></i>Informations techniques
+                                <i class="fas fa-water text-info me-2"></i>Informations techniques
                             </h5>
                         </div>
                         <div class="card-body">
@@ -86,7 +86,7 @@
                                 @endif
                                 <div class="col-md-6">
                                     <strong>Uploade le :</strong><br>
-                                    <span class="text-muted">{{ $media->created_at->format('d/m/Y Ã H:i') }}</span>
+                                    <span class="text-muted">{{ $media->created_at->format('d/m/Y A H:i') }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <strong>Par :</strong><br>
@@ -95,7 +95,7 @@
                                 @if($media->used_at)
                                     <div class="col-md-6">
                                         <strong>Derniere utilisation :</strong><br>
-                                        <span class="text-muted">{{ $media->used_at->format('d/m/Y Ã H:i') }}</span>
+                                        <span class="text-muted">{{ $media->used_at->format('d/m/Y A H:i') }}</span>
                                     </div>
                                 @endif
                             </div>

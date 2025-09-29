@@ -74,7 +74,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         return redirect()->route('admin.categories.index')
-            ->with('success', 'Categorie mise Ã jour avec succes.');
+            ->with('success', 'Categorie mise A jour avec succes.');
     }
 
     public function destroy(Category $category)

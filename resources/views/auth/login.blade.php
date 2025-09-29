@@ -14,7 +14,7 @@
                                 <i class="fas fa-water text-white fa-2x"></i>
                             </div>
                             <h2 class="fw-bold">{{ config('app.name') }}</h2>
-                            <p class="text-muted">Connectez-vous Ã votre compte</p>
+                            <p class="text-muted">Connectez-vous A votre compte</p>
                         </div>
 
                         <!-- Session Status -->
@@ -99,7 +99,7 @@
                 <!-- Retour accueil -->
                 <div class="text-center mt-4">
                     <a href="{{ route('home') }}" class="text-muted text-decoration-none">
-                        <i class="fas fa-arrow-left me-2"></i>Retour Ã l'accueil
+                        <i class="fas fa-arrow-left me-2"></i>Retour A l'accueil
                     </a>
                 </div>
             </div>

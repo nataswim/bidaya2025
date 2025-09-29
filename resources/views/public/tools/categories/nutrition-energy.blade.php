@@ -33,7 +33,7 @@
                 </p>
                 <div class="alert alert-warning border-0 bg-white bg-opacity-25">
                     <small>
-                        <i class="fas fa-info-circle me-2"></i>
+                        <i class="fas fa-water me-2"></i>
                         <strong>3 outils disponibles</strong> - Approche equilibree et sante-centree
                     </small>
                 </div>
@@ -72,7 +72,7 @@
                                         Multiple strategies nutritionnelles evidence-based pour optimiser performance et recuperation.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-8 min</small>
@@ -104,7 +104,7 @@
                                         Calculs personnalises pour maintenir performance et sante optimales.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>6-10 min</small>
@@ -136,7 +136,7 @@
                                         Strategies d'hydratation pre, pendant et post-effort evidence-based.
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>3-5 min</small>
@@ -178,10 +178,10 @@
                 <div class="col-md-11">
                     <h6 class="fw-bold mb-2">Approche Nutrition Responsable</h6>
                     <p class="mb-0 small">
-                        Nos outils visent Ã optimiser la performance et la sante, non Ã promouvoir des restrictions alimentaires. 
-                        <strong>Une nutrition equilibree et adaptee Ã vos besoins est essentielle.</strong> 
+                        Nos outils visent A optimiser la performance et la sante, non A promouvoir des restrictions alimentaires. 
+                        <strong>Une nutrition equilibree et adaptee A vos besoins est essentielle.</strong> 
                         Consultez un nutritionniste du sport pour un accompagnement personnalise, particulierement si vous avez des objectifs specifiques 
-                        ou des preoccupations concernant votre relation Ã l'alimentation.
+                        ou des preoccupations concernant votre relation A l'alimentation.
                     </p>
                 </div>
             </div>
@@ -402,7 +402,7 @@
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <h6><i class="fas fa-info-circle me-2"></i>Principe Fondamental</h6>
+                    <h6><i class="fas fa-water me-2"></i>Principe Fondamental</h6>
                     <p class="mb-0 small">
                         La supplementation ne doit jamais remplacer une alimentation equilibree. 
                         Elle peut être utile dans des contextes specifiques mais necessite une evaluation individuelle. 
@@ -412,7 +412,7 @@
                 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-success">Supplements Ã Efficacite Demontree</h6>
+                        <h6 class="text-success">Supplements A Efficacite Demontree</h6>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead>
@@ -463,7 +463,7 @@
                         </ul>
                         
                         <div class="alert alert-danger alert-sm mt-3">
-                            <h6 class="small">Supplements Ã eviter ou Questionner</h6>
+                            <h6 class="small">Supplements A eviter ou Questionner</h6>
                             <p class="small mb-0">
                                 Brûleurs de graisse, detox, mega-doses vitamines, produits non reglementes. 
                                 <strong>Mefiez-vous des promesses miraculeuses</strong> et privilegiez toujours 
@@ -484,13 +484,13 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-heart me-2"></i>
-                    Nutrition et Relation Saine Ã l'Alimentation
+                    Nutrition et Relation Saine A l'Alimentation
                 </h3>
             </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h6 class="text-success">Signaux d'Alarme Ã Surveiller</h6>
+                        <h6 class="text-success">Signaux d'Alarme A Surveiller</h6>
                         <ul class="small">
                             <li>Obsession du calcul calorique ou des macronutriments</li>
                             <li>Restriction alimentaire severe ou evitement de groupes d'aliments</li>
@@ -516,10 +516,10 @@
                 <div class="alert alert-warning mt-4">
                     <h6><i class="fas fa-hands-helping me-2"></i>Ressources et Soutien</h6>
                     <p class="mb-0 small">
-                        Si vous ressentez des difficultes avec votre relation Ã l'alimentation, 
-                        n'hesitez pas Ã consulter un nutritionniste du sport, un dieteticien ou un psychologue specialise. 
+                        Si vous ressentez des difficultes avec votre relation A l'alimentation, 
+                        n'hesitez pas A consulter un nutritionniste du sport, un dieteticien ou un psychologue specialise. 
                         <strong>Votre bien-être global prime toujours sur la performance sportive.</strong> 
-                        Une approche nutritionnelle saine et durable favorise Ã la fois la sante et la performance Ã long terme.
+                        Une approche nutritionnelle saine et durable favorise A la fois la sante et la performance A long terme.
                     </p>
                 </div>
             </div>
@@ -539,7 +539,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -555,14 +555,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -605,7 +605,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -667,7 +667,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

@@ -264,14 +264,14 @@
                                         </div>
                                         
                                         <div class="stats-badge">
-                                            <i class="fas fa-download me-1"></i>{{ number_format($downloadable->download_count) }}
+                                            <i class="fas fa-water me-1"></i>{{ number_format($downloadable->download_count) }}
                                         </div>
 
                                         <!-- Indicateur de permission -->
                                         <div class="position-absolute" style="bottom: 1rem; left: 1rem;">
                                             @if($downloadable->user_permission === 'public')
                                                 <span class="badge bg-success" title="Acces libre">
-                                                    <i class="fas fa-globe"></i>
+                                                    <i class="fas fa-water"></i>
                                                 </span>
                                             @elseif($downloadable->user_permission === 'visitor')
                                                 <span class="badge bg-info" title="Visiteurs uniquement">
@@ -317,7 +317,7 @@
                                                     </a>
                                                     <a href="{{ route('ebook.download', [$downloadable->category->slug, $downloadable->slug]) }}" 
                                                        class="btn btn-success btn-sm">
-                                                        <i class="fas fa-download me-2"></i>Telecharger
+                                                        <i class="fas fa-water me-2"></i>Telecharger
                                                     </a>
                                                 </div>
                                             @else
@@ -360,13 +360,13 @@
                 <i class="fas fa-search fa-3x text-muted mb-3 opacity-50"></i>
                 <h4>Aucune ressource trouvee</h4>
                 @if($query || $categoryId || $format)
-                    <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                    <p class="text-muted mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                     <div class="d-flex gap-2 justify-content-center">
                         <a href="{{ route('ebook.search') }}" class="btn btn-outline-primary">
                             <i class="fas fa-times me-2"></i>Effacer les filtres
                         </a>
                         <a href="{{ route('ebook.index') }}" class="btn btn-primary">
-                            <i class="fas fa-home me-2"></i>Retour Ã l'accueil
+                            <i class="fas fa-home me-2"></i>Retour A l'accueil
                         </a>
                     </div>
                 @else

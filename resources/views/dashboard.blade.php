@@ -14,7 +14,7 @@
                     'title' => 'Articles',
                     'value' => App\Models\Post::count(),
                     'subtitle' => 'Total articles',
-                    'icon' => 'fas fa-newspaper',
+                    'icon' => 'fas fa-water',
                     'color' => 'primary',
                     'change' => '+12%'
                 ],

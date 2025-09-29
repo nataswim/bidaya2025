@@ -147,7 +147,7 @@ class UserController extends Controller
     $user->update($data);
 
     return redirect()->route('admin.users.index')
-        ->with('success', 'Utilisateur mis Ã jour avec succes.');
+        ->with('success', 'Utilisateur mis A jour avec succes.');
 }
 
     public function destroy(User $user)

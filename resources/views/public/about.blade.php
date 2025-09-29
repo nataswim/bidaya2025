@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Ã propos')
+@section('title', 'A propos')
 
 @section('content')
 <!-- Hero Section -->
@@ -8,7 +8,7 @@
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">Ã propos de nous</h1>
+                <h1 class="display-4 fw-bold mb-4">A propos de nous</h1>
                 <p class="lead mb-0">
                     Decouvrez notre mission, notre equipe et notre passion pour le developpement web et les technologies modernes.
                 </p>
@@ -30,7 +30,7 @@
             <div class="col-lg-8 text-center">
                 <h2 class="display-5 fw-bold mb-4">Notre Mission</h2>
                 <p class="lead text-muted mb-5">
-                    Nous nous engageons Ã partager nos connaissances en developpement web et Ã creer une communaute 
+                    Nous nous engageons A partager nos connaissances en developpement web et A creer une communaute 
                     d'apprentissage où developpeurs debutants et experimentes peuvent grandir ensemble.
                 </p>
             </div>
@@ -91,8 +91,8 @@
                 </p>
                 <p class="text-muted mb-4">
                     Aujourd'hui, nous publions regulierement des tutoriels, des analyses techniques et des 
-                    retours d'experience pour aider les developpeurs Ã progresser dans leur carriere et 
-                    rester Ã jour avec les evolutions technologiques.
+                    retours d'experience pour aider les developpeurs A progresser dans leur carriere et 
+                    rester A jour avec les evolutions technologiques.
                 </p>
                 <div class="d-flex gap-3">
                     <a href="{{ route('public.index') }}" class="btn btn-primary">

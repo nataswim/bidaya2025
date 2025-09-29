@@ -14,7 +14,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <h5 class="mb-1">
-                                <i class="fas fa-download me-2"></i>Telechargements
+                                <i class="fas fa-water me-2"></i>Telechargements
                             </h5>
                             <small class="opacity-75">{{ $downloadables->total() ?? $downloadables->count() }} fichier(s) au total</small>
                         </div>
@@ -223,7 +223,7 @@
                                             
                                             <td class="px-4 py-3">
                                                 <div class="d-flex align-items-center">
-                                                    <i class="fas fa-download me-1 text-muted"></i>
+                                                    <i class="fas fa-water me-1 text-muted"></i>
                                                     <span class="fw-bold text-primary">{{ number_format($downloadable->download_count) }}</span>
                                                 </div>
                                             </td>
@@ -292,7 +292,7 @@
                             <div class="card-footer bg-white border-top p-4">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div class="text-muted">
-                                        Affichage de {{ $downloadables->firstItem() }} Ã {{ $downloadables->lastItem() }} 
+                                        Affichage de {{ $downloadables->firstItem() }} A {{ $downloadables->lastItem() }} 
                                         sur {{ $downloadables->total() }} resultat(s)
                                     </div>
                                     {{ $downloadables->appends(request()->query())->links() }}
@@ -301,10 +301,10 @@
                         @endif
                     @else
                         <div class="text-center py-5">
-                            <i class="fas fa-download fa-3x text-muted mb-3 opacity-25"></i>
+                            <i class="fas fa-water fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucun telechargement trouve</h5>
                             @if(request()->hasAny(['search', 'status', 'permission', 'category', 'format']))
-                                <p class="text-muted mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                                <p class="text-muted mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                                 <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir tous les telechargements
                                 </a>

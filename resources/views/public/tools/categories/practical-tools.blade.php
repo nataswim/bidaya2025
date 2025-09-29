@@ -54,7 +54,7 @@
         <div class="alert alert-info border-0 mb-0">
             <div class="row align-items-center">
                 <div class="col-md-1 text-center">
-                    <i class="fas fa-info-circle fa-2x text-info"></i>
+                    <i class="fas fa-water fa-2x text-info"></i>
                 </div>
                 <div class="col-md-11">
                     <h6 class="fw-bold mb-2 text-info">Utilisation Responsable des Outils</h6>
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="col-6">
                                             <small class="text-info d-flex align-items-center">
-                                                <i class="fas fa-download me-1"></i>Export donnees
+                                                <i class="fas fa-water me-1"></i>Export donnees
                                             </small>
                                         </div>
                                         <div class="col-6">
@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>Temps reel</small>
@@ -172,7 +172,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <small class="text-primary fw-semibold">Acceder Ã l'outil →</small>
+                                        <small class="text-primary fw-semibold">Acceder A l'outil →</small>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>5-15 min</small>
@@ -252,7 +252,7 @@
                         
                         <h6 class="text-primary mt-3">Bonnes Pratiques Chronometrage</h6>
                         <ul class="small">
-                            <li><strong>Standardisation :</strong> Même protocole Ã chaque test</li>
+                            <li><strong>Standardisation :</strong> Même protocole A chaque test</li>
                             <li><strong>Conditions similaires :</strong> Environnement, echauffement, moment</li>
                             <li><strong>Precision :</strong> Declenchement et arrêt nets</li>
                             <li><strong>Documentation :</strong> Contexte et conditions de mesure</li>
@@ -331,8 +331,8 @@
                     <p class="mb-0 small">
                         Si vous utilisez ces outils dans un cadre educatif ou d'encadrement, 
                         <strong>votre responsabilite est de creer un environnement positif et securisant.</strong> 
-                        Les donnees de performance ne doivent jamais servir Ã humilier ou exclure, 
-                        mais toujours Ã encourager et personnaliser l'accompagnement.
+                        Les donnees de performance ne doivent jamais servir A humilier ou exclure, 
+                        mais toujours A encourager et personnaliser l'accompagnement.
                     </p>
                 </div>
             </div>
@@ -421,7 +421,7 @@
                             <h6 class="small">Approche Globale</h6>
                             <p class="small mb-0">
                                 L'efficacite maximale provient de l'usage coordonne des outils, 
-                                chacun apportant sa valeur ajoutee Ã l'ensemble du processus.
+                                chacun apportant sa valeur ajoutee A l'ensemble du processus.
                             </p>
                         </div>
                     </div>
@@ -444,7 +444,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -460,14 +460,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -510,7 +510,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -572,7 +572,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

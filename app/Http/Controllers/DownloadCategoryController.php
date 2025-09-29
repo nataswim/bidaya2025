@@ -105,7 +105,7 @@ class DownloadCategoryController extends Controller
         $downloadCategory->update($data);
 
         return redirect()->route('admin.download-categories.index')
-            ->with('success', 'Categorie mise Ã jour avec succes.');
+            ->with('success', 'Categorie mise A jour avec succes.');
     }
 
     public function destroy(DownloadCategory $downloadCategory)

@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Planificateur Entraînement Course Ã Pied - Programme Scientifique 2024')
+@section('title', 'Planificateur Entraînement Course A Pied - Programme Scientifique 2024')
 @section('meta_description', 'Planificateur course scientifique avec zones d\'entraînement optimisees. Distribution polarisee 80/20, biomecanique, economie de course et nutrition specialisee. Evidence-based 2024.')
 
 @section('content')
@@ -8,7 +8,7 @@
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Planificateur d'Entraînement Course Ã Pied
+            Planificateur d'Entraînement Course A Pied
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
@@ -169,7 +169,7 @@
                     </div>
                     
                     <div class="alert alert-info mt-3">
-                        <h6><i class="fas fa-info-circle me-2"></i>Distribution Polarisee 80/20</h6>
+                        <h6><i class="fas fa-water me-2"></i>Distribution Polarisee 80/20</h6>
                         <p class="mb-0">
                             Ce plan respecte la regle scientifique des ≥80% du volume en zones 1-2 (faible intensite) 
                             pour optimiser les adaptations aerobies selon les recherches sur les coureurs elites.
@@ -205,14 +205,14 @@
             <div class="card-header bg-primary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-flask me-2"></i>
-                    Fondements Scientifiques en Course Ã Pied - Recherches 2024
+                    Fondements Scientifiques en Course A Pied - Recherches 2024
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-danger border-0">
                     <h6><i class="fas fa-exclamation-triangle me-2"></i>Position ACSM 2024</h6>
                     <p class="mb-0">
-                        L'entraînement en course Ã pied doit respecter le principe de distribution polarisee 
+                        L'entraînement en course A pied doit respecter le principe de distribution polarisee 
                         avec ≥80% du volume en zones 1-2 pour optimiser les adaptations aerobies.
                     </p>
                 </div>
@@ -345,7 +345,7 @@
                                         <td>Oscillation verticale</td>
                                         <td>r = 0.35</td>
                                         <td>↓ Oscillation = ↑ Efficacite</td>
-                                        <td>&lt;8cm Ã 12km/h</td>
+                                        <td>&lt;8cm A 12km/h</td>
                                     </tr>
                                     <tr>
                                         <td>Rigidite jambe</td>
@@ -438,7 +438,7 @@
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
-                    <i class="fas fa-tachometer-alt me-2"></i>
+                    <i class="fas fa-water me-2"></i>
                     Zones d'Entraînement Basees sur la Science
                 </h3>
             </div>
@@ -507,7 +507,7 @@
                     </div>
                     <div class="col-md-6">
                         <h6>Zone 2 : La Revolution Metabolique 2024</h6>
-                        <p class="small">La Zone 2 correspond Ã l'intensite de combustion maximale des graisses (FatMax) et d'equilibre lactate.</p>
+                        <p class="small">La Zone 2 correspond A l'intensite de combustion maximale des graisses (FatMax) et d'equilibre lactate.</p>
                         <ul class="small">
                             <li><strong>Determination precise :</strong> Test metabolique (etalon-or)</li>
                             <li><strong>Caracteristique :</strong> etat stable production/elimination lactate</li>
@@ -606,7 +606,7 @@
                             <div class="card-body">
                                 <ul class="small">
                                     <li><strong>Duree :</strong> Seances courtes haute qualite</li>
-                                    <li><strong>Format :</strong> 4-6 x 30s Ã 95-100% VMA</li>
+                                    <li><strong>Format :</strong> 4-6 x 30s A 95-100% VMA</li>
                                     <li><strong>Recuperation :</strong> Complete (2-3 min)</li>
                                     <li><strong>Frequence :</strong> 2-3x/semaine developpement neuromusculaire</li>
                                     <li><strong>Objectif :</strong> Puissance anaerobie + economie</li>
@@ -716,7 +716,7 @@
             <div class="card-header bg-secondary text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-utensils me-2"></i>
-                    Nutrition Course Ã Pied - Specificites 2024
+                    Nutrition Course A Pied - Specificites 2024
                 </h3>
             </div>
             <div class="card-body">
@@ -897,14 +897,14 @@
             <div class="card-header bg-warning text-dark">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    Prevention des Blessures en Course Ã Pied
+                    Prevention des Blessures en Course A Pied
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-warning border-0">
                     <h6><i class="fas fa-exclamation-triangle me-2"></i>Statistiques cles 2024</h6>
                     <p class="mb-0">
-                        72% des blessures en triathlon proviennent de la course Ã pied. 
+                        72% des blessures en triathlon proviennent de la course A pied. 
                         Incidence annuelle : 37-56% des coureurs se blessent, avec 2.5-33 blessures pour 1000h d'entraînement.
                     </p>
                 </div>
@@ -1006,7 +1006,7 @@
                                         <li>Activation cardiovasculaire progressive (5min)</li>
                                         <li>Mobilite articulaire dynamique (5min)</li>
                                         <li>Gammes coureur specifiques (5min)</li>
-                                        <li>Progression allure jusqu'Ã intensite cible</li>
+                                        <li>Progression allure jusqu'A intensite cible</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1103,7 +1103,7 @@
                 <div class="alert alert-success mt-4">
                     <h6><i class="fas fa-check-circle me-2"></i>Principe Fondamental</h6>
                     <p class="mb-0">
-                        La constance dans l'entraînement Ã faible intensite (Zone 2) represente 80% des gains de performance 
+                        La constance dans l'entraînement A faible intensite (Zone 2) represente 80% des gains de performance 
                         en course d'endurance. La patience et la regularite priment sur l'intensite excessive.
                     </p>
                 </div>
@@ -1179,7 +1179,7 @@
 
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -1195,14 +1195,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -1245,7 +1245,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -1307,7 +1307,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

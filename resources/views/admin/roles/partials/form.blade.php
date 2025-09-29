@@ -167,7 +167,7 @@
                         <div class="mt-3">
                             <div class="alert alert-light border">
                                 <div class="d-flex align-items-center">
-                                    <i class="fas fa-info-circle text-primary me-2"></i>
+                                    <i class="fas fa-water text-primary me-2"></i>
                                     <span id="permissions-summary">
                                         <span id="selected-count">0</span> permission(s) selectionnee(s)
                                     </span>
@@ -288,7 +288,7 @@
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="{{ route('admin.roles.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                        <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                     </a>
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">

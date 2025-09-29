@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Accueil - Votre plateforme d\'entraînement aquatique')
-@section('meta_description', 'Decouvrez notre plateforme dediee Ã la natation et au triathlon avec articles, plans d\'entraînement, fiches techniques et videos. Rejoignez notre communaute de nageurs, triathletes et coachs.')
+@section('meta_description', 'Decouvrez notre plateforme dediee A la natation et au triathlon avec articles, plans d\'entraînement, fiches techniques et videos. Rejoignez notre communaute de nageurs, triathletes et coachs.')
 
 @section('content')
 <!-- Hero Section -->
@@ -60,7 +60,7 @@
         <div class="text-center mb-5 text-white">
             <h2 class="fw-bold">Pour qui est conçue cette plateforme ?</h2>
             <p class="lead">
-                Une solution adaptee Ã tous les profils aquatiques, amateurs ou professionnels
+                Une solution adaptee A tous les profils aquatiques, amateurs ou professionnels
             </p>
         </div>
         <div class="row g-4">
@@ -90,7 +90,7 @@
                         </div>
                         <div>
                             <h3 class="h5 mb-2">Entraîneurs et Coachs</h3>
-                            <p class="card-text text-muted small mb-0">Pour creer, partager et superviser des plans d'entraînement adaptes Ã vos athletes et equipes.</p>
+                            <p class="card-text text-muted small mb-0">Pour creer, partager et superviser des plans d'entraînement adaptes A vos athletes et equipes.</p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                     [
                         'icon' => 'fas fa-clipboard-list',
                         'title' => 'Plans d\'Entraînement Personnalises',
-                        'description' => 'Creez des programmes adaptes Ã votre niveau et vos objectifs : sprint, endurance, technique, recuperation.'
+                        'description' => 'Creez des programmes adaptes A votre niveau et vos objectifs : sprint, endurance, technique, recuperation.'
                     ],
                     [
                         'icon' => 'fas fa-dumbbell',
@@ -282,7 +282,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -344,7 +344,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>
@@ -353,7 +353,7 @@
 <!-- Call to Action -->
 <section class="py-5 bg-white">
     <div class="container-lg text-center py-4">
-        <h2 class="mb-4 fw-bold">Prêt Ã ameliorer vos performances aquatiques ?</h2>
+        <h2 class="mb-4 fw-bold">Prêt A ameliorer vos performances aquatiques ?</h2>
         <p class="lead text-muted mb-4 mx-auto" style="max-width: 700px;">
             Rejoignez des milliers de nageurs, entraîneurs et triathletes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entraînements.
         </p>

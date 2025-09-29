@@ -23,7 +23,7 @@
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.dashboard') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.dashboard') ? 'active bg-primary' : '' }}">
-                    <i class="fas fa-tachometer-alt me-3"></i>
+                    <i class="fas fa-water me-3"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -52,7 +52,7 @@
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.posts.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.posts.*') ? 'active bg-primary' : '' }}">
-                    <i class="fas fa-newspaper me-3"></i>
+                    <i class="fas fa-water me-3"></i>
                     <span>Articles</span>
                     <span class="badge bg-info ms-auto">{{ App\Models\Post::count() }}</span>
                 </a>
@@ -73,6 +73,51 @@
             </li>
         </ul>
         
+
+<div class="px-3 mb-3 mt-4">
+    <small class="text-uppercase text-light opacity-50 fw-semibold">Entraînement</small>
+</div>
+
+<ul class="nav nav-pills flex-column px-3">
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.training.plans.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.plans.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-calendar-alt me-3"></i>
+            <span>Plans</span>
+            <span class="badge bg-info ms-auto">{{ App\Models\Plan::count() }}</span>
+        </a>
+    </li>
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.training.cycles.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.cycles.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-sync-alt me-3"></i>
+            <span>Cycles</span>
+        </a>
+    </li>
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.training.seances.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.seances.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-dumbbell me-3"></i>
+            <span>Séances</span>
+        </a>
+    </li>
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.training.series.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.series.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-list-ol me-3"></i>
+            <span>Séries</span>
+        </a>
+    </li>
+    <li class="nav-item mb-1">
+        <a href="{{ route('admin.training.exercices.index') }}" 
+           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.exercices.*') ? 'active bg-primary' : '' }}">
+            <i class="fas fa-running me-3"></i>
+            <span>Exercices</span>
+        </a>
+    </li>
+</ul>
+
+
         <div class="px-3 mb-3 mt-4">
             <small class="text-uppercase text-light opacity-50 fw-semibold">Utilisateurs</small>
         </div>
@@ -115,7 +160,7 @@
                 <li class="nav-item mb-1">
                     <a href="{{ route('admin.downloadables.index') }}" 
                        class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.downloadables.*') ? 'active bg-primary' : '' }}">
-                        <i class="fas fa-download me-3"></i>
+                        <i class="fas fa-water me-3"></i>
                         <span>Fichiers</span>
                         @php
                             $downloadCount = \App\Models\Downloadable::count();

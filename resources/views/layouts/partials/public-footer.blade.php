@@ -4,7 +4,7 @@
     <div class="py-5">
         <div class="container-lg">
             <div class="row g-4">
-                <!-- Ã propos -->
+                <!-- A propos -->
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center mb-4">
                         <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" 
@@ -49,7 +49,7 @@
                         </li>
                         <li class="mb-2">
                             <a href="{{ route('about') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
-                                Ã propos
+                                A propos
                             </a>
                         </li>
                         <li class="mb-2">

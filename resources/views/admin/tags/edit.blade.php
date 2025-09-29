@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.tags.update', $tag) }}">
         @method('PUT')
         @include('admin.tags.partials.form', [
-            'submitLabel' => 'Mettre Ã jour le tag',
+            'submitLabel' => 'Mettre A jour le tag',
             'tag' => $tag
         ])
     </form>
@@ -39,7 +39,7 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-generation du slug Ã partir du nom (mais pas en edition par defaut)
+    // Auto-generation du slug A partir du nom (mais pas en edition par defaut)
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     

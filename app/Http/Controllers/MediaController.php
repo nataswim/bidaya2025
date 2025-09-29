@@ -98,7 +98,7 @@ public function show(Media $media)
 }
 
     /**
-     * Mettre Ã jour un media
+     * Mettre A jour un media
      */
     public function update(Request $request, Media $media)
     {
@@ -116,7 +116,7 @@ public function show(Media $media)
         ]));
 
         return redirect()->route('admin.media.show', $media)
-            ->with('success', 'Media mis Ã jour avec succes.');
+            ->with('success', 'Media mis A jour avec succes.');
     }
 
     /**

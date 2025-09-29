@@ -33,8 +33,8 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">Explorez nos Outils par Categorie</h2>
             <p class="lead text-muted">
-                Choisissez la categorie qui correspond Ã vos besoins pour acceder aux outils specialises 
-                et calculateurs scientifiques adaptes Ã votre pratique sportive.
+                Choisissez la categorie qui correspond A vos besoins pour acceder aux outils specialises 
+                et calculateurs scientifiques adaptes A votre pratique sportive.
             </p>
         </div>
 
@@ -164,7 +164,7 @@
                 </a>
             </div>
 
-            <!-- 5. Course Ã Pied & Endurance -->
+            <!-- 5. Course A Pied & Endurance -->
             <div class="col-lg-6">
                 <a href="{{ route('tools.category.running') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
@@ -172,14 +172,14 @@
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-running me-3" style="font-size: 2rem;"></i>
                                 <div>
-                                    <h4 class="mb-1">Course Ã Pied & Endurance</h4>
+                                    <h4 class="mb-1">Course A Pied & Endurance</h4>
                                     <p class="mb-0 opacity-75">1 outil disponible</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Planification intelligente course Ã pied : plans d'entraînement 
+                                Planification intelligente course A pied : plans d'entraînement 
                                 personnalises selon votre objectif et niveau.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -267,7 +267,7 @@
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Aperçu des innovations Ã venir : biomecanique, recuperation avancee, 
+                                Aperçu des innovations A venir : biomecanique, recuperation avancee, 
                                 nutrition specialisee, psychologie sportive et plus encore.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -353,7 +353,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -369,14 +369,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -420,7 +420,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -482,7 +482,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

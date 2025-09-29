@@ -9,7 +9,7 @@
     <form method="POST" action="{{ route('admin.download-categories.update', $downloadCategory) }}">
         @method('PUT')
         @include('admin.download-categories.partials.form', [
-            'submitLabel' => 'Mettre Ã jour la categorie',
+            'submitLabel' => 'Mettre A jour la categorie',
             'category' => $downloadCategory
         ])
     </form>

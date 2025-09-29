@@ -160,7 +160,7 @@ class MediaFieldSelector {
     }
 
     selectMedia(imageUrl, imageName) {
-    // Mettre Ã jour le champ input
+    // Mettre A jour le champ input
     const field = document.getElementById(this.currentFieldId);
     if (field) {
         field.value = imageUrl;
@@ -173,7 +173,7 @@ class MediaFieldSelector {
         field.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
-    // Mettre Ã jour l'aperçu
+    // Mettre A jour l'aperçu
     if (this.previewElementId) {
         const preview = document.getElementById(this.previewElementId);
         if (preview) {

@@ -49,7 +49,7 @@ class ProfileController extends Controller
         $user->update($data);
 
         return redirect()->route('admin.profile.show')
-            ->with('success', 'Profil mis Ã jour avec succes.');
+            ->with('success', 'Profil mis A jour avec succes.');
     }
 
     public function destroy(Request $request)
@@ -108,6 +108,6 @@ class ProfileController extends Controller
         $user->update($data);
 
         return redirect()->route('user.profile.edit')
-            ->with('success', 'Profil mis Ã jour avec succes.');
+            ->with('success', 'Profil mis A jour avec succes.');
     }
 }

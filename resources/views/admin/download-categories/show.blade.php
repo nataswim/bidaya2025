@@ -65,7 +65,7 @@
                     @if($downloadCategory->downloadables->count() > 0)
                         <div class="border-top pt-4">
                             <h6 class="fw-semibold mb-3 text-primary">
-                                <i class="fas fa-download me-2"></i>Telechargements dans cette categorie
+                                <i class="fas fa-water me-2"></i>Telechargements dans cette categorie
                             </h6>
                             <div class="table-responsive">
                                 <table class="table table-sm">
@@ -204,7 +204,7 @@
                             <i class="fas fa-plus me-2"></i>Ajouter un fichier
                         </a>
                         <a href="{{ route('admin.download-categories.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Retour Ã la liste
+                            <i class="fas fa-arrow-left me-2"></i>Retour A la liste
                         </a>
                     </div>
                     

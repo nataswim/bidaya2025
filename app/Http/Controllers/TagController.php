@@ -78,7 +78,7 @@ class TagController extends Controller
         $tag->update($data);
 
         return redirect()->route('admin.tags.index')
-            ->with('success', 'Tag mis Ã jour avec succes.');
+            ->with('success', 'Tag mis A jour avec succes.');
     }
 
     public function destroy(Tag $tag)

@@ -4,11 +4,27 @@ git add .
 git commit -m "déploiement"
 git push origin main
 
+
+compilation style 
+npm run dev
+
 puis 
 
 ssh elha2196@ecran.o2switch.net
 cd /home/elha2196/nataswim.fr/current
 git pull origin main
+
+
+Nouvelle migration 
+exemple 
+php artisan make:migration create_exercises_table
+
+exemple 
+php artisan make:model Exercise -mcr
+-m = migration
+-c = contrôleur
+-r = resource controller (CRUD)
+
 
  procédure de déploiement manuel en un document de type **cahier technique** pour assurer la cohérence et la fiabilité de vos mises à jour.
 

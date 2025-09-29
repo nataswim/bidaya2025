@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Outils Course Ã Pied & Endurance - Planification Securisee Evidence-Based')
-@section('meta_description', 'Outils scientifiques pour course Ã pied et endurance : planification progressive, prevention blessures, approche securisee. Biomecanique et physiologie de l\'endurance evidence-based.')
+@section('title', 'Outils Course A Pied & Endurance - Planification Securisee Evidence-Based')
+@section('meta_description', 'Outils scientifiques pour course A pied et endurance : planification progressive, prevention blessures, approche securisee. Biomecanique et physiologie de l\'endurance evidence-based.')
 
 @section('content')
 <!-- Section titre -->
@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active text-dark" aria-current="page">
-                    Course Ã Pied & Endurance
+                    Course A Pied & Endurance
                 </li>
             </ol>
         </nav>
@@ -25,10 +25,10 @@
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">
                     <i class="fas fa-running me-3"></i>
-                    Course Ã Pied & Endurance
+                    Course A Pied & Endurance
                 </h1>
                 <p class="lead mb-4">
-                    Planification intelligente et securisee pour la course Ã pied. 
+                    Planification intelligente et securisee pour la course A pied. 
                     Approche progressive basee sur la biomecanique, la physiologie de l'endurance et la prevention des blessures.
                 </p>
                 <div class="alert alert-info border-0 bg-white bg-opacity-75">
@@ -59,7 +59,7 @@
                 <div class="col-md-11">
                     <h6 class="fw-bold mb-2 text-danger">Progression Graduelle Obligatoire</h6>
                     <p class="mb-0 small text-dark">
-                        <strong>La course Ã pied presente un risque eleve de blessures sans progression appropriee.</strong> 
+                        <strong>La course A pied presente un risque eleve de blessures sans progression appropriee.</strong> 
                         Augmentation maximum 10% du volume/semaine, respect des signaux corporels, equipement adapte et 
                         consultation medicale recommandee avant tout programme d'entraînement, particulierement apres 40 ans 
                         ou en cas d'antecedents cardiovasculaires, articulaires ou de sedentarite prolongee.
@@ -75,7 +75,7 @@
     <div class="container">
         <div class="row g-4">
             
-            <!-- 1. Planificateur Course Ã Pied -->
+            <!-- 1. Planificateur Course A Pied -->
             <div class="col-lg-8 mx-auto">
                 <a href="{{ route('tools.running-planner') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between align-items-start mb-3">
-                                        <h4 class="card-title mb-0 text-dark fw-bold">Planificateur Course Ã Pied</h4>
+                                        <h4 class="card-title mb-0 text-dark fw-bold">Planificateur Course A Pied</h4>
                                         <span class="badge bg-primary ms-2">Avance</span>
                                     </div>
                                     <p class="card-text text-muted mb-4">
@@ -115,7 +115,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <span class="text-primary fw-bold fs-5">Acceder Ã l'outil →</span>
+                                        <span class="text-primary fw-bold fs-5">Acceder A l'outil →</span>
                                         <div class="d-flex align-items-center text-muted">
                                             <i class="fas fa-clock me-1"></i>
                                             <small>10-15 min</small>
@@ -138,7 +138,7 @@
                         <i class="fas fa-tools me-2"></i>Outils Complementaires Recommandes
                     </h6>
                     <p class="small text-muted mb-3">
-                        Pour une approche complete de la course Ã pied, combinez avec nos autres outils :
+                        Pour une approche complete de la course A pied, combinez avec nos autres outils :
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <a href="{{ route('tools.category.cardiac') }}" class="btn btn-outline-danger btn-sm">
@@ -239,7 +239,7 @@
             <div class="card-header bg-danger text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-shield-alt me-2"></i>
-                    Prevention des Blessures en Course Ã Pied
+                    Prevention des Blessures en Course A Pied
                 </h3>
             </div>
             <div class="card-body">
@@ -435,7 +435,7 @@
             <div class="card-header bg-success text-white">
                 <h3 class="mb-2">
                     <i class="fas fa-balance-scale me-2"></i>
-                    Approche equilibree de la Course Ã Pied
+                    Approche equilibree de la Course A Pied
                 </h3>
             </div>
             <div class="card-body">
@@ -503,7 +503,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Ã Propos de nos Outils</h3>
+                <h3 class="fw-bold mb-3">A Propos de nos Outils</h3>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
@@ -519,14 +519,14 @@
                         </p>
                         <p class="small text-light opacity-75">
                             Expert en sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide Ã la performance sportive evidence-based.
+                            d'outils d'aide A la performance sportive evidence-based.
                         </p>
                     </div>
                     <div class="col-md-6">
                         <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
                         <p class="mb-3 small">
                             Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas Ã nous contacter.
+                            de nouveaux outils, n'hesitez pas A nous contacter.
                         </p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
@@ -569,7 +569,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-newspaper text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
             </h2>
             <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
@@ -631,7 +631,7 @@
             </div>
         @else
             <div class="alert alert-info" role="alert">
-                <i class="fas fa-info-circle me-2"></i>Aucun article n'est disponible actuellement.
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
     </div>

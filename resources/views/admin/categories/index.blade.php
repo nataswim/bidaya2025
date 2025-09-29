@@ -169,7 +169,7 @@
                                             <small class="text-muted">{{ $category->slug }}</small>
                                             @if($category->description)
                                                 <span class="badge bg-light text-dark" title="{{ $category->description }}">
-                                                    <i class="fas fa-info-circle"></i>
+                                                    <i class="fas fa-water"></i>
                                                 </span>
                                             @endif
                                         </div>
@@ -273,7 +273,7 @@
                                     <i class="fas fa-folder-open fa-3x mb-3 opacity-25"></i>
                                     <h5>Aucune categorie trouvee</h5>
                                     @if(request()->hasAny(['search', 'status', 'group']))
-                                        <p class="mb-3">Aucun resultat ne correspond Ã vos criteres de recherche.</p>
+                                        <p class="mb-3">Aucun resultat ne correspond A vos criteres de recherche.</p>
                                         <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-primary">
                                             <i class="fas fa-arrow-left me-2"></i>Voir toutes les categories
                                         </a>
@@ -296,7 +296,7 @@
             <div class="card-footer bg-white border-top p-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="text-muted">
-                        Affichage de {{ $categories->firstItem() }} Ã {{ $categories->lastItem() }} 
+                        Affichage de {{ $categories->firstItem() }} A {{ $categories->lastItem() }} 
                         sur {{ $categories->total() }} resultat(s)
                     </div>
                     <div>

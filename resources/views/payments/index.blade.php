@@ -16,7 +16,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h4 class="mb-1">Passer Premium</h4>
-                            <p class="text-muted mb-0">Debloquez l'acces Ã tous les contenus exclusifs</p>
+                            <p class="text-muted mb-0">Debloquez l'acces A tous les contenus exclusifs</p>
                         </div>
                         <a href="{{ route('user.dashboard') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-arrow-left me-2"></i>Retour
@@ -28,10 +28,10 @@
                     @if($hasCompletedPayment)
                         <div class="alert alert-info border-0 shadow-sm">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-info-circle fa-2x text-info me-3"></i>
+                                <i class="fas fa-water fa-2x text-info me-3"></i>
                                 <div>
-                                    <h6 class="mb-1">Paiement dejÃ effectue</h6>
-                                    <p class="mb-0">Vous avez dejÃ effectue un paiement. Un administrateur validera votre acces premium prochainement.</p>
+                                    <h6 class="mb-1">Paiement dejA effectue</h6>
+                                    <p class="mb-0">Vous avez dejA effectue un paiement. Un administrateur validera votre acces premium prochainement.</p>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                             data-name="{{ $plan['name'] }}"
                                             {{ $hasCompletedPayment ? 'disabled' : '' }}>
                                         @if($hasCompletedPayment)
-                                            <i class="fas fa-check me-2"></i>DejÃ paye
+                                            <i class="fas fa-check me-2"></i>DejA paye
                                         @else
                                             <i class="fas fa-credit-card me-2"></i>Choisir ce plan
                                         @endif
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <small class="text-muted d-block">Paiement unique</small>
                 `;
                 
-                // Mettre Ã jour le texte du bouton
+                // Mettre A jour le texte du bouton
                 document.getElementById('button-text').textContent = `Payer ${(selectedPlan.amount / 100).toFixed(0)}€`;
 
                 console.log('Envoi de la requête vers:', '{{ route('payments.create-intent') }}');
