@@ -23,7 +23,7 @@
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.dashboard') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.dashboard') ? 'active bg-primary' : '' }}">
-                    <i class="fas fa-water me-3"></i>
+                    <i class="fas fa-tachometer-alt me-3"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -39,7 +39,7 @@
                 <a href="{{ route('admin.media.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.media.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-images me-3"></i>
-                    <span>Medias</span>
+                    <span>Médias</span>
                     @php
                         $mediaCount = App\Models\Media::count();
                     @endphp
@@ -49,19 +49,20 @@
                 </a>
             </li>
 
+            <!-- Articles -->
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.posts.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.posts.*') ? 'active bg-primary' : '' }}">
-                    <i class="fas fa-water me-3"></i>
+                    <i class="fas fa-newspaper me-3"></i>
                     <span>Articles</span>
                     <span class="badge bg-info ms-auto">{{ App\Models\Post::count() }}</span>
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.categories.index') }}" 
-                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.categories.*') ? 'active bg-primary' : '' }}">
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.categories.*') && !request()->routeIs('admin.fiches-categories.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-folder me-3"></i>
-                    <span>Categories</span>
+                    <span>Catégories Articles</span>
                 </a>
             </li>
             <li class="nav-item mb-1">
@@ -71,52 +72,83 @@
                     <span>Tags</span>
                 </a>
             </li>
+
+            <!-- ========== NOUVEAU : SECTION FICHES ========== -->
+            <li class="nav-item mb-1 mt-3">
+                <div class="px-3 mb-2">
+                    <small class="text-uppercase text-light opacity-50 fw-semibold" style="font-size: 0.7rem;">Fiches</small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.fiches.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.fiches.index', 'admin.fiches.create', 'admin.fiches.edit', 'admin.fiches.show') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-file-alt me-3"></i>
+                    <span>Fiches</span>
+                    @php
+                        $fichesCount = App\Models\Fiche::count();
+                    @endphp
+                    @if($fichesCount > 0)
+                        <span class="badge bg-success ms-auto">{{ $fichesCount }}</span>
+                    @endif
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.fiches-categories.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.fiches-categories.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-folder-open me-3"></i>
+                    <span>Catégories Fiches</span>
+                    @php
+                        $fichesCategoriesCount = App\Models\FichesCategory::count();
+                    @endphp
+                    @if($fichesCategoriesCount > 0)
+                        <span class="badge bg-info ms-auto">{{ $fichesCategoriesCount }}</span>
+                    @endif
+                </a>
+            </li>
         </ul>
         
+        <div class="px-3 mb-3 mt-4">
+            <small class="text-uppercase text-light opacity-50 fw-semibold">Entraînement</small>
+        </div>
 
-<div class="px-3 mb-3 mt-4">
-    <small class="text-uppercase text-light opacity-50 fw-semibold">Entraînement</small>
-</div>
-
-<ul class="nav nav-pills flex-column px-3">
-    <li class="nav-item mb-1">
-        <a href="{{ route('admin.training.plans.index') }}" 
-           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.plans.*') ? 'active bg-primary' : '' }}">
-            <i class="fas fa-calendar-alt me-3"></i>
-            <span>Plans</span>
-            <span class="badge bg-info ms-auto">{{ App\Models\Plan::count() }}</span>
-        </a>
-    </li>
-    <li class="nav-item mb-1">
-        <a href="{{ route('admin.training.cycles.index') }}" 
-           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.cycles.*') ? 'active bg-primary' : '' }}">
-            <i class="fas fa-sync-alt me-3"></i>
-            <span>Cycles</span>
-        </a>
-    </li>
-    <li class="nav-item mb-1">
-        <a href="{{ route('admin.training.seances.index') }}" 
-           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.seances.*') ? 'active bg-primary' : '' }}">
-            <i class="fas fa-dumbbell me-3"></i>
-            <span>Séances</span>
-        </a>
-    </li>
-    <li class="nav-item mb-1">
-        <a href="{{ route('admin.training.series.index') }}" 
-           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.series.*') ? 'active bg-primary' : '' }}">
-            <i class="fas fa-list-ol me-3"></i>
-            <span>Séries</span>
-        </a>
-    </li>
-    <li class="nav-item mb-1">
-        <a href="{{ route('admin.training.exercices.index') }}" 
-           class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.exercices.*') ? 'active bg-primary' : '' }}">
-            <i class="fas fa-running me-3"></i>
-            <span>Exercices</span>
-        </a>
-    </li>
-</ul>
-
+        <ul class="nav nav-pills flex-column px-3">
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.training.plans.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.plans.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-calendar-alt me-3"></i>
+                    <span>Plans</span>
+                    <span class="badge bg-info ms-auto">{{ App\Models\Plan::count() }}</span>
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.training.cycles.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.cycles.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-sync-alt me-3"></i>
+                    <span>Cycles</span>
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.training.seances.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.seances.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-dumbbell me-3"></i>
+                    <span>Séances</span>
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.training.series.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.series.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-list-ol me-3"></i>
+                    <span>Séries</span>
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.training.exercices.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.exercices.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-running me-3"></i>
+                    <span>Exercices</span>
+                </a>
+            </li>
+        </ul>
 
         <div class="px-3 mb-3 mt-4">
             <small class="text-uppercase text-light opacity-50 fw-semibold">Utilisateurs</small>
@@ -146,38 +178,38 @@
             </li>
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.payments.index') }}" 
-                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.permissions.*') ? 'active bg-primary' : '' }}">
-                    <i class="fas fa-key me-3"></i>
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.payments.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-credit-card me-3"></i>
                     <span>Paiements</span>
                 </a>
             </li>
+        </ul>
 
-            <div class="px-3 mb-3 mt-4">
-                <small class="text-uppercase text-light opacity-50 fw-semibold">Téléchargements</small>
-            </div>
+        <div class="px-3 mb-3 mt-4">
+            <small class="text-uppercase text-light opacity-50 fw-semibold">Téléchargements</small>
+        </div>
 
-            <ul class="nav nav-pills flex-column px-3">
-                <li class="nav-item mb-1">
-                    <a href="{{ route('admin.downloadables.index') }}" 
-                       class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.downloadables.*') ? 'active bg-primary' : '' }}">
-                        <i class="fas fa-water me-3"></i>
-                        <span>Fichiers</span>
-                        @php
-                            $downloadCount = \App\Models\Downloadable::count();
-                        @endphp
-                        @if($downloadCount > 0)
-                            <span class="badge bg-success ms-auto">{{ $downloadCount }}</span>
-                        @endif
-                    </a>
-                </li>
-                <li class="nav-item mb-1">
-                    <a href="{{ route('admin.download-categories.index') }}" 
-                       class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.download-categories.*') ? 'active bg-primary' : '' }}">
-                        <i class="fas fa-folder-open me-3"></i>
-                        <span>Catégories</span>
-                    </a>
-                </li>
-            </ul>
+        <ul class="nav nav-pills flex-column px-3">
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.downloadables.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.downloadables.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-download me-3"></i>
+                    <span>Fichiers</span>
+                    @php
+                        $downloadCount = \App\Models\Downloadable::count();
+                    @endphp
+                    @if($downloadCount > 0)
+                        <span class="badge bg-success ms-auto">{{ $downloadCount }}</span>
+                    @endif
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.download-categories.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.download-categories.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-folder-open me-3"></i>
+                    <span>Catégories</span>
+                </a>
+            </li>
         </ul>
     </div>
     

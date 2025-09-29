@@ -19,6 +19,9 @@ use App\Http\Controllers\DownloadCategoryController;
 use App\Http\Controllers\DownloadableController;
 use App\Http\Controllers\ExercicePublicController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FicheController;
+use App\Http\Controllers\FichesCategoryController;
+use App\Http\Controllers\PublicFicheController;
 
 
 
@@ -36,6 +39,15 @@ Route::prefix('ebook')->name('ebook.')->group(function () {
     Route::get('/{category}/{downloadable}/telecharger', [EbookController::class, 'download'])->name('download');
 });
 
+// ========== ROUTES FICHES PUBLIQUES ==========
+Route::prefix('fiches')->name('public.fiches.')->group(function () {
+    Route::get('/', [PublicFicheController::class, 'index'])->name('index');
+    Route::get('/{category}', [PublicFicheController::class, 'category'])->name('category');
+    Route::get('/{category}/{fiche}', [PublicFicheController::class, 'show'])->name('show');
+});
+
+
+
 // Routes publiques pour les exercices
 Route::prefix('exercices')->name('exercices.')->group(function () {
     Route::get('/', [ExercicePublicController::class, 'index'])->name('index');
@@ -50,6 +62,12 @@ Route::prefix('plans')->name('plans.')->group(function () {
     Route::get('/{plan}', [\App\Http\Controllers\PlanPublicController::class, 'show'])->name('show');
 });
 
+// ========== ROUTES FICHES PUBLIQUES ==========
+Route::prefix('fiches')->name('public.fiches.')->group(function () {
+    Route::get('/', [PublicFicheController::class, 'index'])->name('index');
+    Route::get('/{category}', [PublicFicheController::class, 'category'])->name('category');
+    Route::get('/{category}/{fiche}', [PublicFicheController::class, 'show'])->name('show');
+});
 
 // Routes outils
 Route::get('/outils/calculateur-imc', [ToolController::class, 'bmiCalculator'])->name('tools.bmi');
@@ -162,8 +180,13 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
 Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->name('admin.users.promote');
     Route::post('/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.users.demote');
 
-
-
+// Gestion des catégories de fiches
+    Route::resource('fiches-categories', FichesCategoryController::class);
+    
+    // Gestion des fiches
+Route::resource('fiches', FicheController::class)->parameters([
+    'fiches' => 'fiche'
+]);
 // ========== ROUTES MeDIAS ==========
     
     // Gestion principale des medias

@@ -62,7 +62,7 @@
 @endpush
 
 @section('content')
-<!-- En-tête de recherche -->
+<!-- En-tÃªte de recherche -->
 <section class="search-header">
     <div class="container">
         <div class="row">
@@ -119,7 +119,7 @@
 <!-- Resultats de recherche -->
 <section class="py-5">
     <div class="container">
-        <!-- En-tête des resultats -->
+        <!-- En-tÃªte des resultats -->
         <div class="search-results-header">
             <div class="row align-items-center">
                 <div class="col-lg-8">

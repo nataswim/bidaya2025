@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', $downloadable->title . ' - ' . $category->name)
-@section('meta_description', $downloadable->short_description ?? 'Téléchargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
+@section('meta_description', $downloadable->short_description ?? 'Telechargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
 
 @push('styles')
 <style>
@@ -64,14 +64,14 @@
 @endpush
 
 @section('content')
-<!-- En-tête du téléchargement -->
+<!-- En-tÃªte du telechargement -->
 <section class="hero-download">
     <div class="container">
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb text-white">
                 <li class="breadcrumb-item">
                     <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
-                        <i class="fas fa-home me-1"></i>Espace Téléchargement
+                        <i class="fas fa-home me-1"></i>Espace Telechargement
                     </a>
                 </li>
                 <li class="breadcrumb-item">
@@ -103,51 +103,16 @@
                     <p class="lead opacity-90 mb-4">{{ $downloadable->short_description }}</p>
                 @endif
                 
-                <!-- Actions principales -->
-                <div class="d-flex gap-3 flex-wrap">
-                    @if($downloadable->canBeDownloadedBy(auth()->user()))
-                        <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
-                           class="btn btn-success btn-lg">
-                            <i class="fas fa-water me-2"></i>Télécharger maintenant
-                        </a>
-                    @else
-                        <div class="access-alert">
-                            <div class="text-center">
-                                <i class="fas fa-lock fa-2x text-warning mb-3"></i>
-                                <h6 class="fw-bold mb-2">Accès restreint</h6>
-                                <p class="mb-3">{{ $downloadable->getAccessMessage(auth()->user()) }}</p>
-                                <div class="d-flex gap-2 justify-content-center">
-                                    <a href="{{ route('login') }}" class="btn btn-warning">
-                                        <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                                    </a>
-                                    <a href="{{ route('register') }}" class="btn btn-primary">
-                                        <i class="fas fa-user-plus me-2"></i>S'inscrire
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    
-                    <button class="btn btn-outline-light btn-lg" onclick="shareContent()">
-                        <i class="fas fa-share-alt me-2"></i>Partager
-                    </button>
-                </div>
+               
             </div>
             <div class="col-lg-4">
                 <div class="bg-white bg-opacity-10 rounded-3 p-4 text-center">
                     <div class="row g-3">
                         <div class="col-6">
-                            <h4 class="fw-bold mb-1">{{ number_format($downloadable->download_count) }}</h4>
-                            <small class="opacity-75">Téléchargements</small>
+                            <h4 class="fw-bold mb-1">55{{ number_format($downloadable->download_count) }}</h4>
+                            <small class="opacity-75">Telechargements</small>
                         </div>
-                        <div class="col-6">
-                            <h4 class="fw-bold mb-1">{{ $downloadable->file_size ?? '?' }}</h4>
-                            <small class="opacity-75">Taille</small>
-                        </div>
-                        <div class="col-12">
-                            <h4 class="fw-bold mb-1">{{ $downloadable->format_display }}</h4>
-                            <small class="opacity-75">Format</small>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -161,7 +126,7 @@
         <div class="row g-5">
             <!-- Contenu principal -->
             <div class="col-lg-8">
-                <!-- Description complète -->
+                <!-- Description complÃ¨te -->
                 @if($downloadable->long_description)
                     <div class="card download-info-card mb-5">
                         <div class="card-body p-5">
@@ -206,7 +171,7 @@
                                 <div class="d-flex align-items-center p-3 bg-light rounded">
                                     <i class="fas fa-calendar fa-2x text-info me-3"></i>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Ajouté le</h6>
+                                        <h6 class="fw-bold mb-1">Ajoute le</h6>
                                         <span class="text-muted">{{ $downloadable->created_at->format('d/m/Y') }}</span>
                                     </div>
                                 </div>
@@ -215,7 +180,7 @@
                                 <div class="d-flex align-items-center p-3 bg-light rounded">
                                     <i class="fas fa-water fa-2x text-primary me-3"></i>
                                     <div>
-                                        <h6 class="fw-bold mb-1">Téléchargements</h6>
+                                        <h6 class="fw-bold mb-1">Telechargements</h6>
                                         <span class="text-muted">{{ number_format($downloadable->download_count) }}</span>
                                     </div>
                                 </div>
@@ -232,7 +197,7 @@
                     <div class="card download-info-card mb-4">
                         <img src="{{ $downloadable->cover_image }}" 
                              class="card-img-top" 
-                             style="height: 300px; object-fit: cover;"
+                             style="height: 100%; object-fit: cover;"
                              alt="{{ $downloadable->title }}">
                     </div>
                 @endif
@@ -245,7 +210,7 @@
                             @if($downloadable->canBeDownloadedBy(auth()->user()))
                                 <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
                                    class="btn btn-success">
-                                    <i class="fas fa-water me-2"></i>Télécharger
+                                    <i class="fas fa-water me-2"></i>Telecharger
                                 </a>
                             @else
                                 <div class="access-alert">
@@ -272,7 +237,7 @@
                             
                             <a href="{{ route('ebook.category', $category->slug) }}" 
                                class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Retour à {{ $category->name }}
+                                <i class="fas fa-arrow-left me-2"></i>Retour Ã  {{ $category->name }}
                             </a>
                         </div>
                     </div>
@@ -295,7 +260,7 @@
                                 <div>
                                     <h6 class="fw-bold mb-1">{{ $downloadable->creator->name }}</h6>
                                     <small class="text-muted">
-                                        Ajouté le {{ $downloadable->created_at->format('d/m/Y') }}
+                                        Ajoute le {{ $downloadable->created_at->format('d/m/Y') }}
                                     </small>
                                 </div>
                             </div>
@@ -314,7 +279,7 @@
         <div class="row mb-4">
             <div class="col-12 text-center">
                 <h3 class="fw-bold mb-3">Autres ressources de {{ $category->name }}</h3>
-                <p class="text-muted">Découvrez d'autres contenus qui pourraient vous intéresser</p>
+                <p class="text-muted">Decouvrez d'autres contenus qui pourraient vous interesser</p>
             </div>
         </div>
         
@@ -343,7 +308,7 @@
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title fw-bold mb-2">{{ Str::limit($related->title, 60) }}</h6>
                             <small class="text-muted mb-3">
-                                <i class="fas fa-water me-1"></i>{{ number_format($related->download_count) }} téléchargements
+                                <i class="fas fa-water me-1"></i>{{ number_format($related->download_count) }} telechargements
                             </small>
                             <div class="mt-auto">
                                 <a href="{{ route('ebook.show', [$category->slug, $related->slug]) }}" 
@@ -367,7 +332,7 @@ function shareContent() {
     if (navigator.share) {
         navigator.share({
             title: '{{ $downloadable->title }}',
-            text: '{{ $downloadable->short_description ?? "Découvrez cette ressource" }}',
+            text: '{{ $downloadable->short_description ?? "Decouvrez cette ressource" }}',
             url: window.location.href
         });
     } else {
@@ -378,7 +343,7 @@ function shareContent() {
             toast.innerHTML = `
                 <div class="d-flex">
                     <div class="toast-body">
-                        <i class="fas fa-check me-2"></i>Lien copié dans le presse-papiers !
+                        <i class="fas fa-check me-2"></i>Lien copie dans le presse-papiers !
                     </div>
                     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
                 </div>

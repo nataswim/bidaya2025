@@ -148,7 +148,7 @@
             <div class="text-center py-5">
                 <i class="fas fa-folder-open fa-3x text-muted mb-3 opacity-50"></i>
                 <h4>Aucune categorie disponible</h4>
-                <p class="text-muted">Les categories seront bientôt disponibles.</p>
+                <p class="text-muted">Les categories seront bientÃ´t disponibles.</p>
             </div>
         @endif
     </div>

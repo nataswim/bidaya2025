@@ -14,16 +14,19 @@ return new class extends Migration
     {
         Schema::create('fiches', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 191); // 🇬🇧 Fiche title / 🇫🇷 Titre de la fiche
-            $table->string('slug', 191)->unique(); // 🇬🇧 URL slug / 🇫🇷 Slug pour URL
-            $table->text('short_description'); // 🇬🇧 Short description (always visible) / 🇫🇷 Description courte (toujours visible)
-            $table->longText('long_description')->nullable(); // 🇬🇧 Long description / 🇫🇷 Description longue
-            $table->string('image')->nullable(); // 🇬🇧 Featured image path / 🇫🇷 Chemin de l'image principale
-            $table->string('visibility', 50)->default('public'); // 🇬🇧 Visibility (public/authenticated) / 🇫🇷 Visibilité (public/authentifié)
-            $table->boolean('is_published')->default(false); // 🇬🇧 Publication status / 🇫🇷 Statut de publication
-            $table->boolean('is_featured')->default(false); // 🇬🇧 Featured status / 🇫🇷 Statut mis en avant
-            $table->integer('views_count')->default(0); // 🇬🇧 Views counter / 🇫🇷 Compteur de vues
-            $table->integer('sort_order')->default(0); // 🇬🇧 Sort order / 🇫🇷 Ordre de tri
+            $table->string('title', 191);
+            $table->string('slug', 191)->unique();
+            $table->text('short_description');
+            $table->longText('long_description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('visibility', 50)->default('public');
+            $table->boolean('is_published')->default(false);
+            $table->boolean('is_featured')->default(false);
+            $table->integer('views_count')->default(0);
+            $table->integer('sort_order')->default(0);
+            
+            // 🇬🇧 Category relationship / 🇫🇷 Relation avec catégorie
+            $table->foreignId('fiches_category_id')->nullable()->constrained('fiches_categories')->nullOnDelete();
             
             // 🇬🇧 SEO fields / 🇫🇷 Champs SEO
             $table->string('meta_title', 255)->nullable();
@@ -38,7 +41,7 @@ return new class extends Migration
             $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('deleted_by')->nullable()->constrained('users')->nullOnDelete();
             
-            $table->timestamp('published_at')->nullable(); // 🇬🇧 Publication date / 🇫🇷 Date de publication
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
             
@@ -48,6 +51,7 @@ return new class extends Migration
             $table->index('visibility');
             $table->index('sort_order');
             $table->index('published_at');
+            $table->index('fiches_category_id');
             $table->index(['is_published', 'published_at', 'deleted_at']);
             $table->index(['visibility', 'is_published', 'deleted_at']);
             $table->unique(['slug', 'deleted_at']);

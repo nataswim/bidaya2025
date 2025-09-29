@@ -19,11 +19,53 @@ Nouvelle migration
 exemple 
 php artisan make:migration create_exercises_table
 
+
+Application des Migrations
+php artisan migrate --force
+
+
+
+Diagnostic  
+
+cd /chemin/,,,,,,
+
+# 1. Vider le cache de l'application
+php artisan cache:clear
+
+# 2. Vider le cache de la configuration
+php artisan config:clear
+php artisan config:cache
+
+# 3. Vider le cache des vues
+php artisan view:clear
+
+# 4. Vider le cache des routes (souvent nécessaire après un git pull)
+php artisan route:clear
+php artisan route:cache
+
+# 5. EXTREMEMENT IMPORTANT : Vider l'autoload de Composer
+composer dump-autoload
+
+
+
 exemple 
 php artisan make:model Exercise -mcr
 -m = migration
 -c = contrôleur
 -r = resource controller (CRUD)
+
+
+
+
+pour annuler le dernier lot de migration 
+php artisan migrate:rollback --force
+
+
+
+
+
+
+
 
 
  procédure de déploiement manuel en un document de type **cahier technique** pour assurer la cohérence et la fiabilité de vos mises à jour.

@@ -23,27 +23,39 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.index') }}">
-                        <i class="fas fa-water me-2"></i>Articles
+                        <i class="fas fa-newspaper me-2"></i>Articles
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('about') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('about') }}">
-                        <i class="fas fa-water me-2"></i>À propos
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('public.fiches.index') }}">
+                        <i class="fas fa-file-alt me-2"></i>Fiches
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('ebook.index') }}">
-                        <i class="fas fa-water me-2"></i>Téléchargements
+                        <i class="fas fa-download me-2"></i>Téléchargements
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('exercices.index') }}">
-                        <i class="fas fa-water me-2"></i>Musculation
+                        <i class="fas fa-dumbbell me-2"></i>Musculation
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('plans.index') }}">
+                        <i class="fas fa-calendar-alt me-2"></i>Plans
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('about') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('about') }}">
+                        <i class="fas fa-info-circle me-2"></i>À propos
                     </a>
                 </li>
                 <li class="nav-item">
@@ -80,7 +92,7 @@
                             @endif
                             <li>
                                 <a class="dropdown-item py-2" href="{{ route('user.dashboard') }}">
-                                    <i class="fas fa-water text-primary me-2"></i>Mon tableau de bord
+                                    <i class="fas fa-tachometer-alt text-primary me-2"></i>Mon tableau de bord
                                 </a>
                             </li>
                             <li>
@@ -93,7 +105,7 @@
                                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                     @csrf
                                     <button type="submit" class="dropdown-item py-2 text-danger">
-                                        <i class="fas fa-sign-out-alt me-2"></i>Se deconnecter
+                                        <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
                                     </button>
                                 </form>
                             </li>

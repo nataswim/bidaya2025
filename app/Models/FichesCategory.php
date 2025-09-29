@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 /**
@@ -50,12 +50,20 @@ class FichesCategory extends Model
         parent::boot();
 
         static::creating(function ($category) {
+            if (auth()->check()) {
+                $category->created_by = auth()->id();
+            }
+            
             if (empty($category->slug)) {
                 $category->slug = Str::slug($category->name);
             }
         });
 
         static::updating(function ($category) {
+            if (auth()->check()) {
+                $category->updated_by = auth()->id();
+            }
+            
             if ($category->isDirty('name') && empty($category->slug)) {
                 $category->slug = Str::slug($category->name);
             }
@@ -66,18 +74,16 @@ class FichesCategory extends Model
      * 🇬🇧 Get the fiches that belong to this category
      * 🇫🇷 Obtenir les fiches qui appartiennent à cette catégorie
      */
-    public function fiches(): BelongsToMany
+    public function fiches(): HasMany
     {
-        return $this->belongsToMany(Fiche::class, 'fiches_fiches_category', 'fiches_category_id', 'fiche_id')
-                    ->withTimestamps()
-                    ->orderBy('sort_order');
+        return $this->hasMany(Fiche::class, 'fiches_category_id');
     }
 
     /**
      * 🇬🇧 Get only published fiches for this category
      * 🇫🇷 Obtenir uniquement les fiches publiées pour cette catégorie
      */
-    public function publishedFiches(): BelongsToMany
+    public function publishedFiches(): HasMany
     {
         return $this->fiches()->where('is_published', true);
     }

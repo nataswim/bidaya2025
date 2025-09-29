@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 /**
@@ -30,6 +29,7 @@ class Fiche extends Model
         'is_featured',
         'views_count',
         'sort_order',
+        'fiches_category_id',
         'meta_title',
         'meta_keywords',
         'meta_description',
@@ -90,6 +90,15 @@ class Fiche extends Model
     }
 
     /**
+     * 🇬🇧 Get the category of this fiche
+     * 🇫🇷 Obtenir la catégorie de cette fiche
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(FichesCategory::class, 'fiches_category_id');
+    }
+
+    /**
      * 🇬🇧 Get the creator of this fiche
      * 🇫🇷 Obtenir le créateur de cette fiche
      */
@@ -105,26 +114,6 @@ class Fiche extends Model
     public function updater(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    /**
-     * 🇬🇧 Get the categories that belong to this fiche
-     * 🇫🇷 Obtenir les catégories qui appartiennent à cette fiche
-     */
-    public function categories(): BelongsToMany
-    {
-        return $this->belongsToMany(FichesCategory::class, 'fiches_fiches_category', 'fiche_id', 'fiches_category_id')
-                    ->withTimestamps()
-                    ->orderBy('sort_order');
-    }
-
-    /**
-     * 🇬🇧 Get only active categories
-     * 🇫🇷 Obtenir uniquement les catégories actives
-     */
-    public function activeCategories(): BelongsToMany
-    {
-        return $this->categories()->where('is_active', true);
     }
 
     /**
@@ -163,9 +152,7 @@ class Fiche extends Model
      */
     public function scopeByCategory($query, $categoryId)
     {
-        return $query->whereHas('categories', function ($q) use ($categoryId) {
-            $q->where('fiches_categories.id', $categoryId);
-        });
+        return $query->where('fiches_category_id', $categoryId);
     }
 
     /**
@@ -182,7 +169,7 @@ class Fiche extends Model
               ->where('visibility', 'public');
             
             // 🇬🇧 If user authenticated, add authenticated fiches / 🇫🇷 Si utilisateur authentifié, ajouter les fiches authentifiées
-            if ($user) {
+            if ($user && !$user->hasRole('visitor')) {
                 $q->orWhere(function($subQ) {
                     $subQ->where('is_published', true)
                          ->whereNotNull('published_at')
@@ -222,7 +209,7 @@ class Fiche extends Model
         }
         
         if ($this->visibility === 'authenticated') {
-            return $user !== null;
+            return $user !== null && !$user->hasRole('visitor');
         }
         
         return false;
@@ -234,7 +221,13 @@ class Fiche extends Model
      */
     public function getUrlAttribute(): string
     {
-        return route('public.fiches.show', $this->slug);
+        if ($this->category) {
+            return route('public.fiches.show', [
+                'category' => $this->category->slug,
+                'fiche' => $this->slug
+            ]);
+        }
+        return '#';
     }
 
     /**
@@ -244,7 +237,7 @@ class Fiche extends Model
     public function getExcerptAttribute(): string
     {
         if ($this->short_description) {
-            return $this->short_description;
+            return strip_tags($this->short_description);
         }
         
         return Str::limit(strip_tags($this->long_description), 160);

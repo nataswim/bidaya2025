@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', $category->name . ' - Espace Téléchargement')
-@section('meta_description', $category->short_description ?? 'Découvrez tous les téléchargements de la catégorie ' . $category->name)
+@section('title', $category->name . ' - Espace Telechargement')
+@section('meta_description', $category->short_description ?? 'Decouvrez tous les telechargements de la categorie ' . $category->name)
 
 @push('styles')
 <style>
@@ -58,7 +58,7 @@
 @endpush
 
 @section('content')
-<!-- En-tête de catégorie -->
+<!-- En-tÃªte de categorie -->
 <section class="category-header">
     <div class="container">
         <div class="row align-items-center">
@@ -67,7 +67,7 @@
                     <ol class="breadcrumb text-white">
                         <li class="breadcrumb-item">
                             <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
-                                <i class="fas fa-home me-1"></i>Espace Téléchargement
+                                <i class="fas fa-home me-1"></i>Espace Telechargement
                             </a>
                         </li>
                         <li class="breadcrumb-item active text-white" aria-current="page">
@@ -127,7 +127,7 @@
                                        name="search" 
                                        value="{{ request('search') }}"
                                        class="form-control form-control-sm"
-                                       placeholder="Mots-clés...">
+                                       placeholder="Mots-cles...">
                             </div>
 
                             <!-- Formats -->
@@ -153,10 +153,10 @@
                                         Titre A-Z
                                     </option>
                                     <option value="downloads" {{ request('sort') === 'downloads' ? 'selected' : '' }}>
-                                        Plus téléchargés
+                                        Plus telecharges
                                     </option>
                                     <option value="recent" {{ request('sort') === 'recent' ? 'selected' : '' }}>
-                                        Plus récents
+                                        Plus recents
                                     </option>
                                 </select>
                             </div>
@@ -168,7 +168,7 @@
                                 @if(request()->hasAny(['search', 'format', 'sort']))
                                     <a href="{{ route('ebook.category', $category->slug) }}" 
                                        class="btn btn-outline-secondary btn-sm">
-                                        <i class="fas fa-times me-2"></i>Réinitialiser
+                                        <i class="fas fa-times me-2"></i>Reinitialiser
                                     </a>
                                 @endif
                             </div>
@@ -177,10 +177,10 @@
                 </div>
             </div>
 
-            <!-- Liste des téléchargements -->
+            <!-- Liste des telechargements -->
             <div class="col-lg-9">
                 @if($downloadables->count() > 0)
-                    <!-- En-tête avec compteur -->
+                    <!-- En-tÃªte avec compteur -->
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="fw-bold mb-0">
                             {{ $downloadables->total() }} ressource(s) disponible(s)
@@ -235,13 +235,13 @@
                                             <div class="d-grid gap-2">
                                                 <a href="{{ route('ebook.show', [$category->slug, $download->slug]) }}" 
                                                    class="btn btn-outline-primary btn-sm">
-                                                    <i class="fas fa-eye me-2"></i>Voir les détails
+                                                    <i class="fas fa-eye me-2"></i>Voir les details
                                                 </a>
                                                 
                                                 @if($download->canBeDownloadedBy(auth()->user()))
                                                     <a href="{{ route('ebook.download', [$category->slug, $download->slug]) }}" 
                                                        class="btn btn-success btn-sm">
-                                                        <i class="fas fa-water me-2"></i>Télécharger
+                                                        <i class="fas fa-water me-2"></i>Telecharger
                                                     </a>
                                                 @else
                                                     <div class="access-message">
@@ -278,16 +278,16 @@
                 @else
                     <div class="text-center py-5">
                         <i class="fas fa-search fa-3x text-muted mb-3 opacity-50"></i>
-                        <h4>Aucune ressource trouvée</h4>
+                        <h4>Aucune ressource trouvee</h4>
                         @if(request()->hasAny(['search', 'format']))
-                            <p class="text-muted mb-3">Aucun résultat ne correspond à vos critères de recherche.</p>
+                            <p class="text-muted mb-3">Aucun resultat ne correspond Ã  vos critÃ¨res de recherche.</p>
                             <a href="{{ route('ebook.category', $category->slug) }}" class="btn btn-outline-primary">
                                 <i class="fas fa-arrow-left me-2"></i>Voir toutes les ressources
                             </a>
                         @else
-                            <p class="text-muted">Cette catégorie ne contient pas encore de ressources.</p>
+                            <p class="text-muted">Cette categorie ne contient pas encore de ressources.</p>
                             <a href="{{ route('ebook.index') }}" class="btn btn-primary">
-                                <i class="fas fa-arrow-left me-2"></i>Retour à l'accueil
+                                <i class="fas fa-arrow-left me-2"></i>Retour Ã  l'accueil
                             </a>
                         @endif
                     </div>
@@ -297,7 +297,7 @@
     </div>
 </section>
 
-<!-- Description complète de la catégorie -->
+<!-- Description complÃ¨te de la categorie -->
 @if($category->description)
 <section class="py-5 bg-light">
     <div class="container">
@@ -305,7 +305,7 @@
             <div class="col-lg-8 mx-auto">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h5 class="fw-bold mb-3">À propos de cette catégorie</h5>
+                        <h5 class="fw-bold mb-3">Ã€ propos de cette categorie</h5>
                         <div class="content-display">
                             {!! nl2br(e($category->description)) !!}
                         </div>
