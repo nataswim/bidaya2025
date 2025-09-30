@@ -107,7 +107,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Categories de Ressources</h2>
+                <h2 class="fw-bold mb-3">Ressources</h2>
                 <p class="text-muted">
                     Explorez nos differentes categories pour trouver exactement ce que vous cherchez
                 </p>
@@ -251,10 +251,10 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-3">
-                    <i class="fas fa-clock text-info me-2"></i>Ajouts Recents
+                    <i class="fas fa-clock text-info me-2"></i>Documents Recents
                 </h2>
                 <p class="text-muted">
-                    Decouvrez nos dernieres ressources ajoutees
+                    Dernieres ressources ajoutees
                 </p>
             </div>
         </div>

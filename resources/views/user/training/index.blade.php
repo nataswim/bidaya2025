@@ -8,7 +8,7 @@
     <div class="row mb-5">
         <div class="col-12">
             <div class="text-center">
-                <h1 class="fw-bold mb-3">Plans d'Entraînement</h1>
+                <h1 class="fw-bold mb-3">Programme de musculation</h1>
                 <p class="text-muted mb-0">Découvrez nos programmes d'entraînement adaptés à vos objectifs</p>
             </div>
         </div>

@@ -8,9 +8,7 @@
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            <i class="fas fa-file-alt text-warning"></i>
             Fiches Pratiques
-            <i class="fas fa-bookmark text-success"></i>
         </h1>
         <p class="lead mb-0">
             Collection complète de fiches pratiques pour votre développement sportif
@@ -105,7 +103,7 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
                 <i class="fas fa-folder-open me-2 text-primary"></i>
-                Explorez nos Fiches par Catégorie
+                Explorez par Catégorie
             </h2>
             <p class="lead text-muted">
                 Choisissez la thématique qui correspond à vos besoins pour accéder 
@@ -226,7 +224,7 @@
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h2 class="display-6 fw-bold mb-3">Accédez à notre Collection Complète</h2>
+                <h2 class="display-6 fw-bold mb-3">Notre Collection </h2>
                 <p class="lead mb-4">
                     Explorez nos fiches pratiques par catégorie et bénéficiez de conseils 
                     structurés pour optimiser votre développement sportif.

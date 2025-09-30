@@ -9,7 +9,7 @@
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-5 fw-bold mb-3">Plans d'Entraînement</h1>
+                <h1 class="display-5 fw-bold mb-3">Programme de musculation</h1>
                 <p class="lead mb-0">Découvrez nos programmes d'entraînement structurés et personnalisés pour atteindre vos objectifs fitness.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
@@ -271,7 +271,7 @@
     <section class="py-5 bg-white">
         <div class="container-lg">
             <h2 class="fw-bold mb-4 text-center">
-                <i class="fas fa-star text-warning me-2"></i>Plans en vedette
+                <i class="fas fa-star text-warning me-2"></i>Plans
             </h2>
             <div class="row g-4">
                 @foreach($plansFeatured as $plan)

@@ -37,7 +37,7 @@
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('ebook.index') }}">
-                        <i class="fas fa-download me-2"></i>Téléchargements
+                        <i class="fas fa-download me-2"></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item">
@@ -52,18 +52,7 @@
                         <i class="fas fa-calendar-alt me-2"></i>Plans
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('about') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('about') }}">
-                        <i class="fas fa-info-circle me-2"></i>À propos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('contact') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('contact') }}">
-                        <i class="fas fa-envelope me-2"></i>Contact
-                    </a>
-                </li>
+                
             </ul>
             
             <!-- Section utilisateur -->

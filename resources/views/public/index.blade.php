@@ -194,12 +194,12 @@
                 @endforeach
             </div>
             
-            <!-- Pagination -->
-            @if($posts->hasPages())
-                <div class="mt-5 d-flex justify-content-center">
-                    {{ $posts->appends(request()->query())->links() }}
-                </div>
-            @endif
+           <!-- Pagination -->
+@if($posts->hasPages())
+    <div class="mt-5 d-flex justify-content-center">
+        {{ $posts->appends(request()->query())->links('pagination::bootstrap-5') }}
+    </div>
+@endif
         @else
             <!-- etat vide -->
             <div class="text-center py-5">
@@ -225,29 +225,7 @@
     </div>
 </section>
 
-<!-- Call-to-action pour les visiteurs -->
-@guest
-    <section class="py-5 bg-gradient-primary text-white">
-        <div class="container-lg text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="fw-bold mb-3">Accedez aux contenus</h2>
-                    <p class="lead mb-4">
-                        Rejoignez notre communaute pour debloquer les articles exclusifs et beneficier de contenus premium.
-                    </p>
-                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
-                        <a href="{{ route('register') }}" class="btn btn-light btn-lg">
-                            <i class="fas fa-user-plus me-2"></i>Creer un compte gratuit
-                        </a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-@endguest
+
 @endsection
 
 @push('styles')
@@ -274,6 +252,24 @@
 
 .card:hover {
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+}
+.pagination .page-link {
+    color: #0ea5e9;
+    border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.pagination .page-link:hover {
+    color: #0284c7;
+    background-color: #f8f9fa;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
 }
 </style>
 @endpush
