@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Accueil - Votre plateforme d\'entrainement aquatique')
-@section('meta_description', 'Decouvrez notre plateforme dediee A la natation et au triathlon avec articles, plans d\'entrainement, fiches techniques et videos. Rejoignez notre communaute de nageurs, triathletes et coachs.')
+@section('title', 'Accueil - Votre plateforme d\'entraînement aquatique')
+@section('meta_description', 'Decouvrez notre plateforme dediee A la natation et au triathlon avec articles, plans d\'entraînement, fiches techniques et videos. Rejoignez notre communaute de nageurs, triathletes et coachs.')
 
 @section('content')
 <!-- Hero Section -->
@@ -14,11 +14,11 @@
                     <h1 class="display-4 fw-bold mb-0">Votre plateforme digitale pour booster vos performances aquatiques</h1>
                 </div>
                 <p class="lead mb-4">
-                    Planifiez, suivez et optimisez vos entrainements de natation et triathlon. Une plateforme complete pour nageurs, triathletes, entraineurs et coachs, du debutant au professionnel.
+                    Planifiez, suivez et optimisez vos entraînements de natation et triathlon. Une plateforme complete pour nageurs, triathletes, entraîneurs et coachs, du debutant au professionnel.
                 </p>
                 <div class="d-flex gap-3">
                     <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                        Decouvrir les plans d'entrainement
+                        Decouvrir les plans d'entraînement
                         <i class="fas fa-chevron-right ms-2"></i>
                     </a>
                     <a href="{{ route('register') }}" class="btn btn-outline-light px-4">
@@ -40,11 +40,9 @@
     </div>
 </section>
 
-
-
-<!-- Section Pour qui avec vidéo background -->
+<!-- Pour qui Section avec Video Background TempoSwim -->
 <section class="py-5 position-relative">
-    <!-- Vidéo d'arrière-plan -->
+    <!-- Video d'arriere-plan TempoSwim -->
     <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1; overflow: hidden;">
         <iframe 
             src="https://www.youtube.com/embed/AhBaSV8psGA?autoplay=1&mute=1&loop=1&playlist=AhBaSV8psGA&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" 
@@ -52,190 +50,147 @@
             allow="autoplay; encrypted-media" 
             allowfullscreen
             style="width: 100vw; height: 100vh; min-width: 100%; min-height: 100%; object-fit: cover; pointer-events: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
-            title="Entrainement natation professionnel"
-            loading="lazy">
+            title="Video Background TempoSwim">
         </iframe>
-        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.3;"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.2;"></div>
     </div>
 
     <!-- Contenu -->
     <div class="container-lg position-relative" style="z-index: 2;">
         <div class="text-center mb-5 text-white">
-            <h2 class="fw-bold display-6">Une plateforme adaptée à tous les profils </h2>
+            <h2 class="fw-bold">Pour qui est conçue cette plateforme ?</h2>
             <p class="lead">
-                De l'amateur passionné au professionnel, en passant par les entraineurs et techniciens du sport
+                Une solution adaptee A tous les profils aquatiques, amateurs ou professionnels
             </p>
         </div>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
-                    <div class="card-body text-center p-4">
-                        <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-swimmer text-primary" style="font-size: 2rem;"></i>
+            <!-- Vos cards existantes restent identiques -->
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                    <div class="card-body d-flex p-4">
+                        <div class="me-3">
+                            <div class="bg-primary-subtle p-3 rounded-circle">
+                                <i class="fas fa-swimmer text-primary fs-1"></i>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Nageurs & Nageuses</h3>
-                        <p class="card-text text-muted small mb-0">
-                            Plans d'entrainement natation personnalisés pour tous niveaux. Techniques de nage, préparation physique et suivi de progression.
-                        </p>
+                        <div>
+                            <h3 class="h5 mb-2">Nageurs et Nageuses</h3>
+                            <p class="card-text text-muted small mb-0">De tous niveaux, du debutant au competiteur confirme, pour structurer et ameliorer vos entraînements en piscine.</p>
+                        </div>
                     </div>
-                </article>
+                </div>
             </div>
-            
-            <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
-                    <div class="card-body text-center p-4">
-                        <div class="bg-success-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-medal text-success" style="font-size: 2rem;"></i>
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                    <div class="card-body d-flex p-4">
+                        <div class="me-3">
+                            <div class="bg-success-subtle p-3 rounded-circle">
+                                <i class="fas fa-users text-success fs-1"></i>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Triathlètes</h3>
-                        <p class="card-text text-muted small mb-0">
-                            Programmes triathlon complets. Optimisez votre segment natation avec nos plans d'entrainement spécialisés.
-                        </p>
+                        <div>
+                            <h3 class="h5 mb-2">Entraîneurs et Coachs</h3>
+                            <p class="card-text text-muted small mb-0">Pour creer, partager et superviser des plans d'entraînement adaptes A vos athletes et equipes.</p>
+                        </div>
                     </div>
-                </article>
+                </div>
             </div>
-            
-            <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
-                    <div class="card-body text-center p-4">
-                        <div class="bg-warning-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-users text-warning" style="font-size: 2rem;"></i>
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                    <div class="card-body d-flex p-4">
+                        <div class="me-3">
+                            <div class="bg-warning-subtle p-3 rounded-circle">
+                                <i class="fas fa-medal text-warning fs-1"></i>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Entraineurs & Coachs</h3>
-                        <p class="card-text text-muted small mb-0">
-                            Outils professionnels pour créer et gérer vos programmes d'entrainement natation et préparation physique.
-                        </p>
+                        <div>
+                            <h3 class="h5 mb-2">Triathletes</h3>
+                            <p class="card-text text-muted small mb-0">Pour optimiser votre segment natation et integrer parfaitement vos entraînements multi-disciplines.</p>
+                        </div>
                     </div>
-                </article>
+                </div>
             </div>
-            
-            <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
-                    <div class="card-body text-center p-4">
-                        <div class="bg-info-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-graduation-cap text-info" style="font-size: 2rem;"></i>
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                    <div class="card-body d-flex p-4">
+                        <div class="me-3">
+                            <div class="bg-info-subtle p-3 rounded-circle">
+                                <i class="fas fa-heart text-info fs-1"></i>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">BP & Étudiants </h3>
-                        <p class="card-text text-muted small mb-0">
-                            Ressources pédagogiques, fiches techniques et outils pour votre formation en sciences du sport.
-                        </p>
+                        <div>
+                            <h3 class="h5 mb-2">Amateurs Passionnes</h3>
+                            <p class="card-text text-muted small mb-0">Pour progresser methodiquement dans l'eau et atteindre vos objectifs personnels de forme et bien-être.</p>
+                        </div>
                     </div>
-                </article>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 
-<!-- Fonctionnalités clés -->
+
+
+
+<!-- Fonctionnalites cles -->
 <section class="py-5 bg-light">
     <div class="container-lg">
-        <header class="text-center mb-5">
-            <h2 class="fw-bold display-6">Des outils complets pour votre entrainement aquatique</h2>
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Fonctionnalites cles</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Tout ce dont vous avez besoin pour progresser en natation, triathlon et préparation physique
+                Notre plateforme offre tous les outils necessaires pour progresser et atteindre vos objectifs aquatiques
             </p>
-        </header>
-        
+        </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-clipboard-list text-primary fs-2"></i>
-                        </div>
-                        <h3 class="h5 mb-3">Plans d'entrainement natation</h3>
-                        <p class="card-text text-muted">
-                            Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entrainement natation.
-                        </p>
-                        <a href="{{ route('plans.index') }}" class="btn btn-sm btn-outline-primary mt-2">
-                            Découvrir les plans
-                        </a>
-                    </div>
-                </article>
-            </div>
+            @php
+                $features = [
+                    [
+                        'icon' => 'fas fa-clipboard-list',
+                        'title' => 'Plans d\'Entraînement Personnalises',
+                        'description' => 'Creez des programmes adaptes A votre niveau et vos objectifs : sprint, endurance, technique, recuperation.'
+                    ],
+                    [
+                        'icon' => 'fas fa-dumbbell',
+                        'title' => 'Exercices Specialises',
+                        'description' => 'Bibliotheque d\'exercices conçus par des entraîneurs pros pour ameliorer technique, vitesse et endurance.'
+                    ],
+                    [
+                        'icon' => 'fas fa-calendar-alt',
+                        'title' => 'Organisation des Seances',
+                        'description' => 'Planifiez vos entraînements, suivez votre progression et organisez vos seances de façon optimale.'
+                    ],
+                    [
+                        'icon' => 'fas fa-book-open',
+                        'title' => 'Fiches Techniques',
+                        'description' => 'Guides detailles sur les techniques de nage, la biomecanique et les strategies d\'entraînement.'
+                    ],
+                    [
+                        'icon' => 'fas fa-chart-line',
+                        'title' => 'Suivi des Performances',
+                        'description' => 'Enregistrez vos temps, analysez votre progression avec des graphiques et statistiques detailles.'
+                    ],
+                    [
+                        'icon' => 'fas fa-play-circle',
+                        'title' => 'Videos d\'Entraînement',
+                        'description' => 'Demonstrations techniques, seances filmees et conseils de coachs professionnels.'
+                    ]
+                ];
+            @endphp
             
-            <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-success-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-dumbbell text-success fs-2"></i>
+            @foreach($features as $feature)
+                <div class="col">
+                    <div class="card h-100 shadow-sm hover-lift border-0">
+                        <div class="card-body text-center p-4">
+                            <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
+                                <i class="{{ $feature['icon'] }} text-primary fs-1"></i>
+                            </div>
+                            <h3 class="card-title h5 mb-3">{{ $feature['title'] }}</h3>
+                            <p class="card-text text-muted">{{ $feature['description'] }}</p>
                         </div>
-                        <h3 class="h5 mb-3">Exercices spécialisés</h3>
-                        <p class="card-text text-muted">
-                            Bibliothèque d'exercices natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
-                        </p>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-sm btn-outline-success mt-2">
-                            Voir les exercices
-                        </a>
                     </div>
-                </article>
-            </div>
-            
-            <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-warning-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-book-open text-warning fs-2"></i>
-                        </div>
-                        <h3 class="h5 mb-3">Fiches techniques natation</h3>
-                        <p class="card-text text-muted">
-                            Guides complets sur les techniques de nage, biomécanique aquatique et stratégies d'entrainement natation.
-                        </p>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-sm btn-outline-warning mt-2">
-                            Accéder aux fiches
-                        </a>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-info-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-calculator text-info fs-2"></i>
-                        </div>
-                        <h3 class="h5 mb-3">Calculateurs performance</h3>
-                        <p class="card-text text-muted">
-                            Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
-                        </p>
-                        <a href="{{ route('tools.index') }}" class="btn btn-sm btn-outline-info mt-2">
-                            Utiliser les outils
-                        </a>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-chart-line text-danger fs-2"></i>
-                        </div>
-                        <h3 class="h5 mb-3">Suivi de progression</h3>
-                        <p class="card-text text-muted">
-                            Enregistrez vos performances natation, analysez votre évolution avec graphiques et statistiques détaillés.
-                        </p>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-secondary-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-download text-secondary fs-2"></i>
-                        </div>
-                        <h3 class="h5 mb-3">Ressources téléchargeables</h3>
-                        <p class="card-text text-muted">
-                            Documents PDF, vidéos d'entrainement natation, guides techniques et supports pédagogiques pour entraineurs.
-                        </p>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-sm btn-outline-secondary mt-2">
-                            Télécharger
-                        </a>
-                    </div>
-                </article>
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -244,24 +199,24 @@
 <section class="py-5 bg-primary text-white">
     <div class="container-lg">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">L'avis de notre communauté</h2>
+            <h2 class="fw-bold">Ce qu'en disent nos utilisateurs</h2>
         </div>
         <div class="row g-4">
             @php
                 $testimonials = [
                     [
-                        'name' => 'Marie L. Nageuse competition',
-                        'quote' => 'Les plans d entrainement natation m ont permis d améliorer mon 200m crawl de 4 secondes en 2 mois. Programmes structurés et progressifs parfaits.',
+                        'name' => 'Sarah, Nageuse competition',
+                        'quote' => 'Cette plateforme a transforme ma façon de m\'entraîner. J\'ai ameliore mon 200m papillon de 3 secondes en seulement deux mois.',
                         'role' => 'Nageuse competition'
                     ],
                     [
-                        'name' => 'Thomas D. Coach natation',
-                        'quote' => 'Outil indispensable pour gérer mes groupes d entrainement natation. Je crée facilement des programmes adaptés à chaque nageur.',
-                        'role' => 'Entraineur'
+                        'name' => 'Marc, Coach natation',
+                        'quote' => 'Un outil indispensable pour tout entraîneur. Je gere les programmes de toute mon equipe et peux suivre leur progression en temps reel.',
+                        'role' => 'Entraîneur'
                     ],
                     [
-                        'name' => 'Sophie. Triathlete amateur',
-                        'quote' => 'Parfait pour intégrer mes séances natation dans mon plan triathlon global. Calculateurs et outils très pratiques pour la préparation physique.',
+                        'name' => 'Sophie, Triathlete amateur',
+                        'quote' => 'Enfin un outil qui me permet d\'integrer parfaitement mes seances de natation dans mon planning global d\'entraînement.',
                         'role' => 'Triathlete'
                     ]
                 ];
@@ -294,7 +249,7 @@
     <div class="container-lg">
         <div class="text-center mb-5">
             <h2 class="fw-bold">Comment ça marche ?</h2>
-            <p class="lead text-muted">Trois etapes simples pour optimiser vos entrainements aquatiques</p>
+            <p class="lead text-muted">Trois etapes simples pour optimiser vos entraînements aquatiques</p>
         </div>
         <div class="row g-4 align-items-center">
             <div class="col-md-4 text-center">
@@ -309,7 +264,7 @@
                     <i class="fas fa-swimmer text-warning fs-1"></i>
                 </div>
                 <h3 class="h5">2. Choisissez vos plans</h3>
-                <p class="text-muted">Selectionnez des programmes existants ou creez vos propres seances d'entrainement</p>
+                <p class="text-muted">Selectionnez des programmes existants ou creez vos propres seances d'entraînement</p>
             </div>
             <div class="col-md-4 text-center">
                 <div class="bg-info-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
@@ -400,7 +355,7 @@
     <div class="container-lg text-center py-4">
         <h2 class="mb-4 fw-bold">Prêt A ameliorer vos performances aquatiques ?</h2>
         <p class="lead text-muted mb-4 mx-auto" style="max-width: 700px;">
-            Rejoignez des milliers de nageurs, entraineurs et triathletes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entrainements.
+            Rejoignez des milliers de nageurs, entraîneurs et triathletes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entraînements.
         </p>
         
         @guest

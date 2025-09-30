@@ -25,10 +25,21 @@ use App\Http\Controllers\PublicFicheController;
 
 
 
+
+
 // Routes publiques
 Route::view('/', 'public.home')->name('home');
 Route::view('/about', 'public.about')->name('about');
-Route::view('/contact', 'public.contact')->name('contact');
+Route::view('/accessibilite', 'public.accessibility')->name('accessibility');
+Route::get('/cookies', [PublicController::class, 'cookies'])->name('cookies');
+Route::get('/fonctionnalites', [PublicController::class, 'features'])->name('features');
+Route::get('/mentions-legales', [PublicController::class, 'legal'])->name('legal');
+Route::get('/politique-confidentialite', [PublicController::class, 'privacy'])->name('privacy');
+Route::get('/plans-inscription', [PublicController::class, 'pricing'])->name('pricing');
+Route::get('/guide-utilisation', [PublicController::class, 'guide'])->name('guide');
+
+Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+Route::post('/contact', [PublicController::class, 'contactSend'])->name('contact.send');
 
 // Routes publiques pour les eBooks (avant les routes auth)
 Route::prefix('ebook')->name('ebook.')->group(function () {

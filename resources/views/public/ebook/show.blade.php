@@ -3,300 +3,335 @@
 @section('title', $downloadable->title . ' - ' . $category->name)
 @section('meta_description', $downloadable->short_description ?? 'Telechargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
 
-@push('styles')
-<style>
-.hero-download {
-    background: linear-gradient(116deg, #0f5c78 0%, #016170 100%);
-    padding: 3rem 0;
-    color: white;
-}
-
-.download-info-card {
-    border: none;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-    border-radius: 1rem;
-}
-
-.related-card {
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.related-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
-.access-alert {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 1rem;
-    padding: 2rem;
-}
-
-.download-stats {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
-
-.content-display {
-    line-height: 1.8;
-}
-
-.content-display h1,
-.content-display h2,
-.content-display h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.content-display p {
-    margin-bottom: 1.5rem;
-}
-
-.content-display ul,
-.content-display ol {
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
-}
-</style>
-@endpush
-
 @section('content')
-<!-- En-tÃªte du telechargement -->
-<section class="hero-download">
-    <div class="container">
-        <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb text-white">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
-                        <i class="fas fa-home me-1"></i>Espace Telechargement
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('ebook.category', $category->slug) }}" class="text-white text-decoration-none">
-                        {{ $category->name }}
-                    </a>
-                </li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ Str::limit($downloadable->title, 50) }}
-                </li>
-            </ol>
-        </nav>
-        
+
+
+<!-- En-tête de section -->
+<section class="bg-primary text-white py-5">
+    <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-8">
-                <div class="d-flex gap-2 mb-3">
-                    <span class="badge bg-light text-dark fs-6">{{ $downloadable->format_display }}</span>
-                    <span class="badge bg-primary-subtle text-primary fs-6">{{ $category->name }}</span>
-                    @if($downloadable->is_featured)
-                        <span class="badge bg-warning fs-6">
-                            <i class="fas fa-star me-1"></i>Vedette
-                        </span>
-                    @endif
-                </div>
-                
-                <h1 class="display-5 fw-bold mb-3">{{ $downloadable->title }}</h1>
-                
-                @if($downloadable->short_description)
-                    <p class="lead opacity-90 mb-4">{{ $downloadable->short_description }}</p>
-                @endif
-                
-               
+            <div class="col-lg-{{ $downloadable->cover_image ? '7' : '12' }}">
+                <h1 class="display-5 fw-bold mb-0">{{ $downloadable->title }}</h1>
             </div>
-            <div class="col-lg-4">
-                <div class="bg-white bg-opacity-10 rounded-3 p-4 text-center">
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <h4 class="fw-bold mb-1">55{{ number_format($downloadable->download_count) }}</h4>
-                            <small class="opacity-75">Telechargements</small>
-                        </div>
-                        
-                    </div>
+            @if($downloadable->cover_image)
+                <div class="col-lg-5">
+                    <img src="{{ $downloadable->cover_image }}" 
+                         alt="{{ $downloadable->title }}" 
+                         class="img-fluid w-100 rounded shadow"
+                         style="max-height: 300px; object-fit: cover; background-color: #ffffff;">
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </section>
 
-<!-- Contenu principal -->
-<section class="py-5">
-    <div class="container">
-        <div class="row g-5">
-            <!-- Contenu principal -->
-            <div class="col-lg-8">
-                <!-- Description complÃ¨te -->
+<!-- Breadcrumb -->
+<section class="py-3 bg-light border-bottom">
+    <div class="container-lg">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('ebook.index') }}">
+                        <i class="fas fa-home me-1"></i>Espace Téléchargement
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('ebook.category', $category->slug) }}">
+                        {{ $category->name }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ Str::limit($downloadable->title, 50) }}
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<article class="py-4">
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-12">
+                
+                <!-- Card 1: Métadonnées -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
+                            <span class="badge bg-primary px-3 py-2">
+                                <i class="fas fa-folder me-1"></i>{{ $category->name }}
+                            </span>
+                            
+                            <span class="badge bg-secondary px-3 py-2">
+                                {{ $downloadable->format_display }}
+                            </span>
+                            
+                            @if($downloadable->is_featured)
+                                <span class="badge bg-warning text-dark px-3 py-2">
+                                    <i class="fas fa-star me-1"></i>Vedette
+                                </span>
+                            @endif
+                            
+                            <span class="d-flex align-items-center">
+                                <i class="fas fa-download me-1"></i>
+                                {{ number_format($downloadable->download_count) }} téléchargement{{ $downloadable->download_count > 1 ? 's' : '' }}
+                            </span>
+                            
+                            <span class="d-flex align-items-center">
+                                <i class="fas fa-calendar me-1"></i>
+                                {{ $downloadable->created_at->format('d M Y') }}
+                            </span>
+                            
+                            @if($downloadable->file_size)
+                                <span class="d-flex align-items-center">
+                                    <i class="fas fa-hdd me-1"></i>
+                                    {{ $downloadable->file_size }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Description courte -->
+                @if($downloadable->short_description)
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <div class="alert alert-info border-0 mb-0" 
+                                 style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+                                <div class="lead">
+                                    {{ $downloadable->short_description }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <!-- Card 3: Description complète -->
                 @if($downloadable->long_description)
-                    <div class="card download-info-card mb-5">
-                        <div class="card-body p-5">
-                            <h3 class="fw-bold mb-4">
-                                <i class="fas fa-water text-primary me-2"></i>Description
-                            </h3>
-                            <div class="content-display">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h5 class="mb-4">
+                                <i class="fas fa-info-circle me-2 text-primary"></i>
+                                Description détaillée
+                            </h5>
+                            <div class="content-display fs-6 lh-lg">
                                 {!! $downloadable->long_description !!}
                             </div>
                         </div>
                     </div>
                 @endif
 
-                <!-- Informations techniques -->
-                <div class="card download-info-card">
-                    <div class="card-body p-5">
-                        <h3 class="fw-bold mb-4">
-                            <i class="fas fa-cog text-primary me-2"></i>Informations techniques
-                        </h3>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <i class="fas fa-file fa-2x text-primary me-3"></i>
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Format</h6>
-                                        <span class="text-muted">{{ $downloadable->format_display }}</span>
+                <!-- Card 4: Action de téléchargement -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <h5 class="mb-4">
+                            <i class="fas fa-download me-2 text-success"></i>
+                            Téléchargement
+                        </h5>
+                        
+                        @if($downloadable->canBeDownloadedBy(auth()->user()))
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
+                                   class="btn btn-success btn-lg">
+                                    <i class="fas fa-download me-2"></i>Télécharger maintenant
+                                </a>
+                                <button class="btn btn-outline-primary btn-lg" onclick="shareContent()">
+                                    <i class="fas fa-share-alt me-2"></i>Partager
+                                </button>
+                            </div>
+                            
+                            <div class="alert alert-success border-0 mt-4 mb-0">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Vous avez accès à ce téléchargement. Cliquez sur le bouton ci-dessus pour commencer.
+                            </div>
+                        @else
+                            <div class="alert alert-warning border-0">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-lock text-warning fs-2"></i>
                                     </div>
+                                    <div class="col">
+                                        <h5 class="alert-heading mb-2">Accès restreint</h5>
+                                        <p class="mb-3">
+                                            {{ $downloadable->getAccessMessage(auth()->user()) }}
+                                        </p>
+                                        @if(!auth()->check())
+                                            <div class="d-flex gap-2">
+                                                <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
+                                                    <i class="fas fa-user-plus me-2"></i>Inscription gratuite
+                                                </a>
+                                                <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
+                                                    <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <!-- Card 5: Informations du fichier -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">
+                            <i class="fas fa-info-circle me-2 text-info"></i>
+                            Informations du fichier
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">
+                                        <i class="fas fa-folder me-1"></i>Catégorie:
+                                    </span>
+                                    <strong>{{ $category->name }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">
+                                        <i class="fas fa-file me-1"></i>Format:
+                                    </span>
+                                    <strong>{{ $downloadable->format_display }}</strong>
                                 </div>
                             </div>
                             @if($downloadable->file_size)
                                 <div class="col-md-6">
-                                    <div class="d-flex align-items-center p-3 bg-light rounded">
-                                        <i class="fas fa-hdd fa-2x text-success me-3"></i>
-                                        <div>
-                                            <h6 class="fw-bold mb-1">Taille</h6>
-                                            <span class="text-muted">{{ $downloadable->file_size }}</span>
-                                        </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-muted">
+                                            <i class="fas fa-hdd me-1"></i>Taille:
+                                        </span>
+                                        <strong>{{ $downloadable->file_size }}</strong>
                                     </div>
                                 </div>
                             @endif
                             <div class="col-md-6">
-                                <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <i class="fas fa-calendar fa-2x text-info me-3"></i>
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Ajoute le</h6>
-                                        <span class="text-muted">{{ $downloadable->created_at->format('d/m/Y') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <i class="fas fa-water fa-2x text-primary me-3"></i>
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Telechargements</h6>
-                                        <span class="text-muted">{{ number_format($downloadable->download_count) }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-                <!-- Image de couverture -->
-                @if($downloadable->cover_image)
-                    <div class="card download-info-card mb-4">
-                        <img src="{{ $downloadable->cover_image }}" 
-                             class="card-img-top" 
-                             style="height: 100%; object-fit: cover;"
-                             alt="{{ $downloadable->title }}">
-                    </div>
-                @endif
-
-                <!-- Actions -->
-                <div class="card download-info-card mb-4">
-                    <div class="card-body text-center p-4">
-                        <h6 class="fw-bold mb-3">Actions</h6>
-                        <div class="d-grid gap-2">
-                            @if($downloadable->canBeDownloadedBy(auth()->user()))
-                                <a href="{{ route('ebook.download', [$category->slug, $downloadable->slug]) }}" 
-                                   class="btn btn-success">
-                                    <i class="fas fa-water me-2"></i>Telecharger
-                                </a>
-                            @else
-                                <div class="access-alert">
-                                    <div class="mb-2">
-                                        <i class="fas fa-lock text-warning me-1"></i>
-                                        <small class="text-muted d-block">
-                                            {{ $downloadable->getAccessMessage(auth()->user()) }}
-                                        </small>
-                                    </div>
-                                    <div class="d-grid gap-2">
-                                        <a href="{{ route('login') }}" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                                        </a>
-                                        <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-user-plus me-2"></i>S'inscrire
-                                        </a>
-                                    </div>
-                                </div>
-                            @endif
-                            
-                            <button class="btn btn-outline-primary" onclick="shareContent()">
-                                <i class="fas fa-share-alt me-2"></i>Partager
-                            </button>
-                            
-                            <a href="{{ route('ebook.category', $category->slug) }}" 
-                               class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Retour Ã  {{ $category->name }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Auteur -->
-                @if($downloadable->creator)
-                    <div class="card download-info-card">
-                        <div class="card-body p-4">
-                            <h6 class="fw-bold mb-3">
-                                <i class="fas fa-user me-2"></i>Auteur
-                            </h6>
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                     style="width: 50px; height: 50px;">
-                                    <span class="fw-bold text-primary">
-                                        {{ substr($downloadable->creator->name, 0, 1) }}
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">
+                                        <i class="fas fa-download me-1"></i>Téléchargements:
                                     </span>
+                                    <strong>{{ number_format($downloadable->download_count) }}</strong>
                                 </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">{{ $downloadable->creator->name }}</h6>
-                                    <small class="text-muted">
-                                        Ajoute le {{ $downloadable->created_at->format('d/m/Y') }}
-                                    </small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">
+                                        <i class="fas fa-calendar me-1"></i>Ajouté le:
+                                    </span>
+                                    <strong>{{ $downloadable->created_at->format('d F Y') }}</strong>
+                                </div>
+                            </div>
+                            @if($downloadable->creator)
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-muted">
+                                            <i class="fas fa-user me-1"></i>Ajouté par:
+                                        </span>
+                                        <strong>{{ $downloadable->creator->name }}</strong>
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted">
+                                        <i class="fas fa-edit me-1"></i>Mise à jour:
+                                    </span>
+                                    <strong>{{ $downloadable->updated_at->format('d/m/Y') }}</strong>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
+
+                <!-- Section Navigation -->
+                <div class="row g-4 mb-4">
+                    <!-- Catégorie -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-folder me-2"></i>Catégorie
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ route('ebook.category', $category->slug) }}" 
+                                   class="d-flex align-items-center text-decoration-none">
+                                    @if($category->image)
+                                        <img src="{{ $category->image }}" 
+                                             class="rounded me-3" 
+                                             style="width: 70px; height: 70px; object-fit: cover;"
+                                             alt="{{ $category->name }}">
+                                    @else
+                                        <div class="bg-primary bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 70px; height: 70px;">
+                                            <i class="fas fa-folder text-primary fs-3"></i>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <h6 class="mb-1 text-dark">{{ $category->name }}</h6>
+                                        <small class="text-muted">Voir tous les téléchargements</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boutons de navigation -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-compass me-2"></i>Navigation
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="{{ route('ebook.category', $category->slug) }}" 
+                                       class="btn btn-primary">
+                                        <i class="fas fa-arrow-left me-2"></i>Retour à {{ Str::limit($category->name, 30) }}
+                                    </a>
+                                    <a href="{{ route('ebook.index') }}" 
+                                       class="btn btn-outline-secondary">
+                                        <i class="fas fa-th me-2"></i>Toutes les catégories
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 
-<!-- Suggestions -->
+<!-- Ressources similaires -->
 @if($relatedDownloads->count() > 0)
 <section class="py-5 bg-light">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-12 text-center">
-                <h3 class="fw-bold mb-3">Autres ressources de {{ $category->name }}</h3>
-                <p class="text-muted">Decouvrez d'autres contenus qui pourraient vous interesser</p>
-            </div>
+    <div class="container-lg">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold mb-0">
+                <i class="fas fa-download text-primary me-2"></i>Autres ressources de {{ $category->name }}
+            </h2>
         </div>
         
         <div class="row g-4">
             @foreach($relatedDownloads as $related)
                 <div class="col-lg-3 col-md-6">
-                    <div class="card related-card h-100">
-                        <div class="position-relative">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="position-relative" style="height: 180px; overflow: hidden;">
                             @if($related->cover_image)
                                 <img src="{{ $related->cover_image }}" 
                                      class="card-img-top" 
-                                     style="height: 150px; object-fit: cover;"
+                                     style="height: 100%; width: 100%; object-fit: cover;"
                                      alt="{{ $related->title }}">
                             @else
                                 <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
-                                     style="height: 150px;">
-                                    <i class="fas fa-file-{{ $related->format === 'pdf' ? 'pdf' : ($related->format === 'mp4' ? 'video' : 'alt') }} fa-2x text-muted"></i>
+                                     style="height: 100%;">
+                                    <i class="fas fa-file-{{ $related->format === 'pdf' ? 'pdf' : ($related->format === 'mp4' ? 'video' : 'alt') }} text-muted" 
+                                       style="font-size: 2.5rem;"></i>
                                 </div>
                             @endif
                             
@@ -306,16 +341,17 @@
                         </div>
                         
                         <div class="card-body d-flex flex-column">
-                            <h6 class="card-title fw-bold mb-2">{{ Str::limit($related->title, 60) }}</h6>
+                            <h6 class="card-title mb-2">{{ Str::limit($related->title, 60) }}</h6>
                             <small class="text-muted mb-3">
-                                <i class="fas fa-water me-1"></i>{{ number_format($related->download_count) }} telechargements
+                                <i class="fas fa-download me-1"></i>{{ number_format($related->download_count) }} téléchargements
                             </small>
-                            <div class="mt-auto">
-                                <a href="{{ route('ebook.show', [$category->slug, $related->slug]) }}" 
-                                   class="btn btn-outline-primary btn-sm w-100">
-                                    <i class="fas fa-eye me-2"></i>Voir
-                                </a>
-                            </div>
+                        </div>
+                        
+                        <div class="card-footer bg-white border-top-0">
+                            <a href="{{ route('ebook.show', [$category->slug, $related->slug]) }}" 
+                               class="btn btn-outline-primary btn-sm w-100">
+                                <i class="fas fa-eye me-2"></i>Voir
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -326,63 +362,123 @@
 @endif
 @endsection
 
+@push('styles')
+<style>
+/* Styles pour le contenu HTML */
+.content-display h1,
+.content-display h2,
+.content-display h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.content-display h1 { font-size: 1.8rem; color: #2d3748; }
+.content-display h2 { font-size: 1.5rem; color: #2d3748; }
+.content-display h3 { font-size: 1.3rem; color: #2d3748; }
+
+.content-display p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #4a5568;
+}
+
+.content-display ul,
+.content-display ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    line-height: 1.7;
+}
+
+.content-display li {
+    margin-bottom: 0.5rem;
+}
+
+.content-display blockquote {
+    border-left: 4px solid #3182ce;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    background: #f7fafc;
+    border-radius: 0.375rem;
+    color: #2d3748;
+}
+
+.content-display img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-display pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.content-display code {
+    background-color: #edf2f7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    color: #d63384;
+    font-family: 'Courier New', monospace;
+}
+
+.card {
+    transition: box-shadow 0.2s ease;
+}
+
+@media (max-width: 991px) {
+    .col-lg-7, .col-lg-5 {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-display {
+        font-size: 0.95rem;
+    }
+    
+    .display-5 {
+        font-size: 1.75rem !important;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+    }
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
 function shareContent() {
     if (navigator.share) {
         navigator.share({
             title: '{{ $downloadable->title }}',
-            text: '{{ $downloadable->short_description ?? "Decouvrez cette ressource" }}',
+            text: '{{ $downloadable->short_description ?? "Découvrez cette ressource" }}',
             url: window.location.href
         });
     } else {
         navigator.clipboard.writeText(window.location.href).then(function() {
-            const toast = document.createElement('div');
-            toast.className = 'toast align-items-center text-white bg-success border-0';
-            toast.setAttribute('role', 'alert');
-            toast.innerHTML = `
-                <div class="d-flex">
-                    <div class="toast-body">
-                        <i class="fas fa-check me-2"></i>Lien copie dans le presse-papiers !
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                </div>
-            `;
-            
-            document.body.appendChild(toast);
-            const bsToast = new bootstrap.Toast(toast);
-            bsToast.show();
-            
-            setTimeout(() => {
-                document.body.removeChild(toast);
-            }, 3000);
+            alert('Lien copié dans le presse-papiers !');
         });
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.download-info-card, .related-card');
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-});
 </script>
 @endpush

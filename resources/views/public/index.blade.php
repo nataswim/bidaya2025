@@ -254,13 +254,12 @@
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
 }
 .pagination .page-link {
-    color: #0ea5e9;
     border-color: #dee2e6;
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #0ea5e9;
-    border-color: #0ea5e9;
+    background-color: #0f5c78;
+    border-color: #ffffff;
 }
 
 .pagination .page-link:hover {

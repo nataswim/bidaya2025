@@ -6,9 +6,6 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactFormMail;
-
 
 class PublicController extends Controller
 {
@@ -125,92 +122,9 @@ class PublicController extends Controller
         return view('public.about');
     }
 
- public function accessibility()
-    {
-        return view('public.accessibility');
-    }
-
-public function cookies()
-{
-    return view('public.cookies');
-}
-public function features()
-{
-    return view('public.features');
-}
-public function legal()
-{
-    return view('public.legal');
-}
-public function privacy()
-{
-    return view('public.privacy');
-}
-public function pricing()
-{
-    return view('public.pricing');
-}
-public function guide()
-{
-    return view('public.guide');
-}
-    /**
-     * Afficher le formulaire de contact
-     */
     public function contact()
     {
         return view('public.contact');
-    }
-
-    /**
-     * Traiter l'envoi du formulaire de contact
-     */
-    public function contactSend(Request $request)
-    {
-        // Validation des données
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email:rfc,dns|max:255',
-            'phone' => 'nullable|string|max:20',
-            'subject' => 'required|in:information,support,partnership,billing,other',
-            'message' => 'required|string|min:20|max:5000',
-        ], [
-            'first_name.required' => 'Le prénom est requis.',
-            'last_name.required' => 'Le nom est requis.',
-            'email.required' => 'L\'email est requis.',
-            'email.email' => 'L\'email doit être valide.',
-            'subject.required' => 'Le sujet est requis.',
-            'subject.in' => 'Le sujet sélectionné n\'est pas valide.',
-            'message.required' => 'Le message est requis.',
-            'message.min' => 'Le message doit contenir au moins 20 caractères.',
-            'message.max' => 'Le message ne peut pas dépasser 5000 caractères.',
-        ]);
-
-        // Préparer les données avec le libellé du sujet
-        $subjectLabels = [
-            'information' => 'Demande d\'information',
-            'support' => 'Support technique',
-            'partnership' => 'Partenariat',
-            'billing' => 'Facturation',
-            'other' => 'Autre'
-        ];
-
-        $contactData = array_merge($validated, [
-            'subject_label' => $subjectLabels[$validated['subject']]
-        ]);
-
-        // Envoyer l'email
-        try {
-            Mail::to('natation.swimming@gmail.com')
-                ->send(new ContactFormMail($contactData));
-
-            return back()->with('success', 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
-        } catch (\Exception $e) {
-            return back()
-                ->withInput()
-                ->withErrors(['email' => 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.']);
-        }
     }
 
     public function home()
@@ -248,12 +162,6 @@ public function guide()
 
         return view('public.home', compact('featuredPosts', 'recentPosts', 'popularCategories'));
     }
-
-
-
-
-
-
 
     /**
      * Recherche avancee
