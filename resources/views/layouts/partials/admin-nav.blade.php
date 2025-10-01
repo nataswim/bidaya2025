@@ -48,6 +48,13 @@
                     @endif
                 </a>
             </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.media.categories') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.media.categories.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-running me-3"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
 
             <!-- Articles -->
             <li class="nav-item mb-1">

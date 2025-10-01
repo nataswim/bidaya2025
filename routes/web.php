@@ -215,6 +215,8 @@ Route::resource('fiches', FicheController::class)->parameters([
     Route::post('media-categories', [MediaController::class, 'storeCategory'])->name('media.categories.store');
     Route::delete('media-categories/{category}', [MediaController::class, 'destroyCategory'])->name('media.categories.destroy');
 
+    Route::post('media/bulk-action', [MediaController::class, 'bulkAction'])->name('media.bulk-action');
+
 
 // ========== ROUTES ENTRAÎNEMENT ADMIN ==========
 

@@ -9,7 +9,7 @@
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <h1 class="display-5 fw-bold mb-3">Articles</h1>
-                <p class="lead mb-0">Decouvrez nos derniers contenus sur le developpement web, les technologies modernes et les bonnes pratiques.</p>
+                <p class="lead mb-0">Decouvrez nos derniers contenus et les bonnes pratiques.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <div class="bg-white bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 

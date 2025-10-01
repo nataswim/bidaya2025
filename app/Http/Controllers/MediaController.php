@@ -6,6 +6,7 @@ use App\Models\Media;
 use App\Models\MediaCategory;
 use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\StoreMediaCategoryRequest;
+use App\Http\Requests\BulkMediaActionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -54,6 +55,95 @@ class MediaController extends Controller
     }
 
     /**
+     * Actions en masse sur les médias
+     */
+    public function bulkAction(BulkMediaActionRequest $request)
+    {
+        $this->checkAdminAccess();
+
+        $mediaIds = $request->getMediaIds();
+        $action = $request->input('action');
+
+        if (empty($mediaIds)) {
+            return redirect()->back()
+                ->with('error', 'Aucun média sélectionné.');
+        }
+
+        try {
+            switch ($action) {
+                case 'delete':
+                    $count = $this->bulkDelete($mediaIds);
+                    return redirect()->back()
+                        ->with('success', "{$count} média(s) supprimé(s) avec succès.");
+
+                case 'change_category':
+                    $categoryId = $request->input('category_id');
+                    $count = $this->bulkChangeCategory($mediaIds, $categoryId);
+                    $categoryName = $categoryId 
+                        ? MediaCategory::find($categoryId)->name 
+                        : 'Aucune catégorie';
+                    return redirect()->back()
+                        ->with('success', "{$count} média(s) déplacé(s) vers « {$categoryName} » avec succès.");
+
+                default:
+                    return redirect()->back()
+                        ->with('error', 'Action non reconnue.');
+            }
+        } catch (\Exception $e) {
+            \Log::error('Erreur action en masse médias', [
+                'error' => $e->getMessage(),
+                'action' => $action,
+                'media_ids' => $mediaIds
+            ]);
+            
+            return redirect()->back()
+                ->with('error', 'Erreur lors de l\'action en masse. Veuillez réessayer.');
+        }
+    }
+
+    /**
+     * Suppression en masse
+     */
+    private function bulkDelete(array $mediaIds): int
+    {
+        $media = Media::whereIn('id', $mediaIds)->get();
+        
+        foreach ($media as $item) {
+            // Supprimer le fichier physique
+            if (Storage::disk('public')->exists($item->path)) {
+                Storage::disk('public')->delete($item->path);
+            }
+            $item->delete();
+        }
+
+        return $media->count();
+    }
+
+    /**
+     * Changement de catégorie en masse
+     */
+    private function bulkChangeCategory(array $mediaIds, ?int $categoryId): int
+    {
+        return Media::whereIn('id', $mediaIds)
+            ->update(['media_category_id' => $categoryId]);
+    }
+
+    /**
+     * Voir les médias d'une catégorie
+     */
+    public function categoryMedia(MediaCategory $category)
+    {
+        $this->checkAdminAccess();
+        
+        $media = $category->media()
+            ->with(['uploader'])
+            ->latest()
+            ->paginate(24);
+
+        return view('admin.media.category-media', compact('category', 'media'));
+    }
+
+    /**
      * Upload de fichiers
      */
     public function store(StoreMediaRequest $request)
@@ -85,20 +175,20 @@ class MediaController extends Controller
     }
 
     /**
- * Afficher un media
- */
-public function show(Media $media)
-{
-    $this->checkAdminAccess();
-    
-    $media->load(['category', 'uploader']);
-    $categories = MediaCategory::active()->ordered()->get();
-    
-    return view('admin.media.show', compact('media', 'categories'));
-}
+     * Afficher un media
+     */
+    public function show(Media $media)
+    {
+        $this->checkAdminAccess();
+        
+        $media->load(['category', 'uploader']);
+        $categories = MediaCategory::active()->ordered()->get();
+        
+        return view('admin.media.show', compact('media', 'categories'));
+    }
 
     /**
-     * Mettre A jour un media
+     * Mettre à jour un media
      */
     public function update(Request $request, Media $media)
     {
@@ -116,7 +206,7 @@ public function show(Media $media)
         ]));
 
         return redirect()->route('admin.media.show', $media)
-            ->with('success', 'Media mis A jour avec succes.');
+            ->with('success', 'Media mis à jour avec succes.');
     }
 
     /**
@@ -222,7 +312,7 @@ public function show(Media $media)
             ->with('success', 'Categorie supprimee avec succes.');
     }
 
-    // ========== MeTHODES PRIVeES ==========
+    // ========== MÉTHODES PRIVÉES ==========
 
     /**
      * Upload d'un fichier

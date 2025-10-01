@@ -158,15 +158,15 @@
             </div>
 
             <!-- Pagination -->
-            @if($exercices->hasPages())
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            {{ $exercices->appends(request()->query())->links() }}
-                        </div>
-                    </div>
-                </div>
-            @endif
+@if($exercices->hasPages())
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="mt-5 d-flex justify-content-center">
+                {{ $exercices->appends(request()->query())->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+    </div>
+@endif
         @else
             <!-- Aucun résultat -->
             <div class="card border-0 shadow-sm">

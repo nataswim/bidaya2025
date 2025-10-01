@@ -190,17 +190,17 @@
                         </div>
 
                         <!-- Pagination -->
-                        @if($exercices->hasPages())
-                            <div class="card-footer bg-white border-top p-4">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="text-muted">
-                                        Affichage de {{ $exercices->firstItem() }} à {{ $exercices->lastItem() }} 
-                                        sur {{ $exercices->total() }} résultat(s)
-                                    </div>
-                                    {{ $exercices->appends(request()->query())->links() }}
-                                </div>
-                            </div>
-                        @endif
+@if($exercices->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $exercices->firstItem() }} à {{ $exercices->lastItem() }} 
+                sur {{ $exercices->total() }} résultat(s)
+            </div>
+            {{ $exercices->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-running fa-3x text-muted mb-3 opacity-25"></i>

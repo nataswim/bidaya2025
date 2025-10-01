@@ -170,11 +170,17 @@
         </div>
 
         <!-- Pagination -->
-        @if($users->hasPages())
-            <div class="card-footer bg-white border-top p-4">
-                {{ $users->links() }}
+@if($users->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $users->firstItem() }} à {{ $users->lastItem() }} 
+                sur {{ $users->total() }} résultat(s)
             </div>
-        @endif
+            {{ $users->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
     </div>
 </div>
 @endsection

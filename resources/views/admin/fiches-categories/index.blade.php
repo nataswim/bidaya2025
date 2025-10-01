@@ -249,19 +249,19 @@
         </div>
 
         <!-- Pagination -->
-        @if($categories->hasPages())
-            <div class="card-footer bg-white border-top p-4">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="text-muted">
-                        Affichage de {{ $categories->firstItem() }} à {{ $categories->lastItem() }} 
-                        sur {{ $categories->total() }} résultat(s)
-                    </div>
-                    <div>
-                        {{ $categories->appends(request()->query())->links() }}
-                    </div>
-                </div>
+@if($categories->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $categories->firstItem() }} à {{ $categories->lastItem() }} 
+                sur {{ $categories->total() }} résultat(s)
             </div>
-        @endif
+            <div>
+                {{ $categories->appends(request()->query())->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+    </div>
+@endif
     </div>
 </div>
 @endsection

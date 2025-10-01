@@ -247,13 +247,15 @@
         </div>
 
         <!-- Pagination -->
-        @if($plans->hasPages())
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    {{ $plans->appends(request()->query())->links() }}
-                </div>
+@if($plans->hasPages())
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="mt-5 d-flex justify-content-center">
+                {{ $plans->appends(request()->query())->links('pagination::bootstrap-5') }}
             </div>
-        @endif
+        </div>
+    </div>
+@endif
     @else
         <div class="text-center py-5">
             <i class="fas fa-calendar-alt fa-3x text-muted mb-4 opacity-25"></i>

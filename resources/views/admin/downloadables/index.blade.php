@@ -288,17 +288,17 @@
                         </div>
 
                         <!-- Pagination -->
-                        @if($downloadables->hasPages())
-                            <div class="card-footer bg-white border-top p-4">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="text-muted">
-                                        Affichage de {{ $downloadables->firstItem() }} A {{ $downloadables->lastItem() }} 
-                                        sur {{ $downloadables->total() }} resultat(s)
-                                    </div>
-                                    {{ $downloadables->appends(request()->query())->links() }}
-                                </div>
-                            </div>
-                        @endif
+@if($downloadables->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $downloadables->firstItem() }} à {{ $downloadables->lastItem() }} 
+                sur {{ $downloadables->total() }} résultat(s)
+            </div>
+            {{ $downloadables->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-water fa-3x text-muted mb-3 opacity-25"></i>

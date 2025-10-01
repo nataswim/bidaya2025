@@ -184,7 +184,6 @@
 /* Styles pour le contenu HTML de Quill */
 .content-display {
     line-height: 1.6;
-    max-height: 400px;
     overflow-y: auto;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;

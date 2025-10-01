@@ -157,17 +157,17 @@
                         </div>
 
                         <!-- Pagination -->
-                        @if($tags->hasPages())
-                            <div class="mt-4">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="text-muted">
-                                        Affichage de {{ $tags->firstItem() }} A {{ $tags->lastItem() }} 
-                                        sur {{ $tags->total() }} resultat(s)
-                                    </div>
-                                    {{ $tags->appends(request()->query())->links() }}
-                                </div>
-                            </div>
-                        @endif
+@if($tags->hasPages())
+    <div class="mt-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $tags->firstItem() }} à {{ $tags->lastItem() }} 
+                sur {{ $tags->total() }} résultat(s)
+            </div>
+            {{ $tags->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-tags fa-3x text-muted mb-3 opacity-25"></i>

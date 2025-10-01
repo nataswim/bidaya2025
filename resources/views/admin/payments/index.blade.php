@@ -263,11 +263,17 @@
             </div>
 
             <!-- Pagination -->
-            @if($payments->hasPages())
-                <div class="card-footer bg-white border-top p-4">
-                    {{ $payments->links() }}
-                </div>
-            @endif
+@if($payments->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $payments->firstItem() }} à {{ $payments->lastItem() }} 
+                sur {{ $payments->total() }} résultat(s)
+            </div>
+            {{ $payments->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
 
         @else
             <!-- etat vide -->

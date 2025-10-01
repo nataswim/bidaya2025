@@ -25,7 +25,9 @@
     <div class="d-flex">
         @include('layouts.partials.admin-nav')
         
-        <div class="flex-fill d-flex flex-column">
+        <div class="flex-fill d-flex flex-column overflow-auto" style="overflow-x: auto;">
+                    <!-- flex-fill d-flex flex-column --> 
+
             @include('layouts.partials.admin-header')
             
             <main class="flex-fill p-4">

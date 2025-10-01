@@ -199,17 +199,17 @@
                         @endforeach
 
                         <!-- Pagination -->
-                        @if($permissions->hasPages())
-                            <div class="card-footer bg-white border-top p-4">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="text-muted">
-                                        Affichage de {{ $permissions->firstItem() }} A {{ $permissions->lastItem() }} 
-                                        sur {{ $permissions->total() }} resultat(s)
-                                    </div>
-                                    {{ $permissions->appends(request()->query())->links() }}
-                                </div>
-                            </div>
-                        @endif
+@if($permissions->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $permissions->firstItem() }} à {{ $permissions->lastItem() }} 
+                sur {{ $permissions->total() }} résultat(s)
+            </div>
+            {{ $permissions->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-key fa-3x text-muted mb-3 opacity-25"></i>

@@ -24,121 +24,193 @@
                 </div>
             </div>
 
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-0">
-                    @if($categories->count() > 0)
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th class="ps-4">Categorie</th>
-                                        <th>Description</th>
-                                        <th class="text-center">Medias</th>
-                                        <th class="text-center">Ordre</th>
-                                        <th class="text-center">Statut</th>
-                                        <th class="text-center">Creee le</th>
-                                        <th class="text-center pe-4">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($categories as $category)
-                                        <tr>
-                                            <td class="ps-4">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="rounded me-3" 
-                                                         style="width: 24px; height: 24px; background-color: {{ $category->color }}"></div>
-                                                    <div>
-                                                        <h6 class="mb-0">{{ $category->name }}</h6>
-                                                        <small class="text-muted">{{ $category->slug }}</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="text-muted">
-                                                    {{ Str::limit($category->description, 60) ?: '-' }}
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="{{ route('admin.media.index', ['category' => $category->id]) }}" 
-                                                   class="text-decoration-none">
-                                                    <span class="badge bg-primary-subtle text-primary">
-                                                        {{ $category->media_count }}
-                                                    </span>
-                                                </a>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="text-muted">{{ $category->order }}</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="badge bg-{{ $category->is_active ? 'success' : 'secondary' }}-subtle text-{{ $category->is_active ? 'success' : 'secondary' }}">
-                                                    {{ $category->is_active ? 'Active' : 'Inactive' }}
-                                                </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="text-muted">
-                                                    {{ $category->created_at->format('d/m/Y') }}
-                                                </span>
-                                            </td>
-                                            <td class="text-center pe-4">
-                                                <div class="d-flex justify-content-center gap-1">
-                                                    <a href="{{ route('admin.media.index', ['category' => $category->id]) }}" 
-                                                       class="btn btn-outline-primary btn-sm"
-                                                       title="Voir les medias">
-                                                        <i class="fas fa-images"></i>
+            @if($categories->count() > 0)
+                <div class="row g-4">
+                    @foreach($categories as $category)
+                        <div class="col-lg-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <!-- En-tête de la catégorie -->
+                                <div class="card-header d-flex justify-content-between align-items-center" 
+                                     style="background-color: {{ $category->color }}15; border-left: 4px solid {{ $category->color }}">
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded me-3" 
+                                             style="width: 32px; height: 32px; background-color: {{ $category->color }}"></div>
+                                        <div>
+                                            <h5 class="mb-0">{{ $category->name }}</h5>
+                                            <small class="text-muted">{{ $category->media_count }} média(s)</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-1">
+                                        <!-- Bouton upload dans cette catégorie -->
+                                        <button type="button" 
+                                                class="btn btn-sm btn-primary" 
+                                                onclick="openUploadForCategory({{ $category->id }}, '{{ $category->name }}')"
+                                                title="Uploader dans cette catégorie">
+                                            <i class="fas fa-upload"></i>
+                                        </button>
+                                        <a href="{{ route('admin.media.index', ['category' => $category->id]) }}" 
+                                           class="btn btn-sm btn-outline-primary"
+                                           title="Voir tous les médias">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        @if($category->media_count === 0)
+                                            <form method="POST" 
+                                                  action="{{ route('admin.media.categories.destroy', $category) }}"
+                                                  onsubmit="return confirm('Êtes-vous sûr ?')"
+                                                  class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="btn btn-sm btn-outline-danger"
+                                                        title="Supprimer">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                @if($category->description)
+                                    <div class="card-body py-2 border-bottom">
+                                        <small class="text-muted">{{ $category->description }}</small>
+                                    </div>
+                                @endif
+
+                                <!-- Miniatures des médias -->
+                                <div class="card-body">
+                                    @if($category->media_count > 0)
+                                        <div class="row g-2">
+                                            @foreach($category->media()->latest()->limit(6)->get() as $media)
+                                                <div class="col-4">
+                                                    <a href="{{ route('admin.media.show', $media) }}" 
+                                                       class="d-block position-relative">
+                                                        <img src="{{ $media->url }}" 
+                                                             alt="{{ $media->name }}"
+                                                             class="img-fluid rounded shadow-sm"
+                                                             style="width: 100%; height: 100px; object-fit: cover;">
+                                                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0 hover-overlay rounded d-flex align-items-center justify-content-center">
+                                                            <i class="fas fa-search-plus text-white d-none"></i>
+                                                        </div>
                                                     </a>
-                                                    @if($category->media_count === 0)
-                                                        <form method="POST" 
-                                                              action="{{ route('admin.media.categories.destroy', $category) }}"
-                                                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette categorie ?')"
-                                                              class="d-inline">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" 
-                                                                    class="btn btn-outline-danger btn-sm"
-                                                                    title="Supprimer">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    @else
-                                                        <button type="button" 
-                                                                class="btn btn-outline-secondary btn-sm"
-                                                                title="Contient des medias"
-                                                                disabled>
-                                                            <i class="fas fa-lock"></i>
-                                                        </button>
-                                                    @endif
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <div class="text-center py-5">
-                            <div class="mb-4">
-                                <i class="fas fa-folder fa-4x text-muted opacity-50"></i>
+                                            @endforeach
+                                        </div>
+                                        @if($category->media_count > 6)
+                                            <div class="text-center mt-3">
+                                                <a href="{{ route('admin.media.index', ['category' => $category->id]) }}" 
+                                                   class="btn btn-sm btn-outline-primary">
+                                                    Voir les {{ $category->media_count }} médias
+                                                    <i class="fas fa-arrow-right ms-1"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @else
+                                        <div class="text-center py-4 text-muted">
+                                            <i class="fas fa-images fa-2x mb-2 opacity-50"></i>
+                                            <p class="mb-2">Aucun média dans cette catégorie</p>
+                                            <button type="button" 
+                                                    class="btn btn-sm btn-outline-primary"
+                                                    onclick="openUploadForCategory({{ $category->id }}, '{{ $category->name }}')">
+                                                <i class="fas fa-upload me-1"></i>Uploader maintenant
+                                            </button>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="card-footer bg-light">
+                                    <div class="row text-center small text-muted">
+                                        <div class="col-4">
+                                            <i class="fas fa-sort-amount-down me-1"></i>
+                                            Ordre: {{ $category->order }}
+                                        </div>
+                                        <div class="col-4">
+                                            <span class="badge bg-{{ $category->is_active ? 'success' : 'secondary' }}">
+                                                {{ $category->is_active ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </div>
+                                        <div class="col-4">
+                                            <i class="fas fa-calendar me-1"></i>
+                                            {{ $category->created_at->format('d/m/Y') }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="text-muted">Aucune categorie creee</h5>
-                            <p class="text-muted mb-4">Creez votre premiere categorie pour organiser vos medias.</p>
-                            <button type="button" 
-                                    class="btn btn-primary" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#categoryModal">
-                                <i class="fas fa-plus me-2"></i>Creer une categorie
-                            </button>
                         </div>
-                    @endif
+                    @endforeach
                 </div>
-            </div>
+            @else
+                <div class="text-center py-5">
+                    <div class="mb-4">
+                        <i class="fas fa-folder fa-4x text-muted opacity-50"></i>
+                    </div>
+                    <h5 class="text-muted">Aucune categorie creee</h5>
+                    <p class="text-muted mb-4">Creez votre premiere categorie pour organiser vos medias.</p>
+                    <button type="button" 
+                            class="btn btn-primary" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#categoryModal">
+                        <i class="fas fa-plus me-2"></i>Creer une categorie
+                    </button>
+                </div>
+            @endif
         </div>
     </div>
 </div>
 
 <!-- Modal Categorie -->
 @include('admin.media.modals.category')
+
+<!-- Modal Upload avec catégorie pré-sélectionnée -->
+@include('admin.media.modals.upload')
 @endsection
+
+@push('styles')
+<style>
+    .hover-overlay:hover {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+    }
+    .hover-overlay:hover i {
+        display: block !important;
+    }
+</style>
+@endpush
 
 @push('scripts')
 <script src="{{ asset('js/media-manager.js') }}"></script>
+<script>
+function openUploadForCategory(categoryId, categoryName) {
+    // Ouvrir le modal
+    const uploadModal = new bootstrap.Modal(document.getElementById('uploadModal'));
+    
+    // Pré-sélectionner la catégorie
+    const categorySelect = document.getElementById('media_category_id');
+    if (categorySelect) {
+        categorySelect.value = categoryId;
+    }
+    
+    // Mettre à jour le titre du modal
+    const modalTitle = document.querySelector('#uploadModal .modal-title');
+    if (modalTitle) {
+        modalTitle.innerHTML = `
+            <i class="fas fa-cloud-upload-alt text-primary me-2"></i>
+            Uploader dans : <span class="text-primary">${categoryName}</span>
+        `;
+    }
+    
+    uploadModal.show();
+}
+
+// Réinitialiser le titre du modal à la fermeture
+document.getElementById('uploadModal')?.addEventListener('hidden.bs.modal', function() {
+    const modalTitle = this.querySelector('.modal-title');
+    if (modalTitle) {
+        modalTitle.innerHTML = `
+            <i class="fas fa-cloud-upload-alt text-primary me-2"></i>
+            Uploader des fichiers
+        `;
+    }
+});
+</script>
 @endpush

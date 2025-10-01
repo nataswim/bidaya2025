@@ -208,17 +208,17 @@
                         </div>
 
                         <!-- Pagination -->
-                        @if($categories->hasPages())
-                            <div class="card-footer bg-white border-top p-4">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="text-muted">
-                                        Affichage de {{ $categories->firstItem() }} A {{ $categories->lastItem() }} 
-                                        sur {{ $categories->total() }} resultat(s)
-                                    </div>
-                                    {{ $categories->appends(request()->query())->links() }}
-                                </div>
-                            </div>
-                        @endif
+@if($categories->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $categories->firstItem() }} à {{ $categories->lastItem() }} 
+                sur {{ $categories->total() }} résultat(s)
+            </div>
+            {{ $categories->appends(request()->query())->links('pagination::bootstrap-5') }}
+        </div>
+    </div>
+@endif
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-folder fa-3x text-muted mb-3 opacity-25"></i>
