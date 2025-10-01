@@ -183,7 +183,7 @@
                                             </td>
                                             <td class="px-4 py-3">
                                                 @if($log->user_agent)
-                                                    <small class="text-muted">{{ Str::limit($log->user_agent, 50) }}</small>
+                                                    <small class="text-muted">{!! Str::limit($log->user_agent, 50) !!}</small>
                                                 @else
                                                     <span class="text-muted">Non disponible</span>
                                                 @endif
@@ -258,7 +258,7 @@
                             <div>
                                 <strong>{{ $downloadable->category->name }}</strong>
                                 @if($downloadable->category->short_description)
-                                    <div class="text-muted small">{{ Str::limit($downloadable->category->short_description, 50) }}</div>
+                                    <div class="text-muted small">{!! Str::limit($downloadable->category->short_description, 50) }}</div>
                                 @endif
                             </div>
                         </div>

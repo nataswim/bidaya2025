@@ -171,7 +171,7 @@
                             <div>
                                 <strong>{{ $fiche->category->name }}</strong>
                                 @if($fiche->category->description)
-                                    <div class="text-muted small">{{ Str::limit($fiche->category->description, 50) }}</div>
+                                    <div class="text-muted small">{!! Str::limit($fiche->category->description, 50) !!}</div>
                                 @endif
                             </div>
                         </div>

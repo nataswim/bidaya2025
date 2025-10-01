@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h6 class="mb-1">{{ Str::limit($post->name, 40) }}</h6>
+                                        <h6 class="mb-1">{!! Str::limit($post->name, 40) !!}</h6>
                                         <small class="text-muted">{{ $post->hits }} vues</small>
                                     </div>
                                 </div>

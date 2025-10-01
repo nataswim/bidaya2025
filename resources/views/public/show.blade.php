@@ -112,7 +112,7 @@
                                 @if($post->content)
                                 <div class="content-preview position-relative mt-3">
                                     <div class="text-muted p-3 border rounded" style="max-height: 150px; overflow: hidden;">
-                                        {{ Str::limit(strip_tags($post->content), 300) }}
+                                        {!! Str::limit(strip_tags($post->content), 300) !!}
                                     </div>
                                     <div class="position-absolute bottom-0 start-0 w-100 text-center py-2"
                                         style="background: linear-gradient(transparent, white, white);">
@@ -150,7 +150,7 @@
                                 <div class="col">
                                     <a href="{{ route('public.show', $recentPost) }}"
                                         class="text-decoration-none">
-                                        <h6 class="mb-1">{{ Str::limit($recentPost->name, 60) }}</h6>
+                                        <h6 class="mb-1">{!! Str::limit($recentPost->name, 60) !!}</h6>
                                     </a>
                                     <div class="small text-muted d-flex align-items-center gap-3">
                                         <span>
@@ -322,7 +322,7 @@
                             <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
                             @if($post->intro)
                             <p class="card-text text-muted small">
-                                {{ Str::limit(strip_tags($post->intro), 100) }}
+                                {!! Str::limit(strip_tags($post->intro), 100) !!}
                             </p>
                             @endif
                         </div>

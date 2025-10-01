@@ -95,7 +95,7 @@
                             <div class="flex-fill">
                                 <h6 class="mb-1">
                                     <a href="{{ route('admin.posts.show', $post) }}" class="text-decoration-none">
-                                        {{ Str::limit($post->name, 50) }}
+                                        {!! Str::limit($post->name, 50) !!}
                                     </a>
                                 </h6>
                                 <div class="d-flex align-items-center text-muted">

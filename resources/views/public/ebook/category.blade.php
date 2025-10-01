@@ -196,7 +196,7 @@
                                         @if($download->cover_image)
                                             <img src="{{ $download->cover_image }}" 
                                                  class="card-img-top" 
-                                                 style="height: 200px; object-fit: cover;"
+                                                 style="height: 100%; object-fit: cover;"
                                                  alt="{{ $download->title }}">
                                         @else
                                             <div class="card-img-top bg-gradient-secondary d-flex align-items-center justify-content-center" 
@@ -219,7 +219,7 @@
                                         
                                         @if($download->short_description)
                                             <p class="card-text text-muted flex-grow-1 small">
-                                                {{ Str::limit($download->short_description, 100) }}
+                                                {!! Str::limit($download->short_description, 100) !!}
                                             </p>
                                         @endif
 

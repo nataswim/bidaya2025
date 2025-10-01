@@ -128,7 +128,7 @@
                                                 
                                                 @if($seance->description)
                                                     <p class="card-text text-muted small">
-                                                        {{ Str::limit(strip_tags($seance->description), 80) }}
+                                                        {!! Str::limit(strip_tags($seance->description), 80) !!}
                                                     </p>
                                                 @endif
                                                 

@@ -8,17 +8,15 @@
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            <i class="fas fa-calculator text-warning"></i>
-            Outils & Calculateurs Sportifs
-            <i class="fas fa-chart-line text-success"></i>
+            Outils & Calculateurs Pour le Sport
         </h1>
         <div class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
             <div class="d-flex align-items-start">
                 <i class="fas fa-flask text-info me-3 mt-1"></i>
                 <div class="text-dark">
-                    <strong>Collection scientifique complete</strong> d'outils pour optimiser votre sante, 
-                    performance et entraînement sportif bases sur les recherches 2024
+                    <strong>Collection</strong> d'outils pour optimiser votre sante, 
+                    performance et entraînement sportif bases sur des recherches
                 </div>
             </div>
         </div>
@@ -463,7 +461,7 @@
                                 <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
                                 @if($post->intro)
                                     <p class="card-text text-muted small">
-                                        {{ Str::limit(strip_tags($post->intro), 100) }}
+                                        {!! Str::limit(strip_tags($post->intro), 100) !!}
                                     </p>
                                 @endif
                             </div>

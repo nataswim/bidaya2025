@@ -97,7 +97,7 @@
                                                     @endif
 
                                                     @if($tag->description)
-                                                        <p class="text-muted small mb-2">{{ Str::limit($tag->description, 60) }}</p>
+                                                        <p class="text-muted small mb-2">{!! Str::limit($tag->description, 60) !!}</p>
                                                     @endif
                                                     
                                                     <div class="d-flex align-items-center justify-content-between text-muted small">

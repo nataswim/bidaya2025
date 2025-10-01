@@ -108,7 +108,7 @@
                                             @if($payment->admin_notes)
                                                 <div class="small">
                                                     <i class="fas fa-sticky-note text-muted me-1"></i>
-                                                    {{ Str::limit($payment->admin_notes, 50) }}
+                                                    {!! Str::limit($payment->admin_notes, 50) !!}
                                                 </div>
                                             @else
                                                 <span class="text-muted">-</span>

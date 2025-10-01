@@ -125,9 +125,9 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" 
                                                            type="checkbox" 
-                                                           id="toggle_{{ Str::slug($groupName) }}"
-                                                           onchange="toggleGroup('{{ Str::slug($groupName) }}')">
-                                                    <label class="form-check-label small" for="toggle_{{ Str::slug($groupName) }}">
+                                                           id="toggle_{!! Str::slug($groupName) !!}"
+                                                           onchange="toggleGroup('{!! Str::slug($groupName) !!}')">
+                                                    <label class="form-check-label small" for="toggle_{!! Str::slug($groupName) !!}">
                                                         Tout
                                                     </label>
                                                 </div>
@@ -141,12 +141,12 @@
                                                            name="permissions[]" 
                                                            value="{{ $permission->id }}" 
                                                            id="permission_{{ $permission->id }}"
-                                                           data-group="{{ Str::slug($groupName) }}"
+                                                           data-group="{!! Str::slug($groupName) !!}"
                                                            {{ in_array($permission->id, old('permissions', $currentPermissions)) ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="permission_{{ $permission->id }}">
                                                         <strong class="d-block">{{ $permission->name }}</strong>
                                                         @if($permission->description)
-                                                            <small class="text-muted">{{ Str::limit($permission->description, 60) }}</small>
+                                                            <small class="text-muted">{!! Str::limit($permission->description, 60) !!}</small>
                                                         @endif
                                                     </label>
                                                 </div>

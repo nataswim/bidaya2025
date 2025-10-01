@@ -122,7 +122,7 @@
                                                         <h6 class="mb-1">
                                                             <a href="{{ route('admin.posts.show', $post) }}" 
                                                                class="text-decoration-none text-dark">
-                                                                {{ Str::limit($post->name, 60) }}
+                                                                {!! Str::limit($post->name, 60) !!}
                                                             </a>
                                                         </h6>
                                                         @if($post->intro)

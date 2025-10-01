@@ -73,7 +73,7 @@
                                                 </a>
                                             </h6>
                                             @if($serie->consignes)
-    <small class="text-muted">{{ Str::limit(strip_tags($serie->consignes), 50) }}</small>
+    <small class="text-muted">{!! Str::limit(strip_tags($serie->consignes), 50) !!}</small>
 @endif
                                         </div>
                                     </td>

@@ -107,11 +107,11 @@
                                                         <h6 class="mb-1">
                                                             <a href="{{ route('admin.training.exercices.show', $exercice) }}" 
                                                                class="text-decoration-none text-dark">
-                                                                {{ Str::limit($exercice->titre, 50) }}
+                                                                {!! Str::limit($exercice->titre, 50) !!}
                                                             </a>
                                                         </h6>
                                                         @if($exercice->description)
-    <small class="text-muted">{{ Str::limit(strip_tags($exercice->description), 60) }}</small>
+    <small class="text-muted">{!! Str::limit(strip_tags($exercice->description), 60) !!}</small>
 @endif
                                                     </div>
                                                 </div>

@@ -198,7 +198,7 @@
                                 {{ old('role_id', isset($user) ? $user->role_id : '') == $role->id ? 'selected' : '' }}>
                             {{ $role->display_name ?? $role->name }}
                             @if($role->description)
-                                - {{ Str::limit($role->description, 30) }}
+                                - {!! Str::limit($role->description, 30) !!}
                             @endif
                         </option>
                     @endforeach

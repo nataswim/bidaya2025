@@ -130,7 +130,7 @@
                                 
                                 @if($exercice->description)
                                     <p class="card-text text-muted small flex-fill">
-                                        {{ Str::limit(strip_tags($exercice->description), 100) }}
+                                        {!! Str::limit(strip_tags($exercice->description), 100) !!}
                                     </p>
                                 @endif
                                 
@@ -274,7 +274,7 @@
                                 <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
                                 @if($post->intro)
                                     <p class="card-text text-muted small">
-                                        {{ Str::limit(strip_tags($post->intro), 100) }}
+                                        {!! Str::limit(strip_tags($post->intro), 100) !!}
                                     </p>
                                 @endif
                             </div>
@@ -296,6 +296,12 @@
                 <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
             </div>
         @endif
+   
+   <div class="text-center">
+    <img src="{{ asset('assets/images/team/nataswim-application-banner-11.jpg') }}" 
+         alt="exercice de musculation" 
+         class="img-fluid rounded shadow">
+</div>
     </div>
 </section>
 @endsection

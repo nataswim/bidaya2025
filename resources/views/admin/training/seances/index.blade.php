@@ -93,7 +93,7 @@
                                                     </a>
                                                 </h6>
                                                 @if($seance->description)
-    <small class="text-muted">{{ Str::limit(strip_tags($seance->description), 60) }}</small>
+    <small class="text-muted">{!! Str::limit(strip_tags($seance->description), 60) !!}</small>
 @endif
                                             </div>
                                         </div>

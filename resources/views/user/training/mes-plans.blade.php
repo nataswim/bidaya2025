@@ -119,7 +119,7 @@
                             <!-- Description -->
                             @if($plan->description)
                                 <p class="card-text text-muted small">
-                                    {{ Str::limit(strip_tags($plan->description), 120) }}
+                                    {!! Str::limit(strip_tags($plan->description), 120) !!}
                                 </p>
                             @endif
 

@@ -505,7 +505,7 @@
                                 <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
                                 @if($post->intro)
                                     <p class="card-text text-muted small">
-                                        {{ Str::limit(strip_tags($post->intro), 100) }}
+                                        {!! Str::limit(strip_tags($post->intro), 100) !!}
                                     </p>
                                 @endif
                             </div>

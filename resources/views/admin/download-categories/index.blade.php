@@ -103,7 +103,7 @@
                                                             </a>
                                                         </h6>
                                                         @if($category->short_description)
-                                                            <small class="text-muted">{{ Str::limit($category->short_description, 80) }}</small>
+                                                            <small class="text-muted">{!! Str::limit($category->short_description, 80) !!}</small>
                                                         @endif
                                                         <div class="mt-1">
                                                             <small class="text-muted">

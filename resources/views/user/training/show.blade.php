@@ -197,7 +197,7 @@
                                     </div>
                                     
                                     @if($cycle->description)
-    <p class="text-muted mb-3">{{ Str::limit(strip_tags($cycle->description), 100) }}</p>
+    <p class="text-muted mb-3">{!! Str::limit(strip_tags($cycle->description), 100) !!}</p>
 @endif
                                     
                                     <div class="d-flex justify-content-between align-items-center mb-3">

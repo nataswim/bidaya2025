@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ Str::limit($downloadable->title, 50) }}
+                    {!! Str::limit($downloadable->title, 50) !!}
                 </li>
             </ol>
         </nav>
@@ -290,7 +290,7 @@
                                 <div class="d-grid gap-2">
                                     <a href="{{ route('ebook.category', $category->slug) }}" 
                                        class="btn btn-primary">
-                                        <i class="fas fa-arrow-left me-2"></i>Retour à {{ Str::limit($category->name, 30) }}
+                                        <i class="fas fa-arrow-left me-2"></i>Retour à {!! Str::limit($category->name, 30) !!}
                                     </a>
                                     <a href="{{ route('ebook.index') }}" 
                                        class="btn btn-outline-secondary">
@@ -341,7 +341,7 @@
                         </div>
                         
                         <div class="card-body d-flex flex-column">
-                            <h6 class="card-title mb-2">{{ Str::limit($related->title, 60) }}</h6>
+                            <h6 class="card-title mb-2">{!! Str::limit($related->title, 60) }}</h6>
                             <small class="text-muted mb-3">
                                 <i class="fas fa-download me-1"></i>{{ number_format($related->download_count) }} téléchargements
                             </small>

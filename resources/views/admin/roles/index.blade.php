@@ -52,7 +52,7 @@
                                                 @endif
                                             </div>
                                             @if($role->description)
-                                                <small class="text-muted d-block mt-1">{{ Str::limit($role->description, 80) }}</small>
+                                                <small class="text-muted d-block mt-1">{!! Str::limit($role->description, 80) !!}</small>
                                             @endif
                                         </div>
                                     </div>

@@ -118,7 +118,7 @@
                                                         <h6 class="mb-1">
                                                             <a href="{{ route('admin.fiches.show', $fiche) }}" 
                                                                class="text-decoration-none text-dark">
-                                                                {{ Str::limit($fiche->title, 60) }}
+                                                                {!! Str::limit($fiche->title, 60) !!}
                                                             </a>
                                                         </h6>
                                                         @if($fiche->short_description)

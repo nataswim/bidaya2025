@@ -167,7 +167,7 @@
                                                 </div>
                                                 @if($serie->exercice->description)
                                                     <p class="text-muted small mb-2">
-                                                        {{ Str::limit(strip_tags($serie->exercice->description), 120) }}
+                                                        {!! Str::limit(strip_tags($serie->exercice->description), 120) !!}
                                                     </p>
                                                 @endif
                                                 @if($serie->exercice->muscles_cibles && count($serie->exercice->muscles_cibles) > 0)

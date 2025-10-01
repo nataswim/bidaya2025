@@ -76,7 +76,7 @@
                                                     </a>
                                                 </h6>
                                                 @if($cycle->description)
-    <small class="text-muted">{{ Str::limit(strip_tags($cycle->description), 80) }}</small>
+    <small class="text-muted">{!! Str::limit(strip_tags($cycle->description), 80)  !!}</small>
 @endif
                                                 <div class="mt-1">
                                                     <span class="badge bg-primary">{{ $cycle->objectif_label }}</span>

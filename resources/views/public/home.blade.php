@@ -369,10 +369,10 @@
                                 @endif
                                 <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
                                 @if($post->intro)
-                                    <p class="card-text text-muted small">
-                                        {{ Str::limit(strip_tags($post->intro), 100) }}
-                                    </p>
-                                @endif
+    <p class="card-text text-muted small">
+        {!! Str::limit(strip_tags($post->intro), 100) !!}
+    </p>
+@endif
                             </div>
                             <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
                                 <small class="text-muted d-flex align-items-center">
@@ -393,12 +393,18 @@
             </div>
         @endif
     </div>
+       
+   <div class="text-center">
+    <img src="{{ asset('assets/images/team/nataswim-application-banner-1.jpg') }}" 
+         alt="site nataswim application" 
+         class="img-fluid rounded shadow">
+</div>
 </section>
 
 <!-- Call to Action -->
 <section class="py-5 bg-white">
     <div class="container-lg text-center py-4">
-        <h2 class="mb-4 fw-bold">Prêt A ameliorer vos performances aquatiques ?</h2>
+        <h2 class="mb-4 fw-bold">Prêt a ameliorer vos performances  ?</h2>
         <p class="lead text-muted mb-4 mx-auto" style="max-width: 700px;">
             Rejoignez des milliers de nageurs, entraineurs et triathletes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entrainements.
         </p>

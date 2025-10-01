@@ -120,7 +120,7 @@
                                                             @endif
                                                         </div>
                                                         @if($permission->description)
-                                                            <small class="text-muted d-block mt-1">{{ Str::limit($permission->description, 80) }}</small>
+                                                            <small class="text-muted d-block mt-1">{!! Str::limit($permission->description, 80) !!}</small>
                                                         @endif
                                                     </div>
                                                 </div>

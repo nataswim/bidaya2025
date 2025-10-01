@@ -46,13 +46,17 @@
                         <i class="fas fa-dumbbell me-2"></i>Musculation
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('plans.index') }}">
-                        <i class="fas fa-calendar-alt me-2"></i>Plans
-                    </a>
-                </li>
                 
+                
+
+<li class="nav-item">
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('tools.index') }}">
+                        <i class="fas fa-calculator me-2"></i>Outils
+                    </a>
+                    
+                </li>
+
             </ul>
             
             <!-- Section utilisateur -->

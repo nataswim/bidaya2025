@@ -204,7 +204,7 @@
                             <h5 class="card-title fw-bold mb-3">{{ $download->title }}</h5>
                             @if($download->short_description)
                                 <p class="card-text text-muted flex-grow-1">
-                                    {{ Str::limit($download->short_description, 120) }}
+                                    {!! Str::limit($download->short_description, 120) !!}
                                 </p>
                             @endif
                             
@@ -267,7 +267,7 @@
                             @if($download->cover_image)
                                 <img src="{{ $download->cover_image }}" 
                                      class="card-img-top" 
-                                     style="height: 150px; object-fit: cover;"
+                                     style="height: 100%; object-fit: cover;"
                                      alt="{{ $download->title }}">
                             @else
                                 <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
@@ -287,7 +287,7 @@
                                     {{ $download->category->name }}
                                 </span>
                             </div>
-                            <h6 class="card-title fw-bold mb-3">{{ Str::limit($download->title, 50) }}</h6>
+                            <h6 class="card-title fw-bold mb-3">{!! Str::limit($download->title, 50) !!}</h6>
                             
                             <div class="d-grid">
                                 <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}" 

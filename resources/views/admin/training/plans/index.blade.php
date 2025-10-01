@@ -92,7 +92,7 @@
                                                             @endif
                                                         </h6>
                                                         @if($plan->description)
-    <small class="text-muted d-block">{{ Str::limit(strip_tags($plan->description), 80) }}</small>
+    <small class="text-muted d-block">{!! Str::limit(strip_tags($plan->description), 80) !!}</small>
 @endif
                                                         <div class="d-flex gap-2 mt-2">
                                                             <span class="badge bg-{{ $plan->niveau === 'debutant' ? 'success' : ($plan->niveau === 'avance' ? 'danger' : 'warning') }}">

@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ Str::limit($fiche->title, 50) }}
+                    {!! Str::limit($fiche->title, 50) !!}
                 </li>
             </ol>
         </nav>
@@ -167,7 +167,7 @@
                                             @endif
                                             
                                             <div class="card-body p-3">
-                                                <h6 class="card-title">{{ Str::limit($related->title, 60) }}</h6>
+                                                <h6 class="card-title">{!! Str::limit($related->title, 60) !!}</h6>
                                                 <a href="{{ route('public.fiches.show', [$category, $related]) }}" 
                                                    class="stretched-link"></a>
                                             </div>
@@ -290,7 +290,7 @@
                                 <div class="d-grid gap-2">
                                     <a href="{{ route('public.fiches.category', $category) }}" 
                                        class="btn btn-primary">
-                                        <i class="fas fa-arrow-left me-2"></i>Retour à {{ Str::limit($category->name, 30) }}
+                                        <i class="fas fa-arrow-left me-2"></i>Retour à {!! Str::limit($category->name, 30) !!}
                                     </a>
                                     <a href="{{ route('public.fiches.index') }}" 
                                        class="btn btn-outline-secondary">

@@ -169,7 +169,7 @@
                                                         <h6 class="mb-1">
                                                             <a href="{{ route('admin.downloadables.show', $downloadable) }}" 
                                                                class="text-decoration-none text-dark">
-                                                                {{ Str::limit($downloadable->title, 50) }}
+                                                                {!! Str::limit($downloadable->title, 50) !!}
                                                             </a>
                                                         </h6>
                                                         @if($downloadable->file_size)

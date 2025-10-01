@@ -209,7 +209,7 @@
                             <div class="flex-fill">
                                 <h6 class="mb-1">
                                     <a href="{{ route('public.show', $article) }}" class="text-decoration-none text-dark">
-                                        {{ Str::limit($article->name, 60) }}
+                                        {!! Str::limit($article->name, 60) !!}
                                     </a>
                                 </h6>
                                 <div class="d-flex align-items-center text-muted">
@@ -260,7 +260,7 @@
 
                     @if(auth()->user()->bio)
                         <div class="mb-3">
-                            <small class="text-muted">{{ Str::limit(auth()->user()->bio, 100) }}</small>
+                            <small class="text-muted">{!! Str::limit(auth()->user()->bio, 100) }}</small>
                         </div>
                     @endif
 

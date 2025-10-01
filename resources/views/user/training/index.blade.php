@@ -118,7 +118,7 @@
                                     </div>
                                     
                                    @if($plan->description)
-    <p class="card-text text-muted small">{{ Str::limit(strip_tags($plan->description), 100) }}</p>
+    <p class="card-text text-muted small">{!! Str::limit(strip_tags($plan->description), 100) !!}</p>
 @endif
                                     
                                     <div class="d-flex justify-content-between align-items-center mt-auto">
@@ -231,7 +231,7 @@
                             </div>
                             
                             @if($plan->description)
-    <p class="card-text text-muted small flex-fill">{{ Str::limit(strip_tags($plan->description), 120) }}</p>
+    <p class="card-text text-muted small flex-fill">{!! Str::limit(strip_tags($plan->description), 120) }}</p>
 @endif
                             
                             <div class="d-flex justify-content-between align-items-center mt-auto">

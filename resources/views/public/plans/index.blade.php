@@ -194,7 +194,7 @@
                                             <i class="fas fa-info-circle me-1"></i>Prérequis
                                         </small>
                                         <p class="small text-muted mb-0">
-                                            {{ Str::limit(strip_tags($plan->prerequis), 80) }}
+                                            {!! Str::limit(strip_tags($plan->prerequis), 80) !!}
                                         </p>
                                     </div>
                                 @endif

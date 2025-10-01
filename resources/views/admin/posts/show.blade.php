@@ -165,7 +165,7 @@
                             <div>
                                 <strong>{{ $post->category->name }}</strong>
                                 @if($post->category->description)
-                                    <div class="text-muted small">{{ Str::limit($post->category->description, 50) }}</div>
+                                    <div class="text-muted small">{!! Str::limit($post->category->description, 50) !!}</div>
                                 @endif
                             </div>
                         </div>

@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    {{ Str::limit($exercice->titre, 50) }}
+                    {!! Str::limit($exercice->titre, 50) !!}
                 </li>
             </ol>
         </nav>
@@ -177,7 +177,7 @@
                                         <div class="col">
                                             <a href="{{ route('exercices.show', $similaire) }}" 
                                                class="text-decoration-none">
-                                                <h6 class="mb-1">{{ Str::limit($similaire->titre, 60) }}</h6>
+                                                <h6 class="mb-1">{!! Str::limit($similaire->titre, 60) !!}</h6>
                                             </a>
                                             <div class="small text-muted">
                                                 <span class="badge bg-{{ $similaire->niveau === 'debutant' ? 'success' : ($similaire->niveau === 'avance' ? 'danger' : 'warning') }}-subtle text-{{ $similaire->niveau === 'debutant' ? 'success' : ($similaire->niveau === 'avance' ? 'danger' : 'warning') }} me-2">

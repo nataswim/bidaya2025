@@ -72,7 +72,7 @@
                             <h5 class="card-title mb-3">{{ $fiche->title }}</h5>
                             
                             <p class="card-text text-muted flex-grow-1">
-                                {{ Str::limit(strip_tags($fiche->short_description), 120) }}
+                                {!! Str::limit(strip_tags($fiche->short_description), 120) !!}
                             </p>
                             
                             <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
@@ -138,7 +138,7 @@
                                 <div class="card-body p-4">
                                     @if($category->description)
                                         <p class="card-text text-muted mb-3">
-                                            {{ Str::limit($category->description, 150) }}
+                                            {!! Str::limit($category->description, 150) !!}
                                         </p>
                                     @else
                                         <p class="card-text text-muted mb-3">
