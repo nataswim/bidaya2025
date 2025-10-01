@@ -117,18 +117,12 @@
             </div>
         </div>
 
-        @auth
             <div class="text-center">
-                <a href="{{ route('user.mylists.new') }}" class="btn btn-primary btn-lg me-2">
                     <i class="fas fa-plus-circle me-2"></i>
-                    Créer mon premier carnet
-                </a>
-                <a href="{{ route('user.mylists') }}" class="btn btn-outline-primary btn-lg">
+                    Créer un carnet
                     <i class="fas fa-book me-2"></i>
                     Mes carnets existants
-                </a>
             </div>
-        @else
             <div class="alert alert-info text-center">
                 <p class="mb-3">Connectez-vous pour créer vos carnets personnalisés</p>
                 <a href="{{ route('login') }}" class="btn btn-primary">
@@ -136,7 +130,6 @@
                     Se connecter
                 </a>
             </div>
-        @endauth
     </div>
 </section>
 
@@ -593,28 +586,18 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled mb-0">
-                            @auth
                                 <li class="mb-2">
-                                    <a href="{{ route('user.dashboard') }}" class="text-decoration-none">
                                         <i class="fas fa-tachometer-alt me-1"></i> Mon Tableau de bord
-                                    </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="{{ route('user.profile.edit') }}" class="text-decoration-none">
                                         <i class="fas fa-user-edit me-1"></i> Mon Profil
-                                    </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="{{ route('user.mylists') }}" class="text-decoration-none">
                                         <i class="fas fa-book me-1"></i> Mes Carnets
-                                    </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('user.training.mes-plans') }}" class="text-decoration-none">
                                         <i class="fas fa-star me-1"></i> Mes Plans
-                                    </a>
                                 </li>
-                            @else
                                 <li class="mb-2">
                                     <a href="{{ route('login') }}" class="text-decoration-none">
                                         <i class="fas fa-sign-in-alt me-1"></i> Se connecter
@@ -625,7 +608,6 @@
                                         <i class="fas fa-user-plus me-1"></i> Créer un compte
                                     </a>
                                 </li>
-                            @endauth
                         </ul>
                     </div>
                 </div>
