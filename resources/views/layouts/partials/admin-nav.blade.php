@@ -67,7 +67,7 @@
             </li>
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.categories.index') }}" 
-                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.categories.*') && !request()->routeIs('admin.fiches-categories.*') ? 'active bg-primary' : '' }}">
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.categories.*') && !request()->routeIs('admin.fiches-categories.*') && !request()->routeIs('admin.workout-categories.*') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-folder me-3"></i>
                     <span>Catégories Articles</span>
                 </a>
@@ -80,7 +80,7 @@
                 </a>
             </li>
 
-            <!-- ========== NOUVEAU : SECTION FICHES ========== -->
+            <!-- ========== SECTION FICHES ========== -->
             <li class="nav-item mb-1 mt-3">
                 <div class="px-3 mb-2">
                     <small class="text-uppercase text-light opacity-50 fw-semibold" style="font-size: 0.7rem;">Fiches</small>
@@ -112,6 +112,52 @@
                     @endif
                 </a>
             </li>
+
+            <!-- ========== NOUVEAU : SECTION WORKOUTS ========== -->
+            <li class="nav-item mb-1 mt-3">
+                <div class="px-3 mb-2">
+                    <small class="text-uppercase text-light opacity-50 fw-semibold" style="font-size: 0.7rem;">Workouts</small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.workouts.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.workouts.index', 'admin.workouts.create', 'admin.workouts.edit', 'admin.workouts.show') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-dumbbell me-3"></i>
+                    <span>Workouts</span>
+                    @php
+                        $workoutsCount = App\Models\Workout::count();
+                    @endphp
+                    @if($workoutsCount > 0)
+                        <span class="badge bg-warning ms-auto">{{ $workoutsCount }}</span>
+                    @endif
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.workout-categories.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.workout-categories.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-folder me-3"></i>
+                    <span>Catégories Workout</span>
+                    @php
+                        $workoutCategoriesCount = App\Models\WorkoutCategory::count();
+                    @endphp
+                    @if($workoutCategoriesCount > 0)
+                        <span class="badge bg-info ms-auto">{{ $workoutCategoriesCount }}</span>
+                    @endif
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="{{ route('admin.workout-sections.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.workout-sections.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-layer-group me-3"></i>
+                    <span>Sections Workout</span>
+                    @php
+                        $workoutSectionsCount = App\Models\WorkoutSection::count();
+                    @endphp
+                    @if($workoutSectionsCount > 0)
+                        <span class="badge bg-secondary ms-auto">{{ $workoutSectionsCount }}</span>
+                    @endif
+                </a>
+            </li>
         </ul>
         
         <div class="px-3 mb-3 mt-4">
@@ -137,7 +183,7 @@
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.training.seances.index') }}" 
                    class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.training.seances.*') ? 'active bg-primary' : '' }}">
-                    <i class="fas fa-dumbbell me-3"></i>
+                    <i class="fas fa-stopwatch me-3"></i>
                     <span>Séances</span>
                 </a>
             </li>

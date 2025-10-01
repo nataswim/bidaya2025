@@ -22,10 +22,20 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FicheController;
 use App\Http\Controllers\FichesCategoryController;
 use App\Http\Controllers\PublicFicheController;
+use App\Http\Controllers\PublicWorkoutController;
+use App\Http\Controllers\WorkoutCategoryController;
+use App\Http\Controllers\WorkoutSectionController;
+use App\Http\Controllers\WorkoutController;
 
 
 
-
+// ========== ROUTES WORKOUTS PUBLIQUES ==========
+Route::prefix('workouts')->name('public.workouts.')->group(function () {
+    Route::get('/', [PublicWorkoutController::class, 'index'])->name('index');
+    Route::get('/{section}', [PublicWorkoutController::class, 'section'])->name('section');
+    Route::get('/{section}/{category}', [PublicWorkoutController::class, 'category'])->name('category');
+    Route::get('/{section}/{category}/{workout}', [PublicWorkoutController::class, 'show'])->name('show');
+});
 
 // Routes publiques
 Route::view('/', 'public.home')->name('home');
@@ -176,6 +186,19 @@ Route::patch('training/plans/{plan}/statut', [\App\Http\Controllers\User\Trainin
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::view('/', 'dashboard')->name('dashboard');
     
+// Gestion des sections de workout
+    Route::resource('workout-sections', WorkoutSectionController::class)->parameters([
+        'workout-sections' => 'workoutSection'
+    ]);
+    
+    // Gestion des catégories de workout
+    Route::resource('workout-categories', WorkoutCategoryController::class)->parameters([
+        'workout-categories' => 'workoutCategory'
+    ]);
+    
+    // Gestion des workouts
+    Route::resource('workouts', WorkoutController::class);
+
     Route::resource('categories', CategoryController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('posts', PostController::class);
