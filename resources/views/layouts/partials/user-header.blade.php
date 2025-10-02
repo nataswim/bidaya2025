@@ -46,7 +46,12 @@
                     </a>
                 </li>
 
-
+<li class="nav-item">
+    <a class="nav-link {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" 
+       href="{{ route('user.notebooks.index') }}">
+        <i class="fas fa-book me-2"></i>Mes Carnets
+    </a>
+</li>
 
             </ul>
             
@@ -76,6 +81,11 @@
                                 <i class="fas fa-user text-info me-2"></i>Mon profil
                             </a>
                         </li>
+
+
+
+
+
                         <li>
                             <a class="dropdown-item py-2" href="{{ route('home') }}">
                                 <i class="fas fa-water text-success me-2"></i>Parcourir Le Site 

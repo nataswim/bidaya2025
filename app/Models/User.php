@@ -127,4 +127,8 @@ public function canAccessTraining(): bool
 {
     return $this->hasRole('user') || $this->hasRole('editor') || $this->hasRole('admin');
 }
+public function notebooks()
+{
+    return $this->hasMany(Notebook::class);
+}
 }

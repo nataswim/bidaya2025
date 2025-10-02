@@ -10,7 +10,12 @@
         <div class="row align-items-center">
             <div class="col-lg-{{ $post->image ? '7' : '12' }}">
                 <h1 class="display-5 fw-bold mb-0">{{ $post->name }}</h1>
+                {{-- Après le titre de l'article --}}
+
             </div>
+
+
+            
             @if($post->image)
             <div class="col-lg-5">
                 <img src="{{ $post->image }}"
@@ -63,7 +68,12 @@
                             </span>
                             @endif
                         </div>
-
+<div class="mb-3">
+            <x-add-to-notebook-button 
+                content-type="posts" 
+                :content-id="$post->id" 
+            />
+        </div>
                         <!-- Introduction -->
                         @if($post->intro)
                         <div class="border-top pt-4">
@@ -152,6 +162,7 @@
                                         class="text-decoration-none">
                                         <h6 class="mb-1">{!! Str::limit($recentPost->name, 60) !!}</h6>
                                     </a>
+                            
                                     <div class="small text-muted d-flex align-items-center gap-3">
                                         <span>
                                             <i class="fas fa-calendar me-1"></i>
@@ -320,6 +331,7 @@
                             </div>
                             @endif
                             <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
+                            
                             @if($post->intro)
                             <p class="card-text text-muted small">
                                 {!! Str::limit(strip_tags($post->intro), 100) !!}

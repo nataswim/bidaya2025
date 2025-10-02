@@ -13,6 +13,8 @@
             <div class="col-lg-{{ $fiche->image ? '7' : '12' }}">
                 <h1 class="display-5 fw-bold mb-0">{{ $fiche->title }}</h1>
             </div>
+            
+
             @if($fiche->image)
                 <div class="col-lg-5">
                     <img src="{{ $fiche->image }}" 
@@ -82,6 +84,14 @@
                                 <i class="fas fa-calendar me-1"></i>
                                 {{ $fiche->published_at?->format('d M Y') ?? $fiche->created_at->format('d M Y') }}
                             </span>
+                        
+                        
+                        <div class="mt-3">
+            <x-add-to-notebook-button 
+                content-type="fiches" 
+                :content-id="$fiche->id" 
+            />
+                        
                         </div>
                     </div>
                 </div>

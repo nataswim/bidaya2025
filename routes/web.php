@@ -26,6 +26,9 @@ use App\Http\Controllers\PublicWorkoutController;
 use App\Http\Controllers\WorkoutCategoryController;
 use App\Http\Controllers\WorkoutSectionController;
 use App\Http\Controllers\WorkoutController;
+use App\Http\Controllers\User\NotebookController;
+use App\Http\Controllers\User\TrainingController;
+
 
 
 
@@ -163,6 +166,29 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     
     // NOUVELLE ROUTE pour traiter la mise A jour du profil
     Route::put('profile', [ProfileController::class, 'updateUserProfile'])->name('profile.update');
+// Dans le groupe Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
+    
+    // ========== ROUTES MES CARNETS ==========
+    Route::prefix('notebooks')->name('notebooks.')->group(function () {
+        Route::get('/api/by-type', [\App\Http\Controllers\User\NotebookController::class, 'getByType'])->name('api.by-type');
+        Route::get('/', [\App\Http\Controllers\User\NotebookController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\User\NotebookController::class, 'store'])->name('store');
+        Route::get('/{notebook}', [\App\Http\Controllers\User\NotebookController::class, 'show'])->name('show');
+        Route::put('/{notebook}', [\App\Http\Controllers\User\NotebookController::class, 'update'])->name('update');
+        Route::delete('/{notebook}', [\App\Http\Controllers\User\NotebookController::class, 'destroy'])->name('destroy');
+
+        // Actions sur les contenus
+        Route::post('/items/add', [\App\Http\Controllers\User\NotebookController::class, 'addItem'])->name('items.add');
+        Route::delete('/items/{item}', [\App\Http\Controllers\User\NotebookController::class, 'removeItem'])->name('items.remove');
+        Route::patch('/items/{item}/note', [\App\Http\Controllers\User\NotebookController::class, 'updateNote'])->name('items.update-note');
+        Route::post('/{notebook}/reorder', [\App\Http\Controllers\User\NotebookController::class, 'reorder'])->name('reorder');
+        
+        // Export et favoris
+        Route::get('/{notebook}/export-pdf', [\App\Http\Controllers\User\NotebookController::class, 'exportPdf'])->name('export-pdf');
+        Route::post('/{notebook}/toggle-favorite', [\App\Http\Controllers\User\NotebookController::class, 'toggleFavorite'])->name('toggle-favorite');
+    });
+
+    
 // Ajoutez ces routes dans le groupe user existant, après la route profile.update :
 
 // ========== ROUTES ENTRAÎNEMENT UTILISATEUR ==========
