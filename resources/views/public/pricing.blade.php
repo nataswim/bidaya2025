@@ -52,7 +52,7 @@
                             Accès complet à tous les services pendant une année complète.
                         </p>
                         <div class="mb-3">
-                            <span class="text-decoration-line-through text-muted me-2">120€</span>
+                            <span class="text-muted me-2" style="font-weight: bold;"> 8€ par mois = 96€</span>
                         </div>
                         <ul class="list-unstyled text-start mb-4">
                             <li class="mb-2 d-flex align-items-center">
@@ -91,7 +91,7 @@
                             Solution intermédiaire avec tous les services pendant 6 mois.
                         </p>
                         <div class="mb-3">
-                            <span class="text-decoration-line-through text-muted me-2">60€</span>
+                            <span class="text-muted me-2" style="font-weight: bold;"> 11€ par mois = 66€</span>
                         </div>
                         <ul class="list-unstyled text-start mb-4">
                             <li class="mb-2 d-flex align-items-center">
@@ -125,12 +125,12 @@
                         <div class="mb-3">
                             <i class="fas fa-swimmer text-danger" style="font-size: 2.5rem;"></i>
                         </div>
-                        <h2 class="card-title h3 mb-2">3 mois</h2>
+                        <span class="text-muted me-2" style="font-weight: bold;"> 3 mois</h2>
                         <p class="text-muted mb-3">
                             Formule découverte avec tous les services pendant 3 mois.
                         </p>
                         <div class="mb-3">
-                            <span class="text-decoration-line-through text-muted me-2">30€</span>
+                            <span class="text-muted me-2">15€ par mois = 45€</span>
                         </div>
                         <ul class="list-unstyled text-start mb-4">
                             <li class="mb-2 d-flex align-items-center">

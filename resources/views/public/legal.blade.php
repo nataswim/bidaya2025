@@ -63,13 +63,9 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <p class="mb-1"><strong>Raison sociale :</strong> SNS (6201Z)</p>
-                                    <p class="mb-1"><strong>Forme juridique :</strong> Entrepreneur individuel</p>
-                                    <p class="mb-1"><strong>Adresse du siège social :</strong> 45 Avenue Albert Camus, 79200 Parthenay, France</p>
-                                    <p class="mb-1"><strong>SIRET :</strong> 81003756400012</p>
+                                    <p class="mb-1"><strong>Adresse du siège social :</strong> 45 Avenue Albert Camus, 78200 Paris, France</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="mb-1"><strong>SIREN :</strong> 810037564</p>
-                                    <p class="mb-1"><strong>Numéro de TVA :</strong> FR28810037564</p>
                                     <p class="mb-1"><strong>Directeur de la publication :</strong> Med HASSAN EL HAOUAT</p>
                                     <p class="mb-0"><strong>Contact :</strong> natation.swimming@gmail.com</p>
                                 </div>

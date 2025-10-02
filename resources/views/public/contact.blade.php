@@ -42,20 +42,11 @@
                             </div>
                             <div class="ms-3">
                                 <h3 class="h5 mb-1">Siège</h3>
-                                <p class="text-muted mb-0">45 Avenue Albert Camus<br>79200 Parthenay, France</p>
+                                <p class="text-muted mb-0">45 Avenue Albert Camus<br>75200 Paris, France</p>
                             </div>
                         </div>
 
-                        <div class="d-flex mb-4">
-                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
-                                 style="width: 48px; height: 48px;">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="ms-3">
-                                <h3 class="h5 mb-1">Téléphone</h3>
-                                <p class="text-muted mb-0">+33 6 44 24 87 11</p>
-                            </div>
-                        </div>
+                        
 
                         <div class="d-flex mb-4">
                             <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 

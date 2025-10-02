@@ -19,31 +19,37 @@
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('home') }}">
-                        <i class="fas fa-home me-2"></i>Accueil
+                        <i class="fas fa-apple-alt me-2 text-success"></i>Accueil
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.index') }}">
-                        <i class="fas fa-newspaper me-2"></i>Articles
+                        <i class="fas fa-newspaper me-2 text-info"></i>Articles
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.fiches.index') }}">
-                        <i class="fas fa-file-alt me-2"></i>Fiches
+                        <i class="fas fa-file-alt me-2 text-info"></i>Fiches
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('public.workouts.index') }}">
+                        <i class="fas fa-clipboard-check me-2 text-info"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('ebook.index') }}">
-                        <i class="fas fa-download me-2"></i>Ressources
+                        <i class="fas fa-download me-2 text-info"></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('exercices.index') }}">
-                        <i class="fas fa-dumbbell me-2"></i>Musculation
+                        <i class="fas fa-dumbbell me-2 text-info"></i>Musculation
                     </a>
                 </li>
                 
@@ -52,7 +58,7 @@
 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('tools.index') }}">
-                        <i class="fas fa-calculator me-2"></i>Outils
+                        <i class="fas fa-heartbeat me-2  text-info"></i>Outils
                     </a>
                     
                 </li>

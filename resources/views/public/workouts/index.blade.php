@@ -1,33 +1,33 @@
 @extends('layouts.public')
 
-@section('title', 'Workouts')
-@section('meta_description', 'Découvrez nos workouts organisés par sections et catégories pour optimiser votre entraînement sportif.')
+@section('title', 'Séances et Plans d\'Entraînement Sportif')
+@section('meta_description', 'Découvrez nos séances d\'entraînement et plans sportifs organisés par discipline : natation, course à pied, musculation. Programmes structurés pour optimiser votre progression.')
+@section('meta_keywords', 'séances entraînement, plans entraînement sportif, programme natation, workout français, entraînement course à pied, programme musculation')
 
 @section('content')
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
-        <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            <i class="fas fa-dumbbell"></i>
-            Workouts
+        <h1 class="display-4 fw-bold mb-3">
+            Séances et Plans d'Entraînement
         </h1>
         <p class="lead mb-0">
-            Collection complète de workouts pour votre développement sportif
+            Collection complète de séances sportives pour optimiser votre développement athlétique
         </p>
         <div class="alert alert-info border-0 shadow-sm mt-4" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); max-width: 800px; margin: 0 auto;">
             <div class="d-flex align-items-start">
                 <i class="fas fa-lightbulb text-warning me-3 mt-1" style="font-size: 1.5rem;"></i>
                 <div class="text-dark">
-                    <strong>Workouts structurés et progressifs</strong> pour vous accompagner 
-                    dans votre progression sportive avec des séances organisées par thématique.
+                    <strong>Programmes d'entraînement structurés et progressifs</strong> pour vous accompagner 
+                    dans votre progression sportive avec des séances organisées par discipline.
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Navigation par Sections -->
+<!-- Navigation par Disciplines Sportives -->
 <section class="py-5 bg-light">
     <div class="container">
         
@@ -35,15 +35,15 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
                 <i class="fas fa-layer-group me-2 text-primary"></i>
-                Explorez par Section
+                Explorez par Discipline Sportive
             </h2>
             <p class="lead text-muted">
-                Choisissez la section qui correspond à votre discipline sportive 
-                pour accéder aux workouts adaptés à votre pratique.
+                Choisissez votre sport pour accéder aux séances d'entraînement 
+                adaptées à votre niveau et vos objectifs.
             </p>
         </div>
 
-        <!-- Sections de workouts -->
+        <!-- Sections de séances -->
         @if($sections->count() > 0)
             <div class="row g-4 mb-5">
                 @foreach($sections as $section)
@@ -55,9 +55,9 @@
                                     <div class="d-flex align-items-center">
                                         <i class="fas fa-layer-group me-3" style="font-size: 2.5rem;"></i>
                                         <div>
-                                            <h4 class="mb-1">{{ $section->name }}</h4>
+                                            <h3 class="mb-1 h4">{{ $section->name }}</h3>
                                             <p class="mb-0 opacity-75">
-                                                {{ $section->categories->count() }} catégorie(s)
+                                                {{ $section->categories->count() }} programme(s) d'entraînement
                                             </p>
                                         </div>
                                     </div>
@@ -69,18 +69,18 @@
                                         </p>
                                     @else
                                         <p class="card-text text-muted mb-3">
-                                            Découvrez nos workouts dans la section {{ $section->name }}.
+                                            Découvrez nos séances d'entraînement {{ $section->name }} adaptées à tous les niveaux.
                                         </p>
                                     @endif
                                     
-                                    <!-- Liste des catégories -->
+                                    <!-- Liste des programmes -->
                                     @if($section->categories->count() > 0)
                                         <div class="mb-3">
-                                            <small class="text-muted fw-semibold d-block mb-2">Catégories disponibles :</small>
+                                            <small class="text-muted fw-semibold d-block mb-2">Programmes disponibles :</small>
                                             <div class="d-flex flex-wrap gap-2">
                                                 @foreach($section->categories->take(4) as $category)
                                                     <span class="badge bg-secondary-subtle text-secondary">
-                                                        {{ $category->name }} ({{ $category->workouts_count }})
+                                                        {{ $category->name }} ({{ $category->workouts_count }} séance{{ $category->workouts_count > 1 ? 's' : '' }})
                                                     </span>
                                                 @endforeach
                                                 @if($section->categories->count() > 4)
@@ -93,9 +93,9 @@
                                     @endif
                                     
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary fw-bold">Découvrir les workouts →</span>
+                                        <span class="text-primary fw-bold">Découvrir les séances →</span>
                                         <span class="badge bg-primary fs-6">
-                                            {{ $section->categories->sum('workouts_count') }} workout(s)
+                                            {{ $section->categories->sum('workouts_count') }} séance(s)
                                         </span>
                                     </div>
                                 </div>
@@ -107,17 +107,18 @@
         @else
             <div class="text-center py-5">
                 <i class="fas fa-layer-group fa-3x text-muted mb-3 opacity-25"></i>
-                <h5 class="text-muted">Aucune section disponible pour le moment</h5>
+                <h5 class="text-muted">Aucune discipline disponible pour le moment</h5>
+                <p class="text-muted">Revenez bientôt pour découvrir nos programmes d'entraînement</p>
             </div>
         @endif
 
-        <!-- Guide d'Utilisation Rapide -->
+        <!-- Guide d'Utilisation -->
         <div class="card shadow-lg border-0 mb-5">
             <div class="card-header bg-primary text-white">
-                <h3 class="mb-2">
+                <h2 class="mb-2 h3">
                     <i class="fas fa-compass me-2"></i>
-                    Comment utiliser nos Workouts
-                </h3>
+                    Comment utiliser nos Séances d'Entraînement
+                </h2>
             </div>
             <div class="card-body">
                 <div class="row g-4">
@@ -127,10 +128,10 @@
                                  style="width: 80px; height: 80px;">
                                 <i class="fas fa-search text-success" style="font-size: 2rem;"></i>
                             </div>
-                            <h6 class="fw-bold">1. Choisissez votre Section</h6>
+                            <h3 class="fw-bold h6">1. Choisissez votre Discipline</h3>
                             <p class="small text-muted">
-                                Sélectionnez la discipline sportive qui vous intéresse 
-                                (natation, course à pied, musculation, etc.)
+                                Sélectionnez votre sport : natation, course à pied, 
+                                musculation, cyclisme, triathlon, etc.
                             </p>
                         </div>
                     </div>
@@ -140,10 +141,10 @@
                                  style="width: 80px; height: 80px;">
                                 <i class="fas fa-folder text-primary" style="font-size: 2rem;"></i>
                             </div>
-                            <h6 class="fw-bold">2. Parcourez les Catégories</h6>
+                            <h3 class="fw-bold h6">2. Parcourez les Programmes</h3>
                             <p class="small text-muted">
-                                Explorez les différentes catégories de workouts 
-                                organisées par niveau et objectif.
+                                Explorez les différents programmes d'entraînement 
+                                classés par niveau (débutant, intermédiaire, avancé).
                             </p>
                         </div>
                     </div>
@@ -151,14 +152,74 @@
                         <div class="text-center">
                             <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
                                  style="width: 80px; height: 80px;">
-                                <i class="fas fa-dumbbell text-warning" style="font-size: 2rem;"></i>
+                                <i class="fas fa-running text-warning" style="font-size: 2rem;"></i>
                             </div>
-                            <h6 class="fw-bold">3. Réalisez le Workout</h6>
+                            <h3 class="fw-bold h6">3. Suivez la Séance</h3>
                             <p class="small text-muted">
-                                Suivez les instructions détaillées et 
-                                progressez à votre rythme.
+                                Appliquez les instructions détaillées, respectez les intensités 
+                                et progressez à votre rythme.
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Avantages des programmes -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line text-primary fs-4"></i>
+                        </div>
+                        <h4 class="h6 fw-bold">Progression Structurée</h4>
+                        <p class="small text-muted mb-0">
+                            Plans évolutifs adaptés à votre niveau
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 60px; height: 60px;">
+                            <i class="fas fa-bullseye text-success fs-4"></i>
+                        </div>
+                        <h4 class="h6 fw-bold">Objectifs Ciblés</h4>
+                        <p class="small text-muted mb-0">
+                            Séances spécifiques pour chaque objectif
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 60px; height: 60px;">
+                            <i class="fas fa-clipboard-check text-info fs-4"></i>
+                        </div>
+                        <h4 class="h6 fw-bold">Instructions Détaillées</h4>
+                        <p class="small text-muted mb-0">
+                            Descriptions complètes et faciles à suivre
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 60px; height: 60px;">
+                            <i class="fas fa-users text-warning fs-4"></i>
+                        </div>
+                        <h4 class="h6 fw-bold">Tous Niveaux</h4>
+                        <p class="small text-muted mb-0">
+                            Du débutant au compétiteur confirmé
+                        </p>
                     </div>
                 </div>
             </div>
@@ -171,10 +232,10 @@
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h2 class="display-6 fw-bold mb-3">Notre Collection de Workouts</h2>
+                <h2 class="display-6 fw-bold mb-3">Commencez Votre Entraînement Aujourd'hui</h2>
                 <p class="lead mb-4">
-                    Explorez nos workouts structurés par section et catégorie pour 
-                    optimiser votre développement sportif.
+                    Accédez à notre bibliothèque complète de séances d'entraînement 
+                    organisées par discipline sportive et niveau de pratique.
                 </p>
                 
                 @if($sections->count() > 0)
@@ -187,6 +248,34 @@
                         @endforeach
                     </div>
                 @endif
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section SEO - Contenu additionnel -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-3">Pourquoi suivre nos programmes d'entraînement ?</h2>
+                        <p class="text-muted">
+                            Nos <strong>séances d'entraînement sportif</strong> sont conçues par des professionnels 
+                            pour vous garantir une progression optimale dans votre discipline. Que vous pratiquiez 
+                            la <strong>natation</strong>, la <strong>course à pied</strong>, la <strong>musculation</strong> 
+                            ou tout autre sport, nos <strong>plans d'entraînement structurés</strong> vous accompagnent 
+                            du niveau débutant jusqu'à la compétition.
+                        </p>
+                        <p class="text-muted mb-0">
+                            Chaque <strong>séance sportive</strong> inclut des instructions détaillées, 
+                            des volumes adaptés et une progressivité respectant les principes de 
+                            l'entraînement moderne. Accédez gratuitement à notre bibliothèque et 
+                            commencez dès aujourd'hui votre transformation physique.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p class="mb-2"><strong>Raison sociale :</strong> SNS</p>
-                            <p class="mb-0"><strong>Adresse :</strong> 45 Avenue Albert Camus, 79200 Parthenay, France</p>
+                            <p class="mb-0"><strong>Adresse :</strong> 45 Avenue Albert Camus, 75200 Paris, France</p>
                         </div>
                         <div class="col-md-6">
                             <p class="mb-2"><strong>Email :</strong> natation.swimming@gmail.com</p>
@@ -715,8 +715,7 @@
                             <p class="mb-0 small"><strong>Email :</strong> natation.swimming@gmail.com</p>
                         </div>
                         <div class="col-md-6 text-start">
-                            <p class="mb-2 small"><strong>Adresse :</strong> 45 Avenue Albert Camus, 79200 Parthenay</p>
-                            <p class="mb-0 small"><strong>Téléphone :</strong> +33 6 44 24 87 11</p>
+                            <p class="mb-2 small"><strong>Adresse :</strong> 45 Avenue Albert Camus, 75200 Paris</p>
                         </div>
                     </div>
                 </div>

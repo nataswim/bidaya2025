@@ -1,7 +1,8 @@
 @extends('layouts.public')
 
-@section('title', $section->name . ' - Workouts')
-@section('meta_description', $section->description ?? 'Découvrez tous les workouts de la section ' . $section->name)
+@section('title', 'Séances d\'Entraînement ' . $section->name)
+@section('meta_description', $section->description ?? 'Découvrez tous les programmes d\'entraînement ' . $section->name . ' : séances structurées par niveau, du débutant au confirmé.')
+@section('meta_keywords', 'entraînement ' . strtolower($section->name) . ', séances ' . strtolower($section->name) . ', programme ' . strtolower($section->name) . ', plan entraînement')
 
 @section('content')
 <!-- Section titre avec breadcrumb -->
@@ -12,7 +13,7 @@
             <ol class="breadcrumb bg-white bg-opacity-10 rounded px-3 py-2">
                 <li class="breadcrumb-item">
                     <a href="{{ route('public.workouts.index') }}" class="text-white">
-                        <i class="fas fa-home me-1"></i>Workouts
+                        <i class="fas fa-home me-1"></i>Séances d'Entraînement
                     </a>
                 </li>
                 <li class="breadcrumb-item active text-white" aria-current="page">
@@ -24,19 +25,23 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <h1 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-layer-group me-3"></i>{{ $section->name }}
+                    <i class="fas fa-layer-group me-3"></i>Entraînement {{ $section->name }}
                 </h1>
                 
                 @if($section->description)
                     <p class="lead mb-0">{{ $section->description }}</p>
+                @else
+                    <p class="lead mb-0">
+                        Programmes et séances d'entraînement {{ $section->name }} pour tous les niveaux
+                    </p>
                 @endif
                 
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-folder me-1"></i>{{ $categories->count() }} catégorie(s)
+                        <i class="fas fa-folder me-1"></i>{{ $categories->count() }} programme(s)
                     </span>
                     <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-dumbbell me-1"></i>{{ $categories->sum('workouts_count') }} workout(s)
+                        <i class="fas fa-running me-1"></i>{{ $categories->sum('workouts_count') }} séance(s)
                     </span>
                 </div>
             </div>
@@ -44,19 +49,29 @@
     </div>
 </section>
 
-<!-- Liste des catégories -->
+<!-- Liste des programmes -->
 <section class="py-5 bg-light">
     <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">
+                <i class="fas fa-folder-open me-2 text-primary"></i>
+                Programmes d'Entraînement {{ $section->name }}
+            </h2>
+            <p class="lead text-muted">
+                Choisissez le programme adapté à votre niveau et vos objectifs
+            </p>
+        </div>
+
         @if($categories->count() > 0)
             <div class="row g-4">
                 @foreach($categories as $category)
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg hover-lift">
                             <div class="card-header bg-gradient-info text-white p-3">
-                                <h5 class="mb-1">
+                                <h3 class="mb-1 h5">
                                     <i class="fas fa-folder me-2"></i>{{ $category->name }}
-                                </h5>
-                                <small class="opacity-75">{{ $category->workouts_count }} workout(s)</small>
+                                </h3>
+                                <small class="opacity-75">{{ $category->workouts_count }} séance(s) d'entraînement</small>
                             </div>
                             
                             <div class="card-body d-flex flex-column">
@@ -64,12 +79,16 @@
                                     <p class="card-text text-muted flex-grow-1">
                                         {!! Str::limit($category->description, 120) !!}
                                     </p>
+                                @else
+                                    <p class="card-text text-muted flex-grow-1">
+                                        Programme {{ $category->name }} avec {{ $category->workouts_count }} séance(s) progressive(s).
+                                    </p>
                                 @endif
                                 
                                 <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
                                     <a href="{{ route('public.workouts.category', [$section, $category]) }}" 
                                        class="btn btn-sm btn-primary">
-                                        Voir les workouts <i class="fas fa-arrow-right ms-1"></i>
+                                        Voir les séances <i class="fas fa-arrow-right ms-1"></i>
                                     </a>
                                     <span class="badge bg-primary">{{ $category->workouts_count }}</span>
                                 </div>
@@ -82,9 +101,10 @@
             <div class="card border-0 shadow-sm text-center py-5">
                 <div class="card-body">
                     <i class="fas fa-folder fa-3x text-muted mb-3 opacity-25"></i>
-                    <h5 class="text-muted mb-3">Aucune catégorie disponible dans cette section</h5>
+                    <h3 class="text-muted mb-3 h5">Aucun programme disponible dans cette discipline</h3>
+                    <p class="text-muted">Les programmes d'entraînement seront bientôt ajoutés</p>
                     <a href="{{ route('public.workouts.index') }}" class="btn btn-primary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour aux sections
+                        <i class="fas fa-arrow-left me-2"></i>Retour aux disciplines
                     </a>
                 </div>
             </div>
@@ -97,8 +117,33 @@
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center gap-3">
             <a href="{{ route('public.workouts.index') }}" class="btn btn-outline-primary">
-                <i class="fas fa-th me-2"></i>Toutes les sections
+                <i class="fas fa-th me-2"></i>Toutes les disciplines
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section SEO -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-3">Programmes d'entraînement {{ $section->name }}</h2>
+                        <p class="text-muted">
+                            Nos <strong>programmes d'entraînement {{ $section->name }}</strong> sont structurés 
+                            pour vous faire progresser efficacement. Chaque <strong>séance d'entraînement</strong> 
+                            est conçue avec des objectifs précis et une progression logique adaptée à votre niveau.
+                        </p>
+                        <p class="text-muted mb-0">
+                            Que vous soyez <strong>débutant</strong> ou <strong>confirmé</strong>, 
+                            nos <strong>plans d'entraînement {{ $section->name }}</strong> vous accompagnent 
+                            vers l'atteinte de vos objectifs sportifs.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
