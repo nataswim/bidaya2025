@@ -1,3 +1,8 @@
+// ========================================
+// Protection contre la redéclaration
+// ========================================
+if (typeof window.MediaFieldSelector === 'undefined') {
+
 // Selecteur de medias reutilisable avec pagination
 class MediaFieldSelector {
     constructor() {
@@ -7,7 +12,7 @@ class MediaFieldSelector {
         this.currentPage = 1;
         this.lastPage = 1;
         this.perPage = 12;
-        this.categories = []; // Stocker les catégories
+        this.categories = [];
     }
 
     openForField(fieldId, previewElementId = null) {
@@ -50,11 +55,10 @@ class MediaFieldSelector {
                                     <div class="col-md-4">
                                         <select id="mediaFieldCategory" class="form-select">
                                             <option value="">Toutes les categories</option>
-                                            <!-- Catégories chargées dynamiquement -->
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-primary w-100" onclick="mediaFieldSelector.loadMedias(1)">
+                                        <button type="button" class="btn btn-primary w-100" onclick="window.mediaFieldSelector.loadMedias(1)">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
@@ -129,9 +133,6 @@ class MediaFieldSelector {
         });
     }
 
-    /**
-     * 🆕 NOUVELLE MÉTHODE : Charger les catégories
-     */
     async loadCategories() {
         try {
             const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
@@ -159,13 +160,9 @@ class MediaFieldSelector {
         }
     }
 
-    /**
-     * 🆕 NOUVELLE MÉTHODE : Afficher les catégories dans le select
-     */
     renderCategories() {
         const categorySelect = this.modal.querySelector('#mediaFieldCategory');
         
-        // Garder l'option "Toutes les catégories"
         let optionsHTML = '<option value="">Toutes les categories</option>';
         
         this.categories.forEach(category => {
@@ -251,7 +248,7 @@ class MediaFieldSelector {
             return `
                 <div class="col-md-3 col-sm-4 col-6">
                     <div class="card h-100 media-select-item" style="cursor: pointer;" 
-                         onclick="mediaFieldSelector.selectMedia('${imageUrl}', '${imageName}')">
+                         onclick="window.mediaFieldSelector.selectMedia('${imageUrl}', '${imageName}')">
                         <div class="card-img-top" style="height: 120px; overflow: hidden;">
                             <img src="${imageUrl}" alt="${imageName}" 
                                  class="img-fluid w-100 h-100" style="object-fit: cover;"
@@ -281,16 +278,14 @@ class MediaFieldSelector {
         
         let paginationHTML = '';
         
-        // Bouton Précédent
         paginationHTML += `
             <li class="page-item ${data.current_page === 1 ? 'disabled' : ''}">
-                <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${data.current_page - 1})">
+                <a class="page-link" href="#" onclick="event.preventDefault(); window.mediaFieldSelector.loadMedias(${data.current_page - 1})">
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </li>
         `;
         
-        // Numéros de pages
         const maxVisible = 5;
         let startPage = Math.max(1, data.current_page - Math.floor(maxVisible / 2));
         let endPage = Math.min(data.last_page, startPage + maxVisible - 1);
@@ -299,11 +294,10 @@ class MediaFieldSelector {
             startPage = Math.max(1, endPage - maxVisible + 1);
         }
         
-        // Première page
         if (startPage > 1) {
             paginationHTML += `
                 <li class="page-item">
-                    <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(1)">1</a>
+                    <a class="page-link" href="#" onclick="event.preventDefault(); window.mediaFieldSelector.loadMedias(1)">1</a>
                 </li>
             `;
             if (startPage > 2) {
@@ -311,31 +305,28 @@ class MediaFieldSelector {
             }
         }
         
-        // Pages visibles
         for (let i = startPage; i <= endPage; i++) {
             paginationHTML += `
                 <li class="page-item ${i === data.current_page ? 'active' : ''}">
-                    <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${i})">${i}</a>
+                    <a class="page-link" href="#" onclick="event.preventDefault(); window.mediaFieldSelector.loadMedias(${i})">${i}</a>
                 </li>
             `;
         }
         
-        // Dernière page
         if (endPage < data.last_page) {
             if (endPage < data.last_page - 1) {
                 paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
             }
             paginationHTML += `
                 <li class="page-item">
-                    <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${data.last_page})">${data.last_page}</a>
+                    <a class="page-link" href="#" onclick="event.preventDefault(); window.mediaFieldSelector.loadMedias(${data.last_page})">${data.last_page}</a>
                 </li>
             `;
         }
         
-        // Bouton Suivant
         paginationHTML += `
             <li class="page-item ${data.current_page === data.last_page ? 'disabled' : ''}">
-                <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${data.current_page + 1})">
+                <a class="page-link" href="#" onclick="event.preventDefault(); window.mediaFieldSelector.loadMedias(${data.current_page + 1})">
                     <i class="fas fa-chevron-right"></i>
                 </a>
             </li>
@@ -423,10 +414,21 @@ class MediaFieldSelector {
     }
 }
 
-// Instance globale
-const mediaFieldSelector = new MediaFieldSelector();
+// ========================================
+// Enregistrement global (une seule fois)
+// ========================================
+window.MediaFieldSelector = MediaFieldSelector;
 
-// Fonctions utilitaires
+// Instance globale
+if (!window.mediaFieldSelector) {
+    window.mediaFieldSelector = new MediaFieldSelector();
+}
+
+} // Fin de la protection
+
+// ========================================
+// Fonctions utilitaires (toujours disponibles)
+// ========================================
 function openMediaSelector(fieldId, previewId = null) {
-    mediaFieldSelector.openForField(fieldId, previewId);
+    window.mediaFieldSelector.openForField(fieldId, previewId);
 }

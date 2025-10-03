@@ -1,3 +1,8 @@
+// ========================================
+// Protection contre la redéclaration
+// ========================================
+if (typeof window.QuillMediaManager === 'undefined') {
+
 class QuillMediaManager {
     constructor() {
         this.quillInstances = new Map();
@@ -79,7 +84,7 @@ class QuillMediaManager {
 
     showImageModal(quillInstance) {
         this.createImageModal();
-        this.loadMediaImages();
+        this.loadMediaImages(1);
         
         // Associer l'instance Quill au modal
         this.imageModal.quillInstance = quillInstance;
@@ -140,6 +145,9 @@ class QuillMediaManager {
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Pagination -->
+                            <div id="imagePagination" class="mt-3"></div>
                         </div>
                         
                         <div class="modal-footer">
@@ -154,8 +162,6 @@ class QuillMediaManager {
 
         document.body.insertAdjacentHTML('beforeend', modalHTML);
         this.imageModal = document.getElementById('advancedImageModal');
-        
-        // evenements
         this.setupModalEvents();
     }
 
@@ -179,204 +185,199 @@ class QuillMediaManager {
         });
     }
 
+    async loadMediaImages(page = 1) {
+        try {
+            const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            
+            const params = new URLSearchParams();
+            params.append('page', page);
+            params.append('per_page', 12);
+            
+            this.showImageLoader();
+            
+            const response = await fetch(`/admin/media-api?${params}`, {
+                headers: {
+                    'X-CSRF-TOKEN': token,
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+            });
 
-
-
-
-
-// Remplacer la méthode loadMediaImages existante par :
-async loadMediaImages(page = 1) {
-    try {
-        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
-        
-        const params = new URLSearchParams();
-        params.append('page', page);
-        params.append('per_page', 12);
-        
-        this.showImageLoader();
-        
-        const response = await fetch(`/admin/media-api?${params}`, {
-            headers: {
-                'X-CSRF-TOKEN': token,
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            credentials: 'same-origin'
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erreur ${response.status}: ${response.statusText}`);
-        }
-        
-        const data = await response.json();
-        
-        this.renderImages(data.data || []);
-        this.renderImagePagination(data);
-        
-    } catch (error) {
-        console.error('Erreur lors du chargement des medias:', error);
-        this.showImageError(error.message);
-    }
-}
-
-showImageLoader() {
-    const grid = this.imageModal.querySelector('#imageGrid');
-    grid.innerHTML = `
-        <div class="col-12 text-center py-4">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Chargement...</span>
-            </div>
-        </div>
-    `;
-}
-
-renderImagePagination(data) {
-    // Ajouter un conteneur de pagination s'il n'existe pas
-    let paginationContainer = this.imageModal.querySelector('#imagePagination');
-    
-    if (!paginationContainer) {
-        const modalBody = this.imageModal.querySelector('.modal-body');
-        paginationContainer = document.createElement('div');
-        paginationContainer.id = 'imagePagination';
-        paginationContainer.className = 'mt-3';
-        modalBody.appendChild(paginationContainer);
-    }
-    
-    if (data.last_page <= 1) {
-        paginationContainer.innerHTML = '';
-        return;
-    }
-    
-    let paginationHTML = '<nav><ul class="pagination justify-content-center mb-0">';
-    
-    // Bouton Précédent
-    paginationHTML += `
-        <li class="page-item ${data.current_page === 1 ? 'disabled' : ''}">
-            <a class="page-link" href="#" onclick="event.preventDefault(); quillManager.loadMediaImages(${data.current_page - 1})">
-                Précédent
-            </a>
-        </li>
-    `;
-    
-    // Pages
-    for (let i = 1; i <= data.last_page; i++) {
-        if (i === 1 || i === data.last_page || (i >= data.current_page - 2 && i <= data.current_page + 2)) {
-            paginationHTML += `
-                <li class="page-item ${i === data.current_page ? 'active' : ''}">
-                    <a class="page-link" href="#" onclick="event.preventDefault(); quillManager.loadMediaImages(${i})">${i}</a>
-                </li>
-            `;
-        } else if (i === data.current_page - 3 || i === data.current_page + 3) {
-            paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+            if (!response.ok) {
+                throw new Error(`Erreur ${response.status}: ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            
+            this.renderImages(data.data || []);
+            this.renderImagePagination(data);
+            
+        } catch (error) {
+            console.error('Erreur lors du chargement des medias:', error);
+            this.showImageError(error.message);
         }
     }
-    
-    // Bouton Suivant
-    paginationHTML += `
-        <li class="page-item ${data.current_page === data.last_page ? 'disabled' : ''}">
-            <a class="page-link" href="#" onclick="event.preventDefault(); quillManager.loadMediaImages(${data.current_page + 1})">
-                Suivant
-            </a>
-        </li>
-    `;
-    
-    paginationHTML += '</ul></nav>';
-    paginationContainer.innerHTML = paginationHTML;
-}
 
-
-
-
-
-
-renderImages(images) {
-    const grid = this.imageModal.querySelector('#imageGrid');
-    
-    if (!grid) {
-        console.error('Grid element not found');
-        return;
-    }
-    
-    grid.innerHTML = '';
-    
-    if (!images || images.length === 0) {
+    showImageLoader() {
+        const grid = this.imageModal.querySelector('#imageGrid');
         grid.innerHTML = `
             <div class="col-12 text-center py-4">
-                <i class="fas fa-images fa-3x text-muted mb-3"></i>
-                <h5 class="text-muted">Aucune image trouvee</h5>
-                <p class="text-muted">Uploadez des images dans votre mediatheque.</p>
-                <a href="/admin/media" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-upload me-2"></i>Gerer les medias
-                </a>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
             </div>
         `;
-        return;
     }
-    
-    images.forEach(image => {
-        console.log('Traitement de l\'image:', image); // Debug
+
+    renderImagePagination(data) {
+        let paginationContainer = this.imageModal.querySelector('#imagePagination');
         
-        // Construire l'URL correctement selon votre modele Media
-        let imageUrl = '';
-        if (image.url) {
-            imageUrl = image.url;
-        } else if (image.path) {
-            imageUrl = `/storage/${image.path}`;
-        } else {
-            console.warn('Aucune URL trouvee pour:', image);
+        if (!paginationContainer) {
+            const modalBody = this.imageModal.querySelector('.modal-body');
+            paginationContainer = document.createElement('div');
+            paginationContainer.id = 'imagePagination';
+            paginationContainer.className = 'mt-3';
+            modalBody.appendChild(paginationContainer);
+        }
+        
+        if (data.last_page <= 1) {
+            paginationContainer.innerHTML = '';
             return;
         }
         
-        const imageName = image.name || image.original_name || 'Sans nom';
+        let paginationHTML = '<nav><ul class="pagination justify-content-center mb-0">';
         
-        console.log(`Image: ${imageName}, URL construite: ${imageUrl}`); // Debug
-        
-        const col = document.createElement('div');
-        col.className = 'col-md-3 col-sm-4 col-6 image-item';
-        col.setAttribute('data-name', imageName.toLowerCase());
-        
-        col.innerHTML = `
-            <div class="card h-100 hover-lift" style="cursor: pointer;" data-image-url="${imageUrl}">
-                <div class="card-img-top" style="height: 120px; overflow: hidden;">
-                    <img src="${imageUrl}" alt="${imageName}" 
-                         class="img-fluid w-100 h-100" style="object-fit: cover;"
-                         onload="console.log('Image chargee:', this.src)"
-                         onerror="console.error('Erreur chargement image:', this.src); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5Ij5Erreur<L3RleHQ+PC9zdmc+';">
-                </div>
-                <div class="card-body p-2">
-                    <p class="card-text small text-truncate mb-1" title="${imageName}">
-                        ${imageName}
-                    </p>
-                    <small class="text-muted size-preview">
-                        Sera inseree en ${this.imageSizeOptions[this.selectedImageSize].label.toLowerCase()}
-                    </small>
-                </div>
-            </div>
+        // Bouton Précédent
+        paginationHTML += `
+            <li class="page-item ${data.current_page === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="event.preventDefault(); window.quillManager.loadMediaImages(${data.current_page - 1})">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
         `;
         
-        // Ajouter l'evenement de clic
-        col.addEventListener('click', () => {
-            console.log('Insertion image URL:', imageUrl);
-            this.insertImage(imageUrl, imageName);
-        });
+        // Numéros de pages
+        const maxVisible = 5;
+        let startPage = Math.max(1, data.current_page - Math.floor(maxVisible / 2));
+        let endPage = Math.min(data.last_page, startPage + maxVisible - 1);
         
-        grid.appendChild(col);
-    });
-    
-    // Ajouter les evenements de recherche
-    const searchInput = this.imageModal.querySelector('#imageSearchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(this.searchTimeout);
-            this.searchTimeout = setTimeout(() => {
-                this.filterImages(e.target.value);
-            }, 300);
+        if (endPage - startPage < maxVisible - 1) {
+            startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+        
+        // Première page
+        if (startPage > 1) {
+            paginationHTML += `
+                <li class="page-item">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); window.quillManager.loadMediaImages(1)">1</a>
+                </li>
+            `;
+            if (startPage > 2) {
+                paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+            }
+        }
+        
+        // Pages visibles
+        for (let i = startPage; i <= endPage; i++) {
+            paginationHTML += `
+                <li class="page-item ${i === data.current_page ? 'active' : ''}">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); window.quillManager.loadMediaImages(${i})">${i}</a>
+                </li>
+            `;
+        }
+        
+        // Dernière page
+        if (endPage < data.last_page) {
+            if (endPage < data.last_page - 1) {
+                paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+            }
+            paginationHTML += `
+                <li class="page-item">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); window.quillManager.loadMediaImages(${data.last_page})">${data.last_page}</a>
+                </li>
+            `;
+        }
+        
+        // Bouton Suivant
+        paginationHTML += `
+            <li class="page-item ${data.current_page === data.last_page ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="event.preventDefault(); window.quillManager.loadMediaImages(${data.current_page + 1})">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+        `;
+        
+        paginationHTML += '</ul></nav>';
+        paginationContainer.innerHTML = paginationHTML;
+    }
+
+    renderImages(images) {
+        const grid = this.imageModal.querySelector('#imageGrid');
+        
+        if (!grid) {
+            console.error('Grid element not found');
+            return;
+        }
+        
+        grid.innerHTML = '';
+        
+        if (!images || images.length === 0) {
+            grid.innerHTML = `
+                <div class="col-12 text-center py-4">
+                    <i class="fas fa-images fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">Aucune image trouvee</h5>
+                    <p class="text-muted">Uploadez des images dans votre mediatheque.</p>
+                    <a href="/admin/media" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-upload me-2"></i>Gerer les medias
+                    </a>
+                </div>
+            `;
+            return;
+        }
+        
+        images.forEach(image => {
+            let imageUrl = '';
+            if (image.url) {
+                imageUrl = image.url;
+            } else if (image.path) {
+                imageUrl = `/storage/${image.path}`;
+            } else {
+                console.warn('Aucune URL trouvee pour:', image);
+                return;
+            }
+            
+            const imageName = image.name || image.original_name || 'Sans nom';
+            
+            const col = document.createElement('div');
+            col.className = 'col-md-3 col-sm-4 col-6 image-item';
+            col.setAttribute('data-name', imageName.toLowerCase());
+            
+            col.innerHTML = `
+                <div class="card h-100 hover-lift" style="cursor: pointer;" data-image-url="${imageUrl}">
+                    <div class="card-img-top" style="height: 120px; overflow: hidden;">
+                        <img src="${imageUrl}" alt="${imageName}" 
+                             class="img-fluid w-100 h-100" style="object-fit: cover;"
+                             loading="lazy">
+                    </div>
+                    <div class="card-body p-2">
+                        <p class="card-text small text-truncate mb-1" title="${imageName}">
+                            ${imageName}
+                        </p>
+                        <small class="text-muted size-preview">
+                            Sera inseree en ${this.imageSizeOptions[this.selectedImageSize].label.toLowerCase()}
+                        </small>
+                    </div>
+                </div>
+            `;
+            
+            col.addEventListener('click', () => {
+                this.insertImage(imageUrl, imageName);
+            });
+            
+            grid.appendChild(col);
         });
     }
-}
-
-
-
 
     insertImage(imageUrl, altText = '') {
         const quill = this.imageModal.quillInstance;
@@ -385,10 +386,8 @@ renderImages(images) {
         const range = quill.getSelection() || { index: quill.getLength() };
         const sizeConfig = this.imageSizeOptions[this.selectedImageSize];
         
-        // Inserer l'image
         quill.insertEmbed(range.index, 'image', imageUrl);
         
-        // Appliquer les styles responsifs
         setTimeout(() => {
             const imgElement = quill.root.querySelector(`img[src="${imageUrl}"]`);
             if (imgElement) {
@@ -403,15 +402,11 @@ renderImages(images) {
             }
         }, 100);
         
-        // Deplacer le curseur
         quill.setSelection(range.index + 1);
-        
-        // Fermer le modal
         this.closeImageModal();
     }
 
     showImageResizeOptions(imgElement) {
-        // Supprimer les contrôles existants
         document.querySelectorAll('.image-resize-control').forEach(el => el.remove());
         
         const resizeControl = document.createElement('div');
@@ -448,13 +443,11 @@ renderImages(images) {
             resizeControl.appendChild(btn);
         });
         
-        // Positionner
         const rect = imgElement.getBoundingClientRect();
         resizeControl.style.left = rect.left + 'px';
         resizeControl.style.top = (rect.bottom + 5) + 'px';
         document.body.appendChild(resizeControl);
         
-        // Supprimer en cliquant ailleurs
         setTimeout(() => {
             const removeControl = (e) => {
                 if (!resizeControl.contains(e.target) && e.target !== imgElement) {
@@ -508,12 +501,22 @@ renderImages(images) {
     }
 }
 
-// Instance globale
-const quillManager = new QuillMediaManager();
+// ========================================
+// Enregistrement global
+// ========================================
+window.QuillMediaManager = QuillMediaManager;
 
-// Fonctions publiques
+if (!window.quillManager) {
+    window.quillManager = new QuillMediaManager();
+}
+
+} // Fin de la protection
+
+// ========================================
+// Fonctions publiques (UNE SEULE FOIS)
+// ========================================
 function initQuillEditor(selector, textareaId) {
-    return quillManager.initQuillEditor(selector, textareaId);
+    return window.quillManager.initQuillEditor(selector, textareaId);
 }
 
 function openMediaSelectorForImageField() {
@@ -527,7 +530,9 @@ function openMediaSelectorForImageField() {
     }
 }
 
-// Initialisation
+// ========================================
+// Initialisation (UNE SEULE FOIS)
+// ========================================
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         if (document.getElementById('intro-editor')) {
