@@ -258,6 +258,8 @@ Route::resource('fiches', FicheController::class)->parameters([
     
     // API pour selection des medias (utilisee dans les modals)
     Route::get('media-api', [MediaController::class, 'api'])->name('media.api');
+        Route::get('media-categories-api', [MediaController::class, 'categoriesApi'])->name('media.categories.api');
+
     
     // Gestion des categories de medias
     Route::get('media-categories', [MediaController::class, 'categories'])->name('media.categories');

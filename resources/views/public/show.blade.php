@@ -34,7 +34,7 @@
             <div class="col-lg-8 col-xl-12">
 
                 <!-- Card 1: Métadonnées et Introduction -->
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="card border-0 shadow-sm mb-4" style="background-color: #fbf7f0;">
                     <div class="card-body p-4">
                         <!-- Métadonnées -->
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted mb-4">
@@ -77,7 +77,7 @@
                         <!-- Introduction -->
                         @if($post->intro)
                         <div class="border-top pt-4">
-                            <div class="lead text-dark">
+                            <div class="lead text-dark" style="font-size: 100%;">
                                 {!! $post->intro !!}
                             </div>
                         </div>

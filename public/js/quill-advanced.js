@@ -184,11 +184,18 @@ class QuillMediaManager {
 
 
 
-async loadMediaImages() {
+// Remplacer la méthode loadMediaImages existante par :
+async loadMediaImages(page = 1) {
     try {
         const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         
-        const response = await fetch('/admin/media-api', {
+        const params = new URLSearchParams();
+        params.append('page', page);
+        params.append('per_page', 12);
+        
+        this.showImageLoader();
+        
+        const response = await fetch(`/admin/media-api?${params}`, {
             headers: {
                 'X-CSRF-TOKEN': token,
                 'Accept': 'application/json',
@@ -202,14 +209,85 @@ async loadMediaImages() {
         }
         
         const data = await response.json();
-        console.log('Donnees API reçues:', data); // Debug
         
         this.renderImages(data.data || []);
+        this.renderImagePagination(data);
+        
     } catch (error) {
         console.error('Erreur lors du chargement des medias:', error);
         this.showImageError(error.message);
     }
 }
+
+showImageLoader() {
+    const grid = this.imageModal.querySelector('#imageGrid');
+    grid.innerHTML = `
+        <div class="col-12 text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Chargement...</span>
+            </div>
+        </div>
+    `;
+}
+
+renderImagePagination(data) {
+    // Ajouter un conteneur de pagination s'il n'existe pas
+    let paginationContainer = this.imageModal.querySelector('#imagePagination');
+    
+    if (!paginationContainer) {
+        const modalBody = this.imageModal.querySelector('.modal-body');
+        paginationContainer = document.createElement('div');
+        paginationContainer.id = 'imagePagination';
+        paginationContainer.className = 'mt-3';
+        modalBody.appendChild(paginationContainer);
+    }
+    
+    if (data.last_page <= 1) {
+        paginationContainer.innerHTML = '';
+        return;
+    }
+    
+    let paginationHTML = '<nav><ul class="pagination justify-content-center mb-0">';
+    
+    // Bouton Précédent
+    paginationHTML += `
+        <li class="page-item ${data.current_page === 1 ? 'disabled' : ''}">
+            <a class="page-link" href="#" onclick="event.preventDefault(); quillManager.loadMediaImages(${data.current_page - 1})">
+                Précédent
+            </a>
+        </li>
+    `;
+    
+    // Pages
+    for (let i = 1; i <= data.last_page; i++) {
+        if (i === 1 || i === data.last_page || (i >= data.current_page - 2 && i <= data.current_page + 2)) {
+            paginationHTML += `
+                <li class="page-item ${i === data.current_page ? 'active' : ''}">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); quillManager.loadMediaImages(${i})">${i}</a>
+                </li>
+            `;
+        } else if (i === data.current_page - 3 || i === data.current_page + 3) {
+            paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+    }
+    
+    // Bouton Suivant
+    paginationHTML += `
+        <li class="page-item ${data.current_page === data.last_page ? 'disabled' : ''}">
+            <a class="page-link" href="#" onclick="event.preventDefault(); quillManager.loadMediaImages(${data.current_page + 1})">
+                Suivant
+            </a>
+        </li>
+    `;
+    
+    paginationHTML += '</ul></nav>';
+    paginationContainer.innerHTML = paginationHTML;
+}
+
+
+
+
+
 
 renderImages(images) {
     const grid = this.imageModal.querySelector('#imageGrid');

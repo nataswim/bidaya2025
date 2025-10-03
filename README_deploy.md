@@ -29,17 +29,11 @@ Diagnostic
 
 cd /chemin/,,,,,,
 
-# 1. Vider le cache de l'application
+# 1. Vider 
 php artisan cache:clear
-
-# 2. Vider le cache de la configuration
 php artisan config:clear
 php artisan config:cache
-
-# 3. Vider le cache des vues
 php artisan view:clear
-
-# 4. Vider le cache des routes (souvent nécessaire après un git pull)
 php artisan route:clear
 php artisan route:cache
 

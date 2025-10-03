@@ -1,21 +1,29 @@
-// Selecteur de medias reutilisable
+// Selecteur de medias reutilisable avec pagination
 class MediaFieldSelector {
     constructor() {
         this.currentFieldId = null;
         this.previewElementId = null;
         this.modal = null;
+        this.currentPage = 1;
+        this.lastPage = 1;
+        this.perPage = 12;
+        this.categories = []; // Stocker les catégories
     }
 
-    // Ouvrir le selecteur pour un champ specifique
     openForField(fieldId, previewElementId = null) {
         this.currentFieldId = fieldId;
         this.previewElementId = previewElementId;
+        this.currentPage = 1;
         
         if (!this.modal) {
             this.createModal();
         }
         
-        this.loadMedias();
+        // Charger les catégories puis les médias
+        this.loadCategories().then(() => {
+            this.loadMedias(1);
+        });
+        
         this.showModal();
     }
 
@@ -42,14 +50,25 @@ class MediaFieldSelector {
                                     <div class="col-md-4">
                                         <select id="mediaFieldCategory" class="form-select">
                                             <option value="">Toutes les categories</option>
+                                            <!-- Catégories chargées dynamiquement -->
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-primary w-100" onclick="mediaFieldSelector.loadMedias()">
+                                        <button type="button" class="btn btn-primary w-100" onclick="mediaFieldSelector.loadMedias(1)">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Info pagination -->
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-muted" id="mediaFieldInfo">Chargement...</small>
+                                <select id="mediaFieldPerPage" class="form-select form-select-sm w-auto">
+                                    <option value="12">12 par page</option>
+                                    <option value="24">24 par page</option>
+                                    <option value="48">48 par page</option>
+                                </select>
                             </div>
 
                             <!-- Grille d'images -->
@@ -59,6 +78,15 @@ class MediaFieldSelector {
                                         <span class="visually-hidden">Chargement...</span>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Pagination -->
+                            <div id="mediaFieldPagination" class="mt-3 d-none">
+                                <nav>
+                                    <ul class="pagination justify-content-center mb-0">
+                                        <!-- Généré dynamiquement -->
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                         
@@ -83,21 +111,84 @@ class MediaFieldSelector {
         searchInput.addEventListener('input', (e) => {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
-                this.loadMedias();
+                this.loadMedias(1);
             }, 300);
+        });
+
+        // Changement du nombre d'images par page
+        const perPageSelect = this.modal.querySelector('#mediaFieldPerPage');
+        perPageSelect.addEventListener('change', (e) => {
+            this.perPage = parseInt(e.target.value);
+            this.loadMedias(1);
+        });
+
+        // Changement de catégorie
+        const categorySelect = this.modal.querySelector('#mediaFieldCategory');
+        categorySelect.addEventListener('change', (e) => {
+            this.loadMedias(1);
         });
     }
 
-    async loadMedias() {
+    /**
+     * 🆕 NOUVELLE MÉTHODE : Charger les catégories
+     */
+    async loadCategories() {
+        try {
+            const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            
+            const response = await fetch('/admin/media-categories-api', {
+                headers: {
+                    'X-CSRF-TOKEN': token,
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+            });
+
+            if (!response.ok) {
+                console.warn('Impossible de charger les catégories');
+                return;
+            }
+            
+            const categories = await response.json();
+            this.categories = categories;
+            this.renderCategories();
+            
+        } catch (error) {
+            console.error('Erreur chargement catégories:', error);
+        }
+    }
+
+    /**
+     * 🆕 NOUVELLE MÉTHODE : Afficher les catégories dans le select
+     */
+    renderCategories() {
+        const categorySelect = this.modal.querySelector('#mediaFieldCategory');
+        
+        // Garder l'option "Toutes les catégories"
+        let optionsHTML = '<option value="">Toutes les categories</option>';
+        
+        this.categories.forEach(category => {
+            optionsHTML += `<option value="${category.id}">${category.name}</option>`;
+        });
+        
+        categorySelect.innerHTML = optionsHTML;
+    }
+
+    async loadMedias(page = 1) {
         try {
             const search = document.getElementById('mediaFieldSearch').value;
             const category = document.getElementById('mediaFieldCategory').value;
             
             const params = new URLSearchParams();
+            params.append('page', page);
+            params.append('per_page', this.perPage);
             if (search) params.append('search', search);
             if (category) params.append('category', category);
 
             const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            
+            this.showLoader();
             
             const response = await fetch(`/admin/media-api?${params}`, {
                 headers: {
@@ -111,11 +202,29 @@ class MediaFieldSelector {
             if (!response.ok) throw new Error('Erreur de chargement');
             
             const data = await response.json();
+            
+            this.currentPage = data.current_page;
+            this.lastPage = data.last_page;
+            
             this.renderMedias(data.data || []);
+            this.renderPagination(data);
+            this.updateInfo(data);
+            
         } catch (error) {
             console.error('Erreur:', error);
             this.showError('Erreur lors du chargement des medias');
         }
+    }
+
+    showLoader() {
+        const grid = this.modal.querySelector('#mediaFieldGrid');
+        grid.innerHTML = `
+            <div class="col-12 text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+            </div>
+        `;
     }
 
     renderMedias(medias) {
@@ -159,45 +268,115 @@ class MediaFieldSelector {
         }).join('');
     }
 
-    selectMedia(imageUrl, imageName) {
-    // Mettre A jour le champ input
-    const field = document.getElementById(this.currentFieldId);
-    if (field) {
-        field.value = imageUrl;
+    renderPagination(data) {
+        const paginationContainer = this.modal.querySelector('#mediaFieldPagination');
+        const paginationList = paginationContainer.querySelector('ul');
         
-        // Supprimer toute validation personnalisee
-        field.setCustomValidity('');
+        if (data.last_page <= 1) {
+            paginationContainer.classList.add('d-none');
+            return;
+        }
         
-        // Declencher les evenements
-        field.dispatchEvent(new Event('input', { bubbles: true }));
-        field.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-
-    // Mettre A jour l'aperçu
-    if (this.previewElementId) {
-        const preview = document.getElementById(this.previewElementId);
-        if (preview) {
-            preview.src = imageUrl;
-            preview.alt = imageName;
-            preview.style.display = 'block';
-            
-            // Afficher le conteneur d'aperçu
-            const previewContainer = preview.closest('.mt-3, .d-none');
-            if (previewContainer && previewContainer.classList.contains('d-none')) {
-                previewContainer.classList.remove('d-none');
+        paginationContainer.classList.remove('d-none');
+        
+        let paginationHTML = '';
+        
+        // Bouton Précédent
+        paginationHTML += `
+            <li class="page-item ${data.current_page === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${data.current_page - 1})">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
+        `;
+        
+        // Numéros de pages
+        const maxVisible = 5;
+        let startPage = Math.max(1, data.current_page - Math.floor(maxVisible / 2));
+        let endPage = Math.min(data.last_page, startPage + maxVisible - 1);
+        
+        if (endPage - startPage < maxVisible - 1) {
+            startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+        
+        // Première page
+        if (startPage > 1) {
+            paginationHTML += `
+                <li class="page-item">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(1)">1</a>
+                </li>
+            `;
+            if (startPage > 2) {
+                paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
             }
         }
+        
+        // Pages visibles
+        for (let i = startPage; i <= endPage; i++) {
+            paginationHTML += `
+                <li class="page-item ${i === data.current_page ? 'active' : ''}">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${i})">${i}</a>
+                </li>
+            `;
+        }
+        
+        // Dernière page
+        if (endPage < data.last_page) {
+            if (endPage < data.last_page - 1) {
+                paginationHTML += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+            }
+            paginationHTML += `
+                <li class="page-item">
+                    <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${data.last_page})">${data.last_page}</a>
+                </li>
+            `;
+        }
+        
+        // Bouton Suivant
+        paginationHTML += `
+            <li class="page-item ${data.current_page === data.last_page ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="event.preventDefault(); mediaFieldSelector.loadMedias(${data.current_page + 1})">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+        `;
+        
+        paginationList.innerHTML = paginationHTML;
     }
 
-    this.hideModal();
-    this.showNotification('Image selectionnee avec succes');
-}
+    updateInfo(data) {
+        const infoElement = this.modal.querySelector('#mediaFieldInfo');
+        const start = (data.current_page - 1) * this.perPage + 1;
+        const end = Math.min(data.current_page * this.perPage, data.total);
+        infoElement.textContent = `Affichage de ${start} à ${end} sur ${data.total} image(s)`;
+    }
 
+    selectMedia(imageUrl, imageName) {
+        const field = document.getElementById(this.currentFieldId);
+        if (field) {
+            field.value = imageUrl;
+            field.setCustomValidity('');
+            field.dispatchEvent(new Event('input', { bubbles: true }));
+            field.dispatchEvent(new Event('change', { bubbles: true }));
+        }
 
+        if (this.previewElementId) {
+            const preview = document.getElementById(this.previewElementId);
+            if (preview) {
+                preview.src = imageUrl;
+                preview.alt = imageName;
+                preview.style.display = 'block';
+                
+                const previewContainer = preview.closest('.mt-3, .d-none');
+                if (previewContainer && previewContainer.classList.contains('d-none')) {
+                    previewContainer.classList.remove('d-none');
+                }
+            }
+        }
 
-
-
-    
+        this.hideModal();
+        this.showNotification('Image selectionnee avec succes');
+    }
 
     showModal() {
         if (typeof bootstrap !== 'undefined') {

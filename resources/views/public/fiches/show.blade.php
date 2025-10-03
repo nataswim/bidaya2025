@@ -102,7 +102,7 @@
                         <div class="card-body p-4">
                             <div class="alert alert-info border-0 mb-0" 
                                  style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
-                                <div class="content-display lead">
+                                <div>
                                     {!! $fiche->short_description !!}
                                 </div>
                             </div>

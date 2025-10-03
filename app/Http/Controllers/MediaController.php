@@ -430,4 +430,17 @@ class MediaController extends Controller
         
         return round($bytes, 2) . ' ' . $units[$i];
     }
+    /**
+ * API pour récupérer les catégories (pour les modales)
+ */
+public function categoriesApi()
+{
+    $this->checkAdminAccess();
+    
+    $categories = MediaCategory::active()
+        ->ordered()
+        ->get(['id', 'name', 'color']);
+    
+    return response()->json($categories);
+}
 }
