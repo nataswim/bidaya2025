@@ -72,9 +72,25 @@
                                 <span>Support prioritaire</span>
                             </li>
                         </ul>
-                        <a href="{{ route('contact') }}" class="btn btn-primary btn-lg w-100">
-                            Nous contacter
-                        </a>
+                        <!-- Plan 12 mois -->
+<a href="https://buy.stripe.com/dRm28r5AOfEDaHn0JxgnK02" 
+   class="btn btn-success btn-lg w-100"
+   target="_blank">
+    <i class="fas fa-credit-card me-2"></i>S'inscrire pour 12 mois
+</a>
+
+<div class="text-primary mb-3" style="font-size: 2.5rem;">
+                            <i class="fab fa-paypal"></i>
+                        </div>
+<p class="text-muted mb-0">
+                            S'inscrire avec Paypal.
+                        </p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="WXXYSM9EF42ZN" />
+  <input type="hidden" name="currency_code" value="EUR" />
+  <input type="image" src="https://www.paypalobjects.com/fr_FR/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" title="PayPal, votre réflexe sécurité pour payer en ligne." alt="Acheter" />
+</form>
                     </div>
                 </article>
             </div>
@@ -111,9 +127,26 @@
                                 <span>Support standard</span>
                             </li>
                         </ul>
-                        <a href="{{ route('contact') }}" class="btn btn-outline-primary btn-lg w-100">
-                            Nous contacter
-                        </a>
+                        <!-- Plan 6 mois -->
+<a href="https://buy.stripe.com/6oU9AT7IW8cbeXD1NBgnK01" 
+   class="btn btn-outline-primary btn-lg w-100"
+   target="_blank">
+    <i class="fas fa-credit-card me-2"></i>S'inscrire pour 6 mois
+</a>
+
+<div class="text-primary mb-3" style="font-size: 2.5rem;">
+                            <i class="fab fa-paypal"></i>
+                        </div>
+<p class="text-muted mb-0">
+                            S'inscrire avec Paypal.
+                        </p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="8UFX4YSD4G68G" />
+  <input type="hidden" name="currency_code" value="EUR" />
+  <input type="image" src="https://www.paypalobjects.com/fr_FR/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" title="PayPal, votre réflexe sécurité pour payer en ligne." alt="Acheter" />
+</form>
+
                     </div>
                 </article>
             </div>
@@ -150,9 +183,24 @@
                                 <span>Support standard</span>
                             </li>
                         </ul>
-                        <a href="{{ route('contact') }}" class="btn btn-outline-primary btn-lg w-100">
-                            Nous contacter
-                        </a>
+                        <!-- Plan 3 mois -->
+<a href="https://buy.stripe.com/6oUeVd9R478716NgIvgnK00" 
+   class="btn btn-outline-primary btn-lg w-100"
+   target="_blank">
+    <i class="fas fa-credit-card me-2"></i>S'inscrire pour 3 mois
+</a>
+<div class="text-primary mb-3" style="font-size: 2.5rem;">
+                            <i class="fab fa-paypal"></i>
+                        </div>
+<p class="text-muted mb-0">
+                            S'inscrire avec Paypal.
+                        </p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="FVB4LYV557SLY" />
+  <input type="hidden" name="currency_code" value="EUR" />
+  <input type="image" src="https://www.paypalobjects.com/fr_FR/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" title="PayPal, votre réflexe sécurité pour payer en ligne." alt="Acheter" />
+</form>
                     </div>
                 </article>
             </div>
