@@ -15,7 +15,7 @@ class WorkoutMultiFormeSeeder extends Seeder
 {
     public function run(): void
     {
-        $categoryId = 10; // Catégorie MultiForme
+        $categoryId = 11; // Catégorie MultiForme
         $total = 2000; // Volume total en mètres
         $shortDescription = 'seance en cours';
         $longDescription = 'seance en cours';
