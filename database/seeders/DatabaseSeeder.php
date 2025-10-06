@@ -10,7 +10,9 @@ class DatabaseSeeder extends Seeder
     {
         // Ordre qui respecte les dependances (FK)
         $this->call([
-            WorkoutBatchSeeder::class,
+            WorkoutIntermediaireSeeder::class,
+            WorkoutAvanceSeeder::class,
+            //WorkoutBatchSeeder::class,
             // RolesTableSeeder::class,
             // PermissionsTableSeeder::class,
             // RolePermissionTableSeeder::class,

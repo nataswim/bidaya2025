@@ -11,20 +11,13 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="d-flex align-items-center gap-3 mb-3">
-                    @if($orderNumber !== null)
-                        <span class="badge bg-light text-dark fs-4">
-                            Séance #{{ $orderNumber }}
-                        </span>
-                    @endif
                     <h1 class="display-5 fw-bold mb-0">{{ $workout->title }}</h1>
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-ruler me-1"></i>Volume : {{ $workout->formatted_total }}
+                        <i class="fas fa-ruler me-1"></i>{{ $workout->formatted_total }}
                     </span>
-                    <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-layer-group me-1"></i>{{ $section->name }}
-                    </span>
+                    
                 </div>
             </div>
         </div>
@@ -69,15 +62,15 @@
                     <div class="card-body p-4">
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
                             <span class="badge bg-info px-3 py-2">
-                                <i class="fas fa-folder me-1"></i>Programme : {{ $category->name }}
+                                <i class="fas fa-folder me-1"></i>{{ $category->name }}
                             </span>
                             
                             <span class="badge bg-primary px-3 py-2">
-                                <i class="fas fa-layer-group me-1"></i>Discipline : {{ $section->name }}
+                                <i class="fas fa-layer-group me-1"></i>{{ $section->name }}
                             </span>
                             
                             <span class="badge bg-success px-3 py-2">
-                                <i class="fas fa-ruler me-1"></i>Volume : {{ $workout->formatted_total }}
+                                <i class="fas fa-ruler me-1"></i>{{ $workout->formatted_total }}
                             </span>
                             
                             @if($orderNumber !== null)
