@@ -10,19 +10,20 @@ class DatabaseSeeder extends Seeder
     {
         // Ordre qui respecte les dependances (FK)
         $this->call([
-            RolesTableSeeder::class,
-            PermissionsTableSeeder::class,
-            RolePermissionTableSeeder::class,
+            WorkoutBatchSeeder::class,
+            // RolesTableSeeder::class,
+            // PermissionsTableSeeder::class,
+            // RolePermissionTableSeeder::class,
 
-            UsersTableSeeder::class,
+            // UsersTableSeeder::class,
 
             // AJOUTER cette ligne :
             //SpatiePermissionSeeder::class,
 
-            CategoriesTableSeeder::class,
-            TagsTableSeeder::class,
-            PostsTableSeeder::class,
-            TaggablesTableSeeder::class,
+            // CategoriesTableSeeder::class,
+            // TagsTableSeeder::class,
+            // PostsTableSeeder::class,
+            // TaggablesTableSeeder::class,
         ]);
     }
 }
