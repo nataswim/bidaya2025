@@ -276,80 +276,85 @@
 </div>
 
 @push('scripts')
+{{-- Charger les scripts UNE SEULE FOIS --}}
 @once
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script src="{{ asset('js/media-selector.js') }}"></script>
 <script src="{{ asset('js/quill-advanced.js') }}"></script>
+<script src="{{ asset('js/quill-ai-optimizer.js') }}"></script>
 @endonce
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ========================================
-    // 1. INITIALISATION DES ÉDITEURS QUILL
-    // ========================================
-    let quillDescription = null;
-    let quillConsignes = null;
-    
-    if (document.getElementById('description-editor')) {
-        quillDescription = initQuillEditor('#description-editor', 'description');
-    }
-    
-    if (document.getElementById('consignes-editor')) {
-        quillConsignes = initQuillEditor('#consignes-editor', 'consignes_securite');
-    }
+    // Attendre que tous les scripts soient chargés
+    setTimeout(function() {
+        let quillDescription = null;
+        let quillConsignes = null;
+        
+        // Initialiser description
+        if (document.getElementById('description-editor')) {
+            quillDescription = initQuillEditor('#description-editor', 'description');
+            console.log('✅ Description editor initialized:', quillDescription);
+        }
+        
+        // Initialiser consignes
+        if (document.getElementById('consignes-editor')) {
+            quillConsignes = initQuillEditor('#consignes-editor', 'consignes_securite');
+            console.log('✅ Consignes editor initialized:', quillConsignes);
+        }
 
-    // ========================================
-    // 2. SYNCHRONISATION À LA SOUMISSION
-    // ========================================
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', function() {
-            // Synchroniser description
-            const descriptionTextarea = document.getElementById('description');
-            if (descriptionTextarea && quillDescription) {
-                descriptionTextarea.value = quillDescription.root.innerHTML;
-            }
-            
-            // Synchroniser consignes de sécurité
-            const consignesTextarea = document.getElementById('consignes_securite');
-            if (consignesTextarea && quillConsignes) {
-                consignesTextarea.value = quillConsignes.root.innerHTML;
-            }
-        });
-    }
+        // Synchronisation à la soumission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                if (quillDescription) {
+                    document.getElementById('description').value = quillDescription.root.innerHTML;
+                }
+                if (quillConsignes) {
+                    document.getElementById('consignes_securite').value = quillConsignes.root.innerHTML;
+                }
+            });
+        }
 
-    // ========================================
-    // 3. APERÇU DE L'IMAGE
-    // ========================================
-    const imageInput = document.getElementById('image');
-    const imagePreview = document.getElementById('imagePreview');
-    const imagePreviewContainer = document.getElementById('currentImagePreview');
-    
-    if (imageInput && imagePreview && imagePreviewContainer) {
-        imageInput.addEventListener('input', function() {
-            const imageUrl = this.value.trim();
-            if (imageUrl) {
-                imagePreview.src = imageUrl;
-                imagePreviewContainer.classList.remove('d-none');
+        // Aperçu image
+        const imageInput = document.getElementById('image');
+        const imagePreview = document.getElementById('imagePreview');
+        const imagePreviewContainer = document.getElementById('currentImagePreview');
+        
+        if (imageInput && imagePreview && imagePreviewContainer) {
+            imageInput.addEventListener('input', function() {
+                const imageUrl = this.value.trim();
+                if (imageUrl) {
+                    imagePreview.src = imageUrl;
+                    imagePreviewContainer.classList.remove('d-none');
+                } else {
+                    imagePreviewContainer.classList.add('d-none');
+                }
+            });
+        }
+
+        // ⚡ INITIALISER L'IA APRÈS QUILL (DÉLAI AUGMENTÉ)
+        setTimeout(function() {
+            if (typeof window.initQuillAI === 'function') {
+                console.log('🤖 Initialisation IA...');
+                window.initQuillAI();
             } else {
-                imagePreviewContainer.classList.add('d-none');
+                console.error('❌ window.initQuillAI non disponible');
             }
-        });
-    }
+        }, 2000); // Délai augmenté à 2 secondes
+        
+    }, 500); // Délai initial pour que Quill soit chargé
 });
 
-// ========================================
-// 4. GESTION DES MUSCLES CIBLÉS
-// ========================================
+// Gestion des muscles ciblés
 function addMuscle() {
     const container = document.getElementById('muscles-container');
     const div = document.createElement('div');
     div.className = 'col-md-4';
     div.innerHTML = `
         <div class="input-group">
-            <input type="text" 
-                   name="muscles_cibles[]" 
-                   class="form-control" 
-                   placeholder="Ex: Pectoraux">
+            <input type="text" name="muscles_cibles[]" class="form-control" placeholder="Ex: Pectoraux">
             <button type="button" class="btn btn-outline-danger" onclick="removeMusle(this)">
                 <i class="fas fa-times"></i>
             </button>

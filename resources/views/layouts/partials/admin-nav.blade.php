@@ -79,7 +79,15 @@
                     <span>Tags</span>
                 </a>
             </li>
-
+@if(auth()->user()->hasRole('admin'))
+<li class="nav-item">
+    <a class="nav-link {{ request()->routeIs('admin.aitext.*') ? 'active' : '' }}" 
+       href="{{ route('admin.aitext.settings') }}">
+        <i class="fas fa-robot me-2"></i>
+        AI Text Optimizer
+    </a>
+</li>
+@endif
             <!-- ========== SECTION FICHES ========== -->
             <li class="nav-item mb-1 mt-3">
                 <div class="px-3 mb-2">

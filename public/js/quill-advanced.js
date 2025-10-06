@@ -531,15 +531,11 @@ function openMediaSelectorForImageField() {
 }
 
 // ========================================
-// Initialisation (UNE SEULE FOIS)
+// CHARGEMENT DU MODULE IA
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        if (document.getElementById('intro-editor')) {
-            initQuillEditor('#intro-editor', 'intro');
-        }
-        if (document.getElementById('content-editor')) {
-            initQuillEditor('#content-editor', 'content');
-        }
-    }, 100);
-});
+if (document.querySelector('script[src*="quill-ai-optimizer"]')) {
+    console.log('✅ Module IA détecté');
+} else {
+    console.warn('⚠️ Module IA non chargé - Ajoutez quill-ai-optimizer.js dans votre vue');
+}
+

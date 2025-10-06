@@ -16,6 +16,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Navigation principale -->
             <ul class="navbar-nav me-auto ms-lg-4">
+
+
+
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('home') }}">

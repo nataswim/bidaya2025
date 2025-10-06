@@ -28,6 +28,22 @@ use App\Http\Controllers\WorkoutSectionController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\User\NotebookController;
 use App\Http\Controllers\User\TrainingController;
+use App\Http\Controllers\AITextController;
+use App\Http\Controllers\Services\AITextService;
+use App\Http\Controllers\User\NotebookItemController;
+use App\Http\Controllers\User\NotebookNoteController;
+use App\Http\Controllers\User\NotebookExportController;
+use App\Http\Controllers\User\NotebookFavoriteController;
+use App\Http\Controllers\User\NotebookReorderController;
+use App\Http\Controllers\User\NotebookContentController;
+use App\Http\Controllers\User\NotebookBulkActionController;
+use App\Http\Controllers\User\NotebookApiController;
+use App\Http\Controllers\User\NotebookCategoryController;
+use App\Http\Controllers\User\NotebookTypeController;
+use App\Http\Controllers\User\NotebookShareController;
+use App\Http\Controllers\User\NotebookPermissionController;
+use App\Http\Controllers\User\NotebookCollaborationController;
+use App\Http\Controllers\User\NotebookVersionController;
 
 
 
@@ -247,6 +263,19 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
 Route::resource('fiches', FicheController::class)->parameters([
     'fiches' => 'fiche'
 ]);
+
+
+// Routes AI Text Optimizer
+Route::prefix('aitext')->name('aitext.')->group(function () {
+    Route::get('/settings', [AITextController::class, 'settings'])->name('settings');
+    Route::post('/save', [AITextController::class, 'saveSettings'])->name('save');
+    Route::post('/test', [AITextController::class, 'testConnection'])->name('test');
+    Route::post('/process', [AITextController::class, 'process'])->name('process');
+    Route::post('/optimize-title', [AITextController::class, 'optimizeTitle'])->name('optimize-title');
+    Route::post('/optimize-slug', [AITextController::class, 'optimizeSlug'])->name('optimize-slug');
+});
+
+
 // ========== ROUTES MeDIAS ==========
     
     // Gestion principale des medias
