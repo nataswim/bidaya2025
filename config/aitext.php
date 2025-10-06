@@ -19,7 +19,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Modèles disponibles par provider
+    | Modèles disponibles par provider - MISE À JOUR OCTOBRE 2025
     |--------------------------------------------------------------------------
     */
     'models' => [
@@ -29,10 +29,15 @@ return [
             'gemini-1.0-pro' => 'Gemini 1.0 Pro',
         ],
         'groq' => [
-            'llama3-8b-8192' => 'Llama 3 8B (Rapide)',
-            'llama3-70b-8192' => 'Llama 3 70B (Plus intelligent)',
-            'mixtral-8x7b-32768' => 'Mixtral 8x7B',
-            'gemma-7b-it' => 'Gemma 7B',
+            // PRODUCTION - Modèles stables et recommandés
+            'llama-3.3-70b-versatile' => '⭐ Llama 3.3 70B Versatile (Recommandé)',
+            'llama-3.1-8b-instant' => '⚡ Llama 3.1 8B Instant (Ultra rapide)',
+            'gemma2-9b-it' => 'Gemma 2 9B (Équilibré)',
+            
+            // PREVIEW - Modèles expérimentaux (ne pas utiliser en production)
+            'deepseek-r1-distill-llama-70b' => '🧪 DeepSeek R1 70B (Preview)',
+            'qwen/qwen3-32b' => '🧪 Qwen 3 32B (Preview)',
+            'moonshotai/kimi-k2-instruct' => '🧪 Kimi K2 (Preview)',
         ],
         'openai' => [
             'gpt-3.5-turbo' => 'GPT-3.5 Turbo (Recommandé)',

@@ -16,9 +16,12 @@ class AITextService
 
     public function __construct()
     {
-        // Priorité : base de données > fichier .env > valeurs par défaut
+        // Récupérer le provider actuel
         $this->provider = Setting::get('ai_text_provider', config('aitext.api_provider', 'gemini'));
-        $this->apiKey = Setting::get('ai_text_api_key', config('aitext.api_key', ''));
+        
+        // Récupérer la clé API spécifique au provider
+        $this->apiKey = Setting::get('ai_text_api_key_' . $this->provider, '');
+        
         $this->model = Setting::get('ai_text_model', config('aitext.model', 'gemini-1.5-flash'));
         $this->temperature = (float) Setting::get('ai_text_temperature', config('aitext.temperature', 0.7));
         $this->maxTokens = (int) Setting::get('ai_text_max_tokens', config('aitext.max_tokens', 1024));
@@ -30,6 +33,11 @@ class AITextService
     public function processText(string $content, string $actionType, ?string $title = null): array
     {
         try {
+            // Validation de la clé API
+            if (empty($this->apiKey)) {
+                throw new \Exception('Clé API non configurée pour ' . $this->provider . '. Veuillez configurer votre clé API dans les paramètres.');
+            }
+
             $prompt = $this->buildPrompt($content, $actionType, $title);
             
             switch ($this->provider) {
@@ -44,10 +52,16 @@ class AITextService
                 case 'huggingface':
                     return $this->callHuggingFace($prompt);
                 default:
-                    throw new \Exception('Provider non supporté');
+                    throw new \Exception('Provider non supporté : ' . $this->provider);
             }
         } catch (\Exception $e) {
-            Log::error('AI Text Error: ' . $e->getMessage());
+            Log::error('AI Text Error', [
+                'provider' => $this->provider,
+                'model' => $this->model,
+                'action' => $actionType,
+                'error' => $e->getMessage()
+            ]);
+            
             return [
                 'success' => false,
                 'error' => $e->getMessage()
@@ -99,7 +113,12 @@ class AITextService
         ]);
 
         if (!$response->successful()) {
-            throw new \Exception('Erreur Gemini: ' . $response->status() . ' - ' . $response->body());
+            $errorBody = $response->body();
+            Log::error('Gemini API Error', [
+                'status' => $response->status(),
+                'body' => $errorBody
+            ]);
+            throw new \Exception('Erreur Gemini: ' . $response->status() . ' - ' . $errorBody);
         }
 
         $data = $response->json();
@@ -119,6 +138,12 @@ class AITextService
      */
     private function callGroq(string $prompt): array
     {
+        Log::info('Groq API Call', [
+            'model' => $this->model,
+            'temperature' => $this->temperature,
+            'max_tokens' => $this->maxTokens
+        ]);
+
         $response = Http::timeout(60)
             ->withHeaders([
                 'Authorization' => 'Bearer ' . $this->apiKey,
@@ -141,12 +166,31 @@ class AITextService
             ]);
 
         if (!$response->successful()) {
-            throw new \Exception('Erreur Groq: ' . $response->status());
+            $errorBody = $response->body();
+            $errorData = $response->json();
+            
+            Log::error('Groq API Error', [
+                'status' => $response->status(),
+                'body' => $errorBody,
+                'model' => $this->model,
+                'error_data' => $errorData
+            ]);
+
+            $errorMessage = 'Erreur Groq ' . $response->status();
+            
+            if (isset($errorData['error']['message'])) {
+                $errorMessage .= ': ' . $errorData['error']['message'];
+            } else {
+                $errorMessage .= ': ' . $errorBody;
+            }
+
+            throw new \Exception($errorMessage);
         }
 
         $data = $response->json();
         
         if (!isset($data['choices'][0]['message']['content'])) {
+            Log::error('Groq Invalid Response', ['response' => $data]);
             throw new \Exception('Réponse Groq invalide');
         }
 
@@ -183,7 +227,12 @@ class AITextService
             ]);
 
         if (!$response->successful()) {
-            throw new \Exception('Erreur OpenAI: ' . $response->status());
+            $errorBody = $response->body();
+            Log::error('OpenAI API Error', [
+                'status' => $response->status(),
+                'body' => $errorBody
+            ]);
+            throw new \Exception('Erreur OpenAI: ' . $response->status() . ' - ' . $errorBody);
         }
 
         $data = $response->json();
@@ -216,7 +265,12 @@ class AITextService
             ]);
 
         if (!$response->successful()) {
-            throw new \Exception('Erreur Cohere: ' . $response->status());
+            $errorBody = $response->body();
+            Log::error('Cohere API Error', [
+                'status' => $response->status(),
+                'body' => $errorBody
+            ]);
+            throw new \Exception('Erreur Cohere: ' . $response->status() . ' - ' . $errorBody);
         }
 
         $data = $response->json();
@@ -253,7 +307,12 @@ class AITextService
             ]);
 
         if (!$response->successful()) {
-            throw new \Exception('Erreur Hugging Face: ' . $response->status());
+            $errorBody = $response->body();
+            Log::error('Hugging Face API Error', [
+                'status' => $response->status(),
+                'body' => $errorBody
+            ]);
+            throw new \Exception('Erreur Hugging Face: ' . $response->status() . ' - ' . $errorBody);
         }
 
         $data = $response->json();
