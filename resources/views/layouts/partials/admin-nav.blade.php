@@ -88,6 +88,26 @@
     </a>
 </li>
 @endif
+
+
+<li class="nav-item mb-1">
+                <a href="{{ route('admin.sitemap.index') }}" 
+                   class="nav-link text-white d-flex align-items-center rounded {{ request()->routeIs('admin.sitemap.*') ? 'active bg-primary' : '' }}">
+                    <i class="fas fa-sitemap me-3"></i>
+                    <span>Sitemap XML</span>
+                    @php
+                        $sitemapCount = \App\Models\SitemapUrl::approved()->count();
+                        $totalUrls = \App\Models\SitemapUrl::count();
+                    @endphp
+                    @if($sitemapCount > 0)
+                        <span class="badge bg-success ms-auto">{{ $sitemapCount }}</span>
+                    @elseif($totalUrls > 0)
+                        <span class="badge bg-warning ms-auto">{{ $totalUrls }}</span>
+                    @endif
+                </a>
+            </li>
+
+            
             <!-- ========== SECTION FICHES ========== -->
             <li class="nav-item mb-1 mt-3">
                 <div class="px-3 mb-2">
@@ -273,6 +293,9 @@
             </li>
         </ul>
     </div>
+    
+
+
     
     <!-- Footer Sidebar -->
     <div class="p-3 border-top border-secondary">
