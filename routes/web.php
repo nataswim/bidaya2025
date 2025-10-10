@@ -44,6 +44,8 @@ use App\Http\Controllers\User\NotebookShareController;
 use App\Http\Controllers\User\NotebookPermissionController;
 use App\Http\Controllers\User\NotebookCollaborationController;
 use App\Http\Controllers\User\NotebookVersionController;
+use App\Http\Controllers\Admin\SitemapController;
+
 
 
 
@@ -55,6 +57,23 @@ Route::prefix('workouts')->name('public.workouts.')->group(function () {
     Route::get('/{section}/{category}', [PublicWorkoutController::class, 'category'])->name('category');
     Route::get('/{section}/{category}/{workout}', [PublicWorkoutController::class, 'show'])->name('show');
 });
+
+
+// ========== ROUTE PUBLIQUE SITEMAP XML ==========
+Route::get('/sitemap.xml', function () {
+    $path = public_path('sitemap.xml');
+    
+    if (!file_exists($path)) {
+        abort(404, 'Sitemap non trouvé. Veuillez le générer depuis l\'administration.');
+    }
+    
+    return response()
+        ->file($path, [
+            'Content-Type' => 'application/xml; charset=UTF-8',
+            'Cache-Control' => 'public, max-age=3600'
+        ]);
+})->name('sitemap.xml');
+
 
 // Routes publiques
 Route::view('/', 'public.home')->name('home');
@@ -349,4 +368,18 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
     Route::post('downloadables/{downloadable}/duplicate', [DownloadableController::class, 'duplicate'])->name('downloadables.duplicate');
     Route::get('downloadables-stats', [DownloadableController::class, 'stats'])->name('downloadables.stats');
     Route::post('downloadables/bulk-action', [DownloadableController::class, 'bulkAction'])->name('downloadables.bulk-action');
+
+// ========== ROUTES SITEMAP ==========
+    Route::prefix('sitemap')->name('sitemap.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\SitemapController::class, 'index'])->name('index');
+        Route::post('/discover', [\App\Http\Controllers\Admin\SitemapController::class, 'discover'])->name('discover');
+        Route::post('/generate', [\App\Http\Controllers\Admin\SitemapController::class, 'generate'])->name('generate');
+        Route::post('/store', [\App\Http\Controllers\Admin\SitemapController::class, 'store'])->name('store');
+        Route::patch('/{sitemapUrl}', [\App\Http\Controllers\Admin\SitemapController::class, 'update'])->name('update');
+        Route::post('/bulk-approve', [\App\Http\Controllers\Admin\SitemapController::class, 'bulkApprove'])->name('bulk-approve');
+        Route::post('/{sitemapUrl}/toggle', [\App\Http\Controllers\Admin\SitemapController::class, 'toggleApproval'])->name('toggle');
+        Route::delete('/{sitemapUrl}', [\App\Http\Controllers\Admin\SitemapController::class, 'destroy'])->name('destroy');
+        Route::post('/clean', [\App\Http\Controllers\Admin\SitemapController::class, 'clean'])->name('clean');
+    });
+
 });
