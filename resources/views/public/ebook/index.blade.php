@@ -60,10 +60,10 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">Espace Telechargement</h1>
+                <h1 class="display-4 fw-bold mb-4">Ressources</h1>
                 <p class="lead mb-4">
-                    Decouvrez notre collection de ressources exclusives : eBooks, guides pratiques, 
-                    videos de formation et documents pour booster votre developpement.
+                    eBooks, guides pratiques, 
+                    formation et documents pour booster votre developpement.
                 </p>
                 <div class="d-flex gap-3">
                     <a href="#categories" class="btn btn-light btn-lg">
@@ -105,14 +105,7 @@
 <!-- Section Categories -->
 <section id="categories" class="py-5">
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Ressources</h2>
-                <p class="text-muted">
-                    Explorez nos differentes categories pour trouver exactement ce que vous cherchez
-                </p>
-            </div>
-        </div>
+        
 
         @if($categories->count() > 0)
             <div class="row g-4">
@@ -161,11 +154,9 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-3">
-                    <i class="fas fa-star text-warning me-2"></i>Ressources Vedettes
+                    <i class="fas fa-star text-warning me-2"></i>Contenus les plus populaires
                 </h2>
-                <p class="text-muted">
-                    Nos contenus les plus populaires et recommandes
-                </p>
+             
             </div>
         </div>
 
@@ -251,11 +242,9 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-3">
-                    <i class="fas fa-clock text-info me-2"></i>Documents Recents
+                    <i class="fas fa-clock text-info me-2"></i>Dernieres ressources ajoutees
                 </h2>
-                <p class="text-muted">
-                    Dernieres ressources ajoutees
-                </p>
+
             </div>
         </div>
 

@@ -8,18 +8,10 @@
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-5 fw-bold mb-3">Articles</h1>
-                <p class="lead mb-0">Decouvrez nos derniers contenus et les bonnes pratiques.</p>
+                <h1 class="display-5 fw-bold mb-3">Articles & Dosiers</h1>
+                <p class="lead mb-0">Decouvrez nos derniers contenus et dossiers pratiques.</p>
             </div>
-            
-            
-            <div class="col-lg-4 text-center">
-    <img src="{{ asset('assets/images/team/nataswim-application-banner-18.jpg') }}" 
-         alt="Guide d'utilisation Nataswim" 
-         class="img-fluid rounded-circle shadow"
-         style="height: 300px; object-fit: cover;">
-</div>
-            
+
             
             
         </div>

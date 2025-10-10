@@ -8,21 +8,13 @@
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Fiches Pratiques
+            Fiches thématique
         </h1>
         <p class="lead mb-0">
-            Collection complète de fiches pratiques pour votre développement sportif
+            <strong>Ressources structurées et accessibles</strong> pour vous accompagner 
+                    dans votre progression sportive avec des contenus organisés par domaine.
         </p>
-        <div class="alert alert-info border-0 shadow-sm mt-4" 
-             style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); max-width: 800px; margin: 0 auto;">
-            <div class="d-flex align-items-start">
-                <i class="fas fa-lightbulb text-warning me-3 mt-1" style="font-size: 1.5rem;"></i>
-                <div class="text-dark">
-                    <strong>Ressources structurées et accessibles</strong> pour vous accompagner 
-                    dans votre progression sportive avec des contenus organisés par thématique.
-                </div>
-            </div>
-        </div>
+        
     </div>
 </section>
 
@@ -103,11 +95,11 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
                 <i class="fas fa-folder-open me-2 text-primary"></i>
-                Explorez par Catégorie
+                Explorez nos Catégorie
             </h2>
             <p class="lead text-muted">
                 Choisissez la thématique qui correspond à vos besoins pour accéder 
-                aux fiches pratiques adaptées à votre pratique sportive.
+                aux fiches pratiques adaptées à votre pratique.
             </p>
         </div>
 
@@ -219,31 +211,7 @@
     </div>
 </section>
 
-<!-- Call to Action -->
-<section class="py-5 bg-primary text-white">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h2 class="display-6 fw-bold mb-3">Notre Collection </h2>
-                <p class="lead mb-4">
-                    Explorez nos fiches pratiques par catégorie et bénéficiez de conseils 
-                    structurés pour optimiser votre développement sportif.
-                </p>
-                
-                @if($categories->count() > 0)
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        @foreach($categories->take(3) as $category)
-                            <a href="{{ route('public.fiches.category', $category) }}" 
-                               class="btn {{ $loop->first ? 'btn-light' : 'btn-outline-light' }} btn-lg">
-                                <i class="fas fa-folder me-2"></i>{{ $category->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-</section>
+
 @endsection
 
 @push('styles')

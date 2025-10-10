@@ -11,18 +11,18 @@
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center mb-3">
                     <i class="fas fa-swimmer me-3 fs-1"></i>
-                    <h1 class="display-4 fw-bold mb-0">Votre plateforme digitale pour booster vos performances aquatiques</h1>
+                    <h1 class="display-4 fw-bold mb-0">Sport Net Systèmes</h1>
                 </div>
                 <p class="lead mb-4">
-                    Planifiez, suivez et optimisez vos entrainements de natation et triathlon. Une plateforme complete pour nageurs, triathletes, entraineurs et coachs, du debutant au professionnel.
+                    Optimisez vos entraînements, développez vos connaissances et formez-vous en continu grâce à une plateforme complète dédiée aux sportifs, techniciens, préparateurs physiques, entraîneurs et coachs — du débutant au professionnel.
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                        Decouvrir les plans d'entrainement
+                    <a href="{{ route('guide') }}" class="btn btn-light d-flex align-items-center px-4">
+                        Decouvrir
                         <i class="fas fa-chevron-right ms-2"></i>
                     </a>
-                    <a href="{{ route('register') }}" class="btn btn-outline-light px-4">
-                        Rejoindre la communaute
+                    <a href="{{ route('register') }}" class="btn btn-light d-flex align-items-center px-4">
+                        Rejoindre
                     </a>
                 </div>
             </div>
@@ -61,7 +61,7 @@
     <!-- Contenu -->
     <div class="container-lg position-relative" style="z-index: 2;">
         <div class="text-center mb-5 text-white">
-            <h2 class="fw-bold display-6">Une plateforme adaptée à tous les profils </h2>
+            <h2 class="fw-bold display-6">Plateforme adaptée à tous les profils </h2>
             <p class="lead">
                 De l'amateur passionné au professionnel, en passant par les entraineurs et techniciens du sport
             </p>
@@ -115,7 +115,7 @@
                         <div class="bg-info-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-graduation-cap text-info" style="font-size: 2rem;"></i>
                         </div>
-                        <h3 class="h5 mb-3">BP & Étudiants </h3>
+                        <h3 class="h5 mb-3">Sportifs & Étudiants </h3>
                         <p class="card-text text-muted small mb-0">
                             Ressources pédagogiques, fiches techniques et outils pour votre formation en sciences du sport.
                         </p>
@@ -131,9 +131,9 @@
 <section class="py-5 bg-light">
     <div class="container-lg">
         <header class="text-center mb-5">
-            <h2 class="fw-bold display-6">Des outils complets pour votre entrainement aquatique</h2>
+            <h2 class="fw-bold display-6">Outils & contenus complets</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Tout ce dont vous avez besoin pour progresser en natation, triathlon et préparation physique
+                Tout ce dont vous avez besoin pour progresser, comprendre et améliorer vos performances
             </p>
         </header>
         
@@ -141,15 +141,15 @@
             <div class="col">
                 <article class="card h-100 shadow-sm border-0">
                     <div class="card-body p-4">
-                        <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-clipboard-list text-primary fs-2"></i>
+                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
+                            <i class="fas fa-clipboard-list text-white fs-2"></i>
                         </div>
-                        <h3 class="h5 mb-3">Plans d'entrainement natation</h3>
+                        <h3 class="h5 mb-3">Séances & Plans</h3>
                         <p class="card-text text-muted">
-                            Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entrainement natation.
+                            Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entrainement pour les sportifs.
                         </p>
-                        <a href="{{ route('plans.index') }}" class="btn btn-sm btn-outline-primary mt-2">
-                            Découvrir les plans
+                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-success mt-2">
+                            Choisir vos plans
                         </a>
                     </div>
                 </article>
@@ -158,14 +158,14 @@
             <div class="col">
                 <article class="card h-100 shadow-sm border-0">
                     <div class="card-body p-4">
-                        <div class="bg-success-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-dumbbell text-success fs-2"></i>
+                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
+                            <i class="fas fa-dumbbell text-white fs-2"></i>
                         </div>
                         <h3 class="h5 mb-3">Exercices spécialisés</h3>
                         <p class="card-text text-muted">
-                            Bibliothèque d'exercices natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
+                            Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
                         </p>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-sm btn-outline-success mt-2">
+                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-success mt-2">
                             Voir les exercices
                         </a>
                     </div>
@@ -175,14 +175,14 @@
             <div class="col">
                 <article class="card h-100 shadow-sm border-0">
                     <div class="card-body p-4">
-                        <div class="bg-warning-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-book-open text-warning fs-2"></i>
+                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
+                            <i class="fas fa-book-open text-white fs-2"></i>
                         </div>
-                        <h3 class="h5 mb-3">Fiches techniques natation</h3>
+                        <h3 class="h5 mb-3">Fiches techniques </h3>
                         <p class="card-text text-muted">
-                            Guides complets sur les techniques de nage, biomécanique aquatique et stratégies d'entrainement natation.
+                            Des guides complets sur les techniques, préparation physique, entrainement, sciences ,stratégies et plus.
                         </p>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-sm btn-outline-warning mt-2">
+                        <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-success mt-2">
                             Accéder aux fiches
                         </a>
                     </div>
@@ -192,15 +192,15 @@
             <div class="col">
                 <article class="card h-100 shadow-sm border-0">
                     <div class="card-body p-4">
-                        <div class="bg-info-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-calculator text-info fs-2"></i>
+                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
+                            <i class="fas fa-calculator text-white fs-2"></i>
                         </div>
-                        <h3 class="h5 mb-3">Calculateurs performance</h3>
+                        <h3 class="h5 mb-3">Calculateurs & Outils</h3>
                         <p class="card-text text-muted">
                             Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
                         </p>
-                        <a href="{{ route('tools.index') }}" class="btn btn-sm btn-outline-info mt-2">
-                            Utiliser les outils
+                        <a href="{{ route('tools.index') }}" class="btn btn-lg btn-success mt-2">
+                            Utiliser Nos Outils
                         </a>
                     </div>
                 </article>
@@ -209,12 +209,12 @@
             <div class="col">
                 <article class="card h-100 shadow-sm border-0">
                     <div class="card-body p-4">
-                        <div class="bg-danger-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-chart-line text-danger fs-2"></i>
+                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
+                            <i class="fas fa-chart-line text-white fs-2"></i>
                         </div>
                         <h3 class="h5 mb-3">Suivi de progression</h3>
                         <p class="card-text text-muted">
-                            Enregistrez vos performances natation, analysez votre évolution avec graphiques et statistiques détaillés.
+                            Enregistrez vos performances , analysez votre évolution avec graphiques et statistiques détaillés.
                         </p>
                     </div>
                 </article>
@@ -223,15 +223,15 @@
             <div class="col">
                 <article class="card h-100 shadow-sm border-0">
                     <div class="card-body p-4">
-                        <div class="bg-secondary-subtle p-3 rounded-circle d-inline-block mb-3">
-                            <i class="fas fa-download text-secondary fs-2"></i>
+                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
+                            <i class="fas fa-download text-white fs-2"></i>
                         </div>
                         <h3 class="h5 mb-3">Ressources téléchargeables</h3>
                         <p class="card-text text-muted">
-                            Documents PDF, vidéos d'entrainement natation, guides techniques et supports pédagogiques pour entraineurs.
+                            Documents PDF, vidéos d'entrainement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraineurs.
                         </p>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-sm btn-outline-secondary mt-2">
-                            Télécharger
+                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-success mt-2">
+                            Télécharger les documents
                         </a>
                     </div>
                 </article>
@@ -241,10 +241,10 @@
 </section>
 
 <!-- Temoignages -->
-<section class="py-5 bg-primary text-white">
+<section class="py-5 text-white" style="background-color: #2195ae;">
     <div class="container-lg">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">L'avis de notre communauté</h2>
+            <h2 class="fw-bold">Avis Communauté</h2>
         </div>
         <div class="row g-4">
             @php
@@ -323,13 +323,13 @@
 </section>
 
 <!-- Dernieres Publications -->
-<section class="py-5 bg-light">
+<section class="py-5 text-white" style="background-color: #04b7e6; border-left: 10px solid #bb0a31;">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
-                <i class="fas fa-water text-primary me-2"></i>Dernieres Publications
+                <i class="fas fa-water text-primary me-2"></i> Publications
             </h2>
-            <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
                 Tous les articles <i class="fas fa-angle-right ms-1"></i>
             </a>
         </div>
@@ -393,13 +393,87 @@
             </div>
         @endif
     </div>
-       
+</section>
+
+
+<!-- Dernieres Publications -->
+<section class="py-5 text-white">
    <div class="text-center">
     <img src="{{ asset('assets/images/team/nataswim-application-banner-1.jpg') }}" 
          alt="site nataswim application" 
          class="img-fluid rounded shadow">
 </div>
 </section>
+
+
+
+<!-- Section Credit et Contact -->
+<section class="py-5 bg-primary text-white">
+
+    <div class="container">
+
+
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Sport Net Systèmes</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
+                        <p class="mb-3">
+                            Contenus et outils developpes par 
+                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="text-warning fw-bold text-decoration-none">
+                                Med Hassan El Haouat
+                                <i class="fas fa-external-link-alt ms-1 small"></i>
+                            </a>
+                        </p>
+                        <p class="small text-light opacity-75">
+                            Sciences du sport, physiologie de l'exercice et developpement 
+                            d'outils d'aide A la performance sportive evidence-based.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
+                        <p class="mb-3 small">
+                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
+                            de nouveaux outils, n'hesitez pas A nous contacter.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
+                                <i class="fas fa-envelope me-2"></i>Nous Contacter
+                            </a>
+                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn btn-outline-info btn-sm">
+                                <i class="fab fa-linkedin me-2"></i>LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
+                     style="width: 150px; height: 150px; overflow: hidden;">
+                    <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
+                         alt="MED Hassan El Haouat - Expert en sciences du sport" 
+                         class="w-100 h-100 rounded-circle"
+                         style="object-fit: cover;">
+                </div>
+                <div class="mt-3">
+                    <h6 class="text-warning mb-1">Evidence-Based</h6>
+                    <small class="text-light opacity-75">Recherches integrees</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
 
 <!-- Call to Action -->
 <section class="py-5 bg-white">

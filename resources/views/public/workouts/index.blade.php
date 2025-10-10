@@ -9,21 +9,12 @@
 <section class="py-5 bg-primary text-white text-center">
     <div class="container py-3">
         <h1 class="display-4 fw-bold mb-3">
-            Séances et Plans d'Entraînement
+            Séances et Plans
         </h1>
         <p class="lead mb-0">
-            Collection complète de séances sportives pour optimiser votre développement athlétique
-        </p>
-        <div class="alert alert-info border-0 shadow-sm mt-4" 
-             style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); max-width: 800px; margin: 0 auto;">
-            <div class="d-flex align-items-start">
-                <i class="fas fa-lightbulb text-warning me-3 mt-1" style="font-size: 1.5rem;"></i>
-                <div class="text-dark">
-                    <strong>Programmes d'entraînement structurés et progressifs</strong> pour vous accompagner 
-                    dans votre progression sportive avec des séances organisées par discipline.
-                </div>
-            </div>
-        </div>
+<strong>Programmes structurés et progressifs</strong> pour vous accompagner 
+                    dans votre progression avec des séances organisées par niveau et par discipline.        </p>
+        
     </div>
 </section>
 
@@ -31,17 +22,6 @@
 <section class="py-5 bg-light">
     <div class="container">
         
-        <!-- Introduction -->
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">
-                <i class="fas fa-layer-group me-2 text-primary"></i>
-                Explorez par Discipline Sportive
-            </h2>
-            <p class="lead text-muted">
-                Choisissez votre sport pour accéder aux séances d'entraînement 
-                adaptées à votre niveau et vos objectifs.
-            </p>
-        </div>
 
         <!-- Sections de séances -->
         @if($sections->count() > 0)
@@ -53,7 +33,6 @@
                             <div class="card h-100 shadow-lg border-0 bg-white hover-lift section-card">
                                 <div class="card-header {{ $loop->index % 4 == 0 ? 'bg-primary' : ($loop->index % 4 == 1 ? 'bg-success' : ($loop->index % 4 == 2 ? 'bg-info' : 'bg-warning')) }} text-white">
                                     <div class="d-flex align-items-center">
-                                        <i class="fas fa-layer-group me-3" style="font-size: 2.5rem;"></i>
                                         <div>
                                             <h3 class="mb-1 h4">{{ $section->name }}</h3>
                                             <p class="mb-0 opacity-75">
@@ -69,7 +48,7 @@
                                         </p>
                                     @else
                                         <p class="card-text text-muted mb-3">
-                                            Découvrez nos séances d'entraînement {{ $section->name }} adaptées à tous les niveaux.
+                                             {{ $section->name }}.
                                         </p>
                                     @endif
                                     
@@ -232,9 +211,9 @@
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h2 class="display-6 fw-bold mb-3">Commencez Votre Entraînement Aujourd'hui</h2>
+                <h2 class="display-6 fw-bold mb-3">Commencez Aujourd'hui</h2>
                 <p class="lead mb-4">
-                    Accédez à notre bibliothèque complète de séances d'entraînement 
+                    Accédez à notre bibliothèque complète  
                     organisées par discipline sportive et niveau de pratique.
                 </p>
                 
