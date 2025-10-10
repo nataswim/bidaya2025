@@ -1,7 +1,25 @@
 @extends('layouts.public')
 
+{{-- SEO Meta --}}
 @section('title', $fiche->title)
 @section('meta_description', strip_tags($fiche->short_description))
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'article')
+@section('og_title', $fiche->title)
+@section('og_description', strip_tags($fiche->short_description))
+@section('og_url', route('public.fiches.show', [$category, $fiche]))
+@if($fiche->image)
+    @section('og_image', $fiche->image)
+    @section('og_image_alt', $fiche->title)
+@endif
+
+{{-- Twitter Card --}}
+@section('twitter_title', $fiche->title)
+@section('twitter_description', strip_tags($fiche->short_description))
+@if($fiche->image)
+    @section('twitter_image', $fiche->image)
+@endif
 
 @section('content')
 

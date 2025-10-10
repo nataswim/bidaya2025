@@ -1,7 +1,14 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur IMC & Composition Corporelle - Analyse Scientifique Avancee')
-@section('meta_description', 'Calculez votre IMC et analysez votre composition corporelle avec nos outils avances, incluant % de graisse, WHtR et BRI. Informations scientifiques recentes sur les limites de l\'IMC.')
+{{-- SEO Meta --}}
+@section('title', 'Calculateur IMC & Composition Corporelle - Analyse Scientifique Avancée')
+@section('meta_description', 'Calculez votre IMC et analysez votre composition corporelle avec nos outils avancés, incluant % de graisse, WHtR et BRI. Informations scientifiques récentes.')
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'website')
+@section('og_title', 'Calculateur IMC & Composition Corporelle')
+@section('og_description', 'Outil avancé d\'analyse de composition corporelle basé sur les dernières recherches scientifiques')
+@section('og_url', route('tools.bmi-calculator'))
 
 @section('content')
 <!-- Section titre -->

@@ -1,6 +1,14 @@
 @extends('layouts.public')
 
+{{-- SEO Meta --}}
 @section('title', 'Politique de Confidentialité')
+@section('meta_description', 'Découvrez comment nous protégeons vos données personnelles et respectons votre vie privée conformément au RGPD.')
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'website')
+@section('og_title', 'Politique de Confidentialité - ' . config('app.name'))
+@section('og_description', 'Protection de votre vie privée et sécurité de vos données conformément au RGPD')
+@section('og_url', route('privacy'))
 
 @section('content')
 

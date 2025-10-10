@@ -1,4 +1,14 @@
+# Vérifier les fichiers modifiés
+git status
 
+# Ajouter tous les fichiers
+git add .
+
+# Commiter avec un message descriptif
+git commit -m "feat: ajout "
+
+# Pousser vers le serveur Git
+git push origin main
 
 git add .
 git commit -m "déploiement"

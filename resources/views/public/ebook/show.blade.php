@@ -1,11 +1,27 @@
 @extends('layouts.public')
 
+{{-- SEO Meta --}}
 @section('title', $downloadable->title . ' - ' . $category->name)
-@section('meta_description', $downloadable->short_description ?? 'Telechargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
+@section('meta_description', $downloadable->short_description ?? 'Téléchargez ' . $downloadable->title . ' - ' . $downloadable->format_display)
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'article')
+@section('og_title', $downloadable->title)
+@section('og_description', $downloadable->short_description ?? 'Document téléchargeable - ' . $downloadable->format_display)
+@section('og_url', route('ebook.show', [$category->slug, $downloadable->slug]))
+@if($downloadable->cover_image)
+    @section('og_image', $downloadable->cover_image)
+    @section('og_image_alt', $downloadable->title)
+@endif
+
+{{-- Twitter Card --}}
+@section('twitter_title', $downloadable->title)
+@section('twitter_description', $downloadable->short_description ?? 'Document ' . $downloadable->format_display)
+@if($downloadable->cover_image)
+    @section('twitter_image', $downloadable->cover_image)
+@endif
 
 @section('content')
-
-
 <!-- En-tête de section -->
 <section class="bg-primary text-white py-5">
     <div class="container-lg">

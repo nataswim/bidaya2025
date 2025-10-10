@@ -1,9 +1,30 @@
 @extends('layouts.public')
 
+{{-- SEO Meta --}}
 @section('title', $post->meta_title ?: $post->name)
-@section('meta_description', $post->meta_description ?: Str::limit(strip_tags($post->intro), 160))
+@section('meta_description', $post->meta_description ?: ($post->intro ? Str::limit(strip_tags($post->intro), 160) : Str::limit(strip_tags($post->content), 160)))
+@section('meta_keywords', $post->meta_keywords ?: '')
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'article')
+@section('og_title', $post->name)
+@section('og_description', $post->intro ? Str::limit(strip_tags($post->intro), 200) : Str::limit(strip_tags($post->content), 200))
+@section('og_url', route('public.show', $post))
+@if($post->image)
+    @section('og_image', $post->image)
+    @section('og_image_alt', $post->name)
+@endif
+
+{{-- Twitter Card --}}
+@section('twitter_title', $post->name)
+@section('twitter_description', $post->intro ? Str::limit(strip_tags($post->intro), 200) : Str::limit(strip_tags($post->content), 200))
+@if($post->image)
+    @section('twitter_image', $post->image)
+    @section('twitter_image_alt', $post->name)
+@endif
 
 @section('content')
+
 <!-- En-tête de section -->
 <section class="bg-primary text-white py-5">
     <div class="container-lg">

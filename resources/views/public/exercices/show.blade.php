@@ -1,7 +1,25 @@
 @extends('layouts.public')
 
+{{-- SEO Meta --}}
 @section('title', $exercice->titre . ' - Exercice d\'Entraînement')
 @section('meta_description', 'Découvrez l\'exercice ' . $exercice->titre . ' - ' . $exercice->type_exercice_label . ' niveau ' . $exercice->niveau_label . '. Instructions détaillées et conseils de sécurité.')
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'article')
+@section('og_title', $exercice->titre . ' - Exercice ' . $exercice->type_exercice_label)
+@section('og_description', $exercice->description ? Str::limit(strip_tags($exercice->description), 200) : 'Exercice ' . $exercice->type_exercice_label . ' niveau ' . $exercice->niveau_label)
+@section('og_url', route('exercices.show', $exercice))
+@if($exercice->image)
+    @section('og_image', $exercice->image)
+    @section('og_image_alt', $exercice->titre)
+@endif
+
+{{-- Twitter Card --}}
+@section('twitter_title', $exercice->titre)
+@section('twitter_description', $exercice->description ? Str::limit(strip_tags($exercice->description), 200) : 'Exercice ' . $exercice->type_exercice_label)
+@if($exercice->image)
+    @section('twitter_image', $exercice->image)
+@endif
 
 @section('content')
 

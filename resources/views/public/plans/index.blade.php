@@ -1,7 +1,15 @@
 @extends('layouts.public')
 
+{{-- SEO Meta --}}
 @section('title', 'Plans d\'Entraînement - Programmes Personnalisés')
 @section('meta_description', 'Découvrez nos plans d\'entraînement personnalisés pour tous niveaux. Programmes structurés avec exercices détaillés et progression adaptée.')
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'website')
+@section('og_title', 'Plans d\'Entraînement Personnalisés - Sport Net Systèmes')
+@section('og_description', 'Programmes de musculation et entraînement structurés pour tous niveaux avec suivi de progression')
+@section('og_url', route('plans.index'))
+@section('og_image', asset('assets/images/team/nataswim-application-banner-4.jpg'))
 
 @section('content')
 <!-- En-tête de section -->
