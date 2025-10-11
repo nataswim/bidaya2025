@@ -12,7 +12,7 @@
             <div class="col-lg-8">
                 <h1 class="display-4 fw-bold mb-4">À propos </h1>
                 <p class="lead mb-0">
-                    Depuis 2006, nous accompagnons nageurs, triathlètes et entraîneurs dans leur quête d'excellence aquatique. Plus de 30 ans d'expertise au service de la performance.
+                    Depuis 2006, nous accompagnons sportifs et entraîneurs dans leur quête d'excellence. Plus de 30 ans d'expertise au service de la performance.
                 </p>
             </div>
             <div class="col-lg-4 text-center">
@@ -51,7 +51,7 @@
                                 </div>
                                 <h3 class="h5 fw-bold mb-3">Excellence & Innovation</h3>
                                 <p class="text-muted mb-0">
-                                    Nous développons des outils d'entraînement natation innovants basés sur les dernières recherches en sciences du sport et préparation physique.
+                                    Nous développons des outils d'entraînement innovants basés sur les dernières recherches en sciences du sport et préparation physique.
                                 </p>
                             </div>
                         </article>
@@ -66,7 +66,7 @@
                                 </div>
                                 <h3 class="h5 fw-bold mb-3">Pédagogie & Transmission</h3>
                                 <p class="text-muted mb-0">
-                                    Notre approche pédagogique rend les techniques de natation et la préparation physique accessibles à tous les niveaux de pratique.
+                                    Notre approche pédagogique rend les techniques et la préparation physique accessibles à tous les niveaux de pratique.
                                 </p>
                             </div>
                         </article>
@@ -111,7 +111,7 @@
                             <div>
                                 <h3 class="h5 fw-bold">Les débuts</h3>
                                 <p class="text-muted">
-                                    Création de Nataswim par Hassan El Haouat et Steve Marsh Vedravokivish, deux passionnés de natation et de préparation physique aquatique souhaitant partager leur expertise.
+                                    Création de Nataswim par Hassan El Haouat et Steve Marsh Vedravokivish, deux passionnés de aps et de préparation physique souhaitant partager leur expertise.
                                 </p>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                             <div>
                                 <h3 class="h5 fw-bold">Partenariats clubs</h3>
                                 <p class="text-muted">
-                                    Début des collaborations avec plusieurs clubs de natation et coachs de renom. Mise en place de programmes d'entraînement personnalisés.
+                                    Début des collaborations avec plusieurs clubs et coachs. Mise en place de programmes d'entraînement personnalisés.
                                 </p>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
     <div class="container-lg">
         <header class="text-center mb-5">
             <h2 class="display-6 fw-bold mb-3">L'Équipe Fondatrice</h2>
-            <p class="lead text-muted">Experts en sciences du sport et passionnés de natation</p>
+            <p class="lead text-muted">Experts en sport et passionnés</p>
         </header>
         
         <div class="row g-4 justify-content-center">
@@ -215,9 +215,9 @@
                             <i class="fas fa-user-tie text-primary" style="font-size: 4rem;"></i>
                         </div>
                         <h3 class="h4 fw-bold mb-2">Hassan El Haouat</h3>
-                        <p class="text-primary mb-3">Co-fondateur & Expert Modélisation</p>
+                        <p class="text-primary mb-3">Co-fondateur &  Modélisation</p>
                         <p class="text-muted mb-3">
-                            Spécialiste en physiologie de l exercice et performance aquatique. Développeur d'outils d aide à l entraînement natation evidence-based. Plus de 25 ans d'expérience dans la préparation physique des nageurs.
+                            Spécialiste en physiologie de l exercice et performance. Développeur d'outils d aide à l entraînement evidence-based. Plus de 25 ans d'expérience dans la préparation physique des nageurs.
                         </p>
                         
                     </div>
@@ -234,7 +234,7 @@
                         <h3 class="h4 fw-bold mb-2">Steve Marsh Vedravokivish</h3>
                         <p class="text-success mb-3">Co-fondateur & Expert Entraînement</p>
                         <p class="text-muted mb-3">
-                            Expert en méthodologie de l'entraînement natation et triathlon. Concepteur de programmes adaptés à tous niveaux. Passionné par l'innovation pédagogique et la transmission des techniques de nage.
+                            Expert en méthodologie de l'entraînement. Concepteur de programmes adaptés à tous niveaux. Passionné par l'innovation pédagogique et la transmission des techniques de nage.
                         </p>
                     </div>
                 </article>
@@ -249,7 +249,7 @@
     <div class="container-lg">
         <header class="text-center mb-5">
             <h2 class="display-6 fw-bold mb-3">Nos Partenariats</h2>
-            <p class="lead text-muted">Collaborations avec clubs et coachs reconnus</p>
+            <p class="lead text-muted">Collaborations avec clubs et coachs</p>
         </header>
         
         <div class="row g-4">
@@ -260,9 +260,9 @@
                              style="width: 80px; height: 80px;">
                             <i class="fas fa-swimming-pool text-primary fa-2x"></i>
                         </div>
-                        <h3 class="h5 fw-bold mb-2">Clubs de natation</h3>
+                        <h3 class="h5 fw-bold mb-2">Clubs </h3>
                         <p class="text-muted small mb-0">
-                            Partenariats avec plusieurs clubs français pour le développement de leurs nageurs
+                            Partenariats avec plusieurs clubs pour le développement de leurs athletes
                         </p>
                     </div>
                 </div>
@@ -307,7 +307,7 @@
                         </div>
                         <h3 class="h5 fw-bold mb-2">Préparateurs physiques</h3>
                         <p class="text-muted small mb-0">
-                            Outils spécialisés pour la préparation physique aquatique
+                            Outils spécialisés pour la préparation physique et la formation continue
                         </p>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
 <section class="py-5 bg-white">
     <div class="container-lg">
         <header class="text-center mb-5">
-            <h2 class="display-6 fw-bold mb-3">Nos Valeurs</h2>
+            <h2 class="display-6 fw-bold mb-3">Valeurs</h2>
             <p class="lead text-muted">Ce qui guide notre travail au quotidien</p>
         </header>
         
@@ -334,7 +334,7 @@
                     <div>
                         <h3 class="h5 fw-bold mb-2">Evidence-Based</h3>
                         <p class="text-muted mb-0">
-                            Nos programmes d'entraînement natation s'appuient sur les recherches scientifiques les plus récentes en physiologie de l'exercice et biomécanique aquatique.
+                            Nos programmes d'entraînement s'appuient sur les recherches les plus récentes en physiologie de l'exercice et biomécanique.
                         </p>
                     </div>
                 </article>
@@ -364,7 +364,7 @@
                     <div>
                         <h3 class="h5 fw-bold mb-2">Accessibilité</h3>
                         <p class="text-muted mb-0">
-                            Nous croyons que l'entraînement natation de qualité doit être accessible à tous, quels que soient le niveau et les objectifs.
+                            Nous croyons que l'entraînement de qualité doit être accessible à tous, quels que soient le niveau et les objectifs.
                         </p>
                     </div>
                 </article>
@@ -379,7 +379,7 @@
                     <div>
                         <h3 class="h5 fw-bold mb-2">Amélioration Continue</h3>
                         <p class="text-muted mb-0">
-                            Nous mettons à jour régulièrement nos contenus et outils pour intégrer les dernières avancées en entraînement natation et préparation physique.
+                            Nous mettons à jour régulièrement nos contenus et outils pour intégrer les dernières avancées en entraînement et préparation physique.
                         </p>
                     </div>
                 </article>
@@ -399,9 +399,8 @@
     <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="display-6 fw-bold mb-4">Rejoignez-nous des aujourd'hui</h2>
                 <p class="lead mb-4">
-                    Faites partie de notre communaute grandissante de developpeurs passionnes.
+                    Faites partie de notre communaute grandissante de passionnes.
                 </p>
                 @guest
                     <div class="d-flex flex-wrap gap-3 justify-content-center">

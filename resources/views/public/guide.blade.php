@@ -48,7 +48,7 @@
         <div class="text-center mb-5">
             <i class="fas fa-book text-primary" style="font-size: 3rem;"></i>
             <h2 class="mt-3">Créez et personnalisez vos carnets d'entraînement</h2>
-            <p class="text-muted">Organisez efficacement vos programmes de natation</p>
+            <p class="text-muted">Organisez efficacement vos programmes</p>
         </div>
 
         <div class="row g-4 mb-4">
@@ -149,7 +149,7 @@
                         <i class="fas fa-dumbbell text-primary mb-3" style="font-size: 2.5rem;"></i>
                         <h3 class="h4 mb-3">Bibliothèque d'exercices</h3>
                         <p class="text-muted mb-4">
-                            Parcourez notre catalogue d'exercices spécifiques à la natation, 
+                            Parcourez notre catalogue d'exercices spécifiques, 
                             filtrez par niveau, type de nage ou objectif d'entraînement.
                         </p>
                         <a href="{{ route('exercices.index') }}" class="btn btn-primary">

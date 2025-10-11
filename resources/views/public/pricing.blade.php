@@ -211,11 +211,6 @@
 <!-- Pourquoi Nataswim -->
 <section class="py-5 bg-light">
     <div class="container-lg">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <h2 class="fw-bold mb-4">Pourquoi choisir Nataswim ?</h2>
-            </div>
-        </div>
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
                 <article class="card h-100 border-0 shadow-sm">
@@ -253,7 +248,7 @@
                         </div>
                         <h3 class="h5 fw-bold mb-3">Qualité professionnelle</h3>
                         <p class="text-muted mb-0">
-                            Des contenus élaborés par des experts et professionnels reconnus dans le domaine de la natation.
+                            Des contenus élaborés par des experts et professionnels reconnus dans le domaine sportif.
                         </p>
                     </div>
                 </article>
@@ -296,7 +291,7 @@
                     <div>
                         <h4 class="h6 fw-bold mb-2">Fiches d'entraînement par niveau</h4>
                         <p class="text-muted mb-0">
-                            Des fiches d'exercices adaptées à tous les niveaux, du débutant au nageur confirmé.
+                            Des fiches d'exercices adaptées à tous les niveaux, du débutant au confirmé.
                         </p>
                     </div>
                 </article>

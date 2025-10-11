@@ -73,9 +73,9 @@
                         <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-swimmer text-primary" style="font-size: 2rem;"></i>
                         </div>
-                        <h3 class="h5 mb-3">Nageurs & Nageuses</h3>
+                        <h3 class="h5 mb-3">Sportives & Sportifs</h3>
                         <p class="card-text text-muted small mb-0">
-                            Plans d'entrainement natation personnalisés pour tous niveaux. Techniques de nage, préparation physique et suivi de progression.
+                            Plans d'entrainement pour tous personnalisés pour tous niveaux. Techniques, seances, préparation physique et suivi de progression.
                         </p>
                     </div>
                 </article>
@@ -89,7 +89,7 @@
                         </div>
                         <h3 class="h5 mb-3">Triathlètes</h3>
                         <p class="card-text text-muted small mb-0">
-                            Programmes triathlon complets. Optimisez votre segment natation avec nos plans d'entrainement spécialisés.
+                            Programmes triathlon complets. Optimisez votre segment natation, vélo et CAP avec nos plans d'entrainement spécialisés.
                         </p>
                     </div>
                 </article>
@@ -103,7 +103,7 @@
                         </div>
                         <h3 class="h5 mb-3">Entraineurs & Coachs</h3>
                         <p class="card-text text-muted small mb-0">
-                            Outils professionnels pour créer et gérer vos programmes d'entrainement natation et préparation physique.
+                            Outils professionnels pour créer et gérer vos programmes d'entrainement, plans et préparation physique.
                         </p>
                     </div>
                 </article>
@@ -127,6 +127,12 @@
 </section>
 
 
+
+
+
+
+
+
 <!-- Fonctionnalités clés -->
 <section class="py-5 bg-light">
     <div class="container-lg">
@@ -138,107 +144,208 @@
         </header>
         
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- 1. Séances & Plans -->
             <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
-                            <i class="fas fa-clipboard-list text-white fs-2"></i>
+                <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-primary text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-clipboard-list me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Séances & Plans</h4>
+                                    @php
+                                        $workoutSectionsCount = \App\Models\WorkoutSection::where('is_active', true)->count();
+                                        $workoutsCount = \App\Models\Workout::count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $workoutSectionsCount }} sections • {{ $workoutsCount }} workouts</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Séances & Plans</h3>
-                        <p class="card-text text-muted">
-                            Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entrainement pour les sportifs.
-                        </p>
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-success mt-2">
-                            Choisir vos plans
-                        </a>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entraînement pour les sportifs.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary fw-bold">Choisir vos plans →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Débutant</span>
+                                    <span class="badge bg-warning">Avancé</span>
+                                    <span class="badge bg-danger">Pro</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                </a>
             </div>
             
+            <!-- 2. Exercices spécialisés -->
             <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
-                            <i class="fas fa-dumbbell text-white fs-2"></i>
+                <a href="{{ route('exercices.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-success text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-dumbbell me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Exercices spécialisés</h4>
+                                    @php
+                                        $exercicesCount = \App\Models\Exercice::where('is_active', true)->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $exercicesCount }} {{ $exercicesCount > 1 ? 'exercices disponibles' : 'exercice disponible' }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Exercices spécialisés</h3>
-                        <p class="card-text text-muted">
-                            Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
-                        </p>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-success mt-2">
-                            Voir les exercices
-                        </a>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold">Voir les exercices →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-info">Vidéos</span>
+                                    <span class="badge bg-primary">Détaillés</span>
+                                    <span class="badge bg-warning">Techniques</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                </a>
             </div>
             
+            <!-- 3. Fiches techniques -->
             <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
-                            <i class="fas fa-book-open text-white fs-2"></i>
+                <a href="{{ route('public.fiches.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-info text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-book-open me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Fiches techniques</h4>
+                                    @php
+                                        $fichesCount = \App\Models\Fiche::where('is_published', true)->where('visibility', 'public')->count();
+                                        $fichesCategoriesCount = \App\Models\FichesCategory::where('is_active', true)->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $fichesCategoriesCount }} catégories • {{ $fichesCount }} fiches</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Fiches techniques </h3>
-                        <p class="card-text text-muted">
-                            Des guides complets sur les techniques, préparation physique, entrainement, sciences ,stratégies et plus.
-                        </p>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-success mt-2">
-                            Accéder aux fiches
-                        </a>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Des guides complets sur les techniques, préparation physique, entraînement, sciences, stratégies et plus.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-info fw-bold">Accéder aux fiches →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Sciences</span>
+                                    <span class="badge bg-primary">Techniques</span>
+                                    <span class="badge bg-warning">Stratégies</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                </a>
             </div>
             
+            <!-- 4. Calculateurs & Outils -->
             <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
-                            <i class="fas fa-calculator text-white fs-2"></i>
+                <a href="{{ route('tools.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-warning text-dark">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-calculator me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Calculateurs & Outils</h4>
+                                    <p class="mb-0 opacity-75">18 outils spécialisés disponibles</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Calculateurs & Outils</h3>
-                        <p class="card-text text-muted">
-                            Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
-                        </p>
-                        <a href="{{ route('tools.index') }}" class="btn btn-lg btn-success mt-2">
-                            Utiliser Nos Outils
-                        </a>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-warning fw-bold">Utiliser nos outils →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Gratuit</span>
+                                    <span class="badge bg-primary">Précis</span>
+                                    <span class="badge bg-info">Pratique</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                </a>
             </div>
             
+            <!-- 5. Suivi de progression -->
             <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
-                            <i class="fas fa-chart-line text-white fs-2"></i>
+                <div class="card h-100 shadow-lg border-0 bg-white category-card opacity-75">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-chart-line me-3" style="font-size: 2rem;"></i>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Suivi de progression</h4>
+                                <p class="mb-0 opacity-75">Bientôt disponible</p>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Suivi de progression</h3>
-                        <p class="card-text text-muted">
-                            Enregistrez vos performances , analysez votre évolution avec graphiques et statistiques détaillés.
-                        </p>
                     </div>
-                </article>
+                    <div class="card-body p-4">
+                        <p class="card-text text-muted mb-3">
+                            Enregistrez vos performances, analysez votre évolution avec graphiques et statistiques détaillés.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-secondary fw-bold">Prochainement →</span>
+                            <div class="d-flex gap-1">
+                                <span class="badge bg-info">Statistiques</span>
+                                <span class="badge bg-success">Graphiques</span>
+                                <span class="badge bg-primary">Analyses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
+            <!-- 6. Ressources téléchargeables -->
             <div class="col">
-                <article class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <div class="bg-danger p-3 d-inline-block mb-3 rounded-circle">
-                            <i class="fas fa-download text-white fs-2"></i>
+                <a href="{{ route('ebook.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-danger text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-download me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Ressources téléchargeables</h4>
+                                    @php
+                                        $totalDownloads = \App\Models\Downloadable::where('status', 'active')->count();
+                                        $downloadCategoriesCount = \App\Models\DownloadCategory::where('status', 'active')->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $downloadCategoriesCount }} catégories • {{ $totalDownloads }} ressources</p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="h5 mb-3">Ressources téléchargeables</h3>
-                        <p class="card-text text-muted">
-                            Documents PDF, vidéos d'entrainement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraineurs.
-                        </p>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-success mt-2">
-                            Télécharger les documents
-                        </a>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Documents PDF, vidéos d'entraînement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-danger fw-bold">Télécharger les documents →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">PDF</span>
+                                    <span class="badge bg-primary">Vidéos</span>
+                                    <span class="badge bg-warning">Guides</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </article>
+                </a>
             </div>
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
 
 <!-- Temoignages -->
 <section class="py-5 text-white" style="background-color: #2195ae;">
@@ -294,7 +401,7 @@
     <div class="container-lg">
         <div class="text-center mb-5">
             <h2 class="fw-bold">Comment ça marche ?</h2>
-            <p class="lead text-muted">Trois etapes simples pour optimiser vos entrainements aquatiques</p>
+            <p class="lead text-muted">Trois etapes simples pour optimiser vos entrainements</p>
         </div>
         <div class="row g-4 align-items-center">
             <div class="col-md-4 text-center">
@@ -316,7 +423,7 @@
                     <i class="fas fa-chart-line text-info fs-1"></i>
                 </div>
                 <h3 class="h5">3. Suivez vos progres</h3>
-                <p class="text-muted">Enregistrez vos performances et visualisez votre evolution dans l'eau</p>
+                <p class="text-muted">Enregistrez vos performances et visualisez votre evolution sportive</p>
             </div>
         </div>
     </div>
@@ -480,7 +587,7 @@
     <div class="container-lg text-center py-4">
         <h2 class="mb-4 fw-bold">Prêt a ameliorer vos performances  ?</h2>
         <p class="lead text-muted mb-4 mx-auto" style="max-width: 700px;">
-            Rejoignez des milliers de nageurs, entraineurs et triathletes qui utilisent notre plateforme pour atteindre leurs objectifs aquatiques et optimiser leurs entrainements.
+            Rejoignez des milliers de sportifs, entraineurs et techniciens qui utilisent notre plateforme pour atteindre leurs objectifs et optimiser leurs entrainements.
         </p>
         
         @guest
@@ -517,6 +624,60 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+/* Cards catégories - Design amélioré */
+.category-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important;
+}
+
+.category-card .card-header {
+    border-bottom: 3px solid rgba(255,255,255,0.2);
+    padding: 1.25rem;
+}
+
+.category-card .card-header h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Effets hover spécifiques par couleur */
+.category-card:hover .bg-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
+}
+
+.category-card:hover .bg-success {
+    background: linear-gradient(135deg, #198754 0%, #146c43 100%) !important;
+}
+
+.category-card:hover .bg-info {
+    background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%) !important;
+}
+
+.category-card:hover .bg-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #cc9a06 100%) !important;
+}
+
+.category-card:hover .bg-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #bb0a31 100%) !important;
+}
+
+.category-card:hover .bg-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #565e64 100%) !important;
+}
+
+/* Amélioration des badges */
+.category-card .badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+}
+
 .bg-primary-subtle {
     background-color: rgba(13, 110, 253, 0.1);
 }
@@ -530,6 +691,7 @@
     background-color: rgba(13, 202, 240, 0.1);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .display-4 {
         font-size: 1.75rem !important;
@@ -539,6 +701,42 @@
         flex-direction: column;
         align-items: stretch !important;
     }
+    
+    .category-card .card-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .category-card .card-header i {
+        font-size: 1.5rem !important;
+    }
+    
+    .category-card .badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.5rem;
+    }
 }
+
+/* Animation au chargement */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.category-card:nth-child(1) { animation-delay: 0.1s; }
+.category-card:nth-child(2) { animation-delay: 0.2s; }
+.category-card:nth-child(3) { animation-delay: 0.3s; }
+.category-card:nth-child(4) { animation-delay: 0.4s; }
+.category-card:nth-child(5) { animation-delay: 0.5s; }
+.category-card:nth-child(6) { animation-delay: 0.6s; }
 </style>
 @endpush

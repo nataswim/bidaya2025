@@ -47,6 +47,9 @@
     {{-- Styles --}}
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     
+        {{-- CSS Social Share --}}
+    <link rel="stylesheet" href="{{ asset('css/social-share.css') }}">
+
     @stack('styles')
 </head>
 <body class="bg-light">
@@ -84,6 +87,12 @@
     
     {{-- Scripts --}}
     <script src="{{ mix('js/app.js') }}"></script>
+    {{-- Bandeau de partage social --}}
+    @include('layouts.partials.social-share')
+    
+    {{-- JS Social Share --}}
+    <script src="{{ asset('js/social-share.js') }}"></script>
+    
     @stack('scripts')
 </body>
 </html>

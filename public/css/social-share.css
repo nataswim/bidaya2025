@@ -1,0 +1,231 @@
+/* ========== BANDEAU DE PARTAGE SOCIAL STICKY ========== */
+
+.social-share-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* Bouton toggle principal */
+.social-share-toggle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.social-share-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.social-share-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Conteneur des boutons de partage */
+.social-share-buttons {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    min-width: 220px;
+}
+
+.social-share-buttons.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Bouton fermer */
+.social-share-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 28px;
+    height: 28px;
+    background: #ef4444;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.social-share-close:hover {
+    background: #dc2626;
+    transform: rotate(90deg);
+}
+
+/* Boutons de partage individuels */
+.social-share-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.social-share-btn:last-child {
+    margin-bottom: 0;
+}
+
+.social-share-btn i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.social-share-btn:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Couleurs spécifiques par réseau */
+.social-share-btn.facebook {
+    background: #1877f2;
+}
+
+.social-share-btn.facebook:hover {
+    background: #166fe5;
+}
+
+.social-share-btn.twitter {
+    background: #1da1f2;
+}
+
+.social-share-btn.twitter:hover {
+    background: #1a94da;
+}
+
+.social-share-btn.linkedin {
+    background: #0a66c2;
+}
+
+.social-share-btn.linkedin:hover {
+    background: #095196;
+}
+
+.social-share-btn.whatsapp {
+    background: #25d366;
+}
+
+.social-share-btn.whatsapp:hover {
+    background: #20bd5a;
+}
+
+.social-share-btn.email {
+    background: #ea4335;
+}
+
+.social-share-btn.email:hover {
+    background: #d33426;
+}
+
+.social-share-btn.copy {
+    background: #6366f1;
+}
+
+.social-share-btn.copy:hover {
+    background: #4f46e5;
+}
+
+/* Indicateur de copie réussie */
+.social-share-btn.copy.copied {
+    background: #10b981;
+}
+
+.social-share-btn.copy.copied::after {
+    content: '✓ Copié !';
+    position: absolute;
+    right: 100%;
+    margin-right: 10px;
+    background: #10b981;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    animation: fadeOut 2s forwards;
+}
+
+/* Animation de tooltip */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .social-share-sticky {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .social-share-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .social-share-buttons {
+        right: 0;
+        min-width: 200px;
+        padding: 12px;
+    }
+    
+    .social-share-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .social-share-btn span {
+        font-size: 0.85rem;
+    }
+}
+
+/* Animation d'apparition au scroll */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.social-share-sticky {
+    animation: slideInRight 0.5s ease-out;
+}

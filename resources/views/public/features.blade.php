@@ -14,8 +14,8 @@
                     <h1 class="display-4 fw-bold mb-0">Fonctionnalités</h1>
                 </div>
                 <p class="lead mb-4">
-                    Des fonctionnalités conçues spécifiquement pour améliorer vos performances en natation et vous 
-                    aider à atteindre vos objectifs dans l'eau.
+                    Des fonctionnalités conçues spécifiquement pour améliorer vos performances  et vous 
+                    aider à atteindre vos objectifs.
                 </p>
             </div>
             <div class="col-lg-5 text-center">
@@ -28,13 +28,225 @@
     </div>
 </section>
 
+
+
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <header class="text-center mb-5">
+            <h2 class="fw-bold display-6">Outils & contenus complets</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Tout ce dont vous avez besoin pour progresser, comprendre et améliorer vos performances
+            </p>
+        </header>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- 1. Séances & Plans -->
+            <div class="col">
+                <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-primary text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-clipboard-list me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Séances & Plans</h4>
+                                    @php
+                                        $workoutSectionsCount = \App\Models\WorkoutSection::where('is_active', true)->count();
+                                        $workoutsCount = \App\Models\Workout::count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $workoutSectionsCount }} sections • {{ $workoutsCount }} workouts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entraînement pour les sportifs.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary fw-bold">Choisir vos plans →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Débutant</span>
+                                    <span class="badge bg-warning">Avancé</span>
+                                    <span class="badge bg-danger">Pro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 2. Exercices spécialisés -->
+            <div class="col">
+                <a href="{{ route('exercices.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-success text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-dumbbell me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Exercices spécialisés</h4>
+                                    @php
+                                        $exercicesCount = \App\Models\Exercice::where('is_active', true)->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $exercicesCount }} {{ $exercicesCount > 1 ? 'exercices disponibles' : 'exercice disponible' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold">Voir les exercices →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-info">Vidéos</span>
+                                    <span class="badge bg-primary">Détaillés</span>
+                                    <span class="badge bg-warning">Techniques</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 3. Fiches techniques -->
+            <div class="col">
+                <a href="{{ route('public.fiches.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-info text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-book-open me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Fiches techniques</h4>
+                                    @php
+                                        $fichesCount = \App\Models\Fiche::where('is_published', true)->where('visibility', 'public')->count();
+                                        $fichesCategoriesCount = \App\Models\FichesCategory::where('is_active', true)->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $fichesCategoriesCount }} catégories • {{ $fichesCount }} fiches</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Des guides complets sur les techniques, préparation physique, entraînement, sciences, stratégies et plus.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-info fw-bold">Accéder aux fiches →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Sciences</span>
+                                    <span class="badge bg-primary">Techniques</span>
+                                    <span class="badge bg-warning">Stratégies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 4. Calculateurs & Outils -->
+            <div class="col">
+                <a href="{{ route('tools.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-warning text-dark">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-calculator me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Calculateurs & Outils</h4>
+                                    <p class="mb-0 opacity-75">18 outils spécialisés disponibles</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-warning fw-bold">Utiliser nos outils →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Gratuit</span>
+                                    <span class="badge bg-primary">Précis</span>
+                                    <span class="badge bg-info">Pratique</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 5. Suivi de progression -->
+            <div class="col">
+                <div class="card h-100 shadow-lg border-0 bg-white category-card opacity-75">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-chart-line me-3" style="font-size: 2rem;"></i>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Suivi de progression</h4>
+                                <p class="mb-0 opacity-75">Bientôt disponible</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text text-muted mb-3">
+                            Enregistrez vos performances, analysez votre évolution avec graphiques et statistiques détaillés.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-secondary fw-bold">Prochainement →</span>
+                            <div class="d-flex gap-1">
+                                <span class="badge bg-info">Statistiques</span>
+                                <span class="badge bg-success">Graphiques</span>
+                                <span class="badge bg-primary">Analyses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. Ressources téléchargeables -->
+            <div class="col">
+                <a href="{{ route('ebook.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-danger text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-download me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Ressources téléchargeables</h4>
+                                    @php
+                                        $totalDownloads = \App\Models\Downloadable::where('status', 'active')->count();
+                                        $downloadCategoriesCount = \App\Models\DownloadCategory::where('status', 'active')->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $downloadCategoriesCount }} catégories • {{ $totalDownloads }} ressources</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Documents PDF, vidéos d'entraînement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-danger fw-bold">Télécharger les documents →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">PDF</span>
+                                    <span class="badge bg-primary">Vidéos</span>
+                                    <span class="badge bg-warning">Guides</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
 <!-- Fonctionnalités principales -->
 <section class="py-5 bg-white">
     <div class="container-lg">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-4">Fonctionnalités principales</h2>
+            <h2 class="fw-bold mb-4">Fonctionnalités</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Des outils puissants pour optimiser vos entraînements de natation et suivre vos progrès avec précision
+                Des outils puissants pour optimiser vos entraînements et suivre vos progrès avec précision
             </p>
         </div>
 
@@ -83,7 +295,7 @@
                         </div>
                         <h3 class="h4 mb-3">Bibliothèque d'exercices</h3>
                         <p class="text-muted">
-                            Accédez à une bibliothèque complète d'exercices techniques spécifiques à la natation, classés 
+                            Accédez à une bibliothèque complète d'exercices techniques spécifiques, classés 
                             par niveau, style et objectif d'entraînement.
                         </p>
                     </div>
@@ -100,7 +312,7 @@
                         </div>
                         <h3 class="h4 mb-3">Gestion des séries</h3>
                         <p class="text-muted">
-                            Créez et suivez des séries de natation personnalisées avec contrôle précis des distances, 
+                            Créez et suivez des séries personnalisées avec contrôle précis des distances, 
                             répétitions, intensités et temps de récupération.
                         </p>
                     </div>
@@ -116,7 +328,7 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-4">Fonctionnalités spécialisées</h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Développées spécifiquement pour les besoins des nageurs, triathlètes et entraîneurs
+                Développées spécifiquement pour les besoins des sportifs et entraîneurs
             </p>
         </div>
 
@@ -462,8 +674,8 @@
     <div class="container-lg py-3">
         <h2 class="mb-4 fw-bold">Prêt à transformer votre entraînement ?</h2>
         <p class="lead mb-4 mx-auto" style="max-width: 700px;">
-            Rejoignez des milliers de nageurs, triathlètes et entraîneurs qui utilisent notre application pour atteindre 
-            leurs objectifs dans l'eau.
+            Rejoignez des milliers de sportifs et entraîneurs qui utilisent notre application pour atteindre 
+            leurs objectifs.
         </p>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
             <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
@@ -475,3 +687,109 @@
 </section>
 
 @endsection
+
+@push('styles')
+<style>
+/* Cards catégories - Design amélioré */
+.category-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important;
+}
+
+.category-card .card-header {
+    border-bottom: 3px solid rgba(255,255,255,0.2);
+    padding: 1.25rem;
+}
+
+.category-card .card-header h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Effets hover spécifiques par couleur */
+.category-card:hover .bg-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
+}
+
+.category-card:hover .bg-success {
+    background: linear-gradient(135deg, #198754 0%, #146c43 100%) !important;
+}
+
+.category-card:hover .bg-info {
+    background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%) !important;
+}
+
+.category-card:hover .bg-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #cc9a06 100%) !important;
+}
+
+.category-card:hover .bg-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #bb0a31 100%) !important;
+}
+
+.category-card:hover .bg-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #565e64 100%) !important;
+}
+
+/* Amélioration des badges */
+.category-card .badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+}
+
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .category-card .card-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .category-card .card-header i {
+        font-size: 1.5rem !important;
+    }
+    
+    .category-card .badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Animation au chargement */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.category-card:nth-child(1) { animation-delay: 0.1s; }
+.category-card:nth-child(2) { animation-delay: 0.2s; }
+.category-card:nth-child(3) { animation-delay: 0.3s; }
+.category-card:nth-child(4) { animation-delay: 0.4s; }
+.category-card:nth-child(5) { animation-delay: 0.5s; }
+.category-card:nth-child(6) { animation-delay: 0.6s; }
+</style>
+@endpush

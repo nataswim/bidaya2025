@@ -84,9 +84,7 @@
                             <h3 class="h5 mb-0">Hébergeur</h3>
                         </div>
                         <div class="card p-4 bg-light border-0">
-                            <p class="mb-1"><strong>Raison sociale :</strong> HOSTINGER INTERNATIONAL LTD</p>
-                            <p class="mb-1"><strong>Adresse :</strong> 61 Lordou Vironos Street, 6023 Larnaca, Chypre</p>
-                            <p class="mb-0"><strong>Site web :</strong> <a href="https://www.hostinger.com/" target="_blank" rel="noopener">https://www.hostinger.com/</a></p>
+                            <p class="mb-1"><strong>Raison sociale :</strong> O2Switch - HOSTINGER</p>
                         </div>
                     </div>
                 </article>
