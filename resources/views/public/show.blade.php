@@ -26,7 +26,7 @@
 @section('content')
 
 <!-- En-tête de section -->
-<section class="bg-primary text-white py-5">
+<section class="text-white py-5" style="border-left: 10px solid rgb(255 244 0);margin-bottom: 20px;background-color: #ff8d60;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-{{ $post->image ? '7' : '12' }}">

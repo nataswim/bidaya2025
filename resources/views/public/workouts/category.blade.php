@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Section titre avec breadcrumb -->
-<section class="py-5 bg-info text-white">
+<section class="py-5 text-white" style="border-left: 10px solid #ffff00;margin-bottom: 20px;background-color: #16bbb4;">
     <div class="container">
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">
@@ -72,7 +72,7 @@
                 @foreach($workouts as $workout)
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg hover-lift">
-                            <div class="card-header bg-gradient-warning text-white p-3">
+                            <div class="card-header text-white p-3" style="border-left: 10px solid #0894d3;margin-bottom: 20px;background-color: #16bbb4;">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <span class="badge bg-light text-dark">
                                         Séance #{{ $workout->pivot->order_number }}

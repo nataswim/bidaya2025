@@ -137,7 +137,7 @@
         'title' => 'Mon profil',
         'icon' => 'fas fa-user-circle',
         'color' => 'primary',
-        'description' => 'Gérer mon compte',
+        'description' => 'Je met a jour mon compte',
         'route' => route('user.profile.edit')
         ],
         [
@@ -225,8 +225,8 @@
         // Sections pour utilisateur premium
         if(auth()->user()->hasRole('user') || auth()->user()->hasRole('editor') || auth()->user()->hasRole('admin')) {
         $sections[] = [
-        'title' => 'Plans d\'entraînement',
-        'description' => 'Accédez à vos programmes personnalisés',
+        'title' => 'Musculation',
+        'description' => 'Accédez à vos programmes de preparartion physique',
         'icon' => 'fas fa-dumbbell',
         'color' => 'success',
         'route' => route('user.training.index'),
@@ -352,18 +352,18 @@
         @endforeach
     </div>
 
+</div>
 
 
-    <!-- Articles récents -->
-    <div class="py-5 bg-white">
-        <div class="container-lg">
+<section class="py-5 text-white" style="border-left: 10px solid #ffff00;margin-bottom: 20px;background-color: #14a9cf;">
+      <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
                             <i class="fas fa-newspaper me-2 text-primary"></i>Articles récents
                         </h5>
-                        <a href="{{ route('public.index') }}" class="btn btn-sm btn-outline-primary">
+                        <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
                             Tous les articles
                         </a>
                     </div>
@@ -430,10 +430,9 @@
                 @endforelse
             </div>
         </div>
-    </div>
+</section>
 
-    <!-- Fiches Pratiques -->
-    <div class="py-5 bg-light">
+<section class="py-5 text-white" style="border-left: 10px solid #f55555;margin-bottom: 20px;background-color: #0175c5;">
         <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
@@ -441,7 +440,7 @@
                         <h5 class="mb-0">
                             <i class="fas fa-file-alt me-2 text-primary"></i>Dernières Fiches Pratiques
                         </h5>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-sm btn-outline-primary">
+                        <a href="{{ route('public.fiches.index') }}" class="btn btn-light d-flex align-items-center px-4">
                             Toutes les fiches
                         </a>
                     </div>
@@ -496,7 +495,7 @@
                                         <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
                                     </small>
                                     <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                        class="btn btn-sm btn-outline-primary">
+                                        class="btn btn-light d-flex align-items-center px-4">
                                         Lire
                                     </a>
                                 </div>
@@ -513,18 +512,17 @@
                     @endforelse
             </div>
         </div>
-    </div>
+</section>
 
-    <!-- Séances et Plans d'Entraînement -->
-    <div class="py-5 bg-white">
-        <div class="container-lg">
+<section class="py-5 text-white" style="border-left: 10px solid #ffff00;margin-bottom: 20px;background-color: #16bbb4;">
+       <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
                             <i class="fas fa-heartbeat me-2 text-primary"></i>Dernières Séances d'Entraînement
                         </h5>
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-sm btn-outline-primary">
+                        <a href="{{ route('public.workouts.index') }}" class="btn btn-light d-flex align-items-center px-4">
                             Toutes les séances
                         </a>
                     </div>
@@ -549,8 +547,8 @@
                     <div class="card border-0 shadow-sm h-100 hover-lift">
                         <div class="card-img-top bg-gradient d-flex align-items-center justify-content-center"
                             style="height: 180px; background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);">
-                            <div class="text-white text-center">
-                                <i class="fas fa-heartbeat fa-3x mb-2 opacity-75"></i>
+                            <div class="text-warning text-center">
+                                <i class="fas fa-clipboard fa-4x mb-2 opacity-75"></i>
                                 <div class="small">{{ $section->name }}</div>
                             </div>
                         </div>
@@ -593,18 +591,16 @@
                 @endforelse
             </div>
         </div>
-    </div>
-
-    <!-- Documents Récents (eBooks) -->
-    <div class="py-5 bg-light">
-        <div class="container-lg">
+</section>
+<section class="py-5 text-white" style="border-left: 10px solid #00b0ff;margin-bottom: 20px;background-color: #ffa07a;">
+<div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
                             <i class="fas fa-book me-2 text-primary"></i>Documents Récents
                         </h5>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-sm btn-outline-primary">
+                        <a href="{{ route('ebook.index') }}" class="btn btn-light d-flex align-items-center px-4">
                             Tous les documents
                         </a>
                     </div>
@@ -679,10 +675,10 @@
                 @endforelse
             </div>
         </div>
-    </div>
+</section>
 
-    <!-- Derniers Exercices -->
-    <div class="py-5 bg-white">
+<section class="py-5 text-white" style="border-left: 10px solid #ffff00;margin-bottom: 20px;background-color: #42a4a8;">
+<!-- Derniers Exercices -->
         <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
@@ -690,7 +686,7 @@
                         <h5 class="mb-0">
                             <i class="fas fa-running me-2 text-primary"></i>Derniers Exercices
                         </h5>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-sm btn-outline-primary">
+                        <a href="{{ route('exercices.index') }}" class="btn btn-light d-flex align-items-center px-4">
                             Tous les exercices
                         </a>
                     </div>
@@ -766,9 +762,223 @@
                 @endforelse
             </div>
         </div>
-    </div>
+</section>
 
-</div>
+
+
+<!-- Fonctionnalités clés -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <header class="text-center mb-5">
+            <h2 class="fw-bold display-6">Outils & contenus complets</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Tout ce dont vous avez besoin pour progresser, comprendre et améliorer vos performances
+            </p>
+        </header>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- 1. Séances & Plans -->
+            <div class="col">
+                <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-primary text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-clipboard-list me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Séances & Plans</h4>
+                                    @php
+                                        $workoutSectionsCount = \App\Models\WorkoutSection::where('is_active', true)->count();
+                                        $workoutsCount = \App\Models\Workout::count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $workoutSectionsCount }} sections • {{ $workoutsCount }} workouts</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entraînement pour les sportifs.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary fw-bold">Choisir vos plans →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Débutant</span>
+                                    <span class="badge bg-warning">Avancé</span>
+                                    <span class="badge bg-danger">Pro</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 2. Exercices spécialisés -->
+            <div class="col">
+                <a href="{{ route('exercices.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-success text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-dumbbell me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Exercices spécialisés</h4>
+                                    @php
+                                        $exercicesCount = \App\Models\Exercice::where('is_active', true)->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $exercicesCount }} {{ $exercicesCount > 1 ? 'exercices disponibles' : 'exercice disponible' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold">Voir les exercices →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-info">Vidéos</span>
+                                    <span class="badge bg-primary">Détaillés</span>
+                                    <span class="badge bg-warning">Techniques</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 3. Fiches techniques -->
+            <div class="col">
+                <a href="{{ route('public.fiches.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-info text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-book-open me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Fiches techniques</h4>
+                                    @php
+                                        $fichesCount = \App\Models\Fiche::where('is_published', true)->where('visibility', 'public')->count();
+                                        $fichesCategoriesCount = \App\Models\FichesCategory::where('is_active', true)->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $fichesCategoriesCount }} catégories • {{ $fichesCount }} fiches</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Des guides complets sur les techniques, préparation physique, entraînement, sciences, stratégies et plus.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-info fw-bold">Accéder aux fiches →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Sciences</span>
+                                    <span class="badge bg-primary">Techniques</span>
+                                    <span class="badge bg-warning">Stratégies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 4. Calculateurs & Outils -->
+            <div class="col">
+                <a href="{{ route('tools.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-warning text-dark">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-calculator me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Calculateurs & Outils</h4>
+                                    <p class="mb-0 opacity-75">18 outils spécialisés disponibles</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-warning fw-bold">Utiliser nos outils →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">Gratuit</span>
+                                    <span class="badge bg-primary">Précis</span>
+                                    <span class="badge bg-info">Pratique</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 5. Suivi de progression -->
+            <div class="col">
+                <div class="card h-100 shadow-lg border-0 bg-white category-card opacity-75">
+                    <div class="card-header bg-secondary text-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-chart-line me-3" style="font-size: 2rem;"></i>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1">Suivi de progression</h4>
+                                <p class="mb-0 opacity-75">Bientôt disponible</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text text-muted mb-3">
+                            Enregistrez vos performances, analysez votre évolution avec graphiques et statistiques détaillés.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-secondary fw-bold">Prochainement →</span>
+                            <div class="d-flex gap-1">
+                                <span class="badge bg-info">Statistiques</span>
+                                <span class="badge bg-success">Graphiques</span>
+                                <span class="badge bg-primary">Analyses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. Ressources téléchargeables -->
+            <div class="col">
+                <a href="{{ route('ebook.index') }}" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
+                        <div class="card-header bg-danger text-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-download me-3" style="font-size: 2rem;"></i>
+                                <div class="flex-grow-1">
+                                    <h4 class="mb-1">Ressources téléchargeables</h4>
+                                    @php
+                                        $totalDownloads = \App\Models\Downloadable::where('status', 'active')->count();
+                                        $downloadCategoriesCount = \App\Models\DownloadCategory::where('status', 'active')->count();
+                                    @endphp
+                                    <p class="mb-0 opacity-75">{{ $downloadCategoriesCount }} catégories • {{ $totalDownloads }} ressources</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="card-text text-muted mb-3">
+                                Documents PDF, vidéos d'entraînement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-danger fw-bold">Télécharger les documents →</span>
+                                <div class="d-flex gap-1">
+                                    <span class="badge bg-success">PDF</span>
+                                    <span class="badge bg-primary">Vidéos</span>
+                                    <span class="badge bg-warning">Guides</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
 @endsection
 
 

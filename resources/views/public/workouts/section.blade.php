@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Section titre avec breadcrumb -->
-<section class="py-5 bg-primary text-white">
+<section class="py-5 text-white" style="border-left: 10px solid #ffff00;margin-bottom: 20px;background-color: #16bbb4;">
     <div class="container">
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">
@@ -67,7 +67,7 @@
                 @foreach($categories as $category)
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg hover-lift">
-                            <div class="card-header bg-gradient-info text-white p-3">
+                            <div class="card-header bg-danger text-white p-3">
                                 <h3 class="mb-1 h5">
                                     <i class="fas fa-folder me-2"></i>{{ $category->name }}
                                 </h3>
