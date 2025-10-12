@@ -51,6 +51,15 @@
     <link rel="stylesheet" href="{{ asset('css/social-share.css') }}">
 
     @stack('styles')
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDDF8VW92G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RDDF8VW92G');
+</script>
 </head>
 <body class="bg-light">
     @include('layouts.partials.public-header')
