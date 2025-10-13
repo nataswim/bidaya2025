@@ -45,6 +45,8 @@ use App\Http\Controllers\User\NotebookPermissionController;
 use App\Http\Controllers\User\NotebookCollaborationController;
 use App\Http\Controllers\User\NotebookVersionController;
 use App\Http\Controllers\Admin\SitemapController;
+use App\Http\Controllers\EbookFileController;
+
 
 
 
@@ -283,6 +285,18 @@ Route::resource('fiches', FicheController::class)->parameters([
     'fiches' => 'fiche'
 ]);
 
+// Gestion des fichiers eBooks
+    Route::prefix('ebook-files')->name('ebook-files.')->group(function () {
+        Route::get('/', [EbookFileController::class, 'index'])->name('index');
+        Route::post('/', [EbookFileController::class, 'store'])->name('store');
+        Route::get('/{ebookFile}', [EbookFileController::class, 'show'])->name('show');
+        Route::put('/{ebookFile}', [EbookFileController::class, 'update'])->name('update');
+        Route::delete('/{ebookFile}', [EbookFileController::class, 'destroy'])->name('destroy');
+        Route::post('/bulk-action', [EbookFileController::class, 'bulkAction'])->name('bulk-action');
+        
+        // API pour modal
+        Route::get('/api/files', [EbookFileController::class, 'api'])->name('api');
+    });
 
 // Routes AI Text Optimizer
 Route::prefix('aitext')->name('aitext.')->group(function () {

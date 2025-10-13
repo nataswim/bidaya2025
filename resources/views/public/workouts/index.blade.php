@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 bg-primary text-white text-center">
+<section class="text-white py-5" style="border-left: 10px solid #c25028;margin-bottom: 20px;background-color: #3867b4;">
     <div class="container py-3">
         <h1 class="display-4 fw-bold mb-3">
             Séances et Plans

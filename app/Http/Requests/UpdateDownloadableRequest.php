@@ -13,22 +13,14 @@ class UpdateDownloadableRequest extends FormRequest
 
     public function rules(): array
 {
-    // Récupération sécurisée de l'ID du downloadable
     $downloadableId = null;
     
     try {
-        // Première tentative avec le nom du paramètre de route
         if ($this->route()->hasParameter('downloadable')) {
             $downloadable = $this->route('downloadable');
             $downloadableId = is_object($downloadable) ? $downloadable->id : $downloadable;
         }
-        // Deuxième tentative avec snake_case si nécessaire
-        elseif ($this->route()->hasParameter('downloadables')) {
-            $downloadable = $this->route('downloadables');
-            $downloadableId = is_object($downloadable) ? $downloadable->id : $downloadable;
-        }
     } catch (\Exception $e) {
-        // En cas d'erreur, on laisse null pour éviter le crash
         $downloadableId = null;
     }
     
@@ -40,7 +32,12 @@ class UpdateDownloadableRequest extends FormRequest
         'format' => 'required|string|in:pdf,epub,mp4,zip,doc,docx',
         'short_description' => 'nullable|string|max:1000',
         'long_description' => 'nullable|string',
-        'file' => 'nullable|file|mimes:pdf,epub,mp4,zip,doc,docx|max:65536', // 64MB
+        
+        // Source du fichier (optionnel en update)
+        'file_source' => 'nullable|in:upload,existing',
+        'file' => 'nullable|file|mimes:pdf,epub,mp4,zip,doc,docx|max:204800',
+        'ebook_file_id' => 'nullable|exists:ebook_files,id',
+        
         'cover_image' => 'nullable|string|max:500',
         'download_category_id' => 'required|exists:download_categories,id',
         'user_permission' => 'required|string|in:public,visitor,user',

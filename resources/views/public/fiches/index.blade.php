@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="text-white py-5" style="border-left: 10px solid rgb(150 230 77);margin-bottom: 20px;background-color: #16bbb4;">
+<section class="text-white py-5" style="border-left: 10px solid rgb(15 92 120);margin-bottom: 20px;background-color: #306f75;">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             Fiches Thématique
@@ -158,7 +158,7 @@
 
         <!-- Guide d'Utilisation Rapide -->
         <div class="card shadow-lg border-0 mb-5">
-            <div class="card-header text-white" style="border-left: 10px solid rgb(150 230 77);margin-bottom: 20px;background-color: #16bbb4;">
+            <div class="card-header text-white" style="border-left: 10px solid rgb(150 230 77);margin-bottom: 20px;background-color: #316f75;">
                 <h3 class="mb-2">
                     <i class="fas fa-compass me-2"></i>
                     Comment utiliser nos Fiches

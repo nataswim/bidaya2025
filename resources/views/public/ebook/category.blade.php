@@ -6,9 +6,10 @@
 @push('styles')
 <style>
 .category-header {
-    background: linear-gradient(116deg, #0f5c78 0%, #016170 100%);
-    padding: 3rem 0;
+          background: #008e80;
+    padding: 4rem 0;
     color: white;
+    border-left: 10px solid #0f5c78;
 }
 
 .download-card {

@@ -23,7 +23,7 @@
 
 @section('content')
 <!-- En-tête de section -->
-<section class="bg-primary text-white py-5">
+<section class="text-white py-5" style="background-color: #008e80;border-left: 10px solid #0f5c78;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-{{ $downloadable->cover_image ? '7' : '12' }}">

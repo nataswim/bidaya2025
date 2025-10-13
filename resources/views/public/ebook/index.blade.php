@@ -6,9 +6,10 @@
 @push('styles')
 <style>
 .hero-section {
-    background: linear-gradient(116deg, #0f5c78 0%, #016170 100%);
+        background: #008e80;
     padding: 4rem 0;
     color: white;
+    border-left: 10px solid #0f5c78;
 }
 
 .category-card {
@@ -304,7 +305,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Envie d'acceder A plus de contenus ?</h3>
+                <h3 class="fw-bold mb-3">Acceder a plus de contenus ?</h3>
                 <p class="mb-0">
                     Creez votre compte pour acceder A notre bibliotheque complete de ressources exclusives 
                     et recevoir les nouveautes en avant-premiere.

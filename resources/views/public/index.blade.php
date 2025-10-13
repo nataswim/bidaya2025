@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- En-tête de section -->
-<section class="text-white py-5" style="border-left: 10px solid rgb(255 244 0);margin-bottom: 20px;background-color: #ff8d60;">
+<section class="text-white py-5" style="border-left: 10px solid rgb(15 92 120);margin-bottom: 20px;background-color: #57bcbe;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8">
@@ -19,7 +19,7 @@
 </section>
 
 <!-- Filtres et recherche -->
-<section class="py-4 bg-white border-bottom">
+<section class="py-4 border-bottom" style="border-right: 10px solid rgb(15 92 120);margin-bottom: 20px;background-color: #57bcbe;">
     <div class="container-lg">
         <form method="GET" class="row g-3 align-items-center">
             <div class="col-md-4">

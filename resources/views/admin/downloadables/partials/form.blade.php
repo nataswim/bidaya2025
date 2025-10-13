@@ -43,38 +43,180 @@
                     @enderror
                 </div>
 
-                <!-- Upload du fichier -->
-                <div class="mb-4">
-                    <label for="file" class="form-label fw-semibold">
-                        Fichier *
-                        @if(isset($downloadable))
-                            <span class="text-muted">(laisser vide pour conserver le fichier actuel)</span>
-                        @endif
-                    </label>
-                    <input type="file" 
-                           name="file" 
-                           id="file" 
-                           class="form-control @error('file') is-invalid @enderror"
-                           accept=".pdf,.epub,.mp4,.zip,.doc,.docx"
-                           {{ !isset($downloadable) ? 'required' : '' }}>
-                    <div class="form-text">
-                        Formats acceptes : PDF, EPUB, MP4, ZIP, DOC, DOCX (max 100MB)
+
+
+
+
+                <!-- Source du fichier -->
+<div class="mb-4">
+    <label class="form-label fw-semibold">
+        Source du fichier *
+        @if(isset($downloadable) && ($downloadable->file_path || $downloadable->ebook_file_id))
+            <span class="text-muted">(laisser tel quel pour conserver le fichier actuel)</span>
+        @endif
+    </label>
+    
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="card h-100 source-card {{ old('file_source', 'upload') === 'upload' ? 'border-primary selected' : '' }}" 
+                 onclick="selectFileSource('upload')">
+                <div class="card-body">
+                    <div class="form-check">
+                        <input type="radio" 
+                               name="file_source" 
+                               id="file_source_upload" 
+                               value="upload"
+                               class="form-check-input"
+                               {{ old('file_source', isset($downloadable) ? '' : 'upload') === 'upload' ? 'checked' : '' }}>
+                        <label for="file_source_upload" class="form-check-label">
+                            <i class="fas fa-upload text-primary me-2"></i>
+                            <strong>Télécharger un nouveau fichier</strong>
+                        </label>
                     </div>
-                    @if(isset($downloadable) && $downloadable->file_path)
-                        <div class="mt-2 p-2 bg-light rounded">
-                            <small class="text-muted">
-                                <i class="fas fa-file me-1"></i>
-                                Fichier actuel : {{ basename($downloadable->file_path) }}
-                                @if($downloadable->file_size)
-                                    ({{ $downloadable->file_size }})
-                                @endif
-                            </small>
-                        </div>
-                    @endif
-                    @error('file')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <small class="text-muted d-block mt-2">
+                        Uploadez un fichier depuis votre ordinateur
+                    </small>
                 </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card h-100 source-card {{ old('file_source') === 'existing' ? 'border-primary selected' : '' }}"
+                 onclick="selectFileSource('existing')">
+                <div class="card-body">
+                    <div class="form-check">
+                        <input type="radio" 
+                               name="file_source" 
+                               id="file_source_existing" 
+                               value="existing"
+                               class="form-check-input"
+                               {{ old('file_source') === 'existing' ? 'checked' : '' }}>
+                        <label for="file_source_existing" class="form-check-label">
+                            <i class="fas fa-folder-open text-success me-2"></i>
+                            <strong>Choisir un fichier existant</strong>
+                        </label>
+                    </div>
+                    <small class="text-muted d-block mt-2">
+                        Sélectionnez un fichier déjà uploadé
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    @error('file_source')
+        <div class="invalid-feedback d-block">{{ $message }}</div>
+    @enderror
+</div>
+
+<!-- Zone upload classique -->
+<div class="mb-4" id="upload_section" style="display: {{ old('file_source', isset($downloadable) ? '' : 'upload') === 'upload' ? 'block' : 'none' }};">
+    <label for="file" class="form-label fw-semibold">
+        Fichier à télécharger
+        @if(isset($downloadable))
+            <span class="text-muted">(laisser vide pour conserver le fichier actuel)</span>
+        @endif
+    </label>
+    <input type="file" 
+           name="file" 
+           id="file" 
+           class="form-control @error('file') is-invalid @enderror"
+           accept=".pdf,.epub,.mp4,.zip,.doc,.docx">
+    <div class="form-text">
+        Formats acceptés : PDF, EPUB, MP4, ZIP, DOC, DOCX (max 200MB)
+    </div>
+    
+    @if(isset($downloadable))
+        @if($downloadable->file_path && !$downloadable->ebook_file_id)
+            <div class="mt-2 p-2 bg-light rounded">
+                <small class="text-muted">
+                    <i class="fas fa-file me-1"></i>
+                    Fichier actuel : {{ basename($downloadable->file_path) }}
+                    @if($downloadable->file_size)
+                        ({{ $downloadable->file_size }})
+                    @endif
+                </small>
+            </div>
+        @elseif($downloadable->ebook_file_id && $downloadable->ebookFile)
+            <div class="mt-2 p-2 bg-light rounded">
+                <small class="text-muted">
+                    <i class="fas fa-link me-1"></i>
+                    Fichier lié : {{ $downloadable->ebookFile->name }}
+                    @if($downloadable->file_size)
+                        ({{ $downloadable->file_size }})
+                    @endif
+                </small>
+            </div>
+        @endif
+    @endif
+    
+    @error('file')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<!-- Zone sélection fichier existant -->
+<div class="mb-4" id="existing_section" style="display: {{ old('file_source') === 'existing' ? 'block' : 'none' }};">
+    <label for="ebook_file_id" class="form-label fw-semibold">
+        Fichier existant
+    </label>
+    
+    <input type="hidden" 
+           name="ebook_file_id" 
+           id="ebook_file_id" 
+           value="{{ old('ebook_file_id', isset($downloadable) ? $downloadable->ebook_file_id : '') }}">
+    
+    <div class="border rounded p-3 bg-light">
+        <div id="selected_ebook_preview" class="{{ old('ebook_file_id', isset($downloadable) ? $downloadable->ebook_file_id : '') ? '' : 'd-none' }}">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-file fa-2x text-primary me-3" id="ebook_icon"></i>
+                    <div>
+                        <div class="fw-semibold" id="ebook_name">
+                            @if(isset($downloadable) && $downloadable->ebookFile)
+                                {{ $downloadable->ebookFile->name }}
+                            @endif
+                        </div>
+                        <small class="text-muted" id="ebook_info">
+                            @if(isset($downloadable) && $downloadable->ebookFile)
+                                {{ $downloadable->ebookFile->formatted_size }} • {{ $downloadable->ebookFile->format_label }}
+                            @endif
+                        </small>
+                    </div>
+                </div>
+                <button type="button" 
+                        class="btn btn-sm btn-outline-danger"
+                        onclick="clearSelectedEbookFile()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="no_ebook_selected" class="{{ old('ebook_file_id', isset($downloadable) ? $downloadable->ebook_file_id : '') ? 'd-none' : 'text-center py-3' }}">
+            <i class="fas fa-folder-open fa-2x text-muted mb-2"></i>
+            <p class="text-muted mb-2">Aucun fichier sélectionné</p>
+        </div>
+        
+        <button type="button" 
+                class="btn btn-primary w-100 mt-2"
+                onclick="openEbookFileSelector()">
+            <i class="fas fa-folder-open me-2"></i>Parcourir les fichiers eBook
+        </button>
+    </div>
+    
+    @error('ebook_file_id')
+        <div class="invalid-feedback d-block">{{ $message }}</div>
+    @enderror
+    
+    <div class="mt-2">
+        <small class="text-muted">
+            <i class="fas fa-info-circle me-1"></i>
+            Vous pouvez aussi <a href="{{ route('admin.ebook-files.index') }}" target="_blank">gérer vos fichiers eBook</a>
+        </small>
+    </div>
+</div>
+
+
+
 
                 <!-- Format -->
                 <div class="mb-4">
@@ -422,6 +564,50 @@
 .bg-gradient-warning {
     background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
 }
+/* Styles pour la sélection de source */
+.source-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid #e5e7eb;
+}
+
+.source-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.source-card.selected {
+    border-color: #0ea5e9 !important;
+    background-color: #f0f9ff;
+}
+
+.source-card .form-check-input:checked ~ .form-check-label {
+    color: #0ea5e9;
+    font-weight: 600;
+}
+
+/* Styles pour les fichiers eBook dans la modal */
+.ebook-file-item {
+    transition: all 0.2s ease;
+    border: 2px solid #e5e7eb;
+}
+
+.ebook-file-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.ebook-file-item.selected {
+    border-color: #0ea5e9 !important;
+    background-color: #f0f9ff;
+    box-shadow: 0 0 0 0.25rem rgba(14, 165, 233, 0.25);
+}
+
+/* Badge de format */
+.badge.bg-secondary {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
 </style>
 @endpush
 
@@ -536,4 +722,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
 });
 </script>
+<!-- Inclure la modal sélecteur -->
+@include('admin.downloadables.partials.ebook-file-selector-modal')
+
+@push('scripts')
+<!-- Inclure le JS du sélecteur -->
+<script src="{{ asset('js/ebook-file-selector.js') }}"></script>
+
+<!-- Script existant Quill etc... -->
+<!-- ... garder le script existant ... -->
 @endpush

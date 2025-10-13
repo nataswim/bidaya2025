@@ -86,38 +86,124 @@ class DownloadableController extends Controller
         return view('admin.downloadables.create', compact('categories'));
     }
 
+
+
+
+
     public function store(StoreDownloadableRequest $request)
-    {
-        $this->checkAdminAccess();
+{
+    $this->checkAdminAccess();
+    
+    $data = $request->validated();
+    
+    // Gérer le fichier selon la source
+    $fileSource = $request->input('file_source');
+    
+    if ($fileSource === 'upload' && $request->hasFile('file')) {
+        // Upload classique dans storage/app/downloads
+        $file = $request->file('file');
+        $filename = time() . '_' . \Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+        $filePath = $file->storeAs('downloads', $filename, 'local');
         
-        $data = $request->validated();
+        $data['file_path'] = $filePath;
+        $data['file_size'] = $this->formatFileSize($file->getSize());
+        $data['ebook_file_id'] = null;
         
-        // Gerer l'upload du fichier
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filename = time() . '_' . \Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('downloads', $filename, 'local');
-            
-            $data['file_path'] = $filePath;
-            $data['file_size'] = $this->formatFileSize($file->getSize());
-        }
+    } elseif ($fileSource === 'existing' && $request->filled('ebook_file_id')) {
+        // Utiliser un fichier existant depuis ebook_files
+        $ebookFile = \App\Models\EbookFile::findOrFail($request->input('ebook_file_id'));
         
-        if (empty($data['slug'])) {
-            $data['slug'] = \Str::slug($data['title']);
-        }
+        $data['ebook_file_id'] = $ebookFile->id;
+        $data['file_path'] = null;
+        $data['file_size'] = $this->formatFileSize($ebookFile->size);
         
-        $downloadable = Downloadable::create($data);
-
-        $action = $request->input('action', 'save');
-        
-        if ($action === 'save_and_continue') {
-            return redirect()->route('admin.downloadables.edit', $downloadable)
-                ->with('success', 'Telechargement cree avec succes. Vous pouvez continuer A l\'editer.');
-        }
-
-        return redirect()->route('admin.downloadables.index')
-            ->with('success', 'Telechargement cree avec succes.');
+        // Marquer le fichier comme utilisé
+        $ebookFile->markAsUsed();
     }
+    
+    if (empty($data['slug'])) {
+        $data['slug'] = \Str::slug($data['title']);
+    }
+    
+    // Nettoyer file_source (pas dans fillable)
+    unset($data['file_source']);
+    
+    $downloadable = Downloadable::create($data);
+
+    $action = $request->input('action', 'save');
+    
+    if ($action === 'save_and_continue') {
+        return redirect()->route('admin.downloadables.edit', $downloadable)
+            ->with('success', 'Téléchargement créé avec succès. Vous pouvez continuer à l\'éditer.');
+    }
+
+    return redirect()->route('admin.downloadables.index')
+        ->with('success', 'Téléchargement créé avec succès.');
+}
+
+public function update(UpdateDownloadableRequest $request, Downloadable $downloadable)
+{
+    $this->checkAdminAccess();
+    
+    $data = $request->validated();
+    
+    // Gérer le changement de fichier si demandé
+    $fileSource = $request->input('file_source');
+    
+    if ($fileSource === 'upload' && $request->hasFile('file')) {
+        // Supprimer l'ancien fichier si stocké localement
+        if ($downloadable->file_path && Storage::disk('local')->exists($downloadable->file_path)) {
+            Storage::disk('local')->delete($downloadable->file_path);
+        }
+        
+        $file = $request->file('file');
+        $filename = time() . '_' . \Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+        $filePath = $file->storeAs('downloads', $filename, 'local');
+        
+        $data['file_path'] = $filePath;
+        $data['file_size'] = $this->formatFileSize($file->getSize());
+        $data['ebook_file_id'] = null;
+        
+    } elseif ($fileSource === 'existing' && $request->filled('ebook_file_id')) {
+        // Supprimer l'ancien fichier local si existant
+        if ($downloadable->file_path && Storage::disk('local')->exists($downloadable->file_path)) {
+            Storage::disk('local')->delete($downloadable->file_path);
+        }
+        
+        $ebookFile = \App\Models\EbookFile::findOrFail($request->input('ebook_file_id'));
+        
+        $data['ebook_file_id'] = $ebookFile->id;
+        $data['file_path'] = null;
+        $data['file_size'] = $this->formatFileSize($ebookFile->size);
+        
+        $ebookFile->markAsUsed();
+    }
+    
+    if (empty($data['slug'])) {
+        $data['slug'] = \Str::slug($data['title']);
+    }
+    
+    unset($data['file_source']);
+    
+    $downloadable->update($data);
+
+    $action = $request->input('action', 'save');
+    
+    if ($action === 'save_and_continue') {
+        return redirect()->route('admin.downloadables.edit', $downloadable)
+            ->with('success', 'Téléchargement mis à jour avec succès.');
+    }
+
+    return redirect()->route('admin.downloadables.index')
+        ->with('success', 'Téléchargement mis à jour avec succès.');
+}
+
+
+
+
+
+
+
 
     public function show(Downloadable $downloadable)
     {
@@ -157,43 +243,24 @@ class DownloadableController extends Controller
         return view('admin.downloadables.edit', compact('downloadable', 'categories'));
     }
 
-    public function update(UpdateDownloadableRequest $request, Downloadable $downloadable)
-    {
-        $this->checkAdminAccess();
-        
-        $data = $request->validated();
-        
-        // Gerer l'upload d'un nouveau fichier
-        if ($request->hasFile('file')) {
-            // Supprimer l'ancien fichier
-            if ($downloadable->file_path && Storage::disk('local')->exists($downloadable->file_path)) {
-                Storage::disk('local')->delete($downloadable->file_path);
-            }
-            
-            $file = $request->file('file');
-            $filename = time() . '_' . \Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('downloads', $filename, 'local');
-            
-            $data['file_path'] = $filePath;
-            $data['file_size'] = $this->formatFileSize($file->getSize());
-        }
-        
-        if (empty($data['slug'])) {
-            $data['slug'] = \Str::slug($data['title']);
-        }
-        
-        $downloadable->update($data);
 
-        $action = $request->input('action', 'save');
-        
-        if ($action === 'save_and_continue') {
-            return redirect()->route('admin.downloadables.edit', $downloadable)
-                ->with('success', 'Telechargement mis A jour avec succes.');
-        }
 
-        return redirect()->route('admin.downloadables.index')
-            ->with('success', 'Telechargement mis A jour avec succes.');
-    }
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 
     public function destroy(Downloadable $downloadable)
     {

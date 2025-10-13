@@ -10,12 +10,56 @@ class Downloadable extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'title', 'slug', 'format', 'short_description', 'long_description', 'file_path',
-        'file_size', 'cover_image', 'download_category_id', 'user_permission', 'download_count',
-        'order', 'status', 'is_featured', 'meta_title', 'meta_description', 'meta_keywords',
-        'created_by', 'created_by_name', 'updated_by'
-    ];
+    // Ajouter dans $fillable
+protected $fillable = [
+    'title', 'slug', 'format', 'short_description', 'long_description', 
+    'file_path', 'ebook_file_id', // <- AJOUTER
+    'file_size', 'cover_image', 'download_category_id', 'user_permission', 'download_count',
+    'order', 'status', 'is_featured', 'meta_title', 'meta_description', 'meta_keywords',
+    'created_by', 'created_by_name', 'updated_by'
+];
+
+/**
+ * Relation avec EbookFile
+ */
+public function ebookFile()
+{
+    return $this->belongsTo(EbookFile::class, 'ebook_file_id');
+}
+
+/**
+ * Obtenir le chemin physique du fichier
+ */
+public function getPhysicalPathAttribute()
+{
+    // Priorité au ebook_file_id
+    if ($this->ebook_file_id && $this->ebookFile) {
+        return $this->ebookFile->physical_path;
+    }
+    
+    // Sinon file_path classique
+    if ($this->file_path && Storage::disk('local')->exists($this->file_path)) {
+        return Storage::disk('local')->path($this->file_path);
+    }
+    
+    return null;
+}
+
+/**
+ * Vérifier si le fichier existe
+ */
+public function hasFile()
+{
+    if ($this->ebook_file_id && $this->ebookFile) {
+        return $this->ebookFile->fileExists();
+    }
+    
+    if ($this->file_path) {
+        return Storage::disk('local')->exists($this->file_path);
+    }
+    
+    return false;
+}
 
     protected $casts = [
         'download_count' => 'integer',

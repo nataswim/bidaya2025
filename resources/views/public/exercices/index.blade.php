@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 bg-primary text-white text-center">
+<section class="text-white py-5" style="border-left: 10px solid rgb(15 92 120);margin-bottom: 20px;background-color: #51b6c9;">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             Exercices Zone
