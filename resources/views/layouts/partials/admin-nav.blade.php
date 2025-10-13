@@ -135,6 +135,40 @@
             </li>
 
             <li class="nav-item mb-1">
+                @php $videosActive = request()->routeIs('admin.videos.*', 'admin.video-categories.*'); @endphp
+                <a class="nav-link text-white d-flex align-items-center rounded collapsed {{ $videosActive ? 'active bg-primary' : '' }}"
+                    data-bs-toggle="collapse" href="#videosMenu" role="button"
+                    aria-expanded="{{ $videosActive ? 'true' : 'false' }}"
+                    aria-controls="videosMenu">
+                    <i class="fas fa-video fa-fw me-3"></i>
+                    <span>Vidéos</span>
+                    <i class="fas fa-chevron-down ms-auto" style="font-size: 0.7em;"></i>
+                </a>
+                <div class="collapse {{ $videosActive ? 'show' : '' }}" id="videosMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded py-2 {{ request()->routeIs('admin.videos.index', 'admin.videos.create', 'admin.videos.edit', 'admin.videos.show') ? 'active bg-secondary' : '' }}" href="{{ route('admin.videos.index') }}">
+                                <i class="fas fa-play-circle fa-fw me-2"></i> Vidéos
+                                @php $videosCount = App\Models\Video::count(); @endphp
+                                @if($videosCount > 0)
+                                <span class="badge bg-danger ms-auto">{{ $videosCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded py-2 {{ request()->routeIs('admin.video-categories.*') ? 'active bg-secondary' : '' }}" href="{{ route('admin.video-categories.index') }}">
+                                <i class="fas fa-folder-open fa-fw me-2"></i> Catégories
+                                @php $videoCategoriesCount = App\Models\VideoCategory::count(); @endphp
+                                @if($videoCategoriesCount > 0)
+                                <span class="badge bg-info ms-auto">{{ $videoCategoriesCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item mb-1">
                 @php $workoutsActive = request()->routeIs('admin.workouts.*', 'admin.workout-categories.*', 'admin.workout-sections.*'); @endphp
                 <a class="nav-link text-white d-flex align-items-center rounded collapsed {{ $workoutsActive ? 'active bg-primary' : '' }}"
                     data-bs-toggle="collapse" href="#workoutsMenu" role="button"
@@ -249,7 +283,7 @@
                     aria-expanded="{{ $adminUsersActive ? 'true' : 'false' }}"
                     aria-controls="adminMenu">
                     <i class="fas fa-user-cog fa-fw me-3"></i>
-                    <span>Gestion Utilisateurs</span>
+                    <span> Utilisateurs</span>
                     <i class="fas fa-chevron-down ms-auto" style="font-size: 0.7em;"></i>
                 </a>
 
@@ -304,7 +338,7 @@
                     aria-expanded="{{ $ebooksActive ? 'true' : 'false' }}"
                     aria-controls="ebooksMenu">
                     <i class="fas fa-book fa-fw me-3"></i>
-                    <span>Gestion eBooks</span>
+                    <span>eBooks</span>
                     <i class="fas fa-chevron-down ms-auto" style="font-size: 0.7em;"></i>
                 </a>
 

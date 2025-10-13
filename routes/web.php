@@ -46,6 +46,9 @@ use App\Http\Controllers\User\NotebookCollaborationController;
 use App\Http\Controllers\User\NotebookVersionController;
 use App\Http\Controllers\Admin\SitemapController;
 use App\Http\Controllers\EbookFileController;
+use App\Http\Controllers\PublicVideoController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VideoCategoryController;
 
 
 
@@ -75,6 +78,14 @@ Route::get('/sitemap.xml', function () {
             'Cache-Control' => 'public, max-age=3600'
         ]);
 })->name('sitemap.xml');
+
+
+// ========== ROUTES VIDÉOS PUBLIQUES ==========
+Route::prefix('videos')->name('public.videos.')->group(function () {
+    Route::get('/', [PublicVideoController::class, 'index'])->name('index');
+    Route::get('/category/{category}', [PublicVideoController::class, 'category'])->name('category');
+    Route::get('/{video}', [PublicVideoController::class, 'show'])->name('show');
+});
 
 
 // Routes publiques
@@ -365,6 +376,15 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
 
 
 
+
+    // ========== ROUTES VIDÉOS ADMIN ==========
+    Route::resource('video-categories', \App\Http\Controllers\Admin\VideoCategoryController::class)
+        ->parameters(['video-categories' => 'videoCategory']);
+    
+    Route::resource('videos', \App\Http\Controllers\Admin\VideoController::class);
+    
+    Route::post('videos/fetch-metadata', [\App\Http\Controllers\Admin\VideoController::class, 'fetchMetadata'])
+        ->name('videos.fetch-metadata');
 
 
 
