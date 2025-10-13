@@ -50,17 +50,25 @@
                             @enderror
                         </div>
 
-                        <!-- Description avec Quill Editor -->
-                        <div class="mb-4">
-                            <label for="description" class="form-label fw-semibold">Description</label>
-                            <div id="quill-description" style="height: 300px;">
-                                {!! old('description', $video->description) !!}
-                            </div>
-                            <input type="hidden" name="description" id="description" value="{{ old('description', $video->description) }}">
-                            @error('description')
-                                <div class="text-danger small mt-1">{{ $message }}</div>
-                            @enderror
-                        </div>
+                       <!-- Description avec Quill Editor + IA -->
+<div class="mb-4">
+    <label for="description" class="form-label fw-semibold">Description</label>
+    
+    <div id="description-editor" style="height: 300px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+    
+    <textarea name="description" 
+              id="description" 
+              class="d-none @error('description') is-invalid @enderror">{{ old('description', $video->description) }}</textarea>
+    
+    @error('description')
+        <div class="text-danger small mt-2">{{ $message }}</div>
+    @enderror
+    
+    <div class="form-text mt-2">
+        <i class="fas fa-info-circle me-1"></i>
+        Le bouton "IA" apparaîtra automatiquement dans la barre d'outils.
+    </div>
+</div>
 
                         <!-- Type de source -->
                         <div class="mb-4">
@@ -392,6 +400,44 @@
 .bg-gradient-info { background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%); }
 .bg-gradient-warning { background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%); }
 .bg-gradient-secondary { background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); }
+
+/* Styles Quill personnalisés */
+#toolbar-description {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+    border-radius: 0.375rem 0.375rem 0 0;
+    padding: 0.5rem;
+}
+
+#quill-description {
+    border: 1px solid #dee2e6;
+    border-radius: 0 0 0.375rem 0.375rem;
+    font-size: 1rem;
+}
+
+.ql-toolbar.ql-snow {
+    border: none;
+    padding: 0;
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+.ql-editor {
+    min-height: 400px;
+}
+
+/* Bouton IA */
+#optimizeDescriptionBtn {
+    transition: all 0.3s ease;
+}
+
+#optimizeDescriptionBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+}
 </style>
 
 <!-- Quill Editor CSS -->
@@ -399,112 +445,133 @@
 @endpush
 
 @push('scripts')
+{{-- Scripts Quill + IA (chargés UNE FOIS) --}}
+@once
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script src="{{ asset('js/media-selector.js') }}"></script>
-
-<!-- Quill Editor JS -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="{{ asset('js/quill-advanced.js') }}"></script>
+<script src="{{ asset('js/quill-ai-optimizer.js') }}"></script>
+@endonce
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ========== QUILL EDITOR POUR DESCRIPTION ==========
-    const quillDescription = new Quill('#quill-description', {
-        theme: 'snow',
-        modules: {
-            toolbar: [
-                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                [{ 'color': [] }, { 'background': [] }],
-                [{ 'align': [] }],
-                ['link', 'image', 'video'],
-                ['clean']
-            ]
-        },
-        placeholder: 'Description détaillée de la vidéo...'
-    });
-
-    // Synchroniser Quill avec le champ caché
-    const descriptionInput = document.getElementById('description');
-    quillDescription.on('text-change', function() {
-        descriptionInput.value = quillDescription.root.innerHTML;
-    });
-
-    // Initialiser la valeur existante
-    if (descriptionInput.value) {
-        quillDescription.root.innerHTML = descriptionInput.value;
+    console.log('🎬 Initialisation éditeur vidéo...');
+    
+    // ========== 1. INITIALISER QUILL ==========
+    let quillDescription = null;
+    
+    if (document.getElementById('description-editor')) {
+        quillDescription = initQuillEditor('#description-editor', 'description');
+        console.log('✅ Éditeur Quill initialisé');
+    }
+    
+    // ========== 2. SYNCHRONISATION À LA SOUMISSION ==========
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const descriptionTextarea = document.getElementById('description');
+            if (descriptionTextarea && quillDescription) {
+                descriptionTextarea.value = quillDescription.root.innerHTML;
+            }
+        });
     }
 
+    // ========== 3. AUTO-GÉNÉRATION DU SLUG ==========
     const titleInput = document.getElementById('title');
     const slugInput = document.getElementById('slug');
     
-    titleInput.addEventListener('input', function() {
-        if (!slugInput.value || slugInput.dataset.autoGenerated) {
-            const slug = this.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-            slugInput.value = slug;
-            slugInput.dataset.autoGenerated = 'true';
-        }
-    });
-    
-    slugInput.addEventListener('input', function() { this.dataset.autoGenerated = ''; });
+    if (titleInput && slugInput) {
+        titleInput.addEventListener('input', function() {
+            if (!slugInput.value || slugInput.dataset.autoGenerated) {
+                const slug = this.value
+                    .toLowerCase()
+                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+                slugInput.value = slug;
+                slugInput.dataset.autoGenerated = 'true';
+            }
+        });
+        
+        slugInput.addEventListener('input', function() {
+            this.dataset.autoGenerated = '';
+        });
+    }
 
+    // ========== 4. GESTION DU TYPE DE SOURCE ==========
     const typeSelect = document.getElementById('type');
     const uploadSection = document.getElementById('uploadSection');
     const urlSection = document.getElementById('urlSection');
     
-    typeSelect.addEventListener('change', function() {
-        uploadSection.style.display = this.value === 'upload' ? 'block' : 'none';
-        urlSection.style.display = ['youtube', 'vimeo', 'dailymotion', 'url'].includes(this.value) ? 'block' : 'none';
-    });
-    
-    typeSelect.dispatchEvent(new Event('change'));
+    if (typeSelect) {
+        typeSelect.addEventListener('change', function() {
+            uploadSection.style.display = this.value === 'upload' ? 'block' : 'none';
+            urlSection.style.display = ['youtube', 'vimeo', 'dailymotion', 'url'].includes(this.value) ? 'block' : 'none';
+        });
+        
+        if (typeSelect.value) {
+            typeSelect.dispatchEvent(new Event('change'));
+        }
+    }
 
+    // ========== 5. RÉCUPÉRATION DES MÉTADONNÉES ==========
     const fetchMetadataBtn = document.getElementById('fetchMetadataBtn');
     const externalUrlInput = document.getElementById('external_url');
     
-    fetchMetadataBtn.addEventListener('click', async function() {
-        const url = externalUrlInput.value;
-        const type = typeSelect.value;
-        
-        if (!url || !['youtube', 'vimeo', 'dailymotion'].includes(type)) {
-            alert('Veuillez sélectionner un type et saisir une URL valide');
-            return;
-        }
-        
-        this.disabled = true;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Récupération...';
-        
-        try {
-            const response = await fetch('{{ route("admin.videos.fetch-metadata") }}', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
-                body: JSON.stringify({ url, type })
-            });
+    if (fetchMetadataBtn) {
+        fetchMetadataBtn.addEventListener('click', async function() {
+            const url = externalUrlInput.value;
+            const type = typeSelect.value;
             
-            const data = await response.json();
-            
-            if (data.success && data.data) {
-                if (data.data.thumbnail) {
-                    document.getElementById('thumbnail').value = data.data.thumbnail;
-                    document.getElementById('thumbnailPreview').src = data.data.thumbnail;
-                    document.getElementById('thumbnailPreviewContainer').classList.remove('d-none');
-                }
-                if (data.data.duration) document.getElementById('duration').value = data.data.duration;
-                if (data.data.width) document.getElementById('width').value = data.data.width;
-                if (data.data.height) document.getElementById('height').value = data.data.height;
-                
-                alert('Métadonnées récupérées avec succès !');
-            } else {
-                alert('Impossible de récupérer les métadonnées');
+            if (!url || !['youtube', 'vimeo', 'dailymotion'].includes(type)) {
+                alert('Veuillez sélectionner un type et saisir une URL valide');
+                return;
             }
-        } catch (error) {
-            console.error('Erreur:', error);
-            alert('Une erreur est survenue');
-        } finally {
-            this.disabled = false;
-            this.innerHTML = '<i class="fas fa-download me-2"></i>Récupérer infos';
-        }
-    });
+            
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Récupération...';
+            
+            try {
+                const response = await fetch('{{ route("admin.videos.fetch-metadata") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ url, type })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    if (data.data.title && !titleInput.value) {
+                        titleInput.value = data.data.title;
+                        titleInput.dispatchEvent(new Event('input'));
+                    }
+                    if (data.data.thumbnail) {
+                        document.getElementById('thumbnail').value = data.data.thumbnail;
+                        document.getElementById('thumbnailPreview').src = data.data.thumbnail;
+                        document.getElementById('thumbnailPreviewContainer').classList.remove('d-none');
+                    }
+                    if (data.data.duration) document.getElementById('duration').value = data.data.duration;
+                    if (data.data.width) document.getElementById('width').value = data.data.width;
+                    if (data.data.height) document.getElementById('height').value = data.data.height;
+                    
+                    alert('✓ Métadonnées récupérées avec succès !');
+                } else {
+                    alert('Impossible de récupérer les métadonnées');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue');
+            } finally {
+                this.disabled = false;
+                this.innerHTML = '<i class="fas fa-download me-2"></i>Récupérer infos';
+            }
+        });
+    }
 
+    // ========== 6. APERÇU THUMBNAIL ==========
     const thumbnailInput = document.getElementById('thumbnail');
     const thumbnailPreview = document.getElementById('thumbnailPreview');
     const thumbnailPreviewContainer = document.getElementById('thumbnailPreviewContainer');
@@ -519,6 +586,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ========== 7. INITIALISER L'IA (IMPORTANT) ==========
+    setTimeout(function() {
+        if (typeof window.initQuillAI === 'function') {
+            window.initQuillAI();
+            console.log('✅ Module IA initialisé');
+        } else {
+            console.warn('⚠️ Module IA non disponible');
+        }
+    }, 1500);
 });
 </script>
 @endpush
