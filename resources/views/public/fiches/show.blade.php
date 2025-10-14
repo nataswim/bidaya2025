@@ -24,7 +24,7 @@
 @section('content')
 
 
-<!-- En-tête de section -->
+<!-- En-tête section -->
 <section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
 76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container-lg">

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<!-- Hero Section -->
+<!--  Section -->
 <section class="bg-gradient-primary text-white py-5">
     <div class="container-lg">
         <div class="row align-items-center">
@@ -181,7 +181,15 @@
             </div>
         </div>
 
-
+ <div class="alert alert-success border-0 shadow-sm text-center">
+            <div class="row align-items-center">
+                <div class="col mx-auto">
+                    <p class="mb-3">
+       Si vous avez déjà participé à nos <strong>camps, stages, formations ou webinaires, </strong> veuillez valider votre compte sur la plateforme. Les liens d'accès vous ont été envoyés suite à votre inscription.
+                    </p>
+                </div>
+            </div>
+        </div>
         <div class="mb-5">
 
             <h2 class="mt-3">Comment obtenir un compte Premium </h2>

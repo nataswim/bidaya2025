@@ -142,16 +142,16 @@
                     <div class="mt-4">
                         <h6 class="text-white fw-semibold mb-3">Suivez-nous</h6>
                         <div class="d-flex gap-2">
-                            <a href="#" class="btn btn-outline-light btn-sm" aria-label="Facebook">
+                            <a href="https://www.facebook.com/Sports.Ressources/" class="btn btn-outline-light btn-sm" aria-label="Facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-light btn-sm" aria-label="Twitter">
+                            <a href="#" class="https://www.facebook.com/profile.php?id=100063768510820" aria-label="Twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-light btn-sm" aria-label="Instagram">
+                            <a href="https://www.instagram.com/med_hassan_el_haouat/" class="btn btn-outline-light btn-sm" aria-label="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#" class="btn btn-outline-light btn-sm" aria-label="YouTube">
+                            <a href="https://www.youtube.com/@stevemarshvedravokivish2069" class="btn btn-outline-light btn-sm" aria-label="YouTube">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </div>

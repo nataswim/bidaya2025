@@ -1,10 +1,36 @@
+
+
 @extends('layouts.public')
 
-@section('title', $workout->title . ' - Séance d\'Entraînement ' . $section->name)
+{{-- SEO Meta --}}
+@section('title', $workout->title)
 @section('meta_description', strip_tags($workout->short_description))
-@section('meta_keywords', 'séance ' . strtolower($section->name) . ', entraînement ' . strtolower($category->name) . ', ' . strtolower($workout->title))
+
+{{-- Open Graph / Facebook --}}
+@section('og_type', 'article')
+@section('og_title', $workout->title)
+@section('og_description', strip_tags($workout->short_description))
+@if($workout->image)
+    @section('og_image', $workout->image)
+    @section('og_image_alt', $workout->title)
+@endif
+
+{{-- Twitter Card --}}
+@section('twitter_title', $workout->title)
+@section('twitter_description', strip_tags($workout->short_description))
+@if($workout->image)
+    @section('twitter_image', $workout->image)
+@endif
 
 @section('content')
+
+
+
+
+
+
+
+
 <!-- En-tête de section -->
 
 

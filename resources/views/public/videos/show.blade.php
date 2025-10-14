@@ -213,7 +213,7 @@
                         </div>
                         <div class="card-body p-4">
                             <div class="content-display fs-6 lh-lg">
-                                {!! nl2br(e($video->description)) !!}
+                               {!! $video->description !!}
                             </div>
                         </div>
                     </div>
@@ -470,13 +470,119 @@
 
 @push('styles')
 <style>
-/* Styles pour le contenu */
-.content-display p {
+/* Styles pour le contenu HTML enrichi */
+.content-display h1,
+.content-display h2,
+.content-display h3 {
+    margin-top: 2rem;
     margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.content-display h1 { font-size: 1.8rem; color: #2d3748; }
+.content-display h2 { font-size: 1.5rem; color: #2d3748; }
+.content-display h3 { font-size: 1.3rem; color: #2d3748; }
+
+.content-display p {
+    margin-bottom: 1.5rem;
     line-height: 1.8;
+    text-align: justify;
     color: #4a5568;
 }
 
+.content-display ul,
+.content-display ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    line-height: 1.7;
+}
+
+.content-display li {
+    margin-bottom: 0.5rem;
+}
+
+.content-display blockquote {
+    border-left: 4px solid #3182ce;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    background: #f7fafc;
+    border-radius: 0.375rem;
+    color: #2d3748;
+}
+
+.content-display img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-display pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.content-display code {
+    background-color: #edf2f7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    color: #d63384;
+    font-family: 'Courier New', monospace;
+}
+
+.content-display table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.content-display th,
+.content-display td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.content-display th {
+    background-color: #f7fafc;
+    font-weight: 600;
+}
+
+.content-display strong {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.content-display em {
+    font-style: italic;
+}
+
+.content-display a {
+    color: #3182ce;
+    text-decoration: underline;
+}
+
+.content-display a:hover {
+    color: #2c5282;
+}
+
+/* Styles existants */
 .card {
     transition: box-shadow 0.2s ease;
 }
@@ -501,6 +607,10 @@
     
     video {
         max-height: 300px !important;
+    }
+    
+    .content-display {
+        font-size: 0.95rem;
     }
 }
 

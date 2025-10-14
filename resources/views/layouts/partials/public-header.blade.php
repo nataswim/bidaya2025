@@ -1,3 +1,34 @@
+{{-- Bandeau utilisateur connecté --}}
+@auth
+<div class="user-top-banner py-2" style="background-color: #EA6226;">
+    <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
+        {{-- Lien Mon espace --}}
+        <a href="{{ route('user.dashboard') }}" 
+           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
+            <i class="fas fa-home me-1"></i>
+            <span class="banner-text">Mon espace</span>
+        </a>
+
+        {{-- Lien Mes carnets --}}
+        <a href="{{ route('user.notebooks.index') }}" 
+           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}">
+            <i class="fas fa-book me-1"></i>
+            <span class="banner-text">Mes Carnets</span>
+        </a>
+
+        {{-- Bouton Passer Premium (seulement pour les visiteurs) --}}
+        @if(auth()->user()->hasRole('visitor'))
+        <a href="{{ route('payments.index') }}" 
+           class="banner-link banner-link-premium d-flex align-items-center text-white text-decoration-none px-1 py-1 rounded-pill">
+            <i class="fas fa-crown me-1"></i>
+            <span class="banner-text">Devenir Premium</span>
+        </a>
+        @endif
+    </div>
+</div>
+@endauth
+
+{{-- Navigation principale existante --}}
 <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0f5c78;border-top: 20px solid #0f5c78;">
     <div class="container-lg">
         <!-- Logo -->
@@ -130,3 +161,134 @@
         </div>
     </div>
 </nav>
+
+{{-- CSS personnalisé pour le bandeau --}}
+@push('styles')
+<style>
+    /* Bandeau utilisateur - Pleine largeur */
+    .user-top-banner {
+        background-color: #198754 !important;
+        border-bottom: 2px solid #146c43;
+        position: relative;
+        z-index: 1040;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .user-top-banner::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .user-top-banner::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+
+    /* Liens du bandeau */
+    .banner-link {
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .banner-link:hover {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        transform: translateY(-1px);
+    }
+
+    .banner-link.active {
+        background-color: rgba(255, 255, 255, 0.25) !important;
+        font-weight: 600;
+    }
+
+    /* Bouton Premium avec effet spécial */
+    .banner-link-premium {
+        background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%) !important;
+        color: #000 !important;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+        animation: pulse-premium 2s ease-in-out infinite;
+    }
+
+    .banner-link-premium:hover {
+        background: linear-gradient(135deg, #ffcd38 0%, #ffb74d 100%) !important;
+        color: #000 !important;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.6);
+    }
+
+    .banner-link-premium i,
+    .banner-link-premium span {
+        color: #000 !important;
+    }
+
+    @keyframes pulse-premium {
+        0%, 100% {
+            box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+        }
+        50% {
+            box-shadow: 0 4px 16px rgba(255, 193, 7, 0.7);
+        }
+    }
+
+    /* Responsive mobile - tout sur une ligne */
+    @media (max-width: 768px) {
+        .user-top-banner {
+            padding: 0.5rem 0 !important;
+        }
+
+        .banner-link {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.6rem !important;
+        }
+
+        .banner-link i {
+            font-size: 0.85rem;
+        }
+
+        .banner-text {
+            font-size: 0.75rem;
+        }
+
+        .user-top-banner > div {
+            gap: 0.35rem !important;
+        }
+    }
+
+    /* Très petits écrans - textes encore plus courts */
+    @media (max-width: 380px) {
+        .banner-link {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.5rem !important;
+        }
+
+        .banner-link i {
+            font-size: 0.8rem;
+            margin-right: 0.25rem !important;
+        }
+
+        .banner-text {
+            font-size: 0.7rem;
+        }
+
+        .user-top-banner > div {
+            gap: 0.25rem !important;
+            padding: 0 0.5rem !important;
+        }
+    }
+
+    /* iPhone SE et similaires */
+    @media (max-width: 320px) {
+        .banner-link {
+            padding: 0.25rem 0.4rem !important;
+        }
+        
+        .banner-link i {
+            margin-right: 0.2rem !important;
+        }
+    }
+</style>
+@endpush

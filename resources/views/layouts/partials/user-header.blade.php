@@ -16,48 +16,159 @@
         <div class="collapse navbar-collapse" id="userNav">
             <!-- Navigation principale -->
             <ul class="navbar-nav me-auto ms-lg-4">
+                
+                {{-- Mon Espace --}}
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('user.dashboard') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('user.dashboard') }}">
-                        <i class="fas fa-water me-2"></i>Mon Espace Personnel
+                        <i class="fas fa-home me-2"></i>Mon Espace
                     </a>
                 </li>
- 
+
+                {{-- Mon Profil --}}
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('user.profile.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('user.profile.edit') }}">
-                        <i class="fas fa-user-edit me-2"></i>Mon profil
+                        <i class="fas fa-user-circle me-2"></i>Mon Profil
                     </a>
                 </li>
-    
+
+                {{-- Mes Carnets --}}
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('home') }}">
-                        <i class="fas fa-water me-2"></i>Voir Le Contenu
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('user.notebooks.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="{{ route('user.notebooks.index') }}">
+                        <i class="fas fa-book me-2"></i>Mes Carnets
                     </a>
                 </li>
 
-
-
-<li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('user.training.index') }}">
-                        <i class="fas fa-water me-2"></i>Musculation
+                {{-- Musculation (Dropdown) --}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-3 py-2 {{ request()->routeIs('user.training.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="#" 
+                       id="trainingDropdown" 
+                       role="button" 
+                       data-bs-toggle="dropdown" 
+                       aria-expanded="false">
+                        <i class="fas fa-dumbbell me-2"></i>Musculation
                     </a>
+                    <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="trainingDropdown">
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('exercices.index') }}">
+                                <i class="fas fa-running text-info me-2"></i>Bibliothèque exercices
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
-<li class="nav-item">
-    <a class="nav-link {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" 
-       href="{{ route('user.notebooks.index') }}">
-        <i class="fas fa-book me-2"></i>Mes Carnets
-    </a>
-</li>
+                {{-- Contenu Public (Dropdown multi-niveaux) --}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-3 py-2 text-dark" 
+                       href="#" 
+                       id="contentDropdown" 
+                       role="button" 
+                       data-bs-toggle="dropdown" 
+                       aria-expanded="false">
+                        <i class="fas fa-globe me-2"></i>Contenus
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-large shadow-lg border-0" aria-labelledby="contentDropdown">
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('home') }}">
+                                <i class="fas fa-home text-success me-2"></i>Accueil site
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        
+                        <li class="dropdown-header fw-bold text-primary">
+                            <i class="fas fa-newspaper me-1"></i>Articles & Fiches
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('public.index') }}">
+                                <i class="fas fa-newspaper text-info me-2"></i>Articles dossiers
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('public.fiches.index') }}">
+                                <i class="fas fa-file-alt text-teal me-2"></i>Fiches techniques
+                            </a>
+                        </li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="dropdown-header fw-bold text-primary">
+                            <i class="fas fa-video me-1"></i>Contenus visuels
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('public.videos.index') }}">
+                                <i class="fas fa-video text-danger me-2"></i>Vidéos
+                            </a>
+                        </li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="dropdown-header fw-bold text-primary">
+                            <i class="fas fa-heartbeat me-1"></i>Entraînement
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('public.workouts.index') }}">
+                                <i class="fas fa-clipboard-check text-warning me-2"></i>Séances & plans
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('exercices.index') }}">
+                                <i class="fas fa-dumbbell text-success me-2"></i>Exercices musculation
+                            </a>
+                        </li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="dropdown-header fw-bold text-primary">
+                            <i class="fas fa-tools me-1"></i>Ressources
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('ebook.index') }}">
+                                <i class="fas fa-download text-danger me-2"></i>Documents & eBooks
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('tools.index') }}">
+                                <i class="fas fa-calculator text-info me-2"></i>Outils & calculateurs
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Paiements (Dropdown) --}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-3 py-2 {{ request()->routeIs('payments.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                       href="#" 
+                       id="paymentsDropdown" 
+                       role="button" 
+                       data-bs-toggle="dropdown" 
+                       aria-expanded="false">
+                        <i class="fas fa-credit-card me-2"></i>Paiements
+                    </a>
+                    <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="paymentsDropdown">
+                        @if(auth()->user()->hasRole('visitor'))
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('payments.index') }}">
+                                <i class="fas fa-crown text-warning me-2"></i>Passer Premium
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        @endif
+                        <li>
+                            <a class="dropdown-item py-2 {{ request()->routeIs('payments.history') ? 'active' : '' }}" 
+                               href="{{ route('payments.history') }}">
+                                <i class="fas fa-history text-info me-2"></i>Historique paiements
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
             
-            <!-- Section utilisateur -->
+            <!-- Section utilisateur (droite) -->
             <div class="d-flex align-items-center">
-                @if(auth()->check() && auth()->user()->role && auth()->user()->hasRole('admin'))
+                @if(auth()->user()->hasRole('admin'))
                     <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-danger me-3 px-4">
                         <i class="fas fa-cog me-1"></i>Administration
                     </a>
@@ -76,21 +187,29 @@
                     </button>
                     
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2">
+                        <li class="dropdown-header">
+                            <strong>{{ auth()->user()->name }}</strong>
+                            <br>
+                            <small class="text-muted">{{ auth()->user()->email }}</small>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('user.dashboard') }}">
+                                <i class="fas fa-tachometer-alt text-primary me-2"></i>Mon tableau de bord
+                            </a>
+                        </li>
                         <li>
                             <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
                                 <i class="fas fa-user text-info me-2"></i>Mon profil
                             </a>
                         </li>
-
-
-
-
-
                         <li>
-                            <a class="dropdown-item py-2" href="{{ route('home') }}">
-                                <i class="fas fa-water text-success me-2"></i>Parcourir Le Site 
+                            <a class="dropdown-item py-2" href="{{ route('user.notebooks.index') }}">
+                                <i class="fas fa-book text-success me-2"></i>Mes carnets
                             </a>
                         </li>
+                        
                         @if(auth()->user()->hasRole('admin'))
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -99,12 +218,13 @@
                                 </a>
                             </li>
                         @endif
+                        
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                 @csrf
                                 <button type="submit" class="dropdown-item py-2 text-danger">
-                                    <i class="fas fa-sign-out-alt me-2"></i>Se deconnecter
+                                    <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
                                 </button>
                             </form>
                         </li>
@@ -114,3 +234,120 @@
         </div>
     </div>
 </nav>
+
+{{-- CSS personnalisé pour les menus multi-niveaux --}}
+@push('styles')
+<style>
+    /* Dropdown menu large pour le contenu */
+    .dropdown-menu-large {
+        min-width: 320px;
+    }
+
+    /* Style des headers de dropdown */
+    .dropdown-header {
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        padding: 0.75rem 1rem 0.5rem;
+    }
+
+    /* Amélioration des items de dropdown */
+    .dropdown-item {
+        transition: all 0.2s ease;
+        border-radius: 0.25rem;
+        margin: 0.1rem 0.5rem;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+        transform: translateX(5px);
+    }
+
+    .dropdown-item.active {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .dropdown-item i {
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Animation des dropdowns */
+    .dropdown-menu {
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Style des liens actifs dans la navbar */
+    .nav-link.active {
+        font-weight: 600;
+        border-radius: 0.375rem;
+    }
+
+    .nav-link {
+        transition: all 0.2s ease;
+        border-radius: 0.375rem;
+    }
+
+    .nav-link:hover:not(.active) {
+        background-color: rgba(13, 110, 253, 0.1) !important;
+        color: #0d6efd !important;
+    }
+
+    /* Couleurs personnalisées pour les icônes */
+    .text-teal {
+        color: #20c997 !important;
+    }
+
+    /* Amélioration du bouton utilisateur */
+    .btn-outline-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2);
+    }
+
+    .btn-outline-danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .dropdown-menu-large {
+            min-width: 100%;
+        }
+
+        .nav-link {
+            border-radius: 0.25rem;
+            margin: 0.25rem 0;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: none;
+            padding-left: 1rem;
+        }
+
+        .dropdown-item {
+            padding-left: 2rem;
+        }
+    }
+
+    /* Scroll smooth pour mobile */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+    }
+</style>
+@endpush

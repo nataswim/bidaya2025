@@ -25,18 +25,17 @@
 
 @section('content')
 
-<!-- En-tête de section -->
-<section class="text-white py-5" style="border-left: 10px solid rgb(255 244 0);margin-bottom: 20px;background-color: #ff8d60;">
+
+<!-- Section titre -->
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-{{ $post->image ? '7' : '12' }}">
+            <div class="col-lg-7 mb-4 mb-lg-0">
                 <h1 class="display-5 fw-bold mb-0">{{ $post->name }}</h1>
-                {{-- Après le titre de l'article --}}
+
 
             </div>
-
-
-            
             @if($post->image)
             <div class="col-lg-5">
                 <img src="{{ $post->image }}"
@@ -48,6 +47,13 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
 
 <article class="py-4">
     <div class="container-lg">

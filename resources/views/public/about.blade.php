@@ -243,6 +243,133 @@
     </div>
 </section>
 
+<!-- Toute l'Équipe -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <header class="text-center mb-5">
+            <h2 class="display-6 fw-bold mb-3">Toute l'Équipe</h2>
+            <p class="lead text-muted">Nos collaborateurs</p>
+        </header>
+        
+        <div class="row g-4">
+            @php
+            $teamMembers = [
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-0.png',
+                    'speciality' => 'Physiologie de l\'exercice',
+                    'color' => 'primary'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-1.png',
+                    'speciality' => 'Préparation physique',
+                    'color' => 'success'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-2.png',
+                    'speciality' => 'Musculation',
+                    'color' => 'info'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-4.png',
+                    'speciality' => 'Entraînement',
+                    'color' => 'warning'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-5.png',
+                    'speciality' => 'Nutrition Forme & Santé',
+                    'color' => 'danger'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-6.png',
+                    'speciality' => 'Analyse de la performance',
+                    'color' => 'primary'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-7.png',
+                    'speciality' => 'Planification Méthodologie',
+                    'color' => 'success'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-8.png',
+                    'speciality' => 'Technique & performance',
+                    'color' => 'info'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-9.png',
+                    'speciality' => 'Optimisation',
+                    'color' => 'warning'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-10.png',
+                    'speciality' => 'Pédagogie & transmission',
+                    'color' => 'danger'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-11.png',
+                    'speciality' => 'Formation entraîneurs',
+                    'color' => 'primary'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-13.png',
+                    'speciality' => 'Tests & évaluations',
+                    'color' => 'success'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-14.png',
+                    'speciality' => 'Polyvalence sportive',
+                    'color' => 'info'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-15.png',
+                    'speciality' => 'Optimisation performance',
+                    'color' => 'warning'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-16.png',
+                    'speciality' => 'Prévention Secourisme',
+                    'color' => 'danger'
+                ],
+                [
+                    'image' => 'auteur-coach-hassan-el-haouat-nataswim-17.png',
+                    'speciality' => 'Projets & innovation',
+                    'color' => 'primary'
+                ]
+            ];
+            @endphp
+            
+            @foreach($teamMembers as $member)
+            <div class="col-6 col-md-4 col-lg-3">
+                <article class="card border-0 shadow-sm h-100 team-member-card">
+                    <div class="position-relative overflow-hidden">
+
+<a href="{{ route('contact') }}">
+                         
+
+                        <img src="{{ asset('assets/images/team/' . $member['image']) }}" 
+                             class="card-img-top h-100 w-100 object-fit-cover team-member-img" 
+                             alt="Membre de l'équipe Nataswim"
+                             loading="lazy">
+
+</a>
+
+                        <div class="position-absolute bottom-0 start-0 end-0 bg-gradient-dark p-3">
+                            <span class="badge bg-{{ $member['color'] }} text-white fw-normal px-3 py-2 w-100">
+                                <i class="fas fa-certificate me-2"></i>{{ $member['speciality'] }}
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            @endforeach
+        </div>
+        
+        <div class="text-center mt-5">
+            <p class="text-muted">
+                Une équipe pluridisciplinaire
+            </p>
+        </div>
+    </div>
+</section>
 
 <!-- Nos Partenariats -->
 <section class="py-5 bg-light">
@@ -421,3 +548,64 @@
     </div>
 </section>
 @endsection
+
+
+@push('styles')
+<style>
+    /* Cards membres de l'équipe */
+    .team-member-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .team-member-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .team-member-img {
+        transition: transform 0.4s ease;
+    }
+    
+    .team-member-card:hover .team-member-img {
+        transform: scale(1.1);
+    }
+    
+    /* Gradient sombre pour le texte */
+    .bg-gradient-dark {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    }
+    
+    /* Object fit pour les images */
+    .object-fit-cover {
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    /* Badge responsive */
+    .team-member-card .badge {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    
+    @media (max-width: 576px) {
+        .team-member-card .badge {
+            font-size: 0.75rem;
+            padding: 0.5rem 0.75rem !important;
+        }
+    }
+    
+    /* Hauteur responsive des images */
+    @media (max-width: 768px) {
+        .team-member-card .position-relative {
+            height: 200px !important;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .team-member-card .position-relative {
+            height: 180px !important;
+        }
+    }
+</style>
+@endpush
