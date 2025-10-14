@@ -5,18 +5,34 @@
 @section('meta_keywords', 'séances entraînement, plans entraînement sportif, programme natation, workout français, entraînement course à pied, programme musculation')
 
 @section('content')
-<!-- Section titre -->
-<section class="text-white py-5" style="border-left: 10px solid #c25028;margin-bottom: 20px;background-color: #3867b4;">
-    <div class="container py-3">
-        <h1 class="display-4 fw-bold mb-3">
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3">
             Séances et Plans
         </h1>
         <p class="lead mb-0">
-<strong>Programmes structurés et progressifs</strong> pour vous accompagner 
+<strong>Programmes</strong> pour vous accompagner 
                     dans votre progression avec des séances organisées par niveau et par discipline.        </p>
-        
+
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-9.png') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 200px; object-fit: cover;">
+                </a>
+            </div>
+        </div>
     </div>
 </section>
+
+
 
 <!-- Navigation par Disciplines Sportives -->
 <section class="py-5 bg-light">

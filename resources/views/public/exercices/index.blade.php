@@ -5,22 +5,34 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="text-white py-5" style="border-left: 10px solid rgb(15 92 120);margin-bottom: 20px;background-color: #51b6c9;">
-    <div class="container py-3">
-        <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             Exercices Zone
         </h1>
-        <div class="alert alert-info border-0 shadow-sm" 
-             style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
-            <div class="d-flex align-items-start">
-                <i class="fas fa-water text-info me-3 mt-1"></i>
-                <div class="text-dark">
+        <p class="lead mb-0">
                     Découvrez notre bibliothèque d'exercices pour tous niveaux, avec instructions détaillées et conseils de sécurité
-                </div>
+ </p>
+
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-2.png') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 200px; object-fit: cover;">
+                </a>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <!-- Filtres et recherche -->
 <section class="py-5 bg-light">
@@ -90,7 +102,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h2 class="fw-bold mb-0">
                             <i class="fas fa-dumbbell text-primary me-2"></i>
-                            {{ $exercices->total() }} exercice(s) trouvé(s)
+                            {{ $exercices->total() }} pages
                         </h2>
                         @if(request()->hasAny(['search', 'niveau', 'type']))
                             <span class="badge bg-info fs-6">Filtres appliqués</span>
@@ -195,115 +207,7 @@
 
 
 
-<!-- Section Navigation -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="card border-0 shadow-sm">
-            <div class="card-body text-center p-4">
-                <h5 class="fw-bold mb-3">Découvrez aussi</h5>
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <a href="{{ route('tools.index') }}" class="btn btn-outline-success btn-lg w-100">
-                            <i class="fas fa-calculator me-2"></i>Outils de calcul
-                        </a>
-                    </div>
-                            <div class="col-md-4">
-                                <a href="{{ route('plans.index') }}" class="btn btn-outline-primary btn-lg w-100">
-                                    <i class="fas fa-dumbbell me-2"></i>Plans de Musculation
-                                </a>
-                            </div>
 
-                    <div class="col-md-4">
-                        <a href="{{ route('public.index') }}" class="btn btn-outline-info btn-lg w-100">
-                            <i class="fas fa-water me-2"></i>Articles & conseils
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- Dernières Publications -->
-<section class="py-5 bg-light">
-    <div class="container-lg">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="fw-bold mb-0">
-                <i class="fas fa-water text-primary me-2"></i>Dernières Publications
-            </h2>
-            <a href="{{ route('public.index') }}" class="btn btn-outline-primary">
-                Tous les articles <i class="fas fa-angle-right ms-1"></i>
-            </a>
-        </div>
-        
-        @php
-            $latestPosts = App\Models\Post::with('category')
-                ->where('status', 'published')
-                ->whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                ->orderBy('published_at', 'desc')
-                ->limit(3)
-                ->get();
-        @endphp
-        
-        @if($latestPosts->count() > 0)
-            <div class="row g-4">
-                @foreach($latestPosts as $post)
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm hover-lift border-0">
-                            <div style="height: 180px; overflow: hidden;">
-                                @if($post->image)
-                                    <img src="{{ $post->image }}" 
-                                         alt="{{ $post->name }}"
-                                         class="card-img-top"
-                                         style="height: 100%; width: 100%; object-fit: cover;">
-                                @else
-                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 100%;">
-                                        <i class="fas fa-swimmer text-muted" style="font-size: 2.5rem;"></i>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="card-body">
-                                @if($post->category)
-                                    <div class="mb-2">
-                                        <span class="badge bg-primary">{{ $post->category->name }}</span>
-                                    </div>
-                                @endif
-                                <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
-                                @if($post->intro)
-                                    <p class="card-text text-muted small">
-                                        {!! Str::limit(strip_tags($post->intro), 100) !!}
-                                    </p>
-                                @endif
-                            </div>
-                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="fas fa-calendar me-1"></i>
-                                    {{ $post->published_at->format('d/m/Y') }}
-                                </small>
-                                <a href="{{ route('public.show', $post) }}" class="btn btn-sm btn-outline-primary">
-                                    Lire la suite
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="alert alert-info" role="alert">
-                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
-            </div>
-        @endif
-   
-   <div class="text-center">
-    <img src="{{ asset('assets/images/team/nataswim-application-banner-11.jpg') }}" 
-         alt="exercice de musculation" 
-         class="img-fluid rounded shadow">
-</div>
-    </div>
-</section>
 @endsection
 
 @push('styles')

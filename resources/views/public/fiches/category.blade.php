@@ -5,26 +5,13 @@
 
 @section('content')
 <!-- Section titre avec breadcrumb -->
-<section class="py-5 bg-primary text-white">
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container">
-        <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb bg-white bg-opacity-10 rounded px-3 py-2">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.fiches.index') }}" class="text-white">
-                        <i class="fas fa-home me-1"></i>Fiches
-                    </a>
-                </li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ $category->name }}
-                </li>
-            </ol>
-        </nav>
-
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <h1 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-folder me-3"></i>{{ $category->name }}
+                 {{ $category->name }}
                 </h1>
                 
                 @if($category->description)
@@ -48,11 +35,26 @@
             @endif
         </div>
     </div>
+    
 </section>
 
 <!-- Liste des fiches -->
 <section class="py-5 bg-light">
     <div class="container">
+               <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb bg-primary px-3 py-2">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('public.fiches.index') }}" class="text-white">
+                        <i class="fas fa-home me-1"></i>Fiches
+                    </a>
+                </li>
+                <li class="breadcrumb-item active text-white" aria-current="page">
+                    {{ $category->name }}
+                </li>
+            </ol>
+        </nav>
+
         @if($fiches->count() > 0)
             <div class="row g-4">
                 @foreach($fiches as $fiche)

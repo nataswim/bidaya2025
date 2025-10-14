@@ -23,16 +23,35 @@
 
 @section('content')
 
-<!-- En-tête de section -->
-<section class="bg-primary text-white py-5">
+
+<!-- Section titre -->
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-12">
-                <h1 class="display-5 fw-bold mb-0">{{ $video->title }}</h1>
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                      <h1 class="display-5 fw-bold mb-0">{{ $video->title }}</h1>
+
+
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-6.png') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 200px; object-fit: cover;">
+                </a>
             </div>
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
 
 <!-- Breadcrumb -->
 <section class="py-3 bg-light border-bottom">
@@ -445,61 +464,7 @@
     </a>
 </div>
 
-<!-- Section Crédit et Contact -->
-<section class="py-5 bg-primary text-white">
-    <div class="container-lg">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À propos de nos vidéos</h3>
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement</h6>
-                        <p class="mb-3">
-                            Contenus développés par 
-                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="text-warning fw-bold text-decoration-none">
-                                Med Hassan El Haouat
-                                <i class="fas fa-external-link-alt ms-1 small"></i>
-                            </a>
-                        </p>
-                        <p class="small text-light opacity-75">
-                            Expert en sciences du sport et performance sportive.
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="text-success mb-2">Contact</h6>
-                        <p class="mb-3 small">
-                            Questions ou suggestions ? N'hésitez pas à nous contacter.
-                        </p>
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
-                                <i class="fas fa-envelope me-2"></i>Nous contacter
-                            </a>
-                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="btn btn-outline-info btn-sm">
-                                <i class="fab fa-linkedin me-2"></i>LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
-                     style="width: 150px; height: 150px; overflow: hidden;">
-                    <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
-                         alt="MED Hassan El Haouat - Expert en sciences du sport" 
-                         class="w-100 h-100 rounded-circle"
-                         style="object-fit: cover;">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 @endsection
 

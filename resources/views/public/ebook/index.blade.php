@@ -57,10 +57,13 @@
 
 @section('content')
 <!-- Section Hero -->
-<section class="hero-section">
-    <div class="container">
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+    <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-8">
+            <div class="col-lg-7 mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold mb-4">Ressources</h1>
                 <p class="lead mb-4">
                     eBooks, guides pratiques, 
@@ -68,10 +71,10 @@
                 </p>
                 <div class="d-flex gap-3">
                     <a href="#categories" class="btn btn-light btn-lg">
-                        <i class="fas fa-folder me-2"></i>Explorer les categories
+                        Les categories
                     </a>
                     <a href="#featured" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-star me-2"></i>Contenus vedettes
+                        A la une
                     </a>
                 </div>
             </div>
@@ -102,6 +105,14 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
 
 <!-- Section Categories -->
 <section id="categories" class="py-5">

@@ -114,7 +114,7 @@
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-primary text-white">
                             <h5 class="mb-0">
-                                <i class="fas fa-file-text me-2"></i>Description de l'exercice
+                                <i class="fas fa-file-text me-2"></i>Description 
                             </h5>
                         </div>
                         <div class="card-body p-4">
@@ -130,7 +130,7 @@
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-warning text-dark">
                             <h5 class="mb-0">
-                                <i class="fas fa-exclamation-triangle me-2"></i>Consignes de sécurité
+                                <i class="fas fa-exclamation-triangle me-2"></i>Consignes 
                             </h5>
                         </div>
                         <div class="card-body p-4">
@@ -146,7 +146,7 @@
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-success text-white">
                             <h5 class="mb-0">
-                                <i class="fas fa-play me-2"></i>Vidéo explicative
+                                <i class="fas fa-play me-2"></i>Vidéo 
                             </h5>
                         </div>
                         <div class="card-body p-4 text-center">
@@ -154,7 +154,7 @@
                                target="_blank" 
                                rel="noopener noreferrer"
                                class="btn btn-success btn-lg">
-                                <i class="fas fa-external-link-alt me-2"></i>Voir la vidéo explicative
+                                <i class="fas fa-external-link-alt me-2"></i>Voir la vidéo 
                             </a>
                             <p class="text-muted small mt-3 mb-0">
                                 <i class="fas fa-info-circle me-1"></i>
@@ -170,7 +170,7 @@
                         <div class="card-header bg-light">
                             <h5 class="mb-0">
                                 <i class="fas fa-dumbbell me-2 text-primary"></i>
-                                Exercices similaires
+                                Autres Exercices
                             </h5>
                         </div>
                         <div class="card-body p-0">
@@ -216,7 +216,7 @@
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
                             <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations techniques
+                            Informations
                         </h5>
                     </div>
                     <div class="card-body">
@@ -224,7 +224,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-signal me-1"></i>Niveau:
+                                        <i class="fas fa-signal me-1"></i>
                                     </span>
                                     <strong>
                                         <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}">
@@ -245,7 +245,7 @@
                                 <div class="col-12">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <span class="text-muted">
-                                            <i class="fas fa-crosshairs me-1"></i>Muscles ciblés:
+                                            <i class="fas fa-crosshairs me-1"></i>
                                         </span>
                                         <div class="text-end">
                                             <strong>{{ $exercice->muscles_cibles_formatted }}</strong>
@@ -256,7 +256,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>Ajouté le:
+                                        <i class="fas fa-calendar me-1"></i>
                                     </span>
                                     <strong>{{ $exercice->created_at->format('d/m/Y') }}</strong>
                                 </div>
@@ -264,7 +264,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-edit me-1"></i>Mise à jour:
+                                        <i class="fas fa-edit me-1"></i>
                                     </span>
                                     <strong>{{ $exercice->updated_at->format('d/m/Y') }}</strong>
                                 </div>

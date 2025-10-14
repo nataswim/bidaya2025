@@ -60,23 +60,13 @@
 
 @section('content')
 <!-- En-tÃªte de categorie -->
-<section class="category-header">
-    <div class="container">
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+    <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-8">
-                <nav aria-label="breadcrumb" class="mb-3">
-                    <ol class="breadcrumb text-white">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
-                                <i class="fas fa-home me-1"></i>Espace Telechargement
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item active text-white" aria-current="page">
-                            {{ $category->name }}
-                        </li>
-                    </ol>
-                </nav>
-                
+            <div class="col-lg-7 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center mb-3">
                     @if($category->icon)
                         <i class="{{ $category->icon }} fa-3x me-3"></i>
@@ -107,9 +97,27 @@
     </div>
 </section>
 
+
+
+
+
+
+
 <!-- Contenu principal -->
 <section class="py-5">
     <div class="container">
+                        <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb bg-primary px-3 py-2">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('ebook.index') }}" class="text-white text-decoration-none">
+                                <i class="fas fa-home me-1"></i>Espace Telechargement
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">
+                            {{ $category->name }}
+                        </li>
+                    </ol>
+                </nav>
         <div class="row g-4">
             <!-- Sidebar filtres -->
             <div class="col-lg-3">
@@ -306,7 +314,6 @@
             <div class="col-lg-8 mx-auto">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h5 class="fw-bold mb-3">Ã€ propos de cette categorie</h5>
                         <div class="content-display">
                             {!! nl2br(e($category->description)) !!}
                         </div>

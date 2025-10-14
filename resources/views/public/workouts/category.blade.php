@@ -5,12 +5,59 @@
 @section('meta_keywords', 'programme ' . strtolower($category->name) . ', séances ' . strtolower($section->name) . ', entraînement ' . strtolower($category->name))
 
 @section('content')
-<!-- Section titre avec breadcrumb -->
-<section class="py-5 text-white" style="border-left: 10px solid #ffff00;margin-bottom: 20px;background-color: #16bbb4;">
+<!-- Section titre  -->
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3">
+                     {{ $category->name }}
+                </h1>
+                
+                @if($category->description)
+                    <p class="lead mb-0">{{ $category->description }}</p>
+                @else
+                    <p class="lead mb-0">
+                        {{ $category->name }} pour {{ $section->name }}
+                    </p>
+                @endif
+                
+                <div class="d-flex align-items-center gap-3 mt-4">
+                    <span class="badge bg-light text-dark fs-6">
+                        <i class="fas fa-layer-group me-1"></i>{{ $section->name }}
+                    </span>
+                    <span class="badge bg-light text-dark fs-6">
+                        <i class="fas fa-running me-1"></i>{{ $workouts->count() }} séance(s)
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-9.png') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 200px; object-fit: cover;">
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+<!-- Liste des séances -->
+<section class="py-5 bg-light">
     <div class="container">
-        <!-- Breadcrumb -->
+                <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb bg-white bg-opacity-10 rounded px-3 py-2">
+            <ol class="breadcrumb bg-primary rounded px-3 py-2">
                 <li class="breadcrumb-item">
                     <a href="{{ route('public.workouts.index') }}" class="text-white">
                         <i class="fas fa-home me-1"></i>Séances
@@ -27,44 +74,11 @@
             </ol>
         </nav>
 
-        <div class="row align-items-center">
-            <div class="col-lg-12">
-                <h1 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-folder me-3"></i>Programme {{ $category->name }}
-                </h1>
-                
-                @if($category->description)
-                    <p class="lead mb-0">{{ $category->description }}</p>
-                @else
-                    <p class="lead mb-0">
-                        Séances d'entraînement du programme {{ $category->name }} pour {{ $section->name }}
-                    </p>
-                @endif
-                
-                <div class="d-flex align-items-center gap-3 mt-4">
-                    <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-layer-group me-1"></i>{{ $section->name }}
-                    </span>
-                    <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-running me-1"></i>{{ $workouts->count() }} séance(s)
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Liste des séances -->
-<section class="py-5 bg-light">
-    <div class="container">
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
                 <i class="fas fa-list-ol me-2 text-primary"></i>
-                Séances du Programme
+                Pages du Programme
             </h2>
-            <p class="lead text-muted">
-                Suivez les séances dans l'ordre pour une progression optimale
-            </p>
         </div>
 
         @if($workouts->count() > 0)
@@ -72,7 +86,7 @@
                 @foreach($workouts as $workout)
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg hover-lift">
-                            <div class="card-header text-white p-3" style="border-left: 10px solid #0894d3;margin-bottom: 20px;background-color: #16bbb4;">
+                            <div class="card-header text-white p-3" style=" background: linear-gradient(135deg, #00cdff 0%, rgb(24.45, 176.55, 126.15) 100%);">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <span class="badge bg-light text-dark">
                                         Séance #{{ $workout->pivot->order_number }}
@@ -93,7 +107,7 @@
                                 <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
                                     <a href="{{ route('public.workouts.show', [$section, $category, $workout]) }}" 
                                        class="btn btn-sm btn-primary">
-                                        Voir la séance <i class="fas fa-arrow-right ms-1"></i>
+                                        Voir  <i class="fas fa-arrow-right ms-1"></i>
                                     </a>
                                 </div>
                             </div>

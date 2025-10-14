@@ -18,52 +18,52 @@
             <ul class="navbar-nav me-auto ms-lg-4">
 
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('home') }}">
                         <i class="fas fa-home me-2 text-success"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.index') }}">
                         <i class="fas fa-newspaper me-2 text-info"></i>Articles
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.fiches.index') }}">
                         <i class="fas fa-file-alt me-2 text-info"></i>Fiches
                     </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.videos.index') }}">
                         <i class="fas fa-video me-2 text-info"></i>Vidéos
                     </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('public.workouts.index') }}">
                         <i class="fas fa-clipboard-check me-2 text-info"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('ebook.index') }}">
                         <i class="fas fa-download me-2 text-info"></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('exercices.index') }}">
                         <i class="fas fa-dumbbell me-2 text-info"></i>Musculation
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="{{ route('tools.index') }}">
                         <i class="fas fa-heartbeat me-2  text-info"></i>Outils
                     </a>

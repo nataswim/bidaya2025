@@ -10,18 +10,14 @@
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center mb-3">
-                    <i class="fas fa-book-reader me-3 fs-1"></i>
                     <h1 class="display-4 fw-bold mb-0">Guide d'utilisation</h1>
                 </div>
                 <p class="lead mb-4">
-                    Découvrez tout ce que Nataswim peut vous offrir pour améliorer vos performances
+                    Découvrez tout ce que ce site peut vous offrir
                 </p>
                 <div class="d-flex gap-3 flex-wrap">
                     <a href="{{ route('register') }}" class="btn btn-warning btn-lg">
-                        <i class="fas fa-star me-2"></i>Créer un compte gratuit
-                    </a>
-                    <a href="{{ route('pricing') }}" class="btn btn-light btn-lg">
-                        <i class="fas fa-crown me-2"></i>Voir les plans Premium
+                        <i class="fas fa-star me-2"></i>Créer un compte
                     </a>
                 </div>
             </div>
@@ -42,13 +38,10 @@
             <div class="d-flex align-items-center">
                 <i class="fas fa-info-circle me-3 fs-3"></i>
                 <div>
-                    <strong>Visiteurs :</strong> Accès limité aux fonctionnalités et contenus • 
-                    <strong>Premium :</strong> Accès illimité + Carnets personnalisés
+                    <strong>Visiteurs :</strong> Accès limité 
+                    <strong>Premium :</strong> Accès illimité
                 </div>
             </div>
-            <a href="{{ route('pricing') }}" class="btn btn-dark btn-sm">
-                <i class="fas fa-arrow-right me-2"></i>Passer Premium
-            </a>
         </div>
     </div>
 </section>
@@ -133,7 +126,7 @@
                     <div class="card-header bg-success text-white text-center p-4">
                         <i class="fas fa-crown fa-2x mb-2"></i>
                         <h3 class="h4 mb-0">Compte Premium</h3>
-                        <p class="mb-0 small">À partir de 8€/mois</p>
+                        <p class="mb-0 small">À partir de 5€/mois</p>
                     </div>
                     <div class="card-body p-4">
                         <ul class="list-group list-group-flush">
@@ -170,33 +163,39 @@
                                 <span>Support prioritaire</span>
                             </li>
                         </ul>
-                        <div class="text-center mt-4">
-                            <a href="{{ route('pricing') }}" class="btn btn-success btn-lg w-100">
-                                <i class="fas fa-arrow-right me-2"></i>Passer Premium maintenant
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Bandeau Prix -->
-        <div class="alert alert-warning border-0 shadow-sm text-center">
+                <div class="alert alert-warning border-0 shadow-sm text-center">
             <div class="row align-items-center">
-                <div class="col-md-8 mx-auto">
-                    <h4 class="mb-2">
-                        <i class="fas fa-tag me-2"></i>Offre limitée : À partir de 8€/mois
-                    </h4>
+                <div class="col mx-auto">
                     <p class="mb-3">
-                        <strong>12 mois : 96€</strong> (8€/mois) • 
-                        <strong>6 mois : 66€</strong> (11€/mois) • 
-                        <strong>3 mois : 45€</strong> (15€/mois)
+                        <strong>Pour les inscriptions premium de groupes, clubs ou centres de formation, veuillez <a href="{{ route('contact') }}">
+                                Nous contacter <i class="fas fa-envelope me-2"></i> </a>.</strong>
                     </p>
-                    <a href="{{ route('pricing') }}" class="btn btn-dark btn-lg">
-                        <i class="fas fa-shopping-cart me-2"></i>Voir les tarifs détaillés
-                    </a>
                 </div>
             </div>
+        </div>
+
+
+        <div class="mb-5">
+
+            <h2 class="mt-3">Comment obtenir un compte Premium </h2>
+            <p class="text-muted">1. Créez un compte utilisateur.
+            </p>
+
+            <p class="text-muted">
+                2. Connectez-vous à votre espace avec votre adresse e-mail et votre mot de passe. </p>
+
+            <p class="text-muted"> 3. Sélectionnez une formule premium et valider.</p>
+
+            <p class="text-muted"> 4. Vous débloquerez ainsi l'accès à l'intégralité du contenu réservé aux membres premium.</p>
+
+
         </div>
     </div>
 </section>
@@ -278,21 +277,7 @@
             </div>
         </div>
 
-        <div class="alert alert-danger border-0 shadow-sm text-center">
-            <div class="row align-items-center">
-                <div class="col-md-8 mx-auto">
-                    <i class="fas fa-lock fa-2x mb-3 text-danger"></i>
-                    <h4 class="mb-3">Fonctionnalité réservée aux membres Premium</h4>
-                    <p class="mb-3">
-                        Créez vos carnets personnalisés et organisez vos contenus favoris. 
-                        <strong>Passez Premium pour débloquer tout le contenu et profiter des mises à jour.</strong>
-                    </p>
-                    <a href="{{ route('pricing') }}" class="btn btn-danger btn-lg">
-                        <i class="fas fa-unlock me-2"></i>Débloquer les Carnets (dès 8€/mois)
-                    </a>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </section>
 
@@ -310,14 +295,7 @@
             </div>
             <i class="fas fa-video text-danger" style="font-size: 3rem;"></i>
             <h2 class="mt-3 display-5 fw-bold">Bibliothèque de Vidéos</h2>
-            <p class="text-muted lead">
-                @php
-                    $totalVideos = \App\Models\Video::where('is_published', true)->count();
-                    $publicVideos = \App\Models\Video::where('is_published', true)->where('visibility', 'public')->count();
-                    $premiumVideos = $totalVideos - $publicVideos;
-                @endphp
-                {{ $totalVideos }} vidéos disponibles • {{ $publicVideos }} gratuites • {{ $premiumVideos }} Premium
-            </p>
+            
         </div>
 
         <div class="row g-4 mb-5">
@@ -327,7 +305,7 @@
                         <i class="fas fa-play-circle text-success mb-3" style="font-size: 3rem;"></i>
                         <h3 class="h4 mb-3">Vidéos Gratuites</h3>
                         <p class="text-muted mb-4">
-                            Accédez à une sélection de {{ $publicVideos }} vidéos gratuites pour découvrir 
+                            Accédez à une sélection de vidéos  pour découvrir 
                             la qualité de nos contenus.
                         </p>
                         <ul class="list-unstyled text-start mb-4">
@@ -335,9 +313,6 @@
                             <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Exercices découverte</li>
                             <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Conseils généraux</li>
                         </ul>
-                        <a href="{{ route('public.videos.index') }}" class="btn btn-outline-success btn-lg w-100">
-                            <i class="fas fa-eye me-2"></i>Voir les vidéos gratuites
-                        </a>
                     </div>
                 </div>
             </div>
@@ -353,7 +328,7 @@
                         <i class="fas fa-film text-warning mb-3" style="font-size: 3rem;"></i>
                         <h3 class="h4 mb-3">Bibliothèque Complète</h3>
                         <p class="text-muted mb-4">
-                            Débloquez {{ $premiumVideos }} vidéos exclusives avec techniques avancées, 
+                            Débloquez  vidéos exclusives avec techniques avancées, 
                             programmes détaillés et contenus professionnels.
                         </p>
                         <ul class="list-unstyled text-start mb-4">
@@ -362,9 +337,6 @@
                             <li class="mb-2"><i class="fas fa-star text-warning me-2"></i>Contenus exclusifs</li>
                             <li class="mb-2"><i class="fas fa-star text-warning me-2"></i>Mises à jour régulières</li>
                         </ul>
-                        <a href="{{ route('pricing') }}" class="btn btn-warning btn-lg w-100">
-                            <i class="fas fa-unlock me-2"></i>Débloquer tout (dès 8€/mois)
-                        </a>
                     </div>
                 </div>
             </div>
@@ -378,7 +350,6 @@
                     <p class="mb-0">
                         Les vidéos <strong>gratuites</strong> sont accessibles à tous. 
                         Les vidéos <strong>Premium</strong> nécessitent un compte actif. 
-                        Consultez nos <a href="{{ route('pricing') }}" class="alert-link fw-bold">tarifs ici</a>.
                     </p>
                 </div>
             </div>
@@ -422,9 +393,7 @@
                             Parcourez {{ $totalExercices }} exercices. <strong>Visiteurs :</strong> aperçu limité. 
                             <strong>Premium :</strong> accès aux vidéos, détails complets et programmes.
                         </p>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-primary">
-                            <i class="fas fa-search me-2"></i>Explorer les exercices
-                        </a>
+
                     </div>
                 </div>
             </div>
@@ -439,9 +408,7 @@
                             Créez vos programmes en combinant exercices, séries, répétitions. 
                             Sauvegardez dans vos carnets.
                         </p>
-                        <a href="{{ route('pricing') }}" class="btn btn-success">
-                            <i class="fas fa-unlock me-2"></i>Débloquer (dès 8€/mois)
-                        </a>
+
                     </div>
                 </div>
             </div>
@@ -506,14 +473,7 @@
                             </li>
                         </ol>
                         
-                        <div class="d-flex gap-3 justify-content-center flex-wrap">
-                            <a href="{{ route('plans.index') }}" class="btn btn-primary btn-lg">
-                                <i class="fas fa-eye me-2"></i>Voir les plans
-                            </a>
-                            <a href="{{ route('pricing') }}" class="btn btn-success btn-lg">
-                                <i class="fas fa-unlock me-2"></i>Accès complet (dès 8€/mois)
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -601,9 +561,7 @@
                             <a href="{{ route('ebook.index') }}" class="btn btn-primary btn-lg">
                                 <i class="fas fa-eye me-2"></i>Voir la bibliothèque
                             </a>
-                            <a href="{{ route('pricing') }}" class="btn btn-success btn-lg">
-                                <i class="fas fa-download me-2"></i>Tout télécharger (dès 8€/mois)
-                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -661,9 +619,6 @@
                         <div class="d-flex gap-3 justify-content-center flex-wrap">
                             <a href="{{ route('public.fiches.index') }}" class="btn btn-primary btn-lg">
                                 <i class="fas fa-eye me-2"></i>Consulter les fiches
-                            </a>
-                            <a href="{{ route('pricing') }}" class="btn btn-success btn-lg">
-                                <i class="fas fa-unlock me-2"></i>Tout débloquer (dès 8€/mois)
                             </a>
                         </div>
                     </div>

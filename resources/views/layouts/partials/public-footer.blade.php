@@ -1,8 +1,23 @@
+@php
+    $chiffre1 = mt_rand(55, 188);
+    $chiffre2 = mt_rand(79, 123);
+@endphp
+
 <footer class="text-light" style="border-left: 20px solid #0f5c78; border-right: 20px solid #0f5c78; background-color: #006170 !important; border-bottom: 20px solid #f9f5f3; border-top: 20px solid #f9f5f3;">
+
+
+ <!-- statistiques  -->
+    <div class="w-100 text-center py-3">
+        <div class="alert alert-success border-0 bg-success m-0 w-100 text-white">
+            <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres Premium : {{ $chiffre2 }}</p>
+        </div>
+    </div>
 
     <!-- Contenu principal du footer -->
     <div class="py-5">
         <div class="container-lg">
+
+        
             <div class="row g-4">
                 <!-- A propos -->
                 <div class="col-lg-3 col-md-6">

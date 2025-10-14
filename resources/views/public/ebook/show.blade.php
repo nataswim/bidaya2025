@@ -23,7 +23,10 @@
 
 @section('content')
 <!-- En-tête de section -->
-<section class="text-white py-5" style="background-color: #008e80;border-left: 10px solid #0f5c78;">
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-{{ $downloadable->cover_image ? '7' : '12' }}">
@@ -40,6 +43,8 @@
         </div>
     </div>
 </section>
+
+
 
 <!-- Breadcrumb -->
 <section class="py-3 bg-light border-bottom">
@@ -271,13 +276,13 @@
                                     <span class="text-muted">
                                         <i class="fas fa-download me-1"></i>Téléchargements:
                                     </span>
-                                    <strong>{{ number_format($downloadable->download_count) }}</strong>
+                                    <strong>11{{ number_format($downloadable->download_count) }}</strong>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>Ajouté le:
+                                        <i class="fas fa-calendar me-1"></i>verifié le:
                                     </span>
                                     <strong>{{ $downloadable->created_at->format('d F Y') }}</strong>
                                 </div>
@@ -286,7 +291,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-user me-1"></i>Ajouté par:
+                                        <i class="fas fa-user me-1"></i>Conseillé par:
                                     </span>
                                     <strong>{{ $downloadable->creator->name }}</strong>
                                 </div>

@@ -14,17 +14,8 @@
                     <h1 class="display-4 fw-bold mb-0">Sport Net Systèmes</h1>
                 </div>
                 <p class="lead mb-4">
-                    Optimisez vos entraînements, développez vos connaissances et formez-vous en continu grâce à une plateforme complète dédiée aux sportifs, techniciens, préparateurs physiques, entraîneurs et coachs — du débutant au professionnel.
+                    Optimisez vos entraînements, développez vos connaissances et formez-vous en continu grâce à cette plateforme  dédiée aux sportifs, techniciens, préparateurs physiques, entraîneurs et coachs — du débutant au professionnel.
                 </p>
-                <div class="d-flex gap-3">
-                    <a href="{{ route('guide') }}" class="btn btn-light d-flex align-items-center px-4">
-                        Decouvrir
-                        <i class="fas fa-chevron-right ms-2"></i>
-                    </a>
-                    <a href="{{ route('register') }}" class="btn btn-light d-flex align-items-center px-4">
-                        Rejoindre
-                    </a>
-                </div>
             </div>
             <div class="col-lg-5">
     <div class="text-center">
@@ -61,7 +52,7 @@
     <!-- Contenu -->
     <div class="container-lg position-relative" style="z-index: 2;">
         <div class="text-center mb-5 text-white">
-            <h2 class="fw-bold display-6">Plateforme adaptée à tous les profils </h2>
+            <h2 class="fw-bold display-6">Espace adapté à tous les profils </h2>
             <p class="lead">
                 De l'amateur passionné au professionnel, en passant par les entraineurs et techniciens du sport
             </p>
@@ -137,7 +128,7 @@
 <section class="py-5 bg-light">
     <div class="container-lg">
         <header class="text-center mb-5">
-            <h2 class="fw-bold display-6">Outils & contenus complets</h2>
+            <h2 class="fw-bold display-6">Outils & contenus </h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
                 Tout ce dont vous avez besoin pour progresser, comprendre et améliorer vos performances
             </p>
@@ -150,7 +141,6 @@
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
                         <div class="card-header bg-primary text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-clipboard-list me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Séances & Plans</h4>
                                     @php
@@ -167,11 +157,6 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="text-primary fw-bold">Choisir vos plans →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">Débutant</span>
-                                    <span class="badge bg-warning">Avancé</span>
-                                    <span class="badge bg-danger">Pro</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -184,7 +169,6 @@
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
                         <div class="card-header bg-success text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-dumbbell me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Exercices spécialisés</h4>
                                     @php
@@ -200,11 +184,6 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="text-success fw-bold">Voir les exercices →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-info">Vidéos</span>
-                                    <span class="badge bg-primary">Détaillés</span>
-                                    <span class="badge bg-warning">Techniques</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -217,7 +196,6 @@
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
                         <div class="card-header bg-info text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-book-open me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Fiches techniques</h4>
                                     @php
@@ -234,11 +212,6 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="text-info fw-bold">Accéder aux fiches →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">Sciences</span>
-                                    <span class="badge bg-primary">Techniques</span>
-                                    <span class="badge bg-warning">Stratégies</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -251,7 +224,6 @@
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
                         <div class="card-header bg-warning text-dark">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-calculator me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Calculateurs & Outils</h4>
                                     <p class="mb-0 opacity-75">18 outils spécialisés disponibles</p>
@@ -264,11 +236,6 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="text-warning fw-bold">Utiliser nos outils →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">Gratuit</span>
-                                    <span class="badge bg-primary">Précis</span>
-                                    <span class="badge bg-info">Pratique</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -280,7 +247,6 @@
                 <div class="card h-100 shadow-lg border-0 bg-white category-card opacity-75">
                     <div class="card-header bg-secondary text-white">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-chart-line me-3" style="font-size: 2rem;"></i>
                             <div class="flex-grow-1">
                                 <h4 class="mb-1">Suivi de progression</h4>
                                 <p class="mb-0 opacity-75">Bientôt disponible</p>
@@ -293,11 +259,6 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="text-secondary fw-bold">Prochainement →</span>
-                            <div class="d-flex gap-1">
-                                <span class="badge bg-info">Statistiques</span>
-                                <span class="badge bg-success">Graphiques</span>
-                                <span class="badge bg-primary">Analyses</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -309,7 +270,6 @@
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
                         <div class="card-header bg-danger text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-download me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Ressources téléchargeables</h4>
                                     @php
@@ -322,15 +282,10 @@
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Documents PDF, vidéos d'entraînement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
+                                Documents, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="text-danger fw-bold">Télécharger les documents →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">PDF</span>
-                                    <span class="badge bg-primary">Vidéos</span>
-                                    <span class="badge bg-warning">Guides</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -348,11 +303,8 @@
 
 
 <!-- Temoignages -->
-<section class="py-5 text-white" style="background-color: #2195ae;">
+<section class="py-5 text-white" style="background: linear-gradient(177deg, #17a0c1 0%, #0f5c78 100%);">
     <div class="container-lg">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Avis Communauté</h2>
-        </div>
         <div class="row g-4">
             @php
                 $testimonials = [
@@ -401,7 +353,6 @@
     <div class="container-lg">
         <div class="text-center mb-5">
             <h2 class="fw-bold">Comment ça marche ?</h2>
-            <p class="lead text-muted">Trois etapes simples pour optimiser vos entrainements</p>
         </div>
         <div class="row g-4 align-items-center">
             <div class="col-md-4 text-center">
@@ -430,7 +381,7 @@
 </section>
 
 <!-- Dernieres Publications -->
-<section class="py-5 text-white" style="background-color: #04b7e6; border-left: 10px solid #bb0a31;">
+<section class="py-5 text-white" style="background: linear-gradient(340deg, #0c8983 0%, #0f5c78 100%);border-left: 10px solid #0f5c78;border-right: 10px solid #0f5c78;">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
@@ -456,18 +407,7 @@
                 @foreach($latestPosts as $post)
                     <div class="col-md-4">
                         <div class="card h-100 shadow-sm hover-lift border-0">
-                            <div style="height: 180px; overflow: hidden;">
-                                @if($post->image)
-                                    <img src="{{ $post->image }}" 
-                                         alt="{{ $post->name }}"
-                                         class="card-img-top"
-                                         style="height: 100%; width: 100%; object-fit: cover;">
-                                @else
-                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 100%;">
-                                        <i class="fas fa-swimmer text-muted" style="font-size: 2.5rem;"></i>
-                                    </div>
-                                @endif
-                            </div>
+                            
                             <div class="card-body">
                                 @if($post->category)
                                     <div class="mb-2">
@@ -500,16 +440,6 @@
             </div>
         @endif
     </div>
-</section>
-
-
-<!-- Dernieres Publications -->
-<section class="py-5 text-white">
-   <div class="text-center">
-    <img src="{{ asset('assets/images/team/nataswim-application-banner-1.jpg') }}" 
-         alt="site nataswim application" 
-         class="img-fluid rounded shadow">
-</div>
 </section>
 
 
@@ -580,38 +510,6 @@
 </section>
 
 
-
-
-<!-- Call to Action -->
-<section class="py-5 bg-white">
-    <div class="container-lg text-center py-4">
-        <h2 class="mb-4 fw-bold">Prêt a ameliorer vos performances  ?</h2>
-        <p class="lead text-muted mb-4 mx-auto" style="max-width: 700px;">
-            Rejoignez des milliers de sportifs, entraineurs et techniciens qui utilisent notre plateforme pour atteindre leurs objectifs et optimiser leurs entrainements.
-        </p>
-        
-        @guest
-            <div class="d-flex gap-3 justify-content-center">
-                <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-user-plus me-2"></i>Creer un compte
-                </a>
-                <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-5">
-                    <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                </a>
-            </div>
-            <div class="mt-3">
-                <a href="{{ route('public.index') }}" class="text-decoration-none">
-                    Ou explorez nos contenus sans vous inscrire
-                </a>
-            </div>
-        @else
-            <div class="alert alert-success d-inline-flex align-items-center px-4 py-3">
-                <i class="fas fa-check-circle me-2"></i>
-                <span class="fw-medium">Bienvenue dans la communaute, {{ auth()->user()->first_name ?: auth()->user()->name }} !</span>
-            </div>
-        @endguest
-    </div>
-</section>
 @endsection
 
 @push('styles')

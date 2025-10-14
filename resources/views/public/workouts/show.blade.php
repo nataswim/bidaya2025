@@ -6,13 +6,15 @@
 
 @section('content')
 <!-- En-tête de section -->
-<section class="bg-warning text-white py-5">
+
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-12">
-                <div class="d-flex align-items-center gap-3 mb-3">
-                    <h1 class="display-5 fw-bold mb-0">{{ $workout->title }}</h1>
-                </div>
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="display-5 fw-bold mb-0">{{ $workout->title }}</h1>
+                
                 <div class="d-flex align-items-center gap-3">
                     <span class="badge bg-light text-dark fs-6">
                         <i class="fas fa-ruler me-1"></i>{{ $workout->formatted_total }}
@@ -20,9 +22,25 @@
                     
                 </div>
             </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-9.png') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 200px; object-fit: cover;">
+                </a>
+            </div>
         </div>
+        
     </div>
 </section>
+
+
+
+
+
+
+
 
 <!-- Breadcrumb -->
 <section class="py-3 bg-light border-bottom">
@@ -58,7 +76,7 @@
             <div class="col-lg-8 col-xl-12">
                 
                 <!-- Card 1: Métadonnées -->
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="card border-0 bg-primary shadow-sm mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
                             <span class="badge bg-info px-3 py-2">
@@ -88,7 +106,7 @@
                         <div class="card-header bg-light">
                             <h2 class="mb-0 h5">
                                 <i class="fas fa-bullseye me-2 text-primary"></i>
-                                Objectif de la séance
+                                introduction
                             </h2>
                         </div>
                         <div class="card-body p-4">
@@ -108,7 +126,7 @@
                         <div class="card-header bg-light">
                             <h2 class="mb-0 h5">
                                 <i class="fas fa-clipboard-list me-2 text-primary"></i>
-                                Déroulement de la séance d'entraînement
+                                Détails
                             </h2>
                         </div>
                         <div class="card-body p-4">
@@ -125,7 +143,7 @@
                         <div class="card-header bg-light">
                             <h2 class="mb-0 h5">
                                 <i class="fas fa-running me-2 text-primary"></i>
-                                Autres séances du programme {{ $category->name }}
+                                Plus : -  {{ $category->name }}
                             </h2>
                         </div>
                         <div class="card-body p-4">
@@ -158,7 +176,7 @@
                         <div class="card-header bg-light">
                             <h2 class="mb-0 h5">
                                 <i class="fas fa-folder-open me-2 text-info"></i>
-                                Cette séance fait aussi partie de
+                                Fait aussi partie de
                             </h2>
                         </div>
                         <div class="card-body p-4">
@@ -197,7 +215,7 @@
                     <div class="card-header bg-light">
                         <h2 class="mb-0 h5">
                             <i class="fas fa-info-circle me-2 text-info"></i>
-                            Caractéristiques de la séance
+                            Caractéristiques 
                         </h2>
                     </div>
                     <div class="card-body">

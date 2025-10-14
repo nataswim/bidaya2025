@@ -4,19 +4,43 @@
 @section('meta_description', 'Découvrez nos fiches pratiques organisées par thématique pour optimiser votre entraînement et performance sportive.')
 
 @section('content')
-<!-- Section titre -->
-<section class="text-white py-5" style="border-left: 10px solid rgb(15 92 120);margin-bottom: 20px;background-color: #306f75;">
-    <div class="container py-3">
-        <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
+
+<!-- En-tête de section -->
+
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
+76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             Fiches Thématique
         </h1>
         <p class="lead mb-0">
             <strong>Ressources structurées et accessibles</strong> pour vous accompagner 
                     dans votre progression sportive avec des contenus organisés par domaine.
         </p>
-        
+
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-1.png') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 200px; object-fit: cover;">
+                </a>
+            </div>
+        </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
 
 <!-- Fiches en vedette -->
 @if($featuredFiches->count() > 0)
