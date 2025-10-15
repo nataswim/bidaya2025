@@ -403,9 +403,8 @@
                             <span class="badge bg-dark">{{ strtoupper($related->format) }}</span>
                         </div>
                     </div>
-
                     <div class="card-body d-flex flex-column">
-                        <h6 class="card-title mb-2">{!! Str::limit($related->title, 60) }}</h6>
+                        <h6 class="card-title mb-2">{!! Str::limit($related->title, 60) !!}</h6>
                         <small class="text-muted mb-3">
                             <i class="fas fa-download me-1"></i>{{ number_format($related->download_count) }} téléchargements
                         </small>
