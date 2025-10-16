@@ -60,6 +60,28 @@
 
   gtag('config', 'G-RDDF8VW92G');
 </script>
+
+
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'https://www.nataswim.fr/analytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '29fb4cacda17cbe5193eaf3af637c8e3']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+
+(function() {
+    var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+    owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+    _owa.src = owa_baseUrl + 'modules/base/dist/owa.tracker.js';
+    var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+
+
 </head>
 <body class="bg-light">
     @include('layouts.partials.public-header')
