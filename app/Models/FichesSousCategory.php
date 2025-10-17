@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 /**
- * 🇬🇧 FichesCategory model representing a fiche category in the system
- * 🇫🇷 Modèle FichesCategory représentant une catégorie de fiche dans le système
+ * 🇬🇧 FichesSousCategory model representing a sub-category of fiches
+ * 🇫🇷 Modèle FichesSousCategory représentant une sous-catégorie de fiches
  * 
- * @file app/Models/FichesCategory.php
+ * @file app/Models/FichesSousCategory.php
  */
-class FichesCategory extends Model
+class FichesSousCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -24,6 +24,7 @@ class FichesCategory extends Model
         'slug',
         'description',
         'image',
+        'fiches_category_id',
         'meta_title',
         'meta_description',
         'meta_keywords',
@@ -49,62 +50,53 @@ class FichesCategory extends Model
     {
         parent::boot();
 
-        static::creating(function ($category) {
+        static::creating(function ($sousCategory) {
             if (auth()->check()) {
-                $category->created_by = auth()->id();
+                $sousCategory->created_by = auth()->id();
             }
             
-            if (empty($category->slug)) {
-                $category->slug = Str::slug($category->name);
+            if (empty($sousCategory->slug)) {
+                $sousCategory->slug = Str::slug($sousCategory->name);
             }
         });
 
-        static::updating(function ($category) {
+        static::updating(function ($sousCategory) {
             if (auth()->check()) {
-                $category->updated_by = auth()->id();
+                $sousCategory->updated_by = auth()->id();
             }
             
-            if ($category->isDirty('name') && empty($category->slug)) {
-                $category->slug = Str::slug($category->name);
+            if ($sousCategory->isDirty('name') && empty($sousCategory->slug)) {
+                $sousCategory->slug = Str::slug($sousCategory->name);
             }
         });
     }
 
     /**
-     * 🇬🇧 Get the fiches that belong to this category
-     * 🇫🇷 Obtenir les fiches qui appartiennent à cette catégorie
+     * 🇬🇧 Get the parent category
+     * 🇫🇷 Obtenir la catégorie parente
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(FichesCategory::class, 'fiches_category_id');
+    }
+
+    /**
+     * 🇬🇧 Get the fiches that belong to this sub-category
+     * 🇫🇷 Obtenir les fiches qui appartiennent à cette sous-catégorie
      */
     public function fiches(): HasMany
     {
-        return $this->hasMany(Fiche::class, 'fiches_category_id');
+        return $this->hasMany(Fiche::class, 'fiches_sous_category_id');
     }
 
     /**
-     * 🇬🇧 Get only published fiches for this category
-     * 🇫🇷 Obtenir uniquement les fiches publiées pour cette catégorie
+     * 🇬🇧 Get only published fiches for this sub-category
+     * 🇫🇷 Obtenir uniquement les fiches publiées pour cette sous-catégorie
      */
     public function publishedFiches(): HasMany
     {
         return $this->fiches()->where('is_published', true);
     }
-
-/**
- * 🇬🇧 Get the sub-categories of this category
- * 🇫🇷 Obtenir les sous-catégories de cette catégorie
- */
-public function sousCategories(): HasMany
-{
-    return $this->hasMany(FichesSousCategory::class, 'fiches_category_id');
-}
-
-/**
- * 🇬🇧 Get only active sub-categories
- * 🇫🇷 Obtenir uniquement les sous-catégories actives
- */
-public function activeSousCategories(): HasMany
-{
-    return $this->sousCategories()->where('is_active', true)->orderBy('sort_order', 'asc');
-}
 
     /**
      * 🇬🇧 Get the creator
@@ -116,8 +108,8 @@ public function activeSousCategories(): HasMany
     }
 
     /**
-     * 🇬🇧 Scope for active categories
-     * 🇫🇷 Scope pour les catégories actives
+     * 🇬🇧 Scope for active sub-categories
+     * 🇫🇷 Scope pour les sous-catégories actives
      */
     public function scopeActive($query)
     {
@@ -125,13 +117,22 @@ public function activeSousCategories(): HasMany
     }
 
     /**
-     * 🇬🇧 Scope for ordered categories
-     * 🇫🇷 Scope pour les catégories ordonnées
+     * 🇬🇧 Scope for ordered sub-categories
+     * 🇫🇷 Scope pour les sous-catégories ordonnées
      */
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order', 'asc')
                     ->orderBy('name', 'asc');
+    }
+
+    /**
+     * 🇬🇧 Scope for sub-categories by parent category
+     * 🇫🇷 Scope pour les sous-catégories par catégorie parente
+     */
+    public function scopeByCategory($query, $categoryId)
+    {
+        return $query->where('fiches_category_id', $categoryId);
     }
 
     /**

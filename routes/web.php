@@ -49,6 +49,8 @@ use App\Http\Controllers\EbookFileController;
 use App\Http\Controllers\PublicVideoController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VideoCategoryController;
+use App\Http\Controllers\FichesSousCategoryController;
+
 
 
 
@@ -113,8 +115,17 @@ Route::prefix('ebook')->name('ebook.')->group(function () {
 
 // ========== ROUTES FICHES PUBLIQUES ==========
 Route::prefix('fiches')->name('public.fiches.')->group(function () {
+    // Index - Liste des catégories
     Route::get('/', [PublicFicheController::class, 'index'])->name('index');
+    
+    // Catégorie - Liste des fiches d'une catégorie
     Route::get('/{category}', [PublicFicheController::class, 'category'])->name('category');
+    
+    // Sous-catégorie - Liste des fiches d'une sous-catégorie
+    Route::get('/{category}/sous-categorie/{sousCategory}', [PublicFicheController::class, 'sousCategory'])
+        ->name('sous-category');
+    
+    // Fiche - Affichage d'une fiche
     Route::get('/{category}/{fiche}', [PublicFicheController::class, 'show'])->name('show');
 });
 
@@ -289,12 +300,24 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::post('/admin/users/{user}/demote', [UserController::class, 'demote'])->name('admin.users.demote');
 
 // Gestion des catégories de fiches
-    Route::resource('fiches-categories', FichesCategoryController::class);
+   // Gestion des catégories de fiches
+    Route::resource('fiches-categories', FichesCategoryController::class)->parameters([
+        'fiches-categories' => 'fichesCategory'
+    ]);
+    
+    // Gestion des sous-catégories de fiches (AVANT la resource fiches)
+    Route::resource('fiches-sous-categories', FichesSousCategoryController::class)->parameters([
+        'fiches-sous-categories' => 'fichesSousCategory'
+    ]);
+    
+    // API pour récupérer les sous-catégories d'une catégorie (pour select dynamique)
+    Route::get('api/fiches-sous-categories/by-category', [FichesSousCategoryController::class, 'apiByCategory'])
+        ->name('fiches-sous-categories.api.by-category');
     
     // Gestion des fiches
-Route::resource('fiches', FicheController::class)->parameters([
-    'fiches' => 'fiche'
-]);
+    Route::resource('fiches', FicheController::class)->parameters([
+        'fiches' => 'fiche'
+    ]);
 
 // Gestion des fichiers eBooks
     Route::prefix('ebook-files')->name('ebook-files.')->group(function () {

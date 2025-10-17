@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fiche;
 use App\Models\FichesCategory;
+use App\Models\FichesSousCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreFicheRequest;
 use App\Http\Requests\UpdateFicheRequest;
@@ -30,9 +31,10 @@ class FicheController extends Controller
         $search = $request->input('search');
         $visibility = $request->input('visibility');
         $categoryId = $request->input('category');
+        $sousCategoryId = $request->input('sous_category');
         $featured = $request->input('featured');
         
-        $query = Fiche::with(['category', 'creator']);
+        $query = Fiche::with(['category', 'sousCategory', 'creator']);
 
         // 🇬🇧 Search filter / 🇫🇷 Filtrage par recherche
         if ($search) {
@@ -53,6 +55,11 @@ class FicheController extends Controller
             $query->where('fiches_category_id', $categoryId);
         }
 
+        // 🇬🇧 Sub-category filter / 🇫🇷 Filtrage par sous-catégorie
+        if ($sousCategoryId) {
+            $query->where('fiches_sous_category_id', $sousCategoryId);
+        }
+
         // 🇬🇧 Featured filter / 🇫🇷 Filtrage par mise en avant
         if ($featured) {
             $query->where('is_featured', true);
@@ -63,6 +70,11 @@ class FicheController extends Controller
                        ->paginate(15);
 
         $categories = FichesCategory::active()->ordered()->get();
+
+        // 🇬🇧 Load sub-categories if category selected / 🇫🇷 Charger les sous-catégories si catégorie sélectionnée
+        $sousCategories = $categoryId 
+            ? FichesSousCategory::where('fiches_category_id', $categoryId)->active()->ordered()->get()
+            : collect();
 
         // 🇬🇧 Statistics / 🇫🇷 Statistiques
         $stats = [
@@ -77,10 +89,12 @@ class FicheController extends Controller
         return view('admin.fiches.index', compact(
             'fiches',
             'categories',
+            'sousCategories',
             'stats',
             'search',
             'visibility',
             'categoryId',
+            'sousCategoryId',
             'featured'
         ));
     }
@@ -114,6 +128,14 @@ class FicheController extends Controller
         $data['created_by'] = auth()->id();
         $data['created_by_name'] = auth()->user()->name;
         
+        // 🇬🇧 Auto-set parent category if sous-category selected / 🇫🇷 Définir automatiquement la catégorie parente
+        if (!empty($data['fiches_sous_category_id']) && empty($data['fiches_category_id'])) {
+            $sousCategory = FichesSousCategory::find($data['fiches_sous_category_id']);
+            if ($sousCategory) {
+                $data['fiches_category_id'] = $sousCategory->fiches_category_id;
+            }
+        }
+        
         // 🇬🇧 Create fiche / 🇫🇷 Créer la fiche
         $fiche = Fiche::create($data);
 
@@ -132,7 +154,7 @@ class FicheController extends Controller
     {
         $this->checkAdminAccess();
         
-        $fiche->load(['category', 'creator', 'updater']);
+        $fiche->load(['category', 'sousCategory', 'creator', 'updater']);
         
         return view('admin.fiches.show', compact('fiche'));
     }
@@ -143,9 +165,14 @@ class FicheController extends Controller
         
         $categories = FichesCategory::active()->ordered()->get();
         
-        $fiche->load('category');
+        // 🇬🇧 Load sub-categories of selected category / 🇫🇷 Charger les sous-catégories de la catégorie sélectionnée
+        $sousCategories = $fiche->fiches_category_id 
+            ? FichesSousCategory::where('fiches_category_id', $fiche->fiches_category_id)->active()->ordered()->get()
+            : collect();
         
-        return view('admin.fiches.edit', compact('fiche', 'categories'));
+        $fiche->load(['category', 'sousCategory']);
+        
+        return view('admin.fiches.edit', compact('fiche', 'categories', 'sousCategories'));
     }
 
     public function update(UpdateFicheRequest $request, Fiche $fiche)
@@ -168,6 +195,14 @@ class FicheController extends Controller
         
         // 🇬🇧 Update info / 🇫🇷 Informations de modification
         $data['updated_by'] = auth()->id();
+        
+        // 🇬🇧 Auto-update parent category if sous-category changed / 🇫🇷 Mettre à jour automatiquement la catégorie parente
+        if (!empty($data['fiches_sous_category_id'])) {
+            $sousCategory = FichesSousCategory::find($data['fiches_sous_category_id']);
+            if ($sousCategory) {
+                $data['fiches_category_id'] = $sousCategory->fiches_category_id;
+            }
+        }
         
         // 🇬🇧 Update fiche / 🇫🇷 Mettre à jour la fiche
         $fiche->update($data);

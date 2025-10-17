@@ -154,27 +154,64 @@
                 </div>
             </div>
 
-            <!-- Catégorie -->
-            @if($fiche->category)
+            <!-- Catégorie et Sous-catégorie -->
+            @if($fiche->category || $fiche->sousCategory)
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-gradient-info text-white p-3">
                         <h6 class="mb-0">
-                            <i class="fas fa-folder me-2"></i>Catégorie
+                            <i class="fas fa-folder me-2"></i>Classification
                         </h6>
                     </div>
                     <div class="card-body p-3">
-                        <div class="d-flex align-items-center">
-                            <div class="bg-info bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 40px; height: 40px;">
-                                <i class="fas fa-folder text-info"></i>
+                        @if($fiche->category)
+                            <div class="{{ $fiche->sousCategory ? 'mb-3 pb-3 border-bottom' : '' }}">
+                                <small class="text-muted d-block mb-2">Catégorie principale</small>
+                                <div class="d-flex align-items-center">
+                                    @if($fiche->category->image)
+                                        <img src="{{ $fiche->category->image }}" 
+                                             class="rounded me-3" 
+                                             style="width: 50px; height: 50px; object-fit: cover;"
+                                             alt="{{ $fiche->category->name }}">
+                                    @else
+                                        <div class="bg-primary bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 50px; height: 50px;">
+                                            <i class="fas fa-folder text-primary fs-4"></i>
+                                        </div>
+                                    @endif
+                                    <div class="flex-grow-1">
+                                        <strong class="d-block">{{ $fiche->category->name }}</strong>
+                                        @if($fiche->category->description)
+                                            <small class="text-muted">{{ Str::limit($fiche->category->description, 60) }}</small>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
+                        @endif
+
+                        @if($fiche->sousCategory)
                             <div>
-                                <strong>{{ $fiche->category->name }}</strong>
-                                @if($fiche->category->description)
-                                    <div class="text-muted small">{!! Str::limit($fiche->category->description, 50) !!}</div>
-                                @endif
+                                <small class="text-muted d-block mb-2">Sous-catégorie</small>
+                                <div class="d-flex align-items-center">
+                                    @if($fiche->sousCategory->image)
+                                        <img src="{{ $fiche->sousCategory->image }}" 
+                                             class="rounded me-3" 
+                                             style="width: 50px; height: 50px; object-fit: cover;"
+                                             alt="{{ $fiche->sousCategory->name }}">
+                                    @else
+                                        <div class="bg-info bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 50px; height: 50px;">
+                                            <i class="fas fa-layer-group text-info fs-4"></i>
+                                        </div>
+                                    @endif
+                                    <div class="flex-grow-1">
+                                        <strong class="d-block">{{ $fiche->sousCategory->name }}</strong>
+                                        @if($fiche->sousCategory->description)
+                                            <small class="text-muted">{{ Str::limit($fiche->sousCategory->description, 60) }}</small>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             @endif
@@ -204,6 +241,13 @@
                             <div class="col-12">
                                 <small class="text-muted d-block">Dernière modification</small>
                                 <strong>{{ $fiche->updated_at->format('d/m/Y H:i') }}</strong>
+                            </div>
+                        @endif
+
+                        @if($fiche->updater && $fiche->updated_at != $fiche->created_at)
+                            <div class="col-12">
+                                <small class="text-muted d-block">Modifié par</small>
+                                <strong>{{ $fiche->updater->name }}</strong>
                             </div>
                         @endif
                     </div>
@@ -250,54 +294,94 @@
 .content-display h1,
 .content-display h2,
 .content-display h3 {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    line-height: 1.3;
 }
 
+.content-display h1 { font-size: 1.8rem; color: #2d3748; }
+.content-display h2 { font-size: 1.5rem; color: #2d3748; }
+.content-display h3 { font-size: 1.3rem; color: #2d3748; }
+
 .content-display p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #4a5568;
 }
 
 .content-display ul,
 .content-display ol {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    line-height: 1.7;
+}
+
+.content-display li {
+    margin-bottom: 0.5rem;
 }
 
 .content-display blockquote {
-    border-left: 4px solid var(--bs-primary);
-    padding-left: 1rem;
-    margin: 1rem 0;
+    border-left: 4px solid #3182ce;
+    padding: 1.5rem;
+    margin: 2rem 0;
     font-style: italic;
-    color: #6c757d;
+    background: #f7fafc;
+    border-radius: 0.375rem;
+    color: #2d3748;
 }
 
 .content-display img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    margin: 1rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .content-display pre {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 4px;
-    border-left: 4px solid #0ea5e9;
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
     overflow-x: auto;
-    margin: 1rem 0;
+    margin: 2rem 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
 }
 
-.content-display {
-    line-height: 1.6;
-    overflow-y: auto;
-    border: 1px solid #e5e7eb;
+.content-display code {
+    background-color: #edf2f7;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    color: #d63384;
+    font-family: 'Courier New', monospace;
+}
+
+.content-display table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
     border-radius: 0.5rem;
-    padding: 1rem;
-    background: #f9fafb;
+    overflow: hidden;
+}
+
+.content-display th,
+.content-display td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.content-display th {
+    background-color: #f7fafc;
+    font-weight: 600;
 }
 
 .bg-gradient-primary {
@@ -314,6 +398,16 @@
 
 .bg-gradient-secondary {
     background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.card {
+    transition: box-shadow 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .content-display {
+        font-size: 0.95rem;
+    }
 }
 </style>
 @endpush

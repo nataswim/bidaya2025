@@ -30,6 +30,7 @@ class Fiche extends Model
         'views_count',
         'sort_order',
         'fiches_category_id',
+        'fiches_sous_category_id',
         'meta_title',
         'meta_keywords',
         'meta_description',
@@ -65,13 +66,19 @@ class Fiche extends Model
                 $fiche->created_by = auth()->id();
                 $fiche->created_by_name = auth()->user()->name;
             }
-            
-            // 🇬🇧 Auto-generate slug / 🇫🇷 Génération automatique du slug
+
+            // 🇬🇧 Auto-set parent category if sous-category selected / 🇫🇷 Définir automatiquement la catégorie parente si sous-catégorie sélectionnée
+            if ($fiche->fiches_sous_category_id && !$fiche->fiches_category_id) {
+                $sousCategory = FichesSousCategory::find($fiche->fiches_sous_category_id);
+                if ($sousCategory) {
+                    $fiche->fiches_category_id = $sousCategory->fiches_category_id;
+                }
+            }
+
             if (empty($fiche->slug)) {
                 $fiche->slug = Str::slug($fiche->title);
             }
-            
-            // 🇬🇧 Set published_at when published / 🇫🇷 Définir published_at lors de la publication
+
             if ($fiche->is_published && !$fiche->published_at) {
                 $fiche->published_at = now();
             }
@@ -81,8 +88,17 @@ class Fiche extends Model
             if (auth()->check()) {
                 $fiche->updated_by = auth()->id();
             }
-            
-            // 🇬🇧 Update published_at when first published / 🇫🇷 Mettre à jour published_at lors de la première publication
+
+            // 🇬🇧 Auto-update parent category if sous-category changed / 🇫🇷 Mettre à jour automatiquement la catégorie parente si sous-catégorie modifiée
+            if ($fiche->isDirty('fiches_sous_category_id')) {
+                if ($fiche->fiches_sous_category_id) {
+                    $sousCategory = FichesSousCategory::find($fiche->fiches_sous_category_id);
+                    if ($sousCategory) {
+                        $fiche->fiches_category_id = $sousCategory->fiches_category_id;
+                    }
+                }
+            }
+
             if ($fiche->isDirty('is_published') && $fiche->is_published && !$fiche->published_at) {
                 $fiche->published_at = now();
             }
@@ -90,12 +106,29 @@ class Fiche extends Model
     }
 
     /**
+     * 🇬🇧 Scope for fiches by sub-category
+     * 🇫🇷 Scope pour les fiches par sous-catégorie
+     */
+    public function scopeBySousCategory($query, $sousCategoryId)
+    {
+        return $query->where('fiches_sous_category_id', $sousCategoryId);
+    }
+    /**
      * 🇬🇧 Get the category of this fiche
      * 🇫🇷 Obtenir la catégorie de cette fiche
      */
     public function category(): BelongsTo
     {
         return $this->belongsTo(FichesCategory::class, 'fiches_category_id');
+    }
+
+    /**
+     * 🇬🇧 Get the sub-category of this fiche
+     * 🇫🇷 Obtenir la sous-catégorie de cette fiche
+     */
+    public function sousCategory(): BelongsTo
+    {
+        return $this->belongsTo(FichesSousCategory::class, 'fiches_sous_category_id');
     }
 
     /**
@@ -123,8 +156,8 @@ class Fiche extends Model
     public function scopePublished($query)
     {
         return $query->where('is_published', true)
-                    ->whereNotNull('published_at')
-                    ->where('published_at', '<=', now());
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now());
     }
 
     /**
@@ -143,7 +176,7 @@ class Fiche extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('sort_order', 'asc')
-                    ->orderBy('published_at', 'desc');
+            ->orderBy('published_at', 'desc');
     }
 
     /**
@@ -161,26 +194,26 @@ class Fiche extends Model
      */
     public function scopeVisibleTo($query, $user = null)
     {
-        return $query->where(function($q) use ($user) {
+        return $query->where(function ($q) use ($user) {
             // 🇬🇧 Public fiches / 🇫🇷 Fiches publiques
             $q->where('is_published', true)
-              ->whereNotNull('published_at')
-              ->where('published_at', '<=', now())
-              ->where('visibility', 'public');
-            
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->where('visibility', 'public');
+
             // 🇬🇧 If user authenticated, add authenticated fiches / 🇫🇷 Si utilisateur authentifié, ajouter les fiches authentifiées
             if ($user && !$user->hasRole('visitor')) {
-                $q->orWhere(function($subQ) {
+                $q->orWhere(function ($subQ) {
                     $subQ->where('is_published', true)
-                         ->whereNotNull('published_at')
-                         ->where('published_at', '<=', now())
-                         ->where('visibility', 'authenticated');
+                        ->whereNotNull('published_at')
+                        ->where('published_at', '<=', now())
+                        ->where('visibility', 'authenticated');
                 });
             }
-            
+
             // 🇬🇧 If admin/editor, see all / 🇫🇷 Si admin/éditeur, tout voir
             if ($user && ($user->hasRole('admin') || $user->hasRole('editor'))) {
-                $q->orWhere(function($subQ) {
+                $q->orWhere(function ($subQ) {
                     $subQ->whereIn('is_published', [false, true]);
                 });
             }
@@ -197,21 +230,21 @@ class Fiche extends Model
         if ($user && ($user->hasRole('admin') || $user->hasRole('editor'))) {
             return true;
         }
-        
+
         // 🇬🇧 If not published, only admins can see / 🇫🇷 Si non publié, seuls les admins peuvent voir
         if (!$this->is_published) {
             return false;
         }
-        
+
         // 🇬🇧 Check visibility / 🇫🇷 Vérifier la visibilité
         if ($this->visibility === 'public') {
             return true;
         }
-        
+
         if ($this->visibility === 'authenticated') {
             return $user !== null && !$user->hasRole('visitor');
         }
-        
+
         return false;
     }
 
@@ -239,7 +272,7 @@ class Fiche extends Model
         if ($this->short_description) {
             return strip_tags($this->short_description);
         }
-        
+
         return Str::limit(strip_tags($this->long_description), 160);
     }
 

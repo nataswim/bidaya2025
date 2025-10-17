@@ -256,30 +256,70 @@
             </div>
         </div>
 
-        <!-- Catégorie -->
-        <div class="card border-0 shadow-sm mb-4">
-            <div class="card-header bg-gradient-warning text-white p-4">
-                <h6 class="mb-0">
-                    <i class="fas fa-folder me-2"></i>Catégorie
-                </h6>
-            </div>
-            <div class="card-body p-4">
-                <label for="fiches_category_id" class="form-label fw-semibold">Catégorie *</label>
-                <select name="fiches_category_id" id="fiches_category_id" class="form-select @error('fiches_category_id') is-invalid @enderror" required>
-                    <option value="">Sélectionner une catégorie</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" 
-                                {{ old('fiches_category_id', isset($fiche) ? $fiche->fiches_category_id : '') == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('fiches_category_id')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
+        <!-- Catégorie et Sous-Catégorie -->
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-header bg-gradient-warning text-white p-4">
+        <h6 class="mb-0">
+            <i class="fas fa-folder me-2"></i>Catégorie
+        </h6>
+    </div>
+    <div class="card-body p-4">
+        <!-- Catégorie principale -->
+        <div class="mb-3">
+            <label for="fiches_category_id" class="form-label fw-semibold">Catégorie *</label>
+            <select name="fiches_category_id" 
+                    id="fiches_category_id" 
+                    class="form-select @error('fiches_category_id') is-invalid @enderror">
+                <option value="">Sélectionner une catégorie</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" 
+                            {{ old('fiches_category_id', isset($fiche) ? $fiche->fiches_category_id : '') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('fiches_category_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
+        <!-- Sous-catégorie (dynamique) -->
+        <div class="mb-3">
+            <label for="fiches_sous_category_id" class="form-label fw-semibold">
+                Sous-catégorie 
+                <span class="badge bg-info-subtle text-info ms-1">Optionnel</span>
+            </label>
+            <select name="fiches_sous_category_id" 
+                    id="fiches_sous_category_id" 
+                    class="form-select @error('fiches_sous_category_id') is-invalid @enderror"
+                    disabled>
+                <option value="">Aucune sous-catégorie</option>
+                @if(isset($fiche) && isset($sousCategories))
+                    @foreach($sousCategories as $sousCategory)
+                        <option value="{{ $sousCategory->id }}" 
+                                {{ old('fiches_sous_category_id', $fiche->fiches_sous_category_id) == $sousCategory->id ? 'selected' : '' }}>
+                            {{ $sousCategory->name }}
+                        </option>
+                    @endforeach
+                @endif
+            </select>
+            <div class="form-text">Sélectionnez d'abord une catégorie</div>
+            @error('fiches_sous_category_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <!-- Loader pour le chargement des sous-catégories -->
+        <div id="sous-category-loader" class="d-none">
+            <div class="d-flex align-items-center text-muted">
+                <div class="spinner-border spinner-border-sm me-2" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+                <span>Chargement des sous-catégories...</span>
+            </div>
+        </div>
+    </div>
+</div>
         <!-- Image -->
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-gradient-info text-white p-4">
@@ -502,6 +542,75 @@ document.addEventListener('DOMContentLoaded', function() {
             window.initQuillAI();
         }
     }, 1500);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ========================================
+    // CHARGEMENT DYNAMIQUE DES SOUS-CATÉGORIES
+    // ========================================
+    const categorySelect = document.getElementById('fiches_category_id');
+    const sousCategorySelect = document.getElementById('fiches_sous_category_id');
+    const sousCategoryLoader = document.getElementById('sous-category-loader');
+    
+    if (categorySelect && sousCategorySelect) {
+        categorySelect.addEventListener('change', function() {
+            const categoryId = this.value;
+            
+            // Réinitialiser le select des sous-catégories
+            sousCategorySelect.innerHTML = '<option value="">Aucune sous-catégorie</option>';
+            sousCategorySelect.disabled = true;
+            
+            if (!categoryId) {
+                return;
+            }
+            
+            // Afficher le loader
+            if (sousCategoryLoader) {
+                sousCategoryLoader.classList.remove('d-none');
+            }
+            
+            // Appel AJAX pour récupérer les sous-catégories
+            fetch(`{{ route('admin.fiches-sous-categories.api.by-category') }}?category_id=${categoryId}`, {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Masquer le loader
+                if (sousCategoryLoader) {
+                    sousCategoryLoader.classList.add('d-none');
+                }
+                
+                if (data.length > 0) {
+                    data.forEach(sousCategory => {
+                        const option = document.createElement('option');
+                        option.value = sousCategory.id;
+                        option.textContent = sousCategory.name;
+                        sousCategorySelect.appendChild(option);
+                    });
+                    sousCategorySelect.disabled = false;
+                } else {
+                    sousCategorySelect.innerHTML = '<option value="">Aucune sous-catégorie disponible</option>';
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des sous-catégories:', error);
+                if (sousCategoryLoader) {
+                    sousCategoryLoader.classList.add('d-none');
+                }
+                sousCategorySelect.innerHTML = '<option value="">Erreur de chargement</option>';
+            });
+        });
+        
+        // Déclencher le chargement initial si une catégorie est déjà sélectionnée
+        @if(isset($fiche) && $fiche->fiches_category_id)
+            categorySelect.dispatchEvent(new Event('change'));
+        @endif
+    }
 });
 </script>
 @endpush

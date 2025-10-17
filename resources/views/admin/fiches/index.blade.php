@@ -34,7 +34,7 @@
                                 </span>
                                 <input type="text" 
                                        name="search" 
-                                       value="{{ request('search') }}" 
+                                       value="{{ $search ?? '' }}" 
                                        class="form-control border-start-0"
                                        placeholder="Rechercher...">
                             </div>
@@ -42,28 +42,40 @@
                         <div class="col-md-2">
                             <select name="visibility" class="form-select">
                                 <option value="">Toute visibilité</option>
-                                <option value="public" {{ request('visibility') === 'public' ? 'selected' : '' }}>
+                                <option value="public" {{ ($visibility ?? '') === 'public' ? 'selected' : '' }}>
                                     Public
                                 </option>
-                                <option value="authenticated" {{ request('visibility') === 'authenticated' ? 'selected' : '' }}>
+                                <option value="authenticated" {{ ($visibility ?? '') === 'authenticated' ? 'selected' : '' }}>
                                     Membres
                                 </option>
                             </select>
                         </div>
-                        <div class="col-md-3">
-                            <select name="category" class="form-select">
+                        <div class="col-md-2">
+                            <select name="category" id="filter_category" class="form-select">
                                 <option value="">Toutes catégories</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                    <option value="{{ $category->id }}" {{ ($categoryId ?? '') == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-2">
+                            <select name="sous_category" id="filter_sous_category" class="form-select" {{ !($categoryId ?? '') ? 'disabled' : '' }}>
+                                <option value="">Toutes sous-catégories</option>
+                                @if(isset($sousCategories) && $sousCategories->count() > 0)
+                                    @foreach($sousCategories as $sousCategory)
+                                        <option value="{{ $sousCategory->id }}" {{ ($sousCategoryId ?? '') == $sousCategory->id ? 'selected' : '' }}>
+                                            {{ $sousCategory->name }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                        <div class="col-md-1">
                             <select name="featured" class="form-select">
                                 <option value="">Toutes</option>
-                                <option value="1" {{ request('featured') == '1' ? 'selected' : '' }}>
+                                <option value="1" {{ ($featured ?? '') == '1' ? 'selected' : '' }}>
                                     En vedette
                                 </option>
                             </select>
@@ -73,7 +85,7 @@
                                 <button type="submit" class="btn btn-primary flex-fill">
                                     <i class="fas fa-filter me-2"></i>Filtrer
                                 </button>
-                                @if(request()->hasAny(['search', 'visibility', 'category', 'featured']))
+                                @if(request()->hasAny(['search', 'visibility', 'category', 'sous_category', 'featured']))
                                     <a href="{{ route('admin.fiches.index') }}" class="btn btn-outline-secondary">
                                         <i class="fas fa-times"></i>
                                     </a>
@@ -92,7 +104,7 @@
                                     <tr>
                                         <th class="border-0 px-4 py-3">Fiche</th>
                                         <th class="border-0 px-4 py-3">Visibilité</th>
-                                        <th class="border-0 px-4 py-3">Catégorie</th>
+                                        <th class="border-0 px-4 py-3">Classification</th>
                                         <th class="border-0 px-4 py-3">Stats</th>
                                         <th class="border-0 px-4 py-3">Date</th>
                                         <th class="border-0 px-4 py-3 text-end">Actions</th>
@@ -118,26 +130,28 @@
                                                         <h6 class="mb-1">
                                                             <a href="{{ route('admin.fiches.show', $fiche) }}" 
                                                                class="text-decoration-none text-dark">
-                                                                {!! Str::limit($fiche->title, 60) !!}
+                                                                {{ Str::limit($fiche->title, 60) }}
                                                             </a>
                                                         </h6>
                                                         @if($fiche->short_description)
-                                                            <small class="text-muted">{!! Str::limit(strip_tags($fiche->short_description), 80) !!}</small>
+                                                            <small class="text-muted">{{ Str::limit(strip_tags($fiche->short_description), 80) }}</small>
                                                         @endif
-                                                        @if($fiche->is_featured)
-                                                            <span class="badge bg-warning-subtle text-warning ms-2">
-                                                                <i class="fas fa-star me-1"></i>En vedette
-                                                            </span>
-                                                        @endif
-                                                        @if($fiche->is_published)
-                                                            <span class="badge bg-success-subtle text-success ms-1">
-                                                                <i class="fas fa-check me-1"></i>Publié
-                                                            </span>
-                                                        @else
-                                                            <span class="badge bg-warning-subtle text-warning ms-1">
-                                                                <i class="fas fa-edit me-1"></i>Brouillon
-                                                            </span>
-                                                        @endif
+                                                        <div class="d-flex flex-wrap gap-1 mt-2">
+                                                            @if($fiche->is_featured)
+                                                                <span class="badge bg-warning-subtle text-warning">
+                                                                    <i class="fas fa-star me-1"></i>En vedette
+                                                                </span>
+                                                            @endif
+                                                            @if($fiche->is_published)
+                                                                <span class="badge bg-success-subtle text-success">
+                                                                    <i class="fas fa-check me-1"></i>Publié
+                                                                </span>
+                                                            @else
+                                                                <span class="badge bg-warning-subtle text-warning">
+                                                                    <i class="fas fa-edit me-1"></i>Brouillon
+                                                                </span>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -155,10 +169,19 @@
                                             </td>
                                             
                                             <td class="px-4 py-3">
-                                                @if($fiche->category)
-                                                    <span class="badge bg-primary-subtle text-primary">
-                                                        {{ $fiche->category->name }}
-                                                    </span>
+                                                @if($fiche->category || $fiche->sousCategory)
+                                                    <div class="d-flex flex-column gap-1">
+                                                        @if($fiche->category)
+                                                            <span class="badge bg-primary-subtle text-primary">
+                                                                <i class="fas fa-folder me-1"></i>{{ $fiche->category->name }}
+                                                            </span>
+                                                        @endif
+                                                        @if($fiche->sousCategory)
+                                                            <span class="badge bg-info-subtle text-info">
+                                                                <i class="fas fa-layer-group me-1"></i>{{ $fiche->sousCategory->name }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
                                                 @else
                                                     <span class="text-muted">Non catégorisé</span>
                                                 @endif
@@ -241,22 +264,22 @@
                         </div>
 
                         <!-- Pagination -->
-@if($fiches->hasPages())
-    <div class="card-footer bg-white border-top p-4">
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="text-muted">
-                Affichage de {{ $fiches->firstItem() }} à {{ $fiches->lastItem() }} 
-                sur {{ $fiches->total() }} résultat(s)
-            </div>
-            {{ $fiches->appends(request()->query())->links('pagination::bootstrap-5') }}
-        </div>
-    </div>
-@endif
+                        @if($fiches->hasPages())
+                            <div class="card-footer bg-white border-top p-4">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="text-muted">
+                                        Affichage de {{ $fiches->firstItem() }} à {{ $fiches->lastItem() }} 
+                                        sur {{ $fiches->total() }} résultat(s)
+                                    </div>
+                                    {{ $fiches->appends(request()->query())->links('pagination::bootstrap-5') }}
+                                </div>
+                            </div>
+                        @endif
                     @else
                         <div class="text-center py-5">
                             <i class="fas fa-file-alt fa-3x text-muted mb-3 opacity-25"></i>
                             <h5>Aucune fiche trouvée</h5>
-                            @if(request()->hasAny(['search', 'visibility', 'category', 'featured']))
+                            @if(request()->hasAny(['search', 'visibility', 'category', 'sous_category', 'featured']))
                                 <p class="text-muted mb-3">Aucun résultat ne correspond à vos critères de recherche.</p>
                                 <a href="{{ route('admin.fiches.index') }}" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Voir toutes les fiches
@@ -364,11 +387,14 @@
                         <a href="{{ route('admin.fiches.create') }}" class="btn btn-primary">
                             <i class="fas fa-plus me-2"></i>Nouvelle fiche
                         </a>
-                        <a href="{{ route('admin.fiches-categories.index') }}" class="btn btn-outline-warning">
+                        <a href="{{ route('admin.fiches-categories.index') }}" class="btn btn-outline-primary">
                             <i class="fas fa-folder me-2"></i>Gérer les catégories
                         </a>
+                        <a href="{{ route('admin.fiches-sous-categories.index') }}" class="btn btn-outline-info">
+                            <i class="fas fa-layer-group me-2"></i>Gérer les sous-catégories
+                        </a>
                         @if($stats['featured'] > 0)
-                            <a href="{{ route('admin.fiches.index', ['featured' => '1']) }}" class="btn btn-outline-info">
+                            <a href="{{ route('admin.fiches.index', ['featured' => '1']) }}" class="btn btn-outline-warning">
                                 <i class="fas fa-star me-2"></i>Fiches vedettes ({{ $stats['featured'] }})
                             </a>
                         @endif
@@ -407,4 +433,44 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Filtre dynamique des sous-catégories dans l'index
+    const filterCategory = document.getElementById('filter_category');
+    const filterSousCategory = document.getElementById('filter_sous_category');
+    
+    if (filterCategory && filterSousCategory) {
+        filterCategory.addEventListener('change', function() {
+            const categoryId = this.value;
+            
+            // Réinitialiser
+            filterSousCategory.innerHTML = '<option value="">Toutes sous-catégories</option>';
+            filterSousCategory.disabled = true;
+            
+            if (!categoryId) {
+                return;
+            }
+            
+            // Charger les sous-catégories
+            fetch(`{{ route('admin.fiches-sous-categories.api.by-category') }}?category_id=${categoryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        data.forEach(sousCategory => {
+                            const option = document.createElement('option');
+                            option.value = sousCategory.id;
+                            option.textContent = sousCategory.name;
+                            filterSousCategory.appendChild(option);
+                        });
+                        filterSousCategory.disabled = false;
+                    }
+                })
+                .catch(error => console.error('Erreur:', error));
+        });
+    }
+});
+</script>
 @endpush

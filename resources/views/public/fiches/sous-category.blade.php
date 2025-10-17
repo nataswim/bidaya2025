@@ -1,60 +1,70 @@
 @extends('layouts.public')
 
-@section('title', $category->name . ' - Fiches Pratiques')
-@section('meta_description', $category->description ?? 'Découvrez toutes les fiches pratiques de la catégorie ' . $category->name)
+@section('title', $sousCategory->name . ' - ' . $category->name)
+@section('meta_description', $sousCategory->description ?? 'Découvrez toutes les fiches pratiques de la sous-catégorie ' . $sousCategory->name)
 
 @section('content')
 <!-- Section titre avec breadcrumb -->
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <h1 class="display-4 fw-bold mb-3">
-                 {{ $category->name }}
+                    {{ $sousCategory->name }}
                 </h1>
                 
-                @if($category->description)
-                    <p class="lead mb-0">{{ $category->description }}</p>
+                @if($sousCategory->description)
+                    <p class="lead mb-0">{{ $sousCategory->description }}</p>
                 @endif
                 
                 <div class="d-flex align-items-center gap-3 mt-4">
+                    <span class="badge bg-light text-dark fs-6">
+                        <i class="fas fa-folder me-1"></i>{{ $category->name }}
+                    </span>
                     <span class="badge bg-light text-dark fs-6">
                         <i class="fas fa-file-alt me-1"></i>{{ $fiches->total() }} fiche(s)
                     </span>
                 </div>
             </div>
             
-            @if($category->image)
+            @if($sousCategory->image)
                 <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <img src="{{ $category->image }}" 
-                         alt="{{ $category->name }}" 
+                    <img src="{{ $sousCategory->image }}" 
+                         alt="{{ $sousCategory->name }}" 
                          class="img-fluid rounded shadow-lg"
                          style="max-height: 250px; object-fit: cover;">
                 </div>
             @endif
         </div>
     </div>
-    
 </section>
 
-<!-- Liste des fiches -->
-<section class="py-5 bg-light">
+<!-- Breadcrumb -->
+<section class="py-3 bg-light border-bottom">
     <div class="container">
-               <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb bg-primary px-3 py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-primary px-3 py-2 mb-0">
                 <li class="breadcrumb-item">
                     <a href="{{ route('public.fiches.index') }}" class="text-white">
                         <i class="fas fa-home me-1"></i>Fiches
                     </a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('public.fiches.category', $category) }}" class="text-white">
+                        {{ $category->name }}
+                    </a>
+                </li>
                 <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ $category->name }}
+                    {{ $sousCategory->name }}
                 </li>
             </ol>
         </nav>
+    </div>
+</section>
 
+<!-- Liste des fiches -->
+<section class="py-5 bg-light">
+    <div class="container">
         @if($fiches->count() > 0)
             <div class="row g-4">
                 @foreach($fiches as $fiche)
@@ -74,6 +84,9 @@
                             
                             <div class="card-body d-flex flex-column">
                                 <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-info">
+                                        <i class="fas fa-layer-group me-1"></i>{{ $sousCategory->name }}
+                                    </span>
                                     @if($fiche->is_featured)
                                         <span class="badge bg-warning">
                                             <i class="fas fa-star me-1"></i>En vedette
@@ -117,9 +130,9 @@
             <div class="card border-0 shadow-sm text-center py-5">
                 <div class="card-body">
                     <i class="fas fa-file-alt fa-3x text-muted mb-3 opacity-25"></i>
-                    <h5 class="text-muted mb-3">Aucune fiche disponible dans cette catégorie</h5>
-                    <a href="{{ route('public.fiches.index') }}" class="btn btn-primary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour aux catégories
+                    <h5 class="text-muted mb-3">Aucune fiche disponible dans cette sous-catégorie</h5>
+                    <a href="{{ route('public.fiches.category', $category) }}" class="btn btn-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Retour à {{ $category->name }}
                     </a>
                 </div>
             </div>
@@ -127,58 +140,14 @@
     </div>
 </section>
 
-<!-- Sous-catégories disponibles -->
-@if(isset($sousCategories) && $sousCategories->count() > 0)
-<section class="py-4 bg-white">
-    <div class="container">
-        <h3 class="fw-bold mb-4">
-            <i class="fas fa-layer-group me-2 text-info"></i>
-            Sous-catégories
-        </h3>
-        <div class="row g-3">
-            @foreach($sousCategories as $sousCategory)
-                <div class="col-md-6 col-lg-4">
-                    <a href="{{ route('public.fiches.sous-category', [$category, $sousCategory]) }}" 
-                       class="text-decoration-none">
-                        <div class="card h-100 border shadow-sm hover-lift">
-                            <div class="card-body p-3">
-                                <div class="d-flex align-items-center">
-                                    @if($sousCategory->image)
-                                        <img src="{{ $sousCategory->image }}" 
-                                             class="rounded me-3" 
-                                             style="width: 50px; height: 50px; object-fit: cover;"
-                                             alt="{{ $sousCategory->name }}">
-                                    @else
-                                        <div class="bg-info bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
-                                             style="width: 50px; height: 50px;">
-                                            <i class="fas fa-layer-group text-info"></i>
-                                        </div>
-                                    @endif
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">{{ $sousCategory->name }}</h6>
-                                        <small class="text-muted">
-                                            {{ $sousCategory->published_fiches_count }} fiche(s)
-                                        </small>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-muted"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-        <hr class="my-4">
-    </div>
-</section>
-@endif
-
-
 <!-- Navigation rapide -->
 <section class="py-4 bg-white border-top">
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="{{ route('public.fiches.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route('public.fiches.category', $category) }}" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left me-2"></i>Retour à {{ $category->name }}
+            </a>
+            <a href="{{ route('public.fiches.index') }}" class="btn btn-outline-secondary">
                 <i class="fas fa-th me-2"></i>Toutes les catégories
             </a>
         </div>
