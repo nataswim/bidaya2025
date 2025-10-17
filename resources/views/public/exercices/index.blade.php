@@ -35,42 +35,23 @@
 
 
 <!-- Filtres et recherche -->
-<section class="py-5 bg-light">
+<section class="py-5">
     <div class="container">
-        <div class="card shadow-lg border-0">
-            <div class="card-body p-5">
-                <h3 class="text-center mb-4">Rechercher et Filtrer</h3>
+        <div class="card border-0">
+            <div class="card-body">
                 
                 <form method="GET" class="row g-3">
-                    <div class="col-md-4">
-                        <label class="fw-bold mb-2">Recherche</label>
+                    <div class="col-md">
+                        <label class="fw-bold mb-2"><i class="fas fa-dumbbell text-primary me-2"></i></label>
                         <input type="text" 
                                name="search" 
                                value="{{ request('search') }}" 
                                class="form-control form-control-lg border-primary"
                                placeholder="Nom de l'exercice...">
                     </div>
-                    <div class="col-md-3">
-                        <label class="fw-bold mb-2">Niveau</label>
-                        <select name="niveau" class="form-select form-select-lg border-primary">
-                            <option value="">Tous niveaux</option>
-                            <option value="debutant" {{ request('niveau') === 'debutant' ? 'selected' : '' }}>Débutant</option>
-                            <option value="intermediaire" {{ request('niveau') === 'intermediaire' ? 'selected' : '' }}>Intermédiaire</option>
-                            <option value="avance" {{ request('niveau') === 'avance' ? 'selected' : '' }}>Avancé</option>
-                            <option value="special" {{ request('niveau') === 'special' ? 'selected' : '' }}>Spécial</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="fw-bold mb-2">Type d'exercice</label>
-                        <select name="type" class="form-select form-select-lg border-primary">
-                            <option value="">Tous types</option>
-                            <option value="cardio" {{ request('type') === 'cardio' ? 'selected' : '' }}>Cardio</option>
-                            <option value="force" {{ request('type') === 'force' ? 'selected' : '' }}>Force</option>
-                            <option value="flexibilite" {{ request('type') === 'flexibilite' ? 'selected' : '' }}>Flexibilité</option>
-                            <option value="equilibre" {{ request('type') === 'equilibre' ? 'selected' : '' }}>Équilibre</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
+                   
+                    
+                    <div class="col-md">
                         <label class="fw-bold mb-2">&nbsp;</label>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg">
@@ -83,7 +64,7 @@
                 @if(request()->hasAny(['search', 'niveau', 'type']))
                     <div class="text-center mt-3">
                         <a href="{{ route('exercices.index') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-times me-2"></i>Réinitialiser les filtres
+                            <i class="fas fa-times me-2"></i>Réinitialiser Retour aux exercices complets
                         </a>
                     </div>
                 @endif
@@ -102,7 +83,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h2 class="fw-bold mb-0">
                             <i class="fas fa-dumbbell text-primary me-2"></i>
-                            {{ $exercices->total() }} pages
+                            {{ $exercices->total() }} Exercices Trouvés
                         </h2>
                         @if(request()->hasAny(['search', 'niveau', 'type']))
                             <span class="badge bg-info fs-6">Filtres appliqués</span>
@@ -131,14 +112,7 @@
                             <div class="card-body p-4 d-flex flex-column">
                                 <h5 class="card-title fw-bold mb-2">{{ $exercice->titre }}</h5>
                                 
-                                <div class="d-flex flex-wrap gap-2 mb-3">
-                                    <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}">
-                                        {{ $exercice->niveau_label }}
-                                    </span>
-                                    <span class="badge bg-primary">
-                                        {{ $exercice->type_exercice_label }}
-                                    </span>
-                                </div>
+
                                 
                                 @if($exercice->description)
                                     <p class="card-text text-muted small flex-fill">
@@ -146,16 +120,7 @@
                                     </p>
                                 @endif
                                 
-                                @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
-                                    <div class="mb-3">
-                                        <small class="text-muted d-block mb-1">
-                                            <i class="fas fa-crosshairs me-1"></i>Muscles ciblés :
-                                        </small>
-                                        <small class="text-primary fw-semibold">
-                                            {{ $exercice->muscles_cibles_formatted }}
-                                        </small>
-                                    </div>
-                                @endif
+                                
                                 
                                 <div class="mt-auto">
                                     <a href="{{ route('exercices.show', $exercice) }}" 
