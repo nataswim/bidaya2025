@@ -65,31 +65,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-12">
                 
-                <!-- Card 1: Métadonnées -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-body p-4">
-                        <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-                            <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} px-3 py-2">
-                                <i class="fas fa-signal me-1"></i>{{ $exercice->niveau_label }}
-                            </span>
-                            
-                            <span class="badge bg-primary px-3 py-2">
-                                <i class="fas fa-tag me-1"></i>{{ $exercice->type_exercice_label }}
-                            </span>
-                            
-                            @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
-                                <span class="d-flex align-items-center">
-                                    <i class="fas fa-crosshairs me-1"></i>
-                                    @foreach($exercice->muscles_cibles as $muscle)
-                                        <span class="badge bg-secondary-subtle text-secondary me-1 small">
-                                            {{ ucfirst($muscle) }}
-                                        </span>
-                                    @endforeach
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
+                
 
                 <!-- Card 2: Muscles ciblés (si présents) -->
                 @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
@@ -100,7 +76,6 @@
                                 <div class="d-flex align-items-start">
                                     <i class="fas fa-crosshairs fs-3 text-info me-3"></i>
                                     <div>
-                                        <h6 class="fw-bold mb-2">Muscles ciblés</h6>
                                         <p class="mb-0 lead">{{ $exercice->muscles_cibles_formatted }}</p>
                                     </div>
                                 </div>
@@ -141,28 +116,91 @@
                     </div>
                 @endif
 
-                <!-- Card 5: Vidéo explicative -->
-                @if($exercice->video_url)
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">
-                                <i class="fas fa-play me-2"></i>Vidéo 
-                            </h5>
-                        </div>
-                        <div class="card-body p-4 text-center">
-                            <a href="{{ $exercice->video_url }}" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="btn btn-success btn-lg">
-                                <i class="fas fa-external-link-alt me-2"></i>Voir la vidéo 
-                            </a>
-                            <p class="text-muted small mt-3 mb-0">
-                                <i class="fas fa-info-circle me-1"></i>
-                                La vidéo s'ouvrira dans un nouvel onglet
-                            </p>
-                        </div>
-                    </div>
-                @endif
+<!-- Card 5: Vidéo explicative -->
+@if($exercice->video_url)
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-success text-white">
+
+        </div>
+        <div class="card-body p-4">
+            @php
+                $videoUrl = $exercice->video_url;
+                $isYoutube = str_contains($videoUrl, 'youtube.com') || str_contains($videoUrl, 'youtu.be');
+                $isVimeo = str_contains($videoUrl, 'vimeo.com');
+                $isDirectFile = preg_match('/\.(mp4|webm|ogg)$/i', $videoUrl);
+                
+                // Conversion URL YouTube
+                if ($isYoutube) {
+                    if (str_contains($videoUrl, 'youtu.be/')) {
+                        $videoId = substr(parse_url($videoUrl, PHP_URL_PATH), 1);
+                        $embedUrl = "https://www.youtube.com/embed/{$videoId}";
+                    } else {
+                        $embedUrl = str_replace('watch?v=', 'embed/', $videoUrl);
+                    }
+                }
+                
+                // Conversion URL Vimeo
+                if ($isVimeo) {
+                    $videoId = substr(parse_url($videoUrl, PHP_URL_PATH), 1);
+                    $embedUrl = "https://player.vimeo.com/video/{$videoId}";
+                }
+            @endphp
+            
+            {{-- YouTube --}}
+            @if($isYoutube)
+                <div class="ratio ratio-16x9">
+                    <iframe 
+                        src="{{ $embedUrl }}" 
+                        title="Vidéo YouTube"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="rounded">
+                    </iframe>
+                </div>
+                
+            
+            {{-- Vimeo --}}
+            @elseif($isVimeo)
+                <div class="ratio ratio-16x9">
+                    <iframe 
+                        src="{{ $embedUrl }}" 
+                        title="Vidéo Vimeo"
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
+                        class="rounded">
+                    </iframe>
+                </div>
+                
+            
+            {{-- Fichier direct (MP4, WebM, OGG) --}}
+            @elseif($isDirectFile)
+                <div class="ratio ratio-16x9">
+                    <video 
+                        controls 
+                        controlsList="nodownload"
+                        class="rounded w-100"
+                        preload="metadata">
+                        <source src="{{ $videoUrl }}" type="video/{{ pathinfo($videoUrl, PATHINFO_EXTENSION) }}">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                </div>
+                
+            
+            {{-- URL non reconnue - Fallback --}}
+            @else
+                <div class="alert alert-warning mb-0">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Format de vidéo non supporté. 
+                    <a href="{{ $videoUrl }}" target="_blank" rel="noopener noreferrer" class="alert-link">
+                        Ouvrir la vidéo dans un nouvel onglet
+                    </a>
+                </div>
+            @endif
+        </div>
+    </div>
+@endif
 
                 <!-- Card 6: Exercices similaires -->
                 @if($exercicesSimilaires->count() > 0)
@@ -210,132 +248,6 @@
                         </div>
                     </div>
                 @endif
-
-                <!-- Card 7: Informations techniques -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-signal me-1"></i>
-                                    </span>
-                                    <strong>
-                                        <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}">
-                                            {{ $exercice->niveau_label }}
-                                        </span>
-                                    </strong>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-tag me-1"></i>Type:
-                                    </span>
-                                    <strong>{{ $exercice->type_exercice_label }}</strong>
-                                </div>
-                            </div>
-                            @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-between align-items-start">
-                                        <span class="text-muted">
-                                            <i class="fas fa-crosshairs me-1"></i>
-                                        </span>
-                                        <div class="text-end">
-                                            <strong>{{ $exercice->muscles_cibles_formatted }}</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>
-                                    </span>
-                                    <strong>{{ $exercice->created_at->format('d/m/Y') }}</strong>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-edit me-1"></i>
-                                    </span>
-                                    <strong>{{ $exercice->updated_at->format('d/m/Y') }}</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section Navigation / Call to Action -->
-                <div class="row g-4 mb-4">
-                    <!-- Plans d'entraînement -->
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            @auth
-                                @if(auth()->user()->hasRole('user') || auth()->user()->hasRole('editor') || auth()->user()->hasRole('admin'))
-                                    <div class="card-header bg-success text-white">
-                                        <h5 class="mb-0">
-                                            <i class="fas fa-calendar-alt me-2"></i>Plans d'entraînement
-                                        </h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="mb-3">Découvrez nos plans d'entraînement personnalisés incluant cet exercice.</p>
-                                        <a href="{{ route('user.training.index') }}" class="btn btn-success w-100">
-                                            <i class="fas fa-arrow-right me-2"></i>Voir les plans
-                                        </a>
-                                    </div>
-                                @endif
-                            @else
-                                <div class="card-header bg-info text-white">
-                                    <h5 class="mb-0">
-                                        <i class="fas fa-user-plus me-2"></i>Rejoignez-nous
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-3">Connectez-vous pour accéder à nos plans d'entraînement personnalisés.</p>
-                                    <div class="d-grid gap-2">
-                                        <a href="{{ route('login') }}" class="btn btn-primary">
-                                            <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                                        </a>
-                                        <a href="{{ route('register') }}" class="btn btn-outline-primary">
-                                            <i class="fas fa-user-plus me-2"></i>S'inscrire
-                                        </a>
-                                    </div>
-                                </div>
-                            @endauth
-                        </div>
-                    </div>
-
-                    <!-- Navigation -->
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0">
-                                    <i class="fas fa-compass me-2"></i>Navigation
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-grid gap-2">
-                                    <a href="{{ route('exercices.index') }}" 
-                                       class="btn btn-primary">
-                                        <i class="fas fa-arrow-left me-2"></i>Tous les exercices
-                                    </a>
-                                    <a href="{{ route('tools.index') }}" 
-                                       class="btn btn-outline-secondary">
-                                        <i class="fas fa-calculator me-2"></i>Outils de calcul
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
