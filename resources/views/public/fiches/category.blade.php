@@ -38,6 +38,53 @@
     
 </section>
 
+<!-- Sous-catégories disponibles -->
+@if(isset($sousCategories) && $sousCategories->count() > 0)
+<section class="py-4 bg-white">
+    <div class="container">
+        <h3 class="fw-bold mb-4">
+            <i class="fas fa-layer-group me-2 text-info"></i>
+            Sous-catégories
+        </h3>
+        <div class="row g-3">
+            @foreach($sousCategories as $sousCategory)
+                <div class="col-md-6 col-lg-4">
+                    <a href="{{ route('public.fiches.sous-category', [$category, $sousCategory]) }}" 
+                       class="text-decoration-none">
+                        <div class="card h-100 border shadow-sm hover-lift">
+                            <div class="card-body p-3">
+                                <div class="d-flex align-items-center">
+                                    @if($sousCategory->image)
+                                        <img src="{{ $sousCategory->image }}" 
+                                             class="rounded me-3" 
+                                             style="width: 50px; height: 50px; object-fit: cover;"
+                                             alt="{{ $sousCategory->name }}">
+                                    @else
+                                        <div class="bg-info bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 50px; height: 50px;">
+                                            <i class="fas fa-layer-group text-info"></i>
+                                        </div>
+                                    @endif
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">{{ $sousCategory->name }}</h6>
+                                        <small class="text-muted">
+                                            {{ $sousCategory->published_fiches_count }} fiche(s)
+                                        </small>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+        <hr class="my-4">
+    </div>
+</section>
+@endif
+
+
 <!-- Liste des fiches -->
 <section class="py-5 bg-light">
     <div class="container">
@@ -127,51 +174,6 @@
     </div>
 </section>
 
-<!-- Sous-catégories disponibles -->
-@if(isset($sousCategories) && $sousCategories->count() > 0)
-<section class="py-4 bg-white">
-    <div class="container">
-        <h3 class="fw-bold mb-4">
-            <i class="fas fa-layer-group me-2 text-info"></i>
-            Sous-catégories
-        </h3>
-        <div class="row g-3">
-            @foreach($sousCategories as $sousCategory)
-                <div class="col-md-6 col-lg-4">
-                    <a href="{{ route('public.fiches.sous-category', [$category, $sousCategory]) }}" 
-                       class="text-decoration-none">
-                        <div class="card h-100 border shadow-sm hover-lift">
-                            <div class="card-body p-3">
-                                <div class="d-flex align-items-center">
-                                    @if($sousCategory->image)
-                                        <img src="{{ $sousCategory->image }}" 
-                                             class="rounded me-3" 
-                                             style="width: 50px; height: 50px; object-fit: cover;"
-                                             alt="{{ $sousCategory->name }}">
-                                    @else
-                                        <div class="bg-info bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
-                                             style="width: 50px; height: 50px;">
-                                            <i class="fas fa-layer-group text-info"></i>
-                                        </div>
-                                    @endif
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">{{ $sousCategory->name }}</h6>
-                                        <small class="text-muted">
-                                            {{ $sousCategory->published_fiches_count }} fiche(s)
-                                        </small>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-muted"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-        <hr class="my-4">
-    </div>
-</section>
-@endif
 
 
 <!-- Navigation rapide -->
