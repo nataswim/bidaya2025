@@ -40,12 +40,8 @@
 
 <!-- Sous-catégories disponibles -->
 @if(isset($sousCategories) && $sousCategories->count() > 0)
-<section class="py-4 bg-white">
+<section class="py-4">
     <div class="container">
-        <h3 class="fw-bold mb-4">
-            <i class="fas fa-layer-group me-2 text-info"></i>
-            Sous-catégories
-        </h3>
         <div class="row g-3">
             @foreach($sousCategories as $sousCategory)
                 <div class="col-md-6 col-lg-4">
