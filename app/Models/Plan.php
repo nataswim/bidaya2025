@@ -106,28 +106,36 @@ class Plan extends Model
 
     // Accessors
     public function getNiveauLabelAttribute()
-    {
-        return match($this->niveau) {
-            'debutant' => 'Débutant',
-            'intermediaire' => 'Intermédiaire',
-            'avance' => 'Avancé',
-            'special' => 'Spécial',
-            default => 'Non défini'
-        };
+{
+    if (!$this->niveau) {
+        return 'Non défini';
     }
 
-    public function getObjectifLabelAttribute()
-    {
-        return match($this->objectif) {
-            'force' => 'Force',
-            'endurance' => 'Endurance',
-            'perte_poids' => 'Perte de poids',
-            'prise_masse' => 'Prise de masse',
-            'recuperation' => 'Récupération',
-            'mixte' => 'Mixte',
-            default => 'Non défini'
-        };
+    return match($this->niveau) {
+        'debutant' => 'Débutant',
+        'intermediaire' => 'Intermédiaire',
+        'avance' => 'Avancé',
+        'special' => 'Spécial',
+        default => ucfirst($this->niveau)
+    };
+}
+
+public function getObjectifLabelAttribute()
+{
+    if (!$this->objectif) {
+        return 'Non défini';
     }
+
+    return match($this->objectif) {
+        'force' => 'Force',
+        'endurance' => 'Endurance',
+        'perte_poids' => 'Perte de poids',
+        'prise_masse' => 'Prise de masse',
+        'recuperation' => 'Récupération',
+        'mixte' => 'Mixte',
+        default => ucfirst($this->objectif)
+    };
+}
 
     public function getDureeSemainesFormatteeAttribute()
     {

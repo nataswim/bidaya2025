@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSeanceRequest extends FormRequest
+class UpdateSeanceRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -50,7 +50,7 @@ class StoreSeanceRequest extends FormRequest
     {
         $this->merge([
             'is_active' => $this->boolean('is_active'),
-            'ordre' => $this->input('ordre', 0),
+            'ordre' => $this->input('ordre', $this->seance->ordre ?? 0),
         ]);
     }
 }

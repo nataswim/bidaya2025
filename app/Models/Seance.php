@@ -81,27 +81,35 @@ class Seance extends Model
     }
 
     // Accessors
-    public function getNiveauLabelAttribute()
-    {
-        return match($this->niveau) {
-            'debutant' => 'Débutant',
-            'intermediaire' => 'Intermédiaire',
-            'avance' => 'Avancé',
-            'special' => 'Spécial',
-            default => 'Non défini'
-        };
+ public function getNiveauLabelAttribute()
+{
+    if (!$this->niveau) {
+        return '<span class="badge bg-secondary">Non défini</span>';
     }
 
-    public function getTypeSeanceLabelAttribute()
-    {
-        return match($this->type_seance) {
-            'force' => 'Force',
-            'cardio' => 'Cardio',
-            'mixte' => 'Mixte',
-            'recuperation' => 'Récupération',
-            default => 'Non défini'
-        };
+    return match($this->niveau) {
+        'debutant' => 'Débutant',
+        'intermediaire' => 'Intermédiaire',
+        'avance' => 'Avancé',
+        'special' => 'Spécial',
+        default => ucfirst($this->niveau)
+    };
+}
+
+public function getTypeSeanceLabelAttribute()
+{
+    if (!$this->type_seance) {
+        return '<span class="badge bg-secondary">Non défini</span>';
     }
+
+    return match($this->type_seance) {
+        'force' => 'Force',
+        'cardio' => 'Cardio',
+        'mixte' => 'Mixte',
+        'recuperation' => 'Récupération',
+        default => ucfirst($this->type_seance)
+    };
+}
 
     public function getDureeEstimeeFormatteeAttribute()
     {

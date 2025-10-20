@@ -120,137 +120,142 @@
         </div>
     </div>
 
-    <!-- Sidebar -->
-    <div class="col-lg-4">
-        <!-- Paramètres -->
-        <div class="card border-0 shadow-sm mb-4">
-            <div class="card-header bg-gradient-success text-white p-4">
-                <h6 class="mb-0">
-                    <i class="fas fa-cog me-2"></i>Paramètres
-                </h6>
+
+
+<!-- Sidebar -->
+<div class="col-lg-4">
+    <!-- Paramètres -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-gradient-success text-white p-4">
+            <h6 class="mb-0">
+                <i class="fas fa-cog me-2"></i>Paramètres
+            </h6>
+        </div>
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <label for="niveau" class="form-label fw-semibold">
+                    Niveau <small class="text-muted">(optionnel)</small>
+                </label>
+                <select name="niveau" id="niveau" class="form-select @error('niveau') is-invalid @enderror">
+                    <option value="">-- Aucun niveau --</option>
+                    <option value="debutant" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'debutant' ? 'selected' : '' }}>
+                        Débutant
+                    </option>
+                    <option value="intermediaire" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'intermediaire' ? 'selected' : '' }}>
+                        Intermédiaire
+                    </option>
+                    <option value="avance" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'avance' ? 'selected' : '' }}>
+                        Avancé
+                    </option>
+                    <option value="special" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'special' ? 'selected' : '' }}>
+                        Spécial
+                    </option>
+                </select>
+                @error('niveau')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
-            <div class="card-body p-4">
-                <div class="mb-3">
-                    <label for="niveau" class="form-label fw-semibold">Niveau *</label>
-                    <select name="niveau" id="niveau" class="form-select @error('niveau') is-invalid @enderror" required>
-                        <option value="">Choisir un niveau</option>
-                        <option value="debutant" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'debutant' ? 'selected' : '' }}>
-                            Débutant
-                        </option>
-                        <option value="intermediaire" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'intermediaire' ? 'selected' : '' }}>
-                            Intermédiaire
-                        </option>
-                        <option value="avance" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'avance' ? 'selected' : '' }}>
-                            Avancé
-                        </option>
-                        <option value="special" {{ old('niveau', isset($exercice) ? $exercice->niveau : '') === 'special' ? 'selected' : '' }}>
-                            Spécial
-                        </option>
-                    </select>
-                    @error('niveau')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
 
-                <div class="mb-3">
-                    <label for="type_exercice" class="form-label fw-semibold">Type d'exercice *</label>
-                    <select name="type_exercice" id="type_exercice" class="form-select @error('type_exercice') is-invalid @enderror" required>
-                        <option value="">Choisir un type</option>
-                        <option value="cardio" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'cardio' ? 'selected' : '' }}>
-                            Cardio
-                        </option>
-                        <option value="force" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'force' ? 'selected' : '' }}>
-                            Force
-                        </option>
-                        <option value="flexibilite" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'flexibilite' ? 'selected' : '' }}>
-                            Flexibilité
-                        </option>
-                        <option value="equilibre" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'equilibre' ? 'selected' : '' }}>
-                            Équilibre
-                        </option>
-                    </select>
-                    @error('type_exercice')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="mb-3">
+                <label for="type_exercice" class="form-label fw-semibold">
+                    Type d'exercice <small class="text-muted">(optionnel)</small>
+                </label>
+                <select name="type_exercice" id="type_exercice" class="form-select @error('type_exercice') is-invalid @enderror">
+                    <option value="">-- Aucun type --</option>
+                    <option value="cardio" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'cardio' ? 'selected' : '' }}>
+                        Cardio
+                    </option>
+                    <option value="force" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'force' ? 'selected' : '' }}>
+                        Force
+                    </option>
+                    <option value="flexibilite" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'flexibilite' ? 'selected' : '' }}>
+                        Flexibilité
+                    </option>
+                    <option value="equilibre" {{ old('type_exercice', isset($exercice) ? $exercice->type_exercice : '') === 'equilibre' ? 'selected' : '' }}>
+                        Équilibre
+                    </option>
+                </select>
+                @error('type_exercice')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="mb-3">
-                    <label for="ordre" class="form-label fw-semibold">Ordre d'affichage</label>
-                    <input type="number" 
-                           name="ordre" 
-                           id="ordre" 
-                           value="{{ old('ordre', isset($exercice) ? $exercice->ordre : 0) }}"
-                           class="form-control @error('ordre') is-invalid @enderror"
-                           min="0"
-                           placeholder="0">
-                    @error('ordre')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="mb-3">
+                <label for="ordre" class="form-label fw-semibold">Ordre d'affichage</label>
+                <input type="number" 
+                       name="ordre" 
+                       id="ordre" 
+                       value="{{ old('ordre', isset($exercice) ? $exercice->ordre : 0) }}"
+                       class="form-control @error('ordre') is-invalid @enderror"
+                       min="0"
+                       placeholder="0">
+                @error('ordre')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="form-check">
-                    <input type="checkbox" 
-                           name="is_active" 
-                           id="is_active" 
-                           value="1"
-                           {{ old('is_active', isset($exercice) ? $exercice->is_active : true) ? 'checked' : '' }}
-                           class="form-check-input">
-                    <label for="is_active" class="form-check-label">
-                        <i class="fas fa-check-circle text-success me-1"></i>
-                        Exercice actif
-                    </label>
-                </div>
+            <div class="form-check">
+                <input type="checkbox" 
+                       name="is_active" 
+                       id="is_active" 
+                       value="1"
+                       {{ old('is_active', isset($exercice) ? $exercice->is_active : true) ? 'checked' : '' }}
+                       class="form-check-input">
+                <label for="is_active" class="form-check-label">
+                    <i class="fas fa-check-circle text-success me-1"></i>
+                    Exercice actif
+                </label>
             </div>
         </div>
+    </div>
 
-        <!-- Image -->
-        <div class="card border-0 shadow-sm">
-            <div class="card-header bg-gradient-info text-white p-4">
-                <h6 class="mb-0">
-                    <i class="fas fa-image me-2"></i>Image de l'exercice
-                </h6>
-            </div>
-            <div class="card-body p-4">
-                <div class="mb-3">
-                    <label for="image" class="form-label fw-semibold">URL de l'image</label>
-                    <div class="input-group">
-                        <input type="text" 
-                               name="image" 
-                               id="image" 
-                               value="{{ old('image', isset($exercice) ? $exercice->image : '') }}"
-                               class="form-control @error('image') is-invalid @enderror"
-                               placeholder="https://exemple.com/image.jpg ou /storage/media/image.jpg">
-                        <button type="button" 
-                                class="btn btn-outline-primary"
-                                onclick="openMediaSelector('image', 'imagePreview')">
-                            <i class="fas fa-images"></i>
-                        </button>
-                    </div>
-                    <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
-                    @error('image')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+    <!-- Image -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-gradient-info text-white p-4">
+            <h6 class="mb-0">
+                <i class="fas fa-image me-2"></i>Image de l'exercice
+            </h6>
+        </div>
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <label for="image" class="form-label fw-semibold">URL de l'image</label>
+                <div class="input-group">
+                    <input type="text" 
+                           name="image" 
+                           id="image" 
+                           value="{{ old('image', isset($exercice) ? $exercice->image : '') }}"
+                           class="form-control @error('image') is-invalid @enderror"
+                           placeholder="https://exemple.com/image.jpg ou /storage/media/image.jpg">
+                    <button type="button" 
+                            class="btn btn-outline-primary"
+                            onclick="openMediaSelector('image', 'imagePreview')">
+                        <i class="fas fa-images"></i>
+                    </button>
                 </div>
-
-                @if(isset($exercice) && $exercice->image)
-                    <div class="mt-3" id="currentImagePreview">
-                        <small class="text-muted d-block mb-2">Aperçu actuel :</small>
-                        <img src="{{ $exercice->image }}" 
-                             id="imagePreview"
-                             class="img-fluid rounded shadow-sm" 
-                             style="max-height: 150px; object-fit: cover;"
-                             alt="Image actuelle">
-                    </div>
-                @else
-                    <div class="mt-3 d-none" id="currentImagePreview">
-                        <small class="text-muted d-block mb-2">Aperçu :</small>
-                        <img id="imagePreview"
-                             class="img-fluid rounded shadow-sm" 
-                             style="max-height: 150px; object-fit: cover;"
-                             alt="Aperçu">
-                    </div>
-                @endif
+                <div class="form-text">Sélectionnez depuis la médiathèque ou saisissez une URL</div>
+                @error('image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
+
+            @if(isset($exercice) && $exercice->image)
+                <div class="mt-3" id="currentImagePreview">
+                    <small class="text-muted d-block mb-2">Aperçu actuel :</small>
+                    <img src="{{ $exercice->image }}" 
+                         id="imagePreview"
+                         class="img-fluid rounded shadow-sm" 
+                         style="max-height: 150px; object-fit: cover;"
+                         alt="Image actuelle">
+                </div>
+            @else
+                <div class="mt-3 d-none" id="currentImagePreview">
+                    <small class="text-muted d-block mb-2">Aperçu :</small>
+                    <img id="imagePreview"
+                         class="img-fluid rounded shadow-sm" 
+                         style="max-height: 150px; object-fit: cover;"
+                         alt="Aperçu">
+                </div>
+            @endif
         </div>
     </div>
 </div>

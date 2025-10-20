@@ -23,9 +23,8 @@ class CycleController extends Controller
         $this->checkAdminAccess();
         
         $search = $request->input('search');
-        $objectif = $request->input('objectif');
         
-        $query = Cycle::with(['creator']);
+        $query = Cycle::with(['creator'])->withCount(['seances']);
 
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -34,13 +33,9 @@ class CycleController extends Controller
             });
         }
 
-        if ($objectif) {
-            $query->where('objectif', $objectif);
-        }
-
         $cycles = $query->ordered()->paginate(15);
 
-        return view('admin.training.cycles.index', compact('cycles', 'search', 'objectif'));
+        return view('admin.training.cycles.index', compact('cycles', 'search'));
     }
 
     public function create(): View
@@ -57,8 +52,8 @@ class CycleController extends Controller
         $validated = $request->validate([
             'titre' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'duree_semaines' => 'nullable|integer|min:1|max:52',
-            'objectif' => 'required|in:force,endurance,perte_poids,prise_masse,recuperation,mixte',
+            'duree_semaines' => 'nullable|integer|min:1|max:104',
+            'objectif' => 'nullable|string|max:50',
             'conseils' => 'nullable|string',
             'image' => 'nullable|string|max:500',
             'is_active' => 'boolean',
@@ -67,7 +62,7 @@ class CycleController extends Controller
             'seances.*.seance_id' => 'required_with:seances|exists:seances,id',
             'seances.*.ordre' => 'required_with:seances|integer|min:1',
             'seances.*.jour_semaine' => 'nullable|integer|min:1|max:7',
-            'seances.*.semaine_cycle' => 'required_with:seances|integer|min:1|max:52',
+            'seances.*.semaine_cycle' => 'required_with:seances|integer|min:1',
             'seances.*.notes' => 'nullable|string|max:500',
         ]);
 
@@ -114,8 +109,8 @@ class CycleController extends Controller
         $validated = $request->validate([
             'titre' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'duree_semaines' => 'nullable|integer|min:1|max:52',
-            'objectif' => 'required|in:force,endurance,perte_poids,prise_masse,recuperation,mixte',
+            'duree_semaines' => 'nullable|integer|min:1|max:104',
+            'objectif' => 'nullable|string|max:50',
             'conseils' => 'nullable|string',
             'image' => 'nullable|string|max:500',
             'is_active' => 'boolean',
@@ -124,7 +119,7 @@ class CycleController extends Controller
             'seances.*.seance_id' => 'required_with:seances|exists:seances,id',
             'seances.*.ordre' => 'required_with:seances|integer|min:1',
             'seances.*.jour_semaine' => 'nullable|integer|min:1|max:7',
-            'seances.*.semaine_cycle' => 'required_with:seances|integer|min:1|max:52',
+            'seances.*.semaine_cycle' => 'required_with:seances|integer|min:1',
             'seances.*.notes' => 'nullable|string|max:500',
         ]);
 

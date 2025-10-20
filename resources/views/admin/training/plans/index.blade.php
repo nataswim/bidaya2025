@@ -22,42 +22,30 @@
                 </div>
                 
                 <!-- Filtres -->
-                <div class="card-body border-bottom p-4 bg-light">
-                    <form method="GET" class="row g-3">
-                        <div class="col-md-3">
-                            <input type="text" 
-                                   name="search" 
-                                   value="{{ request('search') }}" 
-                                   class="form-control"
-                                   placeholder="Rechercher...">
-                        </div>
-                        <div class="col-md-3">
-                            <select name="niveau" class="form-select">
-                                <option value="">Tous niveaux</option>
-                                <option value="debutant" {{ request('niveau') === 'debutant' ? 'selected' : '' }}>Débutant</option>
-                                <option value="intermediaire" {{ request('niveau') === 'intermediaire' ? 'selected' : '' }}>Intermédiaire</option>
-                                <option value="avance" {{ request('niveau') === 'avance' ? 'selected' : '' }}>Avancé</option>
-                                <option value="special" {{ request('niveau') === 'special' ? 'selected' : '' }}>Spécial</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select name="objectif" class="form-select">
-                                <option value="">Tous objectifs</option>
-                                <option value="force" {{ request('objectif') === 'force' ? 'selected' : '' }}>Force</option>
-                                <option value="endurance" {{ request('objectif') === 'endurance' ? 'selected' : '' }}>Endurance</option>
-                                <option value="perte_poids" {{ request('objectif') === 'perte_poids' ? 'selected' : '' }}>Perte de poids</option>
-                                <option value="prise_masse" {{ request('objectif') === 'prise_masse' ? 'selected' : '' }}>Prise de masse</option>
-                                <option value="recuperation" {{ request('objectif') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
-                                <option value="mixte" {{ request('objectif') === 'mixte' ? 'selected' : '' }}>Mixte</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-filter me-2"></i>Filtrer
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <!-- Filtres -->
+<div class="card-body border-bottom p-4 bg-light">
+    <form method="GET" class="row g-3">
+        <div class="col-md-8">
+            <input type="text" 
+                   name="search" 
+                   value="{{ request('search') }}" 
+                   class="form-control"
+                   placeholder="Rechercher un plan...">
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex gap-1">
+                <button type="submit" class="btn btn-primary flex-fill">
+                    <i class="fas fa-search me-2"></i>Rechercher
+                </button>
+                @if(request('search'))
+                    <a href="{{ route('admin.training.plans.index') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-times"></i>
+                    </a>
+                @endif
+            </div>
+        </div>
+    </form>
+</div>
 
                 <div class="card-body p-0">
                     @if($plans->count() > 0)

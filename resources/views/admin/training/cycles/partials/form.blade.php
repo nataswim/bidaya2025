@@ -127,20 +127,22 @@
                         <h6 class="fw-semibold mb-3">Paramètres</h6>
                         
                         <div class="mb-3">
-                            <label for="objectif" class="form-label fw-semibold">Objectif *</label>
-                            <select name="objectif" id="objectif" class="form-select @error('objectif') is-invalid @enderror" required>
-                                <option value="">Choisir un objectif</option>
-                                <option value="force" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'force' ? 'selected' : '' }}>Force</option>
-                                <option value="endurance" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'endurance' ? 'selected' : '' }}>Endurance</option>
-                                <option value="perte_poids" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'perte_poids' ? 'selected' : '' }}>Perte de poids</option>
-                                <option value="prise_masse" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'prise_masse' ? 'selected' : '' }}>Prise de masse</option>
-                                <option value="recuperation" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
-                                <option value="mixte" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'mixte' ? 'selected' : '' }}>Mixte</option>
-                            </select>
-                            @error('objectif')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+    <label for="objectif" class="form-label fw-semibold">
+        Objectif <small class="text-muted">(optionnel)</small>
+    </label>
+    <select name="objectif" id="objectif" class="form-select @error('objectif') is-invalid @enderror">
+        <option value="">-- Aucun objectif --</option>
+        <option value="force" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'force' ? 'selected' : '' }}>Force</option>
+        <option value="endurance" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'endurance' ? 'selected' : '' }}>Endurance</option>
+        <option value="perte_poids" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'perte_poids' ? 'selected' : '' }}>Perte de poids</option>
+        <option value="prise_masse" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'prise_masse' ? 'selected' : '' }}>Prise de masse</option>
+        <option value="recuperation" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
+        <option value="mixte" {{ old('objectif', isset($cycle) ? $cycle->objectif : '') === 'mixte' ? 'selected' : '' }}>Mixte</option>
+    </select>
+    @error('objectif')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
 
                         <div class="mb-3">
                             <label for="duree_semaines" class="form-label fw-semibold">Durée (semaines)</label>

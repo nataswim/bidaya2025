@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Seance;
 use App\Models\Serie;
+use App\Http\Requests\StoreSeanceRequest;
+use App\Http\Requests\UpdateSeanceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -23,8 +25,6 @@ class SeanceController extends Controller
         $this->checkAdminAccess();
         
         $search = $request->input('search');
-        $niveau = $request->input('niveau');
-        $type = $request->input('type');
         
         $query = Seance::with(['creator']);
 
@@ -35,17 +35,9 @@ class SeanceController extends Controller
             });
         }
 
-        if ($niveau) {
-            $query->where('niveau', $niveau);
-        }
-
-        if ($type) {
-            $query->where('type_seance', $type);
-        }
-
         $seances = $query->ordered()->paginate(15);
 
-        return view('admin.training.seances.index', compact('seances', 'search', 'niveau', 'type'));
+        return view('admin.training.seances.index', compact('seances', 'search'));
     }
 
     public function create(): View
@@ -55,31 +47,11 @@ class SeanceController extends Controller
         return view('admin.training.seances.create', compact('series'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreSeanceRequest $request): RedirectResponse
     {
         $this->checkAdminAccess();
         
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
-            'duree_estimee_minutes' => 'nullable|integer|min:1|max:480',
-            'type_seance' => 'required|in:force,cardio,mixte,recuperation',
-            'materiel_requis' => 'nullable|string',
-            'echauffement' => 'nullable|string',
-            'retour_calme' => 'nullable|string',
-            'image' => 'nullable|string|max:500',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-            'series' => 'nullable|array',
-            'series.*.serie_id' => 'required_with:series|exists:series,id',
-            'series.*.ordre' => 'required_with:series|integer|min:1',
-            'series.*.nombre_series' => 'required_with:series|integer|min:1|max:10',
-            'series.*.notes' => 'nullable|string|max:500',
-        ]);
-
-        $validated['is_active'] = $request->boolean('is_active');
-        $validated['ordre'] = $validated['ordre'] ?? 0;
+        $validated = $request->validated();
 
         $seance = Seance::create($validated);
 
@@ -113,31 +85,11 @@ class SeanceController extends Controller
         return view('admin.training.seances.edit', compact('seance', 'series'));
     }
 
-    public function update(Request $request, Seance $seance): RedirectResponse
+    public function update(UpdateSeanceRequest $request, Seance $seance): RedirectResponse
     {
         $this->checkAdminAccess();
         
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
-            'duree_estimee_minutes' => 'nullable|integer|min:1|max:480',
-            'type_seance' => 'required|in:force,cardio,mixte,recuperation',
-            'materiel_requis' => 'nullable|string',
-            'echauffement' => 'nullable|string',
-            'retour_calme' => 'nullable|string',
-            'image' => 'nullable|string|max:500',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-            'series' => 'nullable|array',
-            'series.*.serie_id' => 'required_with:series|exists:series,id',
-            'series.*.ordre' => 'required_with:series|integer|min:1',
-            'series.*.nombre_series' => 'required_with:series|integer|min:1|max:10',
-            'series.*.notes' => 'nullable|string|max:500',
-        ]);
-
-        $validated['is_active'] = $request->boolean('is_active');
-        $validated['ordre'] = $validated['ordre'] ?? $seance->ordre;
+        $validated = $request->validated();
 
         $seance->update($validated);
 

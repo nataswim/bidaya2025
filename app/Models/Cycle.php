@@ -74,17 +74,21 @@ class Cycle extends Model
 
     // Accessors
     public function getObjectifLabelAttribute()
-    {
-        return match($this->objectif) {
-            'force' => 'Force',
-            'endurance' => 'Endurance',
-            'perte_poids' => 'Perte de poids',
-            'prise_masse' => 'Prise de masse',
-            'recuperation' => 'Récupération',
-            'mixte' => 'Mixte',
-            default => 'Non défini'
-        };
+{
+    if (!$this->objectif) {
+        return 'Non défini';
     }
+
+    return match($this->objectif) {
+        'force' => 'Force',
+        'endurance' => 'Endurance',
+        'perte_poids' => 'Perte de poids',
+        'prise_masse' => 'Prise de masse',
+        'recuperation' => 'Récupération',
+        'mixte' => 'Mixte',
+        default => ucfirst($this->objectif)
+    };
+}
 
     public function getDureeSemainesFormatteeAttribute()
     {

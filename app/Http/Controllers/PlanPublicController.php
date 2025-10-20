@@ -9,67 +9,60 @@ use Illuminate\Http\RedirectResponse;
 
 class PlanPublicController extends Controller
 {
-    public function index(Request $request): View
-    {
-        $search = $request->input('search');
-        $niveau = $request->input('niveau');
-        $objectif = $request->input('objectif');
-        $duree = $request->input('duree');
-        
-        $query = Plan::where('is_public', true)
-            ->where('is_active', true)
-            ->with(['cycles']);
+    
+    
 
-        if ($search) {
-            $query->where(function($q) use ($search) {
-                $q->where('titre', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
-            });
-        }
+public function index(Request $request): View
+{
+    $search = $request->input('search');
+    $duree = $request->input('duree');
+    
+    $query = Plan::where('is_public', true)
+        ->where('is_active', true)
+        ->with(['cycles']);
 
-        if ($niveau) {
-            $query->where('niveau', $niveau);
-        }
-
-        if ($objectif) {
-            $query->where('objectif', $objectif);
-        }
-
-        if ($duree) {
-            switch ($duree) {
-                case 'courte':
-                    $query->where('duree_semaines', '<=', 4);
-                    break;
-                case 'moyenne':
-                    $query->whereBetween('duree_semaines', [5, 12]);
-                    break;
-                case 'longue':
-                    $query->where('duree_semaines', '>', 12);
-                    break;
-            }
-        }
-
-        $plans = $query->orderBy('is_featured', 'desc')
-            ->orderBy('ordre')
-            ->orderBy('titre')
-            ->paginate(12);
-
-        // Plans en vedette pour la sidebar
-        $plansFeatured = Plan::where('is_featured', true)
-            ->where('is_public', true)
-            ->where('is_active', true)
-            ->limit(3)
-            ->get();
-
-        return view('public.plans.index', compact(
-            'plans', 
-            'plansFeatured', 
-            'search', 
-            'niveau', 
-            'objectif', 
-            'duree'
-        ));
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('titre', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%");
+        });
     }
+
+    if ($duree) {
+        switch ($duree) {
+            case 'courte':
+                $query->where('duree_semaines', '<=', 4);
+                break;
+            case 'moyenne':
+                $query->whereBetween('duree_semaines', [5, 12]);
+                break;
+            case 'longue':
+                $query->where('duree_semaines', '>', 12);
+                break;
+        }
+    }
+
+    $plans = $query->orderBy('is_featured', 'desc')
+        ->orderBy('ordre')
+        ->orderBy('titre')
+        ->paginate(12);
+
+    // Plans en vedette pour la sidebar
+    $plansFeatured = Plan::where('is_featured', true)
+        ->where('is_public', true)
+        ->where('is_active', true)
+        ->limit(3)
+        ->get();
+
+    return view('public.plans.index', compact(
+        'plans', 
+        'plansFeatured', 
+        'search', 
+        'duree'
+    ));
+}
+
+    
 
     public function show(Plan $plan): RedirectResponse
     {

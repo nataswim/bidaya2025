@@ -21,34 +21,24 @@ class PlanController extends Controller
     }
 
     public function index(Request $request): View
-    {
-        $this->checkAdminAccess();
-        
-        $search = $request->input('search');
-        $niveau = $request->input('niveau');
-        $objectif = $request->input('objectif');
-        
-        $query = Plan::with(['creator'])->withCount(['users', 'cycles']);
+{
+    $this->checkAdminAccess();
+    
+    $search = $request->input('search');
+    
+    $query = Plan::with(['creator'])->withCount(['users', 'cycles']);
 
-        if ($search) {
-            $query->where(function($q) use ($search) {
-                $q->where('titre', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
-            });
-        }
-
-        if ($niveau) {
-            $query->where('niveau', $niveau);
-        }
-
-        if ($objectif) {
-            $query->where('objectif', $objectif);
-        }
-
-        $plans = $query->ordered()->paginate(15);
-
-        return view('admin.training.plans.index', compact('plans', 'search', 'niveau', 'objectif'));
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('titre', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%");
+        });
     }
+
+    $plans = $query->ordered()->paginate(15);
+
+    return view('admin.training.plans.index', compact('plans', 'search'));
+}
 
     public function create(): View
     {
@@ -57,51 +47,104 @@ class PlanController extends Controller
         return view('admin.training.plans.create', compact('cycles'));
     }
 
-    public function store(Request $request): RedirectResponse
-    {
-        $this->checkAdminAccess();
-        
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
-            'duree_semaines' => 'nullable|integer|min:1|max:104',
-            'objectif' => 'required|in:force,endurance,perte_poids,prise_masse,recuperation,mixte',
-            'prerequis' => 'nullable|string',
-            'conseils_generaux' => 'nullable|string',
-            'image' => 'nullable|string|max:500',
-            'is_public' => 'boolean',
-            'is_featured' => 'boolean',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-            'cycles' => 'nullable|array',
-            'cycles.*.cycle_id' => 'required_with:cycles|exists:cycles,id',
-            'cycles.*.ordre' => 'required_with:cycles|integer|min:1',
-            'cycles.*.semaine_debut' => 'required_with:cycles|integer|min:1|max:104',
-            'cycles.*.notes' => 'nullable|string|max:500',
-        ]);
 
-        $validated['is_public'] = $request->boolean('is_public');
-        $validated['is_featured'] = $request->boolean('is_featured');
-        $validated['is_active'] = $request->boolean('is_active');
-        $validated['ordre'] = $validated['ordre'] ?? 0;
 
-        $plan = Plan::create($validated);
 
-        // Attacher les cycles
-        if (!empty($validated['cycles'])) {
-            foreach ($validated['cycles'] as $cycle) {
-                $plan->cycles()->attach($cycle['cycle_id'], [
-                    'ordre' => $cycle['ordre'],
-                    'semaine_debut' => $cycle['semaine_debut'],
-                    'notes' => $cycle['notes'] ?? null,
-                ]);
-            }
+public function store(Request $request): RedirectResponse
+{
+    $this->checkAdminAccess();
+    
+    $validated = $request->validate([
+        'titre' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'niveau' => 'nullable|string|max:50',
+        'duree_semaines' => 'nullable|integer|min:1|max:104',
+        'objectif' => 'nullable|string|max:50',
+        'prerequis' => 'nullable|string',
+        'conseils_generaux' => 'nullable|string',
+        'image' => 'nullable|string|max:500',
+        'is_public' => 'boolean',
+        'is_featured' => 'boolean',
+        'is_active' => 'boolean',
+        'ordre' => 'nullable|integer|min:0',
+        'cycles' => 'nullable|array',
+        'cycles.*.cycle_id' => 'required_with:cycles|exists:cycles,id',
+        'cycles.*.ordre' => 'required_with:cycles|integer|min:1',
+        'cycles.*.semaine_debut' => 'required_with:cycles|integer|min:1|max:104',
+        'cycles.*.notes' => 'nullable|string|max:500',
+    ]);
+
+    $validated['is_public'] = $request->boolean('is_public');
+    $validated['is_featured'] = $request->boolean('is_featured');
+    $validated['is_active'] = $request->boolean('is_active');
+    $validated['ordre'] = $validated['ordre'] ?? 0;
+
+    $plan = Plan::create($validated);
+
+    // Attacher les cycles
+    if (!empty($validated['cycles'])) {
+        foreach ($validated['cycles'] as $cycle) {
+            $plan->cycles()->attach($cycle['cycle_id'], [
+                'ordre' => $cycle['ordre'],
+                'semaine_debut' => $cycle['semaine_debut'],
+                'notes' => $cycle['notes'] ?? null,
+            ]);
         }
-
-        return redirect()->route('admin.training.plans.index')
-            ->with('success', 'Plan créé avec succès.');
     }
+
+    return redirect()->route('admin.training.plans.index')
+        ->with('success', 'Plan créé avec succès.');
+}
+
+public function update(Request $request, Plan $plan): RedirectResponse
+{
+    $this->checkAdminAccess();
+    
+    $validated = $request->validate([
+        'titre' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'niveau' => 'nullable|string|max:50',
+        'duree_semaines' => 'nullable|integer|min:1|max:104',
+        'objectif' => 'nullable|string|max:50',
+        'prerequis' => 'nullable|string',
+        'conseils_generaux' => 'nullable|string',
+        'image' => 'nullable|string|max:500',
+        'is_public' => 'boolean',
+        'is_featured' => 'boolean',
+        'is_active' => 'boolean',
+        'ordre' => 'nullable|integer|min:0',
+        'cycles' => 'nullable|array',
+        'cycles.*.cycle_id' => 'required_with:cycles|exists:cycles,id',
+        'cycles.*.ordre' => 'required_with:cycles|integer|min:1',
+        'cycles.*.semaine_debut' => 'required_with:cycles|integer|min:1|max:104',
+        'cycles.*.notes' => 'nullable|string|max:500',
+    ]);
+
+    $validated['is_public'] = $request->boolean('is_public');
+    $validated['is_featured'] = $request->boolean('is_featured');
+    $validated['is_active'] = $request->boolean('is_active');
+    $validated['ordre'] = $validated['ordre'] ?? $plan->ordre;
+
+    $plan->update($validated);
+
+    // Resynchroniser les cycles
+    $plan->cycles()->detach();
+    if (!empty($validated['cycles'])) {
+        foreach ($validated['cycles'] as $cycle) {
+            $plan->cycles()->attach($cycle['cycle_id'], [
+                'ordre' => $cycle['ordre'],
+                'semaine_debut' => $cycle['semaine_debut'],
+                'notes' => $cycle['notes'] ?? null,
+            ]);
+        }
+    }
+
+    return redirect()->route('admin.training.plans.index')
+        ->with('success', 'Plan mis à jour avec succès.');
+}
+
+
+
 
     public function show(Plan $plan): View
     {
@@ -118,52 +161,15 @@ class PlanController extends Controller
         return view('admin.training.plans.edit', compact('plan', 'cycles'));
     }
 
-    public function update(Request $request, Plan $plan): RedirectResponse
-    {
-        $this->checkAdminAccess();
-        
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
-            'duree_semaines' => 'nullable|integer|min:1|max:104',
-            'objectif' => 'required|in:force,endurance,perte_poids,prise_masse,recuperation,mixte',
-            'prerequis' => 'nullable|string',
-            'conseils_generaux' => 'nullable|string',
-            'image' => 'nullable|string|max:500',
-            'is_public' => 'boolean',
-            'is_featured' => 'boolean',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-            'cycles' => 'nullable|array',
-            'cycles.*.cycle_id' => 'required_with:cycles|exists:cycles,id',
-            'cycles.*.ordre' => 'required_with:cycles|integer|min:1',
-            'cycles.*.semaine_debut' => 'required_with:cycles|integer|min:1|max:104',
-            'cycles.*.notes' => 'nullable|string|max:500',
-        ]);
 
-        $validated['is_public'] = $request->boolean('is_public');
-        $validated['is_featured'] = $request->boolean('is_featured');
-        $validated['is_active'] = $request->boolean('is_active');
-        $validated['ordre'] = $validated['ordre'] ?? $plan->ordre;
 
-        $plan->update($validated);
 
-        // Resynchroniser les cycles
-        $plan->cycles()->detach();
-        if (!empty($validated['cycles'])) {
-            foreach ($validated['cycles'] as $cycle) {
-                $plan->cycles()->attach($cycle['cycle_id'], [
-                    'ordre' => $cycle['ordre'],
-                    'semaine_debut' => $cycle['semaine_debut'],
-                    'notes' => $cycle['notes'] ?? null,
-                ]);
-            }
-        }
 
-        return redirect()->route('admin.training.plans.index')
-            ->with('success', 'Plan mis à jour avec succès.');
-    }
+
+
+
+    
+    
 
     public function destroy(Plan $plan): RedirectResponse
     {

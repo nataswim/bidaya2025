@@ -16,9 +16,9 @@ class StorePlanRequest extends FormRequest
         return [
             'titre' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
+            'niveau' => 'nullable|string|max:50',
             'duree_semaines' => 'nullable|integer|min:1|max:104',
-            'objectif' => 'required|in:force,endurance,perte_poids,prise_masse,recuperation,mixte',
+            'objectif' => 'nullable|string|max:50',
             'prerequis' => 'nullable|string',
             'conseils_generaux' => 'nullable|string',
             'image' => 'nullable|string|max:500',
@@ -38,10 +38,6 @@ class StorePlanRequest extends FormRequest
     {
         return [
             'titre.required' => 'Le titre du plan est obligatoire.',
-            'niveau.required' => 'Le niveau est obligatoire.',
-            'niveau.in' => 'Le niveau doit être : débutant, intermédiaire, avancé ou spécial.',
-            'objectif.required' => 'L\'objectif est obligatoire.',
-            'objectif.in' => 'L\'objectif doit être : force, endurance, perte de poids, prise de masse, récupération ou mixte.',
             'duree_semaines.max' => 'La durée ne peut pas dépasser 2 ans.',
             'cycles.*.cycle_id.required_with' => 'Le cycle est obligatoire.',
             'cycles.*.cycle_id.exists' => 'Un cycle sélectionné n\'existe pas.',

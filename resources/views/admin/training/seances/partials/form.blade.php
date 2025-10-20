@@ -168,33 +168,45 @@
                 </h6>
             </div>
             <div class="card-body p-4">
-                <div class="mb-3">
-                    <label for="niveau" class="form-label fw-semibold">Niveau *</label>
-                    <select name="niveau" id="niveau" class="form-select @error('niveau') is-invalid @enderror" required>
-                        <option value="">Choisir un niveau</option>
-                        <option value="debutant" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'debutant' ? 'selected' : '' }}>Débutant</option>
-                        <option value="intermediaire" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'intermediaire' ? 'selected' : '' }}>Intermédiaire</option>
-                        <option value="avance" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'avance' ? 'selected' : '' }}>Avancé</option>
-                        <option value="special" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'special' ? 'selected' : '' }}>Spécial</option>
-                    </select>
-                    @error('niveau')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+
+
+
 
                 <div class="mb-3">
-                    <label for="type_seance" class="form-label fw-semibold">Type de séance *</label>
-                    <select name="type_seance" id="type_seance" class="form-select @error('type_seance') is-invalid @enderror" required>
-                        <option value="">Choisir un type</option>
-                        <option value="force" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'force' ? 'selected' : '' }}>Force</option>
-                        <option value="cardio" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'cardio' ? 'selected' : '' }}>Cardio</option>
-                        <option value="mixte" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'mixte' ? 'selected' : '' }}>Mixte</option>
-                        <option value="recuperation" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
-                    </select>
-                    @error('type_seance')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+    <label for="niveau" class="form-label fw-semibold">
+        Niveau <small class="text-muted">(optionnel)</small>
+    </label>
+    <select name="niveau" id="niveau" class="form-select @error('niveau') is-invalid @enderror">
+        <option value="">-- Aucun niveau --</option>
+        <option value="debutant" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'debutant' ? 'selected' : '' }}>Débutant</option>
+        <option value="intermediaire" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'intermediaire' ? 'selected' : '' }}>Intermédiaire</option>
+        <option value="avance" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'avance' ? 'selected' : '' }}>Avancé</option>
+        <option value="special" {{ old('niveau', isset($seance) ? $seance->niveau : '') === 'special' ? 'selected' : '' }}>Spécial</option>
+    </select>
+    @error('niveau')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
+    <label for="type_seance" class="form-label fw-semibold">
+        Type de séance <small class="text-muted">(optionnel)</small>
+    </label>
+    <select name="type_seance" id="type_seance" class="form-select @error('type_seance') is-invalid @enderror">
+        <option value="">-- Aucun type --</option>
+        <option value="force" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'force' ? 'selected' : '' }}>Force</option>
+        <option value="cardio" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'cardio' ? 'selected' : '' }}>Cardio</option>
+        <option value="mixte" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'mixte' ? 'selected' : '' }}>Mixte</option>
+        <option value="recuperation" {{ old('type_seance', isset($seance) ? $seance->type_seance : '') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
+    </select>
+    @error('type_seance')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+
+
+
 
                 <div class="mb-3">
                     <label for="ordre" class="form-label">Ordre</label>

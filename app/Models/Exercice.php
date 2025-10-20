@@ -70,39 +70,47 @@ class Exercice extends Model
         return $query->orderBy('ordre')->orderBy('titre');
     }
 
-    // Accessors
+    // Accessors - avec gestion des valeurs NULL
     public function getNiveauLabelAttribute(): string
-{
-    return match($this->niveau) {
-        'debutant' => 'Débutant',
-        'intermediaire' => 'Intermédiaire', 
-        'avance' => 'Avancé',
-        'special' => 'Spécial',
-        default => 'Non défini'
-    };
-}
+    {
+        if (!$this->niveau) {
+            return '<span class="badge bg-secondary">Non défini</span>';
+        }
 
-   public function getTypeExerciceLabelAttribute(): string
-{
-    return match($this->type_exercice) {
-        'cardio' => 'Cardio',
-        'force' => 'Force',
-        'flexibilite' => 'Flexibilité',
-        'equilibre' => 'Équilibre',
-        default => 'Non défini'
-    };
-}
+        return match($this->niveau) {
+            'debutant' => 'Débutant',
+            'intermediaire' => 'Intermédiaire', 
+            'avance' => 'Avancé',
+            'special' => 'Spécial',
+            default => ucfirst($this->niveau)
+        };
+    }
+
+    public function getTypeExerciceLabelAttribute(): string
+    {
+        if (!$this->type_exercice) {
+            return '<span class="badge bg-secondary">Non défini</span>';
+        }
+
+        return match($this->type_exercice) {
+            'cardio' => 'Cardio',
+            'force' => 'Force',
+            'flexibilite' => 'Flexibilité',
+            'equilibre' => 'Équilibre',
+            default => ucfirst($this->type_exercice)
+        };
+    }
 
     public function getMusclesCiblesFormattedAttribute(): string
-{
-    if (!$this->muscles_cibles || !is_array($this->muscles_cibles)) {
-        return 'Non spécifié';
+    {
+        if (!$this->muscles_cibles || !is_array($this->muscles_cibles) || count($this->muscles_cibles) === 0) {
+            return 'Non spécifié';
+        }
+        
+        return collect($this->muscles_cibles)
+            ->map(fn($muscle) => ucfirst($muscle))
+            ->join(', ');
     }
-    
-    return collect($this->muscles_cibles)
-        ->map(fn($muscle) => ucfirst($muscle))
-        ->join(', ');
-}
 
     // Boot method
     protected static function boot()

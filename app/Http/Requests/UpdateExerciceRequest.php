@@ -17,12 +17,12 @@ class UpdateExerciceRequest extends FormRequest
             'titre' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'nullable|string|max:500',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
+            'niveau' => 'nullable|string|max:50',
             'muscles_cibles' => 'nullable|array',
             'muscles_cibles.*' => 'string|max:50',
             'consignes_securite' => 'nullable|string',
             'video_url' => 'nullable|url|max:500',
-            'type_exercice' => 'required|in:cardio,force,flexibilite,equilibre',
+            'type_exercice' => 'nullable|string|max:50',
             'is_active' => 'boolean',
             'ordre' => 'nullable|integer|min:0',
         ];
@@ -33,10 +33,6 @@ class UpdateExerciceRequest extends FormRequest
         return [
             'titre.required' => 'Le titre de l\'exercice est obligatoire.',
             'description.required' => 'La description est obligatoire.',
-            'niveau.required' => 'Le niveau est obligatoire.',
-            'niveau.in' => 'Le niveau doit être : débutant, intermédiaire, avancé ou spécial.',
-            'type_exercice.required' => 'Le type d\'exercice est obligatoire.',
-            'type_exercice.in' => 'Le type doit être : cardio, force, flexibilité ou équilibre.',
             'video_url.url' => 'L\'URL de la vidéo doit être valide.',
             'muscles_cibles.*.string' => 'Chaque muscle ciblé doit être une chaîne de caractères.',
         ];

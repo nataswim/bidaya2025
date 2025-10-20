@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exercice;
+use App\Http\Requests\StoreExerciceRequest;
+use App\Http\Requests\UpdateExerciceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -22,10 +24,8 @@ class ExerciceController extends Controller
         $this->checkAdminAccess();
         
         $search = $request->input('search');
-        $niveau = $request->input('niveau');
-        $type = $request->input('type');
         
-        $query = Exercice::with(['creator']);
+        $query = Exercice::with(['creator'])->withCount(['series']);
 
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -34,17 +34,9 @@ class ExerciceController extends Controller
             });
         }
 
-        if ($niveau) {
-            $query->where('niveau', $niveau);
-        }
-
-        if ($type) {
-            $query->where('type_exercice', $type);
-        }
-
         $exercices = $query->ordered()->paginate(15);
 
-        return view('admin.training.exercices.index', compact('exercices', 'search', 'niveau', 'type'));
+        return view('admin.training.exercices.index', compact('exercices', 'search'));
     }
 
     public function create(): View
@@ -53,26 +45,11 @@ class ExerciceController extends Controller
         return view('admin.training.exercices.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreExerciceRequest $request): RedirectResponse
     {
         $this->checkAdminAccess();
         
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|string|max:500',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
-            'muscles_cibles' => 'nullable|array',
-            'muscles_cibles.*' => 'string|max:50',
-            'consignes_securite' => 'nullable|string',
-            'video_url' => 'nullable|url|max:500',
-            'type_exercice' => 'required|in:cardio,force,flexibilite,equilibre',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-        ]);
-
-        $validated['is_active'] = $request->boolean('is_active');
-        $validated['ordre'] = $validated['ordre'] ?? 0;
+        $validated = $request->validated();
 
         Exercice::create($validated);
 
@@ -93,26 +70,11 @@ class ExerciceController extends Controller
         return view('admin.training.exercices.edit', compact('exercice'));
     }
 
-    public function update(Request $request, Exercice $exercice): RedirectResponse
+    public function update(UpdateExerciceRequest $request, Exercice $exercice): RedirectResponse
     {
         $this->checkAdminAccess();
         
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|string|max:500',
-            'niveau' => 'required|in:debutant,intermediaire,avance,special',
-            'muscles_cibles' => 'nullable|array',
-            'muscles_cibles.*' => 'string|max:50',
-            'consignes_securite' => 'nullable|string',
-            'video_url' => 'nullable|url|max:500',
-            'type_exercice' => 'required|in:cardio,force,flexibilite,equilibre',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-        ]);
-
-        $validated['is_active'] = $request->boolean('is_active');
-        $validated['ordre'] = $validated['ordre'] ?? $exercice->ordre;
+        $validated = $request->validated();
 
         $exercice->update($validated);
 

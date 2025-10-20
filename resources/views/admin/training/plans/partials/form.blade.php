@@ -137,35 +137,43 @@
                 </h6>
             </div>
             <div class="card-body p-4">
-                <div class="mb-3">
-                    <label for="niveau" class="form-label fw-semibold">Niveau *</label>
-                    <select name="niveau" id="niveau" class="form-select @error('niveau') is-invalid @enderror" required>
-                        <option value="">Choisir un niveau</option>
-                        <option value="debutant" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'debutant' ? 'selected' : '' }}>Débutant</option>
-                        <option value="intermediaire" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'intermediaire' ? 'selected' : '' }}>Intermédiaire</option>
-                        <option value="avance" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'avance' ? 'selected' : '' }}>Avancé</option>
-                        <option value="special" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'special' ? 'selected' : '' }}>Spécial</option>
-                    </select>
-                    @error('niveau')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
 
-                <div class="mb-3">
-                    <label for="objectif" class="form-label fw-semibold">Objectif *</label>
-                    <select name="objectif" id="objectif" class="form-select @error('objectif') is-invalid @enderror" required>
-                        <option value="">Choisir un objectif</option>
-                        <option value="force" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'force' ? 'selected' : '' }}>Force</option>
-                        <option value="endurance" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'endurance' ? 'selected' : '' }}>Endurance</option>
-                        <option value="perte_poids" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'perte_poids' ? 'selected' : '' }}>Perte de poids</option>
-                        <option value="prise_masse" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'prise_masse' ? 'selected' : '' }}>Prise de masse</option>
-                        <option value="recuperation" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
-                        <option value="mixte" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'mixte' ? 'selected' : '' }}>Mixte</option>
-                    </select>
-                    @error('objectif')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+<div class="mb-3">
+    <label for="niveau" class="form-label fw-semibold">
+        Niveau <small class="text-muted">(optionnel)</small>
+    </label>
+    <select name="niveau" id="niveau" class="form-select @error('niveau') is-invalid @enderror">
+        <option value="">-- Aucun niveau --</option>
+        <option value="debutant" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'debutant' ? 'selected' : '' }}>Débutant</option>
+        <option value="intermediaire" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'intermediaire' ? 'selected' : '' }}>Intermédiaire</option>
+        <option value="avance" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'avance' ? 'selected' : '' }}>Avancé</option>
+        <option value="special" {{ old('niveau', isset($plan) ? $plan->niveau : '') === 'special' ? 'selected' : '' }}>Spécial</option>
+    </select>
+    @error('niveau')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
+    <label for="objectif" class="form-label fw-semibold">
+        Objectif <small class="text-muted">(optionnel)</small>
+    </label>
+    <select name="objectif" id="objectif" class="form-select @error('objectif') is-invalid @enderror">
+        <option value="">-- Aucun objectif --</option>
+        <option value="force" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'force' ? 'selected' : '' }}>Force</option>
+        <option value="endurance" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'endurance' ? 'selected' : '' }}>Endurance</option>
+        <option value="perte_poids" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'perte_poids' ? 'selected' : '' }}>Perte de poids</option>
+        <option value="prise_masse" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'prise_masse' ? 'selected' : '' }}>Prise de masse</option>
+        <option value="recuperation" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'recuperation' ? 'selected' : '' }}>Récupération</option>
+        <option value="mixte" {{ old('objectif', isset($plan) ? $plan->objectif : '') === 'mixte' ? 'selected' : '' }}>Mixte</option>
+    </select>
+    @error('objectif')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+
+
 
                 <div class="mb-3">
                     <label for="duree_semaines" class="form-label fw-semibold">Durée totale (semaines)</label>

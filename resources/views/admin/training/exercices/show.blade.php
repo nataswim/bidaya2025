@@ -27,81 +27,81 @@
                 </div>
                 <div class="card-body p-4">
                     @if($exercice->image)
-                        <div class="mb-4">
-                            <h6 class="fw-semibold mb-3">Image de l'exercice</h6>
-                            <img src="{{ $exercice->image }}" 
-                                 alt="{{ $exercice->titre }}" 
-                                 class="img-fluid rounded shadow-sm"
-                                 style="max-height: 300px;">
-                        </div>
+                    <div class="mb-4">
+                        <h6 class="fw-semibold mb-3">Image de l'exercice</h6>
+                        <img src="{{ $exercice->image }}"
+                            alt="{{ $exercice->titre }}"
+                            class="img-fluid rounded shadow-sm"
+                            style="max-height: 300px;">
+                    </div>
                     @endif
 
                     <div class="mb-4">
-    <h6 class="fw-semibold mb-3">Description</h6>
-    <div class="content-display">
-        {!! $exercice->description !!}
-    </div>
-</div>
+                        <h6 class="fw-semibold mb-3">Description</h6>
+                        <div class="content-display">
+                            {!! $exercice->description !!}
+                        </div>
+                    </div>
 
                     @if($exercice->consignes_securite)
-    <div class="mb-4">
-        <h6 class="fw-semibold mb-3 text-warning">
-            <i class="fas fa-exclamation-triangle me-2"></i>Consignes de sécurité
-        </h6>
-        <div class="content-display">
-            {!! $exercice->consignes_securite !!}
-        </div>
-    </div>
-@endif
+                    <div class="mb-4">
+                        <h6 class="fw-semibold mb-3 text-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Consignes de sécurité
+                        </h6>
+                        <div class="content-display">
+                            {!! $exercice->consignes_securite !!}
+                        </div>
+                    </div>
+                    @endif
 
                     @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
-                        <div class="mb-4">
-                            <h6 class="fw-semibold mb-3">Muscles ciblés</h6>
-                            <div class="d-flex flex-wrap gap-2">
-                                @foreach($exercice->muscles_cibles as $muscle)
-                                    <span class="badge bg-primary-subtle text-primary">{{ ucfirst($muscle) }}</span>
-                                @endforeach
-                            </div>
+                    <div class="mb-4">
+                        <h6 class="fw-semibold mb-3">Muscles ciblés</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach($exercice->muscles_cibles as $muscle)
+                            <span class="badge bg-primary-subtle text-primary">{{ ucfirst($muscle) }}</span>
+                            @endforeach
                         </div>
+                    </div>
                     @endif
 
                     @if($exercice->video_url)
-                        <div class="mb-4">
-                            <h6 class="fw-semibold mb-3">Vidéo explicative</h6>
-                            <a href="{{ $exercice->video_url }}" target="_blank" class="btn btn-outline-primary">
-                                <i class="fas fa-play me-2"></i>Voir la vidéo
-                            </a>
-                        </div>
+                    <div class="mb-4">
+                        <h6 class="fw-semibold mb-3">Vidéo explicative</h6>
+                        <a href="{{ $exercice->video_url }}" target="_blank" class="btn btn-outline-primary">
+                            <i class="fas fa-play me-2"></i>Voir la vidéo
+                        </a>
+                    </div>
                     @endif
 
                     <!-- Séries utilisant cet exercice -->
                     @if($exercice->series->count() > 0)
-                        <div class="border-top pt-4">
-                            <h6 class="fw-semibold mb-3 text-primary">
-                                <i class="fas fa-list-ol me-2"></i>Séries utilisant cet exercice ({{ $exercice->series->count() }})
-                            </h6>
-                            <div class="row g-2">
-                                @foreach($exercice->series as $serie)
-                                    <div class="col-md-6">
-                                        <div class="card border">
-                                            <div class="card-body p-3">
-                                                <h6 class="mb-1">
-                                                    <a href="{{ route('admin.training.series.show', $serie) }}" class="text-decoration-none">
-                                                        {{ $serie->nom ?: 'Série #' . $serie->id }}
-                                                    </a>
-                                                </h6>
-                                                <div class="small text-muted">
-                                                    {{ $serie->nom_complet }}
-                                                </div>
-                                                <div class="small text-muted">
-                                                    Repos: {{ $serie->repos_formate }}
-                                                </div>
-                                            </div>
+                    <div class="border-top pt-4">
+                        <h6 class="fw-semibold mb-3 text-primary">
+                            <i class="fas fa-list-ol me-2"></i>Séries utilisant cet exercice ({{ $exercice->series->count() }})
+                        </h6>
+                        <div class="row g-2">
+                            @foreach($exercice->series as $serie)
+                            <div class="col-md-6">
+                                <div class="card border">
+                                    <div class="card-body p-3">
+                                        <h6 class="mb-1">
+                                            <a href="{{ route('admin.training.series.show', $serie) }}" class="text-decoration-none">
+                                                {{ $serie->nom ?: 'Série #' . $serie->id }}
+                                            </a>
+                                        </h6>
+                                        <div class="small text-muted">
+                                            {{ $serie->nom_complet }}
+                                        </div>
+                                        <div class="small text-muted">
+                                            Repos: {{ $serie->repos_formate }}
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
+                            @endforeach
                         </div>
+                    </div>
                     @endif
                 </div>
             </div>
@@ -120,21 +120,36 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <small class="text-muted d-block">Niveau</small>
-                            <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}-subtle text-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} fs-6">
-                                {{ $exercice->niveau_label }}
+                            @if($exercice->niveau)
+                            @php
+                            $badgeColor = match($exercice->niveau) {
+                            'debutant' => 'success',
+                            'avance' => 'danger',
+                            default => 'warning'
+                            };
+                            @endphp
+                            <span class="badge bg-{{ $badgeColor }}-subtle text-{{ $badgeColor }} fs-6">
+                                {{ ucfirst($exercice->niveau) }}
                             </span>
+                            @else
+                            <span class="badge bg-secondary fs-6">Non défini</span>
+                            @endif
                         </div>
-                        
+
                         <div class="col-12">
                             <small class="text-muted d-block">Type d'exercice</small>
-                            <strong>{{ $exercice->type_exercice_label }}</strong>
+                            @if($exercice->type_exercice)
+                            <strong>{{ ucfirst($exercice->type_exercice) }}</strong>
+                            @else
+                            <span class="text-muted">Non défini</span>
+                            @endif
                         </div>
-                        
+
                         <div class="col-6">
                             <small class="text-muted d-block">Ordre</small>
                             <strong>{{ $exercice->ordre }}</strong>
                         </div>
-                        
+
                         <div class="col-6">
                             <small class="text-muted d-block">Utilisations</small>
                             <strong class="text-primary">{{ $exercice->series->count() }}</strong>
@@ -153,22 +168,22 @@
                 <div class="card-body p-3">
                     <div class="row g-3 small">
                         @if($exercice->creator)
-                            <div class="col-12">
-                                <small class="text-muted d-block">Créé par</small>
-                                <strong>{{ $exercice->creator->name }}</strong>
-                            </div>
+                        <div class="col-12">
+                            <small class="text-muted d-block">Créé par</small>
+                            <strong>{{ $exercice->creator->name }}</strong>
+                        </div>
                         @endif
-                        
+
                         <div class="col-12">
                             <small class="text-muted d-block">Date de création</small>
                             <strong>{{ $exercice->created_at->format('d/m/Y H:i') }}</strong>
                         </div>
-                        
+
                         @if($exercice->updated_at && $exercice->updated_at != $exercice->created_at)
-                            <div class="col-12">
-                                <small class="text-muted d-block">Dernière modification</small>
-                                <strong>{{ $exercice->updated_at->format('d/m/Y H:i') }}</strong>
-                            </div>
+                        <div class="col-12">
+                            <small class="text-muted d-block">Dernière modification</small>
+                            <strong>{{ $exercice->updated_at->format('d/m/Y H:i') }}</strong>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -185,11 +200,11 @@
                             <i class="fas fa-arrow-left me-2"></i>Retour à la liste
                         </a>
                     </div>
-                    
+
                     <hr class="my-3">
-                    
-                    <form method="POST" action="{{ route('admin.training.exercices.destroy', $exercice) }}" 
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet exercice ?')">
+
+                    <form method="POST" action="{{ route('admin.training.exercices.destroy', $exercice) }}"
+                        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet exercice ?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger w-100">
@@ -204,82 +219,82 @@
 @endsection
 @push('styles')
 <style>
-/* Styles pour le contenu HTML de Quill */
-.content-display {
-    line-height: 1.6;
-    overflow-y: auto;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    background: #f9fafb;
-}
+    /* Styles pour le contenu HTML de Quill */
+    .content-display {
+        line-height: 1.6;
+        overflow-y: auto;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: #f9fafb;
+    }
 
-.content-display h1,
-.content-display h2,
-.content-display h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
+    .content-display h1,
+    .content-display h2,
+    .content-display h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
 
-.content-display p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
+    .content-display p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
 
-.content-display ul,
-.content-display ol {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-}
+    .content-display ul,
+    .content-display ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
 
-.content-display blockquote {
-    border-left: 4px solid var(--bs-primary);
-    padding-left: 1rem;
-    margin: 1rem 0;
-    font-style: italic;
-    color: #6c757d;
-}
+    .content-display blockquote {
+        border-left: 4px solid var(--bs-primary);
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        color: #6c757d;
+    }
 
-.content-display img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 1rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    .content-display img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
 
-.content-display pre {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 4px;
-    border-left: 4px solid #0ea5e9;
-    overflow-x: auto;
-    margin: 1rem 0;
-}
+    .content-display pre {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 4px;
+        border-left: 4px solid #0ea5e9;
+        overflow-x: auto;
+        margin: 1rem 0;
+    }
 </style>
 @endpush
 
 @push('styles')
 <style>
-.bg-gradient-primary {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
-}
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+    }
 
-.bg-gradient-success {
-    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-}
+    .bg-gradient-success {
+        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+    }
 
-.bg-gradient-info {
-    background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
-}
+    .bg-gradient-info {
+        background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+    }
 
-.bg-gradient-warning {
-    background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
-}
+    .bg-gradient-warning {
+        background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+    }
 
-.bg-gradient-secondary {
-    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-}
+    .bg-gradient-secondary {
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    }
 </style>
 @endpush
