@@ -5,7 +5,7 @@
 
 @section('content')
 <!--  Section -->
-<section class="bg-primary text-white py-5">
+<section class="text-white py-5" style=" background-color: #04adb9; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-top: 20px solid #04adb9; border-bottom: 20px solid #04adb9; ">
     <div class="container-lg py-4">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
@@ -183,7 +183,7 @@
                                 Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-success fw-bold">Voir les exercices →</span>
+                                <span class="btn btn-danger text-white d-flex align-items-center px-4">Voir les exercices →</span>
                             </div>
                         </div>
                     </div>
@@ -303,7 +303,7 @@
 
 
 <!-- Temoignages -->
-<section class="py-5 text-white" style="background: linear-gradient(177deg, #17a0c1 0%, #0f5c78 100%);">
+<section class="py-5 text-white" style="background: #04adb9;">
     <div class="container-lg">
         <div class="row g-4">
             @php
@@ -381,7 +381,7 @@
 </section>
 
 <!-- Dernieres Publications -->
-<section class="py-5 text-white" style="background: linear-gradient(340deg, #0c8983 0%, #0f5c78 100%);border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
@@ -445,8 +445,7 @@
 
 
 
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
         <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
@@ -454,7 +453,7 @@
                         <h5 class="mb-0">
                             Fiches
                         </h5>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-light d-flex align-items-center px-4">
+                        <a href="{{ route('public.fiches.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
                             Toutes les fiches
                         </a>
                     </div>
@@ -518,7 +517,7 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: linear-gradient(340deg, #0c8983 0%, #0f5c78 100%);border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
 
        <div class="container-lg">
             <div class="row mb-4">
@@ -527,7 +526,7 @@
                         <h5 class="mb-0">
                             Entraînement
                         </h5>
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-light d-flex align-items-center px-4">
+                        <a href="{{ route('public.workouts.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
                             Toutes les séances
                         </a>
                     </div>
@@ -591,8 +590,8 @@
             </div>
         </div>
 </section>
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+
 <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
@@ -600,7 +599,7 @@
                         <h5 class="mb-0">
                             Documents
                         </h5>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-light d-flex align-items-center px-4">
+                        <a href="{{ route('ebook.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
                             Tous les documents
                         </a>
                     </div>
@@ -662,7 +661,7 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: linear-gradient(340deg, #0c8983 0%, #0f5c78 100%);border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
 
 <!-- Derniers Exercices -->
         <div class="container-lg">
@@ -672,7 +671,7 @@
                         <h5 class="mb-0">
                         Exercices
                         </h5>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-light d-flex align-items-center px-4">
+                        <a href="{{ route('exercices.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
                             Tous les exercices
                         </a>
                     </div>
@@ -692,14 +691,6 @@
                     <div class="card border-0 shadow-sm h-100 hover-lift">
 
                         <div class="card-body p-3">
-                            <div class="d-flex gap-1 mb-2">
-                                <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}-subtle text-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} small">
-                                    {{ $exercice->niveau_label }}
-                                </span>
-                                <span class="badge bg-primary-subtle text-primary small">
-                                    {{ $exercice->type_exercice_label }}
-                                </span>
-                            </div>
                             <h6 class="card-title mb-2">
                                 <a href="{{ route('exercices.show', $exercice) }}"
                                     class="text-decoration-none text-dark">
@@ -768,7 +759,7 @@
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="text-warning fw-bold text-decoration-none">
-                                Med Hassan El Haouat
+                                M H El Haouat
                                 <i class="fas fa-external-link-alt ms-1 small"></i>
                             </a>
                         </p>

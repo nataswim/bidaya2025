@@ -134,6 +134,15 @@ Route::prefix('fiches')->name('public.fiches.')->group(function () {
 Route::prefix('exercices')->name('exercices.')->group(function () {
     Route::get('/', [ExercicePublicController::class, 'index'])->name('index');
     Route::get('/recherche', [ExercicePublicController::class, 'search'])->name('search');
+    
+    // Route catégorie
+    Route::get('/categorie/{category}', [ExercicePublicController::class, 'category'])->name('category');
+    
+    // Route sous-catégorie
+    Route::get('/categorie/{category}/sous-categorie/{sousCategory}', [ExercicePublicController::class, 'sousCategory'])
+        ->name('sous-category');
+    
+    // Route show (doit être en dernier pour éviter les conflits)
     Route::get('/{exercice}', [ExercicePublicController::class, 'show'])->name('show');
 });
 

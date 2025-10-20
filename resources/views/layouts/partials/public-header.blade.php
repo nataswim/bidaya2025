@@ -1,6 +1,6 @@
 {{-- Bandeau utilisateur connecté --}}
 @auth
-<div class="user-top-banner py-2" style="background-color: #EA6226;">
+<div class="user-top-banner py-2" style="background-color: #0066af;border-top: 20px solid #04adb9;border-left: 20px solid #fbf7f1;border-right: 20px solid #fbf7f1;">
     <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
         {{-- Lien Mon espace --}}
         <a href="{{ route('user.dashboard') }}" 
@@ -29,7 +29,7 @@
 @endauth
 
 {{-- Navigation principale existante --}}
-<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0f5c78;border-top: 20px solid #0f5c78;">
+<nav class="navbar navbar-expand-lg sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #04adb9;border-top: 20px solid #04adb9;">
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
