@@ -50,9 +50,8 @@ use App\Http\Controllers\PublicVideoController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\FichesSousCategoryController;
-
-
-
+use App\Http\Controllers\Admin\ExerciceCategoryController;
+use App\Http\Controllers\Admin\ExerciceSousCategoryController;
 
 
 
@@ -397,7 +396,17 @@ Route::delete('training/plans/{plan}/unassign-user/{user}', [\App\Http\Controlle
 Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Controllers\Admin\PlanController::class, 'updateAssignation'])
     ->name('training.plans.update-assignation');
 
-
+    // Gestion des catégories d'exercices
+    Route::resource('exercice-categories', \App\Http\Controllers\Admin\ExerciceCategoryController::class)
+        ->parameters(['exercice-categories' => 'exerciceCategory']);
+    
+    // Gestion des sous-catégories d'exercices
+    Route::resource('exercice-sous-categories', \App\Http\Controllers\Admin\ExerciceSousCategoryController::class)
+        ->parameters(['exercice-sous-categories' => 'exerciceSousCategory']);
+    
+    // API pour récupérer les sous-catégories d'une catégorie (pour select dynamique)
+    Route::get('api/exercice-sous-categories/by-category', [\App\Http\Controllers\Admin\ExerciceSousCategoryController::class, 'apiByCategory'])
+        ->name('exercice-sous-categories.api.by-category');
 
 
     // ========== ROUTES VIDÉOS ADMIN ==========

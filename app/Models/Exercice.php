@@ -11,27 +11,31 @@ class Exercice extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'titre',
-        'description',
-        'image',
-        'niveau',
-        'muscles_cibles',
-        'consignes_securite',
-        'video_url',
-        'type_exercice',
-        'is_active',
-        'ordre',
-        'created_by',
-        'updated_by',
-    ];
+    'titre',
+    'description',
+    'image',
+    'exercice_category_id',      
+    'exercice_sous_category_id', 
+    'niveau',
+    'muscles_cibles',
+    'consignes_securite',
+    'video_url',
+    'type_exercice',
+    'is_active',
+    'ordre',
+    'created_by',
+    'updated_by',
+];
 
     protected $casts = [
-        'muscles_cibles' => 'array',
-        'is_active' => 'boolean',
-        'ordre' => 'integer',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    'muscles_cibles' => 'array',
+    'is_active' => 'boolean',
+    'ordre' => 'integer',
+    'exercice_category_id' => 'integer',      // ← AJOUTER
+    'exercice_sous_category_id' => 'integer', // ← AJOUTER
+    'created_at' => 'datetime',
+    'updated_at' => 'datetime',
+];
 
     // Relations
     public function series()
@@ -48,7 +52,15 @@ class Exercice extends Model
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
+public function category()
+{
+    return $this->belongsTo(ExerciceCategory::class, 'exercice_category_id');
+}
 
+public function sousCategory()
+{
+    return $this->belongsTo(ExerciceSousCategory::class, 'exercice_sous_category_id');
+}
     // Scopes
     public function scopeActive($query)
     {

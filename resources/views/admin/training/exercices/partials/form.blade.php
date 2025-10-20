@@ -63,6 +63,75 @@
                     @enderror
                 </div>
 
+
+
+<!-- Catégorisation -->
+                <div class="mb-4">
+                    <h6 class="fw-semibold mb-3 text-primary">
+                        <i class="fas fa-folder me-2"></i>Catégorisation
+                    </h6>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="exercice_category_id" class="form-label fw-semibold">
+                                Catégorie <small class="text-muted">(optionnel)</small>
+                            </label>
+                            <select name="exercice_category_id" 
+                                    id="exercice_category_id" 
+                                    class="form-select @error('exercice_category_id') is-invalid @enderror">
+                                <option value="">-- Aucune catégorie --</option>
+                                @if(isset($categories))
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" 
+                                            {{ old('exercice_category_id', isset($exercice) ? $exercice->exercice_category_id : '') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            @error('exercice_category_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="exercice_sous_category_id" class="form-label fw-semibold">
+                                Sous-catégorie <small class="text-muted">(optionnel)</small>
+                            </label>
+                            <select name="exercice_sous_category_id" 
+                                    id="exercice_sous_category_id" 
+                                    class="form-select @error('exercice_sous_category_id') is-invalid @enderror">
+                                <option value="">-- Aucune sous-catégorie --</option>
+                                @if(isset($sousCategories))
+                                    @foreach($sousCategories as $sousCategory)
+                                        <option value="{{ $sousCategory->id }}" 
+                                            data-category="{{ $sousCategory->exercice_category_id }}"
+                                            {{ old('exercice_sous_category_id', isset($exercice) ? $exercice->exercice_sous_category_id : '') == $sousCategory->id ? 'selected' : '' }}>
+                                            {{ $sousCategory->name }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            @error('exercice_sous_category_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-text mt-2">
+                        <i class="fas fa-info-circle me-1"></i>
+                        La sous-catégorie se filtrera automatiquement selon la catégorie sélectionnée
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
                 <!-- Muscles ciblés -->
                 <div class="mb-4">
                     <label for="muscles_cibles" class="form-label fw-semibold">Muscles ciblés</label>
@@ -258,6 +327,11 @@
             @endif
         </div>
     </div>
+
+
+
+
+
 </div>
 
 <!-- Actions -->
@@ -374,5 +448,50 @@ function removeMusle(button) {
         button.closest('.col-md-4').remove();
     }
 }
+
+// ========================================
+    // 5. FILTRAGE DYNAMIQUE DES SOUS-CATÉGORIES
+    // ========================================
+    const categorySelect = document.getElementById('exercice_category_id');
+    const sousCategorySelect = document.getElementById('exercice_sous_category_id');
+    
+    if (categorySelect && sousCategorySelect) {
+        // Sauvegarder toutes les options
+        const allSousCategories = Array.from(sousCategorySelect.options);
+        
+        categorySelect.addEventListener('change', function() {
+            const selectedCategoryId = this.value;
+            
+            // Réinitialiser le select
+            sousCategorySelect.innerHTML = '<option value="">-- Aucune sous-catégorie --</option>';
+            
+            if (selectedCategoryId) {
+                // Filtrer et ajouter les sous-catégories correspondantes
+                allSousCategories.forEach(option => {
+                    if (option.value && option.dataset.category == selectedCategoryId) {
+                        sousCategorySelect.appendChild(option.cloneNode(true));
+                    }
+                });
+            } else {
+                // Afficher toutes les sous-catégories si aucune catégorie sélectionnée
+                allSousCategories.forEach(option => {
+                    if (option.value) {
+                        sousCategorySelect.appendChild(option.cloneNode(true));
+                    }
+                });
+            }
+        });
+        
+        // Déclencher au chargement si une catégorie est déjà sélectionnée
+        if (categorySelect.value) {
+            categorySelect.dispatchEvent(new Event('change'));
+            
+            // Restaurer la sous-catégorie sélectionnée
+            @if(isset($exercice) && $exercice->exercice_sous_category_id)
+                sousCategorySelect.value = '{{ $exercice->exercice_sous_category_id }}';
+            @endif
+        }
+    }
+
 </script>
 @endpush

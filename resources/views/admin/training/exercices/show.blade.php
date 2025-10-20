@@ -157,7 +157,26 @@
                     </div>
                 </div>
             </div>
-
+@if($exercice->category || $exercice->sousCategory)
+                            <div class="col-12">
+                                <hr class="my-3">
+                                <small class="text-muted d-block mb-2">Catégorisation</small>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    @if($exercice->category)
+                                        <a href="{{ route('admin.exercice-categories.show', $exercice->category) }}" 
+                                           class="badge bg-primary-subtle text-primary text-decoration-none">
+                                            <i class="fas fa-folder me-1"></i>{{ $exercice->category->name }}
+                                        </a>
+                                    @endif
+                                    @if($exercice->sousCategory)
+                                        <a href="{{ route('admin.exercice-sous-categories.show', $exercice->sousCategory) }}" 
+                                           class="badge bg-info-subtle text-info text-decoration-none">
+                                            <i class="fas fa-layer-group me-1"></i>{{ $exercice->sousCategory->name }}
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
             <!-- Historique -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-secondary text-white p-3">

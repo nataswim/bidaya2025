@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exercice;
+use App\Models\ExerciceCategory;
+use App\Models\ExerciceSousCategory;
 use App\Http\Requests\StoreExerciceRequest;
 use App\Http\Requests\UpdateExerciceRequest;
 use Illuminate\Http\Request;
@@ -25,7 +27,7 @@ class ExerciceController extends Controller
         
         $search = $request->input('search');
         
-        $query = Exercice::with(['creator'])->withCount(['series']);
+        $query = Exercice::with(['creator', 'category', 'sousCategory'])->withCount(['series']);
 
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -42,7 +44,12 @@ class ExerciceController extends Controller
     public function create(): View
     {
         $this->checkAdminAccess();
-        return view('admin.training.exercices.create');
+        
+        // Charger les catégories pour le formulaire
+        $categories = ExerciceCategory::active()->ordered()->get();
+        $sousCategories = ExerciceSousCategory::active()->ordered()->get();
+        
+        return view('admin.training.exercices.create', compact('categories', 'sousCategories'));
     }
 
     public function store(StoreExerciceRequest $request): RedirectResponse
@@ -60,14 +67,19 @@ class ExerciceController extends Controller
     public function show(Exercice $exercice): View
     {
         $this->checkAdminAccess();
-        $exercice->load(['creator', 'series']);
+        $exercice->load(['creator', 'series', 'category', 'sousCategory']);
         return view('admin.training.exercices.show', compact('exercice'));
     }
 
     public function edit(Exercice $exercice): View
     {
         $this->checkAdminAccess();
-        return view('admin.training.exercices.edit', compact('exercice'));
+        
+        // Charger les catégories pour le formulaire
+        $categories = ExerciceCategory::active()->ordered()->get();
+        $sousCategories = ExerciceSousCategory::active()->ordered()->get();
+        
+        return view('admin.training.exercices.edit', compact('exercice', 'categories', 'sousCategories'));
     }
 
     public function update(UpdateExerciceRequest $request, Exercice $exercice): RedirectResponse

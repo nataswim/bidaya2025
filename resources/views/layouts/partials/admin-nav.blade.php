@@ -268,6 +268,30 @@
                     </ul>
                 </div>
             </li>
+
+
+            <li class="nav-item mb-1">
+                            <a href="{{ route('admin.exercice-categories.index') }}"
+                                class="nav-link text-white rounded py-2 d-flex align-items-center {{ request()->routeIs('admin.exercice-categories.*') ? 'active bg-secondary' : '' }}">
+                                <i class="fas fa-folder fa-fw me-2"></i>
+                                <span>Catégories</span>
+                                @php $exerciceCategoriesCount = App\Models\ExerciceCategory::count(); @endphp
+                                @if($exerciceCategoriesCount > 0)
+                                <span class="badge bg-info ms-auto">{{ $exerciceCategoriesCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a href="{{ route('admin.exercice-sous-categories.index') }}"
+                                class="nav-link text-white rounded py-2 d-flex align-items-center {{ request()->routeIs('admin.exercice-sous-categories.*') ? 'active bg-secondary' : '' }}">
+                                <i class="fas fa-layer-group fa-fw me-2"></i>
+                                <span>Sous-catégories</span>
+                                @php $exerciceSousCategoriesCount = App\Models\ExerciceSousCategory::count(); @endphp
+                                @if($exerciceSousCategoriesCount > 0)
+                                <span class="badge bg-secondary ms-auto">{{ $exerciceSousCategoriesCount }}</span>
+                                @endif
+                            </a>
+                        </li>
         </ul>
 
 
@@ -364,7 +388,34 @@
             </li>
         </ul>
     </div>
+<div class="px-3 mb-2 mt-4">
+            <small class="text-uppercase text-light opacity-50 fw-semibold section-title">Liens externes</small>
+        </div>
 
+        <ul class="nav nav-pills flex-column px-3 mb-3">
+            <li class="nav-item mb-1">
+                <a href="https://www.nataswim.fr/diffusion/admin/" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="nav-link text-white d-flex align-items-center rounded">
+                    <i class="fas fa-envelope fa-fw me-3"></i>
+                    <span>Newsletter</span>
+                    <i class="fas fa-external-link-alt ms-auto" style="font-size: 0.7em;"></i>
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://www.nataswim.fr/analytics/index.php" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="nav-link text-white d-flex align-items-center rounded">
+                    <i class="fas fa-chart-line fa-fw me-3"></i>
+                    <span>Analytics</span>
+                    <i class="fas fa-external-link-alt ms-auto" style="font-size: 0.7em;"></i>
+                </a>
+            </li>
+        </ul>
+
+        
     <div class="p-3 border-top border-secondary">
         <div class="d-flex align-items-center">
             <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"

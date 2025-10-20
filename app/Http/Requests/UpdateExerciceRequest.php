@@ -12,21 +12,23 @@ class UpdateExerciceRequest extends FormRequest
     }
 
     public function rules(): array
-    {
-        return [
-            'titre' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|string|max:500',
-            'niveau' => 'nullable|string|max:50',
-            'muscles_cibles' => 'nullable|array',
-            'muscles_cibles.*' => 'string|max:50',
-            'consignes_securite' => 'nullable|string',
-            'video_url' => 'nullable|url|max:500',
-            'type_exercice' => 'nullable|string|max:50',
-            'is_active' => 'boolean',
-            'ordre' => 'nullable|integer|min:0',
-        ];
-    }
+{
+    return [
+        'titre' => 'required|string|max:255',
+        'description' => 'required|string',
+        'image' => 'nullable|string|max:500',
+        'exercice_category_id' => 'nullable|exists:exercice_categories,id',
+        'exercice_sous_category_id' => 'nullable|exists:exercice_sous_categories,id',
+        'niveau' => 'nullable|string|max:50',
+        'muscles_cibles' => 'nullable|array',
+        'muscles_cibles.*' => 'string|max:50',
+        'consignes_securite' => 'nullable|string',
+        'video_url' => 'nullable|url|max:500',
+        'type_exercice' => 'nullable|string|max:50',
+        'is_active' => 'boolean',
+        'ordre' => 'nullable|integer|min:0',
+    ];
+}
 
     public function messages(): array
     {
