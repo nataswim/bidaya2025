@@ -2,142 +2,127 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Exercice extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+
+    protected $table = 'exercices';
 
     protected $fillable = [
-    'titre',
-    'description',
-    'image',
-    'exercice_category_id',      
-    'exercice_sous_category_id', 
-    'niveau',
-    'muscles_cibles',
-    'consignes_securite',
-    'video_url',
-    'type_exercice',
-    'is_active',
-    'ordre',
-    'created_by',
-    'updated_by',
-];
+        'titre',
+        'description',
+        'image',
+        'niveau',
+        'muscles_cibles',
+        'consignes_securite',
+        'video_url',
+        'type_exercice',
+        'is_active',
+        'ordre',
+        'created_by',
+    ];
 
     protected $casts = [
-    'muscles_cibles' => 'array',
-    'is_active' => 'boolean',
-    'ordre' => 'integer',
-    'exercice_category_id' => 'integer',      // ← AJOUTER
-    'exercice_sous_category_id' => 'integer', // ← AJOUTER
-    'created_at' => 'datetime',
-    'updated_at' => 'datetime',
-];
+        'muscles_cibles' => 'array',
+        'is_active' => 'boolean',
+        'ordre' => 'integer',
+        'created_by' => 'integer',
+    ];
 
-    // Relations
-    public function series()
+    // Relations Many-to-Many avec catégories
+    public function categories()
     {
-        return $this->hasMany(Serie::class);
+        return $this->belongsToMany(
+            ExerciceCategory::class,
+            'exercice_exercice_category',
+            'exercice_id',
+            'exercice_category_id'
+        )->withTimestamps()->withPivot('ordre')->orderBy('ordre');
     }
 
+    public function sousCategories()
+    {
+        return $this->belongsToMany(
+            ExerciceSousCategory::class,
+            'exercice_exercice_sous_category',
+            'exercice_id',
+            'exercice_sous_category_id'
+        )->withTimestamps()->withPivot('ordre')->orderBy('ordre');
+    }
+
+    // Autres relations
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function updater()
+    public function series()
     {
-        return $this->belongsTo(User::class, 'updated_by');
+        return $this->hasMany(Serie::class);
     }
-public function category()
-{
-    return $this->belongsTo(ExerciceCategory::class, 'exercice_category_id');
-}
 
-public function sousCategory()
-{
-    return $this->belongsTo(ExerciceSousCategory::class, 'exercice_sous_category_id');
-}
     // Scopes
-    public function scopeActive($query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
     }
 
-    public function scopeByNiveau($query, $niveau)
-    {
-        return $query->where('niveau', $niveau);
-    }
-
-    public function scopeByType($query, $type)
-    {
-        return $query->where('type_exercice', $type);
-    }
-
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query): Builder
     {
         return $query->orderBy('ordre')->orderBy('titre');
     }
 
-    // Accessors - avec gestion des valeurs NULL
+    // Accesseurs
+    public function getMusclesCiblesFormattedAttribute(): string
+    {
+        if (!$this->muscles_cibles || !is_array($this->muscles_cibles)) {
+            return 'Non défini';
+        }
+        
+        $muscles = array_filter($this->muscles_cibles);
+        return !empty($muscles) ? implode(', ', $muscles) : 'Non défini';
+    }
+
     public function getNiveauLabelAttribute(): string
     {
-        if (!$this->niveau) {
-            return '<span class="badge bg-secondary">Non défini</span>';
-        }
-
         return match($this->niveau) {
             'debutant' => 'Débutant',
-            'intermediaire' => 'Intermédiaire', 
+            'intermediaire' => 'Intermédiaire',
             'avance' => 'Avancé',
             'special' => 'Spécial',
-            default => ucfirst($this->niveau)
+            default => 'Non défini'
         };
     }
 
     public function getTypeExerciceLabelAttribute(): string
     {
-        if (!$this->type_exercice) {
-            return '<span class="badge bg-secondary">Non défini</span>';
-        }
-
         return match($this->type_exercice) {
             'cardio' => 'Cardio',
             'force' => 'Force',
             'flexibilite' => 'Flexibilité',
             'equilibre' => 'Équilibre',
-            default => ucfirst($this->type_exercice)
+            default => 'Non défini'
         };
     }
 
-    public function getMusclesCiblesFormattedAttribute(): string
+    // Route key name pour utiliser le slug dans les URLs
+    public function getRouteKeyName()
     {
-        if (!$this->muscles_cibles || !is_array($this->muscles_cibles) || count($this->muscles_cibles) === 0) {
-            return 'Non spécifié';
-        }
-        
-        return collect($this->muscles_cibles)
-            ->map(fn($muscle) => ucfirst($muscle))
-            ->join(', ');
+        return 'id'; // Ou 'slug' si vous avez un champ slug
     }
 
-    // Boot method
+    // Boot method pour définir created_by automatiquement
     protected static function boot()
     {
         parent::boot();
-
+        
         static::creating(function ($exercice) {
-            if (auth()->check()) {
+            if (auth()->check() && empty($exercice->created_by)) {
                 $exercice->created_by = auth()->id();
-            }
-        });
-
-        static::updating(function ($exercice) {
-            if (auth()->check()) {
-                $exercice->updated_by = auth()->id();
             }
         });
     }

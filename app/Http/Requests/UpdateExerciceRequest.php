@@ -10,15 +10,16 @@ class UpdateExerciceRequest extends FormRequest
     {
         return auth()->check() && auth()->user()->hasRole('admin');
     }
-
-    public function rules(): array
+public function rules(): array
 {
     return [
         'titre' => 'required|string|max:255',
         'description' => 'required|string',
         'image' => 'nullable|string|max:500',
-        'exercice_category_id' => 'nullable|exists:exercice_categories,id',
-        'exercice_sous_category_id' => 'nullable|exists:exercice_sous_categories,id',
+        'categories' => 'nullable|array',
+        'categories.*' => 'exists:exercice_categories,id',
+        'sous_categories' => 'nullable|array',
+        'sous_categories.*' => 'exists:exercice_sous_categories,id',
         'niveau' => 'nullable|string|max:50',
         'muscles_cibles' => 'nullable|array',
         'muscles_cibles.*' => 'string|max:50',
@@ -29,7 +30,6 @@ class UpdateExerciceRequest extends FormRequest
         'ordre' => 'nullable|integer|min:0',
     ];
 }
-
     public function messages(): array
     {
         return [

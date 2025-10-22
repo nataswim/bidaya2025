@@ -22,24 +22,30 @@ class ExerciceController extends Controller
     }
 
     public function index(Request $request): View
-    {
-        $this->checkAdminAccess();
-        
-        $search = $request->input('search');
-        
-        $query = Exercice::with(['creator', 'category', 'sousCategory'])->withCount(['series']);
+{
+    $this->checkAdminAccess();
+    
+    $search = $request->input('search');
+    
+    // Query de base avec eager loading
+    $query = Exercice::with(['creator', 'categories', 'sousCategories'])
+        ->withCount(['series']);
 
-        if ($search) {
-            $query->where(function($q) use ($search) {
-                $q->where('titre', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
-            });
-        }
-
-        $exercices = $query->ordered()->paginate(15);
-
-        return view('admin.training.exercices.index', compact('exercices', 'search'));
+    // Appliquer la recherche
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('titre', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%");
+        });
     }
+
+    // Tri et pagination
+    $exercices = $query->orderBy('ordre')
+                       ->orderBy('titre')
+                       ->paginate(15);
+
+    return view('admin.training.exercices.index', compact('exercices', 'search'));
+}
 
     public function create(): View
     {
@@ -52,24 +58,52 @@ class ExerciceController extends Controller
         return view('admin.training.exercices.create', compact('categories', 'sousCategories'));
     }
 
+
+
+
     public function store(StoreExerciceRequest $request): RedirectResponse
-    {
-        $this->checkAdminAccess();
-        
-        $validated = $request->validated();
+{
+    $this->checkAdminAccess();
+    
+    $validated = $request->validated();
+    
+    // Extraire les catégories avant la création
+    $categories = $request->input('categories', []);
+    $sousCategories = $request->input('sous_categories', []);
+    
+    // Supprimer les champs de catégories de $validated
+    unset($validated['categories'], $validated['sous_categories']);
 
-        Exercice::create($validated);
-
-        return redirect()->route('admin.training.exercices.index')
-            ->with('success', 'Exercice créé avec succès.');
+    // Créer l'exercice
+    $exercice = Exercice::create($validated);
+    
+    // Attacher les catégories
+    if (!empty($categories)) {
+        $exercice->categories()->attach($categories);
     }
+    
+    // Attacher les sous-catégories
+    if (!empty($sousCategories)) {
+        $exercice->sousCategories()->attach($sousCategories);
+    }
+
+    return redirect()->route('admin.training.exercices.index')
+        ->with('success', 'Exercice créé avec succès.');
+}
+
+
+
+
 
     public function show(Exercice $exercice): View
-    {
-        $this->checkAdminAccess();
-        $exercice->load(['creator', 'series', 'category', 'sousCategory']);
-        return view('admin.training.exercices.show', compact('exercice'));
-    }
+{
+    $this->checkAdminAccess();
+    
+    // Charger toutes les relations (pluriel pour many-to-many)
+    $exercice->load(['creator', 'series', 'categories', 'sousCategories']);
+    
+    return view('admin.training.exercices.show', compact('exercice'));
+}
 
     public function edit(Exercice $exercice): View
     {
@@ -82,17 +116,37 @@ class ExerciceController extends Controller
         return view('admin.training.exercices.edit', compact('exercice', 'categories', 'sousCategories'));
     }
 
-    public function update(UpdateExerciceRequest $request, Exercice $exercice): RedirectResponse
-    {
-        $this->checkAdminAccess();
-        
-        $validated = $request->validated();
 
-        $exercice->update($validated);
 
-        return redirect()->route('admin.training.exercices.index')
-            ->with('success', 'Exercice mis à jour avec succès.');
-    }
+public function update(UpdateExerciceRequest $request, Exercice $exercice): RedirectResponse
+{
+    $this->checkAdminAccess();
+    
+    $validated = $request->validated();
+    
+    // Extraire les catégories
+    $categories = $request->input('categories', []);
+    $sousCategories = $request->input('sous_categories', []);
+    
+    // Supprimer les champs de catégories de $validated
+    unset($validated['categories'], $validated['sous_categories']);
+
+    // Mettre à jour l'exercice
+    $exercice->update($validated);
+    
+    // Synchroniser les catégories (remplace toutes les relations)
+    $exercice->categories()->sync($categories);
+    
+    // Synchroniser les sous-catégories
+    $exercice->sousCategories()->sync($sousCategories);
+
+    return redirect()->route('admin.training.exercices.index')
+        ->with('success', 'Exercice mis à jour avec succès.');
+}
+
+
+
+
 
     public function destroy(Exercice $exercice): RedirectResponse
     {

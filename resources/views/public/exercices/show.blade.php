@@ -69,17 +69,17 @@
                         <i class="fas fa-dumbbell me-1"></i>Exercices
                     </a>
                 </li>
-                @if($exercice->category)
+                @if($exercice->categories->isNotEmpty())
                     <li class="breadcrumb-item">
-                        <a href="{{ route('exercices.category', $exercice->category) }}">
-                            {{ $exercice->category->name }}
+                        <a href="{{ route('exercices.category', $exercice->categories->first()) }}">
+                            {{ $exercice->categories->first()->name }}
                         </a>
                     </li>
                 @endif
-                @if($exercice->sousCategory)
+                @if($exercice->sousCategories->isNotEmpty())
                     <li class="breadcrumb-item">
-                        <a href="{{ route('exercices.sous-category', [$exercice->category, $exercice->sousCategory]) }}">
-                            {{ $exercice->sousCategory->name }}
+                        <a href="{{ route('exercices.sous-category', [$exercice->categories->first(), $exercice->sousCategories->first()]) }}">
+                            {{ $exercice->sousCategories->first()->name }}
                         </a>
                     </li>
                 @endif
@@ -97,35 +97,31 @@
             <div class="col-lg-8 col-xl-12">
 
                 <!-- Card 1: Métadonnées -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-body p-4">
-                        <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-                            @if($exercice->category)
-                                <span class="badge bg-primary px-3 py-2">
-                                    <i class="fas fa-folder me-1"></i>{{ $exercice->category->name }}
-                                </span>
-                            @endif
-                            
-                            @if($exercice->sousCategory)
-                                <span class="badge bg-info px-3 py-2">
-                                    <i class="fas fa-layer-group me-1"></i>{{ $exercice->sousCategory->name }}
-                                </span>
-                            @endif
-                            
-                            @if($exercice->niveau)
-                                <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} px-3 py-2">
-                                    <i class="fas fa-signal me-1"></i>{{ $exercice->niveau_label }}
-                                </span>
-                            @endif
-                            
-                            @if($exercice->type_exercice)
-                                <span class="badge bg-secondary px-3 py-2">
-                                    <i class="fas fa-tag me-1"></i>{{ $exercice->type_exercice_label }}
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
+                <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
+    @foreach($exercice->categories as $cat)
+        <span class="badge bg-primary px-3 py-2">
+            <i class="fas fa-folder me-1"></i>{{ $cat->name }}
+        </span>
+    @endforeach
+    
+    @foreach($exercice->sousCategories as $sousCat)
+        <span class="badge bg-info px-3 py-2">
+            <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
+        </span>
+    @endforeach
+    
+    @if($exercice->niveau)
+        <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} px-3 py-2">
+            <i class="fas fa-signal me-1"></i>{{ $exercice->niveau_label }}
+        </span>
+    @endif
+    
+    @if($exercice->type_exercice)
+        <span class="badge bg-secondary px-3 py-2">
+            <i class="fas fa-tag me-1"></i>{{ $exercice->type_exercice_label }}
+        </span>
+    @endif
+</div>
 
                 <!-- Card 2: Description -->
                 @if($exercice->description)
@@ -319,61 +315,43 @@
 
                 <!-- Section Navigation -->
                 <div class="row g-4 mb-4">
-                    <!-- Catégories -->
-                    @if($exercice->category || $exercice->sousCategory)
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0">
-                                    <i class="fas fa-folder me-2"></i>Classification
-                                </h5>
-                            </div>
-                            <div class="card-body">
-                                @if($exercice->category)
-                                <a href="{{ route('exercices.category', $exercice->category) }}" 
-                                   class="d-flex align-items-center text-decoration-none mb-3">
-                                    @if($exercice->category->image)
-                                        <img src="{{ $exercice->category->image }}" 
-                                             class="rounded me-3" 
-                                             style="width: 50px; height: 50px; object-fit: cover;"
-                                             alt="{{ $exercice->category->name }}">
-                                    @else
-                                        <div class="bg-primary bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
-                                             style="width: 50px; height: 50px;">
-                                            <i class="fas fa-folder text-primary"></i>
-                                        </div>
-                                    @endif
-                                    <div>
-                                        <h6 class="mb-0 text-dark">{{ $exercice->category->name }}</h6>
-                                        <small class="text-muted">Catégorie</small>
-                                    </div>
-                                </a>
-                                @endif
-                                
-                                @if($exercice->sousCategory)
-                                <a href="{{ route('exercices.sous-category', [$exercice->category, $exercice->sousCategory]) }}" 
-                                   class="d-flex align-items-center text-decoration-none">
-                                    @if($exercice->sousCategory->image)
-                                        <img src="{{ $exercice->sousCategory->image }}" 
-                                             class="rounded me-3" 
-                                             style="width: 50px; height: 50px; object-fit: cover;"
-                                             alt="{{ $exercice->sousCategory->name }}">
-                                    @else
-                                        <div class="bg-info bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
-                                             style="width: 50px; height: 50px;">
-                                            <i class="fas fa-layer-group text-info"></i>
-                                        </div>
-                                    @endif
-                                    <div>
-                                        <h6 class="mb-0 text-dark">{{ $exercice->sousCategory->name }}</h6>
-                                        <small class="text-muted">Sous-catégorie</small>
-                                    </div>
-                                </a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    @endif
+                   <!-- Catégories -->
+@if($exercice->categories->isNotEmpty() || $exercice->sousCategories->isNotEmpty())
+<div class="col-md-6">
+    <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-folder me-2"></i>Classification
+            </h5>
+        </div>
+        <div class="card-body">
+            @if($exercice->categories->isNotEmpty())
+                <h6 class="fw-bold mb-2">Catégories</h6>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    @foreach($exercice->categories as $cat)
+                        <a href="{{ route('exercices.category', $cat) }}" 
+                           class="badge bg-primary text-decoration-none px-3 py-2">
+                            <i class="fas fa-folder me-1"></i>{{ $cat->name }}
+                        </a>
+                    @endforeach
+                </div>
+            @endif
+            
+            @if($exercice->sousCategories->isNotEmpty())
+                <h6 class="fw-bold mb-2">Sous-catégories</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    @foreach($exercice->sousCategories as $sousCat)
+                        <a href="{{ route('exercices.sous-category', [$sousCat->category, $sousCat]) }}" 
+                           class="badge bg-info text-decoration-none px-3 py-2">
+                            <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
+                        </a>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </div>
+</div>
+@endif
 
                     <!-- Boutons de navigation -->
                     <div class="col-md-6">

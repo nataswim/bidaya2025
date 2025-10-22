@@ -2,110 +2,68 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class ExerciceCategory extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name',
         'slug',
         'description',
         'image',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
         'is_active',
-        'sort_order',
-        'created_by',
-        'updated_by',
-        'deleted_by',
+        'ordre',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
-        'sort_order' => 'integer',
+        'ordre' => 'integer',
     ];
 
-    // Relations
-    public function sousCategories()
-    {
-        return $this->hasMany(ExerciceSousCategory::class, 'exercice_category_id');
-    }
-
+    // Relation Many-to-Many avec exercices
     public function exercices()
     {
-        return $this->hasMany(Exercice::class, 'exercice_category_id');
+        return $this->belongsToMany(
+            Exercice::class,
+            'exercice_exercice_category',
+            'exercice_category_id',
+            'exercice_id'
+        )->withTimestamps()->withPivot('ordre');
     }
 
-    public function creator()
+    // Relation avec sous-catégories
+    public function sousCategories()
     {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function updater()
-    {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    public function deleter()
-    {
-        return $this->belongsTo(User::class, 'deleted_by');
+        return $this->hasMany(ExerciceSousCategory::class);
     }
 
     // Scopes
-    public function scopeActive($query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
     }
 
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query): Builder
+{
+    return $query->orderBy('sort_order')->orderBy('name');
+}
+
+    // Mutateur pour générer le slug automatiquement
+    public function setNameAttribute($value)
     {
-        return $query->orderBy('sort_order')->orderBy('name');
+        $this->attributes['name'] = $value;
+        if (empty($this->attributes['slug'])) {
+            $this->attributes['slug'] = \Illuminate\Support\Str::slug($value);
+        }
     }
 
-    // Accessors
-    public function getExercicesCountAttribute()
+    // Route key name pour utiliser le slug dans les URLs
+    public function getRouteKeyName()
     {
-        return $this->exercices()->count();
-    }
-
-    public function getSousCategoriesCountAttribute()
-    {
-        return $this->sousCategories()->count();
-    }
-
-    // Boot method
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($category) {
-            if (auth()->check()) {
-                $category->created_by = auth()->id();
-            }
-            if (empty($category->slug)) {
-                $category->slug = \Str::slug($category->name);
-            }
-        });
-
-        static::updating(function ($category) {
-            if (auth()->check()) {
-                $category->updated_by = auth()->id();
-            }
-            if (empty($category->slug)) {
-                $category->slug = \Str::slug($category->name);
-            }
-        });
-
-        static::deleting(function ($category) {
-            if (auth()->check()) {
-                $category->deleted_by = auth()->id();
-                $category->save();
-            }
-        });
+        return 'slug';
     }
 }

@@ -62,6 +62,7 @@
                             <thead class="bg-light">
                                 <tr>
                                     <th class="border-0 px-4 py-3">Exercice</th>
+                                    <th class="border-0 px-4 py-3">Catégories</th>
                                     <th class="border-0 px-4 py-3">Type & Niveau</th>
                                     <th class="border-0 px-4 py-3">Muscles</th>
                                     <th class="border-0 px-4 py-3">Statut</th>
@@ -98,7 +99,37 @@
                                             </div>
                                         </div>
                                     </td>
-
+<td class="px-4 py-3">
+    <div class="d-flex flex-column gap-1">
+        @if($exercice->categories->isNotEmpty())
+            @foreach($exercice->categories->take(2) as $cat)
+                <span class="badge bg-primary-subtle text-primary">
+                    <i class="fas fa-folder me-1"></i>{{ $cat->name }}
+                </span>
+            @endforeach
+            @if($exercice->categories->count() > 2)
+                <span class="badge bg-secondary">
+                    +{{ $exercice->categories->count() - 2 }} autre(s)
+                </span>
+            @endif
+        @else
+            <span class="badge bg-secondary">Non catégorisé</span>
+        @endif
+        
+        @if($exercice->sousCategories->isNotEmpty())
+            @foreach($exercice->sousCategories->take(1) as $sousCat)
+                <span class="badge bg-info-subtle text-info">
+                    <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
+                </span>
+            @endforeach
+            @if($exercice->sousCategories->count() > 1)
+                <span class="badge bg-secondary">
+                    +{{ $exercice->sousCategories->count() - 1 }}
+                </span>
+            @endif
+        @endif
+    </div>
+</td>
                                     <td class="px-4 py-3">
                                         <div class="d-flex flex-column gap-1">
                                             @if($exercice->type_exercice)

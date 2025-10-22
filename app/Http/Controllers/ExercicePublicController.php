@@ -24,7 +24,7 @@ class ExercicePublicController extends Controller
             ->get();
         
         // Query de base pour les exercices
-        $query = Exercice::with(['category', 'sousCategory'])
+        $query = Exercice::with(['categories', 'sousCategories'])
             ->where('is_active', true)
             ->orderBy('ordre')
             ->orderBy('titre');
@@ -60,10 +60,12 @@ class ExercicePublicController extends Controller
             ->withCount('exercices')
             ->get();
         
-        // Récupérer les exercices de cette catégorie
-        $exercices = Exercice::where('exercice_category_id', $category->id)
+        // Récupérer les exercices liés à cette catégorie via la table pivot
+        $exercices = Exercice::whereHas('categories', function($query) use ($category) {
+                $query->where('exercice_categories.id', $category->id);
+            })
             ->where('is_active', true)
-            ->with(['sousCategory'])
+            ->with(['sousCategories'])
             ->orderBy('ordre')
             ->orderBy('titre')
             ->paginate(12);
@@ -86,8 +88,10 @@ class ExercicePublicController extends Controller
             abort(404);
         }
         
-        // Récupérer les exercices de cette sous-catégorie
-        $exercices = Exercice::where('exercice_sous_category_id', $sousCategory->id)
+        // Récupérer les exercices liés à cette sous-catégorie via la table pivot
+        $exercices = Exercice::whereHas('sousCategories', function($query) use ($sousCategory) {
+                $query->where('exercice_sous_categories.id', $sousCategory->id);
+            })
             ->where('is_active', true)
             ->orderBy('ordre')
             ->orderBy('titre')
@@ -107,24 +111,29 @@ class ExercicePublicController extends Controller
         }
         
         // Charger les relations nécessaires
-        $exercice->load(['creator', 'category', 'sousCategory']);
+        $exercice->load(['creator', 'categories', 'sousCategories']);
+        
+        // Récupérer la première catégorie pour compatibilité breadcrumb
+        $exercice->category = $exercice->categories->first();
+        $exercice->sousCategory = $exercice->sousCategories->first();
         
         // Récupérer des exercices similaires
-        // Priorité : même sous-catégorie > même catégorie > même type
         $exercicesSimilaires = Exercice::where('is_active', true)
             ->where('id', '!=', $exercice->id)
-            ->when($exercice->exercice_sous_category_id, function($query) use ($exercice) {
-                // Priorité 1 : même sous-catégorie
-                $query->where('exercice_sous_category_id', $exercice->exercice_sous_category_id);
-            }, function($query) use ($exercice) {
-                // Priorité 2 : même catégorie
-                if ($exercice->exercice_category_id) {
-                    $query->where('exercice_category_id', $exercice->exercice_category_id);
-                } elseif ($exercice->type_exercice) {
-                    // Priorité 3 : même type (si pas de catégorie)
-                    $query->where('type_exercice', $exercice->type_exercice);
+            ->where(function($query) use ($exercice) {
+                // Exercices qui partagent au moins une catégorie
+                if ($exercice->categories->isNotEmpty()) {
+                    $categoryIds = $exercice->categories->pluck('id');
+                    $query->whereHas('categories', function($q) use ($categoryIds) {
+                        $q->whereIn('exercice_categories.id', $categoryIds);
+                    });
+                }
+                // Ou même type d'exercice
+                elseif ($exercice->type_exercice) {
+                    $query->orWhere('type_exercice', $exercice->type_exercice);
                 }
             })
+            ->with(['categories', 'sousCategories'])
             ->orderBy('ordre')
             ->orderBy('titre')
             ->limit(6)
@@ -141,7 +150,7 @@ class ExercicePublicController extends Controller
         $search = $request->input('q', '');
         
         $exercices = Exercice::where('is_active', true)
-            ->with(['category', 'sousCategory'])
+            ->with(['categories', 'sousCategories'])
             ->where(function($query) use ($search) {
                 $query->where('titre', 'like', "%{$search}%")
                       ->orWhere('description', 'like', "%{$search}%");

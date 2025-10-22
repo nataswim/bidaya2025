@@ -2,112 +2,72 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class ExerciceSousCategory extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+
+    protected $table = 'exercice_sous_categories';
 
     protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'image',
-        'exercice_category_id',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-        'is_active',
-        'sort_order',
-        'created_by',
-        'updated_by',
-        'deleted_by',
-    ];
+    'exercice_category_id',
+    'name',
+    'slug',
+    'description',
+    'image',
+    'is_active',
+    'sort_order', // ← AJOUTER
+];
 
     protected $casts = [
-        'is_active' => 'boolean',
-        'sort_order' => 'integer',
         'exercice_category_id' => 'integer',
+        'is_active' => 'boolean',
+        'ordre' => 'integer',
     ];
 
-    // Relations
+    // Relation avec la catégorie parente
     public function category()
     {
         return $this->belongsTo(ExerciceCategory::class, 'exercice_category_id');
     }
 
+    // Relation Many-to-Many avec exercices
     public function exercices()
     {
-        return $this->hasMany(Exercice::class, 'exercice_sous_category_id');
-    }
-
-    public function creator()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function updater()
-    {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    public function deleter()
-    {
-        return $this->belongsTo(User::class, 'deleted_by');
+        return $this->belongsToMany(
+            Exercice::class,
+            'exercice_exercice_sous_category',
+            'exercice_sous_category_id',
+            'exercice_id'
+        )->withTimestamps()->withPivot('ordre');
     }
 
     // Scopes
-    public function scopeActive($query)
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
     }
 
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query): Builder
+{
+    return $query->orderBy('sort_order')->orderBy('name');
+}
+
+    // Mutateur pour générer le slug automatiquement
+    public function setNameAttribute($value)
     {
-        return $query->orderBy('sort_order')->orderBy('name');
+        $this->attributes['name'] = $value;
+        if (empty($this->attributes['slug'])) {
+            $this->attributes['slug'] = \Illuminate\Support\Str::slug($value);
+        }
     }
 
-    public function scopeByCategory($query, $categoryId)
+    // Route key name pour utiliser le slug dans les URLs
+    public function getRouteKeyName()
     {
-        return $query->where('exercice_category_id', $categoryId);
-    }
-
-    // Accessors
-    public function getExercicesCountAttribute()
-    {
-        return $this->exercices()->count();
-    }
-
-    // Boot method
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($sousCategory) {
-            if (auth()->check()) {
-                $sousCategory->created_by = auth()->id();
-            }
-            if (empty($sousCategory->slug)) {
-                $sousCategory->slug = \Str::slug($sousCategory->name);
-            }
-        });
-
-        static::updating(function ($sousCategory) {
-            if (auth()->check()) {
-                $sousCategory->updated_by = auth()->id();
-            }
-            if (empty($sousCategory->slug)) {
-                $sousCategory->slug = \Str::slug($sousCategory->name);
-            }
-        });
-
-        static::deleting(function ($sousCategory) {
-            if (auth()->check()) {
-                $sousCategory->deleted_by = auth()->id();
-                $sousCategory->save();
-            }
-        });
+        return 'slug';
     }
 }

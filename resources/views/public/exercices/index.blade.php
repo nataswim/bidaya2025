@@ -156,20 +156,20 @@
                             
                             <div class="card-body p-4 d-flex flex-column">
                                 <!-- Badges catégories -->
-                                @if($exercice->category || $exercice->sousCategory)
-                                    <div class="d-flex flex-wrap gap-2 mb-3">
-                                        @if($exercice->category)
-                                            <span class="badge bg-primary">
-                                                <i class="fas fa-folder me-1"></i>{{ $exercice->category->name }}
-                                            </span>
-                                        @endif
-                                        @if($exercice->sousCategory)
-                                            <span class="badge bg-info">
-                                                <i class="fas fa-layer-group me-1"></i>{{ $exercice->sousCategory->name }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                @endif
+@if($exercice->categories->isNotEmpty() || $exercice->sousCategories->isNotEmpty())
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        @foreach($exercice->categories as $cat)
+            <span class="badge bg-primary">
+                <i class="fas fa-folder me-1"></i>{{ $cat->name }}
+            </span>
+        @endforeach
+        @foreach($exercice->sousCategories as $sousCat)
+            <span class="badge bg-info">
+                <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
+            </span>
+        @endforeach
+    </div>
+@endif
 
                                 <h5 class="card-title fw-bold mb-2">{{ $exercice->titre }}</h5>
                                 
