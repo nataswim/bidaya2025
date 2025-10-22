@@ -147,7 +147,7 @@ Route::prefix('exercices')->name('exercices.')->group(function () {
 });
 
 
-// Routes publiques pour les plans d'entraînement (après les exercices)
+// Routes publiques pour les plans d'entraînement 
 Route::prefix('plans')->name('plans.')->group(function () {
     Route::get('/', [\App\Http\Controllers\PlanPublicController::class, 'index'])->name('index');
     Route::get('/{plan}', [\App\Http\Controllers\PlanPublicController::class, 'show'])->name('show');
@@ -378,6 +378,10 @@ Route::prefix('aitext')->name('aitext.')->group(function () {
 // Gestion des exercices
 Route::resource('training/exercices', \App\Http\Controllers\Admin\ExerciceController::class)
     ->names('training.exercices');
+
+
+Route::post('training/exercices/bulk-assign-categories', [\App\Http\Controllers\Admin\ExerciceController::class, 'bulkAssignCategories'])
+    ->name('training.exercices.bulk-assign-categories');
 
 // Gestion des séries
 Route::resource('training/series', \App\Http\Controllers\Admin\SerieController::class)

@@ -163,4 +163,77 @@ public function update(UpdateExerciceRequest $request, Exercice $exercice): Redi
         return redirect()->route('admin.training.exercices.index')
             ->with('success', 'Exercice supprimé avec succès.');
     }
+
+/**
+ * Assignation en masse de catégories aux exercices
+ */
+public function bulkAssignCategories(Request $request): RedirectResponse
+{
+    $this->checkAdminAccess();
+    
+    $validated = $request->validate([
+        'exercices' => 'required|array|min:1',
+        'exercices.*' => 'exists:exercices,id',
+        'action' => 'required|in:add,replace,remove',
+        'categories' => 'nullable|array',
+        'categories.*' => 'exists:exercice_categories,id',
+        'sous_categories' => 'nullable|array',
+        'sous_categories.*' => 'exists:exercice_sous_categories,id',
+    ]);
+    
+    $exerciceIds = $validated['exercices'];
+    $action = $validated['action'];
+    $categories = $validated['categories'] ?? [];
+    $sousCategories = $validated['sous_categories'] ?? [];
+    
+    $count = 0;
+    
+    foreach ($exerciceIds as $exerciceId) {
+        $exercice = Exercice::find($exerciceId);
+        
+        if (!$exercice) {
+            continue;
+        }
+        
+        switch ($action) {
+            case 'add':
+                // Ajouter sans supprimer les existantes
+                if (!empty($categories)) {
+                    $exercice->categories()->syncWithoutDetaching($categories);
+                }
+                if (!empty($sousCategories)) {
+                    $exercice->sousCategories()->syncWithoutDetaching($sousCategories);
+                }
+                break;
+                
+            case 'replace':
+                // Remplacer toutes les catégories
+                $exercice->categories()->sync($categories);
+                $exercice->sousCategories()->sync($sousCategories);
+                break;
+                
+            case 'remove':
+                // Supprimer uniquement les catégories sélectionnées
+                if (!empty($categories)) {
+                    $exercice->categories()->detach($categories);
+                }
+                if (!empty($sousCategories)) {
+                    $exercice->sousCategories()->detach($sousCategories);
+                }
+                break;
+        }
+        
+        $count++;
+    }
+    
+    $actionLabel = match($action) {
+        'add' => 'ajoutées à',
+        'replace' => 'remplacées pour',
+        'remove' => 'supprimées de',
+    };
+    
+    return redirect()->route('admin.training.exercices.index')
+        ->with('success', "Catégories {$actionLabel} {$count} exercice(s) avec succès.");
+}
+
 }
