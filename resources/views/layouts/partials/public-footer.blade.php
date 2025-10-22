@@ -5,11 +5,22 @@
 
 <footer class="text-light" style="border-left: 20px solid #0f5c78; border-right: 20px solid #0f5c78; background-color: #006170 !important; border-bottom: 20px solid #f9f5f3; border-top: 20px solid #f9f5f3;">
 
-
- <!-- statistiques  -->
+    <!-- statistiques  -->
     <div class="w-100 text-center py-3">
-        <div class="alert alert-success border-0 bg-success m-0 w-100 text-white">
+        <div class="alert alert-danger border-0 bg-danger m-0 w-100 text-white">
             <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres Premium : {{ $chiffre2 }}</p>
+        </div>
+    </div>
+
+    <!-- Image boutique avec lien -->
+    <div class="w-100 text-center py-4">
+        <div class="container-lg">
+            <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
+                <img src="{{ asset('assets/images/team/quel-est-votre-style-sport.jpg') }}" 
+                     alt="boutique natation triathlon offres club et promotions" 
+                     class="img-fluid shop-image"
+                     style="max-width: 100%; height: auto;">
+            </a>
         </div>
     </div>
 
@@ -169,6 +180,15 @@
                     <p class="mb-0 text-light opacity-75">
                         &copy; {{ date('Y') }} {{ config('app.name') }}. Tous droits réservés.
                     </p>
+                    <p class="mb-0 text-light opacity-75 mt-2">
+                        Conception et développement 
+                        <a href="https://mycreanet.fr/realisations-projets/" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="text-white text-decoration-none hover-opacity-100 fw-semibold">
+                            MyCreaNet Agency
+                        </a>
+                    </p>
                 </div>
                 
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
@@ -188,12 +208,36 @@
         </div>
     </div>
 </footer>
-
 @push('styles')
 <style>
 .hover-opacity-100:hover {
     opacity: 1 !important;
     transition: opacity 0.3s ease;
+}
+
+/* Style pour l'image de la boutique avec effet hover */
+.shop-link {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.shop-link:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.shop-image {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .shop-image {
+        max-width: 100%;
+    }
 }
 </style>
 @endpush
