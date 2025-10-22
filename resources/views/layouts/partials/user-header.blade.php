@@ -297,6 +297,7 @@
     .nav-link {
         transition: all 0.2s ease;
         border-radius: 0.375rem;
+        font-size: 110%;
     }
 
     .nav-link:hover:not(.active) {

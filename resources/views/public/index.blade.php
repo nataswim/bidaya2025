@@ -19,10 +19,10 @@
 
 
 
-                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-15.png') }}"
+                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-2.jpg') }}"
                         alt="Guide Nataswim"
                         class="img-fluid rounded-4"
-                        style="max-height: 200px; object-fit: cover;">
+                        style="max-height: 300px; object-fit: cover;">
 
                 </a>
 

@@ -52,6 +52,8 @@ use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\FichesSousCategoryController;
 use App\Http\Controllers\Admin\ExerciceCategoryController;
 use App\Http\Controllers\Admin\ExerciceSousCategoryController;
+use App\Http\Controllers\AnatomyController;
+
 
 
 
@@ -128,7 +130,8 @@ Route::prefix('fiches')->name('public.fiches.')->group(function () {
     Route::get('/{category}/{fiche}', [PublicFicheController::class, 'show'])->name('show');
 });
 
-
+// Carte anatomique
+Route::get('/anatomie', [App\Http\Controllers\AnatomyController::class, 'index'])->name('anatomy.index');
 
 // Routes publiques pour les exercices
 Route::prefix('exercices')->name('exercices.')->group(function () {

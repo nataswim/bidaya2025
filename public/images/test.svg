@@ -1,0 +1,150 @@
+<!-- SVG “façon MuscleWiki” – deux vues (face & dos), groupes par région musculaire,
+     couleurs via currentColor, IDs clairs pour brancher tes interactions. -->
+<svg viewBox="0 0 880 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title>Carte musculaire – Face & Dos (style MuscleWiki)</title>
+  <desc>Schéma simplifié avec groupes cliquables par région musculaire, vue de face à gauche et vue de dos à droite.</desc>
+  <style>
+    .model { fill:#f5f7fa; stroke:#475569; stroke-width:2 }
+    .bodymap { color:#8a94a6; transition:.2s }
+    .bodymap:hover { color:#ef9aa8 }
+    .hit { cursor:pointer }
+    @media (prefers-color-scheme: dark){
+      .model{ fill:#121418; stroke:#9aa4b2 }
+    }
+  </style>
+
+  <!-- ====================== FACE (gauche) ====================== -->
+  <g id="front" transform="translate(40,20)">
+    <!-- silhouette simple -->
+    <circle class="model" cx="160" cy="60" r="36"/>
+    <path class="model" d="M100,100 h120 c30,0 44,41 44,74 v70 c0,40 -30,66 -44,76 h-120 c-14,-10 -44,-36 -44,-76 v-70 c0,-33 14,-74 44,-74z"/>
+    <rect class="model" x="138" y="322" width="44" height="44" rx="10"/>
+    <!-- bras -->
+    <rect class="model" x="54"  y="140" width="36" height="98" rx="16"/>
+    <rect class="model" x="270" y="140" width="36" height="98" rx="16"/>
+    <rect class="model" x="50"  y="240" width="42" height="92" rx="16"/>
+    <rect class="model" x="270" y="240" width="42" height="92" rx="16"/>
+    <!-- cuisses & jambes -->
+    <rect class="model" x="120" y="372" width="56" height="126" rx="22"/>
+    <rect class="model" x="186" y="372" width="56" height="126" rx="22"/>
+    <rect class="model" x="126" y="498" width="44" height="108" rx="18"/>
+    <rect class="model" x="192" y="498" width="44" height="108" rx="18"/>
+
+    <!-- MUSCLES (face) -->
+    <g id="front-shoulders" class="bodymap hit">
+      <ellipse cx="74"  cy="150" rx="24" ry="20" fill="currentColor"/>
+      <ellipse cx="286" cy="150" rx="24" ry="20" fill="currentColor"/>
+    </g>
+
+    <g id="chest" class="bodymap hit">
+      <rect x="134" y="122" width="72" height="40" rx="10" fill="currentColor"/>
+      <rect x="206" y="122" width="72" height="40" rx="10" fill="currentColor"/>
+    </g>
+
+    <g id="serratus-obliques" class="bodymap hit">
+      <polygon points="134,168 164,168 152,198 132,194" fill="currentColor"/>
+      <polygon points="278,168 248,168 260,198 280,194" fill="currentColor"/>
+    </g>
+
+    <g id="abdominals" class="bodymap hit">
+      <rect x="166" y="178" width="68" height="50" rx="10" fill="currentColor"/>
+      <rect x="166" y="231" width="68" height="50" rx="10" fill="currentColor"/>
+      <rect x="166" y="284" width="68" height="46" rx="10" fill="currentColor"/>
+    </g>
+
+    <g id="obliques" class="bodymap hit">
+      <polygon points="134,224 160,224 160,318 134,304" fill="currentColor"/>
+      <polygon points="270,224 244,224 244,318 270,304" fill="currentColor"/>
+    </g>
+
+    <g id="biceps" class="bodymap hit">
+      <rect x="56"  y="170" width="32" height="62" rx="12" fill="currentColor"/>
+      <rect x="272" y="170" width="32" height="62" rx="12" fill="currentColor"/>
+    </g>
+
+    <g id="forearms" class="bodymap hit">
+      <rect x="52"  y="242" width="38" height="82" rx="12" fill="currentColor"/>
+      <rect x="272" y="242" width="38" height="82" rx="12" fill="currentColor"/>
+    </g>
+
+    <g id="hip-flexors" class="bodymap hit">
+      <rect x="156" y="350" width="52" height="24" rx="8" fill="currentColor"/>
+    </g>
+
+    <g id="quads" class="bodymap hit">
+      <rect x="124" y="382" width="48" height="108" rx="18" fill="currentColor"/>
+      <rect x="190" y="382" width="48" height="108" rx="18" fill="currentColor"/>
+    </g>
+
+    <g id="tibialis" class="bodymap hit">
+      <rect x="130" y="504" width="36" height="96" rx="14" fill="currentColor"/>
+      <rect x="196" y="504" width="36" height="96" rx="14" fill="currentColor"/>
+    </g>
+
+    <text x="150" y="640" font-family="sans-serif" font-size="14" fill="#64748b">Face</text>
+  </g>
+
+  <!-- ====================== DOS (droite) ====================== -->
+  <g id="back" transform="translate(460,20)">
+    <!-- silhouette -->
+    <circle class="model" cx="160" cy="60" r="36"/>
+    <path class="model" d="M100,100 h120 c30,0 44,41 44,74 v70 c0,40 -30,66 -44,76 h-120 c-14,-10 -44,-36 -44,-76 v-70 c0,-33 14,-74 44,-74z"/>
+    <rect class="model" x="138" y="322" width="44" height="44" rx="10"/>
+    <!-- bras -->
+    <rect class="model" x="54"  y="140" width="36" height="98" rx="16"/>
+    <rect class="model" x="270" y="140" width="36" height="98" rx="16"/>
+    <rect class="model" x="50"  y="240" width="42" height="92" rx="16"/>
+    <rect class="model" x="270" y="240" width="42" height="92" rx="16"/>
+    <!-- cuisses & jambes -->
+    <rect class="model" x="120" y="372" width="56" height="126" rx="22"/>
+    <rect class="model" x="186" y="372" width="56" height="126" rx="22"/>
+    <rect class="model" x="126" y="498" width="44" height="108" rx="18"/>
+    <rect class="model" x="192" y="498" width="44" height="108" rx="18"/>
+
+    <!-- MUSCLES (dos) -->
+    <g id="traps" class="bodymap hit">
+      <polygon points="160,114 118,150 202,150" fill="currentColor"/>
+    </g>
+
+    <g id="rear-shoulders" class="bodymap hit">
+      <ellipse cx="74"  cy="150" rx="24" ry="20" fill="currentColor"/>
+      <ellipse cx="286" cy="150" rx="24" ry="20" fill="currentColor"/>
+    </g>
+
+    <g id="lats" class="bodymap hit">
+      <polygon points="138,160 170,160 150,250 118,236" fill="currentColor"/>
+      <polygon points="222,160 254,160 274,236 242,250" fill="currentColor"/>
+    </g>
+
+    <g id="erector-spinae" class="bodymap hit">
+      <rect x="168" y="172" width="18" height="160" rx="8" fill="currentColor"/>
+      <rect x="194" y="172" width="18" height="160" rx="8" fill="currentColor"/>
+    </g>
+
+    <g id="triceps" class="bodymap hit">
+      <rect x="56"  y="170" width="32" height="62" rx="12" fill="currentColor"/>
+      <rect x="272" y="170" width="32" height="62" rx="12" fill="currentColor"/>
+    </g>
+
+    <g id="forearms-back" class="bodymap hit">
+      <rect x="52"  y="242" width="38" height="82" rx="12" fill="currentColor"/>
+      <rect x="272" y="242" width="38" height="82" rx="12" fill="currentColor"/>
+    </g>
+
+    <g id="glutes" class="bodymap hit">
+      <rect x="150" y="322" width="56" height="52" rx="14" fill="currentColor"/>
+    </g>
+
+    <g id="hamstrings" class="bodymap hit">
+      <rect x="124" y="382" width="48" height="108" rx="18" fill="currentColor"/>
+      <rect x="190" y="382" width="48" height="108" rx="18" fill="currentColor"/>
+    </g>
+
+    <g id="calves" class="bodymap hit">
+      <rect x="130" y="504" width="36" height="96" rx="14" fill="currentColor"/>
+      <rect x="196" y="504" width="36" height="96" rx="14" fill="currentColor"/>
+    </g>
+
+    <text x="154" y="640" font-family="sans-serif" font-size="14" fill="#64748b">Dos</text>
+  </g>
+</svg>

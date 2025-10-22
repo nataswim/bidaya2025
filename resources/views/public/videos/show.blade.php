@@ -25,23 +25,15 @@
 
 
 <!-- Section titre -->
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="text-white py-5" style="background-color: rgb(6 44 51);border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-top: 20px solid #04adb9;border-bottom: 20px solid #04adb9;">
     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-7 mb-4 mb-lg-0">
+            <div class="col-lg mb-4 mb-lg-0">
                       <h1 class="display-5 fw-bold mb-0">{{ $video->title }}</h1>
 
 
             </div>
-            <div class="col-lg-5 text-center">
-                <a href="{{ route('contact') }}">
-                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-6.png') }}"
-                        alt="Guide Nataswim"
-                        class="img-fluid rounded-4"
-                        style="max-height: 200px; object-fit: cover;">
-                </a>
-            </div>
+
         </div>
     </div>
 </section>

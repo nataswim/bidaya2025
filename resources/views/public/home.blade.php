@@ -381,14 +381,14 @@
 </section>
 
 <!-- Dernieres Publications -->
-<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #0175c5;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
     <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
                 Publications
             </h2>
-            <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                Tous les articles <i class="fas fa-angle-right ms-1"></i>
+            <a href="{{ route('public.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
+                + Articles <i class="fas fa-angle-right ms-1"></i>
             </a>
         </div>
         
@@ -445,7 +445,7 @@
 
 
 
-<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #4199b9;border-left: 20px solid #307eae;border-right: 20px solid #307eae;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
         <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
@@ -453,8 +453,8 @@
                         <h5 class="mb-0">
                             Fiches
                         </h5>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
-                            Toutes les fiches
+                        <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
+                            + Fiches
                         </a>
                     </div>
                 </div>
@@ -517,7 +517,7 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #307eae;border-left: 20px solid #429ab9;border-right: 20px solid #429ab9;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
 
        <div class="container-lg">
             <div class="row mb-4">
@@ -526,8 +526,8 @@
                         <h5 class="mb-0">
                             Entraînement
                         </h5>
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
-                            Toutes les séances
+                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
+                            + Séances
                         </a>
                     </div>
                 </div>
@@ -590,7 +590,7 @@
             </div>
         </div>
 </section>
-<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #14a9cf;border-left: 20px solid #16afae;border-right: 20px solid #16afae;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
 
 <div class="container-lg">
             <div class="row mb-4">
@@ -599,8 +599,8 @@
                         <h5 class="mb-0">
                             Documents
                         </h5>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
-                            Tous les documents
+                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
+                            + Documents
                         </a>
                     </div>
                 </div>
@@ -661,7 +661,7 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: #04adb9;border-left: 2px dashed #f9f5f4;margin-bottom: 20px;border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 text-white" style="background: #14aeae;border-left: 20px solid #14a9cf;border-right: 20px solid #14a9cf;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
 
 <!-- Derniers Exercices -->
         <div class="container-lg">
@@ -671,8 +671,8 @@
                         <h5 class="mb-0">
                         Exercices
                         </h5>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-danger text-white d-flex align-items-center px-4">
-                            Tous les exercices
+                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
+                            + Exercices
                         </a>
                     </div>
                 </div>
@@ -755,7 +755,7 @@
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
                             Contenus et outils developpes par 
-                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
+                            <a href="https://www.facebook.com/Sports.Ressources/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="text-warning fw-bold text-decoration-none">
@@ -778,7 +778,7 @@
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
                                 <i class="fas fa-envelope me-2"></i>Nous Contacter
                             </a>
-                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
+                            <a href="https://www.facebook.com/Sports.Ressources/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="btn btn-outline-info btn-sm">
