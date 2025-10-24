@@ -34,12 +34,7 @@
                 </div>
             </div>
             <div class="col-lg-5 text-center">
-                <a href="{{ route('contact') }}">
-                    <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-9.png') }}"
-                        alt="Guide Nataswim"
-                        class="img-fluid rounded-4"
-                        style="max-height: 200px; object-fit: cover;">
-                </a>
+                <i class="fas fa-file-alt fa-5x"></i>
             </div>
         </div>
         
@@ -73,19 +68,14 @@
             </ol>
         </nav>
 
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">
-                <i class="fas fa-list-ol me-2 text-primary"></i>
-                Pages du Programme
-            </h2>
-        </div>
+
 
         @if($workouts->count() > 0)
             <div class="row g-4">
                 @foreach($workouts as $workout)
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg hover-lift">
-                            <div class="card-header text-white p-3" style=" background: linear-gradient(135deg, #00cdff 0%, rgb(24.45, 176.55, 126.15) 100%);">
+                            <div class="card-header text-white p-3" style=" background: #0f6b9b;">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <span class="badge bg-light text-dark">
                                         Séance #{{ $workout->pivot->order_number }}

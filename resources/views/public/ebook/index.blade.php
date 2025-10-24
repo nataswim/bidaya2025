@@ -108,56 +108,6 @@
 
 
 
-
-
-
-
-
-<!-- Section Categories -->
-<section id="categories" class="py-5">
-    <div class="container">
-        
-
-        @if($categories->count() > 0)
-            <div class="row g-4">
-                @foreach($categories as $category)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card category-card h-100">
-                            <div class="card-body p-4 text-center">
-                                @if($category->icon)
-                                    <div class="mb-3">
-                                        <i class="{{ $category->icon }} fa-3x text-primary"></i>
-                                    </div>
-                                @endif
-                                <h5 class="fw-bold mb-3">{{ $category->name }}</h5>
-                                @if($category->short_description)
-                                    <p class="text-muted mb-4">{{ $category->short_description }}</p>
-                                @endif
-                                <div class="d-flex justify-content-center align-items-center mb-3">
-                                    <span class="badge bg-primary-subtle text-primary me-2">
-                                        {{ $category->downloadables_count }} ressource(s)
-                                    </span>
-                                </div>
-                                <a href="{{ route('ebook.category', $category->slug) }}" 
-                                   class="btn btn-outline-primary">
-                                    Explorer cette categorie
-                                    <i class="fas fa-arrow-right ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="text-center py-5">
-                <i class="fas fa-folder-open fa-3x text-muted mb-3 opacity-50"></i>
-                <h4>Aucune categorie disponible</h4>
-                <p class="text-muted">Les categories seront bientÃ´t disponibles.</p>
-            </div>
-        @endif
-    </div>
-</section>
-
 <!-- Section Telechargements Vedettes -->
 @if($featuredDownloads->count() > 0)
 <section id="featured" class="py-5 bg-light">
@@ -165,7 +115,7 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-3">
-                    <i class="fas fa-star text-warning me-2"></i>Contenus les plus populaires
+                    A la une
                 </h2>
              
             </div>
@@ -217,10 +167,7 @@
                                            class="btn btn-outline-primary">
                                             <i class="fas fa-eye me-2"></i>Voir les details
                                         </a>
-                                        <a href="{{ route('ebook.download', [$download->category->slug, $download->slug]) }}" 
-                                           class="btn btn-success">
-                                            <i class="fas fa-water me-2"></i>Telecharger
-                                        </a>
+
                                     </div>
                                 @else
                                     <div class="d-grid gap-2">
@@ -246,6 +193,56 @@
 </section>
 @endif
 
+
+
+
+<!-- Section Categories -->
+<section id="categories" class="py-5" style="background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-top: 20px solid #f9f5f4;border-bottom: 20px solid #f9f5f4;">
+    <div class="container">
+        
+
+        @if($categories->count() > 0)
+            <div class="row g-4">
+                @foreach($categories as $category)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card category-card h-100">
+                            <div class="card-body p-4 text-center">
+                                @if($category->icon)
+                                    <div class="mb-3">
+                                        <i class="{{ $category->icon }} fa-3x text-primary"></i>
+                                    </div>
+                                @endif
+                                <h5 class="fw-bold mb-3">{{ $category->name }}</h5>
+                                @if($category->short_description)
+                                    <p class="text-muted mb-4">{{ $category->short_description }}</p>
+                                @endif
+                                <div class="d-flex justify-content-center align-items-center mb-3">
+                                    <span class="badge bg-primary-subtle text-primary me-2">
+                                        {{ $category->downloadables_count }} ressource(s)
+                                    </span>
+                                </div>
+                                <a href="{{ route('ebook.category', $category->slug) }}" 
+                                   class="btn btn-outline-primary">
+                                    Explorer ce rayon
+                                    <i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="text-center py-5">
+                <i class="fas fa-folder-open fa-3x text-muted mb-3 opacity-50"></i>
+                <h4>Aucune categorie disponible</h4>
+                <p class="text-muted">Les categories seront bientÃ´t disponibles.</p>
+            </div>
+        @endif
+    </div>
+</section>
+
+
+
 <!-- Section Telechargements Recents -->
 @if($recentDownloads->count() > 0)
 <section class="py-5">
@@ -253,7 +250,7 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-3">
-                    <i class="fas fa-clock text-info me-2"></i>Dernieres ressources ajoutees
+                    Ressources
                 </h2>
 
             </div>

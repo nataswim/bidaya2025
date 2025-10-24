@@ -8,7 +8,7 @@
 @section('og_type', 'website')
 @section('og_title', 'Calculateur IMC & Composition Corporelle')
 @section('og_description', 'Outil avancé d\'analyse de composition corporelle basé sur les dernières recherches scientifiques')
-@section('og_url', route('tools.bmi-calculator'))
+@section('og_url', route('tools.bmi'))
 
 @section('content')
 <!-- Section titre -->
