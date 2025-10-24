@@ -13,17 +13,11 @@
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-white bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center me-4"
-                                        style="width: 80px; height: 80px; font-size: 2rem;">
-                                        {{ substr(auth()->user()->name, 0, 1) }}
-                                    </div>
                                     <div>
-                                        <h2 class="mb-2">
+                                        <h4 class="mb-2">
                                             Bonjour, {{ auth()->user()->first_name ?: auth()->user()->name }} !
-                                        </h2>
-                                        <p class="mb-0 opacity-90">
-                                            Bienvenue sur votre espace personnel
-                                        </p>
+                                        </h4>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -79,18 +73,18 @@
                     </div>
                     <div class="flex-fill">
                         <h5 class="alert-heading mb-2">
-                            <i class="fas fa-lock"></i> Accès limité - Compte Visiteur
+                            <i class="fas fa-lock"></i> Accès limité
                         </h5>
                         <p class="mb-3">
-                            Votre compte vous donne accès au contenu public uniquement.
-                            Pour débloquer tous les articles et contenus premium, passez à un compte utilisateur.
+                            Votre compte vous donne accès au contenu membre uniquement.
+                            Pour débloquer tous les articles et contenus premium, passez à un compte premium.
                         </p>
                         <div class="d-flex gap-2 flex-wrap">
                             <a href="{{ route('payments.index') }}" class="btn btn-primary">
                                 <i class="fas fa-arrow-up me-2"></i>Passer Premium
                             </a>
                             <a href="{{ route('payments.history') }}" class="btn btn-outline-secondary btn-sm">
-                                <i class="fas fa-history me-2"></i>Mes paiements
+                                <i class="fas fa-history me-2"></i>Mon Abonnement
                             </a>
                         </div>
                     </div>
@@ -113,12 +107,10 @@
                     </div>
                     <div class="flex-fill">
                         <h5 class="alert-heading mb-2">
-                            <i class="fas fa-crown"></i> Compte Premium Actif
+                            <i class="fas fa-crown"></i> Compte Premium
                         </h5>
                         <p class="mb-0">
-                            Félicitations ! Vous avez accès à tous les contenus premium de la plateforme.
-                            Profitez pleinement de votre expérience utilisateur.
-                        </p>
+                            Vous avez accès à tous les contenus de la plateforme. </p>
                     </div>
                 </div>
             </div>
@@ -137,14 +129,14 @@
         'title' => 'Mon profil',
         'icon' => 'fas fa-user-circle',
         'color' => 'primary',
-        'description' => 'Je met a jour mon compte',
+        'description' => 'Je met a jour mes informations',
         'route' => route('user.profile.edit')
         ],
         [
-        'title' => 'Mes paiements',
+        'title' => 'Mon Accès illimité',
         'icon' => 'fas fa-credit-card',
         'color' => 'info',
-        'description' => 'Historique transactions',
+        'description' => 'Je met a jour mon compte',
         'route' => route('payments.history')
         ],
         [
@@ -194,7 +186,7 @@
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h4 class="mb-0">
                     <i class="fas fa-th-large me-2 text-primary"></i>
-                    Accès rapide
+                    Mes categories
                 </h4>
             </div>
         </div>
@@ -215,7 +207,7 @@
         'title' => 'Passer Premium',
         'description' => 'Débloquez tous les contenus et fonctionnalités',
         'icon' => 'fas fa-crown',
-        'color' => 'warning',
+        'color' => 'info',
         'route' => route('payments.index'),
         'badge' => 'Recommandé',
         'badge_color' => 'warning'
@@ -228,13 +220,13 @@
         'title' => 'Musculation',
         'description' => 'Accédez à vos programmes de preparartion physique',
         'icon' => 'fas fa-dumbbell',
-        'color' => 'success',
+        'color' => 'info',
         'route' => route('user.training.index'),
         'badge' => 'Premium',
         'badge_color' => 'success'
         ];
 
-        // ✅ Mes Carnets
+        // Mes Carnets
         $notebooksCount = auth()->user()->notebooks()->count();
         $notebooksItemsCount = \App\Models\NotebookItem::whereHas('notebook', function($q) {
         $q->where('user_id', auth()->id());
@@ -246,7 +238,7 @@
         ? "{$notebooksCount} carnet(s) • {$notebooksItemsCount} élément(s)"
         : 'Organisez vos contenus favoris',
         'icon' => 'fas fa-book',
-        'color' => 'purple',
+        'color' => 'info',
         'route' => route('user.notebooks.index'),
         'badge' => 'Premium',
         'badge_color' => 'success'
@@ -259,7 +251,7 @@
         'title' => 'Articles Dossiers',
         'description' => 'Découvrez nos derniers articles et conseils',
         'icon' => 'fas fa-newspaper',
-        'color' => 'primary',
+        'color' => 'info',
         'route' => route('public.index')
         ],
         [
@@ -273,11 +265,11 @@
         'title' => 'Exercices Musculation',
         'description' => 'Explorez notre bibliothèque d\'exercices',
         'icon' => 'fas fa-running',
-        'color' => 'danger',
+        'color' => 'info',
         'route' => route('exercices.index')
         ],
         [
-        'title' => 'Documents & eBooks',
+        'title' => 'Documents',
         'description' => 'Téléchargez nos guides et ressources',
         'icon' => 'fas fa-file-download',
         'color' => 'info',
@@ -287,21 +279,28 @@
         'title' => 'Fiches techniques',
         'description' => 'Consultez nos fiches détaillées',
         'icon' => 'fas fa-file-alt',
-        'color' => 'teal',
+        'color' => 'info',
         'route' => route('public.fiches.index')
         ],
         [
         'title' => 'Entrainements Plans',
-        'description' => 'Programmes d\'entraînement complets',
+        'description' => 'Programmes d\'entraînement',
         'icon' => 'fas fa-heartbeat',
-        'color' => 'orange',
+        'color' => 'info',
         'route' => route('public.workouts.index')
+        ],
+               [
+        'title' => 'Guide d\'utilisation',
+        'description' => 'Découvrez tout ce que ce site peut vous offrir',
+        'icon' => 'fas fa-heartbeat',
+        'color' => 'info',
+        'route' => route('guide')
         ],
         [
         'title' => 'Nous Contacter',
         'description' => 'Une question ? Contactez-nous',
         'icon' => 'fas fa-envelope',
-        'color' => 'secondary',
+        'color' => 'info',
         'route' => route('contact')
         ]
         ]);
@@ -312,7 +311,7 @@
         'title' => 'Administration',
         'description' => 'Gérer la plateforme',
         'icon' => 'fas fa-cog',
-        'color' => 'danger',
+        'color' => 'info',
         'route' => route('admin.dashboard'),
         'badge' => 'Admin',
         'badge_color' => 'danger'
@@ -355,403 +354,149 @@
 </div>
 
 
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
-      <div class="container-lg">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <i class="fas fa-newspaper me-2 text-primary"></i>Articles récents
-                        </h5>
-                        <a href="{{ route('public.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                            Tous les articles
-                        </a>
-                    </div>
+<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+    <div class="container-lg">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">
+                        Articles
+                    </h5>
+                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                        <i class="fas fa-water me-1"></i> + Dossiers
+                    </a>
                 </div>
-            </div>
-
-            <div class="row g-4">
-                @php
-                $recentArticles = App\Models\Post::where('status', 'published')
-                ->whereNotNull('published_at')
-                ->orderBy('published_at', 'desc')
-                ->limit(4)
-                ->get();
-                @endphp
-
-                @forelse($recentArticles as $article)
-                <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
-                        <div class="bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
-                            style="height: 180px; overflow: hidden;">
-                            @if($article->image)
-                            <img src="{{ $article->image }}"
-                                class="w-100 h-100"
-                                style="object-fit: cover;"
-                                alt="{{ $article->name }}">
-                            @else
-                            <i class="fas fa-newspaper fa-3x text-primary opacity-25"></i>
-                            @endif
-                        </div>
-
-                        <div class="card-body p-3">
-                            <span class="badge bg-primary-subtle text-primary mb-2">
-                                {{ $article->category->name ?? 'Non catégorisé' }}
-                            </span>
-                            <h6 class="card-title mb-2">
-                                <a href="{{ route('public.show', $article) }}"
-                                    class="text-decoration-none text-dark">
-                                    {!! Str::limit($article->name, 50) !!}
-                                </a>
-                            </h6>
-                            @if($article->intro)
-                            <p class="card-text text-muted small mb-3">
-                                {!! Str::limit(strip_tags($article->intro), 80) !!}
-                            </p>
-                            @endif
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">
-                                    <i class="fas fa-eye me-1"></i>{{ $article->hits }}
-                                </small>
-                                <small class="text-muted">
-                                    {{ $article->published_at->format('d/m/Y') }}
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                <div class="col-12">
-                    <div class="text-center py-5 text-muted">
-                        <i class="fas fa-newspaper fa-3x mb-3 opacity-25"></i>
-                        <p>Aucun article publié récemment</p>
-                    </div>
-                </div>
-                @endforelse
             </div>
         </div>
-</section>
 
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
-        <div class="container-lg">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <i class="fas fa-file-alt me-2 text-primary"></i>Dernières Fiches Pratiques
-                        </h5>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                            Toutes les fiches
-                        </a>
+        <div class="row g-4">
+            @php
+            $recentArticles = App\Models\Post::where('status', 'published')
+            ->whereNotNull('published_at')
+            ->orderBy('published_at', 'desc')
+            ->limit(4)
+            ->get();
+            @endphp
+
+            @forelse($recentArticles as $article)
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
+                        style="height: 180px; overflow: hidden;">
+                        @if($article->image)
+                        <img src="{{ $article->image }}"
+                            class="w-100 h-100"
+                            style="object-fit: cover;"
+                            alt="{{ $article->name }}">
+                        @else
+                        <i class="fas fa-newspaper fa-3x text-primary opacity-25"></i>
+                        @endif
+                    </div>
+
+                    <div class="card-body p-3">
+                        <span class="badge bg-primary-subtle text-primary mb-2">
+                            {{ $article->category->name ?? 'Non catégorisé' }}
+                        </span>
+                        <h6 class="card-title mb-2">
+                            <a href="{{ route('public.show', $article) }}"
+                                class="text-decoration-none text-dark">
+                                {!! Str::limit($article->name, 50) !!}
+                            </a>
+                        </h6>
+                        @if($article->intro)
+                        <p class="card-text text-muted small mb-3">
+                            {!! Str::limit(strip_tags($article->intro), 80) !!}
+                        </p>
+                        @endif
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-eye me-1"></i>{{ $article->hits }}
+                            </small>
+                            <small class="text-muted">
+                                {{ $article->published_at->format('d/m/Y') }}
+                            </small>
+                        </div>
                     </div>
                 </div>
             </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5 text-muted">
+                    <i class="fas fa-newspaper fa-3x mb-3 opacity-25"></i>
+                    <p>Aucun article publié récemment</p>
+                </div>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
 
-            <div class="row g-4">
-                @php
-                $recentFiches = App\Models\Fiche::where('is_published', true)
-                ->where('visibility', 'public')
-                ->whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                    ->orderBy('created_at', 'desc')
-                    ->limit(4)
-                    ->get();
-                    @endphp
+<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
 
-                    @forelse($recentFiches as $fiche)
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card border-0 shadow-sm h-100 hover-lift">
-                            @if($fiche->image)
-                            <img src="{{ $fiche->image }}"
-                                class="card-img-top"
-                                style="height: 180px; object-fit: cover;"
-                                alt="{{ $fiche->title }}">
-                            @else
-                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
-                                style="height: 180px;">
-                                <i class="fas fa-file-alt fa-3x text-muted opacity-25"></i>
-                            </div>
-                            @endif
-
-                            <div class="card-body p-3">
-                                @if($fiche->category)
-                                <span class="badge bg-primary-subtle text-primary mb-2">
-                                    {{ $fiche->category->name }}
-                                </span>
-                                @endif
-                                <h6 class="card-title mb-2">
-                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                        class="text-decoration-none text-dark">
-                                        {!! Str::limit($fiche->title, 50) !!}
-                                    </a>
-                                </h6>
-                                @if($fiche->short_description)
-                                <p class="card-text text-muted small mb-3">
-                                    {!! Str::limit(strip_tags($fiche->short_description), 80) !!}
-                                </p>
-                                @endif
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">
-                                        <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
-                                    </small>
-                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                        class="btn btn-light d-flex align-items-center px-4">
-                                        Lire
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @empty
-                    <div class="col-12">
-                        <div class="text-center py-5 text-muted">
-                            <i class="fas fa-file-alt fa-3x mb-3 opacity-25"></i>
-                            <p>Aucune fiche disponible</p>
-                        </div>
-                    </div>
-                    @endforelse
+    <div class="container-lg">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">
+                        Fiches Pratiques
+                    </h5>
+                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                        + Fiches
+                    </a>
+                </div>
             </div>
         </div>
-</section>
 
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
-       <div class="container-lg">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <i class="fas fa-heartbeat me-2 text-primary"></i>Dernières Séances d'Entraînement
-                        </h5>
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                            Toutes les séances
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                @php
-                $recentWorkouts = App\Models\Workout::with(['categories.section'])
+        <div class="row g-4">
+            @php
+            $recentFiches = App\Models\Fiche::where('is_published', true)
+            ->where('visibility', 'public')
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
                 ->orderBy('created_at', 'desc')
                 ->limit(4)
                 ->get();
                 @endphp
 
-                @forelse($recentWorkouts as $workout)
-                @php
-                $firstCategory = $workout->categories->first();
-                $section = $firstCategory?->section;
-                @endphp
-                @if($firstCategory && $section)
+                @forelse($recentFiches as $fiche)
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 shadow-sm h-100 hover-lift">
-                        <div class="card-img-top bg-gradient d-flex align-items-center justify-content-center"
-                            style="height: 180px; background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);">
-                            <div class="text-warning text-center">
-                                <i class="fas fa-clipboard fa-4x mb-2 opacity-75"></i>
-                                <div class="small">{{ $section->name }}</div>
-                            </div>
-                        </div>
-
-                        <div class="card-body p-3">
-                            <span class="badge bg-info-subtle text-info mb-2">
-                                {{ $firstCategory->name }}
-                            </span>
-                            <h6 class="card-title mb-2">
-                                <a href="{{ route('public.workouts.show', [$section, $firstCategory, $workout]) }}"
-                                    class="text-decoration-none text-dark">
-                                    {!! Str::limit($workout->title, 50) !!}
-                                </a>
-                            </h6>
-                            @if($workout->short_description)
-                            <p class="card-text text-muted small mb-3">
-                                {!! Str::limit(strip_tags($workout->short_description), 80) !!}
-                            </p>
-                            @endif
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">
-                                    <i class="fas fa-ruler me-1"></i>{{ $workout->formatted_total ?? 'N/A' }}
-                                </small>
-                                <a href="{{ route('public.workouts.show', [$section, $firstCategory, $workout]) }}"
-                                    class="btn btn-sm btn-outline-primary">
-                                    Voir
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @empty
-                <div class="col-12">
-                    <div class="text-center py-5 text-muted">
-                        <i class="fas fa-heartbeat fa-3x mb-3 opacity-25"></i>
-                        <p>Aucune séance disponible</p>
-                    </div>
-                </div>
-                @endforelse
-            </div>
-        </div>
-</section>
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
-<div class="container-lg">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <i class="fas fa-book me-2 text-primary"></i>Documents Récents
-                        </h5>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                            Tous les documents
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                @php
-                $recentDownloads = App\Models\Downloadable::with('category')
-                ->where('status', 'active')
-                ->orderBy('created_at', 'desc')
-                ->limit(4)
-                ->get();
-                @endphp
-
-                @forelse($recentDownloads as $download)
-                <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
-                        <div class="position-relative">
-                            @if($download->cover_image)
-                            <img src="{{ $download->cover_image }}"
-                                class="card-img-top"
-                                style="height: 180px; object-fit: cover;"
-                                alt="{{ $download->title }}">
-                            @else
-                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
-                                style="height: 180px;">
-                                <i class="fas fa-file-{{ $download->format === 'pdf' ? 'pdf' : ($download->format === 'mp4' ? 'video' : 'alt') }} fa-3x text-muted opacity-25"></i>
-                            </div>
-                            @endif
-                            <div class="position-absolute top-0 start-0 p-2">
-                                <span class="badge bg-dark">{{ strtoupper($download->format) }}</span>
-                            </div>
-                        </div>
-
-                        <div class="card-body p-3">
-                            @if($download->category)
-                            <span class="badge bg-primary-subtle text-primary mb-2">
-                                {{ $download->category->name }}
-                            </span>
-                            @endif
-                            <h6 class="card-title mb-2">
-                                <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}"
-                                    class="text-decoration-none text-dark">
-                                    {!! Str::limit($download->title, 50) !!}
-                                </a>
-                            </h6>
-                            @if($download->short_description)
-                            <p class="card-text text-muted small mb-3">
-                                {!! Str::limit(strip_tags($download->short_description), 80) !!}
-                            </p>
-                            @endif
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">
-                                    <i class="fas fa-download me-1"></i>{{ $download->download_count ?? 0 }}
-                                </small>
-                                <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}"
-                                    class="btn btn-sm btn-outline-primary">
-                                    Voir
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                <div class="col-12">
-                    <div class="text-center py-5 text-muted">
-                        <i class="fas fa-book fa-3x mb-3 opacity-25"></i>
-                        <p>Aucun document disponible</p>
-                    </div>
-                </div>
-                @endforelse
-            </div>
-        </div>
-</section>
-
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
-<!-- Derniers Exercices -->
-        <div class="container-lg">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            <i class="fas fa-running me-2 text-primary"></i>Derniers Exercices
-                        </h5>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-light d-flex align-items-center px-4">
-                            Tous les exercices
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                @php
-                $recentExercices = App\Models\Exercice::where('is_active', true)
-                ->orderBy('created_at', 'desc')
-                ->limit(4)
-                ->get();
-                @endphp
-
-                @forelse($recentExercices as $exercice)
-                <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
-                        @if($exercice->image)
-                        <img src="{{ $exercice->image }}"
+                        @if($fiche->image)
+                        <img src="{{ $fiche->image }}"
                             class="card-img-top"
                             style="height: 180px; object-fit: cover;"
-                            alt="{{ $exercice->titre }}">
+                            alt="{{ $fiche->title }}">
                         @else
                         <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
                             style="height: 180px;">
-                            <i class="fas fa-running fa-3x text-muted opacity-25"></i>
+                            <i class="fas fa-file-alt fa-3x text-muted opacity-25"></i>
                         </div>
                         @endif
 
                         <div class="card-body p-3">
-                            <div class="d-flex gap-1 mb-2">
-                                <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}-subtle text-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} small">
-                                    {{ $exercice->niveau_label }}
-                                </span>
-                                <span class="badge bg-primary-subtle text-primary small">
-                                    {{ $exercice->type_exercice_label }}
-                                </span>
-                            </div>
+                            @if($fiche->category)
+                            <span class="badge bg-primary-subtle text-primary mb-2">
+                                {{ $fiche->category->name }}
+                            </span>
+                            @endif
                             <h6 class="card-title mb-2">
-                                <a href="{{ route('exercices.show', $exercice) }}"
+                                <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
                                     class="text-decoration-none text-dark">
-                                    {!! Str::limit($exercice->titre, 50) !!}
+                                    {!! Str::limit($fiche->title, 50) !!}
                                 </a>
                             </h6>
-                            @if($exercice->description)
+                            @if($fiche->short_description)
                             <p class="card-text text-muted small mb-3">
-                                {!! Str::limit(strip_tags($exercice->description), 80) !!}
+                                {!! Str::limit(strip_tags($fiche->short_description), 80) !!}
                             </p>
                             @endif
                             <div class="d-flex justify-content-between align-items-center">
-                                @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
                                 <small class="text-muted">
-                                    <i class="fas fa-crosshairs me-1"></i>{{ count($exercice->muscles_cibles) }} muscle(s)
+                                    <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
                                 </small>
-                                @else
-                                <small class="text-muted">&nbsp;</small>
-                                @endif
-                                <a href="{{ route('exercices.show', $exercice) }}"
-                                    class="btn btn-sm btn-outline-primary">
-                                    Voir
+                                <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
+                                    class="btn btn-light d-flex align-items-center px-4">
+                                    Lire
                                 </a>
                             </div>
                         </div>
@@ -760,13 +505,266 @@
                 @empty
                 <div class="col-12">
                     <div class="text-center py-5 text-muted">
-                        <i class="fas fa-running fa-3x mb-3 opacity-25"></i>
-                        <p>Aucun exercice disponible</p>
+                        <i class="fas fa-file-alt fa-3x mb-3 opacity-25"></i>
+                        <p>Aucune fiche disponible</p>
                     </div>
                 </div>
                 @endforelse
+        </div>
+    </div>
+</section>
+
+<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+
+    <div class="container-lg">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">
+                        <i class="fas fa-heartbeat me-2 text-primary"></i>Séances
+                    </h5>
+                    <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                        Séances
+                    </a>
+                </div>
             </div>
         </div>
+
+        <div class="row g-4">
+            @php
+            $recentWorkouts = App\Models\Workout::with(['categories.section'])
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
+            @endphp
+
+            @forelse($recentWorkouts as $workout)
+            @php
+            $firstCategory = $workout->categories->first();
+            $section = $firstCategory?->section;
+            @endphp
+            @if($firstCategory && $section)
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="card-img-top bg-gradient d-flex align-items-center justify-content-center"
+                        style="height: 180px; background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);">
+                        <div class="text-warning text-center">
+                            <i class="fas fa-clipboard fa-4x mb-2 opacity-75"></i>
+                            <div class="small">{{ $section->name }}</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-3">
+                        <span class="badge bg-info-subtle text-info mb-2">
+                            {{ $firstCategory->name }}
+                        </span>
+                        <h6 class="card-title mb-2">
+                            <a href="{{ route('public.workouts.show', [$section, $firstCategory, $workout]) }}"
+                                class="text-decoration-none text-dark">
+                                {!! Str::limit($workout->title, 50) !!}
+                            </a>
+                        </h6>
+                        @if($workout->short_description)
+                        <p class="card-text text-muted small mb-3">
+                            {!! Str::limit(strip_tags($workout->short_description), 80) !!}
+                        </p>
+                        @endif
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-ruler me-1"></i>{{ $workout->formatted_total ?? 'N/A' }}
+                            </small>
+                            <a href="{{ route('public.workouts.show', [$section, $firstCategory, $workout]) }}"
+                                class="btn btn-sm btn-outline-primary">
+                                Voir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5 text-muted">
+                    <i class="fas fa-heartbeat fa-3x mb-3 opacity-25"></i>
+                    <p>Aucune séance disponible</p>
+                </div>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+
+    <div class="container-lg">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">
+                        <i class="fas fa-book me-2 text-primary"></i>Documents
+                    </h5>
+                    <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                       + Documents
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @php
+            $recentDownloads = App\Models\Downloadable::with('category')
+            ->where('status', 'active')
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
+            @endphp
+
+            @forelse($recentDownloads as $download)
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="position-relative">
+                        @if($download->cover_image)
+                        <img src="{{ $download->cover_image }}"
+                            class="card-img-top"
+                            style="height: 180px; object-fit: cover;"
+                            alt="{{ $download->title }}">
+                        @else
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                            style="height: 180px;">
+                            <i class="fas fa-file-{{ $download->format === 'pdf' ? 'pdf' : ($download->format === 'mp4' ? 'video' : 'alt') }} fa-3x text-muted opacity-25"></i>
+                        </div>
+                        @endif
+                        <div class="position-absolute top-0 start-0 p-2">
+                            <span class="badge bg-dark">{{ strtoupper($download->format) }}</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-3">
+                        @if($download->category)
+                        <span class="badge bg-primary-subtle text-primary mb-2">
+                            {{ $download->category->name }}
+                        </span>
+                        @endif
+                        <h6 class="card-title mb-2">
+                            <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}"
+                                class="text-decoration-none text-dark">
+                                {!! Str::limit($download->title, 50) !!}
+                            </a>
+                        </h6>
+                        @if($download->short_description)
+                        <p class="card-text text-muted small mb-3">
+                            {!! Str::limit(strip_tags($download->short_description), 80) !!}
+                        </p>
+                        @endif
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-download me-1"></i>{{ $download->download_count ?? 0 }}
+                            </small>
+                            <a href="{{ route('ebook.show', [$download->category->slug, $download->slug]) }}"
+                                class="btn btn-sm btn-outline-primary">
+                                Voir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5 text-muted">
+                    <i class="fas fa-book fa-3x mb-3 opacity-25"></i>
+                    <p>Aucun document disponible</p>
+                </div>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+
+<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+
+    <!-- Derniers Exercices -->
+    <div class="container-lg">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">
+                        <i class="fas fa-running me-2 text-primary"></i> Exercices
+                    </h5>
+                    <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                        + Exercices
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @php
+            $recentExercices = App\Models\Exercice::where('is_active', true)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
+            @endphp
+
+            @forelse($recentExercices as $exercice)
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 hover-lift">
+                    @if($exercice->image)
+                    <img src="{{ $exercice->image }}"
+                        class="card-img-top"
+                        style="height: 180px; object-fit: cover;"
+                        alt="{{ $exercice->titre }}">
+                    @else
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                        style="height: 180px;">
+                        <i class="fas fa-running fa-3x text-muted opacity-25"></i>
+                    </div>
+                    @endif
+
+                    <div class="card-body p-3">
+                        <div class="d-flex gap-1 mb-2">
+                            <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }}-subtle text-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} small">
+                                {{ $exercice->niveau_label }}
+                            </span>
+                            <span class="badge bg-primary-subtle text-primary small">
+                                {{ $exercice->type_exercice_label }}
+                            </span>
+                        </div>
+                        <h6 class="card-title mb-2">
+                            <a href="{{ route('exercices.show', $exercice) }}"
+                                class="text-decoration-none text-dark">
+                                {!! Str::limit($exercice->titre, 50) !!}
+                            </a>
+                        </h6>
+                        @if($exercice->description)
+                        <p class="card-text text-muted small mb-3">
+                            {!! Str::limit(strip_tags($exercice->description), 80) !!}
+                        </p>
+                        @endif
+                        <div class="d-flex justify-content-between align-items-center">
+                            @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
+                            <small class="text-muted">
+                                <i class="fas fa-crosshairs me-1"></i>{{ count($exercice->muscles_cibles) }} muscle(s)
+                            </small>
+                            @else
+                            <small class="text-muted">&nbsp;</small>
+                            @endif
+                            <a href="{{ route('exercices.show', $exercice) }}"
+                                class="btn btn-sm btn-outline-primary">
+                                Voir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5 text-muted">
+                    <i class="fas fa-running fa-3x mb-3 opacity-25"></i>
+                    <p>Aucun exercice disponible</p>
+                </div>
+            </div>
+            @endforelse
+        </div>
+    </div>
 </section>
 
 

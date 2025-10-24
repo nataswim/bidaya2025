@@ -1,76 +1,32 @@
-<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0f5c78;border-top: 20px solid #0f5c78;">
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #004f59;border-right: 20px solid #004f59;background-color: #f9f5f4 !important;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;">
     <div class="container-lg">
         <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="{{ route('user.dashboard') }}">
-            <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}" 
-                 alt="nataswim application pour tous" 
-                 class="img-fluid" 
-                 style="height: 100px; width: auto;">
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}"
+                alt="nataswim application pour tous"
+                class="img-fluid"
+                style="height: 80px; width: auto;">
         </a>
-        
+
         <!-- Toggle mobile -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#userNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="userNav">
             <!-- Navigation principale -->
             <ul class="navbar-nav me-auto ms-lg-4">
-                
-                {{-- Mon Espace --}}
-                <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('user.dashboard') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('user.dashboard') }}">
-                        <i class="fas fa-home me-2"></i>Mon Espace
-                    </a>
-                </li>
 
-                {{-- Mon Profil --}}
-                <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('user.profile.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('user.profile.edit') }}">
-                        <i class="fas fa-user-circle me-2"></i>Mon Profil
-                    </a>
-                </li>
-
-                {{-- Mes Carnets --}}
-                <li class="nav-item">
-                    <a class="nav-link px-3 py-2 {{ request()->routeIs('user.notebooks.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('user.notebooks.index') }}">
-                        <i class="fas fa-book me-2"></i>Mes Carnets
-                    </a>
-                </li>
-
-                {{-- Musculation (Dropdown) --}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 py-2 {{ request()->routeIs('user.training.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="#" 
-                       id="trainingDropdown" 
-                       role="button" 
-                       data-bs-toggle="dropdown" 
-                       aria-expanded="false">
-                        <i class="fas fa-dumbbell me-2"></i>Musculation
-                    </a>
-                    <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="trainingDropdown">
-                        
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <a class="dropdown-item py-2" href="{{ route('exercices.index') }}">
-                                <i class="fas fa-running text-info me-2"></i>Bibliothèque exercices
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
                 {{-- Contenu Public (Dropdown multi-niveaux) --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 py-2 text-dark" 
-                       href="#" 
-                       id="contentDropdown" 
-                       role="button" 
-                       data-bs-toggle="dropdown" 
-                       aria-expanded="false">
-                        <i class="fas fa-globe me-2"></i>Contenus
+                    <a class="nav-link dropdown-toggle px-3 py-2 text-dark"
+                        href="#"
+                        id="contentDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false" style="font-weight: 600;background-color: #cef6e9;border: 5px solid #f9f5f4;">
+                        <i class="fas fa-water me-2"></i>Contenus
                     </a>
                     <ul class="dropdown-menu dropdown-menu-large shadow-lg border-0" aria-labelledby="contentDropdown">
                         <li>
@@ -78,8 +34,10 @@
                                 <i class="fas fa-home text-success me-2"></i>Accueil site
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
-                        
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
                         <li class="dropdown-header fw-bold text-primary">
                             <i class="fas fa-newspaper me-1"></i>Articles & Fiches
                         </li>
@@ -93,8 +51,10 @@
                                 <i class="fas fa-file-alt text-teal me-2"></i>Fiches techniques
                             </a>
                         </li>
-                        
-                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li class="dropdown-header fw-bold text-primary">
                             <i class="fas fa-video me-1"></i>Contenus visuels
                         </li>
@@ -103,8 +63,10 @@
                                 <i class="fas fa-video text-danger me-2"></i>Vidéos
                             </a>
                         </li>
-                        
-                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li class="dropdown-header fw-bold text-primary">
                             <i class="fas fa-heartbeat me-1"></i>Entraînement
                         </li>
@@ -118,8 +80,10 @@
                                 <i class="fas fa-dumbbell text-success me-2"></i>Exercices musculation
                             </a>
                         </li>
-                        
-                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li class="dropdown-header fw-bold text-primary">
                             <i class="fas fa-tools me-1"></i>Ressources
                         </li>
@@ -136,15 +100,33 @@
                     </ul>
                 </li>
 
+
+                {{-- Mes Carnets --}}
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('user.notebooks.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                        href="{{ route('user.notebooks.index') }}" style="font-weight: 600;background-color: #ebe6f9;border: 5px solid #f9f5f4;">
+                        <i class="fas fa-water me-2"></i>Mes Carnets
+                    </a>
+                </li>
+
+                {{-- Mon Espace --}}
+                <li class="nav-item" >
+                    <a class="nav-link px-3 py-2 {{ request()->routeIs('user.dashboard') ? 'active bg-primary text-white' : 'text-dark' }}"
+                        href="{{ route('user.dashboard') }}" style="font-weight: 600;background-color: #dfecf2;border: 5px solid #f9f5f4;">
+                        <i class="fas fa-water me-2"></i>Mon Espace
+                    </a>
+                </li>
+
+
                 {{-- Paiements (Dropdown) --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 py-2 {{ request()->routeIs('payments.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="#" 
-                       id="paymentsDropdown" 
-                       role="button" 
-                       data-bs-toggle="dropdown" 
-                       aria-expanded="false">
-                        <i class="fas fa-credit-card me-2"></i>Paiements
+                    <a class="nav-link dropdown-toggle px-3 py-2 {{ request()->routeIs('payments.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                        href="#"
+                        id="paymentsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false" style="font-weight: 600;background-color: #f9e6f5;border: 5px solid #f9f5f4;">
+                        <i class="fas fa-water me-2"></i>Mon Compte
                     </a>
                     <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="paymentsDropdown">
                         @if(auth()->user()->hasRole('visitor'))
@@ -153,47 +135,51 @@
                                 <i class="fas fa-crown text-warning me-2"></i>Passer Premium
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         @endif
                         <li>
-                            <a class="dropdown-item py-2 {{ request()->routeIs('payments.history') ? 'active' : '' }}" 
-                               href="{{ route('payments.history') }}">
-                                <i class="fas fa-history text-info me-2"></i>Historique paiements
+                            <a class="dropdown-item py-2 {{ request()->routeIs('payments.history') ? 'active' : '' }}"
+                                href="{{ route('payments.history') }}">
+                                <i class="fas fa-history text-info me-2"></i>Historique abonnements
                             </a>
                         </li>
                     </ul>
                 </li>
 
             </ul>
-            
+
             <!-- Section utilisateur (droite) -->
             <div class="d-flex align-items-center">
                 @if(auth()->user()->hasRole('admin'))
-                    <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-danger me-3 px-4">
-                        <i class="fas fa-cog me-1"></i>Administration
-                    </a>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-danger me-3 px-4">
+                    <i class="fas fa-cog me-1"></i>Administration
+                </a>
                 @endif
-                
+
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" 
-                            type="button" 
-                            id="userDropdown" 
-                            data-bs-toggle="dropdown">
-                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" 
-                             style="width: 32px; height: 32px; font-size: 14px;">
+                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center"
+                        type="button"
+                        id="userDropdown"
+                        data-bs-toggle="dropdown">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+                            style="width: 32px; height: 32px; font-size: 14px;">
                             {{ substr(auth()->user()->name, 0, 1) }}
                         </div>
                         <span class="d-none d-md-inline">{{ auth()->user()->first_name ?: auth()->user()->name }}</span>
                     </button>
-                    
+
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2">
                         <li class="dropdown-header">
                             <strong>{{ auth()->user()->name }}</strong>
                             <br>
                             <small class="text-muted">{{ auth()->user()->email }}</small>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
-                        
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
                         <li>
                             <a class="dropdown-item py-2" href="{{ route('user.dashboard') }}">
                                 <i class="fas fa-tachometer-alt text-primary me-2"></i>Mon tableau de bord
@@ -209,17 +195,21 @@
                                 <i class="fas fa-book text-success me-2"></i>Mes carnets
                             </a>
                         </li>
-                        
+
                         @if(auth()->user()->hasRole('admin'))
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">
-                                    <i class="fas fa-cog text-danger me-2"></i>Administration
-                                </a>
-                            </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">
+                                <i class="fas fa-cog text-danger me-2"></i>Administration
+                            </a>
+                        </li>
                         @endif
-                        
-                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                 @csrf
@@ -282,6 +272,7 @@
             opacity: 0;
             transform: translateY(-10px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);

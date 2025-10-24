@@ -25,20 +25,14 @@
 <!-- En-tête de section -->
 
 
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4;margin-bottom: 20px;background: linear-gradient(
-76deg, #086690 0%, #0f5c78 100%);border-right: 2px dashed #f9f5f4;border-bottom: 2px dashed #f9f5f4;">
+<section class="text-white py-5" style="background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-top: 20px solid #f9f5f4;border-bottom: 20px solid #f9f5f4;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-{{ $downloadable->cover_image ? '7' : '12' }}">
                 <h1 class="display-5 fw-bold mb-0">{{ $downloadable->title }}</h1>
             </div>
             @if($downloadable->cover_image)
-            <div class="col-lg-5">
-                <img src="{{ $downloadable->cover_image }}"
-                    alt="{{ $downloadable->title }}"
-                    class="img-fluid w-100"
-                    style="max-height: 400px;object-fit: contain;">
-            </div>
+            
             @endif
         </div>
     </div>
