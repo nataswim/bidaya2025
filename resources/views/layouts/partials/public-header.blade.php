@@ -105,7 +105,7 @@
                     </a>
                     
                     {{-- Mega Menu Desktop --}}
-                    <div class="dropdown-menu mega-menu-tools shadow-lg border-0 mt-0 p-0 animate__animated animate__fadeIn" aria-labelledby="toolsDropdown">
+                    <div class="dropdown-menu mega-menu-tools shadow-lg border-0 mt-0 p-0 animate__animated animate__fadeIn" aria-labelledby="toolsDropdown" style="width: 100%;>
                         <div class="container-fluid px-4 py-4">
                             <div class="row">
                                 {{-- Colonne 1 : Santé & Nutrition --}}
