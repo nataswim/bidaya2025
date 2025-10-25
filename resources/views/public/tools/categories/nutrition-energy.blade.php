@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 bg-success text-white">
+<section class="py-5 bg-primary text-white text-center" style=" background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%); border-top: 20px solid #ff7f50; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-bottom: 20px double rgb(249 245 244); border-radius: 0px 0px 60px 60px; ">
     <div class="container">
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">

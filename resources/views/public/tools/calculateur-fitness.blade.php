@@ -5,22 +5,11 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 bg-primary text-white text-center">
+<section class="py-5 bg-primary text-white text-center" style=" background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%); border-top: 20px solid #ff7f50; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-bottom: 20px double rgb(249 245 244); border-radius: 0px 0px 60px 60px; ">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            <i class="fas fa-heartbeat"></i>
-            Calculateur Fitness & Frequence Cardiaque
+            Calculateur Fitness & FC
         </h1>
-        <div class="alert alert-info border-0 shadow-sm" 
-             style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
-            <div class="d-flex align-items-start">
-                <i class="fas fa-chart-line text-info me-3 mt-1"></i>
-                <div class="text-dark">
-                    <strong>Optimisez votre entraînement</strong> avec les dernieres recherches scientifiques 
-                    sur la frequence cardiaque et les zones d'entraînement
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 

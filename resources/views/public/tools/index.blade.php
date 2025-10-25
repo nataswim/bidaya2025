@@ -8,7 +8,7 @@
 
 
 
-<section class="text-white py-5" style=" background-color: #04adb9; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-top: 20px solid #04adb9; border-bottom: 20px solid #04adb9; ">
+<section class="py-5 bg-primary text-white text-center" style=" background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%); border-top: 20px solid #ff7f50; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-bottom: 20px double rgb(249 245 244); border-radius: 0px 0px 60px 60px; ">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">

@@ -62,7 +62,8 @@
 <!-- En-tÃªte de categorie -->
 
 
-<section class="text-white py-5" style="background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-top: 20px solid #f9f5f4;border-bottom: 20px solid #f9f5f4;">
+<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
+1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container-lg">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">

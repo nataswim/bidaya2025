@@ -24,37 +24,12 @@
 @section('content')
 
 <!-- En-tête de section -->
-<section class="text-white py-5" style="border-left: 2px dashed #f9f5f4; margin-bottom: 20px; background: linear-gradient(76deg, #086690 0%, #0f5c78 100%); border-right: 2px dashed #f9f5f4; border-bottom: 2px dashed #f9f5f4;">
+<section class="py-5 bg-primary text-white text-center" style="background: #353839;border-top: 20px solid #FF8800;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-{{ $exercice->image ? '7' : '12' }}">
+            <div class="col-lg">
                 <h1 class="display-5 fw-bold mb-3">{{ $exercice->titre }}</h1>
-                
-                <!-- Badges catégories -->
-                @if($exercice->category || $exercice->sousCategory)
-                    <div class="d-flex flex-wrap gap-2 mb-3">
-                        @if($exercice->category)
-                            <span class="badge bg-light text-dark fs-6">
-                                <i class="fas fa-folder me-1"></i>{{ $exercice->category->name }}
-                            </span>
-                        @endif
-                        @if($exercice->sousCategory)
-                            <span class="badge bg-light text-dark fs-6">
-                                <i class="fas fa-layer-group me-1"></i>{{ $exercice->sousCategory->name }}
-                            </span>
-                        @endif
-                    </div>
-                @endif
             </div>
-            
-            @if($exercice->image)
-                <div class="col-lg-5">
-                    <img src="{{ $exercice->image }}" 
-                         alt="{{ $exercice->titre }}" 
-                         class="img-fluid w-100 rounded shadow"
-                         style="max-height: 300px; object-fit: cover; background-color: #ffffff;">
-                </div>
-            @endif
         </div>
     </div>
 </section>
@@ -70,18 +45,18 @@
                     </a>
                 </li>
                 @if($exercice->categories->isNotEmpty())
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('exercices.category', $exercice->categories->first()) }}">
-                            {{ $exercice->categories->first()->name }}
-                        </a>
-                    </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('exercices.category', $exercice->categories->first()) }}">
+                        {{ $exercice->categories->first()->name }}
+                    </a>
+                </li>
                 @endif
                 @if($exercice->sousCategories->isNotEmpty())
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('exercices.sous-category', [$exercice->categories->first(), $exercice->sousCategories->first()]) }}">
-                            {{ $exercice->sousCategories->first()->name }}
-                        </a>
-                    </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('exercices.sous-category', [$exercice->categories->first(), $exercice->sousCategories->first()]) }}">
+                        {{ $exercice->sousCategories->first()->name }}
+                    </a>
+                </li>
                 @endif
                 <li class="breadcrumb-item active" aria-current="page">
                     {!! Str::limit($exercice->titre, 50) !!}
@@ -96,32 +71,27 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-12">
 
-                <!-- Card 1: Métadonnées -->
-                <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-    @foreach($exercice->categories as $cat)
-        <span class="badge bg-primary px-3 py-2">
-            <i class="fas fa-folder me-1"></i>{{ $cat->name }}
-        </span>
-    @endforeach
-    
-    @foreach($exercice->sousCategories as $sousCat)
-        <span class="badge bg-info px-3 py-2">
-            <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
-        </span>
-    @endforeach
-    
-    @if($exercice->niveau)
-        <span class="badge bg-{{ $exercice->niveau === 'debutant' ? 'success' : ($exercice->niveau === 'avance' ? 'danger' : 'warning') }} px-3 py-2">
-            <i class="fas fa-signal me-1"></i>{{ $exercice->niveau_label }}
-        </span>
-    @endif
-    
-    @if($exercice->type_exercice)
-        <span class="badge bg-secondary px-3 py-2">
-            <i class="fas fa-tag me-1"></i>{{ $exercice->type_exercice_label }}
-        </span>
-    @endif
-</div>
+
+
+
+                <!-- Card 2: images -->
+                            @if($exercice->image)
+
+
+
+
+<div class="card border-0 shadow-sm mb-4">
+                    
+                    <div class="card-body p-4">
+                        <div class="content-display fs-6 lh-lg">
+                           <img src="{{ $exercice->image }}"
+                    alt="{{ $exercice->titre }}">
+                        </div>
+                    </div>
+                </div>
+
+            @endif
+
 
                 <!-- Card 2: Description -->
                 @if($exercice->description)
@@ -139,32 +109,14 @@
                 </div>
                 @endif
 
-                <!-- Card 3: Muscles ciblés -->
-                @if($exercice->muscles_cibles && count($exercice->muscles_cibles) > 0)
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">
-                            <i class="fas fa-bullseye me-2"></i>Muscles ciblés
-                        </h5>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="d-flex flex-wrap gap-2">
-                            @foreach($exercice->muscles_cibles as $muscle)
-                                <span class="badge bg-success-subtle text-success fs-6 px-3 py-2">
-                                    {{ $muscle }}
-                                </span>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                @endif
 
-                <!-- Card 4: Consignes de sécurité -->
+
+                <!-- Card 4: Consignes  -->
                 @if($exercice->consignes_securite)
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-warning text-dark">
                         <h5 class="mb-0">
-                            <i class="fas fa-exclamation-triangle me-2"></i>Consignes de sécurité
+                            <i class="fas fa-exclamation-triangle me-2"></i>Consignes
                         </h5>
                     </div>
                     <div class="card-body p-4">
@@ -175,12 +127,12 @@
                 </div>
                 @endif
 
-                <!-- Card 5: Vidéo explicative -->
+                <!-- Card 5: Vidéo  -->
                 @if($exercice->video_url)
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-success text-white">
                         <h5 class="mb-0">
-                            <i class="fas fa-video me-2"></i>Vidéo explicative
+                            <i class="fas fa-video me-2"></i>Vidéo Plus
                         </h5>
                     </div>
                     <div class="card-body p-4">
@@ -192,18 +144,18 @@
 
                         // Conversion URL YouTube
                         if ($isYoutube) {
-                            if (str_contains($videoUrl, 'youtu.be/')) {
-                                $videoId = substr(parse_url($videoUrl, PHP_URL_PATH), 1);
-                                $embedUrl = "https://www.youtube.com/embed/{$videoId}";
-                            } else {
-                                $embedUrl = str_replace('watch?v=', 'embed/', $videoUrl);
-                            }
+                        if (str_contains($videoUrl, 'youtu.be/')) {
+                        $videoId = substr(parse_url($videoUrl, PHP_URL_PATH), 1);
+                        $embedUrl = "https://www.youtube.com/embed/{$videoId}";
+                        } else {
+                        $embedUrl = str_replace('watch?v=', 'embed/', $videoUrl);
+                        }
                         }
 
                         // Conversion URL Vimeo
                         if ($isVimeo) {
-                            $videoId = substr(parse_url($videoUrl, PHP_URL_PATH), 1);
-                            $embedUrl = "https://player.vimeo.com/video/{$videoId}";
+                        $videoId = substr(parse_url($videoUrl, PHP_URL_PATH), 1);
+                        $embedUrl = "https://player.vimeo.com/video/{$videoId}";
                         }
                         @endphp
 
@@ -295,14 +247,14 @@
                                     </a>
                                     <div class="small text-muted">
                                         @if($similaire->category)
-                                            <span class="badge bg-primary-subtle text-primary me-2">
-                                                {{ $similaire->category->name }}
-                                            </span>
+                                        <span class="badge bg-primary-subtle text-primary me-2">
+                                            {{ $similaire->category->name }}
+                                        </span>
                                         @endif
                                         @if($similaire->sousCategory)
-                                            <span class="badge bg-info-subtle text-info">
-                                                {{ $similaire->sousCategory->name }}
-                                            </span>
+                                        <span class="badge bg-info-subtle text-info">
+                                            {{ $similaire->sousCategory->name }}
+                                        </span>
                                         @endif
                                     </div>
                                 </div>
@@ -315,43 +267,43 @@
 
                 <!-- Section Navigation -->
                 <div class="row g-4 mb-4">
-                   <!-- Catégories -->
-@if($exercice->categories->isNotEmpty() || $exercice->sousCategories->isNotEmpty())
-<div class="col-md-6">
-    <div class="card border-0 shadow-sm h-100">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">
-                <i class="fas fa-folder me-2"></i>Classification
-            </h5>
-        </div>
-        <div class="card-body">
-            @if($exercice->categories->isNotEmpty())
-                <h6 class="fw-bold mb-2">Catégories</h6>
-                <div class="d-flex flex-wrap gap-2 mb-3">
-                    @foreach($exercice->categories as $cat)
-                        <a href="{{ route('exercices.category', $cat) }}" 
-                           class="badge bg-primary text-decoration-none px-3 py-2">
-                            <i class="fas fa-folder me-1"></i>{{ $cat->name }}
-                        </a>
-                    @endforeach
-                </div>
-            @endif
-            
-            @if($exercice->sousCategories->isNotEmpty())
-                <h6 class="fw-bold mb-2">Sous-catégories</h6>
-                <div class="d-flex flex-wrap gap-2">
-                    @foreach($exercice->sousCategories as $sousCat)
-                        <a href="{{ route('exercices.sous-category', [$sousCat->category, $sousCat]) }}" 
-                           class="badge bg-info text-decoration-none px-3 py-2">
-                            <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
-                        </a>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </div>
-</div>
-@endif
+                    <!-- Catégories -->
+                    @if($exercice->categories->isNotEmpty() || $exercice->sousCategories->isNotEmpty())
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-folder me-2"></i>Classification
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                @if($exercice->categories->isNotEmpty())
+                                <h6 class="fw-bold mb-2">Catégories</h6>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    @foreach($exercice->categories as $cat)
+                                    <a href="{{ route('exercices.category', $cat) }}"
+                                        class="badge bg-primary text-decoration-none px-3 py-2">
+                                        <i class="fas fa-folder me-1"></i>{{ $cat->name }}
+                                    </a>
+                                    @endforeach
+                                </div>
+                                @endif
+
+                                @if($exercice->sousCategories->isNotEmpty())
+                                <h6 class="fw-bold mb-2">Sous-catégories</h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    @foreach($exercice->sousCategories as $sousCat)
+                                    <a href="{{ route('exercices.sous-category', [$sousCat->category, $sousCat]) }}"
+                                        class="badge bg-info text-decoration-none px-3 py-2">
+                                        <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
+                                    </a>
+                                    @endforeach
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 
                     <!-- Boutons de navigation -->
                     <div class="col-md-6">
@@ -364,19 +316,19 @@
                             <div class="card-body">
                                 <div class="d-grid gap-2">
                                     @if($exercice->sousCategory)
-                                        <a href="{{ route('exercices.sous-category', [$exercice->category, $exercice->sousCategory]) }}" 
-                                           class="btn btn-primary">
-                                            <i class="fas fa-arrow-left me-2"></i>{{ $exercice->sousCategory->name }}
-                                        </a>
+                                    <a href="{{ route('exercices.sous-category', [$exercice->category, $exercice->sousCategory]) }}"
+                                        class="btn btn-primary">
+                                        <i class="fas fa-arrow-left me-2"></i>{{ $exercice->sousCategory->name }}
+                                    </a>
                                     @endif
                                     @if($exercice->category)
-                                        <a href="{{ route('exercices.category', $exercice->category) }}" 
-                                           class="btn btn-outline-primary">
-                                            <i class="fas fa-folder me-2"></i>{{ $exercice->category->name }}
-                                        </a>
+                                    <a href="{{ route('exercices.category', $exercice->category) }}"
+                                        class="btn btn-outline-primary">
+                                        <i class="fas fa-folder me-2"></i>{{ $exercice->category->name }}
+                                    </a>
                                     @endif
-                                    <a href="{{ route('exercices.index') }}" 
-                                       class="btn btn-outline-secondary">
+                                    <a href="{{ route('exercices.index') }}"
+                                        class="btn btn-outline-secondary">
                                         <i class="fas fa-th me-2"></i>Tous les exercices
                                     </a>
                                 </div>
@@ -418,141 +370,143 @@
 
 @push('styles')
 <style>
-/* Styles pour le contenu HTML */
-.content-display h1,
-.content-display h2,
-.content-display h3,
-.content-display-warning h1,
-.content-display-warning h2,
-.content-display-warning h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    line-height: 1.3;
-}
-
-.content-display h1,
-.content-display-warning h1 {
-    font-size: 1.8rem;
-    color: #2d3748;
-}
-
-.content-display h2,
-.content-display-warning h2 {
-    font-size: 1.5rem;
-    color: #2d3748;
-}
-
-.content-display h3,
-.content-display-warning h3 {
-    font-size: 1.3rem;
-    color: #2d3748;
-}
-
-.content-display p,
-.content-display-warning p {
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-    text-align: justify;
-    color: #4a5568;
-}
-
-.content-display ul,
-.content-display ol,
-.content-display-warning ul,
-.content-display-warning ol {
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
-    line-height: 1.7;
-}
-
-.content-display li,
-.content-display-warning li {
-    margin-bottom: 0.5rem;
-}
-
-.content-display blockquote,
-.content-display-warning blockquote {
-    border-left: 4px solid #3182ce;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    background: #f7fafc;
-    border-radius: 0.375rem;
-    color: #2d3748;
-}
-
-.content-display-warning blockquote {
-    border-left-color: #f59e0b;
-    background: #fffbeb;
-}
-
-.content-display img,
-.content-display-warning img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 2rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.content-display pre,
-.content-display-warning pre {
-    background: #1a202c;
-    color: #e2e8f0;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin: 2rem 0;
-    font-size: 0.875rem;
-    line-height: 1.6;
-}
-
-.content-display code,
-.content-display-warning code {
-    background-color: #edf2f7;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-    color: #d63384;
-    font-family: 'Courier New', monospace;
-}
-
-.content-display strong,
-.content-display-warning strong {
-    font-weight: 600;
-    color: #1e293b;
-}
-
-.card {
-    transition: box-shadow 0.2s ease;
-}
-
-@media (max-width: 991px) {
-    .col-lg-7,
-    .col-lg-5 {
+    /* Styles pour le contenu HTML */
+    .content-display h1,
+    .content-display h2,
+    .content-display h3,
+    .content-display-warning h1,
+    .content-display-warning h2,
+    .content-display-warning h3 {
+        margin-top: 2rem;
         margin-bottom: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .content-display,
-    .content-display-warning {
-        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.3;
     }
 
-    .display-5 {
-        font-size: 1.75rem !important;
+    .content-display h1,
+    .content-display-warning h1 {
+        font-size: 1.8rem;
+        color: #2d3748;
     }
 
-    .d-flex.gap-3 {
-        flex-direction: column;
-        align-items: flex-start !important;
-        gap: 0.75rem !important;
+    .content-display h2,
+    .content-display-warning h2 {
+        font-size: 1.5rem;
+        color: #2d3748;
     }
-}
+
+    .content-display h3,
+    .content-display-warning h3 {
+        font-size: 1.3rem;
+        color: #2d3748;
+    }
+
+    .content-display p,
+    .content-display-warning p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        text-align: justify;
+        color: #4a5568;
+    }
+
+    .content-display ul,
+    .content-display ol,
+    .content-display-warning ul,
+    .content-display-warning ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+        line-height: 1.7;
+    }
+
+    .content-display li,
+    .content-display-warning li {
+        margin-bottom: 0.5rem;
+    }
+
+    .content-display blockquote,
+    .content-display-warning blockquote {
+        border-left: 4px solid #3182ce;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        background: #f7fafc;
+        border-radius: 0.375rem;
+        color: #2d3748;
+    }
+
+    .content-display-warning blockquote {
+        border-left-color: #f59e0b;
+        background: #fffbeb;
+    }
+
+    .content-display img,
+    .content-display-warning img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .content-display pre,
+    .content-display-warning pre {
+        background: #1a202c;
+        color: #e2e8f0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 2rem 0;
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .content-display code,
+    .content-display-warning code {
+        background-color: #edf2f7;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+        color: #d63384;
+        font-family: 'Courier New', monospace;
+    }
+
+    .content-display strong,
+    .content-display-warning strong {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .card {
+        transition: box-shadow 0.2s ease;
+    }
+
+    @media (max-width: 991px) {
+
+        .col-lg-7,
+        .col-lg-5 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .content-display,
+        .content-display-warning {
+            font-size: 0.95rem;
+        }
+
+        .display-5 {
+            font-size: 1.75rem !important;
+        }
+
+        .d-flex.gap-3 {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+        }
+    }
 </style>
 @endpush

@@ -301,6 +301,8 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('roles', RoleController::class);
     Route::resource('tags', TagController::class);
     Route::resource('users', UserController::class);
+    // Route pour la mise à jour rapide du rôle via AJAX
+Route::patch('users/{user}/update-role', [UserController::class, 'updateRole'])->name('users.update-role');
 
     Route::get('profile', [AdminProfileController::class, 'show'])->name('profile.show');
     Route::get('profile/edit', [AdminProfileController::class, 'edit'])->name('profile.edit');

@@ -354,7 +354,7 @@
 </div>
 
 
-<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+<section class="text-white py-5" style="background: #13b0ae;border-top: 20px solid rgb(249 245 244);border-left: 20px solid #0c5c7a;border-right: 20px solid #4190c5;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container-lg">
         <div class="row mb-4">
             <div class="col-12">
@@ -362,7 +362,7 @@
                     <h5 class="mb-0">
                         Articles
                     </h5>
-                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-light d-flex align-items-center px-4">
                         <i class="fas fa-water me-1"></i> + Dossiers
                     </a>
                 </div>
@@ -431,7 +431,7 @@
     </div>
 </section>
 
-<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+<section class="text-white py-5" style="background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%);border-top: 20px solid rgb(249 245 244);border-left: 20px solid #13b0ae;border-right: 20px solid #13b0ae;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
 
     <div class="container-lg">
         <div class="row mb-4">
@@ -440,7 +440,7 @@
                     <h5 class="mb-0">
                         Fiches Pratiques
                     </h5>
-                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-light d-flex align-items-center px-4">
                         + Fiches
                     </a>
                 </div>
@@ -514,7 +514,7 @@
     </div>
 </section>
 
-<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+<section class="text-white py-5" style="background: #13b0ae;border-top: 20px solid rgb(249 245 244);border-left: 20px solid #0c5c7a;border-right: 20px solid #4190c5;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
 
     <div class="container-lg">
         <div class="row mb-4">
@@ -523,7 +523,7 @@
                     <h5 class="mb-0">
                         <i class="fas fa-heartbeat me-2 text-primary"></i>Séances
                     </h5>
-                    <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                    <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-light d-flex align-items-center px-4">
                         Séances
                     </a>
                 </div>
@@ -593,7 +593,7 @@
         </div>
     </div>
 </section>
-<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+<section class="text-white py-5" style="background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%);border-top: 20px solid rgb(249 245 244);border-left: 20px solid #13b0ae;border-right: 20px solid #13b0ae;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
 
     <div class="container-lg">
         <div class="row mb-4">
@@ -602,7 +602,7 @@
                     <h5 class="mb-0">
                         <i class="fas fa-book me-2 text-primary"></i>Documents
                     </h5>
-                    <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                    <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-light d-flex align-items-center px-4">
                        + Documents
                     </a>
                 </div>
@@ -679,7 +679,7 @@
     </div>
 </section>
 
-<section class="text-white py-5" style="background: #14aeae;border-left: 20px solid rgb(249 245 244);border-right: 20px solid #f9f5f4;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;margin-bottom: 20px;">
+<section class="text-white py-5" style="background: #13b0ae;border-top: 20px solid rgb(249 245 244);border-left: 20px solid #0c5c7a;border-right: 20px solid #4190c5;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
 
     <!-- Derniers Exercices -->
     <div class="container-lg">
@@ -689,7 +689,7 @@
                     <h5 class="mb-0">
                         <i class="fas fa-running me-2 text-primary"></i> Exercices
                     </h5>
-                    <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-dark d-flex align-items-center px-4">
+                    <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-light d-flex align-items-center px-4">
                         + Exercices
                     </a>
                 </div>

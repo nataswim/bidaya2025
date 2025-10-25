@@ -64,15 +64,12 @@
                         <th class="border-0 px-4 py-3">Utilisateur</th>
                         <th class="border-0 py-3">Rôle</th>
                         <th class="border-0 py-3">Statut</th>
-                        <th class="border-0 py-3">Dernière connexion</th>
+                        <th class="border-0 py-3">Derniere connexion</th>
                         <th class="border-0 py-3">Inscription</th>
                         <th class="border-0 py-3 text-end">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $allRoles = \App\Models\Role::orderBy('level')->get();
-                    @endphp
                     @forelse($users as $user)
                         <tr>
                             <td class="px-4 py-3">
@@ -95,35 +92,12 @@
                                 </div>
                             </td>
                             <td class="py-3">
-                                @if($user->id === auth()->id())
-                                    {{-- L'utilisateur connecté ne peut pas changer son propre rôle --}}
-                                    @if($user->role)
-                                        <span class="badge bg-info-subtle text-info">
-                                            {{ $user->role->display_name }}
-                                        </span>
-                                        <small class="text-muted d-block mt-1">(Votre compte)</small>
-                                    @else
-                                        <span class="text-muted">Aucun rôle</span>
-                                    @endif
+                                @if($user->role)
+                                    <span class="badge bg-info-subtle text-info">
+                                        {{ $user->role->display_name }}
+                                    </span>
                                 @else
-                                    {{-- Dropdown pour changer le rôle --}}
-                                    <select class="form-select form-select-sm role-selector" 
-                                            data-user-id="{{ $user->id }}"
-                                            data-user-name="{{ $user->name }}"
-                                            style="width: auto; min-width: 150px;">
-                                        <option value="">Aucun rôle</option>
-                                        @foreach($allRoles as $role)
-                                            <option value="{{ $role->id }}" 
-                                                    {{ $user->role_id == $role->id ? 'selected' : '' }}>
-                                                {{ $role->display_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="spinner-border spinner-border-sm text-primary ms-2 d-none" 
-                                         id="spinner-{{ $user->id }}" 
-                                         role="status">
-                                        <span class="visually-hidden">Chargement...</span>
-                                    </div>
+                                    <span class="text-muted">Aucun rôle</span>
                                 @endif
                             </td>
                             <td class="py-3">
@@ -138,7 +112,7 @@
                                         <br><small>{{ $user->last_login_at->format('H:i') }}</small>
                                     </div>
                                 @else
-                                    <span class="text-muted">Jamais connecté</span>
+                                    <span class="text-muted">Jamais connecte</span>
                                 @endif
                             </td>
                             <td class="py-3">
@@ -186,7 +160,7 @@
                             <td colspan="6" class="text-center py-5">
                                 <div class="text-muted">
                                     <i class="fas fa-users fa-2x mb-3"></i>
-                                    <div>Aucun utilisateur trouvé</div>
+                                    <div>Aucun utilisateur trouve</div>
                                 </div>
                             </td>
                         </tr>
@@ -196,189 +170,17 @@
         </div>
 
         <!-- Pagination -->
-        @if($users->hasPages())
-            <div class="card-footer bg-white border-top p-4">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="text-muted">
-                        Affichage de {{ $users->firstItem() }} à {{ $users->lastItem() }} 
-                        sur {{ $users->total() }} résultat(s)
-                    </div>
-                    {{ $users->appends(request()->query())->links('pagination::bootstrap-5') }}
-                </div>
+@if($users->hasPages())
+    <div class="card-footer bg-white border-top p-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-muted">
+                Affichage de {{ $users->firstItem() }} à {{ $users->lastItem() }} 
+                sur {{ $users->total() }} résultat(s)
             </div>
-        @endif
-    </div>
-</div>
-
-{{-- Toast pour les notifications --}}
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-    <div id="roleUpdateToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Notification</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            {{ $users->appends(request()->query())->links('pagination::bootstrap-5') }}
         </div>
-        <div class="toast-body"></div>
+    </div>
+@endif
     </div>
 </div>
 @endsection
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Gestion du changement de rôle
-    const roleSelectors = document.querySelectorAll('.role-selector');
-    
-    roleSelectors.forEach(selector => {
-        // Stocker la valeur initiale
-        selector.dataset.originalValue = selector.value;
-        
-        selector.addEventListener('change', async function() {
-            const userId = this.dataset.userId;
-            const userName = this.dataset.userName;
-            const newRoleId = this.value;
-            const spinner = document.getElementById(`spinner-${userId}`);
-            const originalValue = this.dataset.originalValue;
-            
-            // Demander confirmation
-            const confirmMessage = newRoleId 
-                ? `Êtes-vous sûr de vouloir changer le rôle de ${userName} ?`
-                : `Êtes-vous sûr de vouloir retirer le rôle de ${userName} ?`;
-            
-            if (!confirm(confirmMessage)) {
-                // Annuler le changement
-                this.value = originalValue;
-                return;
-            }
-            
-            // Afficher le spinner
-            spinner.classList.remove('d-none');
-            this.disabled = true;
-            
-            try {
-                // Envoyer la requête AJAX
-                const response = await fetch(`/admin/users/${userId}/update-role`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        role_id: newRoleId || null
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok && data.success) {
-                    // Mise à jour réussie
-                    this.dataset.originalValue = newRoleId;
-                    showToast('success', data.message);
-                    
-                    // Mettre à jour visuellement le badge si besoin
-                    // (optionnel, car le select montre déjà le changement)
-                } else {
-                    // Erreur - restaurer la valeur d'origine
-                    this.value = originalValue;
-                    showToast('danger', data.message || 'Une erreur est survenue');
-                }
-            } catch (error) {
-                // Erreur réseau - restaurer la valeur d'origine
-                this.value = originalValue;
-                showToast('danger', 'Erreur de connexion. Veuillez réessayer.');
-                console.error('Erreur:', error);
-            } finally {
-                // Masquer le spinner et réactiver le select
-                spinner.classList.add('d-none');
-                this.disabled = false;
-            }
-        });
-    });
-    
-    // Fonction pour afficher les toasts
-    function showToast(type, message) {
-        const toastEl = document.getElementById('roleUpdateToast');
-        const toastBody = toastEl.querySelector('.toast-body');
-        const toastHeader = toastEl.querySelector('.toast-header');
-        
-        // Réinitialiser les classes
-        toastEl.classList.remove('bg-success-subtle', 'bg-danger-subtle');
-        
-        // Appliquer le style selon le type
-        if (type === 'success') {
-            toastEl.classList.add('bg-success-subtle');
-        } else if (type === 'danger') {
-            toastEl.classList.add('bg-danger-subtle');
-        }
-        
-        // Définir le message
-        toastBody.textContent = message;
-        
-        // Afficher le toast
-        const toast = new bootstrap.Toast(toastEl, {
-            delay: 3000
-        });
-        toast.show();
-    }
-    
-    // Gestion de la confirmation de suppression (existant)
-    const deleteButtons = document.querySelectorAll('[data-confirm="delete"]');
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            if (!confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
-                e.preventDefault();
-            }
-        });
-    });
-});
-</script>
-@endpush
-
-@push('styles')
-<style>
-/* Styles pour le dropdown de rôle */
-.role-selector {
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.role-selector:hover:not(:disabled) {
-    background-color: #f8f9fa;
-    border-color: #0ea5e9;
-}
-
-.role-selector:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-/* Animation du spinner */
-.spinner-border-sm {
-    width: 1rem;
-    height: 1rem;
-    border-width: 0.2em;
-}
-
-/* Styles pour les toasts */
-.toast {
-    min-width: 300px;
-}
-
-.bg-success-subtle {
-    background-color: #d1f2eb !important;
-}
-
-.bg-danger-subtle {
-    background-color: #f8d7da !important;
-}
-
-/* Amélioration visuelle du tableau */
-.table-hover tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-.table td {
-    vertical-align: middle;
-}
-</style>
-@endpush

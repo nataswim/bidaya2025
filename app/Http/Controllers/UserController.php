@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Http\JsonResponse;
+
 
 class UserController extends Controller
 {
@@ -46,53 +48,51 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request)
-{
-    $this->checkAdminAccess();
-    
-    $data = $request->validated();
-    $data['password'] = Hash::make($data['password']);
+    {
+        $this->checkAdminAccess();
+        
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
 
-    // Definir des valeurs par defaut pour les champs obligatoires
-    $data = array_merge([
-        'locale' => 'fr',
-        'timezone' => 'Europe/Paris',
-        'status' => 'active',
-    ], $data);
+        // Definir des valeurs par defaut pour les champs obligatoires
+        $data = array_merge([
+            'locale' => 'fr',
+            'timezone' => 'Europe/Paris',
+            'status' => 'active',
+        ], $data);
 
-    // Nettoyer les valeurs vides qui peuvent poser probleme
-    if (empty($data['locale'])) {
-        $data['locale'] = 'fr';
-    }
-    
-    if (empty($data['timezone'])) {
-        $data['timezone'] = 'Europe/Paris';
-    }
-    
-    if (empty($data['status'])) {
-        $data['status'] = 'active';
-    }
-
-    // Assigner le rôle par defaut si aucun rôle n'est specifie
-    if (empty($data['role_id'])) {
-        $defaultRole = Role::where('is_default', true)->first();
-        $data['role_id'] = $defaultRole?->id;
-    }
-
-    // Nettoyer les champs optionnels vides
-    $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
-    foreach ($optionalFields as $field) {
-        if (isset($data[$field]) && empty($data[$field])) {
-            $data[$field] = null;
+        // Nettoyer les valeurs vides qui peuvent poser probleme
+        if (empty($data['locale'])) {
+            $data['locale'] = 'fr';
         }
+        
+        if (empty($data['timezone'])) {
+            $data['timezone'] = 'Europe/Paris';
+        }
+        
+        if (empty($data['status'])) {
+            $data['status'] = 'active';
+        }
+
+        // Assigner le rôle par defaut si aucun rôle n'est specifie
+        if (empty($data['role_id'])) {
+            $defaultRole = Role::where('is_default', true)->first();
+            $data['role_id'] = $defaultRole?->id;
+        }
+
+        // Nettoyer les champs optionnels vides
+        $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
+        foreach ($optionalFields as $field) {
+            if (isset($data[$field]) && empty($data[$field])) {
+                $data[$field] = null;
+            }
+        }
+
+        User::create($data);
+
+        return redirect()->route('admin.users.index')
+            ->with('success', 'Utilisateur cree avec succes.');
     }
-
-    User::create($data);
-
-    return redirect()->route('admin.users.index')
-        ->with('success', 'Utilisateur cree avec succes.');
-}
-
-
 
     public function show(User $user)
     {
@@ -111,44 +111,44 @@ class UserController extends Controller
     }
 
     public function update(UpdateUserRequest $request, User $user)
-{
-    $this->checkAdminAccess();
-    
-    $data = $request->validated();
+    {
+        $this->checkAdminAccess();
+        
+        $data = $request->validated();
 
-    // Gestion du mot de passe
-    if (!empty($data['password'])) {
-        $data['password'] = Hash::make($data['password']);
-    } else {
-        unset($data['password']);
-    }
-
-    // Definir des valeurs par defaut pour les champs obligatoires
-    if (empty($data['locale'])) {
-        $data['locale'] = 'fr';
-    }
-    
-    if (empty($data['timezone'])) {
-        $data['timezone'] = 'Europe/Paris';
-    }
-    
-    if (empty($data['status'])) {
-        $data['status'] = 'active';
-    }
-
-    // Nettoyer les champs optionnels vides
-    $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
-    foreach ($optionalFields as $field) {
-        if (isset($data[$field]) && empty($data[$field])) {
-            $data[$field] = null;
+        // Gestion du mot de passe
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
         }
+
+        // Definir des valeurs par defaut pour les champs obligatoires
+        if (empty($data['locale'])) {
+            $data['locale'] = 'fr';
+        }
+        
+        if (empty($data['timezone'])) {
+            $data['timezone'] = 'Europe/Paris';
+        }
+        
+        if (empty($data['status'])) {
+            $data['status'] = 'active';
+        }
+
+        // Nettoyer les champs optionnels vides
+        $optionalFields = ['username', 'first_name', 'last_name', 'avatar', 'bio', 'phone', 'date_of_birth'];
+        foreach ($optionalFields as $field) {
+            if (isset($data[$field]) && empty($data[$field])) {
+                $data[$field] = null;
+            }
+        }
+
+        $user->update($data);
+
+        return redirect()->route('admin.users.index')
+            ->with('success', 'Utilisateur mis A jour avec succes.');
     }
-
-    $user->update($data);
-
-    return redirect()->route('admin.users.index')
-        ->with('success', 'Utilisateur mis A jour avec succes.');
-}
 
     public function destroy(User $user)
     {
@@ -158,5 +158,48 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')
             ->with('success', 'Utilisateur supprime avec succes.');
+    }
+
+    /**
+     * Mettre à jour le rôle d'un utilisateur via AJAX
+     * 
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateRole(Request $request, User $user)
+    {
+        $this->checkAdminAccess();
+        
+        // Validation
+        $request->validate([
+            'role_id' => 'nullable|exists:roles,id'
+        ]);
+        
+        // Empêcher l'admin de changer son propre rôle
+        if ($user->id === auth()->id()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Vous ne pouvez pas modifier votre propre rôle.'
+            ], 403);
+        }
+        
+        // Mise à jour du rôle
+        $user->update([
+            'role_id' => $request->role_id
+        ]);
+        
+        // Charger la relation role pour la réponse
+        $user->load('role');
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Rôle mis à jour avec succès.',
+            'role' => $user->role ? [
+                'id' => $user->role->id,
+                'display_name' => $user->role->display_name,
+                'slug' => $user->role->slug
+            ] : null
+        ]);
     }
 }

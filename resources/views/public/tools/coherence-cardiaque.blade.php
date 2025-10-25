@@ -5,30 +5,15 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 text-white text-center" style="background: linear-gradient(135deg, #004f59 0%, #006170 100%);">
+<section class="py-5 bg-primary text-white text-center" style=" background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%); border-top: 20px solid #ff7f50; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-bottom: 20px double rgb(249 245 244); border-radius: 0px 0px 60px 60px; ">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            <i class="fas fa-heartbeat"></i>
             Coherence Cardiaque
-            <span class="badge bg-warning text-dark fs-6">PRO</span>
-        </h1>
-        <p class="lead fs-4">Retrouvez votre equilibre interieur grâce A la respiration guidee scientifique</p>
-        
+        </h1>        
         <!-- Instructions -->
         <div id="instructionsAlert" class="alert alert-info border-0 shadow-sm" 
              style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
-            <div class="d-flex align-items-start">
-                <i class="fas fa-water text-info me-3 mt-1"></i>
-                <div class="text-start text-dark">
-                    <strong>Instructions :</strong> 
-                    Suivez le rythme du cercle et des sons. Inspirez quand le cercle grandit (bleu), 
-                    expirez quand il se contracte (vert). Concentrez-vous sur votre respiration et detendez-vous.
-                    <br />
-                    <strong>Raccourcis :</strong> 
-                    <kbd class="ms-2">Espace</kbd> Start/Pause • 
-                    <kbd class="ms-1">R</kbd> Reset
-                </div>
-            </div>
+            
         </div>
     </div>
 </section>
@@ -134,6 +119,20 @@
                             </div>
                         </div>
                     </div>
+
+<div class="d-flex align-items-start">
+                <i class="fas fa-water text-info me-3 mt-1"></i>
+                <div class="text-start text-dark">
+                    <strong>Instructions :</strong> 
+                    Suivez le rythme du cercle et des sons. Inspirez quand le cercle grandit (bleu), 
+                    expirez quand il se contracte (vert). Concentrez-vous sur votre respiration et detendez-vous.
+                    <br />
+                    <strong>Raccourcis :</strong> 
+                    <kbd class="ms-2">Espace</kbd> Start/Pause • 
+                    <kbd class="ms-1">R</kbd> Reset
+                </div>
+            </div>
+
                 </div>
             </div>
         </div>
