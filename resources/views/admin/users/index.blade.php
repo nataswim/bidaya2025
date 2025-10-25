@@ -94,38 +94,53 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="py-3">
-                                @if($user->id === auth()->id())
-                                    {{-- L'utilisateur connecté ne peut pas changer son propre rôle --}}
-                                    @if($user->role)
-                                        <span class="badge bg-info-subtle text-info">
-                                            {{ $user->role->display_name }}
-                                        </span>
-                                        <small class="text-muted d-block mt-1">(Votre compte)</small>
-                                    @else
-                                        <span class="text-muted">Aucun rôle</span>
-                                    @endif
-                                @else
-                                    {{-- Dropdown pour changer le rôle --}}
-                                    <select class="form-select form-select-sm role-selector" 
-                                            data-user-id="{{ $user->id }}"
-                                            data-user-name="{{ $user->name }}"
-                                            style="width: auto; min-width: 150px;">
-                                        <option value="">Aucun rôle</option>
-                                        @foreach($allRoles as $role)
-                                            <option value="{{ $role->id }}" 
-                                                    {{ $user->role_id == $role->id ? 'selected' : '' }}>
-                                                {{ $role->display_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="spinner-border spinner-border-sm text-primary ms-2 d-none" 
-                                         id="spinner-{{ $user->id }}" 
-                                         role="status">
-                                        <span class="visually-hidden">Chargement...</span>
-                                    </div>
-                                @endif
-                            </td>
+
+
+
+
+
+ <td class="py-3">
+    @if($user->id === auth()->id())
+        {{-- L'utilisateur connecté ne peut pas changer son propre rôle --}}
+        @if($user->role)
+            <span class="badge bg-info-subtle text-info">
+                {{ $user->role->display_name }}
+            </span>
+            <small class="text-muted d-block mt-1">(Votre compte)</small>
+        @else
+            <span class="text-muted">Aucun rôle</span>
+        @endif
+    @else
+        {{-- Formulaire pour changer le rôle --}}
+        <form method="POST" 
+              action="{{ route('admin.users.update-role', $user) }}" 
+              class="role-update-form"
+              id="role-form-{{ $user->id }}">
+            @csrf
+            @method('PATCH')
+            
+            <select name="role_id" 
+                    class="form-select form-select-sm role-selector-form" 
+                    data-user-name="{{ $user->name }}"
+                    data-form-id="role-form-{{ $user->id }}"
+                    style="width: auto; min-width: 150px;">
+                <option value="">Aucun rôle</option>
+                @foreach($allRoles as $role)
+                    <option value="{{ $role->id }}" 
+                            {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                        {{ $role->display_name }}
+                    </option>
+                @endforeach
+            </select>
+        </form>
+    @endif
+</td>
+
+
+
+
+
+
                             <td class="py-3">
                                 <span class="badge bg-{{ $user->status === 'active' ? 'success' : 'danger' }}-subtle text-{{ $user->status === 'active' ? 'success' : 'danger' }}">
                                     {{ $user->status === 'active' ? 'Actif' : 'Inactif' }}
@@ -222,106 +237,41 @@
 </div>
 @endsection
 
+{{-- Script simplifié sans AJAX --}}
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Gestion du changement de rôle
-    const roleSelectors = document.querySelectorAll('.role-selector');
+    // Gestion du changement de rôle avec formulaire
+    const roleSelectors = document.querySelectorAll('.role-selector-form');
     
     roleSelectors.forEach(selector => {
         // Stocker la valeur initiale
-        selector.dataset.originalValue = selector.value;
+        const originalValue = selector.value;
+        selector.dataset.originalValue = originalValue;
         
-        selector.addEventListener('change', async function() {
-            const userId = this.dataset.userId;
+        selector.addEventListener('change', function() {
             const userName = this.dataset.userName;
-            const newRoleId = this.value;
-            const spinner = document.getElementById(`spinner-${userId}`);
+            const formId = this.dataset.formId;
+            const form = document.getElementById(formId);
+            const newValue = this.value;
             const originalValue = this.dataset.originalValue;
             
             // Demander confirmation
-            const confirmMessage = newRoleId 
+            const confirmMessage = newValue 
                 ? `Êtes-vous sûr de vouloir changer le rôle de ${userName} ?`
                 : `Êtes-vous sûr de vouloir retirer le rôle de ${userName} ?`;
             
-            if (!confirm(confirmMessage)) {
-                // Annuler le changement
+            if (confirm(confirmMessage)) {
+                // Soumettre le formulaire
+                form.submit();
+            } else {
+                // Restaurer la valeur originale
                 this.value = originalValue;
-                return;
-            }
-            
-            // Afficher le spinner
-            spinner.classList.remove('d-none');
-            this.disabled = true;
-            
-            try {
-                // Envoyer la requête AJAX
-                const response = await fetch(`/admin/users/${userId}/update-role`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        role_id: newRoleId || null
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok && data.success) {
-                    // Mise à jour réussie
-                    this.dataset.originalValue = newRoleId;
-                    showToast('success', data.message);
-                    
-                    // Mettre à jour visuellement le badge si besoin
-                    // (optionnel, car le select montre déjà le changement)
-                } else {
-                    // Erreur - restaurer la valeur d'origine
-                    this.value = originalValue;
-                    showToast('danger', data.message || 'Une erreur est survenue');
-                }
-            } catch (error) {
-                // Erreur réseau - restaurer la valeur d'origine
-                this.value = originalValue;
-                showToast('danger', 'Erreur de connexion. Veuillez réessayer.');
-                console.error('Erreur:', error);
-            } finally {
-                // Masquer le spinner et réactiver le select
-                spinner.classList.add('d-none');
-                this.disabled = false;
             }
         });
     });
     
-    // Fonction pour afficher les toasts
-    function showToast(type, message) {
-        const toastEl = document.getElementById('roleUpdateToast');
-        const toastBody = toastEl.querySelector('.toast-body');
-        const toastHeader = toastEl.querySelector('.toast-header');
-        
-        // Réinitialiser les classes
-        toastEl.classList.remove('bg-success-subtle', 'bg-danger-subtle');
-        
-        // Appliquer le style selon le type
-        if (type === 'success') {
-            toastEl.classList.add('bg-success-subtle');
-        } else if (type === 'danger') {
-            toastEl.classList.add('bg-danger-subtle');
-        }
-        
-        // Définir le message
-        toastBody.textContent = message;
-        
-        // Afficher le toast
-        const toast = new bootstrap.Toast(toastEl, {
-            delay: 3000
-        });
-        toast.show();
-    }
-    
-    // Gestion de la confirmation de suppression (existant)
+    // Gestion de la confirmation de suppression
     const deleteButtons = document.querySelectorAll('[data-confirm="delete"]');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -333,6 +283,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
+
+{{-- Messages de succès/erreur avec session flash --}}
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3" 
+         role="alert" 
+         style="z-index: 1050; max-width: 350px;">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    <script>
+        // Auto-fermer après 3 secondes
+        setTimeout(function() {
+            document.querySelector('.alert-success')?.remove();
+        }, 3000);
+    </script>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0 m-3" 
+         role="alert" 
+         style="z-index: 1050; max-width: 350px;">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    <script>
+        // Auto-fermer après 5 secondes
+        setTimeout(function() {
+            document.querySelector('.alert-danger')?.remove();
+        }, 5000);
+    </script>
+@endif
 
 @push('styles')
 <style>
