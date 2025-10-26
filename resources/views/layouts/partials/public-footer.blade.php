@@ -7,21 +7,18 @@
 
     <!-- statistiques  -->
     <div class="w-100 text-center py-3">
-        <div class="alert alert-danger border-0 bg-danger m-0 w-100 text-white">
+        <div class="alert alert-white border-0 bg-white m-0 w-100 text-danger">
             <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres Premium : {{ $chiffre2 }}</p>
-        </div>
-    </div>
-
-    <!-- Image boutique avec lien -->
-    <div class="w-100 text-center py-4">
-        <div class="container-lg">
+            <p class="mb-0">
             <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
-                <img src="{{ asset('assets/images/team/quel-est-votre-style-sport.jpg') }}" 
+                <img src="{{ asset('assets/images/team/nataswim-pays-monde-centre.png') }}" 
                      alt="boutique natation triathlon offres club et promotions" 
                      class="img-fluid shop-image"
                      style="max-width: 100%; height: auto;">
             </a>
+</p>
         </div>
+
     </div>
 
     <!-- Contenu principal du footer -->

@@ -105,7 +105,7 @@
                     </a>
                     
                     {{-- Mega Menu Desktop --}}
-                    <div class="dropdown-menu mega-menu-tools shadow-lg border-0 mt-0 p-0 animate__animated animate__fadeIn" aria-labelledby="toolsDropdown" style="width: 100%;>
+                    <div class="dropdown-menu mega-menu-tools shadow-lg border-0 mt-0 p-0 animate__animated animate__fadeIn" aria-labelledby="toolsDropdown">
                         <div class="container-fluid px-4 py-4">
                             <div class="row">
                                 {{-- Colonne 1 : Santé & Nutrition --}}
@@ -117,7 +117,7 @@
                                         <li class="mb-2">
                                             <a href="{{ route('tools.bmi') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-weight me-2 text-info"></i>
-                                                <span>Calculateur IMC</span>
+                                                <span>Mon IMC</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
@@ -135,7 +135,7 @@
                                         <li class="mb-2">
                                             <a href="{{ route('tools.tdee-calculator') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-chart-line me-2 text-success"></i>
-                                                <span>Calculateur TDEE</span>
+                                                <span>Ma TDEE</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
@@ -168,25 +168,25 @@
                                         <li class="mb-2">
                                             <a href="{{ route('tools.vnc') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-tachometer-alt me-2 text-success"></i>
-                                                <span>Calculateur VNC</span>
+                                                <span>Vitesse Nage</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.swimming-predictor') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-swimmer me-2 text-purple"></i>
-                                                <span>Prédicteur NAT</span>
+                                                <span>Prédicteur perf</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.swimming-planner') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-calendar-alt me-2 text-primary"></i>
-                                                <span>Planificateur NAT</span>
+                                                <span>Planif natation</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.swimming-efficiency') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-chart-area me-2 text-warning"></i>
-                                                <span>Efficacité TECH</span>
+                                                <span>Efficacite Technique</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -201,31 +201,31 @@
                                         <li class="mb-2">
                                             <a href="{{ route('tools.heart-rate-zones') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-heart me-2 text-danger"></i>
-                                                <span>Zones CARDIO</span>
+                                                <span>Zones Cardio</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.coherence-cardiaque') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-lungs me-2 text-info"></i>
-                                                <span>Cohérence CARDIO</span>
+                                                <span>Cohérence Cardia</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.running-planner') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-route me-2 text-success"></i>
-                                                <span>Planificateur CAP</span>
+                                                <span>Prog Course</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.onermcalculator') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-dumbbell me-2 text-dark"></i>
-                                                <span>Calculateur RM</span>
+                                                <span>Charge Maximale</span>
                                             </a>
                                         </li>
                                         <li class="mb-2">
                                             <a href="{{ route('tools.fitness') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-chart-pie me-2 text-warning"></i>
-                                                <span>Calculateur FIT</span>
+                                                <span>Ma Forme</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -252,7 +252,7 @@
                                         <li class="mb-2">
                                             <a href="{{ route('tools.triathlon-planner') }}" class="tool-link d-flex align-items-center">
                                                 <i class="fas fa-biking me-2 text-success"></i>
-                                                <span>Planificateur Tri</span>
+                                                <span>Planif Tri</span>
                                             </a>
                                         </li>
                                         
