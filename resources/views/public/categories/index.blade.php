@@ -56,8 +56,8 @@
                             <div class="card-body d-flex flex-column">
                                 <!-- Nom de la catégorie -->
                                 <h3 class="card-title h5 mb-3">
-                                    <a href="{{ route('public.category', $category) }}" 
-                                       class="text-decoration-none text-dark stretched-link">
+                                    <a href="{{ route('public.category', $category->slug) }}" 
+   class="text-decoration-none text-dark stretched-link">
                                         {{ $category->name }}
                                     </a>
                                 </h3>
@@ -106,8 +106,8 @@
 
                             <!-- Footer avec bouton -->
                             <div class="card-footer bg-white border-top-0 pt-0 pb-3">
-                                <a href="{{ route('public.category', $category) }}" 
-                                   class="btn btn-outline-primary btn-sm w-100">
+                                <a href="{{ route('public.category', $category->slug) }}" 
+   class="btn btn-outline-primary btn-sm w-100">
                                     <i class="fas fa-arrow-right me-2"></i>Voir tous les articles
                                 </a>
                             </div>
