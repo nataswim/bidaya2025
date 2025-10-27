@@ -251,7 +251,35 @@ public function guide()
 
 
 
+/**
+ * Afficher toutes les catégories
+ */
+public function categories()
+{
+    // Récupérer toutes les catégories actives avec le nombre d'articles publiés
+    $categories = Category::where('status', 'active')
+        ->withCount([
+            'posts' => function($query) {
+                $query->where('status', 'published')
+                      ->whereNotNull('published_at')
+                      ->where('published_at', '<=', now());
+            }
+        ])
+        ->with([
+            'posts' => function($query) {
+                $query->where('status', 'published')
+                      ->whereNotNull('published_at')
+                      ->where('published_at', '<=', now())
+                      ->orderBy('published_at', 'desc')
+                      ->limit(4);
+            }
+        ])
+        ->orderBy('order', 'asc')
+        ->orderBy('name', 'asc')
+        ->get();
 
+    return view('public.categories.index', compact('categories'));
+}
 
 
 

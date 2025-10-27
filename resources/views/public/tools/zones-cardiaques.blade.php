@@ -989,11 +989,11 @@
                         <h6 class="text-info mb-2">Developpement & Expertise</h6>
                         <p class="mb-3">
                             Contenus et outils developpes par 
-                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
+                            <a href="https://www.facebook.com/Sports.Ressources/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="text-warning fw-bold text-decoration-none">
-                                Med Hassan El Haouat
+                                Med H El Haouat
                                 <i class="fas fa-external-link-alt ms-1 small"></i>
                             </a>
                         </p>
@@ -1012,7 +1012,7 @@
                             <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
                                 <i class="fas fa-envelope me-2"></i>Nous Contacter
                             </a>
-                            <a href="https://www.linkedin.com/in/med-hassan-el-haouat-98909541/" 
+                            <a href="https://www.facebook.com/Sports.Ressources/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="btn btn-outline-info btn-sm">
@@ -1027,7 +1027,7 @@
                 <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
                      style="width: 150px; height: 150px; overflow: hidden;">
                     <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
-                         alt="MED Hassan El Haouat - Expert en sciences du sport" 
+                         alt="Med H El Haouat - Expert en sciences du sport" 
                          class="w-100 h-100 rounded-circle"
                          style="object-fit: cover;">
                 </div>

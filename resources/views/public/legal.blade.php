@@ -66,7 +66,7 @@
                                     <p class="mb-1"><strong>Adresse du siège social :</strong> 45 Avenue Albert Camus, 78200 Paris, France</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="mb-1"><strong>Directeur de la publication :</strong> Med HASSAN EL HAOUAT</p>
+                                    <p class="mb-1"><strong>Directeur de la publication :</strong> Med H EL HAOUAT</p>
                                     <p class="mb-0"><strong>Contact :</strong> natation.swimming@gmail.com</p>
                                 </div>
                             </div>

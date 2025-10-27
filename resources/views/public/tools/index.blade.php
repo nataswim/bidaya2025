@@ -22,7 +22,7 @@
             <div class="col-lg-5 text-center">
                 <a href="{{ route('contact') }}">
                     <img src="{{ asset('assets/images/team/auteur-coach-hassan-el-haouat-nataswim-17.png') }}"
-                        alt="Mohammed Hassan EL HAOUAT"
+                        alt="MohamMed H EL HAOUAT"
                         class="img-fluid rounded-4"
                         style="max-height: 200px; object-fit: cover;">
                 </a>

@@ -20,6 +20,7 @@ class Category extends Model
         'order' => 'integer',
     ];
 
+    
     public function posts()
     {
         return $this->hasMany(Post::class);

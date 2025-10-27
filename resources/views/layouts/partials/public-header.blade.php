@@ -54,280 +54,197 @@
                         <i class="fas fa-home me-2 text-success"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.index') }}">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Dossiers
+                        <i class="fas fa-water me-2 text-warning"></i>Dossiers
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.fiches.index') }}">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Fiches
+                        <i class="fas fa-water me-2 text-warning"></i>Fiches
                     </a>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.videos.index') }}">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Vidéos
+                        <i class="fas fa-water me-2 text-warning"></i>Vidéos
                     </a>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.workouts.index') }}">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Entrainements
+                        <i class="fas fa-water me-2 text-warning"></i>Entrainements
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('ebook.index') }}">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Ressources
+                        <i class="fas fa-water me-2 text-warning"></i>Ressources
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
+                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('exercices.index') }}">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Musculation
+                        <i class="fas fa-water me-2 text-warning"></i>Musculation
                     </a>
                 </li>
 
-                {{-- Menu Outils avec sous-menu --}}
-                <li class="nav-item dropdown position-static">
+                {{-- Menu Outils avec sous-menus imbriqués --}}
+                <li class="nav-item dropdown">
                     <a class="nav-link px-1 py-2 dropdown-toggle {{ request()->routeIs('tools.*', 'plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
                        href="#" 
                        id="toolsDropdown"
                        role="button" 
                        data-bs-toggle="dropdown" 
                        aria-expanded="false">
-                        <i class="fas fa-water me-2 text-primary"></i>Outils
+                        <i class="fas fa-life-ring me-2 text-primary"></i>Outils
                     </a>
                     
-                    {{-- Mega Menu Desktop --}}
-                    <div class="dropdown-menu mega-menu-tools shadow-lg border-0 mt-0 p-0 animate__animated animate__fadeIn" aria-labelledby="toolsDropdown">
-                        <div class="container-fluid px-4 py-4">
-                            <div class="row">
-                                {{-- Colonne 1 : Santé & Nutrition --}}
-                                <div class="col-lg-3 col-md-6 mb-3">
-                                    <h6 class="text-primary fw-bold mb-3 border-bottom pb-2">
-                                        <i class="fas fa-heartbeat me-2"></i>Santé & Nutrition
-                                    </h6>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.bmi') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-weight me-2 text-info"></i>
-                                                <span>Mon IMC</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.masse-grasse') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-percentage me-2 text-info"></i>
-                                                <span>Masse grasse</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.calories') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-fire me-2 text-danger"></i>
-                                                <span>Conso Calories</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.tdee-calculator') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-chart-line me-2 text-success"></i>
-                                                <span>Ma TDEE</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.kcal-macros') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-calculator me-2 text-warning"></i>
-                                                <span>Kcal/Macros</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.hydratation') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-tint me-2 text-primary"></i>
-                                                <span>Hydratation</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <ul class="dropdown-menu shadow border-0" aria-labelledby="toolsDropdown">
+                        {{-- Lien vers tous les outils --}}
+                        <li>
+                            <a class="dropdown-item" href="{{ route('tools.index') }}">
+                                <i class="fas fa-th me-2 text-primary"></i>
+                                <strong>Tous les outils</strong>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
 
-                                {{-- Colonne 2 : Sports aquatiques --}}
-                                <div class="col-lg-3 col-md-6 mb-3">
-                                    <h6 class="text-primary fw-bold mb-3 border-bottom pb-2">
-                                        <i class="fas fa-swimmer me-2"></i>Natation
-                                    </h6>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.chronometre') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-stopwatch me-2 text-info"></i>
-                                                <span>Chrono Sport</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.vnc') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-tachometer-alt me-2 text-success"></i>
-                                                <span>Vitesse Nage</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.swimming-predictor') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-swimmer me-2 text-purple"></i>
-                                                <span>Prédicteur perf</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.swimming-planner') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-calendar-alt me-2 text-primary"></i>
-                                                <span>Planif natation</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.swimming-efficiency') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-chart-area me-2 text-warning"></i>
-                                                <span>Efficacite Technique</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        {{-- Catégorie : Santé & Nutrition --}}
+                        <li class="dropend">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="healthDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-water me-2 text-danger"></i>Santé Hydratation & Nutrition
+                            </a>
+                            <ul class="dropdown-menu shadow border-0" aria-labelledby="healthDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.bmi') }}">
+                                        <i class="fas fa-weight me-2 text-info"></i>Mon IMC
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.masse-grasse') }}">
+                                        <i class="fas fa-percentage me-2 text-info"></i>Masse grasse
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.calories') }}">
+                                        <i class="fas fa-fire me-2 text-danger"></i>Conso Calories
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.tdee-calculator') }}">
+                                        <i class="fas fa-chart-line me-2 text-success"></i>Ma TDEE
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.kcal-macros') }}">
+                                        <i class="fas fa-calculator me-2 text-warning"></i>Kcal/Macros
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.hydratation') }}">
+                                        <i class="fas fa-tint me-2 text-primary"></i>Hydratation
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                                {{-- Colonne 3 : Performance --}}
-                                <div class="col-lg-3 col-md-6 mb-3">
-                                    <h6 class="text-primary fw-bold mb-3 border-bottom pb-2">
-                                        <i class="fas fa-running me-2"></i>Performance
-                                    </h6>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.heart-rate-zones') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-heart me-2 text-danger"></i>
-                                                <span>Zones Cardio</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.coherence-cardiaque') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-lungs me-2 text-info"></i>
-                                                <span>Cohérence Cardia</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.running-planner') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-route me-2 text-success"></i>
-                                                <span>Prog Course</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.onermcalculator') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-dumbbell me-2 text-dark"></i>
-                                                <span>Charge Maximale</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.fitness') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-chart-pie me-2 text-warning"></i>
-                                                <span>Ma Forme</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        {{-- Catégorie : Natation --}}
+                        <li class="dropend">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="swimmingDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-water me-2 text-info"></i>Natation Sportive
+                            </a>
+                            <ul class="dropdown-menu shadow border-0" aria-labelledby="swimmingDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.chronometre') }}">
+                                        <i class="fas fa-stopwatch me-2 text-info"></i>Chrono Sport
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.vnc') }}">
+                                        <i class="fas fa-tachometer-alt me-2 text-success"></i>Vitesse Nage
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.swimming-predictor') }}">
+                                        <i class="fas fa-swimmer me-2 text-primary"></i>Prédicteur performance natation
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.swimming-planner') }}">
+                                        <i class="fas fa-calendar-alt me-2 text-primary"></i>Planification natation
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.swimming-efficiency') }}">
+                                        <i class="fas fa-chart-area me-2 text-warning"></i>Efficacité Technique
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                                {{-- Colonne 4 : Outils pratiques & Plans --}}
-                                <div class="col-lg-3 col-md-6 mb-3">
-                                    <h6 class="text-primary fw-bold mb-3 border-bottom pb-2">
-                                        <i class="fas fa-cogs me-2"></i>Outils pratiques
-                                    </h6>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.chronometre-pro') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-stopwatch-20 me-2 text-danger"></i>
-                                                <span>Chrono Pro</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.carte-interactive') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-map-marked-alt me-2 text-info"></i>
-                                                <span>Ou Suis-Je</span>
-                                            </a>
-                                        </li>
-                                        <li class="mb-2">
-                                            <a href="{{ route('tools.triathlon-planner') }}" class="tool-link d-flex align-items-center">
-                                                <i class="fas fa-biking me-2 text-success"></i>
-                                                <span>Planif Tri</span>
-                                            </a>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
+                        {{-- Catégorie : Performance --}}
+                        <li class="dropend">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="performanceDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-water me-2 text-success"></i>Performance
+                            </a>
+                            <ul class="dropdown-menu shadow border-0" aria-labelledby="performanceDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.heart-rate-zones') }}">
+                                        <i class="fas fa-heart me-2 text-danger"></i>Zones Cardio
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.coherence-cardiaque') }}">
+                                        <i class="fas fa-lungs me-2 text-info"></i>Cohérence Cardiaque
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.running-planner') }}">
+                                        <i class="fas fa-route me-2 text-success"></i>Planification Course à Pied
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.onermcalculator') }}">
+                                        <i class="fas fa-dumbbell me-2 text-dark"></i>Charge Maximale
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.fitness') }}">
+                                        <i class="fas fa-chart-pie me-2 text-warning"></i>Ma Forme
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                            {{-- Ligne de catégories rapides --}}
-                            <div class="row mt-3 pt-3 border-top">
-                                <div class="col-12">
-                                    <div class="d-flex flex-wrap gap-2 justify-content-center">
-                                        <a href="{{ route('tools.index') }}" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-th me-1"></i>Tous les outils
-                                        </a>
-                                        <a href="{{ route('tools.category.health') }}" class="btn btn-sm btn-outline-info">
-                                            Santé
-                                        </a>
-                                        <a href="{{ route('tools.category.nutrition') }}" class="btn btn-sm btn-outline-warning">
-                                            Nutrition
-                                        </a>
-                                        <a href="{{ route('tools.category.swimming') }}" class="btn btn-sm btn-outline-primary">
-                                            Natation
-                                        </a>
-                                        <a href="{{ route('tools.category.cardiac') }}" class="btn btn-sm btn-outline-danger">
-                                            Cardiaque
-                                        </a>
-                                        <a href="{{ route('tools.category.strength') }}" class="btn btn-sm btn-outline-dark">
-                                            Musculation
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Menu mobile dépliable --}}
-                    <div class="mobile-tools-menu d-lg-none">
-                        <ul class="list-unstyled ps-3 mt-2" style="display: none;">
-                            <li><a href="{{ route('tools.index') }}" class="dropdown-item"><i class="fas fa-th me-2"></i>Tous les outils</a></li>
-                            <li class="dropdown-divider"></li>
-                            
-                            {{-- Santé & Nutrition --}}
-                            <li class="fw-bold text-muted small ps-2 pt-2">SANTÉ & NUTRITION</li>
-                            <li><a href="{{ route('tools.bmi') }}" class="dropdown-item"><i class="fas fa-weight me-2"></i>Calculateur IMC</a></li>
-                            <li><a href="{{ route('tools.masse-grasse') }}" class="dropdown-item"><i class="fas fa-percentage me-2"></i>Masse grasse</a></li>
-                            <li><a href="{{ route('tools.calories') }}" class="dropdown-item"><i class="fas fa-fire me-2"></i>Calories</a></li>
-                            <li><a href="{{ route('tools.tdee-calculator') }}" class="dropdown-item"><i class="fas fa-chart-line me-2"></i>TDEE</a></li>
-                            <li><a href="{{ route('tools.kcal-macros') }}" class="dropdown-item"><i class="fas fa-calculator me-2"></i>Kcal/Macros</a></li>
-                            <li><a href="{{ route('tools.hydratation') }}" class="dropdown-item"><i class="fas fa-tint me-2"></i>Hydratation</a></li>
-                            
-                            {{-- Natation --}}
-                            <li class="fw-bold text-muted small ps-2 pt-2">NATATION</li>
-                            <li><a href="{{ route('tools.chronometre') }}" class="dropdown-item"><i class="fas fa-stopwatch me-2"></i>Chronomètre</a></li>
-                            <li><a href="{{ route('tools.vnc') }}" class="dropdown-item"><i class="fas fa-tachometer-alt me-2"></i>VNC</a></li>
-                            <li><a href="{{ route('tools.swimming-predictor') }}" class="dropdown-item"><i class="fas fa-crystal-ball me-2"></i>Prédicteur</a></li>
-                            <li><a href="{{ route('tools.swimming-planner') }}" class="dropdown-item"><i class="fas fa-calendar-alt me-2"></i>Planificateur</a></li>
-                            <li><a href="{{ route('tools.swimming-efficiency') }}" class="dropdown-item"><i class="fas fa-chart-area me-2"></i>Efficacité</a></li>
-                            
-                            {{-- Performance --}}
-                            <li class="fw-bold text-muted small ps-2 pt-2">PERFORMANCE</li>
-                            <li><a href="{{ route('tools.heart-rate-zones') }}" class="dropdown-item"><i class="fas fa-heart me-2"></i>Zones cardiaques</a></li>
-                            <li><a href="{{ route('tools.coherence-cardiaque') }}" class="dropdown-item"><i class="fas fa-lungs me-2"></i>Cohérence cardiaque</a></li>
-                            <li><a href="{{ route('tools.running-planner') }}" class="dropdown-item"><i class="fas fa-route me-2"></i>Course à pied</a></li>
-                            <li><a href="{{ route('tools.onermcalculator') }}" class="dropdown-item"><i class="fas fa-dumbbell me-2"></i>RM/Charge max</a></li>
-                            <li><a href="{{ route('tools.fitness') }}" class="dropdown-item"><i class="fas fa-chart-pie me-2"></i>Fitness</a></li>
-                            
-                            {{-- Pratiques --}}
-                            <li class="fw-bold text-muted small ps-2 pt-2">PRATIQUES</li>
-                            <li><a href="{{ route('tools.chronometre-pro') }}" class="dropdown-item"><i class="fas fa-stopwatch-20 me-2"></i>Chrono Pro</a></li>
-                            <li><a href="{{ route('tools.carte-interactive') }}" class="dropdown-item"><i class="fas fa-map-marked-alt me-2"></i>Carte</a></li>
-                            <li><a href="{{ route('tools.triathlon-planner') }}" class="dropdown-item"><i class="fas fa-biking me-2"></i>Triathlon</a></li>
-                            <li class="dropdown-divider"></li>
-                            <li><a href="{{ route('plans.index') }}" class="dropdown-item fw-bold"><i class="fas fa-clipboard-list me-2"></i>Plans d'entraînement</a></li>
-                        </ul>
-                    </div>
+                        {{-- Catégorie : Outils pratiques --}}
+                        <li class="dropend">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="practicalDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-water me-2 text-warning"></i>Outils pratiques
+                            </a>
+                            <ul class="dropdown-menu shadow border-0" aria-labelledby="practicalDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.chronometre-pro') }}">
+                                        <i class="fas fa-stopwatch-20 me-2 text-danger"></i>Chrono Mlmti Pro
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.carte-interactive') }}">
+                                        <i class="fas fa-map-marked-alt me-2 text-info"></i>Où Suis-Je Carte
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('tools.triathlon-planner') }}">
+                                        <i class="fas fa-biking me-2 text-success"></i>Planification Triathlon
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -392,10 +309,10 @@
     </div>
 </nav>
 
-{{-- CSS personnalisé pour le bandeau et le mega menu --}}
+{{-- CSS personnalisé pour le bandeau et les dropdowns --}}
 @push('styles')
 <style>
-    /* Bandeau utilisateur - Pleine largeur */
+    /* ========== BANDEAU UTILISATEUR ========== */
     .user-top-banner {
         background-color: #198754 !important;
         border-bottom: 2px solid #146c43;
@@ -464,123 +381,91 @@
         }
     }
 
-    /* ========== MEGA MENU STYLES ========== */
-    .mega-menu-tools {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        border-top: 3px solid #04adb9;
-        min-height: 400px;
-        display: none;
-        animation-duration: 0.3s;
+    /* ========== DROPDOWN MENUS ========== */
+    
+    /* Menu principal dropdown */
+    .dropdown-menu {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 0.5rem;
+        min-width: 260px;
     }
 
-    .dropdown:hover .mega-menu-tools,
-    .dropdown.show .mega-menu-tools {
-        display: block !important;
-    }
-
-    /* Style des liens dans le mega menu */
-    .tool-link {
-        color: #495057;
-        text-decoration: none;
-        padding: 0.5rem 0.75rem;
+    /* Items du dropdown */
+    .dropdown-item {
         border-radius: 0.375rem;
-        display: flex;
-        align-items: center;
+        padding: 0.6rem 1rem;
         transition: all 0.3s ease;
         font-size: 0.95rem;
+        color: #495057;
     }
 
-    .tool-link:hover {
+    .dropdown-item:hover {
         background-color: rgba(4, 173, 185, 0.1);
         color: #0066af;
         transform: translateX(5px);
-        box-shadow: 0 2px 8px rgba(4, 173, 185, 0.15);
     }
 
-    .tool-link i {
-        font-size: 1.1rem;
-        width: 25px;
+    .dropdown-item i {
+        width: 20px;
         text-align: center;
-        transition: transform 0.3s ease;
+        font-size: 1rem;
     }
 
-    .tool-link:hover i {
-        transform: scale(1.2) rotate(10deg);
+    /* Sous-menus imbriqués (dropend) */
+    .dropend > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: 0.125rem;
     }
 
-    /* Headers de catégories dans le mega menu */
-    .mega-menu-tools h6 {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #0066af;
+    /* Flèche pour les sous-menus sur desktop */
+    .dropend > .dropdown-toggle::after {
+        border: none;
+        content: "\f054";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 0.7rem;
+        margin-left: auto;
+        float: right;
+        padding-left: 0.5rem;
     }
 
-    .mega-menu-tools h6 i {
-        color: #04adb9;
-    }
-
-    /* Effet de survol sur les colonnes */
-    .mega-menu-tools .col-lg-3:hover {
-        background-color: rgba(4, 173, 185, 0.03);
-        border-radius: 0.5rem;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Boutons de catégories */
-    .mega-menu-tools .btn-outline-primary:hover,
-    .mega-menu-tools .btn-outline-info:hover,
-    .mega-menu-tools .btn-outline-warning:hover,
-    .mega-menu-tools .btn-outline-danger:hover,
-    .mega-menu-tools .btn-outline-dark:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Icône violette personnalisée */
-    .text-purple {
-        color: #6f42c1 !important;
+    /* Séparateur */
+    .dropdown-divider {
+        margin: 0.5rem 0;
+        border-color: rgba(0, 0, 0, 0.08);
     }
 
     /* ========== RESPONSIVE MOBILE ========== */
     @media (max-width: 991px) {
-        /* Cache le mega menu sur mobile */
-        .mega-menu-tools {
-            display: none !important;
-        }
-
-        /* Style du menu mobile */
-        .mobile-tools-menu ul {
+        /* Sur mobile, les sous-menus apparaissent en dessous */
+        .dropend > .dropdown-menu {
+            position: static !important;
+            transform: none !important;
+            border: none;
+            box-shadow: none;
+            padding-left: 1rem;
+            margin-top: 0.25rem;
             background-color: #f8f9fa;
             border-left: 3px solid #04adb9;
-            margin-top: 0.5rem;
-            border-radius: 0.375rem;
         }
 
-        .mobile-tools-menu .dropdown-item {
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
+        /* Flèche vers le bas sur mobile */
+        .dropend > .dropdown-toggle::after {
+            content: "\f078";
+            float: right;
         }
 
-        .mobile-tools-menu .dropdown-item:hover {
-            background-color: rgba(4, 173, 185, 0.1);
-            color: #0066af;
-        }
-
-        .mobile-tools-menu .dropdown-item i {
-            width: 20px;
+        /* Items plus compacts sur mobile */
+        .dropdown-item {
+            padding: 0.5rem 0.75rem;
             font-size: 0.9rem;
         }
 
-        .mobile-tools-menu .fw-bold.text-muted {
-            background-color: rgba(4, 173, 185, 0.05);
-            padding: 0.5rem 0.75rem !important;
-            margin-top: 0.5rem;
-            font-size: 0.75rem !important;
+        .dropdown-menu {
+            min-width: 100%;
         }
     }
 
@@ -642,46 +527,52 @@
 </style>
 @endpush
 
-{{-- JavaScript pour le menu mobile --}}
+{{-- JavaScript pour les sous-menus imbriqués --}}
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Gestion du menu mobile dépliable
-    const toolsDropdown = document.getElementById('toolsDropdown');
-    const mobileMenu = document.querySelector('.mobile-tools-menu ul');
-    
-    if (window.innerWidth < 992 && toolsDropdown && mobileMenu) {
-        toolsDropdown.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+    // Gestion des sous-menus sur desktop
+    if (window.innerWidth >= 992) {
+        // Ouverture au hover sur desktop
+        const dropendItems = document.querySelectorAll('.dropend');
+        
+        dropendItems.forEach(function(item) {
+            const submenu = item.querySelector('.dropdown-menu');
             
-            // Toggle du menu mobile
-            if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
-                mobileMenu.style.display = 'block';
-                // Animation d'ouverture
-                mobileMenu.style.opacity = '0';
-                setTimeout(() => {
-                    mobileMenu.style.transition = 'opacity 0.3s ease';
-                    mobileMenu.style.opacity = '1';
-                }, 10);
-            } else {
-                mobileMenu.style.opacity = '0';
-                setTimeout(() => {
-                    mobileMenu.style.display = 'none';
-                }, 300);
+            if (submenu) {
+                item.addEventListener('mouseenter', function() {
+                    submenu.classList.add('show');
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    submenu.classList.remove('show');
+                });
             }
         });
-
-        // Fermer le menu si on clique ailleurs
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dropdown')) {
-                if (mobileMenu && mobileMenu.style.display === 'block') {
-                    mobileMenu.style.opacity = '0';
-                    setTimeout(() => {
-                        mobileMenu.style.display = 'none';
-                    }, 300);
+    } else {
+        // Gestion des clics sur mobile pour les sous-menus
+        const dropendToggles = document.querySelectorAll('.dropend > .dropdown-toggle');
+        
+        dropendToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const submenu = this.nextElementSibling;
+                
+                if (submenu && submenu.classList.contains('dropdown-menu')) {
+                    // Toggle le sous-menu
+                    const isVisible = submenu.style.display === 'block';
+                    
+                    // Fermer tous les autres sous-menus
+                    document.querySelectorAll('.dropend .dropdown-menu').forEach(function(menu) {
+                        menu.style.display = 'none';
+                    });
+                    
+                    // Toggle le sous-menu actuel
+                    submenu.style.display = isVisible ? 'none' : 'block';
                 }
-            }
+            });
         });
     }
 });

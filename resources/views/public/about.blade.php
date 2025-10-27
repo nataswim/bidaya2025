@@ -111,7 +111,7 @@
                             <div>
                                 <h3 class="h5 fw-bold">Les débuts</h3>
                                 <p class="text-muted">
-                                    Création de Nataswim par Hassan El Haouat et Steve Marsh Vedravokivish, deux passionnés de aps et de préparation physique souhaitant partager leur expertise.
+                                    Création de Nataswim par MH El Haouat et Steve Marsh Vedravokivish, deux passionnés de aps et de préparation physique souhaitant partager leur expertise.
                                 </p>
                             </div>
                         </div>

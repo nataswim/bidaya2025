@@ -793,7 +793,7 @@
                 <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
                      style="width: 150px; height: 150px; overflow: hidden;">
                     <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
-                         alt="MED Hassan El Haouat - Expert en sciences du sport" 
+                         alt="Med H El Haouat - Expert en sciences du sport" 
                          class="w-100 h-100 rounded-circle"
                          style="object-fit: cover;">
                 </div>
