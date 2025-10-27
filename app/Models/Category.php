@@ -30,4 +30,8 @@ class Category extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+    public function getRouteKeyName()
+{
+    return 'slug'; // ou 'id' selon votre route
+}
 }
