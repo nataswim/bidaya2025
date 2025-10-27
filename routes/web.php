@@ -199,6 +199,7 @@ Route::get('/outils/categorie/outils-developpement', [ToolController::class, 'de
 // ========== ROUTES CATÉGORIES ET ARTICLES ==========
 Route::get('/categories', [PublicController::class, 'categories'])->name('public.categories.index');
 Route::get('/categories/{category:slug}', [PublicController::class, 'category'])->name('public.category');
+
 Route::get('/articles', [PublicController::class, 'index'])->name('public.index');
 Route::get('/articles/{post:slug}', [PublicController::class, 'show'])->name('public.show');
 
