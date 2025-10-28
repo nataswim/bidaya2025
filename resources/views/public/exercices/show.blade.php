@@ -75,22 +75,22 @@
 
 
                 <!-- Card 2: images -->
-                            @if($exercice->image)
+                @if($exercice->image)
 
 
 
 
-<div class="card border-0 shadow-sm mb-4">
-                    
-                    <div class="card-body p-4">
+                <div style="background-color: #fff;">
+
+                    <div>
                         <div class="content-display fs-6 lh-lg">
-                           <img src="{{ $exercice->image }}"
-                    alt="{{ $exercice->titre }}">
+                            <img src="{{ $exercice->image }}"
+                                alt="{{ $exercice->titre }}">
                         </div>
                     </div>
                 </div>
 
-            @endif
+                @endif
 
 
                 <!-- Card 2: Description -->
@@ -445,7 +445,6 @@
         height: auto;
         border-radius: 8px;
         margin: 2rem 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: block;
         margin-left: auto;
         margin-right: auto;

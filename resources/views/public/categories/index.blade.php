@@ -1,25 +1,35 @@
 @extends('layouts.public')
 
-@section('title', 'Toutes les catégories')
-@section('meta_description', 'Découvrez toutes nos catégories d\'articles et explorez notre contenu organisé par thématique.')
+@section('title', 'Dossiers sport et performance')
+@section('meta_description', 'Plongez dans nos catégories dédiées au sport. Conseils d\'experts, méthodes d\'entraînement avancées et décryptage des dernières tendances sportives.')
 
 @section('content')
-<!-- En-tête -->
-<section class="py-5 bg-primary text-white text-center" 
-         style="background: linear-gradient(135deg, #04adb9 0%, rgb(15 92 135) 100%);
-                border-top: 20px solid #04adb9;
-                border-left: 20px solid #f9f5f4;
-                border-right: 20px solid #f9f5f4;
-                border-bottom: 20px double rgb(249 245 244);
-                border-radius: 0px 0px 60px 60px;
-                margin-top: 20px;">
-    <div class="container-lg">
-        <h1 class="display-4 fw-bold mb-3">
-            <i class="fas fa-folder-open me-3"></i>Nos Catégories
+
+<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
+1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #0cb3ff;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
+            Dossiers Thématiques
         </h1>
-        <p class="lead mb-0">Explorez notre contenu organisé par thématique</p>
+        <p class="lead mb-0">
+            <strong>Dossiers structurées et accessibles</strong> pour vous accompagner 
+                    dans votre progression avec des contenus organisés par domaine.
+        </p>
+
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('contact') }}">
+                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-10.jpg') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 300px; object-fit: cover;">
+                </a>
+            </div>
+        </div>
     </div>
 </section>
+
 
 <!-- Grille des catégories -->
 <section class="py-5">
@@ -37,7 +47,7 @@
                                          class="card-img-top"
                                          style="height: 100%; width: 100%; object-fit: cover;">
                                 @else
-                                    <div class="bg-gradient-primary d-flex align-items-center justify-content-center text-white" 
+                                    <div class="bg-info d-flex align-items-center justify-content-center text-white" 
                                          style="height: 100%;">
                                         <i class="fas fa-folder fs-1"></i>
                                     </div>
@@ -45,7 +55,7 @@
                                 
                                 <!-- Badge nombre d'articles -->
                                 <div class="position-absolute top-0 end-0 m-3">
-                                    <span class="badge bg-primary shadow-sm fs-6">
+                                    <span class="badge bg-danger shadow-sm fs-6">
                                         <i class="fas fa-file-alt me-1"></i>
                                         {{ $category->posts_count }} article{{ $category->posts_count > 1 ? 's' : '' }}
                                     </span>
@@ -129,9 +139,10 @@
 <!-- CTA vers les articles -->
 <section class="py-5 bg-light">
     <div class="container-lg text-center">
-        <h2 class="h4 mb-4">Vous cherchez un article en particulier ?</h2>
+        <h2 class="h4 mb-4">Vous cherchez un sujet en particulier ?</h2>
+        <p class="mb-4 text-muted">Que vous soyez un athlète cherchant à optimiser votre préparation physique ou un passionné souhaitant simplement progresser, l'entraînement est la clé de la réussite dans le sport. Notre plateforme se spécialise dans les programmes structurés pour atteindre vos objectifs. Découvrez nos stratégies spécifiques pour le Triathlon, où l'enchaînement de la natation, du vélo et de la course requiert une endurance et une musculation ciblées. Explorez nos dossiers détaillés sur les meilleures techniques de nage, les séances de renforcement musculaire pour prévenir les blessures, et les plans de préparation physique générale pour garantir des performances durables. Maîtrisez chaque discipline et transformez votre potentiel athlétique.</p>
         <a href="{{ route('public.index') }}" class="btn btn-primary btn-lg">
-            <i class="fas fa-search me-2"></i>Parcourir tous les articles
+            <i class="fas fa-search me-2"></i>Parcourir 
         </a>
     </div>
 </section>

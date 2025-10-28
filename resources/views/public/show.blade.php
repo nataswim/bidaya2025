@@ -11,16 +11,16 @@
 @section('og_description', $post->intro ? Str::limit(strip_tags($post->intro), 200) : Str::limit(strip_tags($post->content), 200))
 @section('og_url', route('public.show', $post))
 @if($post->image)
-    @section('og_image', $post->image)
-    @section('og_image_alt', $post->name)
+@section('og_image', $post->image)
+@section('og_image_alt', $post->name)
 @endif
 
 {{-- Twitter Card --}}
 @section('twitter_title', $post->name)
 @section('twitter_description', $post->intro ? Str::limit(strip_tags($post->intro), 200) : Str::limit(strip_tags($post->content), 200))
 @if($post->image)
-    @section('twitter_image', $post->image)
-    @section('twitter_image_alt', $post->name)
+@section('twitter_image', $post->image)
+@section('twitter_image_alt', $post->name)
 @endif
 
 @section('content')
@@ -28,28 +28,33 @@
 
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
-1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container-lg">
+1deg, #04adb9 0%, rgb(15 92 135) 100%);">
     <div class="container-lg">
-        <div class="row align-items-center">
-            <div class="col-lg-7 mb-4 mb-lg-0">
-                <h1 class="display-5 fw-bold mb-0">{{ $post->name }}</h1>
-
-
+        <div class="container-lg">
+            <div class="row align-items-center">
+                <div class="col-lg mb-4 mb-lg-0">
+                    <h1 class="fw-bold mb-0">{{ $post->name }}</h1>
+                </div>
             </div>
-            @if($post->image)
-            <div class="col-lg-5">
-                <img src="{{ $post->image }}"
-                    alt="{{ $post->name }}"
-                    class="img-fluid w-100 rounded shadow"
-                    style="max-height: 300px;object-fit: cover;background-color: #ffffff;">
-            </div>
-            @endif
-        </div>
-    </div>
 </section>
 
 
-
+<section class="py-5 text-center">
+    <div class="container-lg">
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center">
+                @if($post->image)
+                <div class="col-lg-5">
+                    <img src="{{ $post->image }}"
+                        alt="{{ $post->name }}"
+                        class="img-fluid rounded shadow"
+                        style="max-height: 300px; object-fit: cover; background-color: #ffffff; width: auto !important;">
+                        </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -95,12 +100,11 @@
                             </span>
                             @endif
                         </div>
-<div class="mb-3">
-            <x-add-to-notebook-button 
-                content-type="posts" 
-                :content-id="$post->id" 
-            />
-        </div>
+                        <div class="mb-3">
+                            <x-add-to-notebook-button
+                                content-type="posts"
+                                :content-id="$post->id" />
+                        </div>
                         <!-- Introduction -->
                         @if($post->intro)
                         <div class="border-top pt-4">
@@ -189,7 +193,7 @@
                                         class="text-decoration-none">
                                         <h6 class="mb-1">{!! Str::limit($recentPost->name, 60) !!}</h6>
                                     </a>
-                            
+
                                     <div class="small text-muted d-flex align-items-center gap-3">
                                         <span>
                                             <i class="fas fa-calendar me-1"></i>
@@ -268,7 +272,7 @@
                                     <span class="text-muted">
                                         <i class="fas fa-user me-1"></i>Auteur:
                                     </span>
-                                    <strong>{{ $post->creator->name }}</strong>
+                                    <strong>Collectif</strong>
                                 </div>
                             </div>
                             @endif
@@ -321,7 +325,7 @@
             <h2 class="fw-bold mb-0">
                 <i class="fas fa-water text-primary me-2"></i>Publications
             </h2>
-        
+
         </div>
 
         @php
@@ -358,7 +362,7 @@
                             </div>
                             @endif
                             <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
-                            
+
                             @if($post->intro)
                             <p class="card-text text-muted small">
                                 {!! Str::limit(strip_tags($post->intro), 100) !!}

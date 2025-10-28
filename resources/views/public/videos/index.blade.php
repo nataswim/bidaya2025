@@ -110,10 +110,6 @@
 <section class="py-5 {{ $featuredVideos->count() > 0 ? 'bg-white' : 'bg-light' }}">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">
-                <i class="fas fa-folder-open me-2 text-primary"></i>
-                Explorer par Catégorie
-            </h2>
             <p class="lead text-muted">
                 Choisissez la thématique qui vous intéresse
             </p>

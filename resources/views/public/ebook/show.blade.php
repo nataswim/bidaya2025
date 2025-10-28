@@ -26,21 +26,16 @@
 
 
 <section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
-1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container-lg">
+1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container-lg">
-        <div class="row align-items-center">
-            <div class="col-lg-{{ $downloadable->cover_image ? '7' : '12' }}">
-                <h1 class="display-5 fw-bold mb-0">{{ $downloadable->title }}</h1>
+        <div class="container-lg">
+            <div class="row align-items-center">
+                <div class="col-lg">
+                    <h1 class="fw-bold mb-0">{{ $downloadable->title }}</h1>
+                </div>
             </div>
-            @if($downloadable->cover_image)
-            
-            @endif
         </div>
-    </div>
 </section>
-
-
-
 <!-- Breadcrumb -->
 <section class="py-3 bg-light border-bottom">
     <div class="container-lg">
@@ -63,6 +58,35 @@
         </nav>
     </div>
 </section>
+                <!-- Card 4.5: Image du fichier -->
+
+
+
+ @if($downloadable->cover_image)
+               <div>
+
+                    <div>
+                                                <div class="text-center">
+                            <img src="{{ $downloadable->cover_image }}"
+                                alt="{{ $downloadable->title }}"
+                                class="img-fluid cursor-pointer"
+                                style="max-height: 500px; object-fit: contain; cursor: pointer;"
+                                onclick="openImageModal('{{ $downloadable->cover_image }}', '{{ addslashes($downloadable->title) }}')"
+                                title="Cliquez pour agrandir">
+
+                        </div>
+                    </div>
+                </div>
+
+ @endif
+
+
+
+
+
+
+
+
 
 <article class="py-4">
     <div class="container-lg">
@@ -73,36 +97,11 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-                            <span class="badge bg-primary px-3 py-2">
-                                <i class="fas fa-folder me-1"></i>{{ $category->name }}
-                            </span>
-
-                            <span class="badge bg-secondary px-3 py-2">
-                                {{ $downloadable->format_display }}
-                            </span>
-
-                            @if($downloadable->is_featured)
-                            <span class="badge bg-warning text-dark px-3 py-2">
-                                <i class="fas fa-star me-1"></i>Vedette
-                            </span>
-                            @endif
 
                             <span class="d-flex align-items-center">
                                 <i class="fas fa-download me-1"></i>
-                                {{ number_format($downloadable->download_count) }} téléchargement{{ $downloadable->download_count > 1 ? 's' : '' }}
+                                11{{ number_format($downloadable->download_count) }} téléchargement{{ $downloadable->download_count > 1 ? 's' : '' }}
                             </span>
-
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-calendar me-1"></i>
-                                {{ $downloadable->created_at->format('d M Y') }}
-                            </span>
-
-                            @if($downloadable->file_size)
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-hdd me-1"></i>
-                                {{ $downloadable->file_size }}
-                            </span>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -190,23 +189,7 @@
 
 
 
-                <!-- Card 4.5: Image du fichier -->
-                @if($downloadable->cover_image)
-                <div class="card border-0 shadow-sm mb-4" style="background-color: #0f5c78;">
-                    <div class="card-body p-4">
 
-                        <div class="text-center">
-                            <img src="{{ $downloadable->cover_image }}"
-                                alt="{{ $downloadable->title }}"
-                                class="img-fluid rounded shadow cursor-pointer"
-                                style="max-height: 500px; object-fit: contain; cursor: pointer;"
-                                onclick="openImageModal('{{ $downloadable->cover_image }}', '{{ addslashes($downloadable->title) }}')"
-                                title="Cliquez pour agrandir">
-
-                        </div>
-                    </div>
-                </div>
-                @endif
                 <!-- FIN DE LA NOUVELLE SECTION -->
 
 
@@ -235,7 +218,7 @@
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
                             <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations du fichier
+                            Informations
                         </h5>
                     </div>
                     <div class="card-body">
@@ -423,20 +406,20 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content bg-transparent border-0" onclick="event.stopPropagation()">
             <div class="modal-header border-0 position-absolute top-0 end-0 z-3" style="z-index: 1050;">
-                <button type="button" 
-                        class="btn-close btn-close-white bg-dark rounded-circle p-3" 
-                        onclick="closeImageModal()"
-                        aria-label="Fermer"
-                        style="opacity: 0.9;">
+                <button type="button"
+                    class="btn-close btn-close-white bg-dark rounded-circle p-3"
+                    onclick="closeImageModal()"
+                    aria-label="Fermer"
+                    style="opacity: 0.9;">
                 </button>
             </div>
             <div class="modal-body p-0 text-center">
-                <img id="modalImage" 
-                     src="" 
-                     alt="" 
-                     class="img-fluid rounded shadow-lg"
-                     style="max-height: 90vh; width: auto;"
-                     onclick="event.stopPropagation()">
+                <img id="modalImage"
+                    src=""
+                    alt=""
+                    class="img-fluid rounded shadow-lg"
+                    style="max-height: 90vh; width: auto;"
+                    onclick="event.stopPropagation()">
             </div>
         </div>
     </div>
@@ -558,188 +541,189 @@
     }
 
     /* Styles pour l'image cliquable */
-.cursor-pointer {
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.cursor-pointer:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
-}
-
-/* Modal personnalisée */
-#imageModal {
-    z-index: 1050;
-}
-
-#imageModal.show {
-    display: block !important;
-}
-
-#imageModal .modal-dialog {
-    max-width: 95vw;
-    margin: 1.75rem auto;
-}
-
-#imageModal .modal-content {
-    background-color: rgba(0, 0, 0, 0.95) !important;
-    border: none;
-}
-
-#imageModal img {
-    cursor: zoom-out;
-    max-height: 90vh;
-    width: auto;
-    max-width: 100%;
-}
-
-/* Backdrop personnalisé */
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.modal-backdrop.fade {
-    opacity: 0;
-}
-
-.modal-backdrop.show {
-    opacity: 1;
-}
-
-/* Empêcher le scroll quand la modal est ouverte */
-body.modal-open {
-    overflow: hidden;
-}
-
-/* Animation d'ouverture */
-@keyframes modalZoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
+    .cursor-pointer {
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+
+    .cursor-pointer:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
     }
-}
 
-#imageModal.show img {
-    animation: modalZoomIn 0.3s ease-out;
-}
+    /* Modal personnalisée */
+    #imageModal {
+        z-index: 1050;
+    }
 
-/* Bouton de fermeture amélioré */
-#imageModal .btn-close {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
-    width: 50px;
-    height: 50px;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    #imageModal.show {
+        display: block !important;
+    }
 
-#imageModal .btn-close:hover {
-    transform: rotate(90deg) scale(1.1);
-    background-color: #dc3545 !important;
-}
+    #imageModal .modal-dialog {
+        max-width: 95vw;
+        margin: 1.75rem auto;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
+    #imageModal .modal-content {
+        background-color: rgba(0, 0, 0, 0.95) !important;
+        border: none;
+    }
+
     #imageModal img {
-        max-height: 80vh;
+        cursor: zoom-out;
+        max-height: 90vh;
+        width: auto;
+        max-width: 100%;
     }
-    
+
+    /* Backdrop personnalisé */
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-backdrop.fade {
+        opacity: 0;
+    }
+
+    .modal-backdrop.show {
+        opacity: 1;
+    }
+
+    /* Empêcher le scroll quand la modal est ouverte */
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    /* Animation d'ouverture */
+    @keyframes modalZoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    #imageModal.show img {
+        animation: modalZoomIn 0.3s ease-out;
+    }
+
+    /* Bouton de fermeture amélioré */
     #imageModal .btn-close {
-        width: 40px;
-        height: 40px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+        width: 50px;
+        height: 50px;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-}
+
+    #imageModal .btn-close:hover {
+        transform: rotate(90deg) scale(1.1);
+        background-color: #dc3545 !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        #imageModal img {
+            max-height: 80vh;
+        }
+
+        #imageModal .btn-close {
+            width: 40px;
+            height: 40px;
+        }
+    }
 </style>
 @endpush
 
 @push('scripts')
 <script>
-function shareContent() {
-    if (navigator.share) {
-        navigator.share({
-            title: '{{ $downloadable->title }}',
-            text: '{{ $downloadable->short_description ?? "Découvrez cette ressource" }}',
-            url: window.location.href
-        });
-    } else {
-        navigator.clipboard.writeText(window.location.href).then(function() {
-            alert('Lien copié dans le presse-papiers !');
-        });
-    }
-}
-
-// Fonction pour ouvrir l'image en modal (JAVASCRIPT PUR)
-function openImageModal(imageUrl, imageTitle) {
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    
-    modalImage.src = imageUrl;
-    modalImage.alt = imageTitle;
-    
-    // Afficher la modal
-    modal.style.display = 'block';
-    modal.classList.add('show');
-    document.body.classList.add('modal-open');
-    
-    // Créer le backdrop
-    if (!document.querySelector('.modal-backdrop')) {
-        const backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop fade show';
-        backdrop.style.zIndex = '1040';
-        document.body.appendChild(backdrop);
-    }
-}
-
-// Fonction pour fermer la modal
-function closeImageModal() {
-    const modal = document.getElementById('imageModal');
-    
-    modal.style.display = 'none';
-    modal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-    
-    // Supprimer le backdrop
-    const backdrop = document.querySelector('.modal-backdrop');
-    if (backdrop) {
-        backdrop.remove();
-    }
-}
-
-// Event listeners pour fermer la modal
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('imageModal');
-    const closeBtn = modal.querySelector('.btn-close');
-    
-    // Fermer avec le bouton X
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeImageModal);
-    }
-    
-    // Fermer en cliquant en dehors de l'image
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal || e.target.classList.contains('modal-content')) {
-            closeImageModal();
+    function shareContent() {
+        if (navigator.share) {
+            navigator.share({
+                title: '{{ $downloadable->title }}',
+                text: '{{ $downloadable->short_description ?? "Découvrez cette ressource" }}',
+                url: window.location.href
+            });
+        } else {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('Lien copié dans le presse-papiers !');
+            });
         }
-    });
-    
-    // Fermer avec la touche Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeImageModal();
+    }
+
+    // Fonction pour ouvrir l'image en modal (JAVASCRIPT PUR)
+    function openImageModal(imageUrl, imageTitle) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        modalImage.src = imageUrl;
+        modalImage.alt = imageTitle;
+
+        // Afficher la modal
+        modal.style.display = 'block';
+        modal.classList.add('show');
+        document.body.classList.add('modal-open');
+
+        // Créer le backdrop
+        if (!document.querySelector('.modal-backdrop')) {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'modal-backdrop fade show';
+            backdrop.style.zIndex = '1040';
+            document.body.appendChild(backdrop);
         }
+    }
+
+    // Fonction pour fermer la modal
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+
+        modal.style.display = 'none';
+        modal.classList.remove('show');
+        document.body.classList.remove('modal-open');
+
+        // Supprimer le backdrop
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+    }
+
+    // Event listeners pour fermer la modal
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('imageModal');
+        const closeBtn = modal.querySelector('.btn-close');
+
+        // Fermer avec le bouton X
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeImageModal);
+        }
+
+        // Fermer en cliquant en dehors de l'image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('modal-content')) {
+                closeImageModal();
+            }
+        });
+
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
     });
-});
 </script>
 @endpush

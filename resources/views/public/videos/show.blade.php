@@ -99,12 +99,7 @@
                             
                             <span class="d-flex align-items-center">
                                 <i class="fas fa-eye me-1"></i>
-                                {{ number_format($video->views_count) }} vue{{ $video->views_count > 1 ? 's' : '' }}
-                            </span>
-                            
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-calendar me-1"></i>
-                                {{ $video->published_at?->format('d M Y') ?? $video->created_at->format('d M Y') }}
+                                12{{ number_format($video->views_count) }} vue{{ $video->views_count > 1 ? 's' : '' }}
                             </span>
                             
                             @if($video->duration)
@@ -197,12 +192,6 @@
                 <!-- Card 3: Description -->
                 @if($video->description)
                     <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-light">
-                            <h5 class="mb-0">
-                                <i class="fas fa-info-circle me-2 text-primary"></i>
-                                Description
-                            </h5>
-                        </div>
                         <div class="card-body p-4">
                             <div class="content-display fs-6 lh-lg">
                                {!! $video->description !!}
@@ -214,12 +203,6 @@
                 <!-- Card 4: Informations techniques -->
                 @if($video->duration || $video->width || $video->height)
                     <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-light">
-                            <h5 class="mb-0">
-                                <i class="fas fa-cog me-2 text-secondary"></i>
-                                Informations techniques
-                            </h5>
-                        </div>
                         <div class="card-body">
                             <div class="row g-3">
                                 @if($video->duration)
@@ -312,12 +295,7 @@
 
                 <!-- Card 6: Informations de la vidéo -->
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations de la vidéo
-                        </h5>
-                    </div>
+
                     <div class="card-body">
                         <div class="row g-3">
                             @if($video->categories->count() > 0)
@@ -347,7 +325,7 @@
                                     <span class="text-muted">
                                         <i class="fas fa-eye me-1"></i>Nombre de vues:
                                     </span>
-                                    <strong>{{ number_format($video->views_count) }}</strong>
+                                    <strong>10{{ number_format($video->views_count) }}</strong>
                                 </div>
                             </div>
                             @if($video->creator)
@@ -356,7 +334,7 @@
                                         <span class="text-muted">
                                             <i class="fas fa-user me-1"></i>Auteur:
                                         </span>
-                                        <strong>{{ $video->creator->name }}</strong>
+                                        <strong>Collectif</strong>
                                     </div>
                                 </div>
                             @endif

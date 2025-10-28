@@ -117,7 +117,6 @@
         <!-- Introduction -->
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
-                <i class="fas fa-folder-open me-2 text-primary"></i>
                 Explorez nos Catégorie
             </h2>
             <p class="lead text-muted">

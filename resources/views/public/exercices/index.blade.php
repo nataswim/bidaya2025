@@ -9,9 +9,9 @@
 <section class="py-5 bg-primary text-white text-center" style="background: #353839;border-top: 20px solid #FF8800;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-3">Exercices Zone</h1>
+                <h1 class="display-4 fw-bold mb-3">Bibliothèque d'exercices</h1>
                 <p class="lead mb-0">
-                    Découvrez notre bibliothèque d'exercices pour tous niveaux, avec instructions détaillées et conseils de sécurité
+                    Découvrez notre reserve d'exercices pour tous niveaux, avec instructions  et conseils
                 </p>
             </div>
             <div class="col-lg-5 text-center">

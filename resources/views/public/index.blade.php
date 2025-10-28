@@ -246,6 +246,85 @@
 </section>
 
 
+
+
+<!-- Grille des catégories -->
+<section class="py-5">
+    <div class="container-lg">
+        @if($categories->count() > 0)
+            <div class="row g-4">
+                @foreach($categories as $category)
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm border-0 hover-card">
+                            <!-- Image de la catégorie -->
+                            <div style="height: 200px; overflow: hidden; position: relative;">
+                                @if($category->image)
+                                    <img src="{{ $category->image }}" 
+                                         alt="{{ $category->name }}"
+                                         class="card-img-top"
+                                         style="height: 100%; width: 100%; object-fit: cover;">
+                                @else
+                                    <div class="bg-info d-flex align-items-center justify-content-center text-white" 
+                                         style="height: 100%;">
+                                        <i class="fas fa-folder fs-1"></i>
+                                    </div>
+                                @endif
+                                
+                                <!-- Badge nombre d'articles -->
+                                <div class="position-absolute top-0 end-0 m-3">
+                                    <span class="badge bg-danger shadow-sm fs-6">
+                                        <i class="fas fa-file-alt me-1"></i>
+                                        {{ $category->posts_count }} article{{ $category->posts_count > 1 ? 's' : '' }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Contenu de la carte -->
+                            <div class="card-body d-flex flex-column">
+                                <!-- Nom de la catégorie -->
+                                <h3 class="card-title h5 mb-3">
+                                    <a href="{{ route('public.category', $category->slug) }}" 
+   class="text-decoration-none text-dark stretched-link">
+                                        {{ $category->name }}
+                                    </a>
+                                </h3>
+
+                                <!-- Description -->
+                                @if($category->description)
+                                    <p class="card-text text-muted small mb-3">
+                                        {{ Str::limit($category->description, 120) }}
+                                    </p>
+                                @endif
+
+                                <!-- Groupe (si existe) -->
+                                @if($category->group_name)
+                                    <div class="mb-3">
+                                        <span class="badge bg-secondary-subtle text-secondary">
+                                            <i class="fas fa-layer-group me-1"></i>{{ $category->group_name }}
+                                        </span>
+                                    </div>
+                                @endif
+                            </div>
+
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <!-- Message si aucune catégorie -->
+            <div class="text-center py-5">
+                <i class="fas fa-folder-open fa-3x text-muted mb-3 opacity-25"></i>
+                <h3 class="text-muted">Aucune catégorie disponible</h3>
+                <p class="text-muted">Les catégories seront bientôt disponibles.</p>
+            </div>
+        @endif
+    </div>
+</section>
+
+
+
+
 @endsection
 
 @push('styles')

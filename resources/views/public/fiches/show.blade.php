@@ -28,12 +28,22 @@
 <section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
 1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-{{ $fiche->image ? '7' : '12' }}">
-                <h1 class="display-5 fw-bold mb-0">{{ $fiche->title }}</h1>
+            <div class="col-lg">
+                <h1 class="fw-bold mb-0">{{ $fiche->title }}</h1>
             </div>
-            
+        </div>
+    </div>
+</section>
 
-            @if($fiche->image)
+
+
+
+
+<section class="py-5 text-center">
+    <div class="container-lg">
+        <div class="container-lg">
+            <div class="row justify-content-center align-items-center">
+@if($fiche->image)
                 <div class="col-lg-5">
                     <img src="{{ $fiche->image }}" 
                          alt="{{ $fiche->title }}" 
@@ -41,9 +51,13 @@
                          style="max-height: 300px; object-fit: cover; background-color: #ffffff;">
                 </div>
             @endif
+            </div>
         </div>
     </div>
 </section>
+
+
+
 
 <!-- Breadcrumb -->
 <section class="py-3 bg-light border-bottom">
@@ -212,7 +226,7 @@
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
                             <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations de la fiche
+                            Informations
                         </h5>
                     </div>
                     <div class="card-body">
@@ -247,7 +261,7 @@
                                         <span class="text-muted">
                                             <i class="fas fa-user me-1"></i>Auteur:
                                         </span>
-                                        <strong>{{ $fiche->creator->name }}</strong>
+                                        <strong>Collectif</strong>
                                     </div>
                                 </div>
                             @endif
