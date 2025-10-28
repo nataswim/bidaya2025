@@ -70,7 +70,7 @@
                             <img src="{{ $downloadable->cover_image }}"
                                 alt="{{ $downloadable->title }}"
                                 class="img-fluid cursor-pointer"
-                                style="max-height: 500px; object-fit: contain; cursor: pointer;"
+                                style="max-height: 800px; object-fit: contain; cursor: pointer;"
                                 onclick="openImageModal('{{ $downloadable->cover_image }}', '{{ addslashes($downloadable->title) }}')"
                                 title="Cliquez pour agrandir">
 

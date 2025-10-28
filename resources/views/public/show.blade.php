@@ -44,11 +44,11 @@
         <div class="container-lg">
             <div class="row justify-content-center align-items-center">
                 @if($post->image)
-                <div class="col-lg-5">
+                <div class="col-lg">
                     <img src="{{ $post->image }}"
                         alt="{{ $post->name }}"
                         class="img-fluid rounded shadow"
-                        style="max-height: 300px; object-fit: cover; background-color: #ffffff; width: auto !important;">
+                        style="object-fit: cover; width: auto !important;">
                         </div>
                 @endif
             </div>
@@ -229,7 +229,7 @@
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
                             <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations de l'article
+                            Informations 
                         </h5>
                     </div>
                     <div class="card-body">

@@ -3,7 +3,7 @@
     $chiffre2 = mt_rand(79, 123);
 @endphp
 
-<footer class="text-light" style="border-left: 20px solid #0f5c78; border-right: 20px solid #0f5c78; background-color: #006170 !important; border-bottom: 20px solid #f9f5f3; border-top: 20px solid #f9f5f3;">
+<footer class="text-light" style="border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;background-color: #16558f !important;border-bottom: 20px solid #16558f;border-top: 20px solid #f9f5f3;">
 
     <!-- statistiques  -->
     <div class="w-100 text-center py-3">
@@ -170,7 +170,7 @@
     </div>
 
     <!-- Barre de copyright -->
-    <div style="border-top: 2px solid #ffffff; background-color: #0f5c78;">
+    <div style="border-top: 2px solid #ffffff; background-color: #203266;">
         <div class="container-lg py-4">
             <div class="row align-items-center">
                 <div class="col-md-6">

@@ -54,39 +54,39 @@
                         <i class="fas fa-home me-2 text-success"></i>
                     </a>
                 </li>
-                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Dossiers
                     </a>
                 </li>
-                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.fiches.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Fiches
                     </a>
                 </li>
                 
-                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.videos.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Vidéos
                     </a>
                 </li>
                 
-                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('public.workouts.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Entrainements
                     </a>
                 </li>
-                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('ebook.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Ressources
                     </a>
                 </li>
-                <li class="nav-item" style="font-size: 110%; font-weight: 600;">
+                <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
                        href="{{ route('exercices.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Musculation

@@ -20,7 +20,7 @@
 
             </div>
             <div class="col-lg-5 text-center">
-                <a href="{{ route('contact') }}">
+                <a href="{{ route('public.categories.index') }}">
                     <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-5.jpg') }}"
                         alt="Guide Nataswim"
                         class="img-fluid rounded-4"
