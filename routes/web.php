@@ -53,6 +53,8 @@ use App\Http\Controllers\FichesSousCategoryController;
 use App\Http\Controllers\Admin\ExerciceCategoryController;
 use App\Http\Controllers\Admin\ExerciceSousCategoryController;
 use App\Http\Controllers\AnatomyController;
+use App\Http\Controllers\User\CalendarController;
+
 
 
 
@@ -240,6 +242,34 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::put('profile', [ProfileController::class, 'updateUserProfile'])->name('profile.update');
 // Dans le groupe Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     
+// Calendar routes
+    Route::prefix('calendar')->name('calendar.')->group(function () {
+        Route::get('/', [CalendarController::class, 'index'])->name('index');
+        Route::get('/create', [CalendarController::class, 'create'])->name('create'); // NOUVEAU
+        Route::post('/', [CalendarController::class, 'store'])->name('store');
+        Route::get('/{event}', [CalendarController::class, 'show'])->name('show');
+        Route::get('/{event}/edit', [CalendarController::class, 'edit'])->name('edit'); // NOUVEAU
+        Route::put('/{event}', [CalendarController::class, 'update'])->name('update');
+        Route::delete('/{event}', [CalendarController::class, 'destroy'])->name('destroy');
+        
+        // Finalisation de l'événement
+        Route::post('/{event}/complete', [CalendarController::class, 'complete'])->name('complete');
+        
+        // Annuler un événement
+        Route::post('/{event}/cancel', [CalendarController::class, 'cancel'])->name('cancel');
+        
+        // Badge compteur semaine
+        Route::get('/api/week-count', [CalendarController::class, 'weekCount'])->name('week-count');
+        
+        // API pour contenus linkables
+        Route::get('/get-linkable/{type}', [CalendarController::class, 'getLinkable'])->name('get-linkable');
+        
+        // Créer depuis workout/plan
+        Route::get('/from-workout/{workout}', [CalendarController::class, 'createFromWorkout'])->name('from-workout');
+        Route::get('/from-plan/{plan}', [CalendarController::class, 'createFromPlan'])->name('from-plan');
+    });
+
+
     // ========== ROUTES MES CARNETS ==========
     Route::prefix('notebooks')->name('notebooks.')->group(function () {
         Route::get('/api/by-type', [\App\Http\Controllers\User\NotebookController::class, 'getByType'])->name('api.by-type');

@@ -93,39 +93,34 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-12">
                 
-                <!-- Card 1: Métadonnées -->
-                <div class="card border-0 bg-primary shadow-sm mb-4">
-                    <div class="card-body p-4">
-                        <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-                            <span class="badge bg-info px-3 py-2">
-                                <i class="fas fa-folder me-1"></i>{{ $category->name }}
-                            </span>
-                            
-                            <span class="badge bg-primary px-3 py-2">
-                                <i class="fas fa-layer-group me-1"></i>{{ $section->name }}
-                            </span>
-                            
-                            <span class="badge bg-success px-3 py-2">
-                                <i class="fas fa-ruler me-1"></i>{{ $workout->formatted_total }}
-                            </span>
-                            
-                            @if($orderNumber !== null)
-                                <span class="badge bg-warning text-dark px-3 py-2">
-                                    <i class="fas fa-hashtag me-1"></i>Séance n°{{ $orderNumber }}
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
+                <!-- Dans la page de détail d'un workout -->
+<div class="card-body">
+    <!-- Contenu existant du workout... -->
+    
+    <div class="d-flex gap-2 mt-4">
+        <!-- Boutons existants (ajouter aux favoris, etc.) -->
+        
+        <!-- NOUVEAU : Bouton Planifier -->
+        @auth
+            @if(auth()->user()->hasRole('user') || auth()->user()->hasRole('editor') || auth()->user()->hasRole('admin'))
+                <a href="{{ route('user.calendar.create', [
+    'linkable_type' => 'workout',
+    'linkable_id' => $workout->id,
+    'linkable_title' => $workout->title,
+    'title' => 'Entraînement: ' . $workout->title,
+    'type' => 'entrainement'
+]) }}" class="btn btn-outline-primary">
+    <i class="fas fa-calendar-plus me-1"></i>Planifier cet entraînement
+</a>
+            @endif
+        @endauth
+    </div>
+</div>
 
                 <!-- Card 2: Objectif de la séance (description courte) -->
                 @if($workout->short_description)
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-header bg-light">
-                            <h2 class="mb-0 h5">
-                                <i class="fas fa-bullseye me-2 text-primary"></i>
-                                introduction
-                            </h2>
                         </div>
                         <div class="card-body p-4">
                             <div class="alert alert-info border-0 mb-0" 
@@ -138,6 +133,10 @@
                     </div>
                 @endif
 
+
+
+
+                
                 <!-- Card 3: Déroulement de la séance (description longue) -->
                 @if($workout->long_description)
                     <div class="card border-0 shadow-sm mb-4">
@@ -372,6 +371,112 @@
     </div>
 </section>
 @endsection
+
+
+
+
+@push('scripts')
+<script>
+function planifyWorkout(workoutId, workoutTitle) {
+    // Pré-remplir le modal de création
+    document.getElementById('create_discipline').value = '';
+    document.getElementById('create_title').value = 'Entraînement: ' + workoutTitle;
+    document.getElementById('create_type').value = 'entrainement';
+    document.getElementById('create_linkable_type').value = 'workout';
+    
+    // Charger les workouts et pré-sélectionner celui-ci
+    fetch(`/user/calendar/from-workout/${workoutId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const select = document.getElementById('create_linkable_id');
+                select.innerHTML = `<option value="${workoutId}" selected>${workoutTitle}</option>`;
+                select.disabled = false;
+            }
+        });
+    
+    // Ouvrir le modal
+    const modalEl = document.getElementById('createEventModalFromWorkout');
+    if (modalEl) {
+        const modal = new bootstrap.Modal(modalEl);
+        modal.show();
+    }
+}
+</script>
+@endpush
+
+<!-- Modal de planification simplifié pour workout -->
+<div class="modal fade" id="createEventModalFromWorkout" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ route('user.calendar.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="linkable_type" value="workout" id="create_linkable_type">
+                <input type="hidden" name="linkable_id" id="create_linkable_id" value="{{ $workout->id }}">
+                
+                <div class="modal-header">
+                    <h5 class="modal-title">📅 Planifier cet entraînement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Discipline</label>
+                        <input type="text" id="create_discipline" name="discipline" class="form-control" placeholder="Ex: Musculation">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Titre *</label>
+                        <input type="text" id="create_title" name="title" class="form-control" 
+                               value="Entraînement: {{ $workout->title }}" required>
+                    </div>
+                    
+                    <input type="hidden" id="create_type" name="type" value="entrainement">
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Date *</label>
+                            <input type="date" name="event_date" class="form-control" required value="{{ now()->format('Y-m-d') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Heure *</label>
+                            <input type="time" name="event_time" class="form-control" required value="14:00">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Lieu</label>
+                        <input type="text" name="location" class="form-control" placeholder="Salle de sport">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Objectif</label>
+                        <input type="text" name="objective" class="form-control" placeholder="Ex: Améliorer force">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Remarques</label>
+                        <textarea name="remarks" class="form-control" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-link me-2"></i>
+                        Cette activité sera liée à l'entraînement <strong>{{ $workout->title }}</strong>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-calendar-check me-1"></i>Planifier
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 @push('styles')
 <style>

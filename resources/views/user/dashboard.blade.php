@@ -354,6 +354,141 @@
 </div>
 
 
+
+
+
+
+<!-- NOUVELLE SECTION : Événements de la semaine -->
+    @if(auth()->user()->hasRole('user') || auth()->user()->hasRole('editor') || auth()->user()->hasRole('admin'))
+        @php
+            $weekEvents = \App\Models\Event::forUser(auth()->id())
+                ->thisWeek()
+                ->planned()
+                ->orderBy('event_date')
+                ->orderBy('event_time')
+                ->limit(5)
+                ->get();
+                
+            $needsCompletion = \App\Models\Event::forUser(auth()->id())
+                ->needsCompletion()
+                ->count();
+        @endphp
+        
+        @if($weekEvents->count() > 0 || $needsCompletion > 0)
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">
+                                <i class="fas fa-calendar-alt text-primary me-2"></i>Mes activités
+                            </h5>
+                            <a href="{{ route('user.calendar.index') }}" class="btn btn-sm btn-outline-primary">
+                                Voir tout le calendrier <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="bg-primary-subtle rounded p-3 text-center">
+                                    <h3 class="mb-0 text-primary">{{ $weekEvents->count() }}</h3>
+                                    <small class="text-muted">Planifiées cette semaine</small>
+                                </div>
+                            </div>
+                            @if($needsCompletion > 0)
+                            <div class="col-md-6">
+                                <div class="bg-warning-subtle rounded p-3 text-center">
+                                    <h3 class="mb-0 text-warning">{{ $needsCompletion }}</h3>
+                                    <small class="text-muted">À compléter</small>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        
+                        @if($weekEvents->count() > 0)
+                        <div class="mb-3">
+                            <h6 class="text-muted mb-2">🔜 Prochaine activité</h6>
+                            @php $nextEvent = $weekEvents->first(); @endphp
+                            <div class="card bg-light border-0">
+                                <div class="card-body p-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                                 style="width: 50px; height: 50px; background-color: {{ $nextEvent->type_color }}20;">
+                                                <i class="{{ $nextEvent->type_icon }} fa-lg" style="color: {{ $nextEvent->type_color }};"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="mb-1">{{ $nextEvent->title }}</h6>
+                                            <small class="text-muted">
+                                                <i class="fas fa-calendar me-1"></i>{{ $nextEvent->formatted_date }}
+                                                <i class="fas fa-clock ms-2 me-1"></i>{{ $nextEvent->formatted_time }}
+                                            </small>
+                                            @if($nextEvent->objective)
+                                                <br><small class="text-muted">
+                                                    <i class="fas fa-bullseye me-1"></i>{{ $nextEvent->objective }}
+                                                </small>
+                                            @endif
+                                            @if($nextEvent->location)
+                                                <br><small class="text-muted">
+                                                    <i class="fas fa-map-marker-alt me-1"></i>{{ $nextEvent->location }}
+                                                </small>
+                                            @endif
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="{{ route('user.calendar.show', $nextEvent) }}" class="btn btn-sm btn-primary">
+                                                Voir <i class="fas fa-arrow-right ms-1"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        @if($weekEvents->count() > 1)
+                        <div>
+                            <h6 class="text-muted mb-2">📅 Autres activités cette semaine</h6>
+                            <div class="list-group list-group-flush">
+                                @foreach($weekEvents->skip(1) as $event)
+                                <div class="list-group-item border-0 px-0 py-2">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="{{ $event->type_icon }} me-2" style="color: {{ $event->type_color }};"></i>
+                                            <strong>{{ $event->title }}</strong>
+                                            <small class="text-muted ms-2">
+                                                {{ $event->event_date->translatedFormat('D d') }} - {{ $event->formatted_time }}
+                                            </small>
+                                        </div>
+                                        <a href="{{ route('user.calendar.show', $event) }}" class="btn btn-sm btn-outline-primary">
+                                            Voir
+                                        </a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+                        @endif
+                        
+                        @if($needsCompletion > 0)
+                        <div class="alert alert-warning mb-0 mt-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>{{ $needsCompletion }}</strong> activité(s) en attente de finalisation.
+                            <a href="{{ route('user.calendar.index') }}" class="alert-link">Compléter maintenant</a>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+    @endif
+    
+
+
+
+
+
 <section class="text-white py-5" style="background: #13b0ae;border-top: 20px solid rgb(249 245 244);border-left: 20px solid #0c5c7a;border-right: 20px solid #4190c5;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container-lg">
         <div class="row mb-4">

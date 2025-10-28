@@ -108,7 +108,15 @@
                         <i class="fas fa-water me-2"></i>Mes Carnets
                     </a>
                 </li>
-
+    <!-- NOUVEAU : Lien Calendrier avec Badge -->
+    @if(auth()->user()->hasRole('user') || auth()->user()->hasRole('editor') || auth()->user()->hasRole('admin'))
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.calendar.index') }}" style="font-weight: 600;background-color: #c8ade0;border: 5px solid #f9f5f4;">
+            <i class="fas fa-calendar-alt me-1"></i>Mes Activités
+            <x-calendar-badge />
+        </a>
+    </li>
+    @endif
                 {{-- Mon Espace --}}
                 <li class="nav-item" >
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('user.dashboard') ? 'active bg-primary text-white' : 'text-dark' }}"
