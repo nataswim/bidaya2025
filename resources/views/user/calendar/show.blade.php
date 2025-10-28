@@ -32,8 +32,8 @@
                         <div class="d-flex gap-2">
                             @if($event->status === 'planned' && !$event->is_past)
                                 <a href="{{ route('user.calendar.edit', $event) }}" class="btn btn-sm btn-outline-primary">
-    <i class="fas fa-edit me-1"></i>Modifier
-</a>
+                                    <i class="fas fa-edit me-1"></i>Modifier
+                                </a>
                             @endif
                             
                             @if($event->needs_completion)
@@ -129,6 +129,79 @@
                 <div class="card-body p-4">
                     <h5 class="mb-3">💭 Remarques</h5>
                     <p class="mb-0">{{ $event->remarks }}</p>
+                </div>
+            </div>
+            @endif
+
+            <!-- NOUVEAU : Contenus liés -->
+            @if($event->hasLinkedContent())
+            <div class="card border-0 shadow-sm mb-4 border-start border-info border-4">
+                <div class="card-body p-4">
+                    <h5 class="mb-3 text-info">🔗 Contenus liés</h5>
+                    
+                    <!-- Workout lié -->
+                    @if($event->linked_workout)
+                        <div class="mb-3">
+                            <h6 class="text-muted mb-2">Séance d'entraînement</h6>
+                            <div class="card bg-light border-0">
+                                <div class="card-body p-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-dumbbell text-primary fa-lg me-3"></i>
+                                            <div>
+                                                <strong>{{ $event->linked_workout->title }}</strong>
+                                                @if($event->linked_workout->short_description)
+                                                    <br><small class="text-muted">{{ Str::limit($event->linked_workout->short_description, 100) }}</small>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @php
+                                            $firstCategory = $event->linked_workout->categories->first();
+                                        @endphp
+                                        @if($firstCategory && $firstCategory->section)
+                                            <a href="{{ route('public.workouts.show', [$firstCategory->section->slug, $firstCategory->slug, $event->linked_workout->slug]) }}" 
+                                               class="btn btn-sm btn-outline-primary" target="_blank">
+                                                <i class="fas fa-external-link-alt me-1"></i>Voir la séance
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    
+                    <!-- Exercices liés -->
+                    @if($event->linked_exercices->count() > 0)
+                        <div>
+                            <h6 class="text-muted mb-2">Exercices ({{ $event->linked_exercices->count() }})</h6>
+                            <div class="list-group">
+                                @foreach($event->linked_exercices as $index => $exercice)
+                                    <div class="list-group-item">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <span class="badge bg-secondary me-3">{{ $index + 1 }}</span>
+                                                <i class="fas fa-running text-success me-2"></i>
+                                                <div>
+                                                    <strong>{{ $exercice->titre }}</strong>
+                                                    <br>
+                                                    <small class="text-muted">
+                                                        <span class="badge bg-info-subtle text-info">{{ $exercice->niveau_label }}</span>
+                                                        @if($exercice->type_exercice)
+                                                            <span class="badge bg-secondary-subtle text-secondary ms-1">{{ $exercice->type_exercice_label }}</span>
+                                                        @endif
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <a href="{{ route('exercices.show', $exercice->id) }}" 
+                                               class="btn btn-sm btn-outline-success" target="_blank">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             @endif
@@ -255,37 +328,6 @@
                 </div>
             </div>
 
-            <!-- Contenu lié -->
-            @if($event->linkable)
-            <div class="card border-0 shadow-sm mb-4" style="background-color: #ffff00;">
-                <div class="card-body p-4">
-                    <h6 class="mb-3">🔗 Contenu lié</h6>
-                    
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-dumbbell text-primary fa-lg me-3"></i>
-                        <div class="flex-grow-1">
-                            <small class="text-muted d-block">
-                                {{ $event->linkable_type === 'App\Models\Workout' ? 'Séance' : 'Plan' }}
-                            </small>
-                            <strong>{{ $event->linkable->title ?? $event->linkable->titre ?? 'Sans titre' }}</strong>
-                        </div>
-                    </div>
-                    
-                    @if($event->linkable_type === 'App\Models\Workout')
-                        <a href="{{ route('public.workouts.show', [$event->linkable->categories->first()->section ?? 'general', $event->linkable->categories->first() ?? 1, $event->linkable]) }}" 
-                           class="btn btn-sm btn-outline-primary w-100 mt-3">
-                            <i class="fas fa-eye me-1"></i>Voir la séance
-                        </a>
-                    @elseif($event->linkable_type === 'App\Models\Plan')
-                        <a href="{{ route('user.training.show', $event->linkable) }}" 
-                           class="btn btn-sm btn-outline-primary w-100 mt-3">
-                            <i class="fas fa-eye me-1"></i>Voir le plan
-                        </a>
-                    @endif
-                </div>
-            </div>
-            @endif
-
             <!-- Actions rapides -->
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
@@ -298,9 +340,9 @@
                     @endif
                     
                     @if($event->status === 'planned' && !$event->is_past)
-                      <a href="{{ route('user.calendar.edit', $event) }}" class="btn btn-outline-primary w-100 mb-2">
-        <i class="fas fa-edit me-1"></i>Modifier
-    </a>
+                        <a href="{{ route('user.calendar.edit', $event) }}" class="btn btn-outline-primary w-100 mb-2">
+                            <i class="fas fa-edit me-1"></i>Modifier
+                        </a>
                         
                         <button type="button" class="btn btn-outline-warning w-100 mb-2" onclick="cancelEvent({{ $event->id }})">
                             <i class="fas fa-ban me-1"></i>Annuler l'activité
@@ -316,99 +358,17 @@
     </div>
 </div>
 
-<!-- Modals -->
+<!-- Modal Finalisation -->
 @include('user.calendar.partials.complete-modal')
 
 @endsection
-
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
+@endpush
 @push('scripts')
 <script>
 let currentEventId = {{ $event->id }};
 
-// Fonction universelle pour ouvrir un modal
-function openModal(modalId) {
-    const modalEl = document.getElementById(modalId);
-    if (!modalEl) {
-        console.error('Modal non trouvé:', modalId);
-        return;
-    }
-    
-    if (typeof window.bootstrap !== 'undefined' && window.bootstrap.Modal) {
-        const modal = new window.bootstrap.Modal(modalEl);
-        modal.show();
-        return;
-    }
-    
-    if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
-        const modal = new bootstrap.Modal(modalEl);
-        modal.show();
-        return;
-    }
-    
-    if (typeof $ !== 'undefined' && typeof $.fn.modal !== 'undefined') {
-        $(modalEl).modal('show');
-        return;
-    }
-    
-    // Fallback DOM manuel
-    modalEl.classList.add('show');
-    modalEl.style.display = 'block';
-    modalEl.setAttribute('aria-modal', 'true');
-    modalEl.setAttribute('role', 'dialog');
-    modalEl.removeAttribute('aria-hidden');
-    document.body.classList.add('modal-open');
-    
-    const backdrop = document.createElement('div');
-    backdrop.className = 'modal-backdrop fade show';
-    backdrop.id = 'modalBackdrop-' + modalId;
-    document.body.appendChild(backdrop);
-    
-    const closeButtons = modalEl.querySelectorAll('[data-bs-dismiss="modal"]');
-    closeButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            closeModal(modalId);
-        });
-    });
-    
-    backdrop.addEventListener('click', function() {
-        closeModal(modalId);
-    });
-}
-
-// Fonction universelle pour fermer un modal
-function closeModal(modalId) {
-    const modalEl = document.getElementById(modalId);
-    if (!modalEl) return;
-    
-    if (typeof window.bootstrap !== 'undefined' && window.bootstrap.Modal) {
-        const modalInstance = window.bootstrap.Modal.getInstance(modalEl);
-        if (modalInstance) modalInstance.hide();
-        return;
-    }
-    
-    if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
-        const modalInstance = bootstrap.Modal.getInstance(modalEl);
-        if (modalInstance) modalInstance.hide();
-        return;
-    }
-    
-    if (typeof $ !== 'undefined' && typeof $.fn.modal !== 'undefined') {
-        $(modalEl).modal('hide');
-        return;
-    }
-    
-    modalEl.classList.remove('show');
-    modalEl.style.display = 'none';
-    modalEl.setAttribute('aria-hidden', 'true');
-    modalEl.removeAttribute('aria-modal');
-    modalEl.removeAttribute('role');
-    document.body.classList.remove('modal-open');
-    
-    const backdrop = document.getElementById('modalBackdrop-' + modalId);
-    if (backdrop) backdrop.remove();
-}
-
-// Ouvrir le modal de finalisation
 function completeEvent(eventId) {
     currentEventId = eventId;
     
@@ -418,7 +378,6 @@ function completeEvent(eventId) {
     openModal('completeEventModal');
 }
 
-// Soumettre la finalisation
 function submitComplete() {
     const form = document.getElementById('completeEventForm');
     const formData = new FormData(form);
@@ -476,6 +435,26 @@ function cancelEvent(eventId) {
             location.reload();
         }
     });
+}
+
+function openModal(modalId) {
+    const modalEl = document.getElementById(modalId);
+    if (!modalEl) return;
+    
+    if (typeof window.bootstrap !== 'undefined' && window.bootstrap.Modal) {
+        const modal = new window.bootstrap.Modal(modalEl);
+        modal.show();
+    }
+}
+
+function closeModal(modalId) {
+    const modalEl = document.getElementById(modalId);
+    if (!modalEl) return;
+    
+    if (typeof window.bootstrap !== 'undefined' && window.bootstrap.Modal) {
+        const modalInstance = window.bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) modalInstance.hide();
+    }
 }
 </script>
 @endpush

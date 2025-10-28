@@ -293,7 +293,9 @@
 @include('user.calendar.partials.complete-modal')
 
 @endsection
-
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
+@endpush
 @push('scripts')
 <script>
 let currentEventId = null;

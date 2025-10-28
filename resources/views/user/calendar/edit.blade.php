@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <form action="{{ route('user.calendar.update', $event) }}" method="POST">
+            <form action="{{ route('user.calendar.update', $event) }}" method="POST" id="eventForm">
                 @csrf
                 @method('PUT')
                 
@@ -165,6 +165,102 @@
                     </div>
                 </div>
 
+                <!-- NOUVEAU : Lier à un contenu (MODIFIABLE) -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-link me-2"></i>Modifier les contenus liés
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        @if($event->hasLinkedContent())
+                        <div class="alert alert-warning mb-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Attention :</strong> Vous avez déjà des contenus liés à cette activité. 
+                            Vous pouvez modifier votre sélection ci-dessous.
+                        </div>
+                        @endif
+                        
+                        <!-- Onglets -->
+                        <ul class="nav nav-tabs mb-4" id="contentTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link {{ $event->linked_workout ? 'active' : ($event->linked_exercices->count() > 0 ? '' : 'active') }}" 
+                                        id="workout-tab" data-bs-toggle="tab" data-bs-target="#workout-panel" 
+                                        type="button" role="tab">
+                                    <i class="fas fa-dumbbell me-1"></i>Séance d'entraînement
+                                    @if($event->linked_workout)
+                                        <span class="badge bg-primary ms-1">1</span>
+                                    @endif
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link {{ $event->linked_exercices->count() > 0 ? 'active' : '' }}" 
+                                        id="exercice-tab" data-bs-toggle="tab" data-bs-target="#exercice-panel" 
+                                        type="button" role="tab">
+                                    <i class="fas fa-running me-1"></i>Exercices
+                                    @if($event->linked_exercices->count() > 0)
+                                        <span class="badge bg-success ms-1">{{ $event->linked_exercices->count() }}</span>
+                                    @endif
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="contentTabsContent">
+                            <!-- PANEL 1 : WORKOUT -->
+                            <div class="tab-pane fade {{ $event->linked_workout ? 'show active' : ($event->linked_exercices->count() > 0 ? '' : 'show active') }}" 
+                                 id="workout-panel" role="tabpanel">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Section</label>
+                                        <select id="workout_section" class="form-select">
+                                            <option value="">Choisir une section</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Catégorie</label>
+                                        <select id="workout_category" class="form-select" disabled>
+                                            <option value="">Choisir une catégorie</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Conteneur des séances (checkboxes) -->
+                                <div id="workouts-container" class="mt-3">
+                                    <p class="text-muted">Sélectionnez une section et une catégorie</p>
+                                </div>
+                                
+                                <!-- Hidden input pour pré-sélectionner le workout -->
+                                @if($event->linked_workout)
+                                <input type="hidden" id="preselected_workout_id" value="{{ $event->linked_workout->id }}">
+                                @endif
+                            </div>
+
+                            <!-- PANEL 2 : EXERCICES -->
+                            <div class="tab-pane fade {{ $event->linked_exercices->count() > 0 ? 'show active' : '' }}" 
+                                 id="exercice-panel" role="tabpanel">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Catégorie d'exercices</label>
+                                        <select id="exercice_category" class="form-select">
+                                            <option value="">Tous les exercices</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Conteneur des exercices (checkboxes) -->
+                                <div id="exercices-container" class="mt-3">
+                                    <p class="text-muted">Chargement...</p>
+                                </div>
+                                
+                                <!-- Hidden input pour pré-sélectionner les exercices -->
+                                @if($event->linked_exercices->count() > 0)
+                                <input type="hidden" id="preselected_exercice_ids" value="{{ $event->linked_exercices->pluck('id')->implode(',') }}">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Actions -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
@@ -182,4 +278,79 @@
         </div>
     </div>
 </div>
+
+<style>
+.workout-card, .exercice-card {
+    transition: all 0.2s ease;
+}
+
+.workout-card:hover, .exercice-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.workout-card.border-primary {
+    border-width: 2px !important;
+}
+
+.exercice-card.border-success {
+    border-width: 2px !important;
+}
+</style>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('js/calendar-create.js') }}?v={{ time() }}"></script>
+<script>
+// Script spécifique pour la page edit : pré-sélectionner les contenus
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Pré-sélectionner le workout si présent
+    const preselectedWorkoutId = document.getElementById('preselected_workout_id');
+    if (preselectedWorkoutId) {
+        // Attendre que les workouts soient chargés puis cocher
+        setTimeout(() => {
+            const workoutRadio = document.querySelector(`input[name="workout_id"][value="${preselectedWorkoutId.value}"]`);
+            if (workoutRadio) {
+                workoutRadio.checked = true;
+                // Déclencher l'événement pour mettre à jour l'apparence
+                workoutRadio.dispatchEvent(new Event('change'));
+            }
+        }, 500);
+    }
+    
+    // Pré-sélectionner les exercices si présents
+    const preselectedExerciceIds = document.getElementById('preselected_exercice_ids');
+    if (preselectedExerciceIds) {
+        const ids = preselectedExerciceIds.value.split(',');
+        
+        // Fonction pour cocher les exercices
+        function checkExercices() {
+            let checkedCount = 0;
+            ids.forEach(id => {
+                const checkbox = document.querySelector(`input[name="exercice_ids[]"][value="${id}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    checkedCount++;
+                }
+            });
+            
+            // Si tous les exercices ne sont pas encore chargés, réessayer
+            if (checkedCount < ids.length && checkedCount > 0) {
+                setTimeout(checkExercices, 500);
+            } else if (checkedCount > 0) {
+                // Mettre à jour l'apparence
+                document.querySelectorAll('.exercice-checkbox').forEach(cb => {
+                    if (cb.checked) {
+                        cb.dispatchEvent(new Event('change'));
+                    }
+                });
+            }
+        }
+        
+        // Attendre que les exercices soient chargés
+        setTimeout(checkExercices, 800);
+    }
+});
+</script>
+@endpush

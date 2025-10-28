@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Carbon\Carbon;
 
 class Event extends Model
@@ -27,8 +27,7 @@ class Event extends Model
         'material',
         'planned_duration',
         'planned_distance',
-        'linkable_type',
-        'linkable_id',
+        // SUPPRIMER linkable_type et linkable_id si migration effectuée
         'status',
         'effort_feeling',
         'objective_achieved',
@@ -43,18 +42,75 @@ class Event extends Model
         'event_time' => 'datetime:H:i',
     ];
 
-    // Relations
+    // Relations existantes
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function linkable(): MorphTo
+    // ========== NOUVELLES RELATIONS ==========
+
+    /**
+     * Tous les contenus liés (workouts + exercices)
+     */
+    public function linkables(): HasMany
     {
-        return $this->morphTo();
+        return $this->hasMany(EventLinkable::class)->orderBy('order');
     }
 
-    // Accessors
+    /**
+     * Seulement les workouts liés
+     */
+    public function workouts()
+    {
+        return $this->linkables()
+            ->where('linkable_type', \App\Models\Workout::class)
+            ->with('linkable');
+    }
+
+    /**
+     * Seulement les exercices liés
+     */
+    public function exercices()
+    {
+        return $this->linkables()
+            ->where('linkable_type', \App\Models\Exercice::class)
+            ->with('linkable')
+            ->orderBy('order');
+    }
+
+    /**
+     * Vérifier si l'événement a des contenus liés
+     */
+    public function hasLinkedContent(): bool
+    {
+        return $this->linkables()->exists();
+    }
+
+    /**
+     * Obtenir le workout lié (s'il y en a un)
+     */
+    public function getLinkedWorkoutAttribute()
+    {
+        $workoutLink = $this->workouts()->first();
+        return $workoutLink ? $workoutLink->linkable : null;
+    }
+
+    /**
+     * Obtenir les exercices liés
+     */
+    public function getLinkedExercicesAttribute()
+    {
+        return $this->exercices()
+            ->get()
+            ->map(function($link) {
+                return $link->linkable;
+            })
+            ->filter(); // Enlever les nulls
+    }
+
+    // ========== ACCESSORS EXISTANTS (garder tous) ==========
+    
     public function getTypeLabelAttribute(): string
     {
         return match($this->type) {
@@ -153,20 +209,19 @@ class Event extends Model
         return $this->formatted_date . ' à ' . $this->formatted_time;
     }
 
-    // Helper pour vérifier si l'événement est passé
     public function getIsPastAttribute(): bool
     {
         $eventDateTime = Carbon::parse($this->event_date->format('Y-m-d') . ' ' . $this->event_time->format('H:i:s'));
         return $eventDateTime->isPast();
     }
 
-    // Helper pour vérifier si l'événement nécessite finalisation
     public function getNeedsCompletionAttribute(): bool
     {
         return $this->is_past && $this->status === 'planned';
     }
 
-    // Scopes
+    // ========== SCOPES EXISTANTS (garder tous) ==========
+    
     public function scopeForUser($query, $userId)
     {
         return $query->where('user_id', $userId);

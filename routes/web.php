@@ -267,6 +267,20 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         // Créer depuis workout/plan
         Route::get('/from-workout/{workout}', [CalendarController::class, 'createFromWorkout'])->name('from-workout');
         Route::get('/from-plan/{plan}', [CalendarController::class, 'createFromPlan'])->name('from-plan');
+
+// ========== NOUVELLES ROUTES API ==========
+        Route::prefix('api')->name('api.')->group(function () {
+            // Workout sections, categories et workouts
+            Route::get('workout-sections', [CalendarController::class, 'getWorkoutSections'])->name('workout-sections');
+            Route::get('workout-categories/{section}', [CalendarController::class, 'getWorkoutCategories'])->name('workout-categories');
+            Route::get('workouts/{category}', [CalendarController::class, 'getWorkouts'])->name('workouts');
+            
+            // Exercice categories et exercices
+            Route::get('exercice-categories', [CalendarController::class, 'getExerciceCategories'])->name('exercice-categories');
+            Route::get('exercices/{category?}', [CalendarController::class, 'getExercices'])->name('exercices');
+        });
+
+
     });
 
 
