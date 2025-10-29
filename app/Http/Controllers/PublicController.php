@@ -154,6 +154,10 @@ public function guide()
 {
     return view('public.guide');
 }
+public function guideplanif()
+{
+    return view('public.guideplanif');
+}
     /**
      * Afficher le formulaire de contact
      */

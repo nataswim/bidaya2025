@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h1 class="fw-bold mb-2">Mes Acitivitées </h1>
+                    <h1 class="fw-bold mb-2">Mes Acitivités </h1>
                     <p class="text-muted mb-0">Planifiez et suivez vos activités</p>
                 </div>
                 <a href="{{ route('user.calendar.create') }}" class="btn btn-danger text-white">

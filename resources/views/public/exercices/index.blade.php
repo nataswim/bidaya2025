@@ -8,20 +8,13 @@
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center" style="background: #353839;border-top: 20px solid #FF8800;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-7 mb-4 mb-lg-0">
+            <div class="col-lg mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold mb-3">Bibliothèque d'exercices</h1>
                 <p class="lead mb-0">
                     Découvrez notre reserve d'exercices pour tous niveaux, avec instructions  et conseils
                 </p>
             </div>
-            <div class="col-lg-5 text-center">
-               <a href="{{ route('public.categories.index') }}">
-                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-6.jpg') }}"
-                        alt="Guide Nataswim"
-                        class="img-fluid rounded-4"
-                        style="max-height: 300px; object-fit: cover;">
-                </a>
-            </div>
+
         </div>
     </div>
 </section>
@@ -230,12 +223,6 @@
 <section class="py-5 bg-light">
     <div class="container">
         <div class="card shadow-lg border-0">
-            <div class="card-header text-white" style="background-color: #04adb9;">
-                <h3 class="mb-2">
-                    <i class="fas fa-compass me-2"></i>
-                    Comment utiliser nos Exercices
-                </h3>
-            </div>
             <div class="card-body">
                 <div class="row g-4">
                     <div class="col-md-4">
@@ -278,6 +265,17 @@
                         </div>
                     </div>
                 </div>
+
+            <div class="col-lg text-center">
+               <a href="{{ route('public.categories.index') }}">
+                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-6.jpg') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 600px;">
+                </a>
+            </div>
+
+
             </div>
         </div>
     </div>

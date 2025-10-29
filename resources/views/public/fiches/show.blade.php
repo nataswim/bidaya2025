@@ -44,11 +44,10 @@
         <div class="container-lg">
             <div class="row justify-content-center align-items-center">
 @if($fiche->image)
-                <div class="col-lg-5">
+                <div class="col-lg" style="background-color: white;">
                     <img src="{{ $fiche->image }}" 
                          alt="{{ $fiche->title }}" 
-                         class="img-fluid w-100 rounded shadow"
-                         style="max-height: 300px; object-fit: cover; background-color: #ffffff;">
+                         style="max-height: 600px; ">
                 </div>
             @endif
             </div>
@@ -91,9 +90,6 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-                            <span class="badge bg-primary px-3 py-2">
-                                <i class="fas fa-folder me-1"></i>{{ $category->name }}
-                            </span>
                             
                             @if($fiche->is_featured)
                                 <span class="badge bg-warning text-dark px-3 py-2">
@@ -109,7 +105,7 @@
                             
                             <span class="d-flex align-items-center">
                                 <i class="fas fa-eye me-1"></i>
-                                {{ number_format($fiche->views_count) }} vue{{ $fiche->views_count > 1 ? 's' : '' }}
+                                1{{ number_format($fiche->views_count) }} vue{{ $fiche->views_count > 1 ? 's' : '' }}
                             </span>
                             
                             <span class="d-flex align-items-center">
@@ -188,7 +184,7 @@
                         <div class="card-header bg-light">
                             <h5 class="mb-0">
                                 <i class="fas fa-layer-group me-2 text-primary"></i>
-                                Fiches dans la même catégorie
+                                Plus de Fiches
                             </h5>
                         </div>
                         <div class="card-body p-4">
@@ -252,7 +248,7 @@
                                     <span class="text-muted">
                                         <i class="fas fa-eye me-1"></i>Nombre de vues:
                                     </span>
-                                    <strong>{{ number_format($fiche->views_count) }}</strong>
+                                    <strong>1{{ number_format($fiche->views_count) }}</strong>
                                 </div>
                             </div>
                             @if($fiche->creator)
@@ -323,11 +319,6 @@
                     <!-- Boutons de navigation -->
                     <div class="col-md-6">
                         <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0">
-                                    <i class="fas fa-compass me-2"></i>Navigation
-                                </h5>
-                            </div>
                             <div class="card-body">
                                 <div class="d-grid gap-2">
                                     <a href="{{ route('public.fiches.category', $category) }}" 
@@ -349,70 +340,7 @@
     </div>
 </article>
 
-<!-- Bouton Outils & Calculateurs -->
-<div class="container-lg mb-4">
-    <a href="{{ route('tools.index') }}" class="btn btn-primary text-light btn-lg w-100">
-        <i class="fas fa-calculator me-2"></i>Essayer nos outils & calculateurs
-    </a>
-</div>
 
-<!-- Section Crédit et Contact -->
-<section class="py-5 bg-primary text-white">
-    <div class="container-lg">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">À propos de nos fiches</h3>
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h6 class="text-info mb-2">Développement</h6>
-                        <p class="mb-3">
-                            Contenus et outils développés par 
-                            <a href="https://www.facebook.com/Sports.Ressources/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="text-warning fw-bold text-decoration-none">
-                                Med H El Haouat
-                                <i class="fas fa-external-link-alt ms-1 small"></i>
-                            </a>
-                        </p>
-                        <p class="small text-light opacity-75">
-                            Sciences du sport, physiologie de l'exercice et développement 
-                            d'outils d'aide à la performance sportive evidence-based.
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amélioration</h6>
-                        <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggérer 
-                            de nouveaux outils, n'hésitez pas à nous contacter.
-                        </p>
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
-                                <i class="fas fa-envelope me-2"></i>Nous contacter
-                            </a>
-                            <a href="https://www.facebook.com/Sports.Ressources/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="btn btn-outline-info btn-sm">
-                                <i class="fab fa-linkedin me-2"></i>LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
-                     style="width: 150px; height: 150px; overflow: hidden;">
-                    <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
-                         alt="Med H El Haouat - Expert en sciences du sport" 
-                         class="w-100 h-100 rounded-circle"
-                         style="object-fit: cover;">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 @endsection
 

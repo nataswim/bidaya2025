@@ -1,25 +1,30 @@
 {{-- Bandeau utilisateur connecté --}}
 @auth
-<div class="user-top-banner py-2" style="background-color: #0066af;border-top: 20px solid #04adb9;border-left: 20px solid #fbf7f1;border-right: 20px solid #fbf7f1;">
+<div class="user-top-banner py-2" style="background-color: #ff8d0b;border-top: 20px solid #04adb9;border-left: 20px solid #fbf7f1;border-right: 20px solid #fbf7f1;">
     <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
         {{-- Lien Mon espace --}}
         <a href="{{ route('user.dashboard') }}" 
-           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.dashboard') ? 'active' : '' }}">
+           class="banner-link d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-color: #ffffff;">
             <i class="fas fa-home me-1"></i>
             <span class="banner-text">Mon espace</span>
         </a>
 
         {{-- Lien Mes carnets --}}
         <a href="{{ route('user.notebooks.index') }}" 
-           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}">
+           class="banner-link d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ffffff;">
             <i class="fas fa-book me-1"></i>
             <span class="banner-text">Mes Carnets</span>
         </a>
-
+{{-- Lien calendar --}}
+        <a href="{{ route('user.calendar.index') }}" 
+           class="banner-link d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ffffff;">
+            <i class="fas fa-book me-1"></i>
+            <span class="banner-text">Ma Planification</span>
+        </a>
         {{-- Bouton Passer Premium (seulement pour les visiteurs) --}}
         @if(auth()->user()->hasRole('visitor'))
         <a href="{{ route('payments.index') }}" 
-           class="banner-link banner-link-premium d-flex align-items-center text-white text-decoration-none px-1 py-1 rounded-pill">
+           class="banner-link banner-link-premium d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill">
             <i class="fas fa-crown me-1"></i>
             <span class="banner-text">Devenir Premium</span>
         </a>

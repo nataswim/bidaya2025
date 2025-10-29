@@ -8,7 +8,7 @@
 <section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
 1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-8">
+            <div class="col-lg">
                 <h1 class="display-4 fw-bold mb-3">
                  {{ $category->name }}
                 </h1>
@@ -23,15 +23,7 @@
                     </span>
                 </div>
             </div>
-            
-            @if($category->image)
-                <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <img src="{{ $category->image }}" 
-                         alt="{{ $category->name }}" 
-                         class="img-fluid rounded shadow-lg"
-                         style="max-height: 250px; object-fit: cover;">
-                </div>
-            @endif
+
         </div>
     </div>
     
@@ -172,13 +164,23 @@
 
 
 <!-- Navigation rapide -->
-<section class="py-4 bg-white border-top">
+<section class="py-4 bg-primary border-top">
     <div class="container">
-        <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="{{ route('public.fiches.index') }}" class="btn btn-outline-primary">
+
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{{ route('public.fiches.index') }}" class="btn btn-light btn-lg">
                 <i class="fas fa-th me-2"></i>Toutes les catégories
             </a>
         </div>
+            @if($category->image)
+                <div class="col-lg text-center mt-4 mt-lg-0">
+                    <img src="{{ $category->image }}" 
+                         alt="{{ $category->name }}" 
+                         style="max-height: 600px;">
+                </div>
+            @endif
+
+
     </div>
 </section>
 @endsection

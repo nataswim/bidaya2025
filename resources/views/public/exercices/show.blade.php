@@ -98,7 +98,7 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-primary text-white">
                         <h5 class="mb-0">
-                            <i class="fas fa-file-text me-2"></i>Description
+                            <i class="fas fa-file-text me-2"></i>Infos
                         </h5>
                     </div>
                     <div class="card-body p-4">
@@ -116,7 +116,7 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-warning text-dark">
                         <h5 class="mb-0">
-                            <i class="fas fa-exclamation-triangle me-2"></i>Consignes
+                            <i class="fas fa-file-text me-2"></i>Infos Plus
                         </h5>
                     </div>
                     <div class="card-body p-4">
@@ -132,7 +132,7 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-success text-white">
                         <h5 class="mb-0">
-                            <i class="fas fa-video me-2"></i>Vidéo Plus
+                            <i class="fas fa-video me-2"></i>
                         </h5>
                     </div>
                     <div class="card-body p-4">
@@ -218,7 +218,7 @@
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
                             <i class="fas fa-dumbbell me-2 text-primary"></i>
-                            Exercices similaires
+                            Exercices Plus
                         </h5>
                     </div>
                     <div class="card-body p-0">

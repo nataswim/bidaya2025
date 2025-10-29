@@ -8,7 +8,7 @@
 <!-- Section titre -->
 <section class="py-5 bg-primary text-white text-center" style="background: #353839;border-top: 20px solid #FF8800;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-8">
+            <div class="col-lg">
                 <h1 class="display-4 fw-bold mb-3">{{ $sousCategory->name }}</h1>
                 
                 @if($sousCategory->description)
@@ -24,15 +24,7 @@
                     </span>
                 </div>
             </div>
-            
-            @if($sousCategory->image)
-                <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <img src="{{ $sousCategory->image }}" 
-                         alt="{{ $sousCategory->name }}" 
-                         class="img-fluid rounded shadow-lg"
-                         style="max-height: 250px; object-fit: cover;">
-                </div>
-            @endif
+
         </div>
     </div>
 </section>
@@ -126,16 +118,26 @@
 </section>
 
 <!-- Navigation rapide -->
-<section class="py-4 bg-white border-top">
+<section class="py-4 bg-primary ">
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="{{ route('exercices.category', $category) }}" class="btn btn-outline-primary">
+            <a href="{{ route('exercices.category', $category) }}" class="btn btn-light">
                 <i class="fas fa-arrow-left me-2"></i>Retour à {{ $category->name }}
             </a>
-            <a href="{{ route('exercices.index') }}" class="btn btn-outline-secondary">
+            <a href="{{ route('exercices.index') }}" class="btn btn-light">
                 <i class="fas fa-th me-2"></i>Toutes les catégories
             </a>
         </div>
+
+                    
+            @if($sousCategory->image)
+                <div class="col-lg text-center mt-4 mt-lg-0">
+                    <img src="{{ $sousCategory->image }}" 
+                         alt="{{ $sousCategory->name }}" 
+                         class="img-fluid rounded shadow-lg"
+                         style="max-height: 600px; ">
+                </div>
+            @endif
     </div>
 </section>
 
