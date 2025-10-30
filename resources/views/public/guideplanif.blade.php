@@ -10,23 +10,14 @@
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center mb-3">
-                    <i class="fas fa-calendar-alt fa-3x me-3"></i>
-                    <h1 class="display-4 fw-bold mb-0">Calendrier d'Activités</h1>
+                    <h1 class="display-4 fw-bold mb-0">Outil planification</h1>
                 </div>
                 <p class="lead mb-4">
-                    Votre outil personnel pour planifier, organiser et suivre toutes vos séances d'entraînement avec précision. Liez vos programmes, analysez vos performances et progressez intelligemment.
+                    Votre outil personnel pour organiser et suivre toutes vos activités.
                 </p>
-                <div class="d-flex gap-3 flex-wrap">
-                    <a href="{{ route('register') }}" class="btn btn-warning btn-lg">
-                        <i class="fas fa-star me-2"></i>Devenir Premium
-                    </a>
-                    <a href="{{ route('pricing') }}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-info-circle me-2"></i>Voir les tarifs
-                    </a>
-                </div>
             </div>
             <div class="col-lg-5 text-center">
-                <img src="{{ asset('assets/images/calendar-hero.jpg') }}" 
+                <img src="{{ asset('assets/images/team/guide-utilisation.jpg') }}"
                      alt="Calendrier Nataswim" 
                      class="img-fluid rounded-4 shadow-lg"
                      style="max-height: 400px; object-fit: cover;">
@@ -42,12 +33,9 @@
             <div class="d-flex align-items-center">
                 <i class="fas fa-crown me-3 fs-3"></i>
                 <div>
-                    <strong>Fonctionnalité Premium :</strong> Le calendrier d'activités est réservé aux membres Premium pour une expérience complète et illimitée.
+                 Le planificateur d'activités est réservé aux membres Premium pour une expérience complète et illimitée.
                 </div>
             </div>
-            <a href="{{ route('pricing') }}" class="btn btn-dark btn-sm">
-                <i class="fas fa-arrow-right me-2"></i>Passer Premium
-            </a>
         </div>
     </div>
 </section>
@@ -691,41 +679,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Exemple pratique -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card bg-success-subtle border-success">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="h5 mb-0"><i class="fas fa-lightbulb me-2"></i>Exemple pratique</h4>
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Cas d'usage :</strong> Vous suivez un plan d'entraînement marathon et c'est le jour de votre sortie longue.</p>
-                        <ol class="mb-3">
-                            <li>Section : <span class="badge bg-primary">Course à pied</span></li>
-                            <li>Catégorie : <span class="badge bg-info">Endurance</span></li>
-                            <li>Séance : <span class="badge bg-success">"Sortie longue 20km - Allure marathon"</span></li>
-                            <li>✅ Sélectionner cette séance</li>
-                            <li>Enregistrer l'activité</li>
-                        </ol>
-                        <div class="card">
-                            <div class="card-header bg-white">
-                                <strong>Résultat dans votre calendrier :</strong>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-2"><i class="fas fa-calendar-day me-2"></i>Dimanche 15 déc - 08:00</div>
-                                <div class="mb-2"><strong>🏋️ Sortie longue dimanche</strong></div>
-                                <div class="border-top pt-2 mt-2">
-                                    <small class="text-muted">🔗 Séance liée :</small>
-                                    <div>"Sortie longue 20km - Allure marathon"</div>
-                                    <button class="btn btn-sm btn-primary mt-2">Voir la séance →</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -908,78 +861,6 @@
             </div>
         </div>
 
-        <!-- Exemple pratique -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card bg-primary-subtle border-primary">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="h5 mb-0"><i class="fas fa-lightbulb me-2"></i>Exemple pratique</h4>
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Cas d'usage :</strong> Vous voulez créer une séance "Upper Body" personnalisée.</p>
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-4">
-                                <div class="card border-success bg-white">
-                                    <div class="card-body p-2">
-                                        <small><i class="fas fa-check text-success me-1"></i>Développé couché</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-success bg-white">
-                                    <div class="card-body p-2">
-                                        <small><i class="fas fa-check text-success me-1"></i>Rowing barre</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-success bg-white">
-                                    <div class="card-body p-2">
-                                        <small><i class="fas fa-check text-success me-1"></i>Dips</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-success bg-white">
-                                    <div class="card-body p-2">
-                                        <small><i class="fas fa-check text-success me-1"></i>Tractions</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card border-success bg-white">
-                                    <div class="card-body p-2">
-                                        <small><i class="fas fa-check text-success me-1"></i>Curl biceps</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert alert-success mb-3">
-                            <strong>Compteur :</strong> "5 exercice(s) sélectionné(s)"
-                        </div>
-                        <div class="card">
-                            <div class="card-header bg-white">
-                                <strong>Résultat dans le calendrier :</strong>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-2"><i class="fas fa-calendar-day me-2"></i>Lundi 16 déc - 18:00</div>
-                                <div class="mb-3"><strong>🏋️ Séance Upper Body</strong></div>
-                                <div class="border-top pt-2">
-                                    <small class="text-muted">🔗 Exercices liés (5) :</small>
-                                    <ol class="mb-0 mt-2">
-                                        <li>Développé couché <button class="btn btn-sm btn-outline-primary">👁️</button></li>
-                                        <li>Rowing barre <button class="btn btn-sm btn-outline-primary">👁️</button></li>
-                                        <li>Dips <button class="btn btn-sm btn-outline-primary">👁️</button></li>
-                                        <li>Tractions <button class="btn btn-sm btn-outline-primary">👁️</button></li>
-                                        <li>Curl biceps <button class="btn btn-sm btn-outline-primary">👁️</button></li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -1071,113 +952,6 @@
             </div>
         </div>
 
-        <!-- Modifier les contenus liés -->
-        <div class="row g-4">
-            <div class="col-12">
-                <div class="card border-warning shadow-sm">
-                    <div class="card-header bg-warning text-dark">
-                        <h3 class="h5 mb-0"><i class="fas fa-star me-2"></i>🆕 Modifier les contenus liés</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-info border-0 mb-4">
-                            <strong>Grande nouveauté :</strong> Vous pouvez maintenant <strong>changer les séances et exercices liés</strong> !
-                        </div>
-
-                        <h5>Scénarios possibles :</h5>
-                        
-                        <div class="accordion mb-4" id="accordionModif">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#scenario1">
-                                        1. Remplacer une séance par une autre
-                                    </button>
-                                </h2>
-                                <div id="scenario1" class="accordion-collapse collapse show" data-bs-parent="#accordionModif">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>Allez dans l'onglet Séance</li>
-                                            <li>La séance actuelle est <strong>pré-cochée</strong> (carte bleue)</li>
-                                            <li>Sélectionnez une autre séance</li>
-                                            <li>Elle remplacera l'ancienne</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#scenario2">
-                                        2. Ajouter/Retirer des exercices
-                                    </button>
-                                </h2>
-                                <div id="scenario2" class="accordion-collapse collapse" data-bs-parent="#accordionModif">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>Allez dans l'onglet Exercices</li>
-                                            <li>Les exercices actuels sont <strong>pré-cochés</strong> (cartes vertes)</li>
-                                            <li><strong>Cochez</strong> pour ajouter</li>
-                                            <li><strong>Décochez</strong> pour retirer</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#scenario3">
-                                        3. Passer de séance à exercices (ou inverse)
-                                    </button>
-                                </h2>
-                                <div id="scenario3" class="accordion-collapse collapse" data-bs-parent="#accordionModif">
-                                    <div class="accordion-body">
-                                        <ul>
-                                            <li>Changez d'onglet</li>
-                                            <li>Faites votre nouvelle sélection</li>
-                                            <li>L'ancien contenu sera <strong>automatiquement supprimé</strong></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card bg-light">
-                            <div class="card-header">
-                                <strong>Exemple de modification</strong>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="text-center">
-                                            <div class="badge bg-secondary mb-2">AVANT</div>
-                                            <div class="small">
-                                                <strong>Activité :</strong> Séance jambes<br>
-                                                <strong>Séance liée :</strong> "Squat & Deadlift"
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 d-flex align-items-center justify-content-center">
-                                        <i class="fas fa-arrow-right fa-2x text-primary"></i>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="text-center">
-                                            <div class="badge bg-success mb-2">APRÈS</div>
-                                            <div class="small">
-                                                <strong>Activité :</strong> Séance jambes<br>
-                                                <strong>Exercices liés :</strong>
-                                                <ul class="list-unstyled mb-0 mt-1">
-                                                    <li>- Squat bulgare</li>
-                                                    <li>- Leg press</li>
-                                                    <li>- Leg curl</li>
-                                                    <li>- Mollets debout</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -2117,173 +1891,16 @@
     </div>
 </section>
 
-<!-- 12. Exemples d'utilisation -->
-<section id="exemples" class="py-5 bg-light">
-    <div class="container-lg">
-        <div class="text-center mb-5">
-            <i class="fas fa-graduation-cap text-primary" style="font-size: 3rem;"></i>
-            <h2 class="mt-3 display-5 fw-bold">Exemples d'utilisation</h2>
-            <p class="text-muted lead">Inspirez-vous de ces scénarios réels</p>
-        </div>
 
-        <div class="row g-4">
-            <!-- Exemple 1 -->
-            <div class="col-lg-6">
-                <div class="card h-100 shadow-sm hover-lift">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="h5 mb-0"><i class="fas fa-user me-2"></i>Coureur débutant</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="small"><strong>Profil :</strong> Maxime, 30 ans, veut courir son premier 10 km</p>
-                        
-                        <div class="timeline">
-                            <div class="mb-3">
-                                <span class="badge bg-primary">Lundi - Planification</span>
-                                <ul class="small mt-2">
-                                    <li>Titre : Course découverte</li>
-                                    <li>Date : Mercredi 18/12 à 18h00</li>
-                                    <li>Objectif : Courir 20 min sans s'arrêter</li>
-                                    <li>Lié : Séance "Course continue 20 min"</li>
-                                </ul>
-                            </div>
-                            <div class="mb-3">
-                                <span class="badge bg-info">Mercredi - Réalisation</span>
-                                <p class="small mb-0 mt-2">18h00 → Va courir au parc (20 min + 5 min retour au calme)</p>
-                            </div>
-                            <div>
-                                <span class="badge bg-success">Mercredi soir - Finalisation</span>
-                                <ul class="small mt-2 mb-0">
-                                    <li>Ressenti : 6/10</li>
-                                    <li>Objectif : ✅ Atteint</li>
-                                    <li>Durée réelle : 23 min</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Exemple 2 -->
-            <div class="col-lg-6">
-                <div class="card h-100 shadow-sm hover-lift">
-                    <div class="card-header bg-warning text-dark">
-                        <h4 class="h5 mb-0"><i class="fas fa-trophy me-2"></i>Athlète confirmé</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="small"><strong>Profil :</strong> Sophie, 35 ans, prépare un trail de 30 km</p>
-                        
-                        <div class="mb-3">
-                            <span class="badge bg-primary mb-2">Dimanche - Planification hebdo</span>
-                            <div class="row g-2">
-                                <div class="col-12">
-                                    <div class="card card-body p-2">
-                                        <small><strong>Lun 18:00</strong> - Fractionné seuil</small>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="card card-body p-2">
-                                        <small><strong>Mer 06:30</strong> - Sortie matinale</small>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="card card-body p-2">
-                                        <small><strong>Ven 18:00</strong> - Côtes courtes</small>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="card card-body p-2">
-                                        <small><strong>Sam 08:00</strong> - Sortie longue 2h30</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="alert alert-success border-0 mb-0">
-                            <strong>Stats du mois :</strong>
-                            <div class="small">18 activités | 7.2/10 | 85% | 15/18</div>
-                            <div class="small text-success mt-1">✅ Préparation intense mais équilibrée</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Exemple 3 -->
-            <div class="col-lg-6">
-                <div class="card h-100 shadow-sm hover-lift">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="h5 mb-0"><i class="fas fa-dumbbell me-2"></i>Pratiquant musculation</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="small"><strong>Profil :</strong> Thomas, 28 ans, veut une séance Upper Body custom</p>
-                        
-                        <div class="mb-3">
-                            <span class="badge bg-info mb-2">Création circuit personnalisé</span>
-                            <ul class="small">
-                                <li>Titre : Circuit Upper explosif</li>
-                                <li>Date : Jeudi 19/12 à 19h00</li>
-                                <li>Lieu : Salle CrossFit</li>
-                            </ul>
-                        </div>
 
-                        <div class="mb-3">
-                            <span class="badge bg-success mb-2">Exercices liés (6)</span>
-                            <div class="row g-1">
-                                <div class="col-6"><span class="badge bg-light text-dark w-100">✓ Développé incliné</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark w-100">✓ Tractions lestées</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark w-100">✓ Dips</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark w-100">✓ Rowing T-barre</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark w-100">✓ Face pull</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark w-100">✓ Curl marteau</span></div>
-                            </div>
-                        </div>
 
-                        <div class="alert alert-primary border-0 mb-0">
-                            <small><i class="fas fa-info-circle me-2"></i>Chaque exercice cliquable pour voir la fiche technique</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Exemple 4 -->
-            <div class="col-lg-6">
-                <div class="card h-100 shadow-sm hover-lift">
-                    <div class="card-header bg-danger text-white">
-                        <h4 class="h5 mb-0"><i class="fas fa-sync me-2"></i>Changement de programme</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="small"><strong>Profil :</strong> Julie, 32 ans, séance prévue mais fatiguée</p>
-                        
-                        <div class="mb-3">
-                            <span class="badge bg-secondary mb-2">Situation initiale</span>
-                            <div class="small">
-                                <strong>Activité planifiée :</strong> "Séance jambes intense"<br>
-                                <strong>Liée à :</strong> "Squat & Deadlift lourd"
-                            </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <span class="badge bg-warning mb-2">Le jour J</span>
-                            <p class="small mb-0">Julie se sent fatiguée, risque de blessure si elle force</p>
-                        </div>
 
-                        <div class="mb-3">
-                            <span class="badge bg-success mb-2">Solution - Modification</span>
-                            <ul class="small mb-0">
-                                <li>Nouveau titre : "Séance jambes adaptée"</li>
-                                <li>Exercices plus légers sélectionnés</li>
-                                <li>Remarque ajoutée : "Fatigue ressentie"</li>
-                            </ul>
-                        </div>
 
-                        <div class="alert alert-success border-0 mb-0">
-                            <small><strong>Leçon :</strong> Écouter son corps = clé de la longévité sportive ! 💪</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- CTA Final -->
 <section class="py-5 bg-gradient-primary text-white">
@@ -2293,7 +1910,6 @@
             <h2 class="display-4 fw-bold mb-4">Prêt à organiser vos entraînements ?</h2>
             <p class="lead mb-4">
                 Planifiez, suivez et progressez avec le Calendrier d'Activités Nataswim.<br>
-                <strong>Fonctionnalité Premium - À partir de 8€/mois</strong>
             </p>
             <div class="d-flex gap-3 justify-content-center flex-wrap">
                 <a href="{{ route('register') }}" class="btn btn-warning btn-lg px-5">
@@ -2383,6 +1999,25 @@
                     <a href="{{ route('contact') }}" class="alert-link">Contactez-nous</a>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+
+<!--  Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container-lg">
+        <div class="row align-items-center">
+
+        <a href="{{ route('guide') }}">
+
+            <div class="col-lg text-center">
+                <img src="{{ asset('assets/images/team/mode-emploi-nataswim.jpg') }}"
+                    alt="Guide Nataswim"
+                    class="img-fluid rounded-4 shadow-lg"
+                    style="object-fit: cover;">
+            </div>
+            </a>
         </div>
     </div>
 </section>

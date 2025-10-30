@@ -158,6 +158,10 @@ public function guideplanif()
 {
     return view('public.guideplanif');
 }
+public function guidecarnet()
+{
+    return view('public.guidecarnet');
+}
     /**
      * Afficher le formulaire de contact
      */

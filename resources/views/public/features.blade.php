@@ -29,7 +29,6 @@
 </section>
 
 
-
 <section class="py-5 bg-light">
     <div class="container-lg">
         <header class="text-center mb-5">
@@ -237,6 +236,27 @@
 </section>
 
 
+
+<!--  Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container-lg">
+        <div class="row align-items-center">
+
+        <a href="{{ route('guide') }}">
+
+            <div class="col-lg text-center">
+                <img src="{{ asset('assets/images/team/mode-emploi-nataswim.jpg') }}"
+                    alt="Guide Nataswim"
+                    class="img-fluid rounded-4 shadow-lg"
+                    style="object-fit: cover;">
+            </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+                        
 
 
 

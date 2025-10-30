@@ -104,6 +104,7 @@ Route::get('/politique-confidentialite', [PublicController::class, 'privacy'])->
 Route::get('/plans-inscription', [PublicController::class, 'pricing'])->name('pricing');
 Route::get('/guide-utilisation', [PublicController::class, 'guide'])->name('guide');
 Route::get('/guide-planification', [PublicController::class, 'guideplanif'])->name('guideplanif');
+Route::get('/guide-carnet', [PublicController::class, 'guidecarnet'])->name('guidecarnet');
 
 
 Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
