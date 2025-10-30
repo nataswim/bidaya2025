@@ -124,8 +124,8 @@
                     <div class="card-body p-0">
                         @if($contentVisible)
                             @if($video->type === 'upload' && $video->file_path)
-                                <!-- Vidéo uploadée -->
-                                <video controls class="w-100" style="max-height: 600px; background: #000;">
+                                <!-- Vidéo uploadée avec autoplay et loop -->
+                                <video controls autoplay loop muted playsinline class="w-100" style="max-height: 600px; background: #000;">
                                     <source src="{{ asset('storage/' . $video->file_path) }}" type="{{ $video->mime_type }}">
                                     Votre navigateur ne supporte pas la lecture de vidéos.
                                 </video>
@@ -215,77 +215,118 @@
                                         </div>
                                     </div>
                                 @endif
+                                
                                 @if($video->width && $video->height)
                                     <div class="col-md-4">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="text-muted">
                                                 <i class="fas fa-expand me-1"></i>Résolution:
                                             </span>
-                                            <strong>{{ $video->width }}x{{ $video->height }}</strong>
+                                            <strong>{{ $video->width }}x{{ $video->height }}px</strong>
                                         </div>
                                     </div>
                                 @endif
-                                <div class="col-md-4">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-muted">
-                                            <i class="fas fa-server me-1"></i>Type:
-                                        </span>
-                                        <strong class="text-capitalize">{{ $video->type }}</strong>
+                                
+                                @if($video->created_at)
+                                    <div class="col-md-4">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-muted">
+                                                <i class="fas fa-calendar me-1"></i>Ajoutée:
+                                            </span>
+                                            <strong>{{ $video->created_at->diffForHumans() }}</strong>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 @endif
 
-                <!-- Card 5: Vidéos similaires -->
+                <!-- Card 5: Partage et actions -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-share-alt me-2"></i>Partager cette vidéo
+                        </h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('public.videos.show', $video)) }}" 
+                               target="_blank" 
+                               class="btn btn-primary btn-sm"
+                               rel="noopener noreferrer">
+                                <i class="fab fa-facebook-f me-1"></i>Facebook
+                            </a>
+                            
+                            <!-- Twitter -->
+                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('public.videos.show', $video)) }}&text={{ urlencode($video->title) }}" 
+                               target="_blank" 
+                               class="btn btn-info btn-sm text-white"
+                               rel="noopener noreferrer">
+                                <i class="fab fa-twitter me-1"></i>Twitter
+                            </a>
+                            
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/?text={{ urlencode($video->title . ' - ' . route('public.videos.show', $video)) }}" 
+                               target="_blank" 
+                               class="btn btn-success btn-sm"
+                               rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp me-1"></i>WhatsApp
+                            </a>
+                            
+                            <!-- Copier le lien -->
+                            <button type="button" 
+                                    class="btn btn-outline-secondary btn-sm" 
+                                    onclick="copyVideoLink()"
+                                    id="copyLinkBtn">
+                                <i class="fas fa-link me-1"></i>Copier le lien
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vidéos similaires -->
                 @if($relatedVideos->count() > 0)
                     <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-light">
+                        <div class="card-header bg-primary text-white">
                             <h5 class="mb-0">
-                                <i class="fas fa-layer-group me-2 text-primary"></i>
-                                Vidéos similaires
+                                <i class="fas fa-video me-2"></i>Vidéos similaires
                             </h5>
                         </div>
-                        <div class="card-body p-4">
-                            <div class="row g-4">
-                                @foreach($relatedVideos as $related)
-                                    <div class="col-md-6 col-lg-3">
-                                        <div class="card h-100 border">
-                                            @if($related->thumbnail)
-                                                <div class="position-relative">
-                                                    <img src="{{ $related->thumbnail }}" 
-                                                         class="card-img-top" 
-                                                         style="height: 150px; object-fit: cover;"
-                                                         alt="{{ $related->title }}">
-                                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                                        <div class="bg-danger bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center" 
-                                                             style="width: 40px; height: 40px;">
-                                                            <i class="fas fa-play text-white"></i>
-                                                        </div>
-                                                    </div>
-                                                    @if($related->duration)
-                                                        <span class="position-absolute bottom-0 end-0 m-1 badge bg-dark">
-                                                            {{ $related->getFormattedDuration() }}
-                                                        </span>
-                                                    @endif
-                                                </div>
+                        <div class="card-body p-3">
+                            <div class="row g-3">
+                                @foreach($relatedVideos as $relatedVideo)
+                                    <div class="col-md-6 col-lg-4">
+                                        <a href="{{ route('public.videos.show', $relatedVideo) }}" 
+                                           class="card border hover-card h-100 text-decoration-none">
+                                            @if($relatedVideo->thumbnail)
+                                                <img src="{{ $relatedVideo->thumbnail }}" 
+                                                     class="card-img-top" 
+                                                     alt="{{ $relatedVideo->title }}"
+                                                     style="height: 150px; object-fit: cover;">
                                             @else
                                                 <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
                                                      style="height: 150px;">
-                                                    <i class="fas fa-video fa-2x text-muted"></i>
+                                                    <i class="fas fa-video fa-3x text-muted"></i>
                                                 </div>
                                             @endif
-                                            
-                                            <div class="card-body p-3">
-                                                <h6 class="card-title small">{!! Str::limit($related->title, 50) !!}</h6>
-                                                <small class="text-muted">
-                                                    <i class="fas fa-eye me-1"></i>{{ number_format($related->views_count) }}
-                                                </small>
-                                                <a href="{{ route('public.videos.show', $related) }}" 
-                                                   class="stretched-link"></a>
+                                            <div class="card-body">
+                                                <h6 class="card-title text-dark mb-2">
+                                                    {!! Str::limit($relatedVideo->title, 50) !!}
+                                                </h6>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    @if($relatedVideo->duration)
+                                                        <small class="text-muted">
+                                                            <i class="fas fa-clock me-1"></i>
+                                                            {{ $relatedVideo->getFormattedDuration() }}
+                                                        </small>
+                                                    @endif
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-eye me-1"></i>
+                                                        {{ number_format($relatedVideo->views_count) }}
+                                                    </small>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 @endforeach
                             </div>
@@ -293,77 +334,10 @@
                     </div>
                 @endif
 
-                <!-- Card 6: Informations de la vidéo -->
-                <div class="card border-0 shadow-sm mb-4">
-
-                    <div class="card-body">
-                        <div class="row g-3">
-                            @if($video->categories->count() > 0)
-                                <div class="col-md-6">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-muted">
-                                            <i class="fas fa-folder me-1"></i>Catégories:
-                                        </span>
-                                        <div>
-                                            @foreach($video->categories as $category)
-                                                <span class="badge bg-primary">{{ $category->name }}</span>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>Publié le:
-                                    </span>
-                                    <strong>{{ $video->published_at?->format('d F Y') ?? $video->created_at->format('d F Y') }}</strong>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-eye me-1"></i>Nombre de vues:
-                                    </span>
-                                    <strong>10{{ number_format($video->views_count) }}</strong>
-                                </div>
-                            </div>
-                            @if($video->creator)
-                                <div class="col-md-6">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-muted">
-                                            <i class="fas fa-user me-1"></i>Auteur:
-                                        </span>
-                                        <strong>Collectif</strong>
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="col-md-6">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="text-muted">
-                                        <i class="fas fa-edit me-1"></i>Mise à jour:
-                                    </span>
-                                    <strong>{{ $video->updated_at->format('d/m/Y') }}</strong>
-                                </div>
-                            </div>
-                            @if($video->visibility === 'authenticated')
-                                <div class="col-md-6">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-muted">
-                                            <i class="fas fa-shield-alt me-1"></i>Visibilité:
-                                        </span>
-                                        <strong class="text-info">Membres uniquement</strong>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section Navigation -->
+                <!-- Navigation et catégorie -->
                 <div class="row g-4 mb-4">
-                    <!-- Catégorie -->
                     @if($video->categories->count() > 0)
+                        @php $firstCategory = $video->categories->first(); @endphp
                         <div class="col-md-6">
                             <div class="card border-0 shadow-sm h-100">
                                 <div class="card-header bg-primary text-white">
@@ -372,16 +346,15 @@
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    @php $firstCategory = $video->categories->first(); @endphp
                                     <a href="{{ route('public.videos.category', $firstCategory) }}" 
                                        class="d-flex align-items-center text-decoration-none">
-                                        @if($firstCategory->image)
-                                            <img src="{{ $firstCategory->image }}" 
-                                                 class="rounded me-3" 
-                                                 style="width: 70px; height: 70px; object-fit: cover;"
-                                                 alt="{{ $firstCategory->name }}">
+                                        @if($firstCategory->icon)
+                                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                                 style="width: 70px; height: 70px;">
+                                                <i class="{{ $firstCategory->icon }} text-primary fs-3"></i>
+                                            </div>
                                         @else
-                                            <div class="bg-primary bg-opacity-10 rounded d-flex align-items-center justify-content-center me-3" 
+                                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3" 
                                                  style="width: 70px; height: 70px;">
                                                 <i class="fas fa-folder text-primary fs-3"></i>
                                             </div>
@@ -593,4 +566,76 @@
     transform: translateY(-5px);
 }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+/**
+ * Copier le lien de la vidéo
+ */
+function copyVideoLink() {
+    const url = window.location.href;
+    const btn = document.getElementById('copyLinkBtn');
+    
+    // Utiliser l'API Clipboard si disponible
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+            // Succès
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check me-1"></i>Copié !';
+            btn.classList.remove('btn-outline-secondary');
+            btn.classList.add('btn-success');
+            
+            setTimeout(function() {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('btn-success');
+                btn.classList.add('btn-outline-secondary');
+            }, 2000);
+        }).catch(function(err) {
+            console.error('Erreur lors de la copie:', err);
+            fallbackCopyToClipboard(url, btn);
+        });
+    } else {
+        // Fallback pour les anciens navigateurs
+        fallbackCopyToClipboard(url, btn);
+    }
+}
+
+/**
+ * Méthode fallback pour copier le lien
+ */
+function fallbackCopyToClipboard(text, btn) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check me-1"></i>Copié !';
+            btn.classList.remove('btn-outline-secondary');
+            btn.classList.add('btn-success');
+            
+            setTimeout(function() {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('btn-success');
+                btn.classList.add('btn-outline-secondary');
+            }, 2000);
+        } else {
+            alert('Impossible de copier le lien. Veuillez copier manuellement : ' + text);
+        }
+    } catch (err) {
+        alert('Impossible de copier le lien. Veuillez copier manuellement : ' + text);
+    }
+    
+    document.body.removeChild(textArea);
+}
+</script>
 @endpush

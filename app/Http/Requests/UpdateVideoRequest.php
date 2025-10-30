@@ -4,26 +4,31 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Validation pour la mise à jour d'une vidéo
+ * 
+ * @file app/Http/Requests/UpdateVideoRequest.php
+ */
 class UpdateVideoRequest extends FormRequest
 {
+    /**
+     * Déterminer si l'utilisateur est autorisé à faire cette requête
+     */
     public function authorize(): bool
     {
         return true;
     }
 
+    /**
+     * Règles de validation
+     */
     public function rules(): array
     {
-        return [
+        $rules = [
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:videos,slug,' . $this->video->id,
             'description' => 'nullable|string',
             'type' => 'required|in:upload,url,youtube,vimeo,dailymotion',
-            
-            // Pour les uploads
-            'file' => 'nullable|file|mimes:mp4,webm,mov,avi|max:512000',
-            
-            // Pour les URLs externes
-            'external_url' => 'nullable|url',
             
             // Métadonnées
             'thumbnail' => 'nullable|string|max:2048',
@@ -47,10 +52,74 @@ class UpdateVideoRequest extends FormRequest
             'meta_keywords' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
         ];
+
+        // Règles conditionnelles selon le type
+        if ($this->input('type') === 'upload') {
+            // Si on utilise la bibliothèque
+            if ($this->filled('library_file_path')) {
+                $rules['library_file_path'] = 'required|string';
+                $rules['library_file_size'] = 'required|string';
+                $rules['library_mime_type'] = 'required|string';
+            } 
+            // Sinon, fichier optionnel lors de l'édition (pour remplacer l'ancien)
+            else {
+                $rules['file'] = 'nullable|file|mimes:mp4,webm,mov,avi,mkv,flv,wmv,mpeg,mpg,3gp|max:512000'; // 500MB
+            }
+        } 
+        // Pour les URLs externes
+        elseif (in_array($this->input('type'), ['url', 'youtube', 'vimeo', 'dailymotion'])) {
+            $rules['external_url'] = 'nullable|url';
+        }
+
+        return $rules;
     }
 
+    /**
+     * Messages d'erreur personnalisés
+     */
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Le titre de la vidéo est obligatoire.',
+            'title.max' => 'Le titre ne doit pas dépasser 255 caractères.',
+            'slug.unique' => 'Ce slug est déjà utilisé par une autre vidéo.',
+            'type.required' => 'Le type de source est obligatoire.',
+            'type.in' => 'Le type de source sélectionné n\'est pas valide.',
+            
+            // Messages pour upload fichier
+            'file.file' => 'Le fichier uploadé n\'est pas valide.',
+            'file.mimes' => 'Format de fichier non supporté. Formats acceptés : mp4, webm, mov, avi, mkv, flv, wmv, mpeg, mpg, 3gp.',
+            'file.max' => 'La taille du fichier ne doit pas dépasser 500 Mo.',
+            
+            // Messages pour bibliothèque
+            'library_file_path.required' => 'Le chemin du fichier de la bibliothèque est requis.',
+            'library_file_size.required' => 'La taille du fichier de la bibliothèque est requise.',
+            'library_mime_type.required' => 'Le type MIME du fichier de la bibliothèque est requis.',
+            
+            // Messages pour URL externe
+            'external_url.url' => 'L\'URL de la vidéo doit être une URL valide.',
+            
+            // Messages pour visibilité
+            'visibility.required' => 'La visibilité est obligatoire.',
+            'visibility.in' => 'La visibilité sélectionnée n\'est pas valide.',
+            
+            // Messages pour catégories
+            'categories.array' => 'Les catégories doivent être un tableau.',
+            'categories.*.exists' => 'Une ou plusieurs catégories sélectionnées n\'existent pas.',
+            
+            // Messages pour SEO
+            'meta_title.max' => 'Le titre SEO ne doit pas dépasser 255 caractères.',
+            'meta_keywords.max' => 'Les mots-clés ne doivent pas dépasser 255 caractères.',
+            'meta_description.max' => 'La description SEO ne doit pas dépasser 500 caractères.',
+        ];
+    }
+
+    /**
+     * Préparer les données pour la validation
+     */
     protected function prepareForValidation()
     {
+        // Convertir les checkboxes en booléens
         if ($this->has('is_published')) {
             $this->merge(['is_published' => $this->boolean('is_published')]);
         }
@@ -58,5 +127,36 @@ class UpdateVideoRequest extends FormRequest
         if ($this->has('is_featured')) {
             $this->merge(['is_featured' => $this->boolean('is_featured')]);
         }
+    }
+
+    /**
+     * Attributs personnalisés pour les messages d'erreur
+     */
+    public function attributes(): array
+    {
+        return [
+            'title' => 'titre',
+            'slug' => 'slug',
+            'description' => 'description',
+            'type' => 'type de source',
+            'file' => 'fichier vidéo',
+            'external_url' => 'URL de la vidéo',
+            'thumbnail' => 'miniature',
+            'duration' => 'durée',
+            'width' => 'largeur',
+            'height' => 'hauteur',
+            'visibility' => 'visibilité',
+            'is_published' => 'statut de publication',
+            'is_featured' => 'vidéo en vedette',
+            'sort_order' => 'ordre d\'affichage',
+            'published_at' => 'date de publication',
+            'categories' => 'catégories',
+            'meta_title' => 'titre SEO',
+            'meta_keywords' => 'mots-clés',
+            'meta_description' => 'description SEO',
+            'library_file_path' => 'chemin du fichier bibliothèque',
+            'library_file_size' => 'taille du fichier bibliothèque',
+            'library_mime_type' => 'type MIME bibliothèque',
+        ];
     }
 }

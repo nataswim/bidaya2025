@@ -110,17 +110,29 @@ class VideoController extends Controller
         return view('admin.videos.create', compact('categories'));
     }
 
+
+
+
+
+    
     public function store(StoreVideoRequest $request)
     {
         $this->checkAdminAccess();
         
         $data = $request->validated();
         
-        // Gestion de l'upload
-        if ($request->hasFile('file')) {
-            $uploadData = $this->videoService->uploadVideo($request->file('file'));
-            $data = array_merge($data, $uploadData);
-        }
+    // Gestion de l'upload classique
+    if ($request->hasFile('file')) {
+        $uploadData = $this->videoService->uploadVideo($request->file('file'));
+        $data = array_merge($data, $uploadData);
+    }
+    // NOUVEAU : Gestion depuis la bibliothèque
+    elseif ($request->filled('library_file_path')) {
+        $data['type'] = 'upload';
+        $data['file_path'] = $request->input('library_file_path');
+        $data['file_size'] = $request->input('library_file_size');
+        $data['mime_type'] = $request->input('library_mime_type');
+    }
         
         // Gestion des URLs externes et métadonnées
         if (in_array($data['type'], ['youtube', 'vimeo', 'dailymotion']) && !empty($data['external_url'])) {
@@ -173,6 +185,15 @@ class VideoController extends Controller
             ->with('success', 'Vidéo créée avec succès.');
     }
 
+
+
+
+
+
+
+
+
+
     public function show(Video $video)
     {
         $this->checkAdminAccess();
@@ -199,15 +220,27 @@ class VideoController extends Controller
         $data = $request->validated();
         
         // Gestion de l'upload d'un nouveau fichier
-        if ($request->hasFile('file')) {
-            // Supprimer l'ancien fichier
-            if ($video->file_path) {
-                $this->videoService->deleteVideo($video->file_path);
-            }
-            
-            $uploadData = $this->videoService->uploadVideo($request->file('file'));
-            $data = array_merge($data, $uploadData);
+    if ($request->hasFile('file')) {
+        // Supprimer l'ancien fichier
+        if ($video->file_path) {
+            $this->videoService->deleteVideo($video->file_path);
         }
+        
+        $uploadData = $this->videoService->uploadVideo($request->file('file'));
+        $data = array_merge($data, $uploadData);
+    }
+    // NOUVEAU : Gestion depuis la bibliothèque
+    elseif ($request->filled('library_file_path')) {
+        // Supprimer l'ancien fichier si changement de source
+        if ($video->file_path && $video->file_path !== $request->input('library_file_path')) {
+            $this->videoService->deleteVideo($video->file_path);
+        }
+        
+        $data['type'] = 'upload';
+        $data['file_path'] = $request->input('library_file_path');
+        $data['file_size'] = $request->input('library_file_size');
+        $data['mime_type'] = $request->input('library_mime_type');
+    }
         
         // Mise à jour des métadonnées externes si URL modifiée
         if (in_array($data['type'], ['youtube', 'vimeo', 'dailymotion']) && 

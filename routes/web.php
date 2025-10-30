@@ -54,6 +54,9 @@ use App\Http\Controllers\Admin\ExerciceCategoryController;
 use App\Http\Controllers\Admin\ExerciceSousCategoryController;
 use App\Http\Controllers\AnatomyController;
 use App\Http\Controllers\User\CalendarController;
+use App\Http\Controllers\Admin\VideoLibraryController;
+
+
 
 
 
@@ -426,6 +429,19 @@ Route::prefix('aitext')->name('aitext.')->group(function () {
 
     Route::post('media/bulk-action', [MediaController::class, 'bulkAction'])->name('media.bulk-action');
 
+// Routes pour la bibliothèque vidéo (admin uniquement)
+Route::prefix('video-library')->name('video-library.')->group(function () {
+    Route::post('browse', [App\Http\Controllers\Admin\VideoLibraryController::class, 'browse'])
+        ->name('browse');
+    Route::post('import', [App\Http\Controllers\Admin\VideoLibraryController::class, 'import'])
+        ->name('import');
+    Route::post('upload', [App\Http\Controllers\Admin\VideoLibraryController::class, 'upload'])
+        ->name('upload');
+    Route::post('create-folder', [App\Http\Controllers\Admin\VideoLibraryController::class, 'createFolder'])
+        ->name('create-folder');
+    Route::delete('delete-file', [App\Http\Controllers\Admin\VideoLibraryController::class, 'deleteFile'])
+        ->name('delete-file');
+});
 
 // ========== ROUTES ENTRAÎNEMENT ADMIN ==========
 

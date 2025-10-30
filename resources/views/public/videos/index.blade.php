@@ -8,7 +8,7 @@
 <section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(58deg, #04adb9 0%, #4b0055 100%);border-top: 20px solid #71287c;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container-lg">
         <div class="row align-items-center">
-            <div class="col-lg-7 mb-4 mb-lg-0">
+            <div class="col-lg mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
                     Bibliothèque Vidéo
                 </h1>
@@ -16,14 +16,6 @@
                     <strong>Vidéo</strong>infos, tutoriels, techniques et plus
                 </p>
 
-            </div>
-            <div class="col-lg-5 text-center">
-               <a href="{{ route('public.categories.index') }}"> 
-                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-3.jpg') }}"
-                        alt="Guide Nataswim"
-                        class="img-fluid rounded-4"
-                        style="max-height: 300px; object-fit: cover;">
-                </a>
             </div>
         </div>
     </div>
