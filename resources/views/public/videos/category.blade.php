@@ -83,76 +83,74 @@
                         </span>
                         @endif
                     </div>
-                    @endif
-                </div>
-                @else
-                <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center"
-                    style="height: 220px;">
-                    <i class="fas fa-video fa-4x text-white opacity-50"></i>
-                </div>
-                @endif
-
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex flex-wrap gap-2 mb-3">
-                        @foreach($video->categories->take(2) as $cat)
-                        <span class="badge bg-primary">
-                            {{ $cat->name }}
-                        </span>
-                        @endforeach
-
-                        @if($video->visibility === 'authenticated')
-                        <span class="badge bg-warning text-dark">
-                            <i class="fas fa-crown me-1"></i>Premium
-                        </span>
-                        @endif
-
-                        @if($video->is_featured)
-                        <span class="badge bg-success">
-                            <i class="fas fa-star me-1"></i>Vedette
-                        </span>
-                        @endif
+                    @else
+                    <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center"
+                        style="height: 220px;">
+                        <i class="fas fa-video fa-4x text-white opacity-50"></i>
                     </div>
-
-                    <h5 class="card-title mb-3">{{ $video->title }}</h5>
-
-                    @if($video->description)
-                    <p class="card-text text-muted flex-grow-1">
-                        {{ Str::limit(strip_tags($video->description), 120) }}
-                    </p>
                     @endif
 
-                    <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
-                        <small class="text-muted">
-                            <i class="fas fa-eye me-1"></i>{{ number_format($video->views_count) }} vues
-                        </small>
-                        <a href="{{ route('public.videos.show', $video) }}"
-                            class="btn btn-sm btn-primary">
-                            Regarder <i class="fas fa-play ms-1"></i>
-                        </a>
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            @foreach($video->categories->take(2) as $cat)
+                            <span class="badge bg-primary">
+                                {{ $cat->name }}
+                            </span>
+                            @endforeach
+
+                            @if($video->visibility === 'authenticated')
+                            <span class="badge bg-warning text-dark">
+                                <i class="fas fa-crown me-1"></i>Premium
+                            </span>
+                            @endif
+
+                            @if($video->is_featured)
+                            <span class="badge bg-success">
+                                <i class="fas fa-star me-1"></i>Vedette
+                            </span>
+                            @endif
+                        </div>
+
+                        <h5 class="card-title mb-3">{{ $video->title }}</h5>
+
+                        @if($video->description)
+                        <p class="card-text text-muted flex-grow-1">
+                            {{ Str::limit(strip_tags($video->description), 120) }}
+                        </p>
+                        @endif
+
+                        <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                            <small class="text-muted">
+                                <i class="fas fa-eye me-1"></i>{{ number_format($video->views_count) }} vues
+                            </small>
+                            <a href="{{ route('public.videos.show', $video) }}"
+                                class="btn btn-sm btn-primary">
+                                Regarder <i class="fas fa-play ms-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
-    </div>
 
-    <!-- Pagination -->
-    @if($videos->hasPages())
-    <div class="d-flex justify-content-center mt-5">
-        {{ $videos->links() }}
-    </div>
-    @endif
-    @else
-    <div class="card border-0 shadow-sm text-center py-5">
-        <div class="card-body">
-            <i class="fas fa-video fa-3x text-muted mb-3 opacity-25"></i>
-            <h5 class="text-muted mb-3">Aucune vidéo disponible dans cette catégorie</h5>
-            <a href="{{ route('public.videos.index') }}" class="btn btn-primary">
-                <i class="fas fa-arrow-left me-2"></i>Retour aux vidéos
-            </a>
+        <!-- Pagination -->
+        @if($videos->hasPages())
+        <div class="d-flex justify-content-center mt-5">
+            {{ $videos->links() }}
         </div>
-    </div>
-    @endif
+        @endif
+        @else
+        <div class="card border-0 shadow-sm text-center py-5">
+            <div class="card-body">
+                <i class="fas fa-video fa-3x text-muted mb-3 opacity-25"></i>
+                <h5 class="text-muted mb-3">Aucune vidéo disponible dans cette catégorie</h5>
+                <a href="{{ route('public.videos.index') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left me-2"></i>Retour aux vidéos
+                </a>
+            </div>
+        </div>
+        @endif
     </div>
 </section>
 
