@@ -141,33 +141,28 @@ class Video extends Model
                     ->orderBy('published_at', 'desc');
     }
 
-    /**
-     * Scope : Vidéos visibles selon l'utilisateur
-     */
-    public function scopeVisibleTo($query, $user = null)
-    {
-        return $query->where(function($q) use ($user) {
-            $q->where('is_published', true)
-              ->whereNotNull('published_at')
-              ->where('published_at', '<=', now())
-              ->where('visibility', 'public');
-            
-            if ($user && !$user->hasRole('visitor')) {
-                $q->orWhere(function($subQ) {
-                    $subQ->where('is_published', true)
-                         ->whereNotNull('published_at')
-                         ->where('published_at', '<=', now())
-                         ->where('visibility', 'authenticated');
-                });
-            }
-            
-            if ($user && ($user->hasRole('admin') || $user->hasRole('editor'))) {
-                $q->orWhere(function($subQ) {
-                    $subQ->whereIn('is_published', [false, true]);
-                });
-            }
-        });
-    }
+/**
+ * Scope : Vidéos visibles selon l'utilisateur
+ * Affiche toutes les vidéos published (public + authenticated) dans les listings
+ * Le contrôle d'accès au contenu se fait via canViewContent()
+ */
+public function scopeVisibleTo($query, $user = null)
+{
+    return $query->where(function($q) use ($user) {
+        // Vidéos publiques et authenticated publiées (visibles dans les listings)
+        $q->where('is_published', true)
+          ->whereNotNull('published_at')
+          ->where('published_at', '<=', now())
+          ->whereIn('visibility', ['public', 'authenticated']);
+        
+        // Si admin/éditeur, voir toutes les vidéos (même non publiées)
+        if ($user && ($user->hasRole('admin') || $user->hasRole('editor'))) {
+            $q->orWhere(function($subQ) {
+                $subQ->whereIn('is_published', [false, true]);
+            });
+        }
+    });
+}
 
     /**
      * Vérifier si l'utilisateur peut voir le contenu

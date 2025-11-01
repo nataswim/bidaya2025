@@ -65,9 +65,16 @@
                                 {{ $category->name }}
                             </span>
                             @endforeach
+
                             @if($video->visibility === 'authenticated')
-                            <span class="badge bg-warning">
-                                <i class="fas fa-lock me-1"></i>Membres
+                            <span class="badge bg-warning text-dark">
+                                <i class="fas fa-crown me-1"></i>Premium
+                            </span>
+                            @endif
+
+                            @if($video->is_featured)
+                            <span class="badge bg-success">
+                                <i class="fas fa-star me-1"></i>Vedette
                             </span>
                             @endif
                         </div>
@@ -173,6 +180,13 @@
                             @if($video->duration)
                             <span class="position-absolute bottom-0 end-0 m-2 badge bg-dark">
                                 {{ $video->getFormattedDuration() }}
+                            </span>
+                            @endif
+
+                            {{-- Badge Premium --}}
+                            @if($video->visibility === 'authenticated')
+                            <span class="position-absolute top-0 start-0 m-2 badge bg-warning text-dark">
+                                <i class="fas fa-crown me-1"></i>Premium
                             </span>
                             @endif
                         </div>
