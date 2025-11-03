@@ -11,6 +11,9 @@
                 <div>
                     <h1 class="fw-bold mb-2">Mes Carnets</h1>
                     <p class="text-muted mb-0">Organisez et sauvegardez vos contenus préférés</p>
+                          <a href="{{ route('guide') }}">
+Guide d'utilisation
+            </a>
                 </div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNotebookModal">
                     <i class="fas fa-plus me-2"></i>Créer un carnet

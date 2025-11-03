@@ -11,6 +11,9 @@
                 <div>
                     <h1 class="fw-bold mb-2">Mes Acitivités </h1>
                     <p class="text-muted mb-0">Planifiez et suivez vos activités</p>
+                            <a href="{{ route('guide') }}">
+Guide d'utilisation
+            </a>
                 </div>
                 <a href="{{ route('user.calendar.create') }}" class="btn btn-danger text-white">
                     <i class="fas fa-plus me-2"></i>Planifier une activité
@@ -18,6 +21,9 @@
             </div>
         </div>
     </div>
+
+
+
 
     <!-- Statistiques du mois -->
     @if($monthStats['total_completed'] > 0)

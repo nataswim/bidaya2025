@@ -5,7 +5,7 @@
 
 @section('content')
 <!--  Section -->
-<section class="text-white py-5" style=" background-color: #04adb9; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-top: 20px solid #04adb9; border-bottom: 20px solid #04adb9; ">
+<section class="text-white py-5" style="background-color: #0e76a9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-top: 20px solid #0b5a68;border-bottom: 20px solid #0b5a68;">
     <div class="container-lg py-4">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
@@ -139,7 +139,7 @@
             <div class="col">
                 <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header text-white" style="background-color: #0e76a9;">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Séances & Plans</h4>
@@ -155,9 +155,6 @@
                             <p class="card-text text-muted mb-3">
                                 Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entraînement pour les sportifs.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-primary fw-bold">Choisir vos plans →</span>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -167,7 +164,7 @@
             <div class="col">
                 <a href="{{ route('exercices.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-success text-white">
+                        <div class="card-header text-white" style="background-color: #01a6a6;">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Exercices spécialisés</h4>
@@ -182,9 +179,6 @@
                             <p class="card-text text-muted mb-3">
                                 Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="btn btn-danger text-white d-flex align-items-center px-4">Voir les exercices →</span>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -194,7 +188,7 @@
             <div class="col">
                 <a href="{{ route('public.fiches.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-info text-white">
+                        <div class="card-header text-white" style="background-color: #0b5a68;">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Fiches techniques</h4>
@@ -210,9 +204,7 @@
                             <p class="card-text text-muted mb-3">
                                 Des guides complets sur les techniques, préparation physique, entraînement, sciences, stratégies et plus.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-info fw-bold">Accéder aux fiches →</span>
-                            </div>
+
                         </div>
                     </div>
                 </a>
@@ -222,7 +214,7 @@
             <div class="col">
                 <a href="{{ route('tools.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-warning text-dark">
+                        <div class="card-header text-white" style="background-color: #F59E0B;">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Calculateurs & Outils</h4>
@@ -234,9 +226,7 @@
                             <p class="card-text text-muted mb-3">
                                 Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-warning fw-bold">Utiliser nos outils →</span>
-                            </div>
+
                         </div>
                     </div>
                 </a>
@@ -244,12 +234,12 @@
             
             <!-- 5. Suivi de progression -->
             <div class="col">
-                <div class="card h-100 shadow-lg border-0 bg-white category-card opacity-75">
-                    <div class="card-header bg-secondary text-white">
+                <div class="card h-100 shadow-lg border-0 bg-white category-card">
+                    <div class="card-header text-white" style="background-color: #0a7183;">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <h4 class="mb-1">Suivi de progression</h4>
-                                <p class="mb-0 opacity-75">Bientôt disponible</p>
+                                <p class="mb-0 opacity-75">Disponible</p>
                             </div>
                         </div>
                     </div>
@@ -257,9 +247,6 @@
                         <p class="card-text text-muted mb-3">
                             Enregistrez vos performances, analysez votre évolution avec graphiques et statistiques détaillés.
                         </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-secondary fw-bold">Prochainement →</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -268,7 +255,7 @@
             <div class="col">
                 <a href="{{ route('ebook.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
+                       <div class="card-header text-white" style="background-color: #0e76a9;">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Ressources téléchargeables</h4>
@@ -284,9 +271,6 @@
                             <p class="card-text text-muted mb-3">
                                 Documents, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-danger fw-bold">Télécharger les documents →</span>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -303,7 +287,7 @@
 
 
 <!-- Temoignages -->
-<section class="py-5 text-white" style="background: #04adb9;">
+<section class="py-5 text-white" style="background: #0e76a9;">
     <div class="container-lg">
         <div class="row g-4">
             @php
@@ -381,8 +365,7 @@
 </section>
 
 <!-- Dernieres Publications -->
-<section class="py-5 text-white" style="background: #0175c5;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
-    <div class="container-lg">
+<section class="py-5 text-white" style="background: #00a5a5;border-left: 20px solid #087383;border-right: 20px solid #087383;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">    <div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold mb-0">
                 Publications
@@ -445,9 +428,11 @@
 
 
 
-<section class="py-5 text-white" style="background: #4199b9;border-left: 20px solid #307eae;border-right: 20px solid #307eae;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
-        <div class="container-lg">
-            <div class="row mb-4">
+<section class="py-5 text-white" style="background: #057483;border-left: 20px solid #00a5a5;border-right: 20px solid #00a5a5;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">     
+<div class="container-lg">
+            
+
+<div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">
@@ -517,8 +502,7 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: #307eae;border-left: 20px solid #429ab9;border-right: 20px solid #429ab9;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
-
+<section class="py-5 text-white" style="background: #00a5a5;border-left: 20px solid #087383;border-right: 20px solid #087383;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
        <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
@@ -590,7 +574,9 @@
             </div>
         </div>
 </section>
-<section class="py-5 text-white" style="background: #14a9cf;border-left: 20px solid #16afae;border-right: 20px solid #16afae;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
+
+
+<section class="py-5 text-white" style="background: #057483;border-left: 20px solid #00a5a5;border-right: 20px solid #00a5a5;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;"> 
 
 <div class="container-lg">
             <div class="row mb-4">
@@ -661,8 +647,7 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: #14aeae;border-left: 20px solid #14a9cf;border-right: 20px solid #14a9cf;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
-
+<section class="py-5 text-white" style="background: #00a5a5;border-left: 20px solid #087383;border-right: 20px solid #087383;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
 <!-- Derniers Exercices -->
         <div class="container-lg">
             <div class="row mb-4">
@@ -807,7 +792,8 @@
 </section>
 
 <!--  Section -->
-<section class="bg-gradient-primary text-white py-5">
+<section class="py-5 text-white" > 
+
     <div class="container-lg">
         <div class="row align-items-center">
 

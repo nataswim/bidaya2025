@@ -486,7 +486,24 @@
     
 
 
+<!--  Section -->
+<section class="py-5 text-white" > 
 
+    <div class="container-lg">
+        <div class="row align-items-center">
+
+        <a href="{{ route('guide') }}">
+
+            <div class="col-lg text-center">
+                <img src="{{ asset('assets/images/team/mode-emploi-nataswim.jpg') }}"
+                    alt="Guide Nataswim"
+                    class="img-fluid rounded-4 shadow-lg"
+                    style="object-fit: cover;">
+            </div>
+            </a>
+        </div>
+    </div>
+</section>
 
 
 <section class="text-white py-5" style="background: #13b0ae;border-top: 20px solid rgb(249 245 244);border-left: 20px solid #0c5c7a;border-right: 20px solid #4190c5;border-bottom: 20px double #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">

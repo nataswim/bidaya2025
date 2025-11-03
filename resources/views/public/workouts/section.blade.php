@@ -70,7 +70,7 @@
                                 <div class="category-image-wrapper-section">
                                     <div class="category-image-placeholder-section d-flex align-items-center justify-content-center text-white"
                                          style="background: linear-gradient(135deg, {{ $loop->index % 4 == 0 ? '#0d6efd' : ($loop->index % 4 == 1 ? '#198754' : ($loop->index % 4 == 2 ? '#0dcaf0' : '#ffc107')) }} 0%, {{ $loop->index % 4 == 0 ? '#084298' : ($loop->index % 4 == 1 ? '#0f5132' : ($loop->index % 4 == 2 ? '#087990' : '#cc9a06')) }} 100%);">
-                                        <i class="fas fa-folder" style="font-size: 3rem;"></i>
+                                        <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
                                     </div>
                                     
                                     <!-- Badge nombre de séances -->

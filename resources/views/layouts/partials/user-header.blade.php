@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #004f59;border-right: 20px solid #004f59;background-color: #f9f5f4 !important;border-bottom: 20px solid #16afae;border-top: 20px solid #16afae;">
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0e76a9;border-top: 20px solid #0e76a9;">
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" target="_blank" rel="noopener noreferrer">
@@ -25,7 +25,7 @@
                         id="contentDropdown"
                         role="button"
                         data-bs-toggle="dropdown"
-                        aria-expanded="false" style="font-weight: 600;background-color: #cef6e9;border: 5px solid #f9f5f4;">
+                        aria-expanded="false" style="font-weight: 600;background-color: #ffffff;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);border: 1px solid #b0c4c6;margin: 5px;">
                         <i class="fas fa-water me-2"></i>Contenus
                     </a>
                     <ul class="dropdown-menu dropdown-menu-large shadow-lg border-0" aria-labelledby="contentDropdown">
@@ -104,15 +104,15 @@
                 {{-- Mes Carnets --}}
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('user.notebooks.*') ? 'active bg-primary text-white' : 'text-dark' }}"
-                        href="{{ route('user.notebooks.index') }}" style="font-weight: 600;background-color: #ebe6f9;border: 5px solid #f9f5f4;">
-                        <i class="fas fa-water me-2"></i>Mes Carnets
+                        href="{{ route('user.notebooks.index') }}" style="font-weight: 600;background-color: #ffffff;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);border: 1px solid #b0c4c6;margin: 5px;">
+                        <i class="fas fa-water me-2"></i>Carnets
                     </a>
                 </li>
     <!-- NOUVEAU : Lien Calendrier avec Badge -->
     @if(auth()->user()->hasRole('user') || auth()->user()->hasRole('editor') || auth()->user()->hasRole('admin'))
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.calendar.index') }}" style="font-weight: 600;background-color: #c8ade0;border: 5px solid #f9f5f4;">
-            <i class="fas fa-calendar-alt me-1"></i>Mes Activités
+        <a class="nav-link" href="{{ route('user.calendar.index') }}" style="font-weight: 600;background-color: #ffffff;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);border: 1px solid #b0c4c6;margin: 5px;">
+            <i class="fas fa-water me-2"></i>Planification
             <x-calendar-badge />
         </a>
     </li>
@@ -120,8 +120,8 @@
                 {{-- Mon Espace --}}
                 <li class="nav-item" >
                     <a class="nav-link px-3 py-2 {{ request()->routeIs('user.dashboard') ? 'active bg-primary text-white' : 'text-dark' }}"
-                        href="{{ route('user.dashboard') }}" style="font-weight: 600;background-color: #dfecf2;border: 5px solid #f9f5f4;">
-                        <i class="fas fa-water me-2"></i>Mon Espace
+                        href="{{ route('user.dashboard') }}" style="font-weight: 600;background-color: #ffffff;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);border: 1px solid #b0c4c6;margin: 5px;">
+                        <i class="fas fa-water me-2"></i>Profil
                     </a>
                 </li>
 
@@ -133,7 +133,7 @@
                         id="paymentsDropdown"
                         role="button"
                         data-bs-toggle="dropdown"
-                        aria-expanded="false" style="font-weight: 600;background-color: #f9e6f5;border: 5px solid #f9f5f4;">
+                        aria-expanded="false" style="font-weight: 600;background-color: #ffffff;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);border: 1px solid #b0c4c6;margin: 5px;">
                         <i class="fas fa-water me-2"></i>Mon Compte
                     </a>
                     <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="paymentsDropdown">

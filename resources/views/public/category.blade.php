@@ -37,7 +37,7 @@
                 </nav>
 
                 <h1 class="display-5 fw-bold mb-3">
-                    <i class="fas fa-folder me-2"></i>{{ $category->name }}
+                    {{ $category->name }}
                 </h1>
                 
                 @if($category->description)
