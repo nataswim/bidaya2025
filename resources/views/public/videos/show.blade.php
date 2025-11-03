@@ -79,12 +79,6 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
-                            @foreach($video->categories as $category)
-                            <span class="badge bg-primary px-3 py-2">
-                                <i class="fas fa-folder me-1"></i>{{ $category->name }}
-                            </span>
-                            @endforeach
-
                             @if($video->is_featured)
                             <span class="badge bg-warning text-dark px-3 py-2">
                                 <i class="fas fa-star me-1"></i>En vedette
@@ -161,16 +155,12 @@
                         <div class="p-4">
                             <div class="alert alert-warning border-0">
                                 <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <i class="fas fa-crown text-warning fs-2"></i>
-                                    </div>
                                     <div class="col">
                                         <h5 class="alert-heading mb-2">
-                                            <i class="fas fa-lock me-2"></i>Vidéo réservée aux utilisateurs premium
+                                            <i class="fas fa-lock me-2"></i>Premium
                                         </h5>
                                         <p class="mb-3">
-                                            Cette vidéo est un contenu premium réservé aux membres inscrits.
-                                            Rejoignez nous pour débloquer l'accès.
+                                            Contenu premium réservé aux membres inscrits
                                         </p>
                                         @if(!auth()->check())
                                         <div class="d-flex gap-2">
@@ -178,7 +168,7 @@
                                                 <i class="fas fa-user-plus me-2"></i>Inscription 
                                             </a>
                                             <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
-                                                <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                                                <i class="fas fa-sign-in-alt me-2"></i>Connection
                                             </a>
                                         </div>
                                         @else
@@ -215,7 +205,7 @@
                             <div class="col-md-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>Durée:
+                                        <i class="fas fa-clock me-1"></i>
                                     </span>
                                     <strong>{{ $video->getFormattedDuration() }}</strong>
                                 </div>
@@ -226,7 +216,7 @@
                             <div class="col-md-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-expand me-1"></i>Résolution:
+                                        <i class="fas fa-expand me-1"></i>
                                     </span>
                                     <strong>{{ $video->width }}x{{ $video->height }}px</strong>
                                 </div>
@@ -237,7 +227,7 @@
                             <div class="col-md-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>Ajoutée:
+                                        <i class="fas fa-calendar me-1"></i>
                                     </span>
                                     <strong>{{ $video->created_at->diffForHumans() }}</strong>
                                 </div>
@@ -251,14 +241,11 @@
                 <!-- Card 5: Partage et actions -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
-                        <h5 class="card-title mb-3">
-                            <i class="fas fa-share-alt me-2"></i>Partager cette vidéo
-                        </h5>
                         <div class="d-flex flex-wrap gap-2">
                             <!-- Facebook -->
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('public.videos.show', $video)) }}"
                                 target="_blank"
-                                class="btn btn-primary btn-sm"
+                                class="btn btn-outline-secondary btn-sm"
                                 rel="noopener noreferrer">
                                 <i class="fab fa-facebook-f me-1"></i>Facebook
                             </a>
@@ -266,7 +253,7 @@
                             <!-- Twitter -->
                             <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('public.videos.show', $video)) }}&text={{ urlencode($video->title) }}"
                                 target="_blank"
-                                class="btn btn-info btn-sm text-white"
+                                class="btn btn-outline-secondary btn-sm"
                                 rel="noopener noreferrer">
                                 <i class="fab fa-twitter me-1"></i>Twitter
                             </a>
@@ -274,7 +261,7 @@
                             <!-- WhatsApp -->
                             <a href="https://wa.me/?text={{ urlencode($video->title . ' - ' . route('public.videos.show', $video)) }}"
                                 target="_blank"
-                                class="btn btn-success btn-sm"
+                                class="btn btn-outline-secondary btn-sm"
                                 rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp me-1"></i>WhatsApp
                             </a>
@@ -293,11 +280,6 @@
                 <!-- Vidéos similaires -->
                 @if($relatedVideos->count() > 0)
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">
-                            <i class="fas fa-video me-2"></i>Vidéos similaires
-                        </h5>
-                    </div>
                     <div class="card-body p-3">
                         <div class="row g-3">
                             @foreach($relatedVideos as $relatedVideo)
@@ -328,7 +310,7 @@
                                             @endif
                                             <small class="text-muted">
                                                 <i class="fas fa-eye me-1"></i>
-                                                {{ number_format($relatedVideo->views_count) }}
+                                                11{{ number_format($relatedVideo->views_count) }}
                                             </small>
                                         </div>
                                     </div>
@@ -346,11 +328,6 @@
                     @php $firstCategory = $video->categories->first(); @endphp
                     <div class="col-md-6">
                         <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0">
-                                    <i class="fas fa-folder me-2"></i>Catégorie
-                                </h5>
-                            </div>
                             <div class="card-body">
                                 <a href="{{ route('public.videos.category', $firstCategory) }}"
                                     class="d-flex align-items-center text-decoration-none">
@@ -378,11 +355,6 @@
                     <!-- Boutons de navigation -->
                     <div class="col-md-6">
                         <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0">
-                                    <i class="fas fa-compass me-2"></i>Navigation
-                                </h5>
-                            </div>
                             <div class="card-body">
                                 <div class="d-grid gap-2">
                                     @if($video->categories->count() > 0)
@@ -406,12 +378,6 @@
     </div>
 </article>
 
-<!-- Bouton Outils & Calculateurs -->
-<div class="container-lg mb-4">
-    <a href="{{ route('tools.index') }}" class="btn btn-primary text-light btn-lg w-100">
-        <i class="fas fa-calculator me-2"></i>Essayer nos outils & calculateurs
-    </a>
-</div>
 
 
 

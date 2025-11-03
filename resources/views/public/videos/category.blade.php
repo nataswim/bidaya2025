@@ -7,48 +7,33 @@
 <!-- Section titre avec breadcrumb -->
 <section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(58deg, #04adb9 0%, #4b0055 100%);border-top: 20px solid #71287c;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container">
-        <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb bg-white bg-opacity-10 rounded px-3 py-2">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.videos.index') }}" class="text-white">
-                        <i class="fas fa-home me-1"></i>Vidéos
-                    </a>
-                </li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ $category->name }}
-                </li>
-            </ol>
-        </nav>
+ 
 
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <h1 class="display-4 fw-bold mb-3">
-                    <i class="fas fa-folder me-3"></i>{{ $category->name }}
+                    {{ $category->name }}
                 </h1>
 
-                @if($category->description)
-                <p class="lead mb-0">{{ $category->description }}</p>
-                @endif
+
 
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <span class="badge bg-light text-dark fs-6">
                         <i class="fas fa-video me-1"></i>{{ $videos->total() }} vidéo(s)
                     </span>
                 </div>
-            </div>
 
-            @if($category->image)
-            <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                <img src="{{ $category->image }}"
-                    alt="{{ $category->name }}"
-                    class="img-fluid rounded shadow-lg"
-                    style="max-height: 250px; object-fit: cover;">
-            </div>
-            @endif
-        </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
 
 <!-- Liste des vidéos -->
 <section class="py-5 bg-light">
@@ -154,8 +139,42 @@
     </div>
 </section>
 
+<!-- Breadcrumb -->
+<section class="py-3 bg-white border-bottom">
+    <div class="container-lg">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb rounded px-3 py-2">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('public.videos.index') }}" class="text-dark">
+                        <i class="fas fa-home me-1"></i>Vidéos
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ $category->name }}
+                </li>
+            </ol>
+        </nav>
+    </div>
+                </div>
+
+            @if($category->image)
+            <div class="col-lg text-center mt-4 mt-lg-0 ">
+                <img src="{{ $category->image }}"
+                    alt="{{ $category->name }}"
+                    class="img-fluid rounded shadow-lg"
+                    style="max-height: 250px; object-fit: cover;">
+                            @if($category->description)
+                <p class="lead mb-0">{{ $category->description }}</p>
+                @endif
+                </div>
+            
+            @endif
+            
+        </div>
+</section>
+
 <!-- Navigation rapide -->
-<section class="py-4 bg-white border-top">
+<section class="py-4 border-top">
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center gap-3">
             <a href="{{ route('public.videos.index') }}" class="btn btn-outline-primary">

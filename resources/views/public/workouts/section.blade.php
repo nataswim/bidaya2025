@@ -6,10 +6,7 @@
 
 @section('content')
 
-
-
-
-<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%);border-top: 20px solid #FFD700;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
+<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(58deg, #4897ce 0%, #004e67 100%);border-top: 20px solid #FFD700;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
@@ -21,31 +18,26 @@
                     <p class="lead mb-0">{{ $section->description }}</p>
                 @else
                     <p class="lead mb-0">
-                         {{ $section->name }} 
+                         Découvrez nos programmes d'entraînement {{ $section->name }}
                     </p>
                 @endif
                 
-                <div class="d-flex align-items-center gap-3 mt-4">
+                <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mt-4">
                     <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-folder me-1"></i>{{ $categories->count() }} programme(s)
+                        <i class="fas fa-folder me-1"></i>{{ $categories->count() }} programme{{ $categories->count() > 1 ? 's' : '' }}
                     </span>
                     <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-running me-1"></i>{{ $categories->sum('workouts_count') }} séance(s)
+                        <i class="fas fa-running me-1"></i>{{ $categories->sum('workouts_count') }} séance{{ $categories->sum('workouts_count') > 1 ? 's' : '' }}
                     </span>
                 </div>
             </div>
         </div>
-        
     </div>
 </section>
 
-
-
-
-
 <!-- Liste des programmes -->
 <section class="py-5 bg-light">
-    <div class="container">
+    <div class="container-lg">
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb bg-primary rounded px-3 py-2">
@@ -63,46 +55,85 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
                 <i class="fas fa-folder-open me-2 text-primary"></i>
-                {{ $section->name }}
+                Programmes {{ $section->name }}
             </h2>
-
         </div>
 
         @if($categories->count() > 0)
-            <div class="row g-4">
-                @foreach($categories as $category)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 border-0 shadow-lg hover-lift">
-                            <div class="card-header bg-primary text-white p-3">
-                                <h3 class="mb-1 h5">
-                                    <i class="fas fa-folder me-2"></i>{{ $category->name }}
-                                </h3>
-                                <small class="opacity-75">{{ $category->workouts_count }} modéles</small>
+            <!-- Boucle sur chaque catégorie -->
+            @foreach($categories as $category)
+                <div class="category-row mb-4">
+                    <div class="card border-0 shadow-sm hover-category-section">
+                        <div class="row g-0">
+                            <!-- Image/Icône de la catégorie (gauche sur desktop, haut sur mobile) -->
+                            <div class="col-12 col-md-3">
+                                <div class="category-image-wrapper-section">
+                                    <div class="category-image-placeholder-section d-flex align-items-center justify-content-center text-white"
+                                         style="background: linear-gradient(135deg, {{ $loop->index % 4 == 0 ? '#0d6efd' : ($loop->index % 4 == 1 ? '#198754' : ($loop->index % 4 == 2 ? '#0dcaf0' : '#ffc107')) }} 0%, {{ $loop->index % 4 == 0 ? '#084298' : ($loop->index % 4 == 1 ? '#0f5132' : ($loop->index % 4 == 2 ? '#087990' : '#cc9a06')) }} 100%);">
+                                        <i class="fas fa-folder" style="font-size: 3rem;"></i>
+                                    </div>
+                                    
+                                    <!-- Badge nombre de séances -->
+                                    <div class="position-absolute top-0 end-0 m-2">
+                                        <span class="badge bg-danger shadow-sm fs-6">
+                                            <i class="fas fa-calendar-check me-1"></i>
+                                            {{ $category->workouts_count }} séance{{ $category->workouts_count > 1 ? 's' : '' }}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="card-body d-flex flex-column">
-                                @if($category->description)
-                                    <p class="card-text text-muted flex-grow-1">
-                                        {!! Str::limit($category->description, 120) !!}
-                                    </p>
-                                @else
-                                    <p class="card-text text-muted flex-grow-1">
-                                         {{ $category->name }} avec {{ $category->workouts_count }} pages.
-                                    </p>
-                                @endif
-                                
-                                <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+
+                            <!-- Contenu central (titre, description) -->
+                            <div class="col-12 col-md-7">
+                                <div class="card-body">
+                                    <!-- Nom de la catégorie -->
+                                    <h3 class="card-title h4 mb-3">
+                                        <a href="{{ route('public.workouts.category', [$section, $category]) }}" 
+                                           class="text-decoration-none text-dark category-link-section">
+                                            {{ $category->name }}
+                                        </a>
+                                    </h3>
+
+                                    <!-- Description -->
+                                    @if($category->description)
+                                        <p class="card-text text-muted mb-3">
+                                            {!! Str::limit(strip_tags($category->description), 180) !!}
+                                        </p>
+                                    @else
+                                        <p class="card-text text-muted mb-3">
+                                            Découvrez nos séances d'entraînement {{ $category->name }} avec {{ $category->workouts_count }} modèle{{ $category->workouts_count > 1 ? 's' : '' }} disponible{{ $category->workouts_count > 1 ? 's' : '' }}.
+                                        </p>
+                                    @endif
+
+                                    <!-- Informations supplémentaires -->
+                                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                                        <div class="badge bg-primary-subtle text-primary px-3 py-2">
+                                            <i class="fas fa-dumbbell me-1"></i>
+                                            Programme {{ $section->name }}
+                                        </div>
+                                        <div class="badge bg-success-subtle text-success px-3 py-2">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            {{ $category->workouts_count }} modèle{{ $category->workouts_count > 1 ? 's' : '' }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bouton à droite -->
+                            <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+                                <div class="p-3 w-100">
                                     <a href="{{ route('public.workouts.category', [$section, $category]) }}" 
-                                       class="btn btn-sm btn-primary">
-                                        Voir les pages <i class="fas fa-arrow-right ms-1"></i>
+                                       class="btn btn-outline-primary w-100 btn-category-section">
+                                        <i class="fas fa-arrow-right me-2"></i>
+                                        <span class="d-none d-lg-inline">Voir</span>
+                                        <span class="d-inline d-lg-none">Voir les séances</span>
                                     </a>
-                                    <span class="badge bg-primary">{{ $category->workouts_count }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         @else
             <div class="card border-0 shadow-sm text-center py-5">
                 <div class="card-body">
@@ -110,7 +141,7 @@
                     <h3 class="text-muted mb-3 h5">Aucun programme disponible dans cette discipline</h3>
                     <p class="text-muted">Les programmes d'entraînement seront bientôt ajoutés</p>
                     <a href="{{ route('public.workouts.index') }}" class="btn btn-primary">
-                        <i class="fas fa-arrow-left me-2"></i>Retour
+                        <i class="fas fa-arrow-left me-2"></i>Retour aux disciplines
                     </a>
                 </div>
             </div>
@@ -120,10 +151,10 @@
 
 <!-- Navigation rapide -->
 <section class="py-4 bg-white border-top">
-    <div class="container">
+    <div class="container-lg">
         <div class="d-flex flex-wrap justify-content-center gap-3">
             <a href="{{ route('public.workouts.index') }}" class="btn btn-outline-primary">
-                <i class="fas fa-th me-2"></i>Toutes les categories
+                <i class="fas fa-th me-2"></i>Toutes les disciplines
             </a>
         </div>
     </div>
@@ -131,14 +162,14 @@
 
 <!-- Section SEO -->
 <section class="py-5 bg-light">
-    <div class="container">
+    <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-3"> {{ $section->name }}</h2>
+                        <h2 class="h4 fw-bold mb-3">Programmes d'Entraînement {{ $section->name }}</h2>
                         <p class="text-muted">
-                            Nos <strong>programmes  {{ $section->name }}</strong> sont structurés 
+                            Nos <strong>programmes {{ $section->name }}</strong> sont structurés 
                             pour vous faire progresser efficacement. Chaque <strong>séance d'entraînement</strong> 
                             est conçue avec des objectifs précis et une progression logique adaptée à votre niveau.
                         </p>
@@ -157,6 +188,57 @@
 
 @push('styles')
 <style>
+/* Espacement entre les lignes de catégories section */
+.category-row {
+    margin-bottom: 2rem;
+}
+
+/* Style de la carte catégorie section avec effet hover */
+.hover-category-section {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hover-category-section:hover {
+    box-shadow: 0 0.5rem 2rem rgba(255, 215, 0, 0.3) !important;
+    background-color: #fffdf0;
+}
+
+/* Image de la catégorie section */
+.category-image-wrapper-section {
+    position: relative;
+    height: 100%;
+    min-height: 250px;
+}
+
+.category-image-placeholder-section {
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+}
+
+/* Liens avec effet hover section */
+.category-link-section {
+    transition: color 0.3s ease;
+}
+
+.hover-category-section:hover .category-link-section {
+    color: #ffc107 !important;
+}
+
+/* Bouton avec effet hover section */
+.btn-category-section {
+    transition: all 0.3s ease;
+}
+
+.hover-category-section:hover .btn-category-section {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #000;
+}
+
+/* Effet hover général */
 .hover-lift {
     transition: all 0.3s ease;
 }
@@ -168,6 +250,39 @@
 
 .bg-gradient-info {
     background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+}
+
+/* Responsive pour mobile */
+@media (max-width: 767px) {
+    /* Image centrée en haut sur mobile */
+    .category-image-wrapper-section {
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .category-image-placeholder-section {
+        min-height: 200px;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    /* Espacement réduit sur mobile */
+    .category-row {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Responsive pour desktop */
+@media (min-width: 768px) {
+    /* Image à gauche sur desktop */
+    .category-image-wrapper-section {
+        border-radius: 12px 0 0 12px;
+    }
+    
+    .category-image-placeholder-section {
+        border-radius: 12px 0 0 12px;
+    }
 }
 </style>
 @endpush

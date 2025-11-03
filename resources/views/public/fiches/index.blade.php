@@ -6,19 +6,17 @@
 @section('content')
 
 <!-- En-tête de section -->
-
-<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(
-1deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">    <div class="container-lg">
+<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(135deg, #04adb9 0%, rgb(15 92 135) 100%);border-top: 20px solid #04adb9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
+    <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Fiches Thématique
-        </h1>
-        <p class="lead mb-0">
-            <strong>Ressources structurées et accessibles</strong> pour vous accompagner 
+                    Fiches Thématique
+                </h1>
+                <p class="lead mb-0">
+                    <strong>Ressources structurées et accessibles</strong> pour vous accompagner 
                     dans votre progression sportive avec des contenus organisés par domaine.
-        </p>
-
+                </p>
             </div>
             <div class="col-lg-5 text-center">
                 <a href="{{ route('contact') }}">
@@ -32,19 +30,10 @@
     </div>
 </section>
 
-
-
-
-
-
-
-
-
-
 <!-- Fiches en vedette -->
 @if($featuredFiches->count() > 0)
 <section class="py-5 bg-light">
-    <div class="container">
+    <div class="container-lg">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h2 class="h3 mb-0">
                 <i class="fas fa-star text-warning me-2"></i>Fiches en Vedette
@@ -112,12 +101,13 @@
 
 <!-- Navigation par Catégories -->
 <section class="py-5 {{ $featuredFiches->count() > 0 ? 'bg-white' : 'bg-light' }}">
-    <div class="container">
+    <div class="container-lg">
         
         <!-- Introduction -->
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
-                Explorez nos Catégorie
+                <i class="fas fa-folder-open text-primary me-2"></i>
+                Explorez nos Catégories
             </h2>
             <p class="lead text-muted">
                 Choisissez la thématique qui correspond à vos besoins pour accéder 
@@ -127,50 +117,82 @@
 
         <!-- Catégories de fiches -->
         @if($categories->count() > 0)
-            <div class="row g-4 mb-5">
-                @foreach($categories as $category)
-                    <div class="col-lg-6">
-                        <a href="{{ route('public.fiches.category', $category) }}" 
-                           class="text-decoration-none">
-                            <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                                <div class="card-header {{ $loop->index % 4 == 0 ? 'bg-primary' : ($loop->index % 4 == 1 ? 'bg-success' : ($loop->index % 4 == 2 ? 'bg-info' : 'bg-warning')) }} text-white">
-                                    <div class="d-flex align-items-center">
-                                        @if($category->image)
-                                            <img src="{{ $category->image }}" 
-                                                 class="rounded me-3" 
-                                                 style="width: 60px; height: 60px; object-fit: cover;"
-                                                 alt="{{ $category->name }}">
-                                        @else
-                                            <i class="fas fa-folder me-3" style="font-size: 2.5rem;"></i>
-                                        @endif
-                                        <div>
-                                            <h4 class="mb-1">{{ $category->name }}</h4>
-                                            <p class="mb-0 opacity-75">{{ $category->published_fiches_count }} fiche(s)</p>
+            <!-- Boucle sur chaque catégorie -->
+            @foreach($categories as $category)
+                <div class="category-row mb-4">
+                    <div class="card border-0 shadow-sm hover-category-fiche">
+                        <div class="row g-0">
+                            <!-- Image de la catégorie (gauche sur desktop, haut sur mobile) -->
+                            <div class="col-12 col-md-3">
+                                <div class="category-image-wrapper-fiche">
+                                    @if($category->image)
+                                        <img src="{{ $category->image }}" 
+                                             alt="{{ $category->name }}"
+                                             class="category-image-fiche">
+                                    @else
+                                        <div class="category-image-placeholder-fiche d-flex align-items-center justify-content-center text-white"
+                                             style="background: linear-gradient(135deg, {{ $loop->index % 4 == 0 ? '#0d6efd' : ($loop->index % 4 == 1 ? '#198754' : ($loop->index % 4 == 2 ? '#0dcaf0' : '#ffc107')) }} 0%, {{ $loop->index % 4 == 0 ? '#084298' : ($loop->index % 4 == 1 ? '#0f5132' : ($loop->index % 4 == 2 ? '#087990' : '#cc9a06')) }} 100%);">
+                                            <i class="fas fa-folder" style="font-size: 3rem;"></i>
                                         </div>
+                                    @endif
+                                    
+                                    <!-- Badge nombre de fiches -->
+                                    <div class="position-absolute top-0 end-0 m-2">
+                                        <span class="badge bg-danger shadow-sm fs-6">
+                                            <i class="fas fa-file-alt me-1"></i>
+                                            {{ $category->published_fiches_count }} fiche{{ $category->published_fiches_count > 1 ? 's' : '' }}
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="card-body p-4">
+                            </div>
+
+                            <!-- Contenu central (titre, description) -->
+                            <div class="col-12 col-md-7">
+                                <div class="card-body">
+                                    <!-- Nom de la catégorie -->
+                                    <h3 class="card-title h4 mb-3">
+                                        <a href="{{ route('public.fiches.category', $category) }}" 
+                                           class="text-decoration-none text-dark category-link-fiche">
+                                            {{ $category->name }}
+                                        </a>
+                                    </h3>
+
+                                    <!-- Description -->
                                     @if($category->description)
                                         <p class="card-text text-muted mb-3">
-                                            {!! Str::limit($category->description, 150) !!}
+                                            {!! Str::limit(strip_tags($category->description), 180) !!}
                                         </p>
                                     @else
                                         <p class="card-text text-muted mb-3">
                                             Découvrez nos fiches pratiques dans la catégorie {{ $category->name }}.
                                         </p>
                                     @endif
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary fw-bold">Découvrir les fiches →</span>
-                                        <span class="badge bg-primary fs-6">
-                                            {{ $category->published_fiches_count }}
-                                        </span>
+
+                                    <!-- Informations supplémentaires -->
+                                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                                        <div class="badge bg-primary-subtle text-primary px-3 py-2">
+                                            <i class="fas fa-layer-group me-1"></i>
+                                            {{ $category->published_fiches_count }} fiche{{ $category->published_fiches_count > 1 ? 's' : '' }} disponible{{ $category->published_fiches_count > 1 ? 's' : '' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+
+                            <!-- Bouton à droite -->
+                            <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+                                <div class="p-3 w-100">
+                                    <a href="{{ route('public.fiches.category', $category) }}" 
+                                       class="btn btn-outline-primary w-100 btn-category-fiche">
+                                        <i class="fas fa-arrow-right me-2"></i>
+                                        <span class="d-none d-lg-inline">Découvrir</span>
+                                        <span class="d-inline d-lg-none">Découvrir les fiches</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         @else
             <div class="text-center py-5">
                 <i class="fas fa-folder-open fa-3x text-muted mb-3 opacity-25"></i>
@@ -179,7 +201,7 @@
         @endif
 
         <!-- Guide d'Utilisation Rapide -->
-        <div class="card shadow-lg border-0 mb-5">
+        <div class="card shadow-lg border-0 mb-5 mt-5">
             <div class="card-header text-white" style="border-left: 10px solid rgb(150 230 77);margin-bottom: 20px;background-color: #316f75;">
                 <h3 class="mb-2">
                     <i class="fas fa-compass me-2"></i>
@@ -233,11 +255,67 @@
     </div>
 </section>
 
-
 @endsection
 
 @push('styles')
 <style>
+/* Espacement entre les lignes de catégories de fiches */
+.category-row {
+    margin-bottom: 2rem;
+}
+
+/* Style de la carte catégorie fiche avec effet hover */
+.hover-category-fiche {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hover-category-fiche:hover {
+    box-shadow: 0 0.5rem 2rem rgba(4, 173, 185, 0.25) !important;
+    background-color: #f0fbfc;
+}
+
+/* Image de la catégorie fiche */
+.category-image-wrapper-fiche {
+    position: relative;
+    height: 100%;
+    min-height: 250px;
+}
+
+.category-image-fiche {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-image-placeholder-fiche {
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+}
+
+/* Liens avec effet hover fiche */
+.category-link-fiche {
+    transition: color 0.3s ease;
+}
+
+.hover-category-fiche:hover .category-link-fiche {
+    color: #04adb9 !important;
+}
+
+/* Bouton avec effet hover fiche */
+.btn-category-fiche {
+    transition: all 0.3s ease;
+}
+
+.hover-category-fiche:hover .btn-category-fiche {
+    background-color: #04adb9;
+    border-color: #04adb9;
+    color: white;
+}
+
+/* Effet hover sur les cartes de fiches en vedette */
 .hover-lift {
     transition: all 0.3s ease;
 }
@@ -247,21 +325,53 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
 }
 
-.category-card {
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
-}
-
-.category-card:hover {
-    border-left-color: var(--bs-primary);
-}
-
 .bg-gradient-primary {
     background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
 }
 
 .badge {
     font-size: 0.75rem;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 767px) {
+    /* Image centrée en haut sur mobile */
+    .category-image-wrapper-fiche {
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .category-image-fiche {
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .category-image-placeholder-fiche {
+        min-height: 200px;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    /* Espacement réduit sur mobile */
+    .category-row {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Responsive pour desktop */
+@media (min-width: 768px) {
+    /* Image à gauche sur desktop */
+    .category-image-wrapper-fiche {
+        border-radius: 12px 0 0 12px;
+    }
+    
+    .category-image-fiche {
+        border-radius: 12px 0 0 12px;
+    }
+    
+    .category-image-placeholder-fiche {
+        border-radius: 12px 0 0 12px;
+    }
 }
 </style>
 @endpush
@@ -270,7 +380,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Animation d'entrée pour les cards
-    const cards = document.querySelectorAll('.category-card, .hover-lift');
+    const cards = document.querySelectorAll('.hover-category-fiche, .hover-lift');
     
     const observerOptions = {
         threshold: 0.1,
