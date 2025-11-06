@@ -3,11 +3,10 @@
     $chiffre2 = mt_rand(79, 123);
 @endphp
 
-<footer class="text-light" style="border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;background-color: #16558f !important;border-bottom: 20px solid #16558f;border-top: 20px solid #f9f5f3;">
-
+<footer class="text-light" style="border-left: 20px solid #16558f;border-right: 20px solid #16558f;background-color: #16558f !important;border-bottom: 20px solid #16558f;border-top: 20px solid #f9f5f3; margin-top: 50px;">
     <!-- statistiques  -->
     <div class="w-100 text-center py-3">
-        <div class="alert alert-white border-0 bg-white m-0 w-100 text-danger">
+        <div >
             <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres Premium : {{ $chiffre2 }}</p>
             <p class="mb-0">
             <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">

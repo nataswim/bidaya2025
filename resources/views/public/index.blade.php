@@ -5,7 +5,7 @@
 @section('content')
 <!-- En-tête de section -->
 
-<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 20px solid #008dd0;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-radius: 0px 0px 60px 60px;margin-top: 20px;">
+<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 30px solid #087383;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double #f9f5f4;margin-top: 20px;border-radius: 0px 0px 50px 50px;">
 
 <div class="container-lg">
     <div class="container-lg">

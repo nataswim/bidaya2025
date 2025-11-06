@@ -6,7 +6,7 @@
 @section('content')
 
 <!-- Section titre -->
-<section class="py-5 bg-primary text-white text-center" style="background: #353839;border-top: 20px solid #FF8800;border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-bottom: 20px double rgb(249 245 244);border-radius: 0px 0px 60px 60px;margin-top: 20px;">
+<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 30px solid #087383;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double #f9f5f4;margin-top: 20px;border-radius: 0px 0px 50px 50px;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">

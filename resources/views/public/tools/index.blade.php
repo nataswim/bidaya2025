@@ -8,8 +8,10 @@
 
 
 
-<section class="py-5 bg-primary text-white text-center" style=" background: linear-gradient( 58deg, #4897ce 0%, #004e67 100%); border-top: 20px solid #ff7f50; border-left: 20px solid #f9f5f4; border-right: 20px solid #f9f5f4; border-bottom: 20px double rgb(249 245 244); border-radius: 0px 0px 60px 60px; ">
-    <div class="container-lg">
+<section class="py-5 text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 20px solid #f9f5f4;border-left: 20px solid #0b73a5;border-right: 20px solid #085a83;border-bottom: 20px solid #f9f5f4;">
+
+
+<div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                  <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
@@ -372,7 +374,8 @@
 
 
 <!-- Call to Action -->
-<section class="py-5 bg-primary text-white">
+<section class="py-5 bg-primary text-white" style=" background: linear-gradient(135deg,#c59f69 0%,#e1ca88 21%,#f9e9ca 43%,#edd89f 64%,#b38d52 83%,#d6bd7b 100%); border-top: 20px solid #f9f5f4; border-bottom: 20px solid #f9f5f4; border-left: 20px solid #c8a56d; border-right: 20px solid #c1a062; ">
+    
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">

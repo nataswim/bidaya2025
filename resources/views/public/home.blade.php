@@ -5,7 +5,7 @@
 
 @section('content')
 <!--  Section -->
-<section class="text-white py-5" style="background-color: #0e76a9;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-top: 20px solid #0b5a68;border-bottom: 20px solid #0b5a68;">
+<section class="text-white py-5 nataswim-titre">
     <div class="container-lg py-4">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
@@ -34,7 +34,7 @@
 
 
 <!-- Section Pour qui avec vidéo background -->
-<section class="py-5 position-relative">
+<section class="py-5 position-relative" >
     <!-- Vidéo d'arrière-plan -->
     <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1; overflow: hidden;">
         <iframe 
@@ -139,7 +139,7 @@
             <div class="col">
                 <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header text-white" style="background-color: #0e76a9;">
+                        <div class="card-header text-white nataswim-titre">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Séances & Plans</h4>
@@ -164,7 +164,7 @@
             <div class="col">
                 <a href="{{ route('exercices.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header text-white" style="background-color: #01a6a6;">
+                         <div class="card-header text-white nataswim-titre1">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Exercices spécialisés</h4>
@@ -188,7 +188,7 @@
             <div class="col">
                 <a href="{{ route('public.fiches.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header text-white" style="background-color: #0b5a68;">
+                         <div class="card-header text-white nataswim-titre2">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Fiches techniques</h4>
@@ -214,7 +214,7 @@
             <div class="col">
                 <a href="{{ route('tools.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header text-white" style="background-color: #F59E0B;">
+                         <div class="card-header text-white nataswim-titre3">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Calculateurs & Outils</h4>
@@ -235,7 +235,7 @@
             <!-- 5. Suivi de progression -->
             <div class="col">
                 <div class="card h-100 shadow-lg border-0 bg-white category-card">
-                    <div class="card-header text-white" style="background-color: #0a7183;">
+                    <div class="card-header text-white nataswim-titre4">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <h4 class="mb-1">Suivi de progression</h4>
@@ -255,7 +255,7 @@
             <div class="col">
                 <a href="{{ route('ebook.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                       <div class="card-header text-white" style="background-color: #0e76a9;">
+                        <div class="card-header text-white nataswim-titre5">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Ressources téléchargeables</h4>
@@ -287,7 +287,7 @@
 
 
 <!-- Temoignages -->
-<section class="py-5 text-white" style="background: #0e76a9;">
+<section class="py-5 text-white nataswim-titre">
     <div class="container-lg">
         <div class="row g-4">
             @php
@@ -365,13 +365,12 @@
 </section>
 
 <!-- Dernieres Publications -->
-<section class="py-5 text-white" style="background: #00a5a5;border-left: 20px solid #087383;border-right: 20px solid #087383;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">    <div class="container-lg">
+<section class="py-5 text-white nataswim-titre1">    
+
+<div class="container-lg">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="fw-bold mb-0">
-                Publications
-            </h2>
-            <a href="{{ route('public.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
-                + Articles <i class="fas fa-angle-right ms-1"></i>
+            <a href="{{ route('public.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+            <i class="fas fa-life-ring me-2"></i> Articles
             </a>
         </div>
         
@@ -428,18 +427,15 @@
 
 
 
-<section class="py-5 text-white" style="background: #057483;border-left: 20px solid #00a5a5;border-right: 20px solid #00a5a5;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">     
+<section class="py-5 text-white nataswim-titre2">    
 <div class="container-lg">
             
 
 <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            Fiches
-                        </h5>
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
-                            + Fiches
+                        <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                        <i class="fas fa-life-ring me-2"></i> Fiches
                         </a>
                     </div>
                 </div>
@@ -502,16 +498,14 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: #00a5a5;border-left: 20px solid #087383;border-right: 20px solid #087383;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
+<section class="py-5 text-white nataswim-titre3">    
+
        <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            Entraînement
-                        </h5>
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
-                            + Séances
+                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                        <i class="fas fa-life-ring me-2"></i> Séances
                         </a>
                     </div>
                 </div>
@@ -576,17 +570,14 @@
 </section>
 
 
-<section class="py-5 text-white" style="background: #057483;border-left: 20px solid #00a5a5;border-right: 20px solid #00a5a5;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;"> 
+<section class="py-5 text-white nataswim-titre4">    
 
 <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                            Documents
-                        </h5>
-                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
-                            + Documents
+                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                        <i class="fas fa-life-ring me-2"></i> Documents
                         </a>
                     </div>
                 </div>
@@ -647,17 +638,14 @@
         </div>
 </section>
 
-<section class="py-5 text-white" style="background: #00a5a5;border-left: 20px solid #087383;border-right: 20px solid #087383;border-bottom: 20px solid #f9f5f4;border-top: 20px solid #f9f5f4;">
+<section class="py-5 text-white nataswim-titre5">    
 <!-- Derniers Exercices -->
         <div class="container-lg">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">
-                        Exercices
-                        </h5>
-                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-dark text-white d-flex align-items-center px-4">
-                            + Exercices
+                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                           <i class="fas fa-life-ring me-2"></i> Exercices
                         </a>
                     </div>
                 </div>
@@ -813,6 +801,67 @@
 
 @push('styles')
 <style>
+.nataswim-titre {
+    background: linear-gradient(353deg, rgb(14 118 169) 0%, #0d70a1 100%);
+    border-left: 20px solid #0b71a2;
+    border-right: 20px solid #1075a8;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
+.nataswim-titre1 {
+    background: #00A6A6;
+    border-left: 20px solid #00A6A6;
+    border-right: 20px solid #00A6A6;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
+.nataswim-titre1:hover,
+.nataswim-titre2:hover,
+.nataswim-titre3:hover,
+.nataswim-titre4:hover,
+.nataswim-titre5:hover,
+.nataswim-titre6:hover {
+    background: #056472;
+    border-left: 20px solid #f9f5f4;
+    border-right: 20px solid #f9f5f4;
+    border-top: 10px solid #056472;
+    border-bottom: 10px solid #056472;
+}
+.nataswim-titre2 {
+    background: #0a7183;
+    border-left: 20px solid #0a7183;
+    border-right: 20px solid #0a7183;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
+.nataswim-titre3 {
+    background: #007BFF;
+    border-left: 20px solid #007BFF;
+    border-right: 20px solid #007BFF;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
+.nataswim-titre4 {
+    background: #5860c9;
+    border-left: 20px solid #5860c9;
+    border-right: 20px solid #5860c9;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
+.nataswim-titre5 {
+    background: #99c82d;
+    border-left: 20px solid #99c82d;
+    border-right: 20px solid #99c82d;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
+.nataswim-titre6 {
+    background: #ffaa2f;
+    border-left: 20px solid #ffaa2f;
+    border-right: 20px solid #ffaa2f;
+    border-top: 20px solid #f9f5f4;
+    border-bottom: 20px solid #f9f5f4;
+}
 .hover-lift {
     transition: all 0.3s ease;
 }
@@ -834,7 +883,6 @@
 }
 
 .category-card .card-header {
-    border-bottom: 3px solid rgba(255,255,255,0.2);
     padding: 1.25rem;
 }
 

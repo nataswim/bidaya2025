@@ -7,13 +7,7 @@
 @section('content')
 <!-- En-tête de la catégorie -->
 <section class="py-5 bg-primary text-white" 
-         style="background: linear-gradient(135deg, #04adb9 0%, rgb(15 92 135) 100%);
-                border-top: 20px solid #04adb9;
-                border-left: 20px solid #f9f5f4;
-                border-right: 20px solid #f9f5f4;
-                border-bottom: 20px double rgb(249 245 244);
-                border-radius: 0px 0px 60px 60px;
-                margin-top: 20px;">
+         style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 30px solid #087383;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double #f9f5f4;margin-top: 20px;border-radius: 0px 0px 50px 50px;">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8">
