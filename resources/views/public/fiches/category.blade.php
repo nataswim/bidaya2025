@@ -127,7 +127,7 @@
                                 
                                 <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
                                     <small class="text-muted">
-                                        <i class="fas fa-eye me-1"></i>{{ number_format($fiche->views_count) }} vues
+                                        <i class="fas fa-eye me-1"></i>55{{ number_format($fiche->views_count) }} lectures
                                     </small>
                                     <a href="{{ route('public.fiches.show', [$category, $fiche]) }}" 
                                        class="btn btn-sm btn-primary">
@@ -163,12 +163,12 @@
 
 
 <!-- Navigation rapide -->
-<section class="py-4 bg-primary border-top">
+<section class="py-4 bg-primary nataswim-titre7 border-top">
     <div class="container">
 
                     <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="{{ route('public.fiches.index') }}" class="btn btn-light btn-lg">
-                <i class="fas fa-th me-2"></i>Toutes les catégories
+            <a href="{{ route('public.fiches.index') }}" class="btn btn-danger text-white btn-lg">
+                <i class="fas fa-th me-2"></i>Toutes les fiches
             </a>
         </div>
             @if($category->image)

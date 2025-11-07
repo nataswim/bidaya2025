@@ -17,9 +17,6 @@
                 @if($section->description)
                     <p class="lead mb-0">{{ $section->description }}</p>
                 @else
-                    <p class="lead mb-0">
-                         Découvrez nos programmes d'entraînement {{ $section->name }}
-                    </p>
                 @endif
                 
                 <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mt-4">
@@ -75,8 +72,8 @@
                                     
                                     <!-- Badge nombre de séances -->
                                     <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-danger shadow-sm fs-6">
-                                            <i class="fas fa-calendar-check me-1"></i>
+                                        <span class="badge bg-success shadow-sm fs-6">
+                                            
                                             {{ $category->workouts_count }} séance{{ $category->workouts_count > 1 ? 's' : '' }}
                                         </span>
                                     </div>
@@ -172,11 +169,6 @@
                             Nos <strong>programmes {{ $section->name }}</strong> sont structurés 
                             pour vous faire progresser efficacement. Chaque <strong>séance d'entraînement</strong> 
                             est conçue avec des objectifs précis et une progression logique adaptée à votre niveau.
-                        </p>
-                        <p class="text-muted mb-0">
-                            Que vous soyez <strong>débutant</strong> ou <strong>confirmé</strong>, 
-                            nos <strong>plans d'entraînement {{ $section->name }}</strong> vous accompagnent 
-                            vers l'atteinte de vos objectifs sportifs.
                         </p>
                     </div>
                 </div>

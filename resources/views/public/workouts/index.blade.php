@@ -25,10 +25,6 @@
 <!-- Navigation par Disciplines Sportives -->
 <section class="py-5 bg-light">
     <div class="container-lg">
-        <h2 class="h3 fw-bold mb-4 text-center">
-            <i class="fas fa-layer-group text-primary me-2"></i>
-            Disciplines Sportives
-        </h2>
 
         <!-- Sections de séances -->
         @if($sections->count() > 0)
@@ -47,8 +43,8 @@
                                     
                                     <!-- Badge nombre total de séances -->
                                     <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-danger shadow-sm fs-6">
-                                            <i class="fas fa-calendar-alt me-1"></i>
+                                        <span class="badge bg-success shadow-sm fs-6">
+                                            
                                             {{ $section->categories->sum('workouts_count') }} séance{{ $section->categories->sum('workouts_count') > 1 ? 's' : '' }}
                                         </span>
                                     </div>
@@ -72,9 +68,7 @@
                                             {!! Str::limit(strip_tags($section->description), 180) !!}
                                         </p>
                                     @else
-                                        <p class="card-text text-muted mb-3">
-                                            Découvrez nos programmes d'entraînement pour {{ $section->name }}.
-                                        </p>
+
                                     @endif
 
                                     <!-- Badge nombre de programmes -->
@@ -199,10 +193,7 @@
     <div class="container-lg text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <p class="lead mb-4">
-                    Accédez à notre bibliothèque complète
-                    organisées par discipline sportive et niveau de pratique.
-                </p>
+
 
                 @if($sections->count() > 0)
                 <div class="d-flex flex-wrap justify-content-center gap-3">

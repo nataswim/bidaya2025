@@ -10,7 +10,7 @@
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-                    Vidéothèque Numérique
+                    Vidéothèque 
                 </h1>
                 <p class="lead mb-0 text-center">
                     <strong>Vidéos</strong> infos, tutoriels, techniques et plus
@@ -73,7 +73,7 @@
 
                                     <!-- Informations supplémentaires -->
                                     <div class="d-flex flex-wrap gap-3 align-items-center">
-                                        <div class="badge bg-success px-3 py-2">
+                                        <div class="badge bg-primary" style=" border-radius: 100%; font-size: 120%; font-weight: 300; ">
                                             
                                             {{ $category->published_videos_count }} 
                                         </div>

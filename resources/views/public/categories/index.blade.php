@@ -54,7 +54,7 @@
                                     <!-- Badge nombre d'articles -->
                                     <div class="position-absolute top-0 end-0 m-2">
                                         <span class="badge bg-danger shadow-sm">
-                                            <i class="fas fa-file-alt me-1"></i>
+                                            
                                             {{ $category->posts_count }} article{{ $category->posts_count > 1 ? 's' : '' }}
                                         </span>
                                     </div>
@@ -121,7 +121,7 @@
                                     <a href="{{ route('public.category', $category->slug) }}" 
                                        class="btn btn-outline-primary w-100 btn-category">
                                         <i class="fas fa-arrow-right me-2"></i>
-                                        <span class="d-none d-lg-inline">Voir tous</span>
+                                        <span class="d-none d-lg-inline">Voir ce dossier</span>
                                         <span class="d-inline d-lg-none">Voir tous les articles</span>
                                     </a>
                                 </div>
@@ -176,12 +176,10 @@
 .category-image-wrapper {
     position: relative;
     height: 100%;
-    min-height: 250px;
 }
 
 .category-image {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 

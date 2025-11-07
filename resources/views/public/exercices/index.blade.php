@@ -48,12 +48,7 @@
                                 @endif
                                 
                                 <!-- Badge nombre d'exercices -->
-                                <div class="position-absolute top-0 end-0 m-2">
-                                    <span class="badge bg-danger shadow-sm fs-6">
-                                        <i class="fas fa-running me-1"></i>
-                                        {{ $category->exercices_count ?? 0 }} exercice{{ ($category->exercices_count ?? 0) > 1 ? 's' : '' }}
-                                    </span>
-                                </div>
+
                             </div>
                         </div>
 
@@ -81,9 +76,9 @@
 
                                 <!-- Informations supplémentaires -->
                                 <div class="d-flex flex-wrap gap-3 align-items-center">
-                                    <div class="badge bg-primary-subtle text-primary px-3 py-2">
+                                    <div class="badge bg-danger px-3 py-2" style=" border-radius: 0%; ">
                                         <i class="fas fa-layer-group me-1"></i>
-                                        {{ $category->exercices_count ?? 0 }} exercice{{ ($category->exercices_count ?? 0) > 1 ? 's' : '' }} disponible{{ ($category->exercices_count ?? 0) > 1 ? 's' : '' }}
+                                        {{ $category->exercices_count ?? 0 }} exercice{{ ($category->exercices_count ?? 0) > 1 ? 's' : '' }}
                                     </div>
                                 </div>
                             </div>
@@ -339,12 +334,10 @@
 .category-image-wrapper-exercice {
     position: relative;
     height: 100%;
-    min-height: 250px;
 }
 
 .category-image-exercice {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 

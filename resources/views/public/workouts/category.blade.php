@@ -20,18 +20,11 @@
                     <p class="lead mb-0">{{ $category->description }}</p>
                 @else
                     <p class="lead mb-0">
-                        {{ $category->name }} pour {{ $section->name }}
+                        {{ $category->name }} - {{ $section->name }}
                     </p>
                 @endif
                 
-                <div class="d-flex align-items-center gap-3 mt-4">
-                    <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-layer-group me-1"></i>{{ $section->name }}
-                    </span>
-                    <span class="badge bg-light text-dark fs-6">
-                        <i class="fas fa-running me-1"></i>{{ $workouts->count() }} séance(s)
-                    </span>
-                </div>
+              
             </div>
         </div>
         
@@ -72,7 +65,9 @@
                 @foreach($workouts as $workout)
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg hover-lift">
-                            <div class="card-header text-white p-3" style=" background: #0f6b9b;">
+                        
+                        
+                        <div class="card-header text-white p-3" style=" background: #0c96d8;">
                                 <div class="d-flex align-items-center justify-content-between">
                                     <span class="badge bg-light text-dark">
                                         Séance #{{ $workout->pivot->order_number }}
@@ -92,12 +87,13 @@
                                 
                                 <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
                                     <a href="{{ route('public.workouts.show', [$section, $category, $workout]) }}" 
-                                       class="btn btn-sm btn-primary">
+                                       class="btn btn-sm btn-success">
                                         Voir  <i class="fas fa-arrow-right ms-1"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 @endforeach
             </div>
@@ -124,7 +120,7 @@
                 <i class="fas fa-arrow-left me-2"></i>Retour à {{ $section->name }}
             </a>
             <a href="{{ route('public.workouts.index') }}" class="btn btn-outline-secondary">
-                <i class="fas fa-th me-2"></i>Toutes les disciplines
+                <i class="fas fa-th me-2"></i>Toutes les programmes
             </a>
         </div>
     </div>
@@ -137,16 +133,13 @@
             <div class="col-lg-10">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-3">À propos du programme {{ $category->name }}</h2>
+                        <h2 class="h4 fw-bold mb-3"> {{ $category->name }}</h2>
                         <p class="text-muted">
                             Le <strong>programme d'entraînement {{ $category->name }}</strong> comprend 
                             {{ $workouts->count() }} <strong>séance(s) d'entraînement {{ $section->name }}</strong> 
                             structurée(s) pour vous faire progresser efficacement.
                         </p>
-                        <p class="text-muted mb-0">
-                            Chaque <strong>séance</strong> est numérotée et doit être réalisée dans l'ordre 
-                            pour garantir une progression optimale et éviter les blessures.
-                        </p>
+                        
                     </div>
                 </div>
             </div>

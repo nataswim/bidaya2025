@@ -249,13 +249,13 @@
     }
 }
 .nataswim-titre {
-background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
-    border-left: 20px solid #f9f5f4;
-    border-right: 20px solid #f9f5f4;
-    border-top: 20px solid #0470ab;
-    border-bottom: 20px solid #0470ab;
-    margin-top: 20px;
+    background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
+    border-color: #0470ab #f9f5f4;
+    border-style: solid;
+    border-width: 20px;
     margin-bottom: 20px;
+    margin-top: 20p
+   
 }
 .nataswim-titre1 {
     background: #00A6A6;
@@ -263,26 +263,22 @@ background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
     border-right: 20px solid #f9f5f4;
     border-top: 20px solid #00A6A6;
     border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }
 .nataswim-titre2 {
     background: #0a7183;
     border-left: 20px solid #f9f5f4;
     border-right: 20px solid #f9f5f4;
-    border-top: 20px solid #0a7183;
+    border-top: 20px double #0a7183;
     border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }
 .nataswim-titre3 {
-    background: linear-gradient(1deg, #0ea5e9 0%, #045493 100%);
-    border-left: 20px solid #f9f5f4;
-    border-right: 20px solid #f9f5f4;
-    border-top: 20px solid #045c9b;
-    border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
-    border-radius: 0px 0px 40px 40px;
+    background: linear-gradient(1deg, #5bcacb, #087383);
+    border-color: #127b8a #f9f5f4 #f9f5f4;
+    border-radius: 0 0 40px 40px;
+    border-style: solid solid double;
+    border-width: 20px;
 }
 .nataswim-titre4 {
     background: #5860c9;
@@ -290,7 +286,6 @@ background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
     border-right: 20px solid #f9f5f4;
     border-top: 20px solid #5860c9;
     border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }
 .nataswim-titre5 {
@@ -299,7 +294,6 @@ background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
     border-right: 20px solid #f9f5f4;
     border-top: 20px solid #99c82d;
    border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }
 .nataswim-titre6 {
@@ -308,7 +302,6 @@ background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
     border-right: 20px solid #f9f5f4;
     border-top: 20px solid #ffaa2f;
     border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }
 .nataswim-titre7 {
@@ -317,7 +310,6 @@ background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
     border-right: 20px solid #f9f5f4;
     border-top: 20px solid #e3cd8d;
     border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }
 .nataswim-titre8 {
@@ -326,6 +318,5 @@ background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
     border-right: 20px solid #f9f5f4;
     border-top: 20px solid #13759e;
     border-bottom: 20px double #f9f5f4;
-    margin: 30px 0px;
     border-radius: 0px 0px 40px 40px;
 }

@@ -98,7 +98,7 @@
                                 
                                 <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
                                     <small class="text-muted">
-                                        <i class="fas fa-eye me-1"></i>{{ number_format($fiche->views_count) }} vues
+                                        <i class="fas fa-eye me-1"></i>55{{ number_format($fiche->views_count) }} Lectures
                                     </small>
                                     <a href="{{ route('public.fiches.show', [$category, $fiche]) }}" 
                                        class="btn btn-sm btn-primary">

@@ -47,7 +47,6 @@
                         @if($fiche->image)
                             <img src="{{ $fiche->image }}" 
                                  class="card-img-top" 
-                                 style="height: 220px; object-fit: cover;"
                                  alt="{{ $fiche->title }}">
                         @else
                             <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center" 
@@ -81,7 +80,7 @@
                             
                             <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
                                 <small class="text-muted">
-                                    <i class="fas fa-eye me-1"></i>{{ number_format($fiche->views_count) }} vues
+                                    <i class="fas fa-eye me-1"></i>55{{ number_format($fiche->views_count) }} lectures
                                 </small>
                                 @if($fiche->category)
                                     <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}" 
@@ -105,10 +104,6 @@
         
         <!-- Introduction -->
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">
-                <i class="fas fa-folder-open text-primary me-2"></i>
-                Explorez nos Catégories
-            </h2>
             <p class="lead text-muted">
                 Choisissez la thématique qui correspond à vos besoins pour accéder 
                 aux fiches pratiques adaptées à votre pratique.
@@ -138,8 +133,8 @@
                                     
                                     <!-- Badge nombre de fiches -->
                                     <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-danger shadow-sm fs-6">
-                                            <i class="fas fa-file-alt me-1"></i>
+                                        <span class="badge bg-success shadow-sm fs-6">
+                                            
                                             {{ $category->published_fiches_count }} fiche{{ $category->published_fiches_count > 1 ? 's' : '' }}
                                         </span>
                                     </div>
@@ -169,12 +164,7 @@
                                     @endif
 
                                     <!-- Informations supplémentaires -->
-                                    <div class="d-flex flex-wrap gap-3 align-items-center">
-                                        <div class="badge bg-primary-subtle text-primary px-3 py-2">
-                                            <i class="fas fa-layer-group me-1"></i>
-                                            {{ $category->published_fiches_count }} fiche{{ $category->published_fiches_count > 1 ? 's' : '' }} disponible{{ $category->published_fiches_count > 1 ? 's' : '' }}
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -280,12 +270,10 @@
 .category-image-wrapper-fiche {
     position: relative;
     height: 100%;
-    min-height: 250px;
 }
 
 .category-image-fiche {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
