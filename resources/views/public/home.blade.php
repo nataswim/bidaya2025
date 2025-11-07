@@ -23,7 +23,7 @@
             <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}" 
                  alt="nataswim application pour tous" 
                  class="img-fluid" 
-                 style="max-width: 250px; height: auto;">
+                 style="max-width: 200px;height: auto;box-shadow: 0 0 40px rgba(255,255,255,.8),0 0 10px #fff;border-radius: 100%;">
         </div>
     </div>
 </div>
@@ -139,7 +139,7 @@
             <div class="col">
                 <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header text-white nataswim-titre">
+                        <div class="card-header text-white nataswim-titre6">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Séances & Plans</h4>
@@ -287,7 +287,7 @@
 
 
 <!-- Temoignages -->
-<section class="py-5 text-white nataswim-titre">
+<section class="py-5 bg-white">
     <div class="container-lg">
         <div class="row g-4">
             @php
@@ -312,7 +312,7 @@
             
             @foreach($testimonials as $testimonial)
                 <div class="col-md-4">
-                    <div class="card h-100 bg-white border border-info">
+                    <div class="card h-100 bg-white">
                         <div class="card-body p-4">
                             <p class="card-text mb-4 text-dark">"{{ $testimonial['quote'] }}"</p>
                             <div class="d-flex align-items-center">
@@ -332,37 +332,7 @@
     </div>
 </section>
 
-<!-- Comment ça marche -->
-<section class="py-5 bg-white">
-    <div class="container-lg">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Comment ça marche ?</h2>
-        </div>
-        <div class="row g-4 align-items-center">
-            <div class="col-md-4 text-center">
-                <div class="bg-success-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
-                    <i class="fas fa-user-plus text-success fs-1"></i>
-                </div>
-                <h3 class="h5">1. Creez votre profil</h3>
-                <p class="text-muted">Inscrivez-vous et definissez votre niveau, objectifs et specialites aquatiques</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="bg-warning-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
-                    <i class="fas fa-swimmer text-warning fs-1"></i>
-                </div>
-                <h3 class="h5">2. Choisissez vos plans</h3>
-                <p class="text-muted">Selectionnez des programmes existants ou creez vos propres seances d'entrainement</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="bg-info-subtle rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
-                    <i class="fas fa-chart-line text-info fs-1"></i>
-                </div>
-                <h3 class="h5">3. Suivez vos progres</h3>
-                <p class="text-muted">Enregistrez vos performances et visualisez votre evolution sportive</p>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- Dernieres Publications -->
 <section class="py-5 text-white nataswim-titre1">    
@@ -779,89 +749,15 @@
     </div>
 </section>
 
-<!--  Section -->
-<section class="py-5 text-white" > 
-
-    <div class="container-lg">
-        <div class="row align-items-center">
-
-        <a href="{{ route('guide') }}">
-
-            <div class="col-lg text-center">
-                <img src="{{ asset('assets/images/team/mode-emploi-nataswim.jpg') }}"
-                    alt="Guide Nataswim"
-                    class="img-fluid rounded-4 shadow-lg"
-                    style="object-fit: cover;">
-            </div>
-            </a>
-        </div>
-    </div>
-</section>
 @endsection
 
 @push('styles')
 <style>
-.nataswim-titre {
-    background: linear-gradient(353deg, rgb(14 118 169) 0%, #0d70a1 100%);
-    border-left: 20px solid #0b71a2;
-    border-right: 20px solid #1075a8;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
-.nataswim-titre1 {
-    background: #00A6A6;
-    border-left: 20px solid #00A6A6;
-    border-right: 20px solid #00A6A6;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
-.nataswim-titre1:hover,
-.nataswim-titre2:hover,
-.nataswim-titre3:hover,
-.nataswim-titre4:hover,
-.nataswim-titre5:hover,
-.nataswim-titre6:hover {
-    background: #056472;
-    border-left: 20px solid #f9f5f4;
-    border-right: 20px solid #f9f5f4;
-    border-top: 10px solid #056472;
-    border-bottom: 10px solid #056472;
-}
-.nataswim-titre2 {
-    background: #0a7183;
-    border-left: 20px solid #0a7183;
-    border-right: 20px solid #0a7183;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
-.nataswim-titre3 {
-    background: #007BFF;
-    border-left: 20px solid #007BFF;
-    border-right: 20px solid #007BFF;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
-.nataswim-titre4 {
-    background: #5860c9;
-    border-left: 20px solid #5860c9;
-    border-right: 20px solid #5860c9;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
-.nataswim-titre5 {
-    background: #99c82d;
-    border-left: 20px solid #99c82d;
-    border-right: 20px solid #99c82d;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
-.nataswim-titre6 {
-    background: #ffaa2f;
-    border-left: 20px solid #ffaa2f;
-    border-right: 20px solid #ffaa2f;
-    border-top: 20px solid #f9f5f4;
-    border-bottom: 20px solid #f9f5f4;
-}
+
+
+
+
+
 .hover-lift {
     transition: all 0.3s ease;
 }

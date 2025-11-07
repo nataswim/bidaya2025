@@ -62,7 +62,7 @@
 <!-- En-tÃªte de categorie -->
 
 
-<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 30px solid #087383;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double #f9f5f4;margin-top: 20px;border-radius: 0px 0px 50px 50px;">    <div class="container-lg">
+<section class="py-5 text-white text-center nataswim-titre3">    <div class="container-lg">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">

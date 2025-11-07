@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 30px solid #087383;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double #f9f5f4;margin-top: 20px;border-radius: 0px 0px 50px 50px;">
+<section class="py-5 text-white text-center nataswim-titre3">
     <div class="container py-3">
         <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
             Calculateur Hydratation

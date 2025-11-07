@@ -1,22 +1,13 @@
 @php
-    $chiffre1 = mt_rand(55, 188);
-    $chiffre2 = mt_rand(79, 123);
+$chiffre1 = mt_rand(55, 188);
+$chiffre2 = mt_rand(79, 123);
 @endphp
 
-<footer class="text-light" style="border-left: 20px solid #16558f;border-right: 20px solid #16558f;background-color: #16558f !important;border-bottom: 20px solid #16558f;border-top: 20px solid #f9f5f3; margin-top: 50px;">
+<footer class="text-light" style="border-left: 20px solid #082f3f;border-right: 20px solid #082f3f;background-color: #16558f !important;border-bottom: 40px solid #18a9b3;border-top: 20px solid #f9f5f4;margin-top: 50px;">
     <!-- statistiques  -->
-    <div class="w-100 text-center py-3">
-        <div >
-            <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres Premium : {{ $chiffre2 }}</p>
-            <p class="mb-0">
-            <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
-                <img src="{{ asset('assets/images/team/nataswim-pays-monde-centre.png') }}" 
-                     alt="boutique natation triathlon offres club et promotions" 
-                     class="img-fluid shop-image"
-                     style="max-width: 100%; height: auto;">
-            </a>
-</p>
-        </div>
+    <div class="w-100 text-center py-3" style="background-color: #082f3e;color: #fff;">
+
+        <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres : {{ $chiffre2 }}</p>
 
     </div>
 
@@ -24,19 +15,19 @@
     <div class="py-5">
         <div class="container-lg">
 
-        
+
             <div class="row g-4">
                 <!-- A propos -->
                 <div class="col-lg-3 col-md-6">
                     <div class="d-flex align-items-center mb-4">
-                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" 
-                             style="width: 50px; height: 50px;">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                            style="width: 50px; height: 50px;">
                             <i class="fas fa-water text-white"></i>
                         </div>
                         <h5 class="mb-0 text-white">Nata'Swim</h5>
                     </div>
                     <p class="text-light opacity-75 mb-4">
-                        Votre plateforme de référence pour la natation et le triathlon. 
+                        Votre plateforme de référence pour la natation et le triathlon.
                         Nous partageons nos connaissances pour faire grandir la communauté.
                     </p>
                     <div class="text-light opacity-75">
@@ -169,7 +160,21 @@
     </div>
 
     <!-- Barre de copyright -->
-    <div style="border-top: 2px solid #ffffff; background-color: #203266;">
+    <div style="background-color: #082f3e;">
+
+        <div class="w-100 text-center py-3" style="background-color: #082f3e;">
+            <div>
+                <p class="mb-0">
+                    <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
+                        <img src="{{ asset('assets/images/team/nataswim-pays-monde-centre.png') }}"
+                            alt="boutique natation triathlon offres club et promotions"
+                            class="img-fluid shop-image"
+                            style="max-width: 100%; height: auto;">
+                    </a>
+                </p>
+            </div>
+
+        </div>
         <div class="container-lg py-4">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -177,16 +182,16 @@
                         &copy; {{ date('Y') }} {{ config('app.name') }}. Tous droits réservés.
                     </p>
                     <p class="mb-0 text-light opacity-75 mt-2">
-                        Conception et développement 
-                        <a href="https://mycreanet.fr/realisations-projets/" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           class="text-white text-decoration-none hover-opacity-100 fw-semibold">
+                        Conception et développement
+                        <a href="https://mycreanet.fr/realisations-projets/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-white text-decoration-none hover-opacity-100 fw-semibold">
                             MyCreaNet Agency
                         </a>
                     </p>
                 </div>
-                
+
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
                     <div class="d-flex flex-wrap justify-content-md-end gap-3">
                         <a href="{{ route('privacy') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
@@ -202,38 +207,43 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
     </div>
 </footer>
 @push('styles')
 <style>
-.hover-opacity-100:hover {
-    opacity: 1 !important;
-    transition: opacity 0.3s ease;
-}
-
-/* Style pour l'image de la boutique avec effet hover */
-.shop-link {
-    display: inline-block;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.shop-link:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-
-.shop-image {
-    display: block;
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-    .shop-image {
-        max-width: 100%;
+    .hover-opacity-100:hover {
+        opacity: 1 !important;
+        transition: opacity 0.3s ease;
     }
-}
+
+    /* Style pour l'image de la boutique avec effet hover */
+    .shop-link {
+        display: inline-block;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .shop-link:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    .shop-image {
+        display: block;
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .shop-image {
+            max-width: 100%;
+        }
+    }
 </style>
 @endpush

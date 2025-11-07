@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 bg-primary text-white text-center" style="background: linear-gradient(120deg, #0e76a9 0%, rgb(7 88 128) 100%);border-top: 30px solid #087383;border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px double #f9f5f4;margin-top: 20px;border-radius: 0px 0px 50px 50px;">
+<section class="py-5 text-white text-center nataswim-titre3">
     <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
@@ -23,15 +23,7 @@
 <!-- Navigation par Catégories -->
 <section class="py-5 bg-light">
     <div class="container-lg">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">
-                <i class="fas fa-video text-primary me-2"></i>
-                Nos Catégories
-            </h2>
-            <p class="lead text-muted">
-                Découvrez l'ensemble des ressources vidéo classées par catégorie
-            </p>
-        </div>
+
 
         @if($categories->count() > 0)
             <!-- Boucle sur chaque catégorie -->
@@ -53,13 +45,7 @@
                                         </div>
                                     @endif
                                     
-                                    <!-- Badge nombre de vidéos -->
-                                    <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-danger shadow-sm fs-6">
-                                            <i class="fas fa-play-circle me-1"></i>
-                                            {{ $category->published_videos_count }} vidéo{{ $category->published_videos_count > 1 ? 's' : '' }}
-                                        </span>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -87,9 +73,9 @@
 
                                     <!-- Informations supplémentaires -->
                                     <div class="d-flex flex-wrap gap-3 align-items-center">
-                                        <div class="badge bg-primary-subtle text-primary px-3 py-2">
-                                            <i class="fas fa-video me-1"></i>
-                                            {{ $category->published_videos_count }} vidéo{{ $category->published_videos_count > 1 ? 's' : '' }} disponible{{ $category->published_videos_count > 1 ? 's' : '' }}
+                                        <div class="badge bg-success px-3 py-2">
+                                            
+                                            {{ $category->published_videos_count }} 
                                         </div>
                                     </div>
                                 </div>
@@ -120,13 +106,9 @@
 </section>
 
 <!-- Les 6 dernières vidéos ajoutées -->
-<section class="py-5 bg-white">
+<section class="py-5 nataswim-titre3">
     <div class="container-lg">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">
-                <i class="fas fa-clock me-2 text-primary"></i>Dernières vidéos ajoutées
-            </h2>
-        </div>
+
 
         @if($videos->count() > 0)
         <div class="row g-4">
@@ -412,8 +394,7 @@
 /* Image de la catégorie vidéo */
 .category-image-wrapper-video {
     position: relative;
-    height: 100%;
-    min-height: 250px;
+
 }
 
 .category-image-video {
@@ -443,7 +424,7 @@
 }
 
 .hover-category-video:hover .btn-category-video {
-    background-color: #71287c;
+    background-color: #2d9707;
     border-color: #71287c;
     color: white;
 }

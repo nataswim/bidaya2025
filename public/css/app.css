@@ -36116,3 +36116,92 @@ textarea.form-control-lg {
     box-shadow: none !important;
   }
 }
+.nataswim-titre {
+  background: linear-gradient(170deg, #063370 25%, #009ee3 90%);
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #0470ab;
+  border-bottom: 20px solid #0470ab;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.nataswim-titre1 {
+  background: #00A6A6;
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #00A6A6;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre2 {
+  background: #0a7183;
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #0a7183;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre3 {
+  background: linear-gradient(1deg, #0ea5e9 0%, #045493 100%);
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #045c9b;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre4 {
+  background: #5860c9;
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #5860c9;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre5 {
+  background: #99c82d;
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #99c82d;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre6 {
+  background: #ffaa2f;
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #ffaa2f;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre7 {
+  background: linear-gradient(41deg, #c59f69 0%, #e1ca88 21%, #f9e9ca 43%, #edd89f 64%, #b38d52 83%, #d6bd7b 100%);
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #e3cd8d;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.nataswim-titre8 {
+  background: linear-gradient(41deg, #0f5c78 0%, #0f4d72 21%, #1a95c2 43%, #105975 64%, #105374 83%, #1990bd 100%);
+  border-left: 20px solid #f9f5f4;
+  border-right: 20px solid #f9f5f4;
+  border-top: 20px solid #13759e;
+  border-bottom: 20px double #f9f5f4;
+  margin: 30px 0px;
+  border-radius: 0px 0px 40px 40px;
+}
