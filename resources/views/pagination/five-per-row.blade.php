@@ -46,7 +46,7 @@
                             {{ $page }}
                         </span>
                     @else
-                        <a href="{{ $paginator->url($page) }}" class="page-link" style="min-width: 45px; text-align: center;">
+                        <a href="{{ $paginator->url($page) }}" class="page-link" style="min-width: 45px;text-align: center;border-radius: 100%;background-color: #fc8c00;color: #fff;">
                             {{ $page }}
                         </a>
                     @endif
