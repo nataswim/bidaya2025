@@ -59,7 +59,7 @@
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
                     <div class="card-body text-center p-4">
                         <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-swimmer text-primary" style="font-size: 2rem;"></i>
@@ -73,7 +73,7 @@
             </div>
             
             <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
                     <div class="card-body text-center p-4">
                         <div class="bg-success-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-medal text-success" style="font-size: 2rem;"></i>
@@ -87,7 +87,7 @@
             </div>
             
             <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
                     <div class="card-body text-center p-4">
                         <div class="bg-warning-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-users text-warning" style="font-size: 2rem;"></i>
@@ -101,7 +101,7 @@
             </div>
             
             <div class="col-md-6 col-lg-3">
-                <article class="card h-100 shadow-sm border-0 bg-white bg-opacity-95">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
                     <div class="card-body text-center p-4">
                         <div class="bg-info-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-graduation-cap text-info" style="font-size: 2rem;"></i>
@@ -358,7 +358,7 @@
             <div class="row g-4">
                 @foreach($latestPosts as $post)
                     <div class="col-md-4">
-                        <div class="card h-100 shadow-sm hover-lift border-0">
+                        <div class="card h-100 nataswim-ombre hover-lift border-0">
                             
                             <div class="card-body">
                                 @if($post->category)
@@ -424,7 +424,7 @@
 
                     @forelse($recentFiches as $fiche)
                     <div class="col-md-6 col-lg-3">
-                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                        <div class="card border-0 nataswim-ombre h-100 hover-lift">
 
 
                             <div class="card-body p-3">
@@ -496,7 +496,7 @@
                 @endphp
                 @if($firstCategory && $section)
                 <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="card border-0 nataswim-ombre h-100 hover-lift">
 
 
                         <div class="card-body p-3">
@@ -564,7 +564,7 @@
 
                 @forelse($recentDownloads as $download)
                 <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="card border-0 nataswim-ombre h-100 hover-lift">
   
 
                         <div class="card-body p-3">
@@ -631,7 +631,7 @@
 
                 @forelse($recentExercices as $exercice)
                 <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="card border-0 nataswim-ombre h-100 hover-lift">
 
                         <div class="card-body p-3">
                             <h6 class="card-title mb-2">
