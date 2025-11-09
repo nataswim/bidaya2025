@@ -310,7 +310,7 @@
                         <div class="card border-0 shadow-sm h-100">
                             <div class="card-header bg-secondary text-white">
                                 <h5 class="mb-0">
-                                    <i class="fas fa-compass me-2"></i>Navigation
+                                    Plus
                                 </h5>
                             </div>
                             <div class="card-body">

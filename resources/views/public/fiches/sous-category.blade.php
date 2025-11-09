@@ -112,11 +112,15 @@
             </div>
 
             <!-- Pagination -->
-            @if($fiches->hasPages())
-                <div class="d-flex justify-content-center mt-5">
-                    {{ $fiches->links() }}
-                </div>
-            @endif
+@if($fiches->hasPages())
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="mt-5">
+                {{ $fiches->links('pagination.five-per-row') }}
+            </div>
+        </div>
+    </div>
+@endif
         @else
             <div class="card border-0 shadow-sm text-center py-5">
                 <div class="card-body">

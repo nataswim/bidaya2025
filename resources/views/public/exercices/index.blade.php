@@ -212,7 +212,6 @@
                     </div>
                 @endforeach
             </div>
-
             <!-- Pagination -->
 @if($exercices->hasPages())
     <div class="row mt-5">

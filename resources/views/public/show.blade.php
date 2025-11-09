@@ -138,7 +138,7 @@
                                             </p>
                                             <div class="d-flex gap-2">
                                                 <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
-                                                    <i class="fas fa-user-plus me-2"></i>Inscription gratuite
+                                                    <i class="fas fa-user-plus me-2"></i>Inscription
                                                 </a>
                                                 <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm">
                                                     <i class="fas fa-sign-in-alt me-2"></i>Se connecter

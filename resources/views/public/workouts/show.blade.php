@@ -137,22 +137,55 @@
 
 
                 
-                <!-- Card 3: Déroulement de la séance (description longue) -->
-                @if($workout->long_description)
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-light">
-                            <h2 class="mb-0 h5">
-                                <i class="fas fa-clipboard-list me-2 text-primary"></i>
-                                Détails
-                            </h2>
+<!-- Card 3: Déroulement de la séance (description longue) - UTILISATEURS  -->
+@if($workout->long_description)
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <h2 class="mb-0 h5">
+                <i class="fas fa-clipboard-list me-2 text-primary"></i>
+                Détails
+            </h2>
+        </div>
+        <div class="card-body p-4">
+            @auth
+                {{-- Utilisateur connecté : affichage complet --}}
+                <div class="content-display-full fs-6 lh-lg">
+                    {!! $workout->long_description !!}
+                </div>
+            @else
+                {{-- Utilisateur non connecté : aperçu tronqué --}}
+                <div class="content-display-full fs-6 lh-lg text-muted">
+                    {!! Str::limit(strip_tags($workout->long_description), 100, '...') !!}
+                </div>
+                
+                <div class="alert alert-warning border-0 mt-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-lock text-warning fs-2"></i>
                         </div>
-                        <div class="card-body p-4">
-                            <div class="content-display-full fs-6 lh-lg">
-                                {!! $workout->long_description !!}
+                        <div class="col">
+                            <h5 class="alert-heading mb-2">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Contenu réservé aux membres premium
+                            </h5>
+                            <p class="mb-3">
+                                Connectez-vous ou créez un compte pour accéder au déroulement complet de cette séance d'entraînement.
+                            </p>
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-user-plus me-2"></i>Inscription
+                                </a>
+                                <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                                </a>
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
+            @endauth
+        </div>
+    </div>
+@endif
 
                 <!-- Card 4: Autres séances du programme -->
                 @if($relatedWorkouts->count() > 0)
@@ -322,7 +355,7 @@
                         <div class="card border-0 shadow-sm h-100">
                             <div class="card-header bg-secondary text-white">
                                 <h2 class="mb-0 h5">
-                                    <i class="fas fa-compass me-2"></i>Navigation
+                                    Plus
                                 </h2>
                             </div>
                             <div class="card-body">

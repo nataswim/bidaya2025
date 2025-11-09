@@ -171,7 +171,7 @@
                                     @if(!auth()->check())
                                     <div class="d-flex gap-2">
                                         <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-user-plus me-2"></i>Inscription gratuite
+                                            <i class="fas fa-user-plus me-2"></i>Inscription
                                         </a>
                                         <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
                                             <i class="fas fa-sign-in-alt me-2"></i>Se connecter
@@ -324,7 +324,7 @@
                         <div class="card border-0 shadow-sm h-100">
                             <div class="card-header bg-secondary text-white">
                                 <h5 class="mb-0">
-                                    <i class="fas fa-compass me-2"></i>Navigation
+                                    Plus
                                 </h5>
                             </div>
                             <div class="card-body">

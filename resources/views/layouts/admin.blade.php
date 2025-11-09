@@ -16,23 +16,56 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Navigation horizontale CSS -->
+    <link href="{{ asset('css/admin-nav-horizontal.css') }}" rel="stylesheet">
+    
+    <!-- Footer admin CSS -->
+    <link href="{{ asset('css/admin-footer.css') }}" rel="stylesheet">
+    
     <!-- Quill.js CSS - UNE SEULE FOIS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="{{ asset('css/quill-advanced.css') }}" rel="stylesheet">
-<link href="{{ asset('css/media-selector.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/media-selector.css') }}" rel="stylesheet">
+
+    <style>
+        /* Structure de la page pour footer sticky */
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .main-wrapper {
+            flex: 1 0 auto;
+        }
+        
+        .admin-footer {
+            flex-shrink: 0;
+        }
+    </style>
 
     @stack('styles')
 </head>
 <body class="bg-light">
-    <div class="d-flex">
-        @include('layouts.partials.admin-nav')
-        
-        <div class="flex-fill d-flex flex-column overflow-auto" style="overflow-x: auto;">
-                    <!-- flex-fill d-flex flex-column --> 
-
-            @include('layouts.partials.admin-header')
-            
-            <main class="flex-fill p-4">
+    <!-- Navigation horizontale -->
+    @include('layouts.partials.admin-nav-horizontal')
+    
+    <!-- Wrapper principal pour contenu -->
+    <div class="main-wrapper">
+        <!-- Contenu principal -->
+        <div class="container-fluid">
+            <main class="py-4">
+                <!-- Titre de page -->
+                <div class="mb-4">
+                    <h2 class="mb-1">@yield('page-title', 'Administration')</h2>
+                    <p class="text-muted mb-0">@yield('page-description', 'Gestion du contenu et des utilisateurs')</p>
+                </div>
+                
+                <!-- Messages flash -->
                 @if(session('success') || session('error'))
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
@@ -48,10 +81,14 @@
                     @endif
                 @endif
                 
+                <!-- Contenu de la page -->
                 @yield('content')
             </main>
         </div>
     </div>
+    
+    <!-- Footer admin -->
+    @include('layouts.partials.admin-footer')
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -59,9 +96,8 @@
     <!-- Quill.js - UNE SEULE FOIS -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="{{ asset('js/quill-advanced.js') }}"></script>
-<!-- Selecteur de medias -->
-<script src="{{ asset('js/media-selector.js') }}"></script>
-
+    <!-- Selecteur de medias -->
+    <script src="{{ asset('js/media-selector.js') }}"></script>
 
     @stack('scripts')
 </body>
