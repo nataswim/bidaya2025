@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top shadow-sm">
-    <div class="container-fluid px-4">
+<nav class="navbar navbar-expand-lg sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0a7283;border-top: 20px solid #087383;">
+
+    <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.dashboard') }}">
             <img src="{{ asset('assets/images/team/nataswim_app_logo_4.png') }}"

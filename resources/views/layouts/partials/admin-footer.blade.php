@@ -1,4 +1,5 @@
-<footer class="admin-footer bg-white border-top mt-5">
+<footer class="admin-footer bg-white mt-5" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0a7283;border-top: 20px solid #087383;">
+
     <div class="container-fluid py-4">
         <div class="row g-4">
             <!-- Colonne 1 : Sitemap -->

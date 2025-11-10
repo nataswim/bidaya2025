@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 @section('page-title', 'Dashboard')
-@section('page-description', 'Vue d\'ensemble de votre plateforme')
+@section('page-description', 'Gestion et apercu')
 
 @section('content')
 <div class="container-fluid">
@@ -47,7 +47,7 @@
         
         @foreach($stats as $stat)
             <div class="col-xl-3 col-md-6">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm  alert alert-info">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center">
                             <div class="bg-{{ $stat['color'] }} bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" 
