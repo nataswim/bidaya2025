@@ -558,9 +558,10 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
         Route::post('/{sitemapUrl}/toggle', [\App\Http\Controllers\Admin\SitemapController::class, 'toggleApproval'])->name('toggle');
         Route::delete('/{sitemapUrl}', [\App\Http\Controllers\Admin\SitemapController::class, 'destroy'])->name('destroy');
         Route::post('/clean', [\App\Http\Controllers\Admin\SitemapController::class, 'clean'])->name('clean');
-   
+    });
+
     // ========== ROUTES CATALOGUE ==========
-       // Gestion des sections du catalogue
+    // Gestion des sections du catalogue
     Route::resource('catalogue-sections', \App\Http\Controllers\Admin\CatalogueSectionController::class)
         ->parameters(['catalogue-sections' => 'catalogueSection']);
     
@@ -578,8 +579,5 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
     
     Route::get('api/catalogue-content/by-type', [\App\Http\Controllers\Admin\CatalogueUnitController::class, 'apiContentByType'])
         ->name('catalogue-units.api.content-by-type');
-   
-    });
 
-    
 });

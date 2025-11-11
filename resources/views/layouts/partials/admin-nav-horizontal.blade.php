@@ -131,95 +131,84 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item {{ request()->routeIs('admin.workouts.index', 'admin.workouts.create', 'admin.workouts.edit', 'admin.workouts.show') ? 'active' : '' }}" href="{{ route('admin.workouts.index') }}">
-                                <i class="fas fa-running fa-fw me-2"></i>Workouts
-                                @php $workoutsCount = App\Models\Workout::count(); @endphp
-                                @if($workoutsCount > 0)
-                                <span class="badge bg-warning ms-2">{{ $workoutsCount }}</span>
-                                @endif
+                            <a class="dropdown-item {{ request()->routeIs('admin.workouts.*') ? 'active' : '' }}" href="{{ route('admin.workouts.index') }}">
+                                <i class="fas fa-running fa-fw me-2"></i>Séances
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item {{ request()->routeIs('admin.workout-categories.*') ? 'active' : '' }}" href="{{ route('admin.workout-categories.index') }}">
                                 <i class="fas fa-folder fa-fw me-2"></i>Catégories
-                                @php $workoutCategoriesCount = App\Models\WorkoutCategory::count(); @endphp
-                                @if($workoutCategoriesCount > 0)
-                                <span class="badge bg-info ms-2">{{ $workoutCategoriesCount }}</span>
-                                @endif
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item {{ request()->routeIs('admin.workout-sections.*') ? 'active' : '' }}" href="{{ route('admin.workout-sections.index') }}">
-                                <i class="fas fa-layer-group fa-fw me-2"></i>Sections
-                                @php $workoutSectionsCount = App\Models\WorkoutSection::count(); @endphp
-                                @if($workoutSectionsCount > 0)
-                                <span class="badge bg-secondary ms-2">{{ $workoutSectionsCount }}</span>
-                                @endif
+                                <i class="fas fa-th-large fa-fw me-2"></i>Sections
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <!-- Musculation (dropdown) -->
+                <!-- Exercices (dropdown) -->
                 <li class="nav-item dropdown">
-                    @php $trainingActive = request()->routeIs('admin.training.*', 'admin.exercice-categories.*', 'admin.exercice-sous-categories.*'); @endphp
-                    <a class="nav-link dropdown-toggle {{ $trainingActive ? 'active fw-bold text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-dumbbell me-1"></i>
-                        Musculation
+                    @php $exercicesActive = request()->routeIs('admin.training.exercices.*', 'admin.exercice-categories.*', 'admin.exercice-sous-categories.*'); @endphp
+                    <a class="nav-link dropdown-toggle {{ $exercicesActive ? 'active fw-bold text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-stopwatch me-1"></i>
+                        Exercices
                     </a>
                     <ul class="dropdown-menu">
-                        <li><h6 class="dropdown-header">Gestion</h6></li>
-                        <li>
-                            <a class="dropdown-item {{ request()->routeIs('admin.training.plans.*') ? 'active' : '' }}" href="{{ route('admin.training.plans.index') }}">
-                                <i class="fas fa-file-invoice fa-fw me-2"></i>Plans
-                                <span class="badge bg-info ms-2">{{ App\Models\Plan::count() }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item {{ request()->routeIs('admin.training.cycles.*') ? 'active' : '' }}" href="{{ route('admin.training.cycles.index') }}">
-                                <i class="fas fa-sync-alt fa-fw me-2"></i>Cycles
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item {{ request()->routeIs('admin.training.seances.*') ? 'active' : '' }}" href="{{ route('admin.training.seances.index') }}">
-                                <i class="fas fa-stopwatch fa-fw me-2"></i>Séances
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item {{ request()->routeIs('admin.training.series.*') ? 'active' : '' }}" href="{{ route('admin.training.series.index') }}">
-                                <i class="fas fa-list-ol fa-fw me-2"></i>Séries
-                            </a>
-                        </li>
                         <li>
                             <a class="dropdown-item {{ request()->routeIs('admin.training.exercices.*') ? 'active' : '' }}" href="{{ route('admin.training.exercices.index') }}">
-                                <i class="fas fa-running fa-fw me-2"></i>Exercices
+                                <i class="fas fa-list fa-fw me-2"></i>Exercices
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item {{ request()->routeIs('admin.exercice-categories.*') ? 'active' : '' }}" href="{{ route('admin.exercice-categories.index') }}">
                                 <i class="fas fa-folder fa-fw me-2"></i>Catégories
-                                @php $exerciceCategoriesCount = App\Models\ExerciceCategory::count(); @endphp
-                                @if($exerciceCategoriesCount > 0)
-                                <span class="badge bg-info ms-2">{{ $exerciceCategoriesCount }}</span>
-                                @endif
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item {{ request()->routeIs('admin.exercice-sous-categories.*') ? 'active' : '' }}" href="{{ route('admin.exercice-sous-categories.index') }}">
-                                <i class="fas fa-layer-group fa-fw me-2"></i>Sous-catégories
-                                @php $exerciceSousCategoriesCount = App\Models\ExerciceSousCategory::count(); @endphp
-                                @if($exerciceSousCategoriesCount > 0)
-                                <span class="badge bg-secondary ms-2">{{ $exerciceSousCategoriesCount }}</span>
-                                @endif
+                                <i class="fas fa-folder-tree fa-fw me-2"></i>Sous-catégories
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Planification (dropdown) -->
+                <li class="nav-item dropdown">
+                    @php $planificationActive = request()->routeIs('admin.training.plans.*', 'admin.training.cycles.*', 'admin.training.seances.*', 'admin.training.series.*'); @endphp
+                    <a class="nav-link dropdown-toggle {{ $planificationActive ? 'active fw-bold text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-calendar-alt me-1"></i>
+                        Planification
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.training.plans.*') ? 'active' : '' }}" href="{{ route('admin.training.plans.index') }}">
+                                <i class="fas fa-clipboard-list fa-fw me-2"></i>Plans
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.training.cycles.*') ? 'active' : '' }}" href="{{ route('admin.training.cycles.index') }}">
+                                <i class="fas fa-recycle fa-fw me-2"></i>Cycles
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.training.seances.*') ? 'active' : '' }}" href="{{ route('admin.training.seances.index') }}">
+                                <i class="fas fa-clock fa-fw me-2"></i>Séances
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.training.series.*') ? 'active' : '' }}" href="{{ route('admin.training.series.index') }}">
+                                <i class="fas fa-layer-group fa-fw me-2"></i>Séries
                             </a>
                         </li>
                     </ul>
                 </li>
 
                 <!-- Utilisateurs (dropdown) -->
+                @if(auth()->user()->hasRole('admin'))
                 <li class="nav-item dropdown">
-                    @php $adminUsersActive = request()->routeIs('admin.users.*', 'admin.payments.*', 'admin.roles.*', 'admin.permissions.*'); @endphp
+                    @php $adminUsersActive = request()->routeIs('admin.users.*', 'admin.roles.*', 'admin.permissions.*', 'admin.payments.*'); @endphp
                     <a class="nav-link dropdown-toggle {{ $adminUsersActive ? 'active fw-bold text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-cog me-1"></i>
                         Utilisateurs
@@ -249,6 +238,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 <!-- eBooks (dropdown) -->
                 <li class="nav-item dropdown">
@@ -271,6 +261,50 @@
                         <li>
                             <a class="dropdown-item {{ request()->routeIs('admin.ebook-files.*') ? 'active' : '' }}" href="{{ route('admin.ebook-files.index') }}">
                                 <i class="fas fa-file-archive fa-fw me-2"></i>Fichiers eBook
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Catalogue (dropdown) - VERSION APRÈS CORRECTION WEB.PHP -->
+                <li class="nav-item dropdown">
+                    @php $catalogueActive = request()->routeIs('admin.catalogue-sections.*', 'admin.catalogue-modules.*', 'admin.catalogue-units.*'); @endphp
+                    <a class="nav-link dropdown-toggle {{ $catalogueActive ? 'active fw-bold text-primary' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-graduation-cap me-1"></i>
+                        Catalogue
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.catalogue-sections.*') ? 'active' : '' }}" href="{{ route('admin.catalogue-sections.index') }}">
+                                <i class="fas fa-layer-group fa-fw me-2"></i>Sections
+                                @php $sectionsCount = App\Models\CatalogueSection::count(); @endphp
+                                @if($sectionsCount > 0)
+                                <span class="badge bg-primary ms-2">{{ $sectionsCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.catalogue-modules.*') ? 'active' : '' }}" href="{{ route('admin.catalogue-modules.index') }}">
+                                <i class="fas fa-book-open fa-fw me-2"></i>Modules
+                                @php $modulesCount = App\Models\CatalogueModule::count(); @endphp
+                                @if($modulesCount > 0)
+                                <span class="badge bg-success ms-2">{{ $modulesCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->routeIs('admin.catalogue-units.*') ? 'active' : '' }}" href="{{ route('admin.catalogue-units.index') }}">
+                                <i class="fas fa-puzzle-piece fa-fw me-2"></i>Unités
+                                @php $unitsCount = App\Models\CatalogueUnit::count(); @endphp
+                                @if($unitsCount > 0)
+                                <span class="badge bg-info ms-2">{{ $unitsCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('public.catalogue.index') }}" target="_blank">
+                                <i class="fas fa-external-link-alt fa-fw me-2"></i>Voir le catalogue public
                             </a>
                         </li>
                     </ul>
