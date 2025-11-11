@@ -55,6 +55,10 @@ use App\Http\Controllers\Admin\ExerciceSousCategoryController;
 use App\Http\Controllers\AnatomyController;
 use App\Http\Controllers\User\CalendarController;
 use App\Http\Controllers\Admin\VideoLibraryController;
+use App\Http\Controllers\Admin\CatalogueModuleController;
+use App\Http\Controllers\Admin\CatalogueSectionController;
+use App\Http\Controllers\Admin\CatalogueUnitController;
+use App\Http\Controllers\CatalogueController;
 
 
 
@@ -171,6 +175,28 @@ Route::prefix('fiches')->name('public.fiches.')->group(function () {
     Route::get('/{category}/{fiche}', [PublicFicheController::class, 'show'])->name('show');
 });
 
+
+// ========== ROUTES CATALOGUE PUBLIC ==========
+Route::prefix('catalogue')->name('public.catalogue.')->group(function () {
+    // Index - Liste des sections
+    Route::get('/', [\App\Http\Controllers\CatalogueController::class, 'index'])->name('index');
+    
+    // Section - Liste des modules
+    Route::get('/{section}', [\App\Http\Controllers\CatalogueController::class, 'section'])->name('section');
+    
+    // Module - Liste des unités
+    Route::get('/{section}/{module}', [\App\Http\Controllers\CatalogueController::class, 'module'])->name('module');
+    
+    // Unité - Affichage du contenu
+    Route::get('/{section}/{module}/{unit}', [\App\Http\Controllers\CatalogueController::class, 'unit'])->name('unit');
+});
+
+
+
+
+
+
+
 // Routes outils
 Route::get('/outils/calculateur-imc', [ToolController::class, 'bmiCalculator'])->name('tools.bmi');
 Route::get('/outils/calculateur-masse-grasse', [ToolController::class, 'bodyFatCalculator'])->name('tools.masse-grasse');
@@ -210,6 +236,9 @@ Route::get('/categories/{category:slug}', [PublicController::class, 'category'])
 
 Route::get('/articles', [PublicController::class, 'index'])->name('public.index');
 Route::get('/articles/{post:slug}', [PublicController::class, 'show'])->name('public.show');
+
+
+
 
 
 require __DIR__.'/auth.php';
@@ -529,6 +558,28 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
         Route::post('/{sitemapUrl}/toggle', [\App\Http\Controllers\Admin\SitemapController::class, 'toggleApproval'])->name('toggle');
         Route::delete('/{sitemapUrl}', [\App\Http\Controllers\Admin\SitemapController::class, 'destroy'])->name('destroy');
         Route::post('/clean', [\App\Http\Controllers\Admin\SitemapController::class, 'clean'])->name('clean');
+   
+    // ========== ROUTES CATALOGUE ==========
+       // Gestion des sections du catalogue
+    Route::resource('catalogue-sections', \App\Http\Controllers\Admin\CatalogueSectionController::class)
+        ->parameters(['catalogue-sections' => 'catalogueSection']);
+    
+    // Gestion des modules du catalogue
+    Route::resource('catalogue-modules', \App\Http\Controllers\Admin\CatalogueModuleController::class)
+        ->parameters(['catalogue-modules' => 'catalogueModule']);
+    
+    // Gestion des unités du catalogue
+    Route::resource('catalogue-units', \App\Http\Controllers\Admin\CatalogueUnitController::class)
+        ->parameters(['catalogue-units' => 'catalogueUnit']);
+    
+    // API pour les selects dynamiques
+    Route::get('api/catalogue-modules/by-section', [\App\Http\Controllers\Admin\CatalogueUnitController::class, 'apiModulesBySection'])
+        ->name('catalogue-units.api.modules-by-section');
+    
+    Route::get('api/catalogue-content/by-type', [\App\Http\Controllers\Admin\CatalogueUnitController::class, 'apiContentByType'])
+        ->name('catalogue-units.api.content-by-type');
+   
     });
 
+    
 });
