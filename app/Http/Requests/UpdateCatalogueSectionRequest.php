@@ -19,9 +19,12 @@ class UpdateCatalogueSectionRequest extends FormRequest
 
     public function rules(): array
     {
+        // Récupération de l'ID via le paramètre de route (camelCase)
+        $sectionId = $this->route('catalogueSection') ? $this->route('catalogueSection')->id : null;
+
         return [
             'name' => 'required|string|max:191',
-            'slug' => 'nullable|string|max:191|unique:catalogue_sections,slug,' . $this->catalogue_section->id,
+            'slug' => 'nullable|string|max:191|unique:catalogue_sections,slug,' . $sectionId,
             'short_description' => 'nullable|string',
             'long_description' => 'nullable|string',
             'image' => 'nullable|string|max:2048',

@@ -128,10 +128,10 @@ class CatalogueUnitContent extends Model
             case 'App\Models\Post':
                 return route('posts.show', $this->contentable->slug ?? $this->contentable->id);
             case 'App\Models\Video':
-                return route('videos.show', $this->contentable->slug ?? $this->contentable->id);
+                return route('public.videos.show', $this->contentable->slug ?? $this->contentable->id);
             case 'App\Models\Fiche':
                 return route('fiches.show', $this->contentable->slug ?? $this->contentable->id);
-            // Ajouter d'autres cas selon vos routes
+                // Ajouter d'autres cas selon vos routes
             default:
                 return null;
         }
