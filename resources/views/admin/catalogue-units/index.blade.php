@@ -159,6 +159,13 @@
                                                                 <i class="fas fa-eye me-2 text-info"></i>Voir
                                                             </a>
                                                         </li>
+<li>
+    <a class="dropdown-item d-flex align-items-center" 
+       href="{{ route('admin.catalogue-units.contents', $unit) }}">
+        <i class="fas fa-list me-2 text-success"></i>Gérer les contenus
+    </a>
+</li>
+
                                                         <li>
                                                             <a class="dropdown-item d-flex align-items-center" 
                                                                href="{{ route('admin.catalogue-units.edit', $unit) }}">

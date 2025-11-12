@@ -579,5 +579,13 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
     
     Route::get('api/catalogue-content/by-type', [\App\Http\Controllers\Admin\CatalogueUnitController::class, 'apiContentByType'])
         ->name('catalogue-units.api.content-by-type');
+        
+ // Routes pour la gestion des contenus multiples
+Route::prefix('catalogue-units/{catalogueUnit}')->name('catalogue-units.')->group(function () {
+    Route::get('/contents', [CatalogueUnitController::class, 'contents'])->name('contents');
+    Route::post('/contents', [CatalogueUnitController::class, 'addContent'])->name('add-content');
+    Route::delete('/contents/{content}', [CatalogueUnitController::class, 'removeContent'])->name('remove-content');
+    Route::post('/contents/reorder', [CatalogueUnitController::class, 'reorderContents'])->name('reorder-contents');
+});
 
 });

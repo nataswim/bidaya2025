@@ -33,52 +33,48 @@
             </div>
         </div>
 
-        <!-- Sélection du contenu -->
+        <!-- Section des contenus multiples -->
         <div class="card border-0 shadow-sm mt-4">
             <div class="card-header bg-gradient-info text-white p-4">
-                <h6 class="mb-0"><i class="fas fa-link me-2"></i>Contenu Lié (optionnel)</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0"><i class="fas fa-list me-2"></i>Contenus de l'unité</h6>
+                    <button type="button" class="btn btn-light btn-sm" id="add-content-btn">
+                        <i class="fas fa-plus me-1"></i>Ajouter un contenu
+                    </button>
+                </div>
             </div>
             <div class="card-body p-4">
-                <div class="mb-3">
-                    <label for="unitable_type" class="form-label fw-semibold">Type de contenu</label>
-                    <select name="unitable_type" id="unitable_type" class="form-select @error('unitable_type') is-invalid @enderror">
-                        <option value="">-- Aucun contenu lié --</option>
-                        <option value="App\Models\Post" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\Post' ? 'selected' : '' }}>
-                            Article (Post)
-                        </option>
-                        <option value="App\Models\Video" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\Video' ? 'selected' : '' }}>
-                            Vidéo
-                        </option>
-                        <option value="App\Models\Downloadable" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\Downloadable' ? 'selected' : '' }}>
-                            Fichier téléchargeable
-                        </option>
-                        <option value="App\Models\Fiche" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\Fiche' ? 'selected' : '' }}>
-                            Fiche
-                        </option>
-                        <option value="App\Models\Exercice" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\Exercice' ? 'selected' : '' }}>
-                            Exercice
-                        </option>
-                        <option value="App\Models\Workout" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\Workout' ? 'selected' : '' }}>
-                            Entraînement (Workout)
-                        </option>
-                        <option value="App\Models\EbookFile" {{ old('unitable_type', isset($unit) ? $unit->unitable_type : '') == 'App\Models\EbookFile' ? 'selected' : '' }}>
-                            E-book
-                        </option>
-                    </select>
-                    @error('unitable_type')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
-
-                <div class="mb-3" id="content-selector-wrapper" style="display: none;">
-                    <label for="unitable_id" class="form-label fw-semibold">Sélectionner le contenu</label>
-                    <select name="unitable_id" id="unitable_id" class="form-select @error('unitable_id') is-invalid @enderror">
-                        <option value="">-- Chargement... --</option>
-                    </select>
-                    @error('unitable_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
-
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>
-                    <strong>Info :</strong> Sélectionnez un type de contenu pour lier cette unité à un contenu existant (article, vidéo, fiche, etc.)
+                <div id="contents-container">
+                    @php
+                        $existingContents = isset($unit) ? $unit->contents()->ordered()->get() : collect();
+                        $oldContents = old('contents', []);
+                    @endphp
+                    
+                    @if(count($oldContents) > 0)
+                        {{-- Afficher les anciens contenus en cas d'erreur de validation --}}
+                        @foreach($oldContents as $index => $oldContent)
+                            @include('admin.catalogue-units.partials.content-item', [
+                                'index' => $index,
+                                'content' => (object)$oldContent,
+                                'isNew' => true
+                            ])
+                        @endforeach
+                    @elseif($existingContents->count() > 0)
+                        {{-- Afficher les contenus existants en mode édition --}}
+                        @foreach($existingContents as $index => $content)
+                            @include('admin.catalogue-units.partials.content-item', [
+                                'index' => $index,
+                                'content' => $content,
+                                'isNew' => false
+                            ])
+                        @endforeach
+                    @else
+                        {{-- Message si aucun contenu --}}
+                        <div id="no-content-message" class="text-center py-4 text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Aucun contenu ajouté. Cliquez sur "Ajouter un contenu" pour commencer.
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -109,7 +105,7 @@
                 <div class="mb-3">
                     <label for="catalogue_module_id" class="form-label fw-semibold">Module parent *</label>
                     <select name="catalogue_module_id" id="catalogue_module_id" 
-                            class="form-select @error('catalogue_module_id') is-invalid @enderror" required disabled>
+                            class="form-select @error('catalogue_module_id') is-invalid @enderror" required>
                         <option value="">Sélectionner d'abord une section</option>
                         @if(isset($unit) && $unit->module)
                             <option value="{{ $unit->module->id }}" selected>{{ $unit->module->name }}</option>
@@ -161,10 +157,208 @@
     </div>
 </div>
 
+{{-- Template pour un nouvel élément de contenu --}}
+<template id="content-item-template">
+    <div class="content-item border rounded p-3 mb-3" data-index="">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+            <h6 class="mb-0">
+                <span class="badge bg-secondary me-2 content-order">1</span>
+                Nouveau contenu
+            </h6>
+            <button type="button" class="btn btn-sm btn-outline-danger remove-content-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Type de contenu *</label>
+                <select name="contents[][contentable_type]" class="form-select content-type-select" required>
+                    <option value="">-- Sélectionner --</option>
+                    <option value="App\Models\Post">Article (Post)</option>
+                    <option value="App\Models\Video">Vidéo</option>
+                    <option value="App\Models\Downloadable">Fichier téléchargeable</option>
+                    <option value="App\Models\Fiche">Fiche</option>
+                    <option value="App\Models\Exercice">Exercice</option>
+                    <option value="App\Models\Workout">Entraînement</option>
+                    <option value="App\Models\EbookFile">E-book</option>
+                </select>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">Contenu *</label>
+                <select name="contents[][contentable_id]" class="form-select content-id-select" required disabled>
+                    <option value="">-- Choisir un type d'abord --</option>
+                </select>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">Titre personnalisé</label>
+                <input type="text" name="contents[][custom_title]" class="form-control" 
+                       placeholder="Optionnel">
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label">Durée (min)</label>
+                <input type="number" name="contents[][duration_minutes]" class="form-control" min="0">
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label">Ordre</label>
+                <input type="number" name="contents[][order]" class="form-control content-order-input" 
+                       value="1" min="1" required>
+            </div>
+            
+            <div class="col-12">
+                <label class="form-label">Description personnalisée</label>
+                <textarea name="contents[][custom_description]" rows="2" class="form-control"
+                          placeholder="Optionnel"></textarea>
+            </div>
+            
+            <div class="col-12">
+                <div class="form-check">
+                    <input type="checkbox" name="contents[][is_required]" value="1" checked
+                           class="form-check-input">
+                    <label class="form-check-label">Contenu obligatoire</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+@push('styles')
+<style>
+.content-item {
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+.content-item:hover {
+    background-color: #e9ecef;
+}
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+}
+.bg-gradient-info {
+    background: linear-gradient(135deg, #0dcaf0 0%, #0891b2 100%);
+}
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-génération du slug
+    let contentIndex = {{ $existingContents->count() ?? 0 }};
+    const container = document.getElementById('contents-container');
+    const template = document.getElementById('content-item-template');
+    const addBtn = document.getElementById('add-content-btn');
+    const noContentMsg = document.getElementById('no-content-message');
+    
+    // Fonction pour ajouter un nouveau contenu
+    function addContentItem() {
+        if (noContentMsg) {
+            noContentMsg.remove();
+        }
+        
+        const clone = template.content.cloneNode(true);
+        const item = clone.querySelector('.content-item');
+        item.dataset.index = contentIndex;
+        
+        // Mettre à jour les noms des champs
+        item.querySelectorAll('select, input, textarea').forEach(field => {
+            if (field.name) {
+                field.name = field.name.replace('[]', `[${contentIndex}]`);
+            }
+        });
+        
+        // Mettre à jour l'ordre
+        const orderInput = item.querySelector('.content-order-input');
+        const orderBadge = item.querySelector('.content-order');
+        const currentOrder = container.querySelectorAll('.content-item').length + 1;
+        orderInput.value = currentOrder;
+        orderBadge.textContent = currentOrder;
+        
+        container.appendChild(item);
+        contentIndex++;
+        
+        // Initialiser les événements pour ce nouvel item
+        initializeContentItem(item);
+    }
+    
+    // Fonction pour initialiser les événements d'un item
+    function initializeContentItem(item) {
+        // Bouton supprimer
+        item.querySelector('.remove-content-btn')?.addEventListener('click', function() {
+            if (confirm('Supprimer ce contenu ?')) {
+                item.remove();
+                updateOrders();
+                
+                if (container.querySelectorAll('.content-item').length === 0) {
+                    container.innerHTML = `
+                        <div id="no-content-message" class="text-center py-4 text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Aucun contenu ajouté. Cliquez sur "Ajouter un contenu" pour commencer.
+                        </div>
+                    `;
+                }
+            }
+        });
+        
+        // Select de type de contenu
+        const typeSelect = item.querySelector('.content-type-select');
+        const idSelect = item.querySelector('.content-id-select');
+        
+        if (typeSelect && idSelect) {
+            typeSelect.addEventListener('change', function() {
+                const contentType = this.value;
+                
+                if (!contentType) {
+                    idSelect.disabled = true;
+                    idSelect.innerHTML = '<option value="">-- Choisir un type d\'abord --</option>';
+                    return;
+                }
+                
+                idSelect.disabled = false;
+                idSelect.innerHTML = '<option value="">Chargement...</option>';
+                
+                fetch(`{{ route('admin.catalogue-units.api.content-by-type') }}?content_type=${encodeURIComponent(contentType)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        idSelect.innerHTML = '<option value="">-- Sélectionner --</option>';
+                        data.forEach(content => {
+                            const option = document.createElement('option');
+                            option.value = content.id;
+                            option.textContent = content.title || content.name;
+                            idSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        idSelect.innerHTML = '<option value="">Erreur de chargement</option>';
+                    });
+            });
+        }
+    }
+    
+    // Fonction pour mettre à jour les ordres
+    function updateOrders() {
+        container.querySelectorAll('.content-item').forEach((item, index) => {
+            const orderBadge = item.querySelector('.content-order');
+            const orderInput = item.querySelector('.content-order-input');
+            if (orderBadge) orderBadge.textContent = index + 1;
+            if (orderInput) orderInput.value = index + 1;
+        });
+    }
+    
+    // Événement pour ajouter un contenu
+    addBtn?.addEventListener('click', addContentItem);
+    
+    // Initialiser les items existants
+    container.querySelectorAll('.content-item').forEach(initializeContentItem);
+    
+    // Auto-génération du slug (code existant)
     const titleInput = document.getElementById('title');
     const slugInput = document.getElementById('slug');
     
@@ -183,8 +377,8 @@ document.addEventListener('DOMContentLoaded', function() {
             this.dataset.autoGenerated = '';
         });
     }
-
-    // Chargement dynamique des modules par section
+    
+    // Chargement dynamique des modules par section (code existant)
     const sectionSelect = document.getElementById('catalogue_section_id');
     const moduleSelect = document.getElementById('catalogue_module_id');
     
@@ -225,58 +419,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Déclencher le chargement initial si une section est déjà sélectionnée
         if (sectionSelect.value) {
-            sectionSelect.dispatchEvent(new Event('change'));
-        }
-    }
-
-    // Chargement dynamique du contenu par type
-    const contentTypeSelect = document.getElementById('unitable_type');
-    const contentIdSelect = document.getElementById('unitable_id');
-    const contentSelectorWrapper = document.getElementById('content-selector-wrapper');
-    
-    if (contentTypeSelect && contentIdSelect && contentSelectorWrapper) {
-        contentTypeSelect.addEventListener('change', function() {
-            const contentType = this.value;
-            
-            if (!contentType) {
-                contentSelectorWrapper.style.display = 'none';
-                contentIdSelect.innerHTML = '<option value="">-- Choisir d\'abord un type --</option>';
-                return;
-            }
-            
-            contentSelectorWrapper.style.display = 'block';
-            contentIdSelect.innerHTML = '<option value="">Chargement...</option>';
-            
-            fetch(`{{ route('admin.catalogue-units.api.content-by-type') }}?content_type=${encodeURIComponent(contentType)}`)
-                .then(response => response.json())
-                .then(data => {
-                    contentIdSelect.innerHTML = '<option value="">-- Sélectionner un contenu --</option>';
-                    
-                    if (data.length > 0) {
-                        data.forEach(item => {
-                            const option = document.createElement('option');
-                            option.value = item.id;
-                            option.textContent = item.title;
-                            contentIdSelect.appendChild(option);
-                        });
-                    } else {
-                        contentIdSelect.innerHTML = '<option value="">Aucun contenu disponible</option>';
-                    }
-                    
-                    // Restaurer la valeur si on est en édition
-                    @if(isset($unit) && $unit->unitable_id)
-                        contentIdSelect.value = '{{ $unit->unitable_id }}';
-                    @endif
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    contentIdSelect.innerHTML = '<option value="">Erreur de chargement</option>';
+            const currentModuleId = '{{ isset($unit) ? $unit->catalogue_module_id : "" }}';
+            if (currentModuleId) {
+                // Si on est en édition, attendre que les modules soient chargés puis sélectionner le bon
+                sectionSelect.addEventListener('change', function setCurrentModule() {
+                    setTimeout(() => {
+                        moduleSelect.value = currentModuleId;
+                    }, 500);
+                    sectionSelect.removeEventListener('change', setCurrentModule);
                 });
-        });
-        
-        // Déclencher le chargement initial si un type est déjà sélectionné
-        if (contentTypeSelect.value) {
-            contentTypeSelect.dispatchEvent(new Event('change'));
+            }
+            sectionSelect.dispatchEvent(new Event('change'));
         }
     }
 });

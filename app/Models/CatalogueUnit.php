@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * 🇬🇧 CatalogueUnit model representing a unit in the catalogue
@@ -52,7 +53,7 @@ class CatalogueUnit extends Model
             if (auth()->check()) {
                 $unit->created_by = auth()->id();
             }
-            
+
             if (empty($unit->slug)) {
                 $unit->slug = Str::slug($unit->title);
             }
@@ -62,7 +63,7 @@ class CatalogueUnit extends Model
             if (auth()->check()) {
                 $unit->updated_by = auth()->id();
             }
-            
+
             if ($unit->isDirty('title') && empty($unit->slug)) {
                 $unit->slug = Str::slug($unit->title);
             }
@@ -196,5 +197,71 @@ class CatalogueUnit extends Model
         }
 
         return null;
+    }
+
+    /**
+     * Relation vers les contenus multiples
+     */
+    public function contents(): HasMany
+    {
+        return $this->hasMany(CatalogueUnitContent::class, 'catalogue_unit_id');
+    }
+
+    /**
+     * Obtenir les contenus actifs et ordonnés
+     */
+    public function activeContents()
+    {
+        return $this->contents()
+            ->active()
+            ->ordered()
+            ->with('contentable');
+    }
+
+    /**
+     * Vérifier si l'unité a des contenus
+     */
+    public function getHasContentsAttribute(): bool
+    {
+        return $this->contents()->exists();
+    }
+
+    /**
+     * Obtenir le nombre de contenus
+     */
+    public function getContentsCountAttribute(): int
+    {
+        return $this->contents()->count();
+    }
+
+    /**
+     * Obtenir le premier contenu (pour compatibilité)
+     */
+    public function getFirstContentAttribute()
+    {
+        return $this->contents()->ordered()->first();
+    }
+
+    /**
+     * Obtenir les types de contenus présents
+     */
+    public function getContentTypesAttribute(): array
+    {
+        return $this->contents()
+            ->distinct('contentable_type')
+            ->pluck('contentable_type')
+            ->map(function ($type) {
+                $types = [
+                    'App\Models\Post' => 'Articles',
+                    'App\Models\Video' => 'Vidéos',
+                    'App\Models\Downloadable' => 'Téléchargements',
+                    'App\Models\Fiche' => 'Fiches',
+                    'App\Models\Exercice' => 'Exercices',
+                    'App\Models\Workout' => 'Entraînements',
+                    'App\Models\EbookFile' => 'E-books',
+                ];
+                return $types[$type] ?? 'Autres';
+            })
+            ->toArray();
     }
 }

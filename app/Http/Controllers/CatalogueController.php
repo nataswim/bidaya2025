@@ -8,16 +8,12 @@ use App\Models\CatalogueUnit;
 use Illuminate\Http\Request;
 
 /**
- * 🇬🇧 CatalogueController - Public display of catalogue
- * 🇫🇷 CatalogueController - Affichage public du catalogue
- * 
- * @file app/Http/Controllers/CatalogueController.php
+ * CatalogueController - Affichage public du catalogue
  */
 class CatalogueController extends Controller
 {
     /**
-     * 🇬🇧 Display the catalogue index with all sections
-     * 🇫🇷 Afficher l'index du catalogue avec toutes les sections
+     * Afficher l'index du catalogue avec toutes les sections
      */
     public function index()
     {
@@ -30,8 +26,7 @@ class CatalogueController extends Controller
     }
 
     /**
-     * 🇬🇧 Display a section with its modules
-     * 🇫🇷 Afficher une section avec ses modules
+     * Afficher une section avec ses modules
      */
     public function section(CatalogueSection $section)
     {
@@ -43,15 +38,11 @@ class CatalogueController extends Controller
             ->withCount('units')
             ->get();
 
-        // 🇬🇧 Increment views / 🇫🇷 Incrémenter les vues (optionnel)
-        // $section->increment('views_count');
-
         return view('public.catalogue.section', compact('section', 'modules'));
     }
 
     /**
-     * 🇬🇧 Display a module with its units
-     * 🇫🇷 Afficher un module avec ses unités
+     * Afficher un module avec ses unités
      */
     public function module(CatalogueSection $section, CatalogueModule $module)
     {
@@ -59,21 +50,27 @@ class CatalogueController extends Controller
             abort(404);
         }
 
-        // 🇬🇧 Verify module belongs to section / 🇫🇷 Vérifier que le module appartient à la section
+        // Vérifier que le module appartient à la section
         if ($module->catalogue_section_id !== $section->id) {
             abort(404);
         }
 
+        // Charger les unités avec le compte des contenus
         $units = $module->activeUnits()
-            ->with('unitable')
+            ->withCount(['contents' => function($query) {
+                $query->where('is_active', true);
+            }])
+            ->with(['contents' => function($query) {
+                $query->where('is_active', true)
+                      ->ordered();
+            }])
             ->get();
 
         return view('public.catalogue.module', compact('section', 'module', 'units'));
     }
 
     /**
-     * 🇬🇧 Display a unit and redirect to its content
-     * 🇫🇷 Afficher une unité et rediriger vers son contenu
+     * Afficher une unité avec ses contenus multiples
      */
     public function unit(CatalogueSection $section, CatalogueModule $module, CatalogueUnit $unit)
     {
@@ -81,26 +78,18 @@ class CatalogueController extends Controller
             abort(404);
         }
 
-        // 🇬🇧 Verify relationships / 🇫🇷 Vérifier les relations
+        // Vérifier les relations
         if ($module->catalogue_section_id !== $section->id || $unit->catalogue_module_id !== $module->id) {
             abort(404);
         }
 
-        $unit->load(['unitable', 'module.section']);
+        // Charger l'unité avec ses contenus actifs et ordonnés
+        $unit->load(['module.section', 'contents' => function($query) {
+            $query->where('is_active', true)
+                  ->ordered()
+                  ->with('contentable');
+        }]);
 
-        // 🇬🇧 If no content linked, show unit page / 🇫🇷 Si aucun contenu lié, afficher la page unité
-        if (!$unit->unitable) {
-            return view('public.catalogue.unit', compact('section', 'module', 'unit'));
-        }
-
-        // 🇬🇧 Redirect to actual content / 🇫🇷 Rediriger vers le contenu réel
-        $contentUrl = $unit->content_url;
-        
-        if ($contentUrl) {
-            return redirect($contentUrl);
-        }
-
-        // 🇬🇧 Fallback: show unit page / 🇫🇷 Solution de secours : afficher la page unité
         return view('public.catalogue.unit', compact('section', 'module', 'unit'));
     }
 }

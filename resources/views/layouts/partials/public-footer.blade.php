@@ -43,8 +43,10 @@ $chiffre2 = mt_rand(79, 123);
                         <h5 class="mb-0 text-white">Nata'Swim</h5>
                     </div>
                     <p class="text-light opacity-75 mb-4">
-                        Votre plateforme de référence pour la natation et le triathlon.
-                        Nous partageons nos connaissances pour faire grandir la communauté.
+Nous partageons nos connaissances avec la communauté du sport. 
+ <a href="{{ route('public.catalogue.index') }}" class="text-white fw-bold text-decoration-none">
+ Mettre à jour mes connaissances
+                            </a>
                     </p>
                     <div class="text-light opacity-75">
                         <i class="fas fa-shield-alt me-2"></i>

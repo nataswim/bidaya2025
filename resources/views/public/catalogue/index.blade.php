@@ -12,10 +12,10 @@
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold mb-3">
-                    Catalogue de Formations
+                    Se Former S'informer
                 </h1>
                 <p class="lead mb-0">
-                    <strong>Explorez</strong> nos formations structurées
+                    <strong>Explorez</strong> nos dossiers structurées
                     en sections thématiques pour progresser à votre rythme.
                 </p>
             </div>
@@ -33,10 +33,11 @@
                 @foreach($sections as $section)
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm hover-catalogue-card">
-                            <!-- Image de la section -->
+                            
+                        <!-- Image de la section -->
                             <div class="catalogue-image-wrapper position-relative">
                                 @if($section->image)
-                                    <img src="{{ asset('storage/' . $section->image) }}" 
+                                    <img src="{{ $section->image }}" 
                                          class="card-img-top catalogue-card-image" 
                                          alt="{{ $section->name }}">
                                 @else
@@ -72,11 +73,11 @@
                                 @endif
 
                                 <!-- Spacer pour pousser le badge en bas -->
-                                <div class="mt-auto pt-3 border-top">
-                                    <div class="d-flex justify-content-between align-items-center">
+                                <div class="mt-auto pt-2">
+                                    <div class="card-header text-dark nataswim-titre4">
                                         <small class="text-muted">
                                             <i class="fas fa-graduation-cap me-1"></i>
-                                            Section de formation
+                                            Voir les modules
                                         </small>
                                         <i class="fas fa-arrow-right text-primary"></i>
                                     </div>
@@ -95,8 +96,36 @@
             </div>
         @endif
 
-        <!-- Avantages du catalogue -->
-        <div class="row g-4 mt-5">
+        
+
+    </div>
+</section>
+
+<!-- Section SEO -->
+<section class="py-5 nataswim-titre1">
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-3">Explorez nos dossiers et cours</h2>
+                        <p class="text-muted mb-0">
+                            Que vous soyez débutant ou expérimenté, nos <strong>contenus structurés</strong>
+                            vous accompagnent dans votre progression avec des ressources accessibles à tout moment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Avantages du catalogue -->
+
+
+<section class="py-5 nataswim-titre1">
+    <div class="container-lg">
+         <div class="row g-4 mt-5">
             <div class="col-md-6 col-lg-3">
                 <div class="card border-0 shadow-sm h-100 hover-lift">
                     <div class="card-body text-center">
@@ -155,32 +184,26 @@
             </div>
         </div>
 
+
+    
     </div>
 </section>
 
-<!-- Section SEO -->
-<section class="py-5 bg-white">
-    <div class="container-lg">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-3">Explorez notre catalogue de formations</h2>
-                        <p class="text-muted">
-                            Notre <strong>catalogue de formations</strong> est organisé en sections thématiques
-                            pour faciliter votre apprentissage. Chaque section contient des <strong>modules pédagogiques</strong>
-                            avec des unités de formation comprenant vidéos, fiches pratiques, exercices et bien plus.
-                        </p>
-                        <p class="text-muted mb-0">
-                            Que vous soyez débutant ou expérimenté, nos <strong>contenus structurés</strong>
-                            vous accompagnent dans votre progression avec des ressources de qualité accessibles à tout moment.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
 
 @endsection
 

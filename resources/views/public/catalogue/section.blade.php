@@ -9,24 +9,7 @@
 <!-- Section Titre avec Breadcrumb -->
 <section class="py-5 text-white text-center nataswim-titre3">
     <div class="container-lg">
-        <!-- Fil d'Ariane -->
-        <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" class="text-white text-decoration-none">
-                        <i class="fas fa-home me-1"></i>Accueil
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.catalogue.index') }}" class="text-white text-decoration-none">
-                        Catalogue
-                    </a>
-                </li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ $section->name }}
-                </li>
-            </ol>
-        </nav>
+
 
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
@@ -45,7 +28,7 @@
 
 <!-- Description longue (si disponible) -->
 @if($section->long_description)
-<section class="py-4 bg-white">
+<section class="py-4">
     <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-lg-10">
@@ -91,7 +74,7 @@
                             <!-- Image du module -->
                             <div class="module-image-wrapper position-relative">
                                 @if($module->image)
-                                    <img src="{{ asset('storage/' . $module->image) }}" 
+                                    <img src="{{ $module->image }}" 
                                          class="card-img-top module-card-image" 
                                          alt="{{ $module->name }}">
                                 @else
@@ -135,12 +118,11 @@
 
                                 <!-- Spacer pour pousser le footer en bas -->
                                 <div class="mt-auto pt-3 border-top">
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="card-header text-dark nataswim-titre5">
                                         <small class="text-muted">
                                             <i class="fas fa-book me-1"></i>
-                                            Module de formation
+                                            Voir ce Module 
                                         </small>
-                                        <i class="fas fa-arrow-right text-success"></i>
                                     </div>
                                 </div>
                             </div>

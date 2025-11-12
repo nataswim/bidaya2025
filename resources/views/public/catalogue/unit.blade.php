@@ -9,58 +9,11 @@
 <!-- Section Titre avec Breadcrumb -->
 <section class="py-5 text-white text-center nataswim-titre3">
     <div class="container-lg">
-        <!-- Fil d'Ariane -->
-        <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" class="text-white text-decoration-none">
-                        <i class="fas fa-home me-1"></i>Accueil
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.catalogue.index') }}" class="text-white text-decoration-none">
-                        Catalogue
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.catalogue.section', $section->slug) }}" class="text-white text-decoration-none">
-                        {{ $section->name }}
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.catalogue.module', [$section->slug, $module->slug]) }}" class="text-white text-decoration-none">
-                        {{ $module->name }}
-                    </a>
-                </li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ $unit->title }}
-                </li>
-            </ol>
-        </nav>
+        
 
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
                 <!-- Badges -->
-                <div class="mb-3 d-flex flex-wrap gap-2 justify-content-center">
-                    <span class="badge bg-light text-dark fs-6 px-3 py-2">
-                        Module {{ $module->order }}
-                    </span>
-                    <span class="badge bg-primary fs-6 px-3 py-2">
-                        Unité {{ $unit->order }}
-                    </span>
-                    @if($unit->unitable)
-                        <span class="badge bg-success fs-6 px-3 py-2">
-                            <i class="fas {{ 
-                                $unit->unitable_type == 'App\Models\Video' ? 'fa-video' : 
-                                ($unit->unitable_type == 'App\Models\Fiche' ? 'fa-file-alt' : 
-                                ($unit->unitable_type == 'App\Models\Exercice' ? 'fa-dumbbell' : 
-                                ($unit->unitable_type == 'App\Models\Workout' ? 'fa-running' : 
-                                ($unit->unitable_type == 'App\Models\Downloadable' ? 'fa-download' : 'fa-book'))))
-                            }} me-1"></i>
-                            {{ $unit->content_type_label }}
-                        </span>
-                    @endif
-                </div>
 
                 <h1 class="display-4 fw-bold mb-3">
                     {{ $unit->title }}
@@ -81,40 +34,76 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 
-                @if($unit->unitable && $unit->content_url)
-                    <!-- Redirection vers le contenu -->
+                @if($unit->contents->count() > 0)
+                    
+                    
+                    <!-- Liste des contenus -->
                     <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-body p-5 text-center">
-                            <div class="mb-4">
-                                <i class="fas fa-external-link-alt fa-4x text-primary opacity-50"></i>
+ 
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                @foreach($unit->contents as $content)
+                                    <div class="list-group-item px-4 py-3 content-item">
+                                        <div class="row align-items-center">
+                                            <!-- Numéro d'ordre -->
+                                            <div class="col-auto">
+                                                <div class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center"
+                                                     style="width: 35px; height: 35px; font-size: 1rem;">
+                                                    {{ $content->order }}
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Informations du contenu -->
+                                            <div class="col">
+                                                <h6 class="mb-1 fw-bold">
+                                                    {{ $content->display_title }}
+                                                </h6>
+                                                
+                                                <!-- Badges -->
+                                                <div class="d-flex flex-wrap gap-2 align-items-center mt-2">
+                                                    <span class="badge bg-info-subtle text-info">
+                                                        <i class="fas {{ 
+                                                            $content->contentable_type == 'App\Models\Video' ? 'fa-video' : 
+                                                            ($content->contentable_type == 'App\Models\Fiche' ? 'fa-file-alt' : 
+                                                            ($content->contentable_type == 'App\Models\Exercice' ? 'fa-dumbbell' : 
+                                                            ($content->contentable_type == 'App\Models\Workout' ? 'fa-running' : 
+                                                            ($content->contentable_type == 'App\Models\Downloadable' ? 'fa-download' : 
+                                                            ($content->contentable_type == 'App\Models\EbookFile' ? 'fa-book' : 'fa-file')))))
+                                                        }} me-1"></i>
+                                                        {{ $content->content_type_label }}
+                                                    </span>
+                                                </div>
+                                                
+                                                @if($content->custom_description)
+                                                    <p class="text-muted mb-0 mt-2 small">
+                                                        {{ $content->custom_description }}
+                                                    </p>
+                                                @endif
+                                            </div>
+                                            
+                                            <!-- Bouton d'action -->
+                                            <div class="col-auto">
+                                                @if($content->content_url)
+                                                    <a href="{{ $content->content_url }}" 
+                                                       class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-play-circle me-2"></i>
+                                                        Accéder
+                                                    </a>
+                                                @else
+                                                    <span class="badge bg-secondary p-2">
+                                                        <i class="fas fa-lock me-1"></i>
+                                                        Bientôt disponible
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <h2 class="h4 fw-bold mb-3">Accéder au contenu</h2>
-                            <p class="text-muted mb-4">
-                                Cette unité contient un contenu de type <strong>{{ $unit->content_type_label }}</strong>.
-                                Cliquez sur le bouton ci-dessous pour y accéder.
-                            </p>
-                            <a href="{{ $unit->content_url }}" class="btn btn-primary btn-lg">
-                                <i class="fas fa-play-circle me-2"></i>
-                                Accéder au {{ strtolower($unit->content_type_label) }}
-                            </a>
-                        </div>
-                    </div>
-                @elseif($unit->unitable)
-                    <!-- Contenu lié mais pas d'URL -->
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-body p-5 text-center">
-                            <div class="mb-4">
-                                <i class="fas fa-info-circle fa-4x text-info opacity-50"></i>
-                            </div>
-                            <h2 class="h4 fw-bold mb-3">Contenu en préparation</h2>
-                            <p class="text-muted mb-0">
-                                Cette unité est associée à un contenu de type <strong>{{ $unit->content_type_label }}</strong>
-                                qui sera bientôt disponible.
-                            </p>
                         </div>
                     </div>
                 @else
-                    <!-- Aucun contenu lié -->
+                    <!-- Aucun contenu -->
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body p-5 text-center">
                             <div class="mb-4">
@@ -122,8 +111,8 @@
                             </div>
                             <h2 class="h4 fw-bold mb-3">Unité en cours de préparation</h2>
                             <p class="text-muted mb-0">
-                                Le contenu de cette unité est actuellement en cours de préparation
-                                et sera disponible prochainement.
+                                Les contenus de cette unité sont actuellement en cours de préparation
+                                et seront disponibles prochainement.
                             </p>
                         </div>
                     </div>
@@ -132,10 +121,6 @@
                 <!-- Informations sur l'unité -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
-                        <h3 class="h5 fw-bold mb-3">
-                            <i class="fas fa-info-circle text-primary me-2"></i>
-                            Informations sur l'unité
-                        </h3>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <strong class="text-muted d-block mb-1">Section</strong>
@@ -151,16 +136,7 @@
                                     {{ $module->name }}
                                 </a>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <strong class="text-muted d-block mb-1">Ordre</strong>
-                                <span>Unité {{ $unit->order }} du module</span>
-                            </div>
-                            @if($unit->unitable)
-                                <div class="col-md-6 mb-3">
-                                    <strong class="text-muted d-block mb-1">Type de contenu</strong>
-                                    <span>{{ $unit->content_type_label }}</span>
-                                </div>
-                            @endif
+                            
                         </div>
                     </div>
                 </div>
@@ -202,6 +178,22 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* Dégradé pour l'en-tête */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+}
+
+/* Items de contenu */
+.content-item {
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent !important;
+}
+
+.content-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #0d6efd !important;
+}
+
 /* Cartes avec effet hover */
 .card {
     transition: all 0.3s ease;
@@ -220,6 +212,13 @@
 
 .fa-4x {
     animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .display-6 {
+        font-size: 1.5rem;
+    }
 }
 </style>
 @endpush
@@ -249,6 +248,18 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'all 0.6s ease';
             observer.observe(card);
+        });
+        
+        // Animation pour les items de contenu
+        const contentItems = document.querySelectorAll('.content-item');
+        contentItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            setTimeout(() => {
+                item.style.transition = 'all 0.5s ease';
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, index * 100);
         });
     });
 </script>

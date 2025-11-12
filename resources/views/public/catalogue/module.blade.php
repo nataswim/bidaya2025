@@ -9,38 +9,10 @@
 <!-- Section Titre avec Breadcrumb -->
 <section class="py-5 text-white text-center nataswim-titre3">
     <div class="container-lg">
-        <!-- Fil d'Ariane -->
-        <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}" class="text-white text-decoration-none">
-                        <i class="fas fa-home me-1"></i>Accueil
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.catalogue.index') }}" class="text-white text-decoration-none">
-                        Catalogue
-                    </a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="{{ route('public.catalogue.section', $section->slug) }}" class="text-white text-decoration-none">
-                        {{ $section->name }}
-                    </a>
-                </li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                    {{ $module->name }}
-                </li>
-            </ol>
-        </nav>
 
         <div class="row align-items-center">
             <div class="col-lg mb-4 mb-lg-0">
-                <!-- Badge ordre du module -->
-                <div class="mb-3">
-                    <span class="badge bg-light text-dark fs-6 px-3 py-2">
-                        Module {{ $module->order }}
-                    </span>
-                </div>
+
 
                 <h1 class="display-4 fw-bold mb-3">
                     {{ $module->name }}
@@ -57,16 +29,12 @@
 
 <!-- Description longue (si disponible) -->
 @if($module->long_description)
-<section class="py-4 bg-white">
+<section class="py-4 ">
     <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h2 class="h5 fw-bold mb-3">
-                            <i class="fas fa-info-circle text-primary me-2"></i>
-                            À propos de ce module
-                        </h2>
                         <div class="text-muted">
                             {!! nl2br(e($module->long_description)) !!}
                         </div>
@@ -91,8 +59,8 @@
                         {{ $units->count() }} unité{{ $units->count() > 1 ? 's' : '' }} de formation
                     </span>
                     <span class="badge bg-info-subtle text-info px-3 py-2 fs-6">
-                        <i class="fas fa-book-open me-2"></i>
-                        Progression guidée
+                        <i class="fas fa-layer-group me-2"></i>
+                        {{ $units->sum('contents_count') }} contenu{{ $units->sum('contents_count') > 1 ? 's' : '' }} au total
                     </span>
                 </div>
             </div>
@@ -117,44 +85,62 @@
                                     <!-- Contenu de l'unité -->
                                     <div class="col">
                                         <div class="d-flex w-100 justify-content-between align-items-start">
-                                            <div>
+                                            <div class="flex-grow-1">
                                                 <h5 class="mb-2 fw-bold">{{ $unit->title }}</h5>
                                                 @if($unit->description)
                                                     <p class="mb-2 text-muted">
                                                         {{ Str::limit($unit->description, 150) }}
                                                     </p>
                                                 @endif
-                                                <!-- Type de contenu -->
-                                                @if($unit->unitable)
-                                                    <div class="mt-2">
-                                                        <span class="badge bg-secondary-subtle text-secondary">
-                                                            <i class="fas {{ 
-                                                                $unit->unitable_type == 'App\Models\Video' ? 'fa-video' : 
-                                                                ($unit->unitable_type == 'App\Models\Fiche' ? 'fa-file-alt' : 
-                                                                ($unit->unitable_type == 'App\Models\Exercice' ? 'fa-dumbbell' : 
-                                                                ($unit->unitable_type == 'App\Models\Workout' ? 'fa-running' : 
-                                                                ($unit->unitable_type == 'App\Models\Downloadable' ? 'fa-download' : 'fa-book'))))
-                                                            }} me-1"></i>
-                                                            {{ $unit->content_type_label }}
+                                                
+                                                <!-- Badges des types de contenus -->
+                                                <div class="mt-2 d-flex flex-wrap gap-2">
+                                                    @if($unit->contents_count > 0)
+                                                        <span class="badge bg-success-subtle text-success">
+                                                            <i class="fas fa-list me-1"></i>
+                                                            {{ $unit->contents_count }} contenu{{ $unit->contents_count > 1 ? 's' : '' }}
                                                         </span>
-                                                    </div>
-                                                @endif
+                                                        
+                                                        @php
+                                                            $contentTypes = $unit->contents->pluck('contentable_type')->unique();
+                                                        @endphp
+                                                        
+                                                        @foreach($contentTypes as $type)
+                                                            <span class="badge bg-secondary-subtle text-secondary">
+                                                                <i class="fas {{ 
+                                                                    $type == 'App\Models\Video' ? 'fa-video' : 
+                                                                    ($type == 'App\Models\Fiche' ? 'fa-file-alt' : 
+                                                                    ($type == 'App\Models\Exercice' ? 'fa-dumbbell' : 
+                                                                    ($type == 'App\Models\Workout' ? 'fa-running' : 
+                                                                    ($type == 'App\Models\Downloadable' ? 'fa-download' : 
+                                                                    ($type == 'App\Models\EbookFile' ? 'fa-book' : 'fa-file')))))
+                                                                }} me-1"></i>
+                                                                {{ 
+                                                                    $type == 'App\Models\Video' ? 'Vidéo' : 
+                                                                    ($type == 'App\Models\Fiche' ? 'Fiche' : 
+                                                                    ($type == 'App\Models\Exercice' ? 'Exercice' : 
+                                                                    ($type == 'App\Models\Workout' ? 'Workout' : 
+                                                                    ($type == 'App\Models\Downloadable' ? 'Fichier' : 
+                                                                    ($type == 'App\Models\EbookFile' ? 'E-book' : 'Contenu')))))
+                                                                }}
+                                                            </span>
+                                                        @endforeach
+                                                    @else
+                                                        <span class="badge bg-warning-subtle text-warning">
+                                                            <i class="fas fa-clock me-1"></i>
+                                                            Bientôt disponible
+                                                        </span>
+                                                    @endif
+                                                </div>
                                             </div>
                                             
                                             <!-- Bouton d'accès -->
                                             <div class="ms-3">
-                                                @if($unit->unitable && $unit->content_url)
-                                                    <a href="{{ $unit->url }}" 
-                                                       class="btn btn-outline-primary btn-sm unit-link">
-                                                        <i class="fas fa-play-circle me-1"></i>
-                                                        Accéder
-                                                    </a>
-                                                @else
-                                                    <span class="badge bg-warning text-dark">
-                                                        <i class="fas fa-clock me-1"></i>
-                                                        Bientôt
-                                                    </span>
-                                                @endif
+                                                <a href="{{ $unit->url }}" 
+                                                   class="btn btn-outline-primary btn-sm unit-link">
+                                                    <i class="fas fa-arrow-right me-1"></i>
+                                                    Accéder
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
