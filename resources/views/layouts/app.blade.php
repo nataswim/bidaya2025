@@ -7,6 +7,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+<meta name="msvalidate.01" content="8D79868FFCAC25E19818E1971977FC3F" />
 </head>
 <body class="font-sans antialiased bg-gray-100">
     <div class="min-h-screen">

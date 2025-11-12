@@ -61,7 +61,7 @@
   gtag('config', 'G-RDDF8VW92G');
 </script>
 
-
+<meta name="msvalidate.01" content="8D79868FFCAC25E19818E1971977FC3F" />
 
 
 </head>

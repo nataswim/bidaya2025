@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <meta name="msvalidate.01" content="8D79868FFCAC25E19818E1971977FC3F" />
 </head>
 <body class="font-sans text-gray-900 antialiased">
     @yield('content')
