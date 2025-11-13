@@ -89,6 +89,17 @@
                                 @endif
                             </a>
                         </li>
+ <li>
+                            <a  class="dropdown-item {{ request()->routeIs('admin.fiches-categories.*') ? 'active' : '' }}" href="{{ route('admin.fiches-sous-categories.index') }}">
+                                <i class="fas fa-folder-tree fa-fw me-2"></i>Sous-catégories
+                                @php $fichesSousCategoriesCount = App\Models\FichesSousCategory::count(); @endphp
+                                @if($fichesSousCategoriesCount > 0)
+                                <span class="badge bg-secondary ms-2">{{ $fichesSousCategoriesCount }}</span>
+                                @endif
+                            </a>
+                        </li>
+
+
                     </ul>
                 </li>
 

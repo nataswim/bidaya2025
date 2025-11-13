@@ -404,6 +404,7 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
         'fiches-sous-categories' => 'fichesSousCategory'
     ]);
     
+    
     // API pour récupérer les sous-catégories d'une catégorie (pour select dynamique)
     Route::get('api/fiches-sous-categories/by-category', [FichesSousCategoryController::class, 'apiByCategory'])
         ->name('fiches-sous-categories.api.by-category');
