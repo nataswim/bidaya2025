@@ -69,7 +69,7 @@
             <!-- Grille responsive de cartes -->
             <div class="row g-4">
                 @foreach($modules as $module)
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-6">
                         <div class="card h-100 border-0 shadow-sm hover-module-card">
                             <!-- Image du module -->
                             <div class="module-image-wrapper position-relative">

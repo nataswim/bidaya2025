@@ -7,8 +7,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des fiches -->
-        <div class="col-lg-9">
+        <!-- Liste des fiches - Pleine largeur -->
+        <div class="col-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
@@ -95,7 +95,6 @@
                     </form>
                 </div>
 
-
                 <!-- Actions groupées -->
                 <div class="card-body border-bottom p-4 bg-white" id="bulk-actions-container" style="display: none;">
                     <form method="POST" action="{{ route('admin.fiches.bulk-assign-categories') }}" id="bulk-assign-form">
@@ -145,10 +144,6 @@
                     </form>
                 </div>
 
-
-
-
-
                 <!-- Fiches -->
                 <div class="card-body p-0">
                     @if($fiches->count() > 0)
@@ -164,7 +159,7 @@
                                     <th class="border-0 px-4 py-3">Classification</th>
                                     <th class="border-0 px-4 py-3">Stats</th>
                                     <th class="border-0 px-4 py-3">Date</th>
-                                    <th class="border-0 px-4 py-3 text-end">Actions</th>
+                                    <th class="border-0 px-4 py-3 text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -275,51 +270,57 @@
                                         </div>
                                     </td>
 
-                                    <td class="px-4 py-3 text-end">
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm btn-outline-secondary border-0"
-                                                data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end shadow">
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center"
-                                                        href="{{ route('admin.fiches.show', $fiche) }}">
-                                                        <i class="fas fa-eye me-2 text-info"></i>Voir
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center"
-                                                        href="{{ route('admin.fiches.edit', $fiche) }}">
-                                                        <i class="fas fa-edit me-2 text-primary"></i>Modifier
-                                                    </a>
-                                                </li>
-                                                @if($fiche->is_published && $fiche->category)
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center"
-                                                        href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                                        target="_blank">
-                                                        <i class="fas fa-external-link-alt me-2 text-success"></i>Voir en ligne
-                                                    </a>
-                                                </li>
-                                                @endif
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li>
-                                                    <form method="POST"
-                                                        action="{{ route('admin.fiches.destroy', $fiche) }}"
-                                                        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette fiche ?')">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit"
-                                                            class="dropdown-item d-flex align-items-center text-danger">
-                                                            <i class="fas fa-trash me-2"></i>Supprimer
-                                                        </button>
-                                                    </form>
-                                                </li>
-                                            </ul>
+                                    <td class="px-4 py-3 text-center">
+                                        <div class="d-inline-flex gap-1">
+                                            <!-- Bouton Voir -->
+                                            <a href="{{ route('admin.fiches.show', $fiche) }}" 
+                                               class="btn btn-sm btn-outline-info" 
+                                               title="Voir"
+                                               data-bs-toggle="tooltip">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            
+                                            <!-- Bouton Modifier -->
+                                            <a href="{{ route('admin.fiches.edit', $fiche) }}" 
+                                               class="btn btn-sm btn-outline-primary" 
+                                               title="Modifier"
+                                               data-bs-toggle="tooltip">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            
+                                            <!-- Bouton Voir en ligne -->
+                                            @if($fiche->is_published && $fiche->category)
+                                                <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}" 
+                                                   target="_blank"
+                                                   class="btn btn-sm btn-outline-success" 
+                                                   title="Voir en ligne"
+                                                   data-bs-toggle="tooltip">
+                                                    <i class="fas fa-external-link-alt"></i>
+                                                </a>
+                                            @else
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-secondary" 
+                                                        title="Non disponible en ligne"
+                                                        data-bs-toggle="tooltip"
+                                                        disabled>
+                                                    <i class="fas fa-external-link-alt"></i>
+                                                </button>
+                                            @endif
+                                            
+                                            <!-- Bouton Supprimer -->
+                                            <form method="POST" 
+                                                  action="{{ route('admin.fiches.destroy', $fiche) }}" 
+                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette fiche ?')"
+                                                  class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="btn btn-sm btn-outline-danger" 
+                                                        title="Supprimer"
+                                                        data-bs-toggle="tooltip">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -361,8 +362,8 @@
             </div>
         </div>
 
-        <!-- Sidebar statistiques -->
-        <div class="col-lg-3">
+        <!-- Cards en bas : Statistiques et Visibilité -->
+        <div class="col-lg-6">
             <!-- Statistiques générales -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-gradient-success text-white p-3">
@@ -401,7 +402,7 @@
             </div>
 
             <!-- Répartition visibilité -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-info text-white p-3">
                     <h6 class="mb-0">
                         <i class="fas fa-eye me-2"></i>Visibilité
@@ -409,37 +410,39 @@
                 </div>
                 <div class="card-body p-3">
                     @if($stats['total'] > 0)
-                    <div class="mb-3">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <span class="fw-semibold text-success">
-                                <i class="fas fa-globe me-1"></i>Public
-                            </span>
-                            <span class="badge bg-success-subtle text-success">{{ $stats['public'] }}</span>
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fw-semibold text-success">
+                                    <i class="fas fa-globe me-1"></i>Public
+                                </span>
+                                <span class="badge bg-success-subtle text-success">{{ $stats['public'] }}</span>
+                            </div>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar bg-success" 
+                                     style="width: {{ ($stats['public'] / $stats['total']) * 100 }}%"></div>
+                            </div>
                         </div>
-                        <div class="progress" style="height: 6px;">
-                            <div class="progress-bar bg-success"
-                                style="width: {{ ($stats['public'] / $stats['total']) * 100 }}%"></div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fw-semibold text-info">
+                                    <i class="fas fa-lock me-1"></i>Membres
+                                </span>
+                                <span class="badge bg-info-subtle text-info">{{ $stats['authenticated'] }}</span>
+                            </div>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar bg-info" 
+                                     style="width: {{ ($stats['authenticated'] / $stats['total']) * 100 }}%"></div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <span class="fw-semibold text-info">
-                                <i class="fas fa-lock me-1"></i>Membres
-                            </span>
-                            <span class="badge bg-info-subtle text-info">{{ $stats['authenticated'] }}</span>
-                        </div>
-                        <div class="progress" style="height: 6px;">
-                            <div class="progress-bar bg-info"
-                                style="width: {{ ($stats['authenticated'] / $stats['total']) * 100 }}%"></div>
-                        </div>
-                    </div>
                     @else
-                    <p class="text-muted mb-0">Aucune fiche créée</p>
+                        <p class="text-muted mb-0">Aucune fiche créée</p>
                     @endif
                 </div>
             </div>
+        </div>
 
+        <div class="col-lg-6">
             <!-- Actions rapides -->
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-warning text-white p-3">
@@ -459,9 +462,9 @@
                             <i class="fas fa-layer-group me-2"></i>Gérer les sous-catégories
                         </a>
                         @if($stats['featured'] > 0)
-                        <a href="{{ route('admin.fiches.index', ['featured' => '1']) }}" class="btn btn-outline-warning">
-                            <i class="fas fa-star me-2"></i>Fiches vedettes ({{ $stats['featured'] }})
-                        </a>
+                            <a href="{{ route('admin.fiches.index', ['featured' => '1']) }}" class="btn btn-outline-warning">
+                                <i class="fas fa-star me-2"></i>Fiches vedettes ({{ $stats['featured'] }})
+                            </a>
                         @endif
                     </div>
                 </div>
@@ -473,38 +476,50 @@
 
 @push('styles')
 <style>
-    .bg-gradient-primary {
-        background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
-    }
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
+}
 
-    .bg-gradient-success {
-        background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-    }
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
 
-    .bg-gradient-info {
-        background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
-    }
+.bg-gradient-info {
+    background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+}
 
-    .bg-gradient-warning {
-        background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
-    }
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+}
 
-    .hover-bg:hover {
-        background-color: #f8f9fa;
-    }
+.hover-bg:hover {
+    background-color: #f8f9fa;
+}
 
-    .dropdown-menu {
-        border: 0;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    }
+.dropdown-menu {
+    border: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Style pour les boutons d'actions */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
 </style>
 @endpush
 
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser les tooltips Bootstrap
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
     // ========================================
-    // GESTION DES SÉLECTIONS MULTIPLES
+    // GESTION DE LA SÉLECTION DES FICHES
     // ========================================
     
     const selectAllCheckbox = document.getElementById('select-all-fiches');
@@ -512,20 +527,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const bulkActionsContainer = document.getElementById('bulk-actions-container');
     const selectedCountSpan = document.getElementById('selected-count');
     const selectedFichesContainer = document.getElementById('selected-fiches-container');
-    const bulkForm = document.getElementById('bulk-assign-form');
     const cancelSelectionBtn = document.getElementById('cancel-selection');
+    const bulkForm = document.getElementById('bulk-assign-form');
     
-    // Fonction pour mettre à jour le compteur et afficher/masquer les actions groupées
+    // Fonction pour mettre à jour l'UI de sélection
     function updateSelectionUI() {
         const selectedCheckboxes = document.querySelectorAll('.fiche-checkbox:checked');
         const count = selectedCheckboxes.length;
         
-        selectedCountSpan.textContent = count;
-        
+        // Afficher/masquer la barre d'actions groupées
         if (count > 0) {
             bulkActionsContainer.style.display = 'block';
+            selectedCountSpan.textContent = count;
             
-            // Mettre à jour les inputs cachés avec les IDs sélectionnés
+            // Générer les inputs cachés pour les IDs sélectionnés
             selectedFichesContainer.innerHTML = '';
             selectedCheckboxes.forEach(checkbox => {
                 const input = document.createElement('input');

@@ -141,13 +141,13 @@
                     </a>
                     
                     <!-- Sites sportifs de référence -->
-                    <a href="https://www.sports.fr/" target="_blank" rel="noopener noreferrer" 
-                       class="btn btn-sm btn-outline-success" title="Sports.fr">
-                        <i class="fas fa-trophy me-1"></i>Sports.fr
+                    <a href="https://clients.o2switch.fr/" target="_blank" rel="noopener noreferrer" 
+                       class="btn btn-sm btn-outline-success" title="o2switch Hébergement">
+                        <i class="fas fa-trophy me-1"></i>o2switch
                     </a>
-                    <a href="https://www.lequipe.fr/Natation/" target="_blank" rel="noopener noreferrer" 
-                       class="btn btn-sm btn-outline-success" title="L'Équipe Natation">
-                        <i class="fas fa-newspaper me-1"></i>L'Équipe
+                    <a href="https://ecran.o2switch.net:2083/" target="_blank" rel="noopener noreferrer" 
+                       class="btn btn-sm btn-outline-success" title="o2switch">
+                        <i class="fas fa-newspaper me-1"></i>o2switch CPanel
                     </a>
                     
                     <!-- Outils test performance -->

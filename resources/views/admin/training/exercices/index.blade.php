@@ -7,8 +7,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des exercices -->
-        <div class="col-lg-9">
+        <!-- Liste des exercices - Pleine largeur -->
+        <div class="col-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
@@ -18,34 +18,24 @@
                             </h5>
                             <small class="opacity-75">{{ $exercices->total() ?? $exercices->count() }} exercice(s) au total</small>
                         </div>
-                        <a href="{{ route('admin.training.exercices.create') }}" class="btn btn-light">
-                            <i class="fas fa-plus me-2"></i>Nouvel exercice
-                        </a>
+                        <div class="d-flex gap-2">
+                            <!-- Bouton Actions en masse -->
+                            <button type="button" 
+                                    class="btn btn-warning d-none" 
+                                    id="bulk-action-btn"
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#bulkCategoriesModal">
+                                <i class="fas fa-layer-group me-2"></i>
+                                <span id="selected-count">0</span> sélectionné(s)
+                            </button>
+                            
+                            <a href="{{ route('admin.training.exercices.create') }}" class="btn btn-light">
+                                <i class="fas fa-plus me-2"></i>Nouvel exercice
+                            </a>
+                        </div>
                     </div>
                 </div>
-<div class="d-flex align-items-center justify-content-between">
-    <div>
-        <h5 class="mb-1">
-            <i class="fas fa-running me-2"></i>Exercices
-        </h5>
-        <small class="opacity-75">{{ $exercices->total() ?? $exercices->count() }} exercice(s) au total</small>
-    </div>
-    <div class="d-flex gap-2">
-        <!-- Bouton Actions en masse -->
-        <button type="button" 
-                class="btn btn-warning d-none" 
-                id="bulk-action-btn"
-                data-bs-toggle="modal" 
-                data-bs-target="#bulkCategoriesModal">
-            <i class="fas fa-layer-group me-2"></i>
-            <span id="selected-count">0</span> sélectionné(s)
-        </button>
-        
-        <a href="{{ route('admin.training.exercices.create') }}" class="btn btn-light">
-            <i class="fas fa-plus me-2"></i>Nouvel exercice
-        </a>
-    </div>
-</div>
+                
                 <!-- Filtres -->
                 <div class="card-body border-bottom p-4 bg-light">
                     <form method="GET" class="row g-3">
@@ -82,177 +72,171 @@
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
                             <thead class="bg-light">
-    <tr>
-        <th class="border-0 px-4 py-3" style="width: 50px;">
-            <input type="checkbox" 
-                   id="select-all" 
-                   class="form-check-input"
-                   title="Tout sélectionner">
-        </th>
-        <th class="border-0 px-4 py-3">Exercice</th>
-        <th class="border-0 px-4 py-3">Catégories</th>
-        <th class="border-0 px-4 py-3">Type & Niveau</th>
-        <th class="border-0 px-4 py-3">Muscles</th>
-        <th class="border-0 px-4 py-3">Statut</th>
-        <th class="border-0 px-4 py-3">Utilisation</th>
-        <th class="border-0 px-4 py-3 text-end">Actions</th>
-    </tr>
-</thead>
+                                <tr>
+                                    <th class="border-0 px-4 py-3" style="width: 50px;">
+                                        <input type="checkbox" 
+                                               id="select-all" 
+                                               class="form-check-input"
+                                               title="Tout sélectionner">
+                                    </th>
+                                    <th class="border-0 px-4 py-3">Exercice</th>
+                                    <th class="border-0 px-4 py-3">Catégories</th>
+                                    <th class="border-0 px-4 py-3">Type & Niveau</th>
+                                    <th class="border-0 px-4 py-3">Muscles</th>
+                                    <th class="border-0 px-4 py-3">Statut</th>
+                                    <th class="border-0 px-4 py-3">Utilisation</th>
+                                    <th class="border-0 px-4 py-3 text-center">Actions</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 @foreach($exercices as $exercice)
                                 <tr class="border-bottom hover-bg">
-    <td class="px-4 py-3">
-        <input type="checkbox" 
-               class="form-check-input exercice-checkbox" 
-               value="{{ $exercice->id }}"
-               data-titre="{{ $exercice->titre }}">
-    </td>
-    <td class="px-4 py-3">
-        <!-- Contenu existant image + titre -->
-        <div class="d-flex align-items-start">
-            @if($exercice->image)
-            <img src="{{ $exercice->image }}"
-                class="rounded me-3"
-                style="width: 60px; height: 45px; object-fit: cover;"
-                alt="">
-            @else
-            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
-                style="width: 60px; height: 45px;">
-                <i class="fas fa-running text-muted"></i>
-            </div>
-            @endif
-            <div class="flex-fill">
-                <h6 class="mb-1">
-                    <a href="{{ route('admin.training.exercices.show', $exercice) }}"
-                        class="text-decoration-none text-dark">
-                        {!! Str::limit($exercice->titre, 50) !!}
-                    </a>
-                </h6>
-                @if($exercice->description)
-                <small class="text-muted">{!! Str::limit(strip_tags($exercice->description), 60) !!}</small>
-                @endif
-            </div>
-        </div>
-    </td>
-    
-    <td class="px-4 py-3">
-        <div class="d-flex flex-column gap-1">
-            @if($exercice->categories->isNotEmpty())
-                @foreach($exercice->categories->take(2) as $cat)
-                    <span class="badge bg-primary-subtle text-primary">
-                        <i class="fas fa-folder me-1"></i>{{ $cat->name }}
-                    </span>
-                @endforeach
-                @if($exercice->categories->count() > 2)
-                    <span class="badge bg-secondary">
-                        +{{ $exercice->categories->count() - 2 }} autre(s)
-                    </span>
-                @endif
-            @else
-                <span class="badge bg-secondary">Non catégorisé</span>
-            @endif
-            
-            @if($exercice->sousCategories->isNotEmpty())
-                @foreach($exercice->sousCategories->take(1) as $sousCat)
-                    <span class="badge bg-info-subtle text-info">
-                        <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
-                    </span>
-                @endforeach
-                @if($exercice->sousCategories->count() > 1)
-                    <span class="badge bg-secondary">
-                        +{{ $exercice->sousCategories->count() - 1 }}
-                    </span>
-                @endif
-            @endif
-        </div>
-    </td>
+                                    <td class="px-4 py-3">
+                                        <input type="checkbox" 
+                                               class="form-check-input exercice-checkbox" 
+                                               value="{{ $exercice->id }}"
+                                               data-titre="{{ $exercice->titre }}">
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="d-flex align-items-start">
+                                            @if($exercice->image)
+                                            <img src="{{ $exercice->image }}"
+                                                class="rounded me-3"
+                                                style="width: 60px; height: 45px; object-fit: cover;"
+                                                alt="">
+                                            @else
+                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
+                                                style="width: 60px; height: 45px;">
+                                                <i class="fas fa-running text-muted"></i>
+                                            </div>
+                                            @endif
+                                            <div class="flex-fill">
+                                                <h6 class="mb-1">
+                                                    <a href="{{ route('admin.training.exercices.show', $exercice) }}"
+                                                        class="text-decoration-none text-dark">
+                                                        {!! Str::limit($exercice->titre, 50) !!}
+                                                    </a>
+                                                </h6>
+                                                @if($exercice->description)
+                                                <small class="text-muted">{!! Str::limit(strip_tags($exercice->description), 60) !!}</small>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                    <td class="px-4 py-3">
+                                        <div class="d-flex flex-column gap-1">
+                                            @if($exercice->categories->isNotEmpty())
+                                                @foreach($exercice->categories->take(2) as $cat)
+                                                    <span class="badge bg-primary-subtle text-primary">
+                                                        <i class="fas fa-folder me-1"></i>{{ $cat->name }}
+                                                    </span>
+                                                @endforeach
+                                                @if($exercice->categories->count() > 2)
+                                                    <span class="badge bg-secondary">
+                                                        +{{ $exercice->categories->count() - 2 }} autre(s)
+                                                    </span>
+                                                @endif
+                                            @else
+                                                <span class="badge bg-secondary">Non catégorisé</span>
+                                            @endif
+                                            
+                                            @if($exercice->sousCategories->isNotEmpty())
+                                                @foreach($exercice->sousCategories->take(1) as $sousCat)
+                                                    <span class="badge bg-info-subtle text-info">
+                                                        <i class="fas fa-layer-group me-1"></i>{{ $sousCat->name }}
+                                                    </span>
+                                                @endforeach
+                                                @if($exercice->sousCategories->count() > 1)
+                                                    <span class="badge bg-secondary">
+                                                        +{{ $exercice->sousCategories->count() - 1 }}
+                                                    </span>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </td>
 
-    <!-- Le reste des colonnes reste identique -->
-    <td class="px-4 py-3">
-        <div class="d-flex flex-column gap-1">
-            @if($exercice->type_exercice)
-            <span class="badge bg-primary-subtle text-primary">
-                {{ ucfirst($exercice->type_exercice) }}
-            </span>
-            @else
-            <span class="badge bg-secondary">Non défini</span>
-            @endif
+                                    <td class="px-4 py-3">
+                                        <div class="d-flex flex-column gap-1">
+                                            @if($exercice->type_exercice)
+                                            <span class="badge bg-primary-subtle text-primary">
+                                                {{ ucfirst($exercice->type_exercice) }}
+                                            </span>
+                                            @else
+                                            <span class="badge bg-secondary">Non défini</span>
+                                            @endif
 
-            @if($exercice->niveau)
-            @php
-            $badgeColor = match($exercice->niveau) {
-            'debutant' => 'success',
-            'avance' => 'danger',
-            default => 'warning'
-            };
-            @endphp
-            <span class="badge bg-{{ $badgeColor }}-subtle text-{{ $badgeColor }}">
-                {{ ucfirst($exercice->niveau) }}
-            </span>
-            @else
-            <span class="badge bg-secondary">Non défini</span>
-            @endif
-        </div>
-    </td>
+                                            @if($exercice->niveau)
+                                            @php
+                                            $badgeColor = match($exercice->niveau) {
+                                            'debutant' => 'success',
+                                            'avance' => 'danger',
+                                            default => 'warning'
+                                            };
+                                            @endphp
+                                            <span class="badge bg-{{ $badgeColor }}-subtle text-{{ $badgeColor }}">
+                                                {{ ucfirst($exercice->niveau) }}
+                                            </span>
+                                            @else
+                                            <span class="badge bg-secondary">Non défini</span>
+                                            @endif
+                                        </div>
+                                    </td>
 
-    <td class="px-4 py-3">
-        <small class="text-muted">
-            {{ $exercice->muscles_cibles_formatted }}
-        </small>
-    </td>
+                                    <td class="px-4 py-3">
+                                        <small class="text-muted">
+                                            {{ $exercice->muscles_cibles_formatted }}
+                                        </small>
+                                    </td>
 
-    <td class="px-4 py-3">
-        <span class="badge bg-{{ $exercice->is_active ? 'success' : 'secondary' }}-subtle text-{{ $exercice->is_active ? 'success' : 'secondary' }}">
-            {{ $exercice->is_active ? 'Actif' : 'Inactif' }}
-        </span>
-    </td>
+                                    <td class="px-4 py-3">
+                                        <span class="badge bg-{{ $exercice->is_active ? 'success' : 'secondary' }}-subtle text-{{ $exercice->is_active ? 'success' : 'secondary' }}">
+                                            {{ $exercice->is_active ? 'Actif' : 'Inactif' }}
+                                        </span>
+                                    </td>
 
-    <td class="px-4 py-3">
-        <div class="d-flex align-items-center text-muted">
-            <i class="fas fa-list me-1"></i>
-            <span>{{ $exercice->series()->count() }} série(s)</span>
-        </div>
-    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="d-flex align-items-center text-muted">
+                                            <i class="fas fa-list me-1"></i>
+                                            <span>{{ $exercice->series()->count() }} série(s)</span>
+                                        </div>
+                                    </td>
 
-    <td class="px-4 py-3 text-end">
-        <div class="dropdown">
-            <button class="btn btn-sm btn-outline-secondary border-0"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i class="fas fa-ellipsis-v"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow">
-                <li>
-                    <a class="dropdown-item d-flex align-items-center"
-                        href="{{ route('admin.training.exercices.show', $exercice) }}">
-                        <i class="fas fa-eye me-2 text-info"></i>Voir
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item d-flex align-items-center"
-                        href="{{ route('admin.training.exercices.edit', $exercice) }}">
-                        <i class="fas fa-edit me-2 text-primary"></i>Modifier
-                    </a>
-                </li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li>
-                    <form method="POST"
-                        action="{{ route('admin.training.exercices.destroy', $exercice) }}"
-                        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet exercice ?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                            class="dropdown-item d-flex align-items-center text-danger">
-                            <i class="fas fa-trash me-2"></i>Supprimer
-                        </button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-    </td>
-</tr>
+                                    <td class="px-4 py-3 text-center">
+                                        <div class="d-inline-flex gap-1">
+                                            <!-- Bouton Voir -->
+                                            <a href="{{ route('admin.training.exercices.show', $exercice) }}" 
+                                               class="btn btn-sm btn-outline-info" 
+                                               title="Voir"
+                                               data-bs-toggle="tooltip">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            
+                                            <!-- Bouton Modifier -->
+                                            <a href="{{ route('admin.training.exercices.edit', $exercice) }}" 
+                                               class="btn btn-sm btn-outline-primary" 
+                                               title="Modifier"
+                                               data-bs-toggle="tooltip">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            
+                                            <!-- Bouton Supprimer -->
+                                            <form method="POST"
+                                                action="{{ route('admin.training.exercices.destroy', $exercice) }}"
+                                                onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet exercice ?')"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-outline-danger"
+                                                        title="Supprimer"
+                                                        data-bs-toggle="tooltip">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -291,10 +275,10 @@
             </div>
         </div>
 
-        <!-- Sidebar statistiques -->
-        <div class="col-lg-3">
+        <!-- Cards en bas : Statistiques et Actions rapides -->
+        <div class="col-lg-6">
             <!-- Statistiques générales -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
                         <i class="fas fa-chart-bar me-2"></i>Statistiques
@@ -336,7 +320,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="col-lg-6">
             <!-- Actions rapides -->
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-warning text-white p-3">
@@ -361,6 +347,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal Actions en masse -->
 <div class="modal fade" id="bulkCategoriesModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -487,11 +474,24 @@
         border: 0;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     }
+
+    /* Style pour les boutons d'actions */
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
 </style>
 @endpush
+
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser les tooltips Bootstrap
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
     const selectAllCheckbox = document.getElementById('select-all');
     const exerciceCheckboxes = document.querySelectorAll('.exercice-checkbox');
     const bulkActionBtn = document.getElementById('bulk-action-btn');

@@ -31,7 +31,7 @@
             <!-- Grille responsive de cartes -->
             <div class="row g-4">
                 @foreach($sections as $section)
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-md-6 col-lg-6">
                         <div class="card h-100 border-0 shadow-sm hover-catalogue-card">
                             
                         <!-- Image de la section -->

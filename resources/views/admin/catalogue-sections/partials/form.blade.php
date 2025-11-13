@@ -43,29 +43,39 @@
                     @enderror
                 </div>
 
-                <!-- Description courte -->
+                <!-- Description courte avec Quill et IA -->
                 <div class="mb-4">
                     <label for="short_description" class="form-label fw-semibold">Description courte</label>
+                    
+                    <!-- Conteneur pour l'éditeur Quill -->
+                    <div id="short-description-editor" style="height: 200px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    
+                    <!-- Textarea cachée pour Laravel -->
                     <textarea name="short_description" 
                               id="short_description" 
-                              rows="3"
-                              class="form-control @error('short_description') is-invalid @enderror"
-                              placeholder="Résumé de la section...">{{ old('short_description', isset($section) ? $section->short_description : '') }}</textarea>
+                              class="d-none @error('short_description') is-invalid @enderror">{{ old('short_description', isset($section) ? $section->short_description : '') }}</textarea>
+                              
+                    <div class="form-text">Résumé de la section</div>
                     @error('short_description')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <!-- Description longue -->
+                <!-- Description longue avec Quill et IA -->
                 <div class="mb-4">
                     <label for="long_description" class="form-label fw-semibold">Description complète</label>
+                    
+                    <!-- Conteneur pour l'éditeur Quill -->
+                    <div id="long-description-editor" style="height: 350px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    
+                    <!-- Textarea cachée pour Laravel -->
                     <textarea name="long_description" 
                               id="long_description" 
-                              rows="6"
-                              class="form-control @error('long_description') is-invalid @enderror"
-                              placeholder="Description détaillée...">{{ old('long_description', isset($section) ? $section->long_description : '') }}</textarea>
+                              class="d-none @error('long_description') is-invalid @enderror">{{ old('long_description', isset($section) ? $section->long_description : '') }}</textarea>
+                              
+                    <div class="form-text">Description détaillée</div>
                     @error('long_description')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
@@ -246,10 +256,53 @@
 @endpush
 
 @push('scripts')
+{{-- Charger les scripts UNE SEULE FOIS --}}
+@once
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script src="{{ asset('js/media-selector.js') }}"></script>
+<script src="{{ asset('js/quill-advanced.js') }}"></script>
+<script src="{{ asset('js/quill-ai-optimizer.js') }}"></script>
+@endonce
+
+{{-- Scripts d'initialisation --}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-génération du slug
+    // ========================================
+    // 1. INITIALISATION DES ÉDITEURS QUILL
+    // ========================================
+    let quillShortDescription = null;
+    let quillLongDescription = null;
+    
+    if (document.getElementById('short-description-editor')) {
+        quillShortDescription = initQuillEditor('#short-description-editor', 'short_description');
+    }
+    
+    if (document.getElementById('long-description-editor')) {
+        quillLongDescription = initQuillEditor('#long-description-editor', 'long_description');
+    }
+
+    // ========================================
+    // 2. SYNCHRONISATION À LA SOUMISSION
+    // ========================================
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const shortDescriptionTextarea = document.getElementById('short_description');
+            if (shortDescriptionTextarea && quillShortDescription) {
+                shortDescriptionTextarea.value = quillShortDescription.root.innerHTML;
+            }
+            
+            const longDescriptionTextarea = document.getElementById('long_description');
+            if (longDescriptionTextarea && quillLongDescription) {
+                longDescriptionTextarea.value = quillLongDescription.root.innerHTML;
+            }
+        });
+    }
+
+    // ========================================
+    // 3. AUTO-GÉNÉRATION DU SLUG
+    // ========================================
     const nameInput = document.getElementById('name');
     const slugInput = document.getElementById('slug');
     
@@ -271,7 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Aperçu image
+    // ========================================
+    // 4. APERÇU IMAGE
+    // ========================================
     const imageInput = document.getElementById('image');
     const imagePreview = document.getElementById('imagePreview');
     const imagePreviewContainer = document.getElementById('currentImagePreview');
@@ -287,6 +342,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ========================================
+    // 5. INITIALISER L'IA APRÈS QUILL
+    // ========================================
+    setTimeout(function() {
+        if (typeof window.initQuillAI === 'function') {
+            window.initQuillAI();
+        }
+    }, 1500);
 });
 </script>
 @endpush
