@@ -7,8 +7,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des telechargements -->
-        <div class="col-lg-9">
+        <!-- Liste des telechargements - Pleine largeur -->
+        <div class="col-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
@@ -139,7 +139,7 @@
                                         <th class="border-0 px-4 py-3">Permission</th>
                                         <th class="border-0 px-4 py-3">Statut</th>
                                         <th class="border-0 px-4 py-3">Stats</th>
-                                        <th class="border-0 px-4 py-3 text-end">Actions</th>
+                                        <th class="border-0 px-4 py-3 text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -228,57 +228,70 @@
                                                 </div>
                                             </td>
                                             
-                                            <td class="px-4 py-3 text-end">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm btn-outline-secondary border-0" 
-                                                            data-bs-toggle="dropdown" 
-                                                            aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" 
-                                                               href="{{ route('admin.downloadables.show', $downloadable) }}">
-                                                                <i class="fas fa-eye me-2 text-info"></i>Voir
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" 
-                                                               href="{{ route('admin.downloadables.edit', $downloadable) }}">
-                                                                <i class="fas fa-edit me-2 text-primary"></i>Modifier
-                                                            </a>
-                                                        </li>
-                                                        @if($downloadable->status === 'active' && $downloadable->category)
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" 
-                                                                   href="{{ route('ebook.show', [$downloadable->category->slug, $downloadable->slug]) }}" 
-                                                                   target="_blank">
-                                                                    <i class="fas fa-external-link-alt me-2 text-success"></i>Voir en ligne
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                        <li>
-                                                            <form method="POST" action="{{ route('admin.downloadables.duplicate', $downloadable) }}">
-                                                                @csrf
-                                                                <button type="submit" class="dropdown-item d-flex align-items-center">
-                                                                    <i class="fas fa-copy me-2 text-info"></i>Dupliquer
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                        <li><hr class="dropdown-divider"></li>
-                                                        <li>
-                                                            <form method="POST" 
-                                                                  action="{{ route('admin.downloadables.destroy', $downloadable) }}" 
-                                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fichier ?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" 
-                                                                        class="dropdown-item d-flex align-items-center text-danger">
-                                                                    <i class="fas fa-trash me-2"></i>Supprimer
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
+                                            <td class="px-4 py-3 text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <!-- Bouton Voir -->
+                                                    <a href="{{ route('admin.downloadables.show', $downloadable) }}" 
+                                                       class="btn btn-sm btn-outline-info" 
+                                                       title="Voir"
+                                                       data-bs-toggle="tooltip">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    
+                                                    <!-- Bouton Modifier -->
+                                                    <a href="{{ route('admin.downloadables.edit', $downloadable) }}" 
+                                                       class="btn btn-sm btn-outline-primary" 
+                                                       title="Modifier"
+                                                       data-bs-toggle="tooltip">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    
+                                                    <!-- Bouton Voir en ligne -->
+                                                    @if($downloadable->status === 'active' && $downloadable->category)
+                                                        <a href="{{ route('ebook.show', [$downloadable->category->slug, $downloadable->slug]) }}" 
+                                                           target="_blank"
+                                                           class="btn btn-sm btn-outline-success" 
+                                                           title="Voir en ligne"
+                                                           data-bs-toggle="tooltip">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </a>
+                                                    @else
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-outline-secondary" 
+                                                                title="Non disponible en ligne"
+                                                                data-bs-toggle="tooltip"
+                                                                disabled>
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </button>
+                                                    @endif
+                                                    
+                                                    <!-- Bouton Dupliquer -->
+                                                    <form method="POST" 
+                                                          action="{{ route('admin.downloadables.duplicate', $downloadable) }}"
+                                                          class="d-inline">
+                                                        @csrf
+                                                        <button type="submit" 
+                                                                class="btn btn-sm btn-outline-info" 
+                                                                title="Dupliquer"
+                                                                data-bs-toggle="tooltip">
+                                                            <i class="fas fa-copy"></i>
+                                                        </button>
+                                                    </form>
+                                                    
+                                                    <!-- Bouton Supprimer -->
+                                                    <form method="POST" 
+                                                          action="{{ route('admin.downloadables.destroy', $downloadable) }}" 
+                                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fichier ?')"
+                                                          class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" 
+                                                                class="btn btn-sm btn-outline-danger" 
+                                                                title="Supprimer"
+                                                                data-bs-toggle="tooltip">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -320,10 +333,10 @@
             </div>
         </div>
 
-        <!-- Sidebar statistiques -->
-        <div class="col-lg-3">
+        <!-- Cards en bas : Statistiques et Actions rapides -->
+        <div class="col-lg-6">
             <!-- Statistiques generales -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
                         <i class="fas fa-chart-bar me-2"></i>Statistiques
@@ -365,7 +378,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="col-lg-6">
             <!-- Actions rapides -->
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-warning text-white p-3">
@@ -417,12 +432,24 @@
     border: 0;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
+
+/* Style pour les boutons d'actions */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
 </style>
 @endpush
 
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser les tooltips Bootstrap
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
     // Gestion des checkboxes
     const masterCheckbox = document.getElementById('master-checkbox');
     const itemCheckboxes = document.querySelectorAll('.item-checkbox');

@@ -7,8 +7,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des fichiers -->
-        <div class="col-lg-9">
+        <!-- Liste des fichiers - Pleine largeur -->
+        <div class="col-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
@@ -65,7 +65,7 @@
                                         <th class="border-0 px-4 py-3">Taille</th>
                                         <th class="border-0 px-4 py-3">Utilisé par</th>
                                         <th class="border-0 px-4 py-3">Date</th>
-                                        <th class="border-0 px-4 py-3 text-end">Actions</th>
+                                        <th class="border-0 px-4 py-3 text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,32 +96,30 @@
                                             <td class="px-4 py-3">
                                                 {{ $file->created_at->format('d/m/Y H:i') }}
                                             </td>
-                                            <td class="px-4 py-3 text-end">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm btn-outline-secondary" 
-                                                            data-bs-toggle="dropdown">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li>
-                                                            <a class="dropdown-item" 
-                                                               href="{{ route('admin.ebook-files.show', $file) }}">
-                                                                <i class="fas fa-eye me-2"></i>Voir
-                                                            </a>
-                                                        </li>
-                                                        <li><hr class="dropdown-divider"></li>
-                                                        <li>
-                                                            <form method="POST" 
-                                                                  action="{{ route('admin.ebook-files.destroy', $file) }}"
-                                                                  onsubmit="return confirm('Supprimer ce fichier ?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="dropdown-item text-danger">
-                                                                    <i class="fas fa-trash me-2"></i>Supprimer
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
+                                            <td class="px-4 py-3 text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <!-- Bouton Voir -->
+                                                    <a href="{{ route('admin.ebook-files.show', $file) }}" 
+                                                       class="btn btn-sm btn-outline-info" 
+                                                       title="Voir"
+                                                       data-bs-toggle="tooltip">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    
+                                                    <!-- Bouton Supprimer -->
+                                                    <form method="POST" 
+                                                          action="{{ route('admin.ebook-files.destroy', $file) }}"
+                                                          onsubmit="return confirm('Supprimer ce fichier ?')"
+                                                          class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" 
+                                                                class="btn btn-sm btn-outline-danger" 
+                                                                title="Supprimer"
+                                                                data-bs-toggle="tooltip">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -148,9 +146,9 @@
             </div>
         </div>
 
-        <!-- Sidebar statistiques -->
-        <div class="col-lg-3">
-            <div class="card border-0 shadow-sm mb-4">
+        <!-- Cards en bas : Statistiques et Actions rapides -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Statistiques</h6>
                 </div>
@@ -187,10 +185,20 @@
                     @endforeach
                 </div>
             </div>
+        </div>
 
+        <div class="col-lg-6">
             <div class="card border-0 shadow-sm">
+                <div class="card-header bg-gradient-warning text-white p-3">
+                    <h6 class="mb-0">
+                        <i class="fas fa-tools me-2"></i>Actions rapides
+                    </h6>
+                </div>
                 <div class="card-body p-3">
                     <div class="d-grid gap-2">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                            <i class="fas fa-upload me-2"></i>Uploader des fichiers
+                        </button>
                         <a href="{{ route('admin.downloadables.index') }}" class="btn btn-outline-primary">
                             <i class="fas fa-download me-2"></i>Gérer les téléchargements
                         </a>
@@ -214,5 +222,28 @@
 .bg-gradient-success {
     background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
 }
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+}
+.hover-bg:hover {
+    background-color: #f8f9fa;
+}
+/* Style pour les boutons d'actions */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
 </style>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser les tooltips Bootstrap
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
 @endpush

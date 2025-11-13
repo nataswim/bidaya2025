@@ -228,4 +228,65 @@ class FicheController extends Controller
         return redirect()->route('admin.fiches.index')
             ->with('success', 'Fiche supprimée avec succès.');
     }
+
+/**
+ * 🇬🇧 Bulk assign categories and sub-categories to selected fiches
+ * 🇫🇷 Assigner en masse des catégories et sous-catégories aux fiches sélectionnées
+ */
+public function bulkAssignCategories(Request $request)
+{
+    $this->checkAdminAccess();
+    
+    // Validation
+    $validated = $request->validate([
+        'fiche_ids' => 'required|array|min:1',
+        'fiche_ids.*' => 'exists:fiches,id',
+        'fiches_category_id' => 'nullable|exists:fiches_categories,id',
+        'fiches_sous_category_id' => 'nullable|exists:fiches_sous_categories,id',
+    ], [
+        'fiche_ids.required' => 'Veuillez sélectionner au moins une fiche.',
+        'fiche_ids.min' => 'Veuillez sélectionner au moins une fiche.',
+        'fiches_category_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
+        'fiches_sous_category_id.exists' => 'La sous-catégorie sélectionnée n\'existe pas.',
+    ]);
+    
+    // Vérifier qu'au moins une catégorie ou sous-catégorie est fournie
+    if (empty($validated['fiches_category_id']) && empty($validated['fiches_sous_category_id'])) {
+        return redirect()->back()
+            ->with('error', 'Veuillez sélectionner au moins une catégorie ou une sous-catégorie.');
+    }
+    
+    $ficheIds = $validated['fiche_ids'];
+    $categoryId = $validated['fiches_category_id'] ?? null;
+    $sousCategoryId = $validated['fiches_sous_category_id'] ?? null;
+    
+    // Données à mettre à jour
+    $updateData = [
+        'updated_by' => auth()->id(),
+    ];
+    
+    // Si sous-catégorie fournie, récupérer automatiquement la catégorie parente
+    if ($sousCategoryId) {
+        $sousCategory = \App\Models\FichesSousCategory::find($sousCategoryId);
+        if ($sousCategory) {
+            $updateData['fiches_category_id'] = $sousCategory->fiches_category_id;
+            $updateData['fiches_sous_category_id'] = $sousCategoryId;
+        }
+    } elseif ($categoryId) {
+        // Seulement catégorie fournie
+        $updateData['fiches_category_id'] = $categoryId;
+        $updateData['fiches_sous_category_id'] = null; // Réinitialiser la sous-catégorie
+    }
+    
+    // Mise à jour en masse
+    $updatedCount = Fiche::whereIn('id', $ficheIds)->update($updateData);
+    
+    // Message de succès
+    $message = "✓ {$updatedCount} fiche(s) mise(s) à jour avec succès.";
+    
+    return redirect()->route('admin.fiches.index')
+        ->with('success', $message);
+}
+
+
 }

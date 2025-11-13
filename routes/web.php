@@ -408,6 +408,11 @@ Route::post('/admin/users/{user}/promote', [UserController::class, 'promote'])->
     Route::get('api/fiches-sous-categories/by-category', [FichesSousCategoryController::class, 'apiByCategory'])
         ->name('fiches-sous-categories.api.by-category');
     
+
+// 🇫🇷 Route pour l'assignation groupée de catégories aux fiches
+Route::post('fiches/bulk-assign-categories', [FicheController::class, 'bulkAssignCategories'])
+    ->name('fiches.bulk-assign-categories');
+
     // Gestion des fiches
     Route::resource('fiches', FicheController::class)->parameters([
         'fiches' => 'fiche'

@@ -65,6 +65,8 @@
 
 
 
+
+
                 <!-- Catégorisation Multiple -->
                 <div class="mb-4">
                     <h6 class="fw-semibold mb-3 text-primary">
@@ -72,65 +74,133 @@
                     </h6>
 
                     <div class="row g-3">
+                        <!-- Catégories -->
                         <div class="col-md-6">
-                            <label for="categories" class="form-label fw-semibold">
-                                Catégories <small class="text-muted">(plusieurs choix possibles)</small>
+                            <label class="form-label fw-semibold mb-3">
+                                <i class="fas fa-folder me-2 text-primary"></i>Catégories
+                                <small class="text-muted">(plusieurs choix possibles)</small>
                             </label>
-                            <select name="categories[]"
-                                id="categories"
-                                class="form-select @error('categories') is-invalid @enderror"
-                                multiple
-                                size="8">
-                                @if(isset($categories))
+
+                            <div class="border rounded p-3 bg-light" style="max-height: 250px; overflow-y: auto;">
+                                @if(isset($categories) && $categories->count() > 0)
                                 @foreach($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    {{ (isset($exercice) && $exercice->categories->contains($category->id)) ? 'selected' : '' }}>
-                                    {{ $category->name }}
-                                </option>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input category-checkbox"
+                                        type="checkbox"
+                                        name="categories[]"
+                                        value="{{ $category->id }}"
+                                        id="form-cat-{{ $category->id }}"
+                                        data-category-id="{{ $category->id }}"
+                                        {{ (isset($exercice) && $exercice->categories->contains($category->id)) ? 'checked' : '' }}>
+                                    <label class="form-check-label w-100 d-flex justify-content-between align-items-center"
+                                        for="form-cat-{{ $category->id }}">
+                                        <span>{{ $category->name }}</span>
+                                        @if($category->description)
+                                        <small class="text-muted ms-2" title="{{ $category->description }}">
+                                            <i class="fas fa-info-circle"></i>
+                                        </small>
+                                        @endif
+                                    </label>
+                                </div>
                                 @endforeach
+                                @else
+                                <p class="text-muted mb-0">
+                                    <i class="fas fa-exclamation-circle me-1"></i>
+                                    Aucune catégorie disponible
+                                </p>
                                 @endif
-                            </select>
-                            @error('categories')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">
-                                <i class="fas fa-info-circle me-1"></i>
-                                Maintenez Ctrl (Cmd sur Mac) pour sélectionner plusieurs catégories
                             </div>
+
+                            @if(isset($categories) && $categories->count() > 0)
+                            <div class="mt-2 d-flex gap-2">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="selectAllFormCategories()">
+                                    <i class="fas fa-check-square me-1"></i>Tout sélectionner
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="deselectAllFormCategories()">
+                                    <i class="fas fa-square me-1"></i>Tout désélectionner
+                                </button>
+                            </div>
+                            @endif
+
+                            @error('categories')
+                            <div class="text-danger small mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
 
+                        <!-- Sous-catégories -->
                         <div class="col-md-6">
-                            <label for="sous_categories" class="form-label fw-semibold">
-                                Sous-catégories <small class="text-muted">(plusieurs choix possibles)</small>
+                            <label class="form-label fw-semibold mb-3">
+                                <i class="fas fa-layer-group me-2 text-info"></i>Sous-catégories
+                                <small class="text-muted">(plusieurs choix possibles)</small>
                             </label>
-                            <select name="sous_categories[]"
-                                id="sous_categories"
-                                class="form-select @error('sous_categories') is-invalid @enderror"
-                                multiple
-                                size="8">
-                                @if(isset($sousCategories))
+
+                            <div class="border rounded p-3 bg-light" style="max-height: 250px; overflow-y: auto;" id="sous-categories-container">
+                                @if(isset($sousCategories) && $sousCategories->count() > 0)
                                 @foreach($sousCategories as $sousCategory)
-                                <option value="{{ $sousCategory->id }}"
-                                    data-category="{{ $sousCategory->exercice_category_id }}"
-                                    {{ (isset($exercice) && $exercice->sousCategories->contains($sousCategory->id)) ? 'selected' : '' }}>
-                                    {{ $sousCategory->category ? $sousCategory->category->name . ' → ' : '' }}{{ $sousCategory->name }}
-                                </option>
+                                <div class="form-check mb-2 sous-category-item"
+                                    data-parent-category="{{ $sousCategory->exercice_category_id }}"
+                                    style="display: none;">
+                                    <input class="form-check-input sous-category-checkbox"
+                                        type="checkbox"
+                                        name="sous_categories[]"
+                                        value="{{ $sousCategory->id }}"
+                                        id="form-sous-cat-{{ $sousCategory->id }}"
+                                        {{ (isset($exercice) && $exercice->sousCategories->contains($sousCategory->id)) ? 'checked' : '' }}>
+                                    <label class="form-check-label w-100" for="form-sous-cat-{{ $sousCategory->id }}">
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="flex-grow-1">
+                                                <span>{{ $sousCategory->name }}</span>
+                                                @if($sousCategory->category)
+                                                <br>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-arrow-right me-1"></i>{{ $sousCategory->category->name }}
+                                                </small>
+                                                @endif
+                                            </div>
+                                            @if($sousCategory->description)
+                                            <small class="text-muted ms-2" title="{{ $sousCategory->description }}">
+                                                <i class="fas fa-info-circle"></i>
+                                            </small>
+                                            @endif
+                                        </div>
+                                    </label>
+                                </div>
                                 @endforeach
+
+                                <div id="no-sous-categories-message" class="text-muted" style="display: none;">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Sélectionnez d'abord une ou plusieurs catégories pour voir les sous-catégories correspondantes.
+                                </div>
+                                @else
+                                <p class="text-muted mb-0">
+                                    <i class="fas fa-exclamation-circle me-1"></i>
+                                    Aucune sous-catégorie disponible
+                                </p>
                                 @endif
-                            </select>
-                            @error('sous_categories')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">
-                                <i class="fas fa-info-circle me-1"></i>
-                                Les sous-catégories se filtreront selon les catégories sélectionnées
                             </div>
+
+                            @if(isset($sousCategories) && $sousCategories->count() > 0)
+                            <div class="mt-2 d-flex gap-2" id="sous-categories-buttons" style="display: none !important;">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="selectAllFormSousCategories()">
+                                    <i class="fas fa-check-square me-1"></i>Tout sélectionner
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="deselectAllFormSousCategories()">
+                                    <i class="fas fa-square me-1"></i>Tout désélectionner
+                                </button>
+                            </div>
+                            @endif
+
+                            @error('sous_categories')
+                            <div class="text-danger small mt-2">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
+
+                    <div class="form-text mt-2">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Les sous-catégories affichées dépendent des catégories que vous avez sélectionnées.
+                    </div>
                 </div>
-
-
-
 
 
 
@@ -454,60 +524,95 @@
             }
         }
 
+
+
+
+
         // ========================================
-    // 5. FILTRAGE DYNAMIQUE DES SOUS-CATÉGORIES (MULTIPLE)
-    // ========================================
-    const categoriesSelect = document.getElementById('categories');
-    const sousCategoriesSelect = document.getElementById('sous_categories');
-    
-    if (categoriesSelect && sousCategoriesSelect) {
-        // Sauvegarder toutes les options
-        const allSousCategories = Array.from(sousCategoriesSelect.options);
-        
-        // Fonction de filtrage
-        function filterSousCategories() {
-            const selectedCategories = Array.from(categoriesSelect.selectedOptions).map(opt => opt.value);
-            
-            // Sauvegarder les sous-catégories déjà sélectionnées
-            const selectedSousCategories = Array.from(sousCategoriesSelect.selectedOptions).map(opt => opt.value);
-            
-            // Vider le select
-            sousCategoriesSelect.innerHTML = '';
-            
-            if (selectedCategories.length > 0) {
-                // Filtrer et ajouter les sous-catégories correspondantes
-                allSousCategories.forEach(option => {
-                    if (option.value && selectedCategories.includes(option.dataset.category)) {
-                        const newOption = option.cloneNode(true);
-                        sousCategoriesSelect.appendChild(newOption);
-                        
-                        // Restaurer la sélection si elle était active
-                        if (selectedSousCategories.includes(option.value)) {
-                            newOption.selected = true;
-                        }
-                    }
-                });
+        // GESTION DES CHECKBOXES CATÉGORIES/SOUS-CATÉGORIES
+        // ========================================
+
+        // Fonctions pour sélectionner/désélectionner toutes les catégories
+        function selectAllFormCategories() {
+            document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            filterFormSousCategories();
+        }
+
+        function deselectAllFormCategories() {
+            document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            filterFormSousCategories();
+        }
+
+        // Fonctions pour sélectionner/désélectionner toutes les sous-catégories visibles
+        function selectAllFormSousCategories() {
+            document.querySelectorAll('.sous-category-item').forEach(item => {
+                if (item.style.display !== 'none') {
+                    const checkbox = item.querySelector('.sous-category-checkbox');
+                    if (checkbox) checkbox.checked = true;
+                }
+            });
+        }
+
+        function deselectAllFormSousCategories() {
+            document.querySelectorAll('.sous-category-item').forEach(item => {
+                if (item.style.display !== 'none') {
+                    const checkbox = item.querySelector('.sous-category-checkbox');
+                    if (checkbox) checkbox.checked = false;
+                }
+            });
+        }
+
+        // Filtrage dynamique des sous-catégories selon les catégories sélectionnées
+        function filterFormSousCategories() {
+            const selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked'))
+                .map(cb => cb.dataset.categoryId);
+
+            const sousCategories = document.querySelectorAll('.sous-category-item');
+            const noMessageDiv = document.getElementById('no-sous-categories-message');
+            const buttonsDiv = document.getElementById('sous-categories-buttons');
+
+            let visibleCount = 0;
+
+            sousCategories.forEach(item => {
+                const parentCategory = item.dataset.parentCategory;
+
+                if (selectedCategories.length === 0 || selectedCategories.includes(parentCategory)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                    // Décocher les sous-catégories cachées
+                    const checkbox = item.querySelector('.sous-category-checkbox');
+                    if (checkbox) checkbox.checked = false;
+                }
+            });
+
+            // Afficher/masquer le message et les boutons
+            if (visibleCount > 0) {
+                if (noMessageDiv) noMessageDiv.style.display = 'none';
+                if (buttonsDiv) buttonsDiv.style.display = 'flex';
             } else {
-                // Afficher toutes les sous-catégories
-                allSousCategories.forEach(option => {
-                    if (option.value) {
-                        const newOption = option.cloneNode(true);
-                        sousCategoriesSelect.appendChild(newOption);
-                        
-                        // Restaurer la sélection
-                        if (selectedSousCategories.includes(option.value)) {
-                            newOption.selected = true;
-                        }
-                    }
-                });
+                if (noMessageDiv) noMessageDiv.style.display = 'block';
+                if (buttonsDiv) buttonsDiv.style.display = 'none';
             }
         }
-        
-        // Écouter les changements
-        categoriesSelect.addEventListener('change', filterSousCategories);
-        
-        // Appliquer le filtre au chargement
-        filterSousCategories();
-    }
+
+        // Écouter les changements sur les checkboxes de catégories
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+
+            categoryCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', filterFormSousCategories);
+            });
+
+            // Appliquer le filtre au chargement de la page
+            filterFormSousCategories();
+        });
+
+
     </script>
     @endpush

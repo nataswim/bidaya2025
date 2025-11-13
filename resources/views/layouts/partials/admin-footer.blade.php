@@ -111,9 +111,9 @@
                     </a>
                     
                     <!-- Outils développement -->
-                    <a href="https://laravel.com/docs/12.x" target="_blank" rel="noopener noreferrer" 
-                       class="btn btn-sm btn-outline-secondary" title="Documentation Laravel 12">
-                        <i class="fab fa-laravel me-1"></i>Laravel Docs
+                    <a href="https://business.facebook.com/latest/home" target="_blank" rel="noopener noreferrer" 
+                       class="btn btn-sm btn-outline-secondary" title="Publication Facebook">
+                        <i class="fab fa-laravel me-1"></i>Publication Facebook
                     </a>
                     <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer" 
                        class="btn btn-sm btn-outline-secondary" title="Bootstrap Framework">

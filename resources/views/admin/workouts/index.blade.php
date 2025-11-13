@@ -7,8 +7,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row g-4">
-        <!-- Liste des workouts -->
-        <div class="col-lg-9">
+        <!-- Liste des workouts - Pleine largeur -->
+        <div class="col-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-warning text-white p-4">
                     <div class="d-flex align-items-center justify-content-between">
@@ -75,7 +75,7 @@
                                         <th class="border-0 px-4 py-3">Catégories</th>
                                         <th class="border-0 px-4 py-3 text-center">Total</th>
                                         <th class="border-0 px-4 py-3">Date</th>
-                                        <th class="border-0 px-4 py-3 text-end">Actions</th>
+                                        <th class="border-0 px-4 py-3 text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,49 +137,57 @@
                                                 </div>
                                             </td>
                                             
-                                            <td class="px-4 py-3 text-end">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-sm btn-outline-secondary border-0" 
-                                                            data-bs-toggle="dropdown" 
-                                                            aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" 
-                                                               href="{{ route('admin.workouts.show', $workout) }}">
-                                                                <i class="fas fa-eye me-2 text-info"></i>Voir
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item d-flex align-items-center" 
-                                                               href="{{ route('admin.workouts.edit', $workout) }}">
-                                                                <i class="fas fa-edit me-2 text-primary"></i>Modifier
-                                                            </a>
-                                                        </li>
-                                                        @if($workout->categories->first())
-                                                            <li>
-                                                                <a class="dropdown-item d-flex align-items-center" 
-                                                                   href="{{ route('public.workouts.show', [$workout->categories->first()->section, $workout->categories->first(), $workout]) }}" 
-                                                                   target="_blank">
-                                                                    <i class="fas fa-external-link-alt me-2 text-success"></i>Voir en ligne
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                        <li><hr class="dropdown-divider"></li>
-                                                        <li>
-                                                            <form method="POST" 
-                                                                  action="{{ route('admin.workouts.destroy', $workout) }}" 
-                                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce workout ?')">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" 
-                                                                        class="dropdown-item d-flex align-items-center text-danger">
-                                                                    <i class="fas fa-trash me-2"></i>Supprimer
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                    </ul>
+                                            <td class="px-4 py-3 text-center">
+                                                <div class="d-inline-flex gap-1">
+                                                    <!-- Bouton Voir -->
+                                                    <a href="{{ route('admin.workouts.show', $workout) }}" 
+                                                       class="btn btn-sm btn-outline-info" 
+                                                       title="Voir"
+                                                       data-bs-toggle="tooltip">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    
+                                                    <!-- Bouton Modifier -->
+                                                    <a href="{{ route('admin.workouts.edit', $workout) }}" 
+                                                       class="btn btn-sm btn-outline-primary" 
+                                                       title="Modifier"
+                                                       data-bs-toggle="tooltip">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    
+                                                    <!-- Bouton Voir en ligne -->
+                                                    @if($workout->categories->first())
+                                                        <a href="{{ route('public.workouts.show', [$workout->categories->first()->section, $workout->categories->first(), $workout]) }}" 
+                                                           target="_blank"
+                                                           class="btn btn-sm btn-outline-success" 
+                                                           title="Voir en ligne"
+                                                           data-bs-toggle="tooltip">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </a>
+                                                    @else
+                                                        <button type="button"
+                                                                class="btn btn-sm btn-outline-secondary" 
+                                                                title="Non catégorisé"
+                                                                data-bs-toggle="tooltip"
+                                                                disabled>
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                        </button>
+                                                    @endif
+                                                    
+                                                    <!-- Bouton Supprimer -->
+                                                    <form method="POST" 
+                                                          action="{{ route('admin.workouts.destroy', $workout) }}" 
+                                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce workout ?')"
+                                                          class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" 
+                                                                class="btn btn-sm btn-outline-danger" 
+                                                                title="Supprimer"
+                                                                data-bs-toggle="tooltip">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -221,10 +229,10 @@
             </div>
         </div>
 
-        <!-- Sidebar statistiques -->
-        <div class="col-lg-3">
+        <!-- Cards en bas : Statistiques et Actions rapides -->
+        <div class="col-lg-6">
             <!-- Statistiques générales -->
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-success text-white p-3">
                     <h6 class="mb-0">
                         <i class="fas fa-chart-bar me-2"></i>Statistiques
@@ -247,7 +255,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="col-lg-6">
             <!-- Actions rapides -->
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-gradient-warning text-white p-3">
@@ -292,5 +302,23 @@
     border: 0;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
+
+/* Style pour les boutons d'actions */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
 </style>
+@endpush
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser les tooltips Bootstrap
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
 @endpush
