@@ -120,10 +120,15 @@
         </div>
 
         <!-- Pagination -->
+        <!-- Pagination -->
         @if($videos->hasPages())
-        <div class="d-flex justify-content-center mt-5">
-            {{ $videos->links() }}
-        </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="mt-5">
+                        {{ $videos->links('pagination.five-per-row') }}
+                    </div>
+                </div>
+            </div>
         @endif
         @else
         <div class="card border-0 shadow-sm text-center py-5">

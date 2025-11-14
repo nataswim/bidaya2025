@@ -119,8 +119,12 @@
 
             <!-- Pagination -->
             @if($posts->hasPages())
-                <div class="mt-5 d-flex justify-content-center">
-                    {{ $posts->links('pagination::bootstrap-5') }}
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="mt-5">
+                            {{ $posts->links('pagination.five-per-row') }}
+                        </div>
+                    </div>
                 </div>
             @endif
         @else

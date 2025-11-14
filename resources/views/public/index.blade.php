@@ -215,11 +215,15 @@
             @endforeach
         </div>
 
-        <!-- Pagination -->
+       <!-- Pagination -->
         @if($posts->hasPages())
-        <div class="mt-5 d-flex justify-content-center">
-            {{ $posts->appends(request()->query())->links('pagination::bootstrap-5') }}
-        </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="mt-5">
+                        {{ $posts->appends(request()->query())->links('pagination.five-per-row') }}
+                    </div>
+                </div>
+            </div>
         @endif
         @else
         <!-- etat vide -->
