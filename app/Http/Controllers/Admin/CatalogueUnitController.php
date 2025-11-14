@@ -16,6 +16,7 @@ use App\Models\EbookFile;
 use App\Http\Requests\StoreCatalogueUnitRequest;
 use App\Http\Requests\UpdateCatalogueUnitRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddMultipleCatalogueUnitContentsRequest;
 
 /**
  * 🇬🇧 CatalogueUnitController - Admin management for catalogue units
@@ -35,18 +36,18 @@ class CatalogueUnitController extends Controller
     public function index(Request $request)
     {
         $this->checkAdminAccess();
-        
+
         $search = $request->input('search');
         $moduleId = $request->input('module');
         $sectionId = $request->input('section');
         $contentType = $request->input('content_type');
-        
+
         $query = CatalogueUnit::with(['module.section', 'unitable']);
- $query = CatalogueUnit::with(['module.section', 'contents.contentable']);
+        $query = CatalogueUnit::with(['module.section', 'contents.contentable']);
         if ($search) {
-            $query->where(function($q) use ($search) {
+            $query->where(function ($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
+                    ->orWhere('description', 'like', "%{$search}%");
             });
         }
 
@@ -55,7 +56,7 @@ class CatalogueUnitController extends Controller
         }
 
         if ($sectionId) {
-            $query->whereHas('module', function($q) use ($sectionId) {
+            $query->whereHas('module', function ($q) use ($sectionId) {
                 $q->where('catalogue_section_id', $sectionId);
             });
         }
@@ -65,8 +66,8 @@ class CatalogueUnitController extends Controller
         }
 
         $units = $query->orderBy('order', 'asc')
-                       ->orderBy('title', 'asc')
-                       ->paginate(15);
+            ->orderBy('title', 'asc')
+            ->paginate(15);
 
         $sections = CatalogueSection::active()->ordered()->get();
         $modules = CatalogueModule::active()->ordered()->get();
@@ -83,92 +84,166 @@ class CatalogueUnitController extends Controller
     }
 
 
-// Nouvelle méthode pour gérer les contenus
-public function contents(CatalogueUnit $catalogueUnit)
-{
-    $this->checkAdminAccess();
-    
-    $catalogueUnit->load(['module.section', 'contents.contentable']);
-    
-    return view('admin.catalogue-units.contents', compact('catalogueUnit'));
-}
+    // Nouvelle méthode pour gérer les contenus
+    public function contents(CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
 
+        $catalogueUnit->load(['module.section', 'contents.contentable']);
 
-public function addContent(Request $request, CatalogueUnit $catalogueUnit)
-{
-    $this->checkAdminAccess();
-    
-    $request->validate([
-        'contentable_type' => 'required|string',
-        'contentable_id' => 'required|integer',
-        'custom_title' => 'nullable|string|max:191',
-        'custom_description' => 'nullable|string',
-        'duration_minutes' => 'nullable|integer|min:0',
-        'is_required' => 'nullable|boolean',
-        'order' => 'nullable|integer|min:0',
-    ]);
-    
-    // Vérifier que le contenu n'est pas déjà lié
-    $exists = $catalogueUnit->contents()
-                           ->where('contentable_type', $request->contentable_type)
-                           ->where('contentable_id', $request->contentable_id)
-                           ->exists();
-    
-    if ($exists) {
-        return back()->with('error', 'Ce contenu est déjà lié à cette unité.');
+        return view('admin.catalogue-units.contents', compact('catalogueUnit'));
     }
-    
-    // Déterminer l'ordre si non fourni
-    if (!$request->has('order')) {
+
+
+    public function addContent(Request $request, CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
+
+        $request->validate([
+            'contentable_type' => 'required|string',
+            'contentable_id' => 'required|integer',
+            'custom_title' => 'nullable|string|max:191',
+            'custom_description' => 'nullable|string',
+            'duration_minutes' => 'nullable|integer|min:0',
+            'is_required' => 'nullable|boolean',
+            'order' => 'nullable|integer|min:0',
+        ]);
+
+        // Vérifier que le contenu n'est pas déjà lié
+        $exists = $catalogueUnit->contents()
+            ->where('contentable_type', $request->contentable_type)
+            ->where('contentable_id', $request->contentable_id)
+            ->exists();
+
+        if ($exists) {
+            return back()->with('error', 'Ce contenu est déjà lié à cette unité.');
+        }
+
+        // Déterminer l'ordre si non fourni
+        if (!$request->has('order')) {
+            $maxOrder = $catalogueUnit->contents()->max('order') ?? 0;
+            $request->merge(['order' => $maxOrder + 1]);
+        }
+
+        $catalogueUnit->contents()->create($request->all());
+
+        return back()->with('success', 'Contenu ajouté avec succès.');
+    }
+
+
+    /**
+     * Ajouter plusieurs contenus en une seule fois
+     */
+    public function addMultipleContents(AddMultipleCatalogueUnitContentsRequest $request, CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
+
+        $contentableType = $request->contentable_type;
+        $contentableIds = $request->contentable_ids;
+
+        // Récupérer l'ordre maximum actuel
         $maxOrder = $catalogueUnit->contents()->max('order') ?? 0;
-        $request->merge(['order' => $maxOrder + 1]);
-    }
-    
-    $catalogueUnit->contents()->create($request->all());
-    
-    return back()->with('success', 'Contenu ajouté avec succès.');
-}
 
-// Nouvelle méthode pour supprimer un contenu
-public function removeContent(CatalogueUnit $catalogueUnit, CatalogueUnitContent $content)
-{
-    $this->checkAdminAccess();
-    
-    if ($content->catalogue_unit_id !== $catalogueUnit->id) {
-        abort(404);
-    }
-    
-    $content->delete();
-    
-    return back()->with('success', 'Contenu retiré avec succès.');
-}
+        $addedCount = 0;
+        $skippedCount = 0;
+        $errors = [];
 
-// Nouvelle méthode pour réordonner les contenus
-public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
-{
-    $this->checkAdminAccess();
-    
-    $request->validate([
-        'contents' => 'required|array',
-        'contents.*' => 'required|integer|exists:catalogue_unit_contents,id',
-    ]);
-    
-    foreach ($request->contents as $order => $contentId) {
-        $catalogueUnit->contents()
-                     ->where('id', $contentId)
-                     ->update(['order' => $order + 1]);
+        foreach ($contentableIds as $index => $contentableId) {
+            // Vérifier que le contenu n'est pas déjà lié
+            $exists = $catalogueUnit->contents()
+                ->where('contentable_type', $contentableType)
+                ->where('contentable_id', $contentableId)
+                ->exists();
+
+            if ($exists) {
+                $skippedCount++;
+                continue;
+            }
+
+            try {
+                // Créer le lien
+                $catalogueUnit->contents()->create([
+                    'contentable_type' => $contentableType,
+                    'contentable_id' => $contentableId,
+                    'order' => $maxOrder + $index + 1,
+                    'is_required' => true,
+                    'is_active' => true,
+                ]);
+
+                $addedCount++;
+            } catch (\Exception $e) {
+                $errors[] = "Erreur pour le contenu ID {$contentableId} : " . $e->getMessage();
+            }
+        }
+
+        // Message de succès personnalisé
+        if ($addedCount > 0) {
+            $message = "{$addedCount} contenu(s) ajouté(s) avec succès.";
+
+            if ($skippedCount > 0) {
+                $message .= " {$skippedCount} contenu(s) ignoré(s) (déjà présent(s)).";
+            }
+
+            if (count($errors) > 0) {
+                $message .= " Erreurs : " . implode(', ', $errors);
+            }
+
+            return back()->with('success', $message);
+        }
+
+        if ($skippedCount > 0) {
+            return back()->with('error', 'Tous les contenus sélectionnés sont déjà liés à cette unité.');
+        }
+
+        return back()->with('error', 'Aucun contenu n\'a pu être ajouté. ' . implode(', ', $errors));
     }
-    
-    return response()->json(['success' => true]);
-}
+
+
+
+
+
+
+
+    // Nouvelle méthode pour supprimer un contenu
+    public function removeContent(CatalogueUnit $catalogueUnit, CatalogueUnitContent $content)
+    {
+        $this->checkAdminAccess();
+
+        if ($content->catalogue_unit_id !== $catalogueUnit->id) {
+            abort(404);
+        }
+
+        $content->delete();
+
+        return back()->with('success', 'Contenu retiré avec succès.');
+    }
+
+    // Nouvelle méthode pour réordonner les contenus
+    public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
+
+        $request->validate([
+            'contents' => 'required|array',
+            'contents.*' => 'required|integer|exists:catalogue_unit_contents,id',
+        ]);
+
+        foreach ($request->contents as $order => $contentId) {
+            $catalogueUnit->contents()
+                ->where('id', $contentId)
+                ->update(['order' => $order + 1]);
+        }
+
+        return response()->json(['success' => true]);
+    }
 
     public function create()
     {
         $this->checkAdminAccess();
-        
+
         $sections = CatalogueSection::active()->ordered()->get();
         $modules = CatalogueModule::active()->ordered()->get();
-        
+
         return view('admin.catalogue-units.create', compact('sections', 'modules'));
     }
 
@@ -177,118 +252,24 @@ public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
 
 
     public function store(StoreCatalogueUnitRequest $request)
-{
-    $this->checkAdminAccess();
-    
-    $data = $request->validated();
-    
-    // Générer le slug si non fourni
-    if (empty($data['slug'])) {
-        $data['slug'] = \Str::slug($data['title']);
-    }
-    
-    // Créer l'unité
-    $unit = CatalogueUnit::create($data);
-    
-    // Gérer les contenus multiples
-    if ($request->has('contents')) {
-        foreach ($request->contents as $contentData) {
-            if (!empty($contentData['contentable_type']) && !empty($contentData['contentable_id'])) {
-                $unit->contents()->create([
-                    'contentable_type' => $contentData['contentable_type'],
-                    'contentable_id' => $contentData['contentable_id'],
-                    'custom_title' => $contentData['custom_title'] ?? null,
-                    'custom_description' => $contentData['custom_description'] ?? null,
-                    'duration_minutes' => $contentData['duration_minutes'] ?? null,
-                    'order' => $contentData['order'] ?? 1,
-                    'is_required' => isset($contentData['is_required']) ? true : false,
-                ]);
-            }
-        }
-    }
-
-    $action = $request->input('action', 'save');
-    
-    if ($action === 'save_and_continue') {
-        return redirect()->route('admin.catalogue-units.edit', $unit)
-            ->with('success', 'Unité créée avec succès. Vous pouvez continuer à l\'éditer.');
-    }
-
-    return redirect()->route('admin.catalogue-units.index')
-        ->with('success', 'Unité créée avec succès.');
-}
-
-
-
-
-
-    public function show(CatalogueUnit $catalogueUnit)
     {
         $this->checkAdminAccess();
-        
-        $catalogueUnit->load(['module.section', 'unitable', 'creator', 'updater']);
-        
-        return view('admin.catalogue-units.show', compact('catalogueUnit'));
-    }
 
-    public function edit(CatalogueUnit $catalogueUnit)
-{
-    $this->checkAdminAccess();
-    
-    $sections = CatalogueSection::active()->ordered()->get();
-    $modules = CatalogueModule::active()->ordered()->get();
-    
-    // Charger les contenus avec leurs relations
-    $catalogueUnit->load('contents.contentable');
-    
-    // Passer l'unité à la vue (elle contient déjà les contenus)
-    $unit = $catalogueUnit;
-    
-    return view('admin.catalogue-units.edit', compact('catalogueUnit', 'unit', 'sections', 'modules'));
-}
+        $data = $request->validated();
 
+        // Générer le slug si non fourni
+        if (empty($data['slug'])) {
+            $data['slug'] = \Str::slug($data['title']);
+        }
 
+        // Créer l'unité
+        $unit = CatalogueUnit::create($data);
 
-
-
-    public function update(UpdateCatalogueUnitRequest $request, CatalogueUnit $catalogueUnit)
-{
-    $this->checkAdminAccess();
-    
-    $data = $request->validated();
-    
-    // Gérer le slug
-    if (empty($data['slug'])) {
-        $data['slug'] = \Str::slug($data['title']);
-    }
-    
-    // Mettre à jour l'unité
-    $catalogueUnit->update($data);
-    
-    // Gérer les contenus multiples
-    if ($request->has('contents')) {
-        // Récupérer les IDs existants
-        $existingIds = [];
-        
-        foreach ($request->contents as $contentData) {
-            if (!empty($contentData['contentable_type']) && !empty($contentData['contentable_id'])) {
-                if (isset($contentData['id'])) {
-                    // Mettre à jour le contenu existant
-                    $catalogueUnit->contents()
-                        ->where('id', $contentData['id'])
-                        ->update([
-                            'contentable_type' => $contentData['contentable_type'],
-                            'contentable_id' => $contentData['contentable_id'],
-                            'custom_title' => $contentData['custom_title'] ?? null,
-                            'custom_description' => $contentData['custom_description'] ?? null,
-                            'duration_minutes' => $contentData['duration_minutes'] ?? null,
-                            'order' => $contentData['order'] ?? 1,
-                            'is_required' => isset($contentData['is_required']) ? true : false,
-                        ]);
-                    $existingIds[] = $contentData['id'];
-                } else {
-                    // Créer un nouveau contenu
-                    $newContent = $catalogueUnit->contents()->create([
+        // Gérer les contenus multiples
+        if ($request->has('contents')) {
+            foreach ($request->contents as $contentData) {
+                if (!empty($contentData['contentable_type']) && !empty($contentData['contentable_id'])) {
+                    $unit->contents()->create([
                         'contentable_type' => $contentData['contentable_type'],
                         'contentable_id' => $contentData['contentable_id'],
                         'custom_title' => $contentData['custom_title'] ?? null,
@@ -297,30 +278,124 @@ public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
                         'order' => $contentData['order'] ?? 1,
                         'is_required' => isset($contentData['is_required']) ? true : false,
                     ]);
-                    $existingIds[] = $newContent->id;
                 }
             }
         }
-        
-        // Supprimer les contenus non présents dans la soumission
-        $catalogueUnit->contents()
-            ->whereNotIn('id', $existingIds)
-            ->delete();
-    } else {
-        // Si aucun contenu n'est envoyé, supprimer tous les contenus existants
-        $catalogueUnit->contents()->delete();
+
+        $action = $request->input('action', 'save');
+
+        if ($action === 'save_and_continue') {
+            return redirect()->route('admin.catalogue-units.edit', $unit)
+                ->with('success', 'Unité créée avec succès. Vous pouvez continuer à l\'éditer.');
+        }
+
+        return redirect()->route('admin.catalogue-units.index')
+            ->with('success', 'Unité créée avec succès.');
     }
 
-    $action = $request->input('action', 'save');
-    
-    if ($action === 'save_and_continue') {
-        return redirect()->route('admin.catalogue-units.edit', $catalogueUnit)
+
+
+
+
+    public function show(CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
+
+        $catalogueUnit->load(['module.section', 'unitable', 'creator', 'updater']);
+
+        return view('admin.catalogue-units.show', compact('catalogueUnit'));
+    }
+
+    public function edit(CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
+
+        $sections = CatalogueSection::active()->ordered()->get();
+        $modules = CatalogueModule::active()->ordered()->get();
+
+        // Charger les contenus avec leurs relations
+        $catalogueUnit->load('contents.contentable');
+
+        // Passer l'unité à la vue (elle contient déjà les contenus)
+        $unit = $catalogueUnit;
+
+        return view('admin.catalogue-units.edit', compact('catalogueUnit', 'unit', 'sections', 'modules'));
+    }
+
+
+
+
+
+    public function update(UpdateCatalogueUnitRequest $request, CatalogueUnit $catalogueUnit)
+    {
+        $this->checkAdminAccess();
+
+        $data = $request->validated();
+
+        // Gérer le slug
+        if (empty($data['slug'])) {
+            $data['slug'] = \Str::slug($data['title']);
+        }
+
+        // Mettre à jour l'unité
+        $catalogueUnit->update($data);
+
+        // Gérer les contenus multiples
+        if ($request->has('contents')) {
+            // Récupérer les IDs existants
+            $existingIds = [];
+
+            foreach ($request->contents as $contentData) {
+                if (!empty($contentData['contentable_type']) && !empty($contentData['contentable_id'])) {
+                    if (isset($contentData['id'])) {
+                        // Mettre à jour le contenu existant
+                        $catalogueUnit->contents()
+                            ->where('id', $contentData['id'])
+                            ->update([
+                                'contentable_type' => $contentData['contentable_type'],
+                                'contentable_id' => $contentData['contentable_id'],
+                                'custom_title' => $contentData['custom_title'] ?? null,
+                                'custom_description' => $contentData['custom_description'] ?? null,
+                                'duration_minutes' => $contentData['duration_minutes'] ?? null,
+                                'order' => $contentData['order'] ?? 1,
+                                'is_required' => isset($contentData['is_required']) ? true : false,
+                            ]);
+                        $existingIds[] = $contentData['id'];
+                    } else {
+                        // Créer un nouveau contenu
+                        $newContent = $catalogueUnit->contents()->create([
+                            'contentable_type' => $contentData['contentable_type'],
+                            'contentable_id' => $contentData['contentable_id'],
+                            'custom_title' => $contentData['custom_title'] ?? null,
+                            'custom_description' => $contentData['custom_description'] ?? null,
+                            'duration_minutes' => $contentData['duration_minutes'] ?? null,
+                            'order' => $contentData['order'] ?? 1,
+                            'is_required' => isset($contentData['is_required']) ? true : false,
+                        ]);
+                        $existingIds[] = $newContent->id;
+                    }
+                }
+            }
+
+            // Supprimer les contenus non présents dans la soumission
+            $catalogueUnit->contents()
+                ->whereNotIn('id', $existingIds)
+                ->delete();
+        } else {
+            // Si aucun contenu n'est envoyé, supprimer tous les contenus existants
+            $catalogueUnit->contents()->delete();
+        }
+
+        $action = $request->input('action', 'save');
+
+        if ($action === 'save_and_continue') {
+            return redirect()->route('admin.catalogue-units.edit', $catalogueUnit)
+                ->with('success', 'Unité mise à jour avec succès.');
+        }
+
+        return redirect()->route('admin.catalogue-units.index')
             ->with('success', 'Unité mise à jour avec succès.');
     }
-
-    return redirect()->route('admin.catalogue-units.index')
-        ->with('success', 'Unité mise à jour avec succès.');
-}
 
 
 
@@ -329,7 +404,7 @@ public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
     public function destroy(CatalogueUnit $catalogueUnit)
     {
         $this->checkAdminAccess();
-        
+
         $catalogueUnit->delete();
 
         return redirect()->route('admin.catalogue-units.index')
@@ -343,9 +418,9 @@ public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
     public function apiModulesBySection(Request $request)
     {
         $this->checkAdminAccess();
-        
+
         $sectionId = $request->input('section_id');
-        
+
         if (!$sectionId) {
             return response()->json([]);
         }
@@ -365,9 +440,9 @@ public function reorderContents(Request $request, CatalogueUnit $catalogueUnit)
     public function apiContentByType(Request $request)
     {
         $this->checkAdminAccess();
-        
+
         $contentType = $request->input('content_type');
-        
+
         if (!$contentType) {
             return response()->json([]);
         }

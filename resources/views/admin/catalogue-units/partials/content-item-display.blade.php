@@ -17,7 +17,19 @@
             <div class="d-flex align-items-center gap-2 mb-2">
                 <span class="badge bg-secondary order-badge">{{ $content->order ?? ($index + 1) }}</span>
                 <span class="badge bg-info-subtle text-info">
-                    {{ $content->content_type_label ?? 'Contenu' }}
+                    @php
+                        $typeLabels = [
+                            'App\\Models\\Post' => 'Article',
+                            'App\\Models\\Video' => 'Vidéo',
+                            'App\\Models\\Downloadable' => 'Fichier téléchargeable',
+                            'App\\Models\\Fiche' => 'Fiche',
+                            'App\\Models\\Exercice' => 'Exercice',
+                            'App\\Models\\Workout' => 'Entraînement',
+                            'App\\Models\\EbookFile' => 'E-book',
+                        ];
+                        $contentType = $content->contentable_type ?? '';
+                        echo $typeLabels[$contentType] ?? 'Contenu';
+                    @endphp
                 </span>
                 @if($content->is_required ?? true)
                     <span class="badge bg-success-subtle text-success">Obligatoire</span>
@@ -30,26 +42,29 @@
                 @if($isNew)
                     {{ $content->title ?? 'Nouveau contenu' }}
                 @else
-                    {{ $content->display_title ?? $content->contentable->title ?? $content->contentable->name ?? 'Sans titre' }}
-                @endif
-                
-                @if(!empty($content->custom_title))
-                    <small class="text-muted">(Titre personnalisé)</small>
+                    @if(!empty($content->custom_title))
+                        {{ $content->custom_title }}
+                        <small class="text-muted">(Titre personnalisé)</small>
+                    @elseif(isset($content->contentable))
+                        {{ $content->contentable->title ?? $content->contentable->name ?? 'Sans titre' }}
+                    @else
+                        Contenu ID: {{ $content->contentable_id ?? 'N/A' }}
+                    @endif
                 @endif
             </h6>
             
             @if(!empty($content->custom_description))
-                <small class="text-muted d-block">{{ $content->custom_description }}</small>
+                <small class="text-muted d-block mt-1">{{ Str::limit($content->custom_description, 100) }}</small>
             @endif
             
             @if(!empty($content->duration_minutes))
-                <small class="text-muted">
+                <small class="text-muted d-block mt-1">
                     <i class="fas fa-clock me-1"></i>{{ $content->duration_minutes }} minutes
                 </small>
             @endif
         </div>
         
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeContent(this)">
+        <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeContent(this)" title="Supprimer">
             <i class="fas fa-times"></i>
         </button>
     </div>

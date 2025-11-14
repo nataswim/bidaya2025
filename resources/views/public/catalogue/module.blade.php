@@ -18,10 +18,10 @@
                     {{ $module->name }}
                 </h1>
                 @if($module->short_description)
-                    <p class="lead mb-0">
-                        {{ $module->short_description }}
-                    </p>
-                @endif
+    <p class="lead mb-0">
+        {!! strip_tags($module->short_description, '<strong><em><b><i>') !!}
+    </p>
+@endif
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="text-muted">
-                            {!! nl2br(e($module->long_description)) !!}
+                            {!! $module->long_description !!}
                         </div>
                     </div>
                 </div>
@@ -88,10 +88,10 @@
                                             <div class="flex-grow-1">
                                                 <h5 class="mb-2 fw-bold">{{ $unit->title }}</h5>
                                                 @if($unit->description)
-                                                    <p class="mb-2 text-muted">
-                                                        {{ Str::limit($unit->description, 150) }}
-                                                    </p>
-                                                @endif
+    <p class="mb-2 text-muted">
+        {!! Str::limit(strip_tags($unit->description, '<strong><em><b><i>'), 150) !!}
+    </p>
+@endif
                                                 
                                                 <!-- Badges des types de contenus -->
                                                 <div class="mt-2 d-flex flex-wrap gap-2">

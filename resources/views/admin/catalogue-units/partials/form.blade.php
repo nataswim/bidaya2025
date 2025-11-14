@@ -38,8 +38,8 @@
             <div class="card-header bg-gradient-info text-white p-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="mb-0"><i class="fas fa-list me-2"></i>Contenus de l'unité</h6>
-                    <button type="button" class="btn btn-light btn-sm" id="add-content-btn">
-                        <i class="fas fa-plus me-1"></i>Ajouter un contenu
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#addContentsModal">
+                        <i class="fas fa-plus me-1"></i>Ajouter des contenus
                     </button>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     @if(count($oldContents) > 0)
                         {{-- Afficher les anciens contenus en cas d'erreur de validation --}}
                         @foreach($oldContents as $index => $oldContent)
-                            @include('admin.catalogue-units.partials.content-item', [
+                            @include('admin.catalogue-units.partials.content-item-display', [
                                 'index' => $index,
                                 'content' => (object)$oldContent,
                                 'isNew' => true
@@ -62,7 +62,7 @@
                     @elseif($existingContents->count() > 0)
                         {{-- Afficher les contenus existants en mode édition --}}
                         @foreach($existingContents as $index => $content)
-                            @include('admin.catalogue-units.partials.content-item', [
+                            @include('admin.catalogue-units.partials.content-item-display', [
                                 'index' => $index,
                                 'content' => $content,
                                 'isNew' => false
@@ -71,8 +71,8 @@
                     @else
                         {{-- Message si aucun contenu --}}
                         <div id="no-content-message" class="text-center py-4 text-muted">
-                            <i class="fas fa-info-circle me-2"></i>
-                            Aucun contenu ajouté. Cliquez sur "Ajouter un contenu" pour commencer.
+                            <i class="fas fa-info-circle fa-2x mb-3 opacity-25"></i>
+                            <p class="mb-0">Aucun contenu ajouté. Cliquez sur "Ajouter des contenus" pour commencer.</p>
                         </div>
                     @endif
                 </div>
@@ -157,84 +157,93 @@
     </div>
 </div>
 
-{{-- Template pour un nouvel élément de contenu --}}
-<template id="content-item-template">
-    <div class="content-item border rounded p-3 mb-3" data-index="">
-        <div class="d-flex justify-content-between align-items-start mb-3">
-            <h6 class="mb-0">
-                <span class="badge bg-secondary me-2 content-order">1</span>
-                Nouveau contenu
-            </h6>
-            <button type="button" class="btn btn-sm btn-outline-danger remove-content-btn">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label class="form-label">Type de contenu *</label>
-                <select name="contents[][contentable_type]" class="form-select content-type-select" required>
-                    <option value="">-- Sélectionner --</option>
-                    <option value="App\Models\Post">Article (Post)</option>
-                    <option value="App\Models\Video">Vidéo</option>
-                    <option value="App\Models\Downloadable">Fichier téléchargeable</option>
-                    <option value="App\Models\Fiche">Fiche</option>
-                    <option value="App\Models\Exercice">Exercice</option>
-                    <option value="App\Models\Workout">Entraînement</option>
-                    <option value="App\Models\EbookFile">E-book</option>
-                </select>
+<!-- Modal ajout de contenus avec sélection multiple -->
+<div class="modal fade" id="addContentsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-gradient-primary text-white">
+                <h5 class="modal-title">
+                    <i class="fas fa-plus-circle me-2"></i>Ajouter des contenus
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            
-            <div class="col-md-6">
-                <label class="form-label">Contenu *</label>
-                <select name="contents[][contentable_id]" class="form-select content-id-select" required disabled>
-                    <option value="">-- Choisir un type d'abord --</option>
-                </select>
-            </div>
-            
-            <div class="col-md-6">
-                <label class="form-label">Titre personnalisé</label>
-                <input type="text" name="contents[][custom_title]" class="form-control" 
-                       placeholder="Optionnel">
-            </div>
-            
-            <div class="col-md-3">
-                <label class="form-label">Durée (min)</label>
-                <input type="number" name="contents[][duration_minutes]" class="form-control" min="0">
-            </div>
-            
-            <div class="col-md-3">
-                <label class="form-label">Ordre</label>
-                <input type="number" name="contents[][order]" class="form-control content-order-input" 
-                       value="1" min="1" required>
-            </div>
-            
-            <div class="col-12">
-                <label class="form-label">Description personnalisée</label>
-                <textarea name="contents[][custom_description]" rows="2" class="form-control"
-                          placeholder="Optionnel"></textarea>
-            </div>
-            
-            <div class="col-12">
-                <div class="form-check">
-                    <input type="checkbox" name="contents[][is_required]" value="1" checked
-                           class="form-check-input">
-                    <label class="form-check-label">Contenu obligatoire</label>
+            <div class="modal-body">
+                <!-- Sélection du type -->
+                <div class="mb-4">
+                    <label for="modal_contentable_type" class="form-label fw-semibold">
+                        <i class="fas fa-layer-group me-2"></i>Type de contenu *
+                    </label>
+                    <select id="modal_contentable_type" class="form-select form-select-lg">
+                        <option value="">-- Sélectionner un type --</option>
+                        <option value="App\Models\Post">Article (Post)</option>
+                        <option value="App\Models\Video">Vidéo</option>
+                        <option value="App\Models\Downloadable">Fichier téléchargeable</option>
+                        <option value="App\Models\Fiche">Fiche</option>
+                        <option value="App\Models\Exercice">Exercice</option>
+                        <option value="App\Models\Workout">Entraînement</option>
+                        <option value="App\Models\EbookFile">E-book</option>
+                    </select>
                 </div>
+                
+                <!-- Liste des contenus -->
+                <div id="modal-contents-list" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="mb-0">
+                            <i class="fas fa-check-double me-2"></i>Sélectionner les contenus
+                        </h6>
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-outline-primary" onclick="modalSelectAll()">
+                                <i class="fas fa-check-square me-1"></i>Tout
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="modalDeselectAll()">
+                                <i class="fas fa-square me-1"></i>Aucun
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Cochez les contenus à ajouter. Vous pourrez modifier leurs paramètres individuels après l'enregistrement.
+                    </div>
+                    
+                    <!-- Recherche -->
+                    <div class="mb-3">
+                        <input type="text" 
+                               id="modal-search" 
+                               class="form-control" 
+                               placeholder="Rechercher un contenu...">
+                    </div>
+                    
+                    <!-- Contenus avec checkboxes -->
+                    <div id="modal-contents-checkboxes" class="border rounded p-3" style="max-height: 400px; overflow-y: auto;">
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-spinner fa-spin fa-2x mb-3"></i>
+                            <p>Chargement...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-check-circle text-success me-1"></i>
+                            <span id="modal-selected-count">0</span> contenu(s) sélectionné(s)
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>Annuler
+                </button>
+                <button type="button" class="btn btn-primary" id="modal-add-btn" onclick="addSelectedContents()" disabled>
+                    <i class="fas fa-plus me-2"></i>Ajouter au formulaire
+                </button>
             </div>
         </div>
     </div>
-</template>
+</div>
 
 @push('styles')
 <style>
-.content-item {
-    background-color: #f8f9fa;
-    transition: all 0.3s ease;
-}
-.content-item:hover {
-    background-color: #e9ecef;
-}
 .bg-gradient-primary {
     background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);
 }
@@ -244,6 +253,23 @@
 .bg-gradient-success {
     background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
 }
+.content-item-display {
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+.content-item-display:hover {
+    background-color: #e9ecef;
+}
+.modal-content-checkbox-item {
+    transition: background-color 0.2s;
+}
+.modal-content-checkbox-item:hover {
+    background-color: #f8f9fa;
+}
+.modal-content-checkbox-item.selected {
+    background-color: #e7f5ff;
+    border-color: #0ea5e9;
+}
 </style>
 @endpush
 
@@ -252,113 +278,216 @@
 document.addEventListener('DOMContentLoaded', function() {
     let contentIndex = {{ $existingContents->count() ?? 0 }};
     const container = document.getElementById('contents-container');
-    const template = document.getElementById('content-item-template');
-    const addBtn = document.getElementById('add-content-btn');
     const noContentMsg = document.getElementById('no-content-message');
     
-    // Fonction pour ajouter un nouveau contenu
-    function addContentItem() {
+    // Variables pour la modale
+    const modalTypeSelect = document.getElementById('modal_contentable_type');
+    const modalContentsList = document.getElementById('modal-contents-list');
+    const modalCheckboxesContainer = document.getElementById('modal-contents-checkboxes');
+    const modalAddBtn = document.getElementById('modal-add-btn');
+    const modalSelectedCount = document.getElementById('modal-selected-count');
+    const modalSearch = document.getElementById('modal-search');
+    const modal = document.getElementById('addContentsModal');
+    
+    let availableContents = [];
+    let selectedContentType = '';
+    
+    // ========== MODAL: Changement de type ==========
+    modalTypeSelect.addEventListener('change', function() {
+        selectedContentType = this.value;
+        
+        if (!selectedContentType) {
+            modalContentsList.style.display = 'none';
+            modalAddBtn.disabled = true;
+            return;
+        }
+        
+        modalContentsList.style.display = 'block';
+        modalCheckboxesContainer.innerHTML = '<div class="text-center text-muted py-4"><i class="fas fa-spinner fa-spin fa-2x mb-3"></i><p>Chargement...</p></div>';
+        
+        // Charger les contenus
+        fetch(`{{ route('admin.catalogue-units.api.content-by-type') }}?content_type=${encodeURIComponent(selectedContentType)}`)
+            .then(response => response.json())
+            .then(data => {
+                availableContents = data;
+                renderModalContents(data);
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                modalCheckboxesContainer.innerHTML = '<div class="alert alert-danger"><i class="fas fa-exclamation-triangle me-2"></i>Erreur de chargement.</div>';
+            });
+    });
+    
+    // ========== MODAL: Afficher les contenus ==========
+    function renderModalContents(contents) {
+        if (contents.length === 0) {
+            modalCheckboxesContainer.innerHTML = '<div class="text-center text-muted py-4"><i class="fas fa-inbox fa-2x mb-3"></i><p>Aucun contenu disponible.</p></div>';
+            return;
+        }
+        
+        let html = '<div class="list-group">';
+        contents.forEach(content => {
+            html += `
+                <label class="list-group-item modal-content-checkbox-item" data-content-id="${content.id}" data-content-title="${content.title.toLowerCase()}">
+                    <div class="d-flex align-items-center">
+                        <input class="form-check-input me-3 modal-content-checkbox" 
+                               type="checkbox" 
+                               value="${content.id}"
+                               data-title="${content.title}"
+                               data-slug="${content.slug || ''}"
+                               onchange="modalUpdateCount()">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-0">${content.title}</h6>
+                            ${content.slug ? `<small class="text-muted">${content.slug}</small>` : ''}
+                        </div>
+                    </div>
+                </label>
+            `;
+        });
+        html += '</div>';
+        
+        modalCheckboxesContainer.innerHTML = html;
+        modalUpdateCount();
+    }
+    
+    // ========== MODAL: Recherche ==========
+    modalSearch.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const items = modalCheckboxesContainer.querySelectorAll('.modal-content-checkbox-item');
+        
+        items.forEach(item => {
+            const title = item.dataset.contentTitle;
+            item.style.display = title.includes(searchTerm) ? '' : 'none';
+        });
+    });
+    
+    // ========== MODAL: Compteur ==========
+    window.modalUpdateCount = function() {
+        const checked = modalCheckboxesContainer.querySelectorAll('.modal-content-checkbox:checked').length;
+        modalSelectedCount.textContent = checked;
+        modalAddBtn.disabled = checked === 0;
+        
+        // Mise en évidence
+        modalCheckboxesContainer.querySelectorAll('.modal-content-checkbox-item').forEach(item => {
+            const checkbox = item.querySelector('.modal-content-checkbox');
+            item.classList.toggle('selected', checkbox.checked);
+        });
+    };
+    
+    // ========== MODAL: Sélectionner tout ==========
+    window.modalSelectAll = function() {
+        modalCheckboxesContainer.querySelectorAll('.modal-content-checkbox-item').forEach(item => {
+            if (item.style.display !== 'none') {
+                item.querySelector('.modal-content-checkbox').checked = true;
+            }
+        });
+        modalUpdateCount();
+    };
+    
+    // ========== MODAL: Désélectionner tout ==========
+    window.modalDeselectAll = function() {
+        modalCheckboxesContainer.querySelectorAll('.modal-content-checkbox').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        modalUpdateCount();
+    };
+    
+    // ========== MODAL: Ajouter les contenus sélectionnés ==========
+    window.addSelectedContents = function() {
         if (noContentMsg) {
             noContentMsg.remove();
         }
         
-        const clone = template.content.cloneNode(true);
-        const item = clone.querySelector('.content-item');
-        item.dataset.index = contentIndex;
+        const checkedBoxes = modalCheckboxesContainer.querySelectorAll('.modal-content-checkbox:checked');
         
-        // Mettre à jour les noms des champs
-        item.querySelectorAll('select, input, textarea').forEach(field => {
-            if (field.name) {
-                field.name = field.name.replace('[]', `[${contentIndex}]`);
-            }
+        checkedBoxes.forEach(checkbox => {
+            const contentId = checkbox.value;
+            const contentTitle = checkbox.dataset.title;
+            const contentSlug = checkbox.dataset.slug;
+            
+            // Créer l'élément à afficher
+            const contentHtml = createContentDisplay(contentIndex, selectedContentType, contentId, contentTitle, contentSlug);
+            container.insertAdjacentHTML('beforeend', contentHtml);
+            
+            contentIndex++;
         });
         
-        // Mettre à jour l'ordre
-        const orderInput = item.querySelector('.content-order-input');
-        const orderBadge = item.querySelector('.content-order');
-        const currentOrder = container.querySelectorAll('.content-item').length + 1;
-        orderInput.value = currentOrder;
-        orderBadge.textContent = currentOrder;
+        // Fermer la modale et réinitialiser
+        const bootstrapModal = bootstrap.Modal.getInstance(modal);
+        bootstrapModal.hide();
         
-        container.appendChild(item);
-        contentIndex++;
+        modalTypeSelect.value = '';
+        modalContentsList.style.display = 'none';
+        modalCheckboxesContainer.innerHTML = '';
+        modalSearch.value = '';
+        availableContents = [];
+        selectedContentType = '';
         
-        // Initialiser les événements pour ce nouvel item
-        initializeContentItem(item);
-    }
+        updateAllOrders();
+    };
     
-    // Fonction pour initialiser les événements d'un item
-    function initializeContentItem(item) {
-        // Bouton supprimer
-        item.querySelector('.remove-content-btn')?.addEventListener('click', function() {
-            if (confirm('Supprimer ce contenu ?')) {
-                item.remove();
-                updateOrders();
+    // ========== CRÉER L'AFFICHAGE D'UN CONTENU ==========
+    function createContentDisplay(index, type, id, title, slug) {
+        const typeLabels = {
+            'App\\Models\\Post': 'Article',
+            'App\\Models\\Video': 'Vidéo',
+            'App\\Models\\Downloadable': 'Fichier',
+            'App\\Models\\Fiche': 'Fiche',
+            'App\\Models\\Exercice': 'Exercice',
+            'App\\Models\\Workout': 'Entraînement',
+            'App\\Models\\EbookFile': 'E-book'
+        };
+        
+        return `
+            <div class="content-item-display border rounded p-3 mb-3" data-index="${index}">
+                <input type="hidden" name="contents[${index}][contentable_type]" value="${type}">
+                <input type="hidden" name="contents[${index}][contentable_id]" value="${id}">
+                <input type="hidden" name="contents[${index}][order]" value="${index + 1}" class="order-input">
+                <input type="hidden" name="contents[${index}][is_required]" value="1">
                 
-                if (container.querySelectorAll('.content-item').length === 0) {
-                    container.innerHTML = `
-                        <div id="no-content-message" class="text-center py-4 text-muted">
-                            <i class="fas fa-info-circle me-2"></i>
-                            Aucun contenu ajouté. Cliquez sur "Ajouter un contenu" pour commencer.
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="flex-grow-1">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge bg-secondary order-badge">${index + 1}</span>
+                            <span class="badge bg-info-subtle text-info">${typeLabels[type] || 'Contenu'}</span>
                         </div>
-                    `;
-                }
+                        <h6 class="mb-1">${title}</h6>
+                        ${slug ? `<small class="text-muted">${slug}</small>` : ''}
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeContent(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+    
+    // ========== SUPPRIMER UN CONTENU ==========
+    window.removeContent = function(btn) {
+        if (confirm('Supprimer ce contenu ?')) {
+            btn.closest('.content-item-display').remove();
+            updateAllOrders();
+            
+            if (container.querySelectorAll('.content-item-display').length === 0) {
+                container.innerHTML = `
+                    <div id="no-content-message" class="text-center py-4 text-muted">
+                        <i class="fas fa-info-circle fa-2x mb-3 opacity-25"></i>
+                        <p class="mb-0">Aucun contenu ajouté. Cliquez sur "Ajouter des contenus" pour commencer.</p>
+                    </div>
+                `;
             }
-        });
-        
-        // Select de type de contenu
-        const typeSelect = item.querySelector('.content-type-select');
-        const idSelect = item.querySelector('.content-id-select');
-        
-        if (typeSelect && idSelect) {
-            typeSelect.addEventListener('change', function() {
-                const contentType = this.value;
-                
-                if (!contentType) {
-                    idSelect.disabled = true;
-                    idSelect.innerHTML = '<option value="">-- Choisir un type d\'abord --</option>';
-                    return;
-                }
-                
-                idSelect.disabled = false;
-                idSelect.innerHTML = '<option value="">Chargement...</option>';
-                
-                fetch(`{{ route('admin.catalogue-units.api.content-by-type') }}?content_type=${encodeURIComponent(contentType)}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        idSelect.innerHTML = '<option value="">-- Sélectionner --</option>';
-                        data.forEach(content => {
-                            const option = document.createElement('option');
-                            option.value = content.id;
-                            option.textContent = content.title || content.name;
-                            idSelect.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        idSelect.innerHTML = '<option value="">Erreur de chargement</option>';
-                    });
-            });
         }
-    }
+    };
     
-    // Fonction pour mettre à jour les ordres
-    function updateOrders() {
-        container.querySelectorAll('.content-item').forEach((item, index) => {
-            const orderBadge = item.querySelector('.content-order');
-            const orderInput = item.querySelector('.content-order-input');
-            if (orderBadge) orderBadge.textContent = index + 1;
-            if (orderInput) orderInput.value = index + 1;
+    // ========== METTRE À JOUR LES ORDRES ==========
+    function updateAllOrders() {
+        container.querySelectorAll('.content-item-display').forEach((item, index) => {
+            item.querySelector('.order-badge').textContent = index + 1;
+            item.querySelector('.order-input').value = index + 1;
         });
     }
     
-    // Événement pour ajouter un contenu
-    addBtn?.addEventListener('click', addContentItem);
-    
-    // Initialiser les items existants
-    container.querySelectorAll('.content-item').forEach(initializeContentItem);
-    
-    // Auto-génération du slug (code existant)
+    // ========== AUTO-GÉNÉRATION DU SLUG ==========
     const titleInput = document.getElementById('title');
     const slugInput = document.getElementById('slug');
     
@@ -378,7 +507,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Chargement dynamique des modules par section (code existant)
+    // ========== CHARGEMENT MODULES PAR SECTION ==========
     const sectionSelect = document.getElementById('catalogue_section_id');
     const moduleSelect = document.getElementById('catalogue_module_id');
     
@@ -417,11 +546,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
         
-        // Déclencher le chargement initial si une section est déjà sélectionnée
+        // Déclencher le chargement initial si section déjà sélectionnée
         if (sectionSelect.value) {
             const currentModuleId = '{{ isset($unit) ? $unit->catalogue_module_id : "" }}';
             if (currentModuleId) {
-                // Si on est en édition, attendre que les modules soient chargés puis sélectionner le bon
                 sectionSelect.addEventListener('change', function setCurrentModule() {
                     setTimeout(() => {
                         moduleSelect.value = currentModuleId;

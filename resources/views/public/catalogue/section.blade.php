@@ -17,10 +17,10 @@
                     {{ $section->name }}
                 </h1>
                 @if($section->short_description)
-                    <p class="lead mb-0">
-                        {{ $section->short_description }}
-                    </p>
-                @endif
+    <p class="lead mb-0">
+        {!! strip_tags($section->short_description, '<strong><em><b><i>') !!}
+    </p>
+@endif
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="text-muted">
-                            {!! nl2br(e($section->long_description)) !!}
+                            {!! $section->long_description !!}
                         </div>
                     </div>
                 </div>
@@ -111,10 +111,10 @@
 
                                 <!-- Description courte -->
                                 @if($module->short_description)
-                                    <p class="card-text text-muted mb-3">
-                                        {{ Str::limit($module->short_description, 120) }}
-                                    </p>
-                                @endif
+    <p class="card-text text-muted mb-3">
+        {!! Str::limit(strip_tags($module->short_description, '<strong><em><b><i>'), 120) !!}
+    </p>
+@endif
 
                                 <!-- Spacer pour pousser le footer en bas -->
                                 <div class="mt-auto pt-3 border-top">

@@ -59,11 +59,20 @@ use App\Http\Controllers\Admin\CatalogueModuleController;
 use App\Http\Controllers\Admin\CatalogueSectionController;
 use App\Http\Controllers\Admin\CatalogueUnitController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\EquipementController;
 
 
 
 
+// Page principale avec la carte
+Route::get('/equipements', [EquipementController::class, 'index'])->name('equipements.index');
 
+// Routes API pour AJAX
+Route::prefix('api/equipements')->group(function () {
+    Route::get('/search', [EquipementController::class, 'search'])->name('api.equipements.search');
+    Route::get('/stats', [EquipementController::class, 'stats'])->name('api.equipements.stats');
+    Route::get('/{id}', [EquipementController::class, 'show'])->name('api.equipements.show');
+});
 
 
 
@@ -590,6 +599,7 @@ Route::patch('training/plans/{plan}/update-assignation/{user}', [\App\Http\Contr
 Route::prefix('catalogue-units/{catalogueUnit}')->name('catalogue-units.')->group(function () {
     Route::get('/contents', [CatalogueUnitController::class, 'contents'])->name('contents');
     Route::post('/contents', [CatalogueUnitController::class, 'addContent'])->name('add-content');
+    Route::post('/contents/add-multiple', [CatalogueUnitController::class, 'addMultipleContents'])->name('add-multiple-contents'); // NOUVELLE ROUTE
     Route::delete('/contents/{content}', [CatalogueUnitController::class, 'removeContent'])->name('remove-content');
     Route::post('/contents/reorder', [CatalogueUnitController::class, 'reorderContents'])->name('reorder-contents');
 });

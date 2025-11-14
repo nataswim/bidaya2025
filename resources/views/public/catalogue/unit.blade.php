@@ -19,10 +19,10 @@
                     {{ $unit->title }}
                 </h1>
                 @if($unit->description)
-                    <p class="lead mb-0">
-                        {{ $unit->description }}
-                    </p>
-                @endif
+    <p class="lead mb-0">
+        {!! strip_tags($unit->description, '<strong><em><b><i>') !!}
+    </p>
+@endif
             </div>
         </div>
     </div>
@@ -75,10 +75,10 @@
                                                 </div>
                                                 
                                                 @if($content->custom_description)
-                                                    <p class="text-muted mb-0 mt-2 small">
-                                                        {{ $content->custom_description }}
-                                                    </p>
-                                                @endif
+    <p class="text-muted mb-0 mt-2 small">
+        {!! strip_tags($content->custom_description, '<strong><em><b><i><br>') !!}
+    </p>
+@endif
                                             </div>
                                             
                                             <!-- Bouton d'action -->

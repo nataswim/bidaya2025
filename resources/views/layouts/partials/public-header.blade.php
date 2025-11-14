@@ -3,28 +3,28 @@
 <div class="user-top-banner py-2" style="background-color: rgb(91 202 202);border-bottom: 20px solid #004f59;">
     <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
         {{-- Lien Mon espace --}}
-        <a href="{{ route('user.dashboard') }}" 
-           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-color: #f04444;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+        <a href="{{ route('user.dashboard') }}"
+            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-color: #f04444;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
 
             <span class="banner-text">Mon espace</span>
         </a>
 
         {{-- Lien Mes carnets --}}
-        <a href="{{ route('user.notebooks.index') }}" 
-           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ef9800;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
-            
+        <a href="{{ route('user.notebooks.index') }}"
+            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ef9800;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+
             <span class="banner-text">Mes Carnets</span>
         </a>
-{{-- Lien calendar --}}
-        <a href="{{ route('user.calendar.index') }}" 
-           class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #008731;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
-          
+        {{-- Lien calendar --}}
+        <a href="{{ route('user.calendar.index') }}"
+            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #008731;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+
             <span class="banner-text">Ma Planification</span>
         </a>
         {{-- Bouton Passer Premium (seulement pour les visiteurs) --}}
         @if(auth()->user()->hasRole('visitor'))
-        <a href="{{ route('payments.index') }}" 
-           class="banner-link banner-link-premium d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill">
+        <a href="{{ route('payments.index') }}"
+            class="banner-link banner-link-premium d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill">
             <i class="fas fa-crown me-1"></i>
             <span class="banner-text">Devenir Premium</span>
         </a>
@@ -38,86 +38,94 @@
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <img src="{{ asset('assets/images/team/nataswim_app_logo_4.png') }}" 
-                 alt="nataswim application pour tous" 
-                 class="img-fluid" 
-                 style="height: 80px; width: auto;">
+            <img src="{{ asset('assets/images/team/nataswim_app_logo_4.png') }}"
+                alt="nataswim application pour tous"
+                class="img-fluid"
+                style="height: 80px; width: auto;">
         </a>
-        
+
         <!-- Toggle mobile -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Navigation principale -->
             <ul class="navbar-nav me-auto ms-lg-4">
 
                 <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="{{ route('home') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}"
+                        href="{{ route('home') }}">
                         <i class="fas fa-home me-2 text-success"></i>
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}" 
-                       href="{{ route('public.index') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}"
+                        href="{{ route('public.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Dossiers
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
-                       href="{{ route('public.fiches.index') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                        href="{{ route('public.fiches.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Fiches
                     </a>
                 </li>
-                
+
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
-                       href="{{ route('public.videos.index') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                        href="{{ route('public.videos.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Vidéos
                     </a>
                 </li>
-                
+
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
-                       href="{{ route('public.workouts.index') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                        href="{{ route('public.workouts.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
-                       href="{{ route('ebook.index') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                        href="{{ route('ebook.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}" 
-                       href="{{ route('exercices.index') }}">
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                        href="{{ route('exercices.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Musculation
                     </a>
                 </li>
 
                 {{-- Menu Outils avec sous-menus imbriqués --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link px-1 py-2 dropdown-toggle {{ request()->routeIs('tools.*', 'plans.*') ? 'active bg-primary text-white' : 'text-dark' }}" 
-                       href="#" 
-                       id="toolsDropdown"
-                       role="button" 
-                       data-bs-toggle="dropdown" 
-                       aria-expanded="false">
+                    <a class="nav-link px-1 py-2 dropdown-toggle {{ request()->routeIs('tools.*', 'plans.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                        href="#"
+                        id="toolsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         <i class="fas fa-life-ring me-2 text-primary"></i>Outils
                     </a>
-                    
+
                     <ul class="dropdown-menu shadow border-0" aria-labelledby="toolsDropdown">
                         {{-- Lien vers tous les outils --}}
+                        <li>
+                            <a href="{{ route('equipements.index') }}" class="nav-link">
+                                <i class="fas fa-map-marked-alt me-1"></i>
+                                Trouver Une Piscine
+                            </a>
+                        </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('tools.index') }}">
                                 <i class="fas fa-th me-2 text-primary"></i>
                                 <strong>Tous les outils</strong>
                             </a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
 
                         {{-- Catégorie : Santé & Nutrition --}}
                         <li class="dropend">
@@ -253,61 +261,65 @@
                 </li>
 
             </ul>
-            
+
             <!-- Section utilisateur -->
             <div class="d-flex align-items-center">
                 @auth
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" 
-                                type="button" 
-                                id="userDropdown" 
-                                data-bs-toggle="dropdown">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" 
-                                 style="width: 32px; height: 32px; font-size: 14px;">
-                                {{ substr(auth()->user()->name, 0, 1) }}
-                            </div>
-                            <span class="d-none d-md-inline">{{ auth()->user()->first_name ?: auth()->user()->name }}</span>
-                        </button>
-                        
-                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2">
-                            @if(auth()->user()->hasRole('admin'))
-                                <li>
-                                    <a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">
-                                        <i class="fas fa-cog text-danger me-2"></i>Administration
-                                    </a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                            @endif
-                            <li>
-                                <a class="dropdown-item py-2" href="{{ route('user.dashboard') }}">
-                                    <i class="fas fa-tachometer-alt text-primary me-2"></i>Mon tableau de bord
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
-                                    <i class="fas fa-user text-info me-2"></i>Mon profil
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item py-2 text-danger">
-                                        <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center"
+                        type="button"
+                        id="userDropdown"
+                        data-bs-toggle="dropdown">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2"
+                            style="width: 32px; height: 32px; font-size: 14px;">
+                            {{ substr(auth()->user()->name, 0, 1) }}
+                        </div>
+                        <span class="d-none d-md-inline">{{ auth()->user()->first_name ?: auth()->user()->name }}</span>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2">
+                        @if(auth()->user()->hasRole('admin'))
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">
+                                <i class="fas fa-cog text-danger me-2"></i>Administration
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        @endif
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('user.dashboard') }}">
+                                <i class="fas fa-tachometer-alt text-primary me-2"></i>Mon tableau de bord
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2" href="{{ route('user.profile.edit') }}">
+                                <i class="fas fa-user text-info me-2"></i>Mon profil
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                @csrf
+                                <button type="submit" class="dropdown-item py-2 text-danger">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
                 @else
-                    <div class="d-flex gap-2">
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary px-4">
-                            Se connecter
-                        </a>
-                        <a href="{{ route('register') }}" class="btn btn-primary px-4">
-                            S'inscrire
-                        </a>
-                    </div>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary px-4">
+                        Se connecter
+                    </a>
+                    <a href="{{ route('register') }}" class="btn btn-primary px-4">
+                        S'inscrire
+                    </a>
+                </div>
                 @endauth
             </div>
         </div>
@@ -378,16 +390,19 @@
     }
 
     @keyframes pulse-premium {
-        0%, 100% {
+
+        0%,
+        100% {
             box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
         }
+
         50% {
             box-shadow: 0 4px 16px rgba(255, 193, 7, 0.7);
         }
     }
 
     /* ========== DROPDOWN MENUS ========== */
-    
+
     /* Menu principal dropdown */
     .dropdown-menu {
         border: none;
@@ -419,14 +434,14 @@
     }
 
     /* Sous-menus imbriqués (dropend) */
-    .dropend > .dropdown-menu {
+    .dropend>.dropdown-menu {
         top: 0;
         left: 100%;
         margin-left: 0.125rem;
     }
 
     /* Flèche pour les sous-menus sur desktop */
-    .dropend > .dropdown-toggle::after {
+    .dropend>.dropdown-toggle::after {
         border: none;
         content: "\f054";
         font-family: "Font Awesome 5 Free";
@@ -445,8 +460,9 @@
 
     /* ========== RESPONSIVE MOBILE ========== */
     @media (max-width: 991px) {
+
         /* Sur mobile, les sous-menus apparaissent en dessous */
-        .dropend > .dropdown-menu {
+        .dropend>.dropdown-menu {
             position: static !important;
             transform: none !important;
             border: none;
@@ -458,7 +474,7 @@
         }
 
         /* Flèche vers le bas sur mobile */
-        .dropend > .dropdown-toggle::after {
+        .dropend>.dropdown-toggle::after {
             content: "\f078";
             float: right;
         }
@@ -492,7 +508,7 @@
             font-size: 0.75rem;
         }
 
-        .user-top-banner > div {
+        .user-top-banner>div {
             gap: 0.35rem !important;
         }
     }
@@ -513,7 +529,7 @@
             font-size: 0.7rem;
         }
 
-        .user-top-banner > div {
+        .user-top-banner>div {
             gap: 0.25rem !important;
             padding: 0 0.5rem !important;
         }
@@ -524,7 +540,7 @@
         .banner-link {
             padding: 0.25rem 0.4rem !important;
         }
-        
+
         .banner-link i {
             margin-right: 0.2rem !important;
         }
@@ -535,51 +551,51 @@
 {{-- JavaScript pour les sous-menus imbriqués --}}
 @push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Gestion des sous-menus sur desktop
-    if (window.innerWidth >= 992) {
-        // Ouverture au hover sur desktop
-        const dropendItems = document.querySelectorAll('.dropend');
-        
-        dropendItems.forEach(function(item) {
-            const submenu = item.querySelector('.dropdown-menu');
-            
-            if (submenu) {
-                item.addEventListener('mouseenter', function() {
-                    submenu.classList.add('show');
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    submenu.classList.remove('show');
-                });
-            }
-        });
-    } else {
-        // Gestion des clics sur mobile pour les sous-menus
-        const dropendToggles = document.querySelectorAll('.dropend > .dropdown-toggle');
-        
-        dropendToggles.forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const submenu = this.nextElementSibling;
-                
-                if (submenu && submenu.classList.contains('dropdown-menu')) {
-                    // Toggle le sous-menu
-                    const isVisible = submenu.style.display === 'block';
-                    
-                    // Fermer tous les autres sous-menus
-                    document.querySelectorAll('.dropend .dropdown-menu').forEach(function(menu) {
-                        menu.style.display = 'none';
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestion des sous-menus sur desktop
+        if (window.innerWidth >= 992) {
+            // Ouverture au hover sur desktop
+            const dropendItems = document.querySelectorAll('.dropend');
+
+            dropendItems.forEach(function(item) {
+                const submenu = item.querySelector('.dropdown-menu');
+
+                if (submenu) {
+                    item.addEventListener('mouseenter', function() {
+                        submenu.classList.add('show');
                     });
-                    
-                    // Toggle le sous-menu actuel
-                    submenu.style.display = isVisible ? 'none' : 'block';
+
+                    item.addEventListener('mouseleave', function() {
+                        submenu.classList.remove('show');
+                    });
                 }
             });
-        });
-    }
-});
+        } else {
+            // Gestion des clics sur mobile pour les sous-menus
+            const dropendToggles = document.querySelectorAll('.dropend > .dropdown-toggle');
+
+            dropendToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const submenu = this.nextElementSibling;
+
+                    if (submenu && submenu.classList.contains('dropdown-menu')) {
+                        // Toggle le sous-menu
+                        const isVisible = submenu.style.display === 'block';
+
+                        // Fermer tous les autres sous-menus
+                        document.querySelectorAll('.dropend .dropdown-menu').forEach(function(menu) {
+                            menu.style.display = 'none';
+                        });
+
+                        // Toggle le sous-menu actuel
+                        submenu.style.display = isVisible ? 'none' : 'block';
+                    }
+                });
+            });
+        }
+    });
 </script>
 @endpush

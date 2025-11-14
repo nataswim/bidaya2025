@@ -66,11 +66,11 @@
                                 </h3>
 
                                 <!-- Description courte -->
-                                @if($section->short_description)
-                                    <p class="card-text text-muted mb-3">
-                                        {{ Str::limit($section->short_description, 120) }}
-                                    </p>
-                                @endif
+@if($section->short_description)
+    <p class="card-text text-muted mb-3">
+        {!! Str::limit(strip_tags($section->short_description, '<strong><em><b><i>'), 120) !!}
+    </p>
+@endif
 
                                 <!-- Spacer pour pousser le badge en bas -->
                                 <div class="mt-auto pt-2">
