@@ -33,30 +33,13 @@
                 <div class="category-row mb-4">
                     <div class="card border-0 shadow-sm hover-category-workout">
                         <div class="row g-0">
-                            <!-- Image/Icône de la section (gauche sur desktop, haut sur mobile) -->
-                            <div class="col-12 col-md-3">
-                                <div class="category-image-wrapper-workout">
-                                    <div class="category-image-placeholder-workout d-flex align-items-center justify-content-center text-white"
-                                         style="background: linear-gradient(135deg, {{ $loop->index % 4 == 0 ? '#0d6efd' : ($loop->index % 4 == 1 ? '#198754' : ($loop->index % 4 == 2 ? '#0dcaf0' : '#ffc107')) }} 0%, {{ $loop->index % 4 == 0 ? '#084298' : ($loop->index % 4 == 1 ? '#0f5132' : ($loop->index % 4 == 2 ? '#087990' : '#cc9a06')) }} 100%);">
-                                        <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
-                                    </div>
-                                    
-                                    <!-- Badge nombre total de séances -->
-                                    <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-success shadow-sm fs-6">
-                                            
-                                            {{ $section->categories->sum('workouts_count') }} séance{{ $section->categories->sum('workouts_count') > 1 ? 's' : '' }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
 
                             <!-- Contenu central (titre, description, programmes) -->
-                            <div class="col-12 col-md-7">
+                            <div>
                                 <div class="card-body">
                                     <!-- Nom de la section -->
                                     <h3 class="card-title h4 mb-3">
-                                        <a href="{{ route('public.workouts.section', $section) }}" 
+                                       <i class="fas fa-layer-group me-1"></i> <a href="{{ route('public.workouts.section', $section) }}" 
                                            class="text-decoration-none text-dark category-link-workout">
                                             {{ $section->name }}
                                         </a>
@@ -71,25 +54,24 @@
 
                                     @endif
 
-                                    <!-- Badge nombre de programmes -->
-                                    <div class="mb-3">
-                                        <span class="badge bg-primary-subtle text-primary px-3 py-2">
-                                            <i class="fas fa-layer-group me-1"></i>
-                                            {{ $section->categories->count() }} programme{{ $section->categories->count() > 1 ? 's' : '' }} d'entraînement
+<!-- Badge nombre total de séances -->
+                                    <div class="position-absolute top-0 end-0 m-2">
+                                        <span class="badge bg-info shadow-sm fs-6">
+                                            
+                                            {{ $section->categories->sum('workouts_count') }} séance{{ $section->categories->sum('workouts_count') > 1 ? 's' : '' }}
                                         </span>
                                     </div>
+
+
 
                                     <!-- Liste des programmes disponibles -->
                                     @if($section->categories->count() > 0)
                                         <div class="mt-3 pt-3 border-top">
-                                            <h6 class="small fw-bold text-muted mb-2">
-                                                <i class="fas fa-list me-1"></i>Programmes disponibles
-                                            </h6>
                                             <div class="d-flex flex-wrap gap-2">
                                                 @foreach($section->categories->take(5) as $category)
-                                                    <span class="badge bg-secondary-subtle text-secondary">
+                                                    <span class="badge bg-success shadow-sm fs-6"><i class="fas fa-list me-1"></i>
                                                         {{ $category->name }} 
-                                                        <span class="badge bg-secondary ms-1">{{ $category->workouts_count }}</span>
+                                                        <span class="badge bg-danger ms-1">{{ $category->workouts_count }}</span>
                                                     </span>
                                                 @endforeach
                                                 @if($section->categories->count() > 5)
@@ -104,7 +86,7 @@
                             </div>
 
                             <!-- Bouton à droite -->
-                            <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center justify-content-center">
                                 <div class="p-3 w-100">
                                     <a href="{{ route('public.workouts.section', $section) }}" 
                                        class="btn btn-outline-primary w-100 btn-category-workout">
@@ -217,21 +199,6 @@
             <div class="col-lg-10">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <h2 class="h4 fw-bold mb-3">Pourquoi suivre nos programmes d'entraînement ?</h2>
-                        <p class="text-muted">
-                            Nos <strong>séances d'entraînement sportif</strong> sont conçues par des professionnels
-                            pour vous garantir une progression optimale dans votre discipline. Que vous pratiquiez
-                            la <strong>natation</strong>, la <strong>course à pied</strong>, la <strong>musculation</strong>
-                            ou tout autre sport, nos <strong>plans d'entraînement structurés</strong> vous accompagnent
-                            du niveau débutant jusqu'à la compétition.
-                        </p>
-                        <p class="text-muted mb-4">
-                            Chaque <strong>séance sportive</strong> inclut des instructions détaillées,
-                            des volumes adaptés et une progressivité respectant les principes de
-                            l'entraînement moderne. Accédez gratuitement à notre bibliothèque et
-                            commencez dès aujourd'hui votre transformation physique.
-                        </p>
-
                         <div class="col-lg text-center">
                             <a href="{{ route('public.categories.index') }}">
                                 <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-5.jpg') }}"
