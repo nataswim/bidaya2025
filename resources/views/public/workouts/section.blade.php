@@ -95,7 +95,7 @@
                             </div>
 
                             <!-- Bouton à droite -->
-                            <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+                            <div>
                                 <div class="p-3 w-100">
                                     <a href="{{ route('public.workouts.category', [$section, $category]) }}" 
                                        class="btn btn-outline-primary w-100 btn-category-section">
