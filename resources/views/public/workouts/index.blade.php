@@ -69,7 +69,7 @@
                                         <div class="mt-3 pt-3 border-top">
                                             <div class="d-flex flex-wrap gap-2">
                                                 @foreach($section->categories->take(5) as $category)
-                                                    <span class="badge bg-success shadow-sm fs-6"><i class="fas fa-list me-1"></i>
+                                                    <span class="badge bg-primary shadow-sm fs-6"><i class="fas fa-list me-1"></i>
                                                         {{ $category->name }} 
                                                         <span class="badge bg-danger ms-1">{{ $category->workouts_count }}</span>
                                                     </span>

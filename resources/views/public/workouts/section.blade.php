@@ -52,7 +52,7 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold mb-3">
                 <i class="fas fa-folder-open me-2 text-primary"></i>
-                Programmes {{ $section->name }}
+                 {{ $section->name }}
             </h2>
         </div>
 
@@ -62,26 +62,10 @@
                 <div class="category-row mb-4">
                     <div class="card border-0 shadow-sm hover-category-section">
                         <div class="row g-0">
-                            <!-- Image/Icône de la catégorie (gauche sur desktop, haut sur mobile) -->
-                            <div class="col-12 col-md-3">
-                                <div class="category-image-wrapper-section">
-                                    <div class="category-image-placeholder-section d-flex align-items-center justify-content-center text-white"
-                                         style="background: linear-gradient(135deg, {{ $loop->index % 4 == 0 ? '#0d6efd' : ($loop->index % 4 == 1 ? '#198754' : ($loop->index % 4 == 2 ? '#0dcaf0' : '#ffc107')) }} 0%, {{ $loop->index % 4 == 0 ? '#084298' : ($loop->index % 4 == 1 ? '#0f5132' : ($loop->index % 4 == 2 ? '#087990' : '#cc9a06')) }} 100%);">
-                                        <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
-                                    </div>
-                                    
-                                    <!-- Badge nombre de séances -->
-                                    <div class="position-absolute top-0 end-0 m-2">
-                                        <span class="badge bg-success shadow-sm fs-6">
-                                            
-                                            {{ $category->workouts_count }} séance{{ $category->workouts_count > 1 ? 's' : '' }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <!-- Contenu central (titre, description) -->
-                            <div class="col-12 col-md-7">
+                            <div>
                                 <div class="card-body">
                                     <!-- Nom de la catégorie -->
                                     <h3 class="card-title h4 mb-3">
@@ -97,20 +81,14 @@
                                             {!! Str::limit(strip_tags($category->description), 180) !!}
                                         </p>
                                     @else
-                                        <p class="card-text text-muted mb-3">
-                                            Découvrez nos séances d'entraînement {{ $category->name }} avec {{ $category->workouts_count }} modèle{{ $category->workouts_count > 1 ? 's' : '' }} disponible{{ $category->workouts_count > 1 ? 's' : '' }}.
-                                        </p>
+                                        
                                     @endif
 
                                     <!-- Informations supplémentaires -->
                                     <div class="d-flex flex-wrap gap-3 align-items-center">
-                                        <div class="badge bg-primary-subtle text-primary px-3 py-2">
-                                            <i class="fas fa-dumbbell me-1"></i>
-                                            Programme {{ $section->name }}
-                                        </div>
-                                        <div class="badge bg-success-subtle text-success px-3 py-2">
+                                        <div class="badge bg-danger shadow-sm fs-6">
                                             <i class="fas fa-check-circle me-1"></i>
-                                            {{ $category->workouts_count }} modèle{{ $category->workouts_count > 1 ? 's' : '' }}
+                                            {{ $category->workouts_count }} Séance{{ $category->workouts_count > 1 ? 's' : '' }}
                                         </div>
                                     </div>
                                 </div>
