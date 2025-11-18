@@ -221,9 +221,9 @@
         'description' => 'Accédez à vos programmes de preparartion physique',
         'icon' => 'fas fa-dumbbell',
         'color' => 'info',
-        'route' => route('user.training.index'),
-        'badge' => 'Premium',
-        'badge_color' => 'success'
+        'route' => route('exercices.index'),
+        'badge' => 'En Cours',
+        'badge_color' => 'danger'
         ];
 
         // Mes Carnets
