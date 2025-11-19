@@ -84,54 +84,63 @@ class PublicFicheController extends Controller
         return view('public.fiches.sous-category', compact('category', 'sousCategory', 'fiches'));
     }
 
-    /**
-     * 🇬🇧 Display a single fiche
-     * 🇫🇷 Afficher une fiche individuelle
-     */
-    public function show(FichesCategory $category, Fiche $fiche)
-    {
-        // 🇬🇧 Verify fiche belongs to category / 🇫🇷 Vérifier que la fiche appartient à la catégorie
-        if ($fiche->fiches_category_id !== $category->id) {
-            abort(404, 'La fiche ne correspond pas à la catégorie.');
-        }
 
-        // 🇬🇧 Check if user can view content / 🇫🇷 Vérifier si l'utilisateur peut voir le contenu
-        if (!$fiche->canViewContent(auth()->user())) {
-            if (auth()->check()) {
-                abort(403, 'Vous n\'avez pas accès à cette fiche.');
-            }
-            
-            return redirect()->route('login')
-                ->with('info', 'Veuillez vous connecter pour accéder à cette fiche.');
-        }
 
-        // 🇬🇧 Load relationships / 🇫🇷 Charger les relations
-        $fiche->load(['category', 'sousCategory', 'creator']);
-        
-        // 🇬🇧 Increment views count / 🇫🇷 Incrémenter le compteur de vues
-        $fiche->incrementViews();
-
-        // 🇬🇧 Get related fiches (same sub-category or same category) / 🇫🇷 Récupérer les fiches associées
-        $relatedFiches = Fiche::published()
-            ->visibleTo(auth()->user())
-            ->where('id', '!=', $fiche->id)
-            ->where(function($query) use ($fiche) {
-                // 🇬🇧 Prioritize same sub-category, then same category / 🇫🇷 Prioriser la même sous-catégorie, puis la même catégorie
-                if ($fiche->fiches_sous_category_id) {
-                    $query->where('fiches_sous_category_id', $fiche->fiches_sous_category_id)
-                          ->orWhere(function($q) use ($fiche) {
-                              $q->whereNull('fiches_sous_category_id')
-                                ->where('fiches_category_id', $fiche->fiches_category_id);
-                          });
-                } else {
-                    $query->where('fiches_category_id', $fiche->fiches_category_id);
-                }
-            })
-            ->with(['category', 'sousCategory'])
-            ->ordered()
-            ->take(3)
-            ->get();
-
-        return view('public.fiches.show', compact('fiche', 'relatedFiches', 'category'));
+    
+ /**
+ * 🇬🇧 Display a single fiche
+ * 🇫🇷 Afficher une fiche individuelle
+ */
+public function show(FichesCategory $category, Fiche $fiche)
+{
+    // 🇬🇧 Verify fiche belongs to category / 🇫🇷 Vérifier que la fiche appartient à la catégorie
+    if ($fiche->fiches_category_id !== $category->id) {
+        abort(404, 'La fiche ne correspond pas à la catégorie.');
     }
+
+    // 🇬🇧 Check if fiche is published / 🇫🇷 Vérifier si la fiche est publiée
+    if (!$fiche->is_published && (!auth()->check() || (!auth()->user()->hasRole('admin') && !auth()->user()->hasRole('editor')))) {
+        abort(404, 'Cette fiche n\'est pas disponible.');
+    }
+
+    // 🇬🇧 Load relationships / 🇫🇷 Charger les relations
+    $fiche->load(['category', 'sousCategory', 'creator']);
+    
+    // 🇬🇧 Increment views count / 🇫🇷 Incrémenter le compteur de vues
+    $fiche->incrementViews();
+
+    // 🇬🇧 Determine if content is visible / 🇫🇷 Déterminer si le contenu est visible
+    $contentVisible = $fiche->canViewContent(auth()->user());
+
+    // 🇬🇧 Get related fiches (same sub-category or same category) / 🇫🇷 Récupérer les fiches associées
+    $relatedFiches = Fiche::published()
+        ->visibleTo(auth()->user())
+        ->where('id', '!=', $fiche->id)
+        ->where(function($query) use ($fiche) {
+            // 🇬🇧 Prioritize same sub-category, then same category / 🇫🇷 Prioriser la même sous-catégorie, puis la même catégorie
+            if ($fiche->fiches_sous_category_id) {
+                $query->where('fiches_sous_category_id', $fiche->fiches_sous_category_id)
+                      ->orWhere(function($q) use ($fiche) {
+                          $q->whereNull('fiches_sous_category_id')
+                            ->where('fiches_category_id', $fiche->fiches_category_id);
+                      });
+            } else {
+                $query->where('fiches_category_id', $fiche->fiches_category_id);
+            }
+        })
+        ->with(['category', 'sousCategory'])
+        ->ordered()
+        ->take(3)
+        ->get();
+
+    return view('public.fiches.show', compact('fiche', 'relatedFiches', 'category', 'contentVisible'));
+}
+
+
+
+
+
+
+
+
 }
