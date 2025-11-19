@@ -148,22 +148,22 @@
                             @else
                                 <!-- Message d'accès restreint -->
                                 <div class="content-restricted">
-                                    <div class="alert alert-warning border-0">
+                                    <div class="alert alert-danger border-0">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <i class="fas fa-lock text-warning fs-2"></i>
                                             </div>
                                             <div class="col">
-                                                <h5 class="alert-heading mb-2">Contenu réservé aux membres</h5>
+                                                <h5 class="alert-heading mb-2">Fiche réservé aux membres Premium</h5>
                                                 <p class="mb-3">
                                                     {{ $fiche->getAccessMessage(auth()->user()) }}
                                                 </p>
                                                 @if(!auth()->check())
                                                     <div class="d-flex gap-2">
-                                                        <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
+                                                        <a href="{{ route('register') }}" class="btn btn-dark btn-sm">
                                                             <i class="fas fa-user-plus me-2"></i>Inscription
                                                         </a>
-                                                        <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
+                                                        <a href="{{ route('login') }}" class="btn btn-dark btn-sm">
                                                             <i class="fas fa-sign-in-alt me-2"></i>Se connecter
                                                         </a>
                                                     </div>

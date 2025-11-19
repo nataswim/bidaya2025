@@ -261,7 +261,7 @@ class Fiche extends Model
             }
 
             if ($user->hasRole('visitor')) {
-                return 'Votre compte ne permet pas l\'accès à ce contenu. Contactez l\'administrateur.';
+                return 'Votre compte ne permet pas l\'accès à ce contenu. Passez en Premium.';
             }
 
             return 'Ce contenu est réservé aux membres authentifiés.';
