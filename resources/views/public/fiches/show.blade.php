@@ -256,7 +256,9 @@
                                         <span class="text-muted">
                                             <i class="fas fa-user me-1"></i>Auteur:
                                         </span>
-                                        <strong>Collectif</strong>
+                                        <strong><a href="https://www.instagram.com/med_hassan_el_haouat/" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none">
+            Med H EL HAOUAT
+        </a></strong>
                                     </div>
                                 </div>
                             @endif
