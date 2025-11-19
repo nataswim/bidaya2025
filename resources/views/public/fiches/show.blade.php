@@ -154,7 +154,7 @@
                                                 <i class="fas fa-lock text-warning fs-2"></i>
                                             </div>
                                             <div class="col">
-                                                <h5 class="alert-heading mb-2">Fiche réservé aux membres Premium</h5>
+                                                <h5 class="alert-heading mb-2">Fiche réservée aux membres Premium</h5>
                                                 <p class="mb-3">
                                                     {{ $fiche->getAccessMessage(auth()->user()) }}
                                                 </p>
