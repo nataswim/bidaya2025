@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Downloadable;
-use App\Models\Exercice;
 use App\Models\Fiche;
 use App\Models\Post;
 use App\Models\Video;
-use App\Models\Workout;
 
 class SearchController extends Controller
 {
@@ -35,10 +32,7 @@ class SearchController extends Controller
         $results = [
             'posts' => $this->searchPosts($query, $limit),
             'fiches' => $this->searchFiches($query, $limit),
-            'exercices' => $this->searchExercices($query, $limit),
             'videos' => $this->searchVideos($query, $limit),
-            'workouts' => $this->searchWorkouts($query, $limit),
-            'ebooks' => $this->searchEbooks($query, $limit),
         ];
 
         // Calculer le total de résultats
@@ -84,22 +78,6 @@ class SearchController extends Controller
     }
 
     /**
-     * Rechercher dans les Exercices
-     */
-    private function searchExercices($query, $limit)
-    {
-        return Exercice::active()
-            ->where(function($q) use ($query) {
-                $q->where('titre', 'LIKE', "%{$query}%")
-                  ->orWhere('description', 'LIKE', "%{$query}%")
-                  ->orWhere('consignes_securite', 'LIKE', "%{$query}%");
-            })
-            ->orderBy('created_at', 'desc')
-            ->limit($limit)
-            ->get();
-    }
-
-    /**
      * Rechercher dans les Vidéos
      */
     private function searchVideos($query, $limit)
@@ -108,37 +86,6 @@ class SearchController extends Controller
             ->where(function($q) use ($query) {
                 $q->where('title', 'LIKE', "%{$query}%")
                   ->orWhere('description', 'LIKE', "%{$query}%");
-            })
-            ->orderBy('created_at', 'desc')
-            ->limit($limit)
-            ->get();
-    }
-
-    /**
-     * Rechercher dans les Workouts
-     */
-    private function searchWorkouts($query, $limit)
-    {
-        return Workout::where(function($q) use ($query) {
-                $q->where('title', 'LIKE', "%{$query}%")
-                  ->orWhere('short_description', 'LIKE', "%{$query}%")
-                  ->orWhere('long_description', 'LIKE', "%{$query}%");
-            })
-            ->orderBy('created_at', 'desc')
-            ->limit($limit)
-            ->get();
-    }
-
-    /**
-     * Rechercher dans les E-books
-     */
-    private function searchEbooks($query, $limit)
-    {
-        return Downloadable::active()
-            ->where(function($q) use ($query) {
-                $q->where('title', 'LIKE', "%{$query}%")
-                  ->orWhere('short_description', 'LIKE', "%{$query}%")
-                  ->orWhere('long_description', 'LIKE', "%{$query}%");
             })
             ->orderBy('created_at', 'desc')
             ->limit($limit)
