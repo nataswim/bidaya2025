@@ -134,7 +134,7 @@
                                         <div class="col">
                                             <h5 class="alert-heading mb-2">Contenu exclusif membre</h5>
                                             <p class="mb-3">
-                                                Cet article fait partie de nos contenus premium. Creez votre compte gratuit pour continuer la lecture.
+                                                Cet article fait partie de nos contenus premium. Creez votre compte pour continuer la lecture.
                                             </p>
                                             <div class="d-flex gap-2">
                                                 <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
@@ -152,7 +152,7 @@
                                 @if($post->content)
                                 <div class="content-preview position-relative mt-3">
                                     <div class="text-muted p-3 border rounded" style="max-height: 150px; overflow: hidden;">
-                                        {!! Str::limit(strip_tags($post->content), 300) !!}
+                                        {!! Str::limit(strip_tags($post->content), 500) !!}
                                     </div>
                                     <div class="position-absolute bottom-0 start-0 w-100 text-center py-2"
                                         style="background: linear-gradient(transparent, white, white);">

@@ -60,6 +60,7 @@ use App\Http\Controllers\Admin\CatalogueSectionController;
 use App\Http\Controllers\Admin\CatalogueUnitController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\EquipementController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -74,7 +75,8 @@ Route::prefix('api/equipements')->group(function () {
     Route::get('/{id}', [EquipementController::class, 'show'])->name('api.equipements.show');
 });
 
-
+// Recherche globale
+Route::get('/recherche', [SearchController::class, 'index'])->name('search');
 
 // ========== ROUTES WORKOUTS PUBLIQUES ==========
 Route::prefix('workouts')->name('public.workouts.')->group(function () {

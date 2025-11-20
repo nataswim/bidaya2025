@@ -137,7 +137,7 @@
 
 
                 
-<!-- Card 3: Déroulement de la séance (description longue) - UTILISATEURS  -->
+<!-- Card 3: Déroulement de la séance (description longue) - CONTRÔLE D'ACCÈS -->
 @if($workout->long_description)
     <div class="card border-0 shadow-sm mb-4">
         <div class="card-header bg-light">
@@ -148,12 +148,43 @@
         </div>
         <div class="card-body p-4">
             @auth
-                {{-- Utilisateur connecté : affichage complet --}}
-                <div class="content-display-full fs-6 lh-lg">
-                    {!! $workout->long_description !!}
-                </div>
+                {{-- Utilisateur connecté --}}
+                @if(auth()->user()->hasRole('visitor'))
+                    {{-- Utilisateur visitor : aperçu tronqué + message Premium --}}
+                    <div class="content-display-full fs-6 lh-lg text-muted">
+                        {!! Str::limit(strip_tags($workout->long_description), 100, '...') !!}
+                    </div>
+                    
+                    <div class="alert alert-warning border-0 mt-4">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-lock text-warning fs-2"></i>
+                            </div>
+                            <div class="col">
+                                <h5 class="alert-heading mb-2">
+                                    <i class="fas fa-crown me-1"></i>
+                                    Contenu Premium
+                                </h5>
+                                <p class="mb-3">
+                                    Votre compte ne permet pas l'accès au déroulement complet de cette séance d'entraînement.
+                                </p>
+                                <a href="{{ route('payments.index') }}" 
+                                   class="btn btn-warning d-inline-flex align-items-center justify-content-center gap-2"
+                                   style="box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Devenir Premium</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    {{-- Utilisateur non-visitor : affichage complet --}}
+                    <div class="content-display-full fs-6 lh-lg">
+                        {!! $workout->long_description !!}
+                    </div>
+                @endif
             @else
-                {{-- Utilisateur non connecté : aperçu tronqué --}}
+                {{-- Utilisateur non connecté : aperçu tronqué + inscription --}}
                 <div class="content-display-full fs-6 lh-lg text-muted">
                     {!! Str::limit(strip_tags($workout->long_description), 100, '...') !!}
                 </div>
@@ -166,7 +197,7 @@
                         <div class="col">
                             <h5 class="alert-heading mb-2">
                                 <i class="fas fa-info-circle me-1"></i>
-                                Contenu réservé aux membres premium
+                                Contenu réservé aux membres
                             </h5>
                             <p class="mb-3">
                                 Connectez-vous ou créez un compte pour accéder au déroulement complet de cette séance d'entraînement.

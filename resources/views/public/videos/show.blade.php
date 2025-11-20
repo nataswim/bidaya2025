@@ -150,38 +150,58 @@
                             <p class="text-muted">Aucune source vidéo disponible.</p>
                         </div>
                         @endif
+                        
                         @else
-                        <!-- Message d'accès restreint -->
-                        <div class="p-4">
-                            <div class="alert alert-warning border-0">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h5 class="alert-heading mb-2">
-                                            <i class="fas fa-lock me-2"></i>Premium
-                                        </h5>
-                                        <p class="mb-3">
-                                            Contenu premium réservé aux membres inscrits
-                                        </p>
-                                        @if(!auth()->check())
-                                        <div class="d-flex gap-2">
-                                            <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
-                                                <i class="fas fa-user-plus me-2"></i>Inscription 
-                                            </a>
-                                            <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
-                                                <i class="fas fa-sign-in-alt me-2"></i>Connection
-                                            </a>
-                                        </div>
-                                        @else
-                                        <p class="mb-0 text-muted">
-                                            <i class="fas fa-info-circle me-1"></i>
-                                            Votre compte ne permet pas l'accès à ce contenu premium.
-                                        </p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
+<!-- Message d'accès restreint -->
+<div class="p-4">
+    <div class="alert alert-warning border-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="alert-heading mb-2">
+                    <i class="fas fa-lock me-2"></i>Premium
+                </h5>
+                <p class="mb-3">
+                    Contenu premium réservé aux membres inscrits
+                </p>
+                @if(!auth()->check())
+                {{-- Utilisateur non connecté --}}
+                <div class="d-flex gap-2">
+                    <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-user-plus me-2"></i>Inscription 
+                    </a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
+                        <i class="fas fa-sign-in-alt me-2"></i>Connection
+                    </a>
+                </div>
+                @else
+                {{-- Utilisateur connecté --}}
+                @if(auth()->user()->hasRole('visitor'))
+                {{-- Utilisateur visitor : afficher le bouton Premium --}}
+                <div class="d-flex flex-column gap-2">
+                    <p class="mb-2 text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Votre compte ne permet pas l'accès à ce contenu premium.
+                    </p>
+                    <a href="{{ route('payments.index') }}" 
+                       class="btn btn-warning d-inline-flex align-items-center justify-content-center gap-2"
+                       style="box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+                        <i class="fas fa-crown"></i>
+                        <span>Devenir Premium</span>
+                    </a>
+                </div>
+                @else
+                {{-- Autre rôle sans accès --}}
+                <p class="mb-0 text-muted">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Votre compte ne permet pas l'accès à ce contenu premium.
+                </p>
+                @endif
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+@endif
                     </div>
                 </div>
 

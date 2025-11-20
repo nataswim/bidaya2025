@@ -13,11 +13,13 @@
                     <i class="fas fa-swimmer me-3 fs-1"></i>
                     <h1 class="display-4 fw-bold mb-0">Sport Net Systèmes</h1>
                 </div>
+                
                 <p class="lead mb-4">
                     Optimisez vos entraînements, développez vos connaissances et formez-vous en continu grâce à cette plateforme  dédiée aux sportifs, techniciens, préparateurs physiques, entraîneurs et coachs — du débutant au professionnel.
                 </p>
             </div>
             <div class="col-lg-5">
+                
     <div class="text-center">
         <div class="position-relative d-inline-block bg-white rounded-circle">
             <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}" 
@@ -31,7 +33,21 @@
     </div>
 </section>
 
-
+<!-- Section recherche -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-4">
+                    <h2 class="h3 mb-2">
+                        <i class="fas fa-search me-2"></i>Rechercher
+                    </h2>
+                </div>
+                @include('public.partials.search-form')
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Section Pour qui avec vidéo background -->
 <section class="py-5 position-relative" >

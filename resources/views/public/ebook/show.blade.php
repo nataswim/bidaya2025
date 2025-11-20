@@ -158,30 +158,43 @@
                             Vous avez accès à ce téléchargement. Cliquez sur le bouton ci-dessus pour commencer.
                         </div>
                         @else
-                        <div class="alert alert-warning border-0">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <i class="fas fa-lock text-warning fs-2"></i>
-                                </div>
-                                <div class="col">
-                                    <h5 class="alert-heading mb-2">Accès restreint</h5>
-                                    <p class="mb-3">
-                                        {{ $downloadable->getAccessMessage(auth()->user()) }}
-                                    </p>
-                                    @if(!auth()->check())
-                                    <div class="d-flex gap-2">
-                                        <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-user-plus me-2"></i>Inscription
-                                        </a>
-                                        <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
-                                            <i class="fas fa-sign-in-alt me-2"></i>Se connecter
-                                        </a>
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        @endif
+{{-- Accès restreint --}}
+<div class="alert alert-warning border-0">
+    <div class="row align-items-center">
+        <div class="col-auto">
+            <i class="fas fa-lock text-warning fs-2"></i>
+        </div>
+        <div class="col">
+            <h5 class="alert-heading mb-2">
+                <i class="fas fa-crown me-1"></i>
+                Accès restreint
+            </h5>
+            <p class="mb-3">
+                {{ $downloadable->getAccessMessage(auth()->user()) }}
+            </p>
+            @if(!auth()->check())
+                {{-- Utilisateur non connecté : Inscription / Connexion --}}
+                <div class="d-flex gap-2">
+                    <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-user-plus me-2"></i>Inscription
+                    </a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
+                        <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                    </a>
+                </div>
+            @elseif(auth()->user()->hasRole('visitor'))
+                {{-- Utilisateur visitor : Bouton Premium --}}
+                <a href="{{ route('payments.index') }}" 
+                   class="btn btn-warning d-inline-flex align-items-center justify-content-center gap-2"
+                   style="box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+                    <i class="fas fa-crown"></i>
+                    <span>Devenir Premium</span>
+                </a>
+            @endif
+        </div>
+    </div>
+</div>
+@endif
                     </div>
                 </div>
 
