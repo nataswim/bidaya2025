@@ -25,8 +25,8 @@ class SearchController extends Controller
             ]);
         }
 
-        // Limiter à 10 résultats par catégorie
-        $limit = 10;
+        // Limiter à 21 résultats par catégorie
+        $limit = 21;
 
         // Recherche dans chaque modèle
         $results = [
