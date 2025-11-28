@@ -5,13 +5,14 @@
 
 @section('content')
 <!--  Section -->
+
 <section class="text-white py-5 nataswim-titre">
     <div class="container-lg py-4">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center mb-3">
                     <i class="fas fa-swimmer me-3 fs-1"></i>
-                    <h1 class="display-4 fw-bold mb-0">Sport Net Systèmes</h1>
+                    <h1 class="display-4 fw-bold mb-0">nataswim</h1>
                 </div>
                 
                 <p class="lead mb-4">
@@ -22,10 +23,10 @@
                 
     <div class="text-center">
         <div class="position-relative d-inline-block bg-white rounded-circle">
-            <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}" 
+           <a href="{{ route('public.categories.index') }}"> <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}" 
                  alt="nataswim application pour tous" 
                  class="img-fluid" 
-                 style="max-width: 200px;height: auto;box-shadow: 0 0 40px rgba(255,255,255,.8),0 0 10px #fff;border-radius: 100%;">
+                 style="max-width: 200px;height: auto;box-shadow: 0 0 40px rgba(255,255,255,.8),0 0 10px #fff;border-radius: 100%;"></a>
         </div>
     </div>
 </div>
@@ -48,6 +49,70 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+<!-- Dernieres Publications -->
+<section class="py-5">    
+
+<div class="container-lg">
+
+        
+        @php
+            $latestPosts = App\Models\Post::with('category')
+                ->where('status', 'published')
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->orderBy('published_at', 'desc')
+                ->limit(3)
+                ->get();
+        @endphp
+        
+        @if($latestPosts->count() > 0)
+            <div class="row g-4">
+                @foreach($latestPosts as $post)
+                    <div class="col-md-4">
+                        <div class="card h-100 nataswim-ombre hover-lift border-0">
+                            
+                            <div class="card-body">
+                                @if($post->category)
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary">{{ $post->category->name }}</span>
+                                    </div>
+                                @endif
+                                <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
+                                @if($post->intro)
+    <p class="card-text text-muted small">
+        {!! Str::limit(strip_tags($post->intro), 100) !!}
+    </p>
+@endif
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
+                                <small class="text-muted d-flex align-items-center">
+                                    <i class="fas fa-calendar me-1"></i>
+                                    {{ $post->published_at->format('d/m/Y') }}
+                                </small>
+                                <a href="{{ route('public.show', $post) }}" class="btn btn-sm btn-outline-primary">
+                                    Lire la suite
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="alert alert-info" role="alert">
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
+            </div>
+        @endif
+    </div>
+</section>
+
+
+
 
 <!-- Section Pour qui avec vidéo background -->
 <section class="py-5 position-relative" >
@@ -94,7 +159,7 @@
                         <div class="bg-success-subtle p-3 rounded-circle d-inline-block mb-3">
                             <i class="fas fa-medal text-success" style="font-size: 2rem;"></i>
                         </div>
-                        <h3 class="h5 mb-3">Triathlètes</h3>
+                        <h3 class="h5 mb-3">Nageurs Triathlètes</h3>
                         <p class="card-text text-muted small mb-0">
                             Programmes triathlon complets. Optimisez votre segment natation, vélo et CAP avec nos plans d'entrainement spécialisés.
                         </p>
@@ -132,6 +197,85 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+<section class="py-5">    
+<div class="container-lg">
+            
+
+<div class="row mb-4">
+
+            </div>
+
+            <div class="row g-4">
+                @php
+                $recentFiches = App\Models\Fiche::where('is_published', true)
+                ->where('visibility', 'public')
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                    ->orderBy('created_at', 'desc')
+                    ->limit(4)
+                    ->get();
+                    @endphp
+
+                    @forelse($recentFiches as $fiche)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card border-0 nataswim-ombre h-100 hover-lift">
+
+
+                            <div class="card-body p-3">
+                                @if($fiche->category)
+                                <span class="badge bg-primary-subtle text-primary mb-2">
+                                    {{ $fiche->category->name }}
+                                </span>
+                                @endif
+                                <h6 class="card-title mb-2">
+                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
+                                        class="text-decoration-none text-dark">
+                                        {!! Str::limit($fiche->title, 50) !!}
+                                    </a>
+                                </h6>
+                                @if($fiche->short_description)
+                                <p class="card-text text-muted small mb-3">
+                                    {!! Str::limit(strip_tags($fiche->short_description), 80) !!}
+                                </p>
+                                @endif
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
+                                    </small>
+                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
+                                        class="btn btn-light d-flex align-items-center px-4">
+                                        Lire cette fiche
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-12">
+                        <div class="text-center py-5 text-muted">
+                            <i class="fas fa-file-alt fa-3x mb-3 opacity-25"></i>
+                            <p>Aucune fiche disponible</p>
+                        </div>
+                    </div>
+                    @endforelse
+            </div>
+        </div>
+</section>
+
+
+
+
+
+
+
+
 
 
 
@@ -350,139 +494,7 @@
 
 
 
-<!-- Dernieres Publications -->
-<section class="py-5 text-white nataswim-titre1">    
 
-<div class="container-lg">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{{ route('public.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
-            <i class="fas fa-life-ring me-2"></i> Articles
-            </a>
-        </div>
-        
-        @php
-            $latestPosts = App\Models\Post::with('category')
-                ->where('status', 'published')
-                ->whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                ->orderBy('published_at', 'desc')
-                ->limit(3)
-                ->get();
-        @endphp
-        
-        @if($latestPosts->count() > 0)
-            <div class="row g-4">
-                @foreach($latestPosts as $post)
-                    <div class="col-md-4">
-                        <div class="card h-100 nataswim-ombre hover-lift border-0">
-                            
-                            <div class="card-body">
-                                @if($post->category)
-                                    <div class="mb-2">
-                                        <span class="badge bg-primary">{{ $post->category->name }}</span>
-                                    </div>
-                                @endif
-                                <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
-                                @if($post->intro)
-    <p class="card-text text-muted small">
-        {!! Str::limit(strip_tags($post->intro), 100) !!}
-    </p>
-@endif
-                            </div>
-                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
-                                <small class="text-muted d-flex align-items-center">
-                                    <i class="fas fa-calendar me-1"></i>
-                                    {{ $post->published_at->format('d/m/Y') }}
-                                </small>
-                                <a href="{{ route('public.show', $post) }}" class="btn btn-sm btn-outline-primary">
-                                    Lire la suite
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="alert alert-info" role="alert">
-                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
-            </div>
-        @endif
-    </div>
-</section>
-
-
-
-
-<section class="py-5 text-white nataswim-titre2">    
-<div class="container-lg">
-            
-
-<div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
-                        <i class="fas fa-life-ring me-2"></i> Fiches
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                @php
-                $recentFiches = App\Models\Fiche::where('is_published', true)
-                ->where('visibility', 'public')
-                ->whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                    ->orderBy('created_at', 'desc')
-                    ->limit(4)
-                    ->get();
-                    @endphp
-
-                    @forelse($recentFiches as $fiche)
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card border-0 nataswim-ombre h-100 hover-lift">
-
-
-                            <div class="card-body p-3">
-                                @if($fiche->category)
-                                <span class="badge bg-primary-subtle text-primary mb-2">
-                                    {{ $fiche->category->name }}
-                                </span>
-                                @endif
-                                <h6 class="card-title mb-2">
-                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                        class="text-decoration-none text-dark">
-                                        {!! Str::limit($fiche->title, 50) !!}
-                                    </a>
-                                </h6>
-                                @if($fiche->short_description)
-                                <p class="card-text text-muted small mb-3">
-                                    {!! Str::limit(strip_tags($fiche->short_description), 80) !!}
-                                </p>
-                                @endif
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">
-                                        <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
-                                    </small>
-                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                        class="btn btn-light d-flex align-items-center px-4">
-                                        Lire cette fiche
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @empty
-                    <div class="col-12">
-                        <div class="text-center py-5 text-muted">
-                            <i class="fas fa-file-alt fa-3x mb-3 opacity-25"></i>
-                            <p>Aucune fiche disponible</p>
-                        </div>
-                    </div>
-                    @endforelse
-            </div>
-        </div>
-</section>
 
 <section class="py-5 text-white nataswim-titre3">    
 
@@ -749,13 +761,13 @@
             </div>
 
             <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
+               <a href="{{ route('public.categories.index') }}"> <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
                      style="width: 150px; height: 150px; overflow: hidden;">
                     <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
                          alt="Med H El Haouat - Expert en sciences du sport" 
                          class="w-100 h-100 rounded-circle"
                          style="object-fit: cover;">
-                </div>
+                </div></a>
                 <div class="mt-3">
                     <h6 class="text-warning mb-1">Evidence-Based</h6>
                     <small class="text-light opacity-75">Recherches integrees</small>

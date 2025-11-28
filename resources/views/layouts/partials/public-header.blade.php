@@ -34,11 +34,11 @@
 @endauth
 
 {{-- Navigation principale existante --}}
-<nav class="navbar navbar-expand-lg sticky-top" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #0a7283;border-top: 20px solid #087383;">
+<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #1d6ac2;border-top: 20px solid #1d6ac2;">
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <img src="{{ asset('assets/images/team/nataswim_app_logo_4.png') }}"
+            <img src="{{ asset('assets/images/team/nataswim-logo3.png') }}"
                 alt="nataswim application pour tous"
                 class="img-fluid"
                 style="height: 80px; width: auto;">
@@ -60,39 +60,39 @@
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}"
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}"
                         href="{{ route('public.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Dossiers
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}"
                         href="{{ route('public.fiches.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Fiches
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-dark' }}"
                         href="{{ route('public.videos.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Vidéos
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-dark' }}"
                         href="{{ route('public.workouts.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}"
                         href="{{ route('ebook.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}"
+                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}"
                         href="{{ route('exercices.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Musculation
                     </a>
@@ -106,7 +106,7 @@
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fas fa-life-ring me-2 text-primary"></i>Outils
+                        <i class="fas fa-life-ring me-2 text-dark"></i>Outils
                     </a>
 
                     <ul class="dropdown-menu shadow border-0" aria-labelledby="toolsDropdown">
@@ -119,7 +119,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('tools.index') }}">
-                                <i class="fas fa-th me-2 text-primary"></i>
+                                <i class="fas fa-th me-2 text-dark"></i>
                                 <strong>Tous les outils</strong>
                             </a>
                         </li>
@@ -160,7 +160,7 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('tools.hydratation') }}">
-                                        <i class="fas fa-tint me-2 text-primary"></i>Hydratation
+                                        <i class="fas fa-tint me-2 text-dark"></i>Hydratation
                                     </a>
                                 </li>
                             </ul>
@@ -184,12 +184,12 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('tools.swimming-predictor') }}">
-                                        <i class="fas fa-swimmer me-2 text-primary"></i>Prédicteur performance natation
+                                        <i class="fas fa-swimmer me-2 text-dark"></i>Prédicteur performance natation
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('tools.swimming-planner') }}">
-                                        <i class="fas fa-calendar-alt me-2 text-primary"></i>Planification natation
+                                        <i class="fas fa-calendar-alt me-2 text-dark"></i>Planification natation
                                     </a>
                                 </li>
                                 <li>
@@ -290,7 +290,7 @@
                         @endif
                         <li>
                             <a class="dropdown-item py-2" href="{{ route('user.dashboard') }}">
-                                <i class="fas fa-tachometer-alt text-primary me-2"></i>Mon tableau de bord
+                                <i class="fas fa-tachometer-alt text-dark me-2"></i>Mon tableau de bord
                             </a>
                         </li>
                         <li>
