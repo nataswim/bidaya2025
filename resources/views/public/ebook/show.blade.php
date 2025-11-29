@@ -227,12 +227,7 @@
 
                 <!-- Card 5: Informations du fichier -->
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations
-                        </h5>
-                    </div>
+                    
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-6">

@@ -3,10 +3,10 @@ $chiffre1 = mt_rand(55, 188);
 $chiffre2 = mt_rand(79, 123);
 @endphp
 
-<footer class="text-light" style="background-color: #0059ab !important;border-top: 20px solid #f9f5f4;margin-top: 50px;">
+<footer class="text-light" style="background-color: #179788 !important;border-top: 20px solid #f9f5f4;margin-top: 50px;background-image: radial-gradient(circle farthest-side at center bottom, #00b8a2, #0e5a51 95%);border-left: 20px solid #034a54;border-right: 20px solid #034a54;">
     <!-- statistiques  -->
 
-    <div class="w-100 text-center py-3" style="background-color: #0059ab;">
+    <div class="w-100 text-center py-3" style=" background-color: #034a54; ">
         <div>
             <p class="mb-0">
                 <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
@@ -21,7 +21,7 @@ $chiffre2 = mt_rand(79, 123);
     </div>
 
 
-    <div class="w-100 text-center nataswim-titre py-3">
+    <div class="w-100 text-center" style="background-color: rgb(230.45, 76.55, 76.55);padding: 10px 0px;">
 
         <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres : {{ $chiffre2 }}</p>
 
@@ -59,32 +59,32 @@ Nous partageons nos connaissances avec la communauté du sport.
                     <h6 class="text-white fw-semibold mb-3">Navigation</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="{{ route('home') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('home') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-home me-2"></i>Accueil
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('about') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('about') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-info-circle me-2"></i>À propos
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('features') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('features') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-star me-2"></i>Fonctionnalités
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('pricing') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('pricing') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-tag me-2"></i>Plans d'inscription
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('guide') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('guide') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-book-open me-2"></i>Guide d'utilisation
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('contact') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('contact') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-envelope me-2"></i>Contact
                             </a>
                         </li>
@@ -96,32 +96,32 @@ Nous partageons nos connaissances avec la communauté du sport.
                     <h6 class="text-white fw-semibold mb-3">Ressources</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="{{ route('public.index') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('public.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-newspaper me-2"></i>Articles & Dossiers
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('public.fiches.index') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('public.fiches.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-file-alt me-2"></i>Fiches thématiques
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('ebook.index') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('ebook.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-download me-2"></i>Documents à télécharger
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('exercices.index') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('exercices.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-dumbbell me-2"></i>Exercices
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('plans.index') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('plans.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-calendar-alt me-2"></i>Plans d'entraînement
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('tools.index') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('tools.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-calculator me-2"></i>Outils & Calculateurs
                             </a>
                         </li>
@@ -133,22 +133,22 @@ Nous partageons nos connaissances avec la communauté du sport.
                     <h6 class="text-white fw-semibold mb-3">Informations</h6>
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="{{ route('legal') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('legal') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-gavel me-2"></i>Mentions légales
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('privacy') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('privacy') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-shield-alt me-2"></i>Politique de confidentialité
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('cookies') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('cookies') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-cookie-bite me-2"></i>Politique de cookies
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('accessibility') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                            <a href="{{ route('accessibility') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-universal-access me-2"></i>Accessibilité
                             </a>
                         </li>
@@ -178,7 +178,7 @@ Nous partageons nos connaissances avec la communauté du sport.
     </div>
 
     <!-- Barre de copyright -->
-    <div style="background-color: #082f3e;">
+    <div style="background-color: #034a54;">
 
 
         <div class="container-lg py-4">
@@ -200,13 +200,13 @@ Nous partageons nos connaissances avec la communauté du sport.
 
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
                     <div class="d-flex flex-wrap justify-content-md-end gap-3">
-                        <a href="{{ route('privacy') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                        <a href="{{ route('privacy') }}" class="text-light text-decoration-none">
                             Politique de confidentialité
                         </a>
-                        <a href="{{ route('cookies') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                        <a href="{{ route('cookies') }}" class="text-light text-decoration-none">
                             Cookies
                         </a>
-                        <a href="{{ route('legal') }}" class="text-light opacity-75 text-decoration-none hover-opacity-100">
+                        <a href="{{ route('legal') }}" class="text-light text-decoration-none">
                             Mentions légales
                         </a>
                     </div>

@@ -35,10 +35,8 @@
                     <h1 class="fw-bold mb-0">{{ $post->name }}</h1>
                 </div>
             </div>
-</section>
-
-
-<section class="py-5 text-center">
+        </div>
+    </div>
     <div class="container-lg">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center">
@@ -48,12 +46,14 @@
                         alt="{{ $post->name }}"
                         class="img-fluid rounded shadow"
                         style="object-fit: cover; width: auto !important;">
-                        </div>
+                </div>
                 @endif
             </div>
         </div>
     </div>
+
 </section>
+
 
 
 
@@ -65,45 +65,10 @@
             <div class="col-lg-8 col-xl-12">
 
                 <!-- Card 1: Métadonnées et Introduction -->
-                <div class="card border-0 shadow-sm mb-4" style="background-color: #fbf7f0;">
+                <div class="card border-0 shadow-sm mb-4" style="background-color: #ffffff;">
                     <div class="card-body p-4">
                         <!-- Métadonnées -->
-                        <div class="d-flex flex-wrap align-items-center gap-3 text-muted mb-4">
-                            <span class="badge bg-primary px-3 py-2">
-                                {{ $post->category->name ?? 'Actualites' }}
-                            </span>
 
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-eye me-1"></i>
-                                {{ number_format($post->hits) }} vue{{ $post->hits > 1 ? 's' : '' }}
-                            </span>
-
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-calendar me-1"></i>
-                                {{ $post->published_at?->format('d M Y') ?? $post->created_at?->format('d M Y') }}
-                            </span>
-
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-clock me-1"></i>
-                                {{ $post->reading_time ?? 5 }} min de lecture
-                            </span>
-
-                            @if($post->tags->count() > 0)
-                            <span class="d-flex align-items-center">
-                                <i class="fas fa-tags me-1"></i>
-                                @foreach($post->tags as $tag)
-                                <span class="badge bg-secondary-subtle text-secondary me-1 small">
-                                    {{ $tag->name }}
-                                </span>
-                                @endforeach
-                            </span>
-                            @endif
-                        </div>
-                        <div class="mb-3">
-                            <x-add-to-notebook-button
-                                content-type="posts"
-                                :content-id="$post->id" />
-                        </div>
                         <!-- Introduction -->
                         @if($post->intro)
                         <div class="border-top pt-4">
@@ -169,12 +134,6 @@
                 <!-- Card 3: Dernieres publications -->
                 @if(isset($recentPosts) && $recentPosts->count() > 0)
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-water me-2 text-success"></i>
-                            Dernieres publications
-                        </h5>
-                    </div>
                     <div class="card-body p-0">
                         @foreach($recentPosts->take(4) as $recentPost)
                         <div class="p-3 {{ !$loop->last ? 'border-bottom' : '' }}">
@@ -225,12 +184,7 @@
 
                 <!-- Card 4: Informations de l'article -->
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations 
-                        </h5>
-                    </div>
+
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -244,7 +198,7 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>Publie le:
+                                        <i class="fas fa-calendar me-1"></i>Mis à jour le:
                                     </span>
                                     <strong>{{ $post->published_at?->format('d F Y') ?? $post->created_at?->format('d F Y') }}</strong>
                                 </div>
@@ -269,11 +223,11 @@
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">
-                                        <i class="fas fa-user me-1"></i>Auteur:
+                                        <i class="fas fa-user me-1"></i>Contribution:
                                     </span>
                                     <strong><a href="https://www.instagram.com/med_hassan_el_haouat/" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none">
-            Med H EL HAOUAT
-        </a></strong>
+                                            Med H EL HAOUAT
+                                        </a></strong>
                                 </div>
                             </div>
                             @endif
@@ -305,15 +259,7 @@
 
 
 
-<!-- Partage social -->
 
-<div class="container-lg">
-    <div class="card mb-4">
-        <a href="{{ route('tools.index') }}" class="btn btn-primary text-light btn-lg">
-            <i class="fas fa-arrow-left me-2"></i>Essayer Nos Outils & Calculateurs
-        </a>
-    </div>
-</div>
 
 
 
@@ -322,12 +268,7 @@
 <!-- Dernieres Publications -->
 <section class="py-5 bg-light">
     <div class="container-lg">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="fw-bold mb-0">
-                <i class="fas fa-water text-primary me-2"></i>Publications
-            </h2>
 
-        </div>
 
         @php
         $latestPosts = App\Models\Post::with('category')

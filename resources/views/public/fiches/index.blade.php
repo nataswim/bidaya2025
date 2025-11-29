@@ -101,15 +101,6 @@
 <!-- Navigation par Catégories -->
 <section class="py-5 {{ $featuredFiches->count() > 0 ? 'bg-white' : 'bg-light' }}">
     <div class="container-lg">
-        
-        <!-- Introduction -->
-        <div class="text-center mb-5">
-            <p class="lead text-muted">
-                Choisissez la thématique qui correspond à vos besoins pour accéder 
-                aux fiches pratiques adaptées à votre pratique.
-            </p>
-        </div>
-
         <!-- Catégories de fiches -->
         @if($categories->count() > 0)
             <!-- Boucle sur chaque catégorie -->
@@ -190,58 +181,7 @@
             </div>
         @endif
 
-        <!-- Guide d'Utilisation Rapide -->
-        <div class="card shadow-lg border-0 mb-5 mt-5">
-            <div class="card-header text-white" style="border-left: 10px solid rgb(150 230 77);margin-bottom: 20px;background-color: #316f75;">
-                <h3 class="mb-2">
-                    <i class="fas fa-compass me-2"></i>
-                    Comment utiliser nos Fiches
-                </h3>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="text-center">
-                            <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                                 style="width: 80px; height: 80px;">
-                                <i class="fas fa-search text-success" style="font-size: 2rem;"></i>
-                            </div>
-                            <h6 class="fw-bold">1. Explorez les Catégories</h6>
-                            <p class="small text-muted">
-                                Parcourez nos catégories thématiques pour trouver 
-                                les fiches adaptées à vos besoins.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="text-center">
-                            <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                                 style="width: 80px; height: 80px;">
-                                <i class="fas fa-book-reader text-primary" style="font-size: 2rem;"></i>
-                            </div>
-                            <h6 class="fw-bold">2. Consultez les Fiches</h6>
-                            <p class="small text-muted">
-                                Accédez au contenu détaillé avec des informations 
-                                pratiques et applicables immédiatement.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="text-center">
-                            <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                                 style="width: 80px; height: 80px;">
-                                <i class="fas fa-rocket text-warning" style="font-size: 2rem;"></i>
-                            </div>
-                            <h6 class="fw-bold">3. Appliquez les Conseils</h6>
-                            <p class="small text-muted">
-                                Mettez en pratique les recommandations pour 
-                                optimiser votre progression sportive.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </section>
 

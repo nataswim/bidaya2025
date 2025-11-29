@@ -249,32 +249,54 @@
     }
 }
 .nataswim-titre {
-    background-color: #0470ab;
-    background-image: radial-gradient(circle farthest-side at center bottom, #009cde, #265bbb 125%);
-   
+background-color: #1d8e80;
+    background-image: radial-gradient(circle farthest-side at center bottom, #0ab29e, #1d8e80 125%);
+    border-color: #f9f5f4 rgb(249 245 244);
+    border-width: 0px 10px;
+    border-style: solid;
 }
 .nataswim-titre1 {
-    background-color: #00A6A6;
+        background-image: linear-gradient(111deg, #188194 17.15%, #0a7183 92%, #0097b2 30%);
+    background-color: #0a7183;
+    border-width: 0px 5px;
+    border-color: #f9f5f4 #0d7183;
+    border-style: solid;
+    border-width: 20px;
 }
 .nataswim-titre2 {
     background-color: #0a7183;
+    border-color: #f9f5f4 #0a7183;
+    border-width: 20px;
+    border-style: solid;
 
 }
 .nataswim-titre3 {
-
-    background-color: #029c91;
-    background-image: radial-gradient(circle farthest-side at center bottom, #009cde, #265bbb 125%);
+    background-color: #22a696;
+    background-image: radial-gradient(circle farthest-side at center bottom, #2bd1bc, #1c8f81 95%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: #f9f5f4 #1c8f81;
 }
 .nataswim-titre4 {
-
-    background-color: #fc8c00;
+    background-color: #067fba;
+    background-image: linear-gradient(176deg, #0ea5e9 0%, #067fba 100%);
+    border-color: #f9f5f4 #0c98d8;
+    border-width: 20px;
+    border-style: solid;
 }
 .nataswim-titre5 {
-
-background-color: #19b7de;
+background-color: #10557c ;
+background-image: linear-gradient(176deg, #10557c 0%, #02a1c8 100%);
+    border-color: #f9f5f4 #0b759d;
+    border-width: 20px;
+    border-style: solid;
 }
 .nataswim-titre6 {
-        background-color: #51b6c9;
+background-color: #fcb900;
+    background-image: radial-gradient(circle farthest-side at center bottom, #a27700, #fcb900 95%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: #f9f5f4 #fab800;
 }
 .nataswim-titre7 {
     background: linear-gradient(41deg, #c59f69 0%, #e1ca88 21%, #f9e9ca 43%, #edd89f 64%, #b38d52 83%, #d6bd7b 100%);
@@ -298,4 +320,19 @@ background-color: #19b7de;
 
 .bg-primary {
     background-image: radial-gradient(circle farthest-side at center bottom, #01a6a6, #087383 125%);
+}
+.navurl {
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgb(249 245 244);
+    border-radius: 20px 0px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border: 1px dotted #22a696;
+}
+.navurl:hover {
+    background-color: #ffffff;
+    color: #22a696;
+    border-radius: 20px 0px;
+    margin-right: 5px;
+    border: 1px dotted #fe0000;
 }

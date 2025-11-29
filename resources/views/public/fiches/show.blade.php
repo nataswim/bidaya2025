@@ -32,18 +32,11 @@
             </div>
         </div>
     </div>
-</section>
-
-
-
-
-
-<section class="py-5 text-center">
     <div class="container-lg">
         <div class="container-lg">
             <div class="row justify-content-center align-items-center">
 @if($fiche->image)
-                <div class="col-lg" style="background-color: white;">
+                <div class="col-lg">
                     <img src="{{ $fiche->image }}" 
                          alt="{{ $fiche->title }}" 
                          style="max-height: 600px; max-width: -webkit-fill-available;">
@@ -53,6 +46,7 @@
         </div>
     </div>
 </section>
+
 
 
 
@@ -86,7 +80,7 @@
             <div class="col-lg-8 col-xl-12">
                 
                 <!-- Card 1: Métadonnées -->
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="border-0 mb-4">
                     <div class="card-body p-4">
                         <div class="d-flex flex-wrap align-items-center gap-3 text-muted">
                             
@@ -193,12 +187,6 @@
                 <!-- Card 4: Fiches associées -->
                 @if($relatedFiches->count() > 0)
                     <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-header bg-light">
-                            <h5 class="mb-0">
-                                <i class="fas fa-layer-group me-2 text-primary"></i>
-                                Plus de Fiches
-                            </h5>
-                        </div>
                         <div class="card-body p-4">
                             <div class="row g-4">
                                 @foreach($relatedFiches as $related)
@@ -230,13 +218,8 @@
                 @endif
 
                 <!-- Card 5: Informations de la fiche -->
-                <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-info-circle me-2 text-info"></i>
-                            Informations
-                        </h5>
-                    </div>
+                <div class="border-0 mb-4">
+
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -353,6 +336,7 @@
         </div>
     </div>
 </article>
+
 
 
 

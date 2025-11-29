@@ -32,6 +32,17 @@
             </div>
         </div>
     </div>
+    @if($exercice->image)
+    <div>
+
+        <div>
+            <div class="content-display fs-6 lh-lg">
+                <img src="{{ $exercice->image }}"
+                    alt="{{ $exercice->titre }}">
+            </div>
+        </div>
+    </div>
+    @endif
 </section>
 
 <!-- Breadcrumb -->
@@ -71,36 +82,9 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-12">
 
-
-
-
-                <!-- Card 2: images -->
-                @if($exercice->image)
-
-
-
-
-                <div style="background-color: #fff;">
-
-                    <div>
-                        <div class="content-display fs-6 lh-lg">
-                            <img src="{{ $exercice->image }}"
-                                alt="{{ $exercice->titre }}">
-                        </div>
-                    </div>
-                </div>
-
-                @endif
-
-
                 <!-- Card 2: Description -->
                 @if($exercice->description)
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">
-                            <i class="fas fa-file-text me-2"></i>Infos
-                        </h5>
-                    </div>
                     <div class="card-body p-4">
                         <div class="content-display fs-6 lh-lg">
                             {!! $exercice->description !!}
@@ -114,11 +98,6 @@
                 <!-- Card 4: Consignes  -->
                 @if($exercice->consignes_securite)
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0">
-                            <i class="fas fa-file-text me-2"></i>Infos Plus
-                        </h5>
-                    </div>
                     <div class="card-body p-4">
                         <div class="content-display-warning fs-6 lh-lg">
                             {!! $exercice->consignes_securite !!}
@@ -215,12 +194,6 @@
                 <!-- Card 6: Exercices similaires -->
                 @if(isset($exercicesSimilaires) && $exercicesSimilaires->count() > 0)
                 <div class="card border-0 shadow-sm mb-4">
-                    <div class="card-header bg-light">
-                        <h5 class="mb-0">
-                            <i class="fas fa-dumbbell me-2 text-primary"></i>
-                            Exercices Plus
-                        </h5>
-                    </div>
                     <div class="card-body p-0">
                         @foreach($exercicesSimilaires as $similaire)
                         <div class="p-3 {{ !$loop->last ? 'border-bottom' : '' }}">

@@ -34,11 +34,11 @@
 @endauth
 
 {{-- Navigation principale existante --}}
-<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #1d6ac2;border-top: 20px solid #1d6ac2;">
+<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #22a696;border-top: 20px solid #22a696;">
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <img src="{{ asset('assets/images/team/nataswim-logo3.png') }}"
+            <img src="{{ asset('assets/images/team/nataswim_app_logo_3.png') }}"
                 alt="nataswim application pour tous"
                 class="img-fluid"
                 style="height: 80px; width: auto;">
@@ -53,46 +53,41 @@
             <!-- Navigation principale -->
             <ul class="navbar-nav me-auto ms-lg-4">
 
-                <li class="nav-item">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('home') ? 'active bg-primary text-white' : 'text-dark' }}"
-                        href="{{ route('home') }}">
-                        <i class="fas fa-home me-2 text-success"></i>
-                    </a>
-                </li>
+
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-secondary' }}"
                         href="{{ route('public.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Dossiers
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
                         href="{{ route('public.fiches.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Fiches
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
                         href="{{ route('public.videos.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Vidéos
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
                         href="{{ route('public.workouts.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
                         href="{{ route('ebook.index') }}">
-                        <i class="fas fa-water me-2 text-warning"></i>Ressources
+                        <i class="fas fa-water me-2 text-warning" ></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
                         href="{{ route('exercices.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Musculation
                     </a>
@@ -100,7 +95,7 @@
 
                 {{-- Menu Outils avec sous-menus imbriqués --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link px-1 py-2 dropdown-toggle {{ request()->routeIs('tools.*', 'plans.*') ? 'active bg-primary text-white' : 'text-dark' }}"
+                    <a class="nav-link px-1 py-2 dropdown-toggle {{ request()->routeIs('tools.*', 'plans.*') ? 'active bg-primary text-white' : 'text-danger' }}"
                         href="#"
                         id="toolsDropdown"
                         role="button"
@@ -313,10 +308,10 @@
                 </div>
                 @else
                 <div class="d-flex gap-2">
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary px-4">
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-secondary text-white px-4">
                         Se connecter
                     </a>
-                    <a href="{{ route('register') }}" class="btn btn-primary px-4">
+                    <a href="{{ route('register') }}" class="btn btn-sm btn-primary text-white px-4">
                         S'inscrire
                     </a>
                 </div>
