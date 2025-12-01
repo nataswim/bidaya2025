@@ -159,7 +159,7 @@
                         </div>
                         @else
 {{-- Accès restreint --}}
-<div class="alert alert-warning border-0">
+<div class="alert alert-danger border-0">
     <div class="row align-items-center">
         <div class="col-auto">
             <i class="fas fa-lock text-warning fs-2"></i>
@@ -178,7 +178,7 @@
                     <a href="{{ route('register') }}" class="btn btn-warning btn-sm">
                         <i class="fas fa-user-plus me-2"></i>Inscription
                     </a>
-                    <a href="{{ route('login') }}" class="btn btn-outline-warning btn-sm">
+                    <a href="{{ route('login') }}" class="btn btn-warning btn-sm">
                         <i class="fas fa-sign-in-alt me-2"></i>Se connecter
                     </a>
                 </div>

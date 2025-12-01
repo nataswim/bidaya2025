@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log; // ← Ajouter cet import
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -26,38 +25,46 @@ class RegisteredUserController extends Controller
 
     /**
      * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RegisterRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        // Recuperer le rôle visitor par defaut
-        $visitorRole = Role::where('name', 'visitor')->where('is_default', true)->first();
+        // Récupérer le rôle visitor par défaut
+        $visitorRole = Role::where('slug', 'visitor')
+            ->where('is_default', true)
+            ->first();
         
-        // Fallback si pas trouve par is_default
+        // Fallback si pas trouvé par is_default
         if (!$visitorRole) {
-            $visitorRole = Role::where('name', 'visitor')->first();
+            $visitorRole = Role::where('slug', 'visitor')->first();
         }
 
-        // Securite : si toujours pas de rôle visitor, creer une erreur
+        // Sécurité : si toujours pas de rôle visitor, créer une erreur
         if (!$visitorRole) {
-            Log::error('Rôle visitor non trouve lors de l\'inscription pour: ' . $request->email);
+            Log::error('Rôle visitor non trouvé lors de l\'inscription pour: ' . $request->email);
             return redirect()->back()
-                ->withErrors(['general' => 'Erreur systeme : configuration des rôles incomplete.'])
+                ->withErrors(['general' => 'Erreur système : configuration des rôles incomplète.'])
                 ->withInput();
         }
 
+        // Création de l'utilisateur avec tous les champs
         $user = User::create([
+            // Informations de compte
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => $visitorRole->id, // Assigner automatiquement le rôle visitor
+            
+            // Informations personnelles
+            'username' => $request->username,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'date_of_birth' => $request->date_of_birth,
+            
+            // Coordonnées et bio
+            'phone' => $request->phone,
+            'bio' => $request->bio,
+            
+            // Configuration par défaut
+            'role_id' => $visitorRole->id,
             'status' => 'active',
             'locale' => 'fr',
             'timezone' => 'Europe/Paris',
@@ -68,6 +75,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false))
-            ->with('success', 'Inscription reussie ! Votre compte doit être valide par un administrateur pour acceder aux contenus premium.');
+            ->with('success', 'Bienvenue ! Votre compte a été créé avec succès.');
     }
 }

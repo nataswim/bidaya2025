@@ -73,18 +73,14 @@
                     </div>
                     <div class="flex-fill">
                         <h5 class="alert-heading mb-2">
-                            <i class="fas fa-lock"></i> Accès limité
+                            <i class="fas fa-lock"></i> Contenu Exclusif Verrouillé !
                         </h5>
                         <p class="mb-3">
-                            Votre compte vous donne accès au contenu membre uniquement.
-                            Pour débloquer tous les articles et contenus premium, passez à un compte premium.
+                            Votre compte actuel vous offre un aperçu des services. Pour débloquer l'accès à tous les contenus premium, les fonctionnalités avancées et une expérience sans publicité, passez à la formule Premium.
                         </p>
                         <div class="d-flex gap-2 flex-wrap">
-                            <a href="{{ route('payments.index') }}" class="btn btn-primary">
-                                <i class="fas fa-arrow-up me-2"></i>Passer Premium
-                            </a>
-                            <a href="{{ route('payments.history') }}" class="btn btn-outline-secondary btn-sm">
-                                <i class="fas fa-history me-2"></i>Mon Abonnement
+                            <a href="{{ route('payments.index') }}" class="btn btn-lg btn-danger text-white ">
+                                <i class="fas fa-arrow-up me-2"></i>Choisir une formule Premium
                             </a>
                         </div>
                     </div>
@@ -133,11 +129,11 @@
         'route' => route('user.profile.edit')
         ],
         [
-        'title' => 'Mon Accès illimité',
+        'title' => 'Visiteur/Premium : différences ?',
         'icon' => 'fas fa-credit-card',
         'color' => 'info',
-        'description' => 'Je met a jour mon compte',
-        'route' => route('payments.history')
+        'description' => 'Choisissez la durée qui vous convient : 12 / 6 / 3 mois.',
+        'route' => route('payments.index')
         ],
         [
         'title' => 'Jours actif',

@@ -1,7 +1,4 @@
-// Importer et exposer Bootstrap globalement
-import * as bootstrap from 'bootstrap';
-window.bootstrap = bootstrap;
-
+import 'bootstrap';
 import Alpine from 'alpinejs';
 import axios from 'axios';
 
@@ -19,9 +16,9 @@ if (token) {
 window.Alpine = Alpine;
 Alpine.start();
 
-// Scripts personnalisés
+// Scripts personnalises
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-hide alerts après 5 secondes
+    // Auto-hide alerts
     setTimeout(function() {
         const alerts = document.querySelectorAll('.alert-dismissible');
         alerts.forEach(function(alert) {
@@ -34,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const deleteButtons = document.querySelectorAll('[data-confirm="delete"]');
     deleteButtons.forEach(function(button) {
         button.addEventListener('click', function(e) {
-            if (!confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+            if (!confirm('Êtes-vous sûr de vouloir supprimer cet element ?')) {
                 e.preventDefault();
             }
         });
