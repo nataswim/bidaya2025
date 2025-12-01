@@ -57,9 +57,6 @@
                     <h5 class="mb-0">
                         Articles
                     </h5>
-                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-primary d-flex align-items-center px-4 text-white">
-                        <i class="fas fa-water me-1"></i> + Dossiers
-                    </a>
                 </div>
             </div>
         </div>
@@ -123,6 +120,17 @@
             </div>
             @endforelse
         </div>
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="align-items-center justify-content-between">
+                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white">
+                        <i class="fas fa-eye me-1"></i> Consulter les dossiers
+                    </a>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </section>
 
@@ -138,9 +146,6 @@
                     <h5 class="mb-0">
                         Fiches Pratiques
                     </h5>
-                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-primary d-flex align-items-center px-4 text-white">
-                        + Fiches
-                    </a>
                 </div>
             </div>
         </div>
@@ -209,6 +214,16 @@
                 </div>
                 @endforelse
         </div>
+<div class="row mb-4">
+            <div class="col-12">
+                <div class="align-items-center justify-content-between">
+                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white">
+                    <i class="fas fa-eye me-1"></i> Voir les fiches
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
