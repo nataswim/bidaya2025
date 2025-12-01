@@ -75,12 +75,12 @@
 
             @forelse($recentArticles as $article)
             <div class="col-md-6 col-lg-3">
-                <div class="card border-0 shadow-sm h-100 hover-lift">
+                <div class="card border-0 h-100 hover-lift">
                     <div class="bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
                         style="height: 180px; overflow: hidden;">
                         @if($article->image)
                         <img src="{{ $article->image }}"
-                            class="w-100 h-100"
+                            class="w-100"
                             style="object-fit: cover;"
                             alt="{{ $article->name }}">
                         @else
@@ -158,11 +158,11 @@
 
                 @forelse($recentFiches as $fiche)
                 <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
+                    <div class="card border-0 h-100 hover-lift">
                         @if($fiche->image)
                         <img src="{{ $fiche->image }}"
-                            class="card-img-top"
-                            style="height: 180px; object-fit: cover;"
+                            class="w-100"
+                            style="object-fit: cover;"
                             alt="{{ $fiche->title }}">
                         @else
                         <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
