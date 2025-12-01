@@ -4,18 +4,9 @@
 
 @section('content')
 
-<!-- Hero Section avec Video Background -->
-<section class="position-relative text-white py-5 overflow-hidden">
-    <!-- Video Background -->
-    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
-        <source src="{{ asset('assets/images/team/nataswim.mp4') }}" type="video/mp4">
-    </video>
-    
-    <!-- Overlay sombre pour meilleure lisibilité -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50" style="z-index: 2;"></div>
-    
-    <!-- Contenu -->
-    <div class="container-lg position-relative" style="z-index: 3;">
+<!-- Hero Section -->
+<section class="bg-primary text-white py-5">
+    <div class="container-lg">
         <div class="row align-items-center">
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold mb-4">Contactez-nous</h1>
@@ -24,29 +15,86 @@
                 </p>
             </div>
             <div class="col-lg-4 text-center">
-                <div class="bg-white bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center p-3" 
+                <div class="bg-white bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 
                      style="width: 200px; height: 200px;">
-                    <img 
-                        src="{{ asset('assets/images/team/nataswim_app_logo_0.png') }}" 
-                        alt="Nataswim Logo" 
-                        class="img-fluid"
-                        style="max-width: 160px; max-height: 160px;"
-                    >
+                    <i class="fas fa-envelope" style="font-size: 5rem;"></i>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Formulaire de contact -->
+<!-- Contenu Principal -->
 <section class="py-5 bg-white">
     <div class="container-lg">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 col-xl-8">
-                <h2 class="h3 mb-4 text-center">Envoyez-nous un message</h2>
+        <div class="row g-5">
+            <!-- Informations de contact -->
+            <div class="col-lg-4">
+                <h2 class="h3 mb-4">Coordonnées</h2>
+
+                <!-- Siège -->
+                <article class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 48px; height: 48px;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="h5 mb-1">Siège</h3>
+                                <p class="text-muted mb-0">45 Avenue Albert Camus<br>75200 Paris, France</p>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 48px; height: 48px;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="h5 mb-1">Email</h3>
+                                <p class="text-muted mb-0">natation.swimming@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 48px; height: 48px;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="h5 mb-1">Horaires</h3>
+                                <p class="text-muted mb-0">
+                                    Lundi - Samedi : 9h00 - 18h00<br>
+                                    Dimanche : Fermé
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Carte Google Maps -->
+                <div class="card border-0 shadow-sm overflow-hidden">
+                    <div class="ratio ratio-4x3">
+                        <iframe 
+                            title="Localisation Nataswim" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1176.5239436813358!2d-0.25712794780144704!3d46.63821066641348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48076dc9d435764f%3A0xa7eaa3369cacbf3e!2sMycreanet%20DIGITAL%20SERVICES%20-%20AGENCE%20WEB%20HUMAINE%20ET%20RESPONSABLE%20-%20CONSULTANT%20E%20COMMERCE!5e0!3m2!1sfr!2sfr!4v1741162976443!5m2!1sfr!2sfr" 
+                            style="border: 0;" 
+                            allowfullscreen 
+                            loading="lazy"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulaire de contact -->
+            <div class="col-lg-8">
+                <h2 class="h3 mb-4">Envoyez-nous un message</h2>
 
                 <div class="card border-0 shadow-sm">
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body p-4">
                         {{-- Message de succès --}}
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -180,7 +228,7 @@
                                         class="form-control @error('message') is-invalid @enderror" 
                                         id="message" 
                                         name="message" 
-                                        rows="6"
+                                        rows="5"
                                         required
                                     >{{ old('message') }}</textarea>
                                     @error('message')
@@ -191,38 +239,13 @@
 
                                 {{-- Bouton d'envoi --}}
                                 <div class="col-12 mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg w-100 w-md-auto">
+                                    <button type="submit" class="btn btn-primary btn-lg">
                                         <i class="fas fa-paper-plane me-2"></i>
                                         Envoyer le message
                                     </button>
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section Localisation -->
-<section class="py-5 bg-light">
-    <div class="container-lg">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">                
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body p-0">
-                        <!-- Carte Google Maps -->
-                        <div class="ratio ratio-16x9">
-                            <iframe 
-                                title="Localisation Nataswim - 46 Rte de la Pyramide, 75012 Paris" 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.8583384719945!2d2.404621!3d48.843611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6729d8cf8e8c9%3A0x1234567890abcdef!2s46%20Route%20de%20la%20Pyramide%2C%2075012%20Paris!5e0!3m2!1sfr!2sfr!4v1733049600000!5m2!1sfr!2sfr" 
-                                style="border: 0;" 
-                                allowfullscreen 
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </div>
                     </div>
                 </div>
             </div>

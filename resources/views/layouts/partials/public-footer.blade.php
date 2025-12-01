@@ -5,6 +5,17 @@ $chiffre2 = mt_rand(79, 123);
 
 <footer class="text-light" style="background-color: #179788 !important;border-top: 20px solid #f9f5f4;margin-top: 50px;background-image: radial-gradient(circle farthest-side at center bottom, #00b8a2, #0e5a51 95%);border-left: 20px solid #034a54;border-right: 20px solid #034a54;">
     <!-- statistiques  -->
+<section class="py-5 bg-primary text-white text-center">
+    <div class="container-lg">
+        <h2 class="mb-4 fw-bold">Des questions ?</h2>
+        <p class="lead mb-4">
+            N'hésitez pas à nous contacter ! Nous sommes là pour y répondre.
+        </p>
+        <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
+            Contactez notre équipe !
+        </a>
+    </div>
+</section>
 
     <div class="w-100 text-center py-3" style=" background-color: #034a54; ">
         <div>
@@ -113,11 +124,6 @@ Nous partageons nos connaissances avec la communauté du sport.
                         <li class="mb-2">
                             <a href="{{ route('exercices.index') }}" class="text-light text-decoration-none">
                                 <i class="fas fa-dumbbell me-2"></i>Exercices
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="{{ route('plans.index') }}" class="text-light text-decoration-none">
-                                <i class="fas fa-calendar-alt me-2"></i>Plans d'entraînement
                             </a>
                         </li>
                         <li class="mb-2">

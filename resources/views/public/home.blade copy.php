@@ -4,19 +4,10 @@
 @section('meta_description', 'Decouvrez notre plateforme dediee A la natation et au triathlon avec articles, plans d\'entrainement, fiches techniques et videos. Rejoignez notre communaute de nageurs, triathletes et coachs.')
 
 @section('content')
-<!--  Section avec Video Background -->
+<!--  Section -->
 
-<section class="position-relative text-white py-5 bg-primary overflow-hidden" style="min-height: 600px;">
-    <!-- Video Background -->
-    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
-        <source src="{{ asset('assets/images/team/nataswim.mp4') }}" type="video/mp4">
-    </video>
-    
-    <!-- Overlay sombre pour meilleure lisibilité -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50" style="z-index: 2;"></div>
-    
-    <!-- Contenu -->
-    <div class="container-lg py-4 position-relative" style="z-index: 3;">
+<section class="text-white py-5 nataswim-titre">
+    <div class="container-lg py-4">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center mb-3">
@@ -43,173 +34,239 @@
     </div>
 </section>
 
+<!-- Section recherche -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-4">
+                    <h2 class="h3 mb-2">
+                        <i class="fas fa-search me-2"></i>Rechercher
+                    </h2>
+                </div>
+                @include('public.partials.search-form')
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
 
 
 
 <!-- Dernieres Publications -->
-<section class="py-5">
-    <div class="container-lg card shadow-lg border-0 bg-white">
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">
-                        Articles
-                    </h5>
-                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-primary d-flex align-items-center px-4 text-white">
-                        <i class="fas fa-water me-1"></i> + Dossiers
-                    </a>
-                </div>
-            </div>
-        </div>
+<section class="py-5">    
 
-        <div class="row g-4">
-            @php
-            $recentArticles = App\Models\Post::where('status', 'published')
-            ->whereNotNull('published_at')
-            ->orderBy('published_at', 'desc')
-            ->limit(4)
-            ->get();
-            @endphp
+<div class="container-lg">
 
-            @forelse($recentArticles as $article)
-            <div class="col-md-6 col-lg-3">
-                <div class="card border-0 shadow-sm h-100 hover-lift">
-                    <div class="bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
-                        style="height: 180px; overflow: hidden;">
-                        @if($article->image)
-                        <img src="{{ $article->image }}"
-                            class="w-100 h-100"
-                            style="object-fit: cover;"
-                            alt="{{ $article->name }}">
-                        @else
-                        <i class="fas fa-newspaper fa-3x text-primary opacity-25"></i>
-                        @endif
-                    </div>
-
-                    <div class="card-body p-3">
-                        <span class="badge bg-primary-subtle text-primary mb-2">
-                            {{ $article->category->name ?? 'Non catégorisé' }}
-                        </span>
-                        <h6 class="card-title mb-2">
-                            <a href="{{ route('public.show', $article) }}"
-                                class="text-decoration-none text-dark">
-                                {!! Str::limit($article->name, 50) !!}
-                            </a>
-                        </h6>
-                        @if($article->intro)
-                        <p class="card-text text-muted small mb-3">
-                            {!! Str::limit(strip_tags($article->intro), 80) !!}
-                        </p>
-                        @endif
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted">
-                                <i class="fas fa-eye me-1"></i>{{ $article->hits }}
-                            </small>
-                            <small class="text-muted">
-                                {{ $article->published_at->format('d/m/Y') }}
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @empty
-            <div class="col-12">
-                <div class="text-center py-5 text-muted">
-                    <i class="fas fa-newspaper fa-3x mb-3 opacity-25"></i>
-                    <p>Aucun article publié récemment</p>
-                </div>
-            </div>
-            @endforelse
-        </div>
-    </div>
-</section>
-
-
-
-
-<section class="py-5" >
-
-    <div class="container-lg card shadow-lg border-0 bg-white">
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">
-                        Fiches Pratiques
-                    </h5>
-                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-primary d-flex align-items-center px-4 text-white">
-                        + Fiches
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            @php
-            $recentFiches = App\Models\Fiche::where('is_published', true)
-            ->where('visibility', 'public')
-            ->whereNotNull('published_at')
-            ->where('published_at', '<=', now())
-                ->orderBy('created_at', 'desc')
-                ->limit(4)
+        
+        @php
+            $latestPosts = App\Models\Post::with('category')
+                ->where('status', 'published')
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->orderBy('published_at', 'desc')
+                ->limit(3)
                 ->get();
-                @endphp
-
-                @forelse($recentFiches as $fiche)
-                <div class="col-md-6 col-lg-3">
-                    <div class="card border-0 shadow-sm h-100 hover-lift">
-                        @if($fiche->image)
-                        <img src="{{ $fiche->image }}"
-                            class="card-img-top"
-                            style="height: 180px; object-fit: cover;"
-                            alt="{{ $fiche->title }}">
-                        @else
-                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
-                            style="height: 180px;">
-                            <i class="fas fa-file-alt fa-3x text-muted opacity-25"></i>
-                        </div>
-                        @endif
-
-                        <div class="card-body p-3">
-                            @if($fiche->category)
-                            <span class="badge bg-primary-subtle text-primary mb-2">
-                                {{ $fiche->category->name }}
-                            </span>
-                            @endif
-                            <h6 class="card-title mb-2">
-                                <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                    class="text-decoration-none text-dark">
-                                    {!! Str::limit($fiche->title, 50) !!}
-                                </a>
-                            </h6>
-                            @if($fiche->short_description)
-                            <p class="card-text text-muted small mb-3">
-                                {!! Str::limit(strip_tags($fiche->short_description), 80) !!}
-                            </p>
-                            @endif
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">
-                                    <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
+        @endphp
+        
+        @if($latestPosts->count() > 0)
+            <div class="row g-4">
+                @foreach($latestPosts as $post)
+                    <div class="col-md-4">
+                        <div class="card h-100 nataswim-ombre hover-lift border-0">
+                            
+                            <div class="card-body">
+                                @if($post->category)
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary">{{ $post->category->name }}</span>
+                                    </div>
+                                @endif
+                                <h3 class="card-title h5 mb-3">{{ $post->name }}</h3>
+                                @if($post->intro)
+    <p class="card-text text-muted small">
+        {!! Str::limit(strip_tags($post->intro), 100) !!}
+    </p>
+@endif
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
+                                <small class="text-muted d-flex align-items-center">
+                                    <i class="fas fa-calendar me-1"></i>
+                                    {{ $post->published_at->format('d/m/Y') }}
                                 </small>
-                                <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
-                                    class="btn btn-light d-flex align-items-center px-4">
-                                    Lire
+                                <a href="{{ route('public.show', $post) }}" class="btn btn-sm btn-outline-primary">
+                                    Lire la suite
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
-                @empty
-                <div class="col-12">
-                    <div class="text-center py-5 text-muted">
-                        <i class="fas fa-file-alt fa-3x mb-3 opacity-25"></i>
-                        <p>Aucune fiche disponible</p>
+                @endforeach
+            </div>
+        @else
+            <div class="alert alert-info" role="alert">
+                <i class="fas fa-water me-2"></i>Aucun article n'est disponible actuellement.
+            </div>
+        @endif
+    </div>
+</section>
+
+
+
+
+<!-- Section Pour qui avec vidéo background -->
+<section class="py-5 position-relative" >
+    <!-- Vidéo d'arrière-plan -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1; overflow: hidden;">
+        <iframe 
+            src="https://www.youtube.com/embed/AhBaSV8psGA?autoplay=1&mute=1&loop=1&playlist=AhBaSV8psGA&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen
+            style="width: 100vw; height: 100vh; min-width: 100%; min-height: 100%; object-fit: cover; pointer-events: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+            title="Entrainement natation professionnel"
+            loading="lazy">
+        </iframe>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.3;"></div>
+    </div>
+
+    <!-- Contenu -->
+    <div class="container-lg position-relative" style="z-index: 2;">
+        <div class="text-center mb-5 text-white">
+            <h2 class="fw-bold display-6">Espace adapté à tous les profils </h2>
+            <p class="lead">
+                De l'amateur passionné au professionnel, en passant par les entraineurs et techniciens du sport
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary-subtle p-3 rounded-circle d-inline-block mb-3">
+                            <i class="fas fa-swimmer text-primary" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Sportives & Sportifs</h3>
+                        <p class="card-text text-muted small mb-0">
+                            Plans d'entrainement pour tous personnalisés pour tous niveaux. Techniques, seances, préparation physique et suivi de progression.
+                        </p>
                     </div>
-                </div>
-                @endforelse
+                </article>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-success-subtle p-3 rounded-circle d-inline-block mb-3">
+                            <i class="fas fa-medal text-success" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Nageurs Triathlètes</h3>
+                        <p class="card-text text-muted small mb-0">
+                            Programmes triathlon complets. Optimisez votre segment natation, vélo et CAP avec nos plans d'entrainement spécialisés.
+                        </p>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-warning-subtle p-3 rounded-circle d-inline-block mb-3">
+                            <i class="fas fa-users text-warning" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Entraineurs & Coachs</h3>
+                        <p class="card-text text-muted small mb-0">
+                            Outils professionnels pour créer et gérer vos programmes d'entrainement, plans et préparation physique.
+                        </p>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <article class="card h-100 nataswim-ombre border-0 bg-white bg-opacity-95">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-info-subtle p-3 rounded-circle d-inline-block mb-3">
+                            <i class="fas fa-graduation-cap text-info" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Sportifs & Étudiants </h3>
+                        <p class="card-text text-muted small mb-0">
+                            Ressources pédagogiques, fiches techniques et outils pour votre formation en sciences du sport.
+                        </p>
+                    </div>
+                </article>
+            </div>
         </div>
     </div>
+</section>
+
+
+
+
+
+
+
+<section class="py-5">    
+<div class="container-lg">
+            
+
+<div class="row mb-4">
+
+            </div>
+
+            <div class="row g-4">
+                @php
+                $recentFiches = App\Models\Fiche::where('is_published', true)
+                ->where('visibility', 'public')
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                    ->orderBy('created_at', 'desc')
+                    ->limit(4)
+                    ->get();
+                    @endphp
+
+                    @forelse($recentFiches as $fiche)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card border-0 nataswim-ombre h-100 hover-lift">
+
+
+                            <div class="card-body p-3">
+                                @if($fiche->category)
+                                <span class="badge bg-primary-subtle text-primary mb-2">
+                                    {{ $fiche->category->name }}
+                                </span>
+                                @endif
+                                <h6 class="card-title mb-2">
+                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
+                                        class="text-decoration-none text-dark">
+                                        {!! Str::limit($fiche->title, 50) !!}
+                                    </a>
+                                </h6>
+                                @if($fiche->short_description)
+                                <p class="card-text text-muted small mb-3">
+                                    {!! Str::limit(strip_tags($fiche->short_description), 80) !!}
+                                </p>
+                                @endif
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-eye me-1"></i>{{ $fiche->views_count ?? 0 }}
+                                    </small>
+                                    <a href="{{ route('public.fiches.show', [$fiche->category, $fiche]) }}"
+                                        class="btn btn-light d-flex align-items-center px-4">
+                                        Lire cette fiche
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="col-12">
+                        <div class="text-center py-5 text-muted">
+                            <i class="fas fa-file-alt fa-3x mb-3 opacity-25"></i>
+                            <p>Aucune fiche disponible</p>
+                        </div>
+                    </div>
+                    @endforelse
+            </div>
+        </div>
 </section>
 
 
@@ -222,10 +279,16 @@
 
 
 
-<section class="py-5 bg-primary text-white">
+
+
+
+
+
+<!-- Fonctionnalités clés -->
+<section class="py-5 bg-light">
     <div class="container-lg">
         <header class="text-center mb-5">
-            <h2 class="fw-bold display-6">Outils & contenus complets</h2>
+            <h2 class="fw-bold display-6">Outils & contenus </h2>
             <p class="lead text-muted mx-auto" style="max-width: 700px;">
                 Tout ce dont vous avez besoin pour progresser, comprendre et améliorer vos performances
             </p>
@@ -236,9 +299,8 @@
             <div class="col">
                 <a href="{{ route('public.workouts.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header text-white nataswim-titre6">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-clipboard-list me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Séances & Plans</h4>
                                     @php
@@ -253,14 +315,6 @@
                             <p class="card-text text-muted mb-3">
                                 Programmes structurés pour tous niveaux : technique, endurance, sprint. Plans hebdomadaires et cycles d'entraînement pour les sportifs.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-primary fw-bold">Choisir vos plans →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">Débutant</span>
-                                    <span class="badge bg-warning">Avancé</span>
-                                    <span class="badge bg-danger">Pro</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -270,9 +324,8 @@
             <div class="col">
                 <a href="{{ route('exercices.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-success text-white">
+                         <div class="card-header text-white nataswim-titre1">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-dumbbell me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Exercices spécialisés</h4>
                                     @php
@@ -286,14 +339,6 @@
                             <p class="card-text text-muted mb-3">
                                 Bibliothèque d'exercices musculation, natation et préparation physique. Techniques détaillées avec vidéos et conseils professionnels.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-success fw-bold">Voir les exercices →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-info">Vidéos</span>
-                                    <span class="badge bg-primary">Détaillés</span>
-                                    <span class="badge bg-warning">Techniques</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -303,9 +348,8 @@
             <div class="col">
                 <a href="{{ route('public.fiches.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-info text-white">
+                         <div class="card-header text-white nataswim-titre2">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-book-open me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Fiches techniques</h4>
                                     @php
@@ -320,14 +364,7 @@
                             <p class="card-text text-muted mb-3">
                                 Des guides complets sur les techniques, préparation physique, entraînement, sciences, stratégies et plus.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-info fw-bold">Accéder aux fiches →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">Sciences</span>
-                                    <span class="badge bg-primary">Techniques</span>
-                                    <span class="badge bg-warning">Stratégies</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </a>
@@ -337,9 +374,8 @@
             <div class="col">
                 <a href="{{ route('tools.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-warning text-dark">
+                         <div class="card-header text-white nataswim-titre3">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-calculator me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Calculateurs & Outils</h4>
                                     <p class="mb-0 opacity-75">18 outils spécialisés disponibles</p>
@@ -350,57 +386,37 @@
                             <p class="card-text text-muted mb-3">
                                 Outils de calcul spécialisés : VNC, prédicteur de temps natation, zones cardiaques, planification triathlon.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-warning fw-bold">Utiliser nos outils →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">Gratuit</span>
-                                    <span class="badge bg-primary">Précis</span>
-                                    <span class="badge bg-info">Pratique</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </a>
             </div>
             
-            <!-- 5. Dossiers -->
+            <!-- 5. Suivi de progression -->
             <div class="col">
-                <a href="{{ route('public.categories.index') }}" class="text-decoration-none">
-
                 <div class="card h-100 shadow-lg border-0 bg-white category-card">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header text-white nataswim-titre4">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-chart-line me-3" style="font-size: 2rem;"></i>
                             <div class="flex-grow-1">
-                                <h4 class="mb-1">Dossiers</h4>
-                                <p class="mb-0 opacity-75">Articles et thématiques</p>
+                                <h4 class="mb-1">Suivi de progression</h4>
+                                <p class="mb-0 opacity-75">Disponible</p>
                             </div>
                         </div>
                     </div>
                     <div class="card-body p-4">
                         <p class="card-text text-muted mb-3">
-                            Dossiers structurées et accessibles pour vous accompagner dans votre progression avec des contenus organisés par domaine.
+                            Enregistrez vos performances, analysez votre évolution avec graphiques et statistiques détaillés.
                         </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-secondary fw-bold">S'informer →</span>
-                            <div class="d-flex gap-1">
-                                <span class="badge bg-info">Actualites</span>
-                                <span class="badge bg-success">Préparartion</span>
-                                <span class="badge bg-primary">Analyses</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                 </a>
             </div>
             
             <!-- 6. Ressources téléchargeables -->
             <div class="col">
                 <a href="{{ route('ebook.index') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header text-white nataswim-titre5">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-download me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Ressources téléchargeables</h4>
                                     @php
@@ -413,16 +429,8 @@
                         </div>
                         <div class="card-body p-4">
                             <p class="card-text text-muted mb-3">
-                                Documents PDF, vidéos d'entraînement, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
+                                Documents, guides techniques et supports pédagogiques pour techniciens, sportifs et entraîneurs.
                             </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-danger fw-bold">Télécharger les documents →</span>
-                                <div class="d-flex gap-1">
-                                    <span class="badge bg-success">PDF</span>
-                                    <span class="badge bg-primary">Vidéos</span>
-                                    <span class="badge bg-warning">Guides</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </a>
@@ -435,109 +443,60 @@
 
 
 
-<!-- Témoignages -->
-<section class="py-5 bg-light">
+
+
+
+<!-- Temoignages -->
+<section class="py-5 bg-white">
     <div class="container-lg">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Ce qu'en disent nos membres</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Découvrez comment notre application aide les utilisateurs à atteindre leurs objectifs
-            </p>
-        </div>
-
         <div class="row g-4">
-            <!-- Témoignage 1 -->
-            <div class="col-md-4">
-                <article class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                        </div>
-                        <p class="mb-4 fst-italic">
-                            "Cette application a révolutionné mon approche de l'entraînement. J'ai amélioré mon 200m 
-                            papillon de 3 secondes en seulement deux mois grâce aux séries personnalisées et au suivi précis."
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 45px; height: 45px;">
-                                <span class="fw-bold">S</span>
-                            </div>
-                            <div>
-                                <h5 class="mb-0 fw-semibold">Sophie E.</h5>
-                                <small class="text-muted">Nageuse de compétition</small>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Témoignage 2 -->
-            <div class="col-md-4">
-                <article class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                        </div>
-                        <p class="mb-4 fst-italic">
-                            "En tant qu'entraîneur, je peux désormais gérer facilement les programmes de toute mon équipe. 
-                            La possibilité de personnaliser les plans selon le niveau de chaque nageur est inestimable."
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 45px; height: 45px;">
-                                <span class="fw-bold">N</span>
-                            </div>
-                            <div>
-                                <h5 class="mb-0 fw-semibold">Nicolas G.</h5>
-                                <small class="text-muted">Coach de club</small>
+            @php
+                $testimonials = [
+                    [
+                        'name' => 'Marie L. Nageuse competition',
+                        'quote' => 'Les plans d entrainement natation m ont permis d améliorer mon 200m crawl de 4 secondes en 2 mois. Programmes structurés et progressifs parfaits.',
+                        'role' => 'Nageuse competition'
+                    ],
+                    [
+                        'name' => 'Thomas D. Coach natation',
+                        'quote' => 'Outil indispensable pour gérer mes groupes d entrainement natation. Je crée facilement des programmes adaptés à chaque nageur.',
+                        'role' => 'Entraineur'
+                    ],
+                    [
+                        'name' => 'Sophie. Triathlete amateur',
+                        'quote' => 'Parfait pour intégrer mes séances natation dans mon plan triathlon global. Calculateurs et outils très pratiques pour la préparation physique.',
+                        'role' => 'Triathlete'
+                    ]
+                ];
+            @endphp
+            
+            @foreach($testimonials as $testimonial)
+                <div class="col-md-4">
+                    <div class="card h-100 bg-white">
+                        <div class="card-body p-4">
+                            <p class="card-text mb-4 text-dark">"{{ $testimonial['quote'] }}"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle bg-primary-subtle p-2 me-3">
+                                    <i class="fas fa-swimmer text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="mb-0 fw-bold text-dark">{{ $testimonial['name'] }}</p>
+                                    <small class="text-muted">{{ $testimonial['role'] }}</small>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </article>
-            </div>
-
-            <!-- Témoignage 3 -->
-            <div class="col-md-4">
-                <article class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                        </div>
-                        <p class="mb-4 fst-italic">
-                            "La planification intuitive et le suivi détaillé m'ont permis d'améliorer considérablement mes 
-                            performances. L'application s'est parfaitement intégrée à ma préparation pour mon premier triathlon."
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 45px; height: 45px;">
-                                <span class="fw-bold">T</span>
-                            </div>
-                            <div>
-                                <h5 class="mb-0 fw-semibold">Thomas D.</h5>
-                                <small class="text-muted">Triathlète amateur</small>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
 
 
-<section class="py-5 bg-primary text-white">    
+
+
+
+<section class="py-5 text-white nataswim-titre3">    
 
        <div class="container-lg">
             <div class="row mb-4">
@@ -609,7 +568,7 @@
 </section>
 
 
-<section class="py-5">    
+<section class="py-5 text-white nataswim-titre4">    
 
 <div class="container-lg">
             <div class="row mb-4">
@@ -677,7 +636,7 @@
         </div>
 </section>
 
-<section class="py-5 bg-primary text-white">    
+<section class="py-5 text-white nataswim-titre5">    
 <!-- Derniers Exercices -->
         <div class="container-lg">
             <div class="row mb-4">
@@ -748,95 +707,13 @@
 
 
 
-<section class="py-5 ">
-    <div class="container-lg">
-        <header class="text-center mb-5">
-            <h2 class="fw-bold display-6">Fonctionnalités Spécifiques</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">
-                Utilitaires 24/24 pour démocratiser l'accès aux connaissances pour tous les passionnés.
-            </p>
-        </header>
-        
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <!-- formation -->
-            <div class="col">
-
-<a href="{{ route('public.catalogue.index') }}" class="text-white fw-bold text-decoration-none">
-                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-eye me-3" style="font-size: 2rem;"></i>
-                                <div class="flex-grow-1">
-                                    <h4 class="mb-1">Se Former S'informer</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body p-4">
-                            <p class="card-text text-muted mb-3">
-                                Explorez nos dossiers structurées en sections thématiques pour progresser à votre rythme.
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <!-- Outil planification -->
-            <div class="col">
-                <a href="{{ route('guideplanif') }}" class="text-decoration-none">
-                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-eye me-3" style="font-size: 2rem;"></i>
-                                <div class="flex-grow-1">
-                                    <h4 class="mb-1">Outil planification</h4>
-                               </div>
-                            </div>
-                        </div>
-                        <div class="card-body p-4">
-                            <p class="card-text text-muted mb-3">
-                               Votre outil personnel pour organiser et suivre toutes vos activités.
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <!-- Carnets Personnalisés -->
-            <div class="col">
-
-                 <a href="{{ route('guidecarnet') }}" class="text-decoration-none">
-                    <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-eye me-3" style="font-size: 2rem;"></i>
-                                <div class="flex-grow-1">
-                                    <h4 class="mb-1">Carnets Personnalisés</h4>
-                               </div>
-                            </div>
-                        </div>
-                        <div class="card-body p-4">
-                            <p class="card-text text-muted mb-3">
-                                Organisez, sauvegardez et consultez tous vos contenus préférés en un seul endroit.
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            
-        </div>
-    </div>
-</section>
-
-
-
 
 
 
 
 
 <!-- Section Credit et Contact -->
-<section class="py-5 nataswim-titre1 text-white">
+<section class="py-5 bg-primary text-white">
 
     <div class="container">
 
