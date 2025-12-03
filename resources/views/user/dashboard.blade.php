@@ -65,23 +65,35 @@
                 </div>
             </div>
             @else
-            <div class="alert alert-danger border-0 shadow-sm">
+            <div class="py-5 bg-primary text-white shadow-sm p-4">
                 <div class="d-flex align-items-center">
-                    <div class="bg-info bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center me-3"
-                        style="width: 50px; height: 50px;">
-                        <i class="fas fa-crown text-info fa-lg"></i>
-                    </div>
+
                     <div class="flex-fill">
                         <h5 class="alert-heading mb-2">
-                            <i class="fas fa-lock"></i> Contenu Exclusif Verrouillé !
+                            <i class="fas fa-lock"></i> Devenir Membre
                         </h5>
                         <p class="mb-3">
-                            Votre compte actuel vous offre un aperçu des services. Pour débloquer l'accès à tous les contenus premium, les fonctionnalités avancées et une expérience sans publicité, passez à la formule Premium.
+                            Votre compte actuel vous offre un aperçu limté. Pour débloquer l'accès à tous les contenus et les fonctionnalités passez à la formule MEMBRE.
                         </p>
                         <div class="d-flex gap-2 flex-wrap">
-                            <a href="{{ route('payments.index') }}" class="btn btn-lg btn-danger text-white ">
-                                <i class="fas fa-arrow-up me-2"></i>Choisir une formule Premium
+                            <a href="{{ route('payments.index') }}" class="btn btn-dark text-white">
+                                <i class="fas fa-arrow-up me-2"></i>Choisir Un Accès illimité
                             </a>
+                            <a href="https://buy.stripe.com/6oUeVd9R478716NgIvgnK00"
+                                class="btn btn-light"
+                                target="_blank">
+                                <i class="fas fa-lock-open me-2"></i>3 mois (45€)
+                            </a>
+                            <a href="https://buy.stripe.com/dRm28r5AOfEDaHn0JxgnK02"
+                            class="btn btn-light"
+                            target="_blank">
+                            <i class="fas fa-credit-card me-2"></i>12 mois (96€)
+                        </a>
+                        <a href="https://buy.stripe.com/6oU9AT7IW8cbeXD1NBgnK01"
+                            class="btn btn-light"
+                            target="_blank">
+                            <i class="fas fa-credit-card me-2"></i>6 mois (66€)
+                        </a> *Paiement unique
                         </div>
                     </div>
                 </div>

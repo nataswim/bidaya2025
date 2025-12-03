@@ -1,7 +1,8 @@
-@extends('layouts.public')
+@extends('layouts.guest')
+
 
 @section('content')
-<div class="min-vh-100 d-flex align-items-center bg-light">
+<div class="d-flex align-items-center bg-light">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
@@ -9,11 +10,14 @@
                     <div class="card-body p-5">
                         <!-- Logo -->
                         <div class="text-center mb-4">
-                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                                 style="width: 80px; height: 80px;">
-                                <i class="fas fa-water text-white fa-2x"></i>
+                             <div class="text-center">
+                                <div class="position-relative d-inline-block bg-white rounded-circle">
+                                    <a href="{{ route('public.categories.index') }}"> <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}"
+                                            alt="nataswim application pour tous"
+                                            class="img-fluid"
+                                            style="max-width: 200px;height: auto;box-shadow: 0 0 40px rgba(255,255,255,.8),0 0 10px #fff;border-radius: 100%;"></a>
+                                </div>
                             </div>
-                            <h2 class="fw-bold">{{ config('app.name') }}</h2>
                             <p class="text-muted">Connectez-vous A votre compte</p>
                         </div>
 
@@ -106,4 +110,26 @@
         </div>
     </div>
 </div>
+
+
+
+<section class="py-5 bg-primary text-white text-center">
+
+    <div class="container-lg">
+        <h2 class="mb-4 fw-bold">Des questions ?</h2>
+        <p class="lead mb-4">
+            N'hésitez pas à nous contacter ! Nous sommes là pour y répondre.
+        </p>
+        <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
+            Contactez notre équipe !
+        </a>
+    </div>
+</section>
+
+
+
+
+
+
+
 @endsection

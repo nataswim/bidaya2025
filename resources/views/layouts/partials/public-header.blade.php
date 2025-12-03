@@ -1,37 +1,4 @@
-{{-- Bandeau utilisateur connecté --}}
-@auth
-<div class="user-top-banner py-2" style="background-color: rgb(91 202 202);border-bottom: 20px solid #004f59;">
-    <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
-        {{-- Lien Mon espace --}}
-        <a href="{{ route('user.dashboard') }}"
-            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-color: #f04444;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
 
-            <span class="banner-text">Mon espace</span>
-        </a>
-
-        {{-- Lien Mes carnets --}}
-        <a href="{{ route('user.notebooks.index') }}"
-            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ef9800;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
-
-            <span class="banner-text">Mes Carnets</span>
-        </a>
-        {{-- Lien calendar --}}
-        <a href="{{ route('user.calendar.index') }}"
-            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #008731;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
-
-            <span class="banner-text">Ma Planification</span>
-        </a>
-        {{-- Bouton Passer Premium (seulement pour les visiteurs) --}}
-        @if(auth()->user()->hasRole('visitor'))
-        <a href="{{ route('payments.index') }}"
-            class="banner-link banner-link-premium d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill">
-            <i class="fas fa-crown me-1"></i>
-            <span class="banner-text">Devenir Premium</span>
-        </a>
-        @endif
-    </div>
-</div>
-@endauth
 
 {{-- Navigation principale existante --}}
 <nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #22a696;border-top: 20px solid #22a696;">
@@ -320,6 +287,43 @@
         </div>
     </div>
 </nav>
+
+
+{{-- Bandeau utilisateur connecté --}}
+@auth
+<div class="user-top-banner py-2" style="background-color: #f8f8bc;border-bottom: 20px solid #004f59;">
+    <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
+        {{-- Lien Mon espace --}}
+        <a href="{{ route('user.dashboard') }}"
+            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-color: #f04444;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+
+            <span class="banner-text">Mon espace</span>
+        </a>
+
+        {{-- Lien Mes carnets --}}
+        <a href="{{ route('user.notebooks.index') }}"
+            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ef9800;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+
+            <span class="banner-text">Mes Carnets</span>
+        </a>
+        {{-- Lien calendar --}}
+        <a href="{{ route('user.calendar.index') }}"
+            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #008731;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+
+            <span class="banner-text">Ma Planification</span>
+        </a>
+        {{-- Bouton Passer Premium (seulement pour les visiteurs) --}}
+        @if(auth()->user()->hasRole('visitor'))
+        <a href="{{ route('payments.index') }}"
+            class="banner-link banner-link-premium d-flex align-items-center text-dark text-decoration-none px-1 py-1 rounded-pill">
+            <i class="fas fa-crown me-1"></i>
+            <span class="banner-text">Devenir Premium</span>
+        </a>
+        @endif
+    </div>
+</div>
+@endauth
+
 
 {{-- CSS personnalisé pour le bandeau et les dropdowns --}}
 @push('styles')

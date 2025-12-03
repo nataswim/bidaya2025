@@ -1,32 +1,40 @@
-@extends('layouts.guest')
+@extends('layouts.public')
 
 @section('content')
 <div class="min-vh-100 d-flex align-items-center bg-light py-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
+            <div class="col-lg-7 col-md-9">
                 <div class="card border-0 shadow-lg">
                     <div class="card-body p-5">
                         <!-- Logo et titre -->
                         <div class="text-center mb-4">
-                            <div class="text-center">
-                                <div class="position-relative d-inline-block bg-white rounded-circle">
-                                    <a href="{{ route('public.categories.index') }}"> <img src="{{ asset('assets/images/team/nataswim_app_logo_2.png') }}"
-                                            alt="nataswim application pour tous"
-                                            class="img-fluid"
-                                            style="max-width: 200px;height: auto;box-shadow: 0 0 40px rgba(255,255,255,.8),0 0 10px #fff;border-radius: 100%;"></a>
-                                </div>
+                            <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                style="width: 80px; height: 80px;">
+                                <i class="fas fa-user-plus text-white fa-2x"></i>
                             </div>
-                            <h2 class="fw-bold">Rejoindre la plateforme</h2>
-                            <p class="text-muted">Votre adresse e-mail doit être valide pour confirmer votre inscription. Votre mot de passe est strictement confidentiel : nous ne le stockons jamais en clair et n’y avons pas accès. Vos données sont protégées et chiffrées.</p>
+                            <h2 class="fw-bold">Créer un compte</h2>
+                            <p class="text-muted">Rejoignez notre communauté en quelques étapes</p>
+                        </div>
+
+                        <!-- Indicateur d'étapes -->
+                        <div class="progress mb-4" style="height: 4px;">
+                            <div class="progress-bar bg-primary" role="progressbar" id="progressBar"
+                                style="width: 33.33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <small class="text-muted fw-semibold">
+                                Étape <span id="currentStep">1</span> sur 3
+                            </small>
                         </div>
 
                         <form method="POST" action="{{ route('register') }}" id="registerForm">
                             @csrf
 
-                            <!-- SECTION 1 : Informations de compte -->
-                            <div class="mb-5">
-                                <h5 class="fw-bold mb-3 pb-2 border-bottom text-primary">
+                            <!-- ÉTAPE 1 : Informations de compte -->
+                            <div class="form-step active" id="step1">
+                                <h5 class="fw-bold mb-4 text-primary">
                                     <i class="fas fa-user-circle me-2"></i>Informations de compte
                                 </h5>
 
@@ -42,7 +50,7 @@
                                         <input type="text" name="name" id="name"
                                             value="{{ old('name') }}"
                                             class="form-control border-start-0 @error('name') is-invalid @enderror"
-                                            placeholder="Jean Dupont" required autofocus>
+                                            placeholder="Jean Dupont" required>
                                         @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -69,7 +77,7 @@
                                 </div>
 
                                 <!-- Mot de passe -->
-                                <div class="row g-3">
+                                <div class="row g-3 mb-4">
                                     <div class="col-md-6">
                                         <label for="password" class="form-label fw-semibold">
                                             Mot de passe <span class="text-danger">*</span>
@@ -88,7 +96,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="password_confirmation" class="form-label fw-semibold">
-                                            Confirmer le mot de passe <span class="text-danger">*</span>
+                                            Confirmer <span class="text-danger">*</span>
                                         </label>
                                         <div class="input-group">
                                             <span class="input-group-text bg-light border-end-0">
@@ -101,11 +109,17 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-primary btn-lg next-step">
+                                        Suivant <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
                             </div>
 
-                            <!-- SECTION 2 : Informations personnelles -->
-                            <div class="mb-5">
-                                <h5 class="fw-bold mb-3 pb-2 border-bottom text-primary">
+                            <!-- ÉTAPE 2 : Informations personnelles -->
+                            <div class="form-step" id="step2">
+                                <h5 class="fw-bold mb-4 text-primary">
                                     <i class="fas fa-id-card me-2"></i>Informations personnelles
                                 </h5>
 
@@ -168,7 +182,7 @@
                                 </div>
 
                                 <!-- Date de naissance -->
-                                <div class="mb-3">
+                                <div class="mb-4">
                                     <label for="date_of_birth" class="form-label fw-semibold">
                                         Date de naissance <span class="text-danger">*</span>
                                     </label>
@@ -186,6 +200,26 @@
                                     </div>
                                     <small class="text-muted">Vous devez avoir au moins 17 ans</small>
                                 </div>
+
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-outline-secondary btn-lg prev-step flex-fill">
+                                        <i class="fas fa-arrow-left me-2"></i>Précédent
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-lg next-step flex-fill">
+                                        Suivant <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <!-- ÉTAPE 3 : Coordonnées et profil -->
+                            <div class="form-step" id="step3">
+                                <h5 class="fw-bold mb-4 text-primary">
+                                    <i class="fas fa-address-card me-2"></i>Coordonnées et informations
+                                </h5>
 
                                 <!-- Téléphone -->
                                 <div class="mb-3">
@@ -206,20 +240,13 @@
                                     </div>
                                     <small class="text-muted">Format français ou international</small>
                                 </div>
-                            </div>
-
-                            <!-- SECTION 3 : Profil utilisateur -->
-                            <div class="mb-5">
-                                <h5 class="fw-bold mb-3 pb-2 border-bottom text-primary">
-                                    <i class="fas fa-address-card me-2"></i>Votre profil
-                                </h5>
 
                                 <!-- Profil utilisateur (Choix multiples) -->
-                                <div class="mb-3">
+                                <div class="mb-4">
                                     <label class="form-label fw-semibold">
-                                        Sélectionnez votre profil <span class="text-danger">*</span>
+                                        Votre profil "Qui Suis Je" <span class="text-danger">*</span>
                                     </label>
-                                    <small class="text-muted d-block mb-3">
+                                    <small class="text-muted d-block mb-2">
                                         Sélectionnez une ou plusieurs options qui vous correspondent
                                     </small>
 
@@ -233,8 +260,8 @@
                                                             name="bio_options[]" value="Entraîneur / Coach (sportif, personnel, mental, etc.)"
                                                             id="bio1" {{ in_array('Entraîneur / Coach (sportif, personnel, mental, etc.)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio1">
-                                                            <i class="fas fa-dumbbell text-primary me-2"></i>
-                                                            Je suis Entraîneur / Coach (sportif, personnel, mental, etc.)
+                                                        
+                                                            Je suis Entraîneur / Coach / MNS / BP / BE
                                                         </label>
                                                     </div>
                                                 </div>
@@ -246,7 +273,6 @@
                                                             name="bio_options[]" value="Enseignant / Professeur (EPS, universitaire, scolaire)"
                                                             id="bio2" {{ in_array('Enseignant / Professeur (EPS, universitaire, scolaire)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio2">
-                                                            <i class="fas fa-chalkboard-teacher text-success me-2"></i>
                                                             Je suis Enseignant / Professeur (EPS, universitaire, scolaire)
                                                         </label>
                                                     </div>
@@ -259,8 +285,7 @@
                                                             name="bio_options[]" value="Dirigeant / Manager (club, association, fédération, structure privée)"
                                                             id="bio3" {{ in_array('Dirigeant / Manager (club, association, fédération, structure privée)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio3">
-                                                            <i class="fas fa-users-cog text-info me-2"></i>
-                                                            Je suis Dirigeant / Manager (club, association, fédération, structure privée)
+                                                            Je suis Dirigeant (club, association, fédération, structure privée)
                                                         </label>
                                                     </div>
                                                 </div>
@@ -272,8 +297,7 @@
                                                             name="bio_options[]" value="Sportif / Athlète (professionnel ou amateur de haut niveau)"
                                                             id="bio4" {{ in_array('Sportif / Athlète (professionnel ou amateur de haut niveau)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio4">
-                                                            <i class="fas fa-medal text-warning me-2"></i>
-                                                            Je suis Sportif / Athlète (professionnel ou amateur de haut niveau)
+                                                            Je suis Sportif / Athlète (professionnel ou amateur)
                                                         </label>
                                                     </div>
                                                 </div>
@@ -285,7 +309,6 @@
                                                             name="bio_options[]" value="Pratiquant régulier / Amateur"
                                                             id="bio5" {{ in_array('Pratiquant régulier / Amateur', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio5">
-                                                            <i class="fas fa-running text-secondary me-2"></i>
                                                             Je suis Pratiquant régulier / Amateur
                                                         </label>
                                                     </div>
@@ -298,7 +321,6 @@
                                                             name="bio_options[]" value="Étudiant / Stagiaire (formation initiale ou continue)"
                                                             id="bio6" {{ in_array('Étudiant / Stagiaire (formation initiale ou continue)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio6">
-                                                            <i class="fas fa-graduation-cap text-primary me-2"></i>
                                                             Je suis Étudiant / Stagiaire (formation initiale ou continue)
                                                         </label>
                                                     </div>
@@ -311,7 +333,6 @@
                                                             name="bio_options[]" value="Professionnel en formation continue"
                                                             id="bio7" {{ in_array('Professionnel en formation continue', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio7">
-                                                            <i class="fas fa-user-graduate text-success me-2"></i>
                                                             Je suis Professionnel en formation continue
                                                         </label>
                                                     </div>
@@ -324,7 +345,6 @@
                                                             name="bio_options[]" value="Chercheur / Consultant / Expert (dans le domaine du sport ou de la performance)"
                                                             id="bio8" {{ in_array('Chercheur / Consultant / Expert (dans le domaine du sport ou de la performance)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio8">
-                                                            <i class="fas fa-microscope text-info me-2"></i>
                                                             Je suis Chercheur / Consultant / Expert (dans le domaine du sport ou de la performance)
                                                         </label>
                                                     </div>
@@ -337,7 +357,6 @@
                                                             name="bio_options[]" value="À la recherche de ressources (veille, connaissances, outils professionnels)"
                                                             id="bio9" {{ in_array('À la recherche de ressources (veille, connaissances, outils professionnels)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio9">
-                                                            <i class="fas fa-search text-warning me-2"></i>
                                                             Je suis à la recherche de ressources (veille, connaissances, outils professionnels)
                                                         </label>
                                                     </div>
@@ -350,7 +369,6 @@
                                                             name="bio_options[]" value="Professionnel de santé (kinésithérapeute, préparateur physique, médecin du sport, nutritionniste)"
                                                             id="bio10" {{ in_array('Professionnel de santé (kinésithérapeute, préparateur physique, médecin du sport, nutritionniste)', old('bio_options', [])) ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio10">
-                                                            <i class="fas fa-heartbeat text-danger me-2"></i>
                                                             Je suis Professionnel de santé (kinésithérapeute, préparateur physique, médecin du sport, nutritionniste)
                                                         </label>
                                                     </div>
@@ -364,7 +382,6 @@
                                                             id="bio_other_checkbox"
                                                             {{ old('bio_other_text') ? 'checked' : '' }}>
                                                         <label class="form-check-label" for="bio_other_checkbox">
-                                                            <i class="fas fa-edit text-muted me-2"></i>
                                                             Autre (à préciser)
                                                         </label>
                                                     </div>
@@ -398,30 +415,45 @@
 
                                 <!-- Champ caché pour stocker la bio finale -->
                                 <input type="hidden" name="bio" id="bio_hidden">
-                            </div>
 
-                            <!-- Conditions d'utilisation -->
-                            <div class="mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" name="terms" id="terms"
-                                        class="form-check-input" required>
-                                    <label for="terms" class="form-check-label">
-                                        J'accepte les <a href="{{ route('privacy') }}" target="_blank">conditions d'utilisation</a>
-                                        et la <a href="{{ route('privacy') }}" target="_blank">politique de confidentialité</a>
-                                        <span class="text-danger">*</span>
-                                    </label>
+                                <!-- Conditions -->
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <input type="checkbox" name="terms" id="terms"
+                                            class="form-check-input" required>
+                                        <label for="terms" class="form-check-label">
+                                            J'accepte les <a href="{{ route('privacy') }}" target="_blank">conditions d'utilisation</a>
+                                            et la <a href="{{ route('privacy') }}" target="_blank">politique de confidentialité</a>
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-outline-secondary btn-lg prev-step flex-fill">
+                                        <i class="fas fa-arrow-left me-2"></i>Précédent
+                                    </button>
+                                    <button type="submit" class="btn btn-success btn-lg flex-fill">
+                                        <i class="fas fa-check me-2"></i>Créer mon compte
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Bouton d'inscription -->
-                            <div class="d-grid mb-4">
-                                <button type="submit" class="btn btn-success btn-lg">
-                                    <i class="fas fa-user-plus me-2"></i>Créer mon compte
-                                </button>
-                            </div>
 
-                            <!-- Lien de connexion -->
-                            <div class="text-center">
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!-- Lien connexion -->
+                            <div class="text-center mt-4">
                                 <span class="text-muted">Déjà membre ?</span>
                                 <a href="{{ route('login') }}" class="text-decoration-none fw-semibold">
                                     Se connecter
@@ -436,99 +468,180 @@
 </div>
 
 
-<section class="py-5 text-center">
-    <!-- Bandeau Prix -->
-    <div class="alert alert-warning border-0 shadow-sm text-center">
-        <div class="row align-items-center">
-            <div class="col mx-auto">
-                <p class="mb-3">
-                    <strong>Pour les inscriptions premium de groupes, clubs ou centres de formation, veuillez <a href="{{ route('contact') }}">
-                            Nous contacter <i class="fas fa-envelope me-2"></i> </a>.</strong>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="alert alert-success border-0 shadow-sm text-center">
-        <div class="row align-items-center">
-            <div class="col mx-auto">
-                <p class="mb-3">
-                    Si vous avez déjà participé à nos <strong>camps, stages, formations ou webinaires, </strong> veuillez valider votre compte sur la plateforme. Les liens d'accès vous ont été envoyés suite à votre inscription.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
 
 
-
-<section class="py-5 bg-primary text-white text-center">
-
-    <div class="container-lg">
-        <h2 class="mb-4 fw-bold">Des questions ?</h2>
-        <p class="lead mb-4">
-            N'hésitez pas à nous contacter ! Nous sommes là pour y répondre.
-        </p>
-        <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
-            Contactez notre équipe !
-        </a>
-    </div>
-</section>
-
-
-
-
-<!-- Script pour gérer le champ "Autre" et la bio -->
+<!-- Script pour gérer les étapes -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Gestion du champ "Autre" pour la bio
-        const bioOtherCheckbox = document.getElementById('bio_other_checkbox');
-        const bioOtherContainer = document.getElementById('bio_other_container');
-        const bioOtherText = document.getElementById('bio_other_text');
+document.addEventListener('DOMContentLoaded', function() {
+    let currentStep = 1;
+    const totalSteps = 3;
+    const formSteps = document.querySelectorAll('.form-step');
+    const progressBar = document.getElementById('progressBar');
+    const currentStepText = document.getElementById('currentStep');
 
-        if (bioOtherCheckbox) {
-            bioOtherCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    bioOtherContainer.style.display = 'block';
-                    bioOtherText.setAttribute('required', 'required');
-                } else {
-                    bioOtherContainer.style.display = 'none';
-                    bioOtherText.removeAttribute('required');
-                    bioOtherText.value = '';
-                }
-            });
+    // Gestion du champ "Autre" pour la bio
+    const bioOtherCheckbox = document.getElementById('bio_other_checkbox');
+    const bioOtherContainer = document.getElementById('bio_other_container');
+    const bioOtherText = document.getElementById('bio_other_text');
 
-            // Initialiser l'affichage au chargement
-            if (bioOtherCheckbox.checked) {
+    if (bioOtherCheckbox) {
+        bioOtherCheckbox.addEventListener('change', function() {
+            if (this.checked) {
                 bioOtherContainer.style.display = 'block';
                 bioOtherText.setAttribute('required', 'required');
+            } else {
+                bioOtherContainer.style.display = 'none';
+                bioOtherText.removeAttribute('required');
+                bioOtherText.value = '';
+            }
+        });
+
+        // Initialiser l'affichage au chargement
+        if (bioOtherCheckbox.checked) {
+            bioOtherContainer.style.display = 'block';
+            bioOtherText.setAttribute('required', 'required');
+        }
+    }
+
+    // Fonction pour afficher l'étape
+    function showStep(step) {
+        formSteps.forEach((formStep, index) => {
+            formStep.classList.toggle('active', index === step - 1);
+        });
+        
+        const progress = (step / totalSteps) * 100;
+        progressBar.style.width = progress + '%';
+        progressBar.setAttribute('aria-valuenow', progress);
+        currentStepText.textContent = step;
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Validation des champs d'une étape
+    function validateStep(step) {
+        const currentStepElement = document.getElementById('step' + step);
+        const inputs = currentStepElement.querySelectorAll('input[required]:not([type="checkbox"]), textarea[required]');
+        let valid = true;
+
+        // Validation des champs texte
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                input.classList.add('is-invalid');
+                valid = false;
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+
+        // Validation spéciale pour l'étape 3 (bio)
+        if (step === 3) {
+            const bioCheckboxes = document.querySelectorAll('.bio-checkbox:checked');
+            const bioOtherChecked = bioOtherCheckbox.checked;
+            const bioOtherValue = bioOtherText.value.trim();
+
+            // Au moins une option doit être cochée
+            if (bioCheckboxes.length === 0 && !bioOtherChecked) {
+                alert('Veuillez sélectionner au moins une option de profil.');
+                valid = false;
+            }
+
+            // Si "Autre" est coché, le champ texte doit être rempli
+            if (bioOtherChecked && !bioOtherValue) {
+                bioOtherText.classList.add('is-invalid');
+                alert('Veuillez préciser votre profil dans le champ "Autre".');
+                valid = false;
+            } else {
+                bioOtherText.classList.remove('is-invalid');
             }
         }
 
-        // Avant la soumission du formulaire, construire la bio finale
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            const selectedOptions = [];
+        return valid;
+    }
 
-            // Récupérer toutes les cases cochées
-            document.querySelectorAll('.bio-checkbox:checked').forEach(checkbox => {
-                selectedOptions.push(checkbox.value);
-            });
-
-            // Ajouter "Autre" si rempli
-            if (bioOtherCheckbox.checked && bioOtherText.value.trim()) {
-                selectedOptions.push('Autre : ' + bioOtherText.value.trim());
-            }
-
-            // Construire la chaîne finale et l'injecter dans le champ caché
-            const bioFinal = selectedOptions.join(' | ');
-            document.getElementById('bio_hidden').value = bioFinal;
-
-            // Validation finale
-            if (!bioFinal) {
-                e.preventDefault();
-                alert('Veuillez sélectionner au moins une option de profil.');
-                return false;
+    // Boutons "Suivant"
+    document.querySelectorAll('.next-step').forEach(button => {
+        button.addEventListener('click', function() {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires.');
             }
         });
     });
+
+    // Boutons "Précédent"
+    document.querySelectorAll('.prev-step').forEach(button => {
+        button.addEventListener('click', function() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+    });
+
+    // Retirer la classe invalid lors de la saisie
+    document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', function() {
+            this.classList.remove('is-invalid');
+        });
+    });
+
+    // Avant la soumission du formulaire, construire la bio finale
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        const selectedOptions = [];
+        
+        // Récupérer toutes les cases cochées
+        document.querySelectorAll('.bio-checkbox:checked').forEach(checkbox => {
+            selectedOptions.push(checkbox.value);
+        });
+
+        // Ajouter "Autre" si rempli
+        if (bioOtherCheckbox.checked && bioOtherText.value.trim()) {
+            selectedOptions.push('Autre : ' + bioOtherText.value.trim());
+        }
+
+        // Construire la chaîne finale et l'injecter dans le champ caché
+        const bioFinal = selectedOptions.join(' | ');
+        document.getElementById('bio_hidden').value = bioFinal;
+
+        // Validation finale
+        if (!bioFinal) {
+            e.preventDefault();
+            alert('Veuillez sélectionner au moins une option de profil.');
+        }
+    });
+});
 </script>
+
+
+
+<style>
+    .form-step {
+        display: none;
+    }
+
+    .form-step.active {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .progress-bar {
+        transition: width 0.4s ease-in-out;
+    }
+</style>
 @endsection
