@@ -352,18 +352,18 @@
     }
 
     .article-content h1 {
-        font-size: 1.8rem;
-        color: #2d3748;
+     font-size: 1.7rem;
+    color: #0d7f8a;
     }
 
     .article-content h2 {
-        font-size: 1.5rem;
-        color: #2d3748;
+ font-size: 1.5rem;
+    color: #0a7db1;
     }
 
     .article-content h3 {
         font-size: 1.3rem;
-        color: #2d3748;
+        color: #6a1414;
     }
 
     .article-content p {

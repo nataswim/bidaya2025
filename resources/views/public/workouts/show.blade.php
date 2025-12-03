@@ -557,9 +557,12 @@ function planifyWorkout(workoutId, workoutTitle) {
     line-height: 1.3;
 }
 
-.content-display h1, .content-display-full h1 { font-size: 1.8rem; color: #2d3748; }
-.content-display h2, .content-display-full h2 { font-size: 1.5rem; color: #2d3748; }
-.content-display h3, .content-display-full h3 { font-size: 1.3rem; color: #2d3748; }
+.content-display h1, .content-display-full h1 { font-size: 1.7rem;
+    color: #0d7f8a;}
+.content-display h2, .content-display-full h2 { font-size: 1.5rem;
+    color: #0a7db1; }
+.content-display h3, .content-display-full h3 { font-size: 1.3rem;
+        color: #6a1414; }
 
 .content-display p,
 .content-display-full p {
