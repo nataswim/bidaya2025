@@ -51,7 +51,7 @@
                     </label>
                     
                     <!-- Conteneur pour l'éditeur Quill -->
-                    <div id="short-description-editor" style="height: 150px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    <div id="short-description-editor" style="height: 600px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
                     <!-- Textarea cachée pour Laravel -->
                     <textarea name="short_description" 
@@ -73,7 +73,7 @@
                     </label>
                     
                     <!-- Conteneur pour l'éditeur Quill -->
-                    <div id="long-description-editor" style="height: 300px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    <div id="long-description-editor" style="height: 800px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
                     <!-- Textarea cachée pour Laravel -->
                     <textarea name="long_description" 

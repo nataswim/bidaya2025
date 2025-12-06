@@ -620,5 +620,11 @@ function planifyWorkout(workoutId, workoutTitle) {
     font-size: 0.875rem;
     line-height: 1.6;
 }
+.ql-video {
+width: -webkit-fill-available;
+    display: block;
+    margin: 15px auto;
+    height: 480px;
+}
 </style>
 @endpush

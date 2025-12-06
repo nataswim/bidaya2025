@@ -483,5 +483,11 @@
         gap: 0.75rem !important;
     }
 }
+.ql-video {
+width: -webkit-fill-available;
+    display: block;
+    margin: 15px auto;
+    height: 480px;
+}
 </style>
 @endpush

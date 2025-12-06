@@ -372,7 +372,12 @@
         text-align: justify;
         color: #4a5568;
     }
-
+.ql-video {
+width: -webkit-fill-available;
+    display: block;
+    margin: 15px auto;
+    height: 480px;
+}
     .article-content ul,
     .article-content ol {
         margin-bottom: 1.5rem;

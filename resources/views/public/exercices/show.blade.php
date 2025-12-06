@@ -454,7 +454,12 @@
     .card {
         transition: box-shadow 0.2s ease;
     }
-
+.ql-video {
+width: -webkit-fill-available;
+    display: block;
+    margin: 15px auto;
+    height: 480px;
+}
     @media (max-width: 991px) {
 
         .col-lg-7,

@@ -22,7 +22,7 @@
     <!-- Footer admin CSS -->
     <link href="{{ asset('css/admin-footer.css') }}" rel="stylesheet">
     
-    <!-- Quill.js CSS - UNE SEULE FOIS -->
+    <!-- Quill.js CSS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="{{ asset('css/quill-advanced.css') }}" rel="stylesheet">
     <link href="{{ asset('css/media-selector.css') }}" rel="stylesheet">
@@ -93,9 +93,10 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Quill.js - UNE SEULE FOIS -->
+    <!-- Quill.js -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="{{ asset('js/quill-advanced.js') }}"></script>
+    
     <!-- Selecteur de medias -->
     <script src="{{ asset('js/media-selector.js') }}"></script>
 

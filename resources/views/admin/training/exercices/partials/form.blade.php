@@ -31,7 +31,7 @@
                     <label for="description" class="form-label fw-semibold">Description *</label>
 
                     <!-- Conteneur pour l'éditeur Quill -->
-                    <div id="description-editor" style="height: 150px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    <div id="description-editor" style="height: 600px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
 
                     <!-- Textarea cachée pour Laravel -->
                     <textarea name="description"
@@ -50,7 +50,7 @@
                     <label for="consignes_securite" class="form-label fw-semibold">Consignes de sécurité</label>
 
                     <!-- Conteneur pour l'éditeur Quill -->
-                    <div id="consignes-editor" style="height: 150px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    <div id="consignes-editor" style="height: 600px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
 
                     <!-- Textarea cachée pour Laravel -->
                     <textarea name="consignes_securite"

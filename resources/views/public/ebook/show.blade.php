@@ -601,7 +601,12 @@
     .modal-backdrop.show {
         opacity: 1;
     }
-
+.ql-video {
+width: -webkit-fill-available;
+    display: block;
+    margin: 15px auto;
+    height: 480px;
+}
     /* Empêcher le scroll quand la modal est ouverte */
     body.modal-open {
         overflow: hidden;
