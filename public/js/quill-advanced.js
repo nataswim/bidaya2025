@@ -1,5 +1,5 @@
 // ========================================
-// Protection contre la redéclaration
+// Protection   redéclaration
 // ========================================
 if (typeof window.QuillMediaManager === 'undefined') {
 
