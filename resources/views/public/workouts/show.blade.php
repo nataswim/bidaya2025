@@ -601,9 +601,7 @@ function planifyWorkout(workoutId, workoutTitle) {
 .content-display-full img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
     margin: 2rem 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: block;
     margin-left: auto;
     margin-right: auto;
