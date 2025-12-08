@@ -271,10 +271,9 @@ background-color: #1d8e80;
     border-style: solid;
 }
 .nataswim-titre1 {
-        background-image: linear-gradient(111deg, #188194 17.15%, #0a7183 92%, #0097b2 30%);
-    background-color: #0a7183;
-    border-width: 0px 5px;
-    border-color: #f9f5f4 #0d7183;
+background-image: linear-gradient(111deg, #049ee3 5%, #1477c4 90%, #009fe4 30%);
+    background-color: #1378c5;
+    border-color: #f9f5f4 #049ce1;
     border-style: solid;
     border-width: 20px;
 }
@@ -286,11 +285,10 @@ background-color: #1d8e80;
 
 }
 .nataswim-titre3 {
-    background-color: #22a696;
-    background-image: radial-gradient(circle farthest-side at center bottom, #2bd1bc, #1c8f81 95%);
+    background-color: #00acc0;
     border-width: 20px;
     border-style: solid;
-    border-color: #f9f5f4 #1c8f81;
+    border-color: #f9f5f4 #00acc0;
 }
 .nataswim-titre4 {
     background-color: #067fba;
@@ -334,20 +332,21 @@ background-color: #fcb900;
 }
 
 .bg-primary {
-    background-image: radial-gradient(circle farthest-side at center bottom, #01a6a6, #087383 125%);
+    background-image: linear-gradient(45deg, rgb(20, 119, 196) 85%, #00acc0 10%);
+        background-color: #1477c4;
 }
 .navurl {
-    background-color: #fff;
-    box-shadow: 0 10px 20px rgb(249 245 244);
-    border-radius: 20px 0px;
+background-color: #fff;
+    box-shadow: 0 10px 20px rgb(249, 245, 244);
+    border-radius: 5px 0px;
     margin-right: 5px;
     margin-bottom: 10px;
-    border: 1px dotted #22a696;
+    border: 1px dotted #049ee3;
 }
 .navurl:hover {
     background-color: #ffffff;
     color: #22a696;
-    border-radius: 20px 0px;
+    border-radius: 0px 10px;
     margin-right: 5px;
-    border: 1px dotted #fe0000;
+    border: 1px solid #10b981;;
 }

@@ -1,7 +1,7 @@
 
 
 {{-- Navigation principale existante --}}
-<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #22a696;border-top: 20px solid #22a696;">
+<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #00acc0;border-top: 20px solid #00acc0;">
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
@@ -22,205 +22,57 @@
 
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-secondary' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Dossiers
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.fiches.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Fiches
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.videos.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Vidéos
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.workouts.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('ebook.index') }}">
                         <i class="fas fa-water me-2 text-warning" ></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-secondary' }}"
+                    <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('exercices.index') }}">
                         <i class="fas fa-water me-2 text-warning"></i>Musculation
                     </a>
                 </li>
-
-                {{-- Menu Outils avec sous-menus imbriqués --}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link px-1 py-2 dropdown-toggle {{ request()->routeIs('tools.*', 'plans.*') ? 'active bg-primary text-white' : 'text-danger' }}"
-                        href="#"
-                        id="toolsDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fas fa-life-ring me-2 text-dark"></i>Outils
+                <li class="nav-item" style="font-weight: 600;">
+                    <a class="nav-link navurl px-1 py-2 text-primary"
+                        href="{{ route('tools.index') }}">
+                        Outils
                     </a>
-
-                    <ul class="dropdown-menu shadow border-0" aria-labelledby="toolsDropdown">
-                        {{-- Lien vers tous les outils --}}
-                        <li>
-                            <a href="{{ route('equipements.index') }}" class="nav-link">
-                                <i class="fas fa-map-marked-alt me-1"></i>
-                                Trouver Une Piscine
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('tools.index') }}">
-                                <i class="fas fa-th me-2 text-dark"></i>
-                                <strong>Tous les outils</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        {{-- Catégorie : Santé & Nutrition --}}
-                        <li class="dropend">
-                            <a class="dropdown-item dropdown-toggle" href="#" id="healthDropdown" data-bs-toggle="dropdown">
-                                <i class="fas fa-water me-2 text-danger"></i>Santé Hydratation & Nutrition
-                            </a>
-                            <ul class="dropdown-menu shadow border-0" aria-labelledby="healthDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.bmi') }}">
-                                        <i class="fas fa-weight me-2 text-info"></i>Mon IMC
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.masse-grasse') }}">
-                                        <i class="fas fa-percentage me-2 text-info"></i>Masse grasse
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.calories') }}">
-                                        <i class="fas fa-fire me-2 text-danger"></i>Conso Calories
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.tdee-calculator') }}">
-                                        <i class="fas fa-chart-line me-2 text-success"></i>Ma TDEE
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.kcal-macros') }}">
-                                        <i class="fas fa-calculator me-2 text-warning"></i>Kcal/Macros
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.hydratation') }}">
-                                        <i class="fas fa-tint me-2 text-dark"></i>Hydratation
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        {{-- Catégorie : Natation --}}
-                        <li class="dropend">
-                            <a class="dropdown-item dropdown-toggle" href="#" id="swimmingDropdown" data-bs-toggle="dropdown">
-                                <i class="fas fa-water me-2 text-info"></i>Natation Sportive
-                            </a>
-                            <ul class="dropdown-menu shadow border-0" aria-labelledby="swimmingDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.chronometre') }}">
-                                        <i class="fas fa-stopwatch me-2 text-info"></i>Chrono Sport
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.vnc') }}">
-                                        <i class="fas fa-tachometer-alt me-2 text-success"></i>Vitesse Nage
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.swimming-predictor') }}">
-                                        <i class="fas fa-swimmer me-2 text-dark"></i>Prédicteur performance natation
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.swimming-planner') }}">
-                                        <i class="fas fa-calendar-alt me-2 text-dark"></i>Planification natation
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.swimming-efficiency') }}">
-                                        <i class="fas fa-chart-area me-2 text-warning"></i>Efficacité Technique
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        {{-- Catégorie : Performance --}}
-                        <li class="dropend">
-                            <a class="dropdown-item dropdown-toggle" href="#" id="performanceDropdown" data-bs-toggle="dropdown">
-                                <i class="fas fa-water me-2 text-success"></i>Performance
-                            </a>
-                            <ul class="dropdown-menu shadow border-0" aria-labelledby="performanceDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.heart-rate-zones') }}">
-                                        <i class="fas fa-heart me-2 text-danger"></i>Zones Cardio
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.coherence-cardiaque') }}">
-                                        <i class="fas fa-lungs me-2 text-info"></i>Cohérence Cardiaque
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.running-planner') }}">
-                                        <i class="fas fa-route me-2 text-success"></i>Planification Course à Pied
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.onermcalculator') }}">
-                                        <i class="fas fa-dumbbell me-2 text-dark"></i>Charge Maximale
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.fitness') }}">
-                                        <i class="fas fa-chart-pie me-2 text-warning"></i>Ma Forme
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        {{-- Catégorie : Outils pratiques --}}
-                        <li class="dropend">
-                            <a class="dropdown-item dropdown-toggle" href="#" id="practicalDropdown" data-bs-toggle="dropdown">
-                                <i class="fas fa-water me-2 text-warning"></i>Outils pratiques
-                            </a>
-                            <ul class="dropdown-menu shadow border-0" aria-labelledby="practicalDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.chronometre-pro') }}">
-                                        <i class="fas fa-stopwatch-20 me-2 text-danger"></i>Chrono Mlmti Pro
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.carte-interactive') }}">
-                                        <i class="fas fa-map-marked-alt me-2 text-info"></i>Où Suis-Je Carte
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('tools.triathlon-planner') }}">
-                                        <i class="fas fa-biking me-2 text-success"></i>Planification Triathlon
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
+                <li class="nav-item" style="font-weight: 600;">
+                            <a class="nav-link navurl px-1 py-2 text-primary" href="{{ route('contact') }}">
+                                Contact
+                            </a>
+                        </li>
+
+
+        
 
             </ul>
 
@@ -291,24 +143,24 @@
 
 {{-- Bandeau utilisateur connecté --}}
 @auth
-<div class="user-top-banner py-2" style="background-color: #f8f8bc;border-bottom: 20px solid #004f59;">
+<div class="user-top-banner py-2" style="background-color: #fff !important;margin: 20px 0px;">
     <div class="d-flex align-items-center justify-content-center flex-nowrap gap-2 px-2">
         {{-- Lien Mon espace --}}
         <a href="{{ route('user.dashboard') }}"
-            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-color: #f04444;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+            class="banner-link d-flex align-items-center text-white text-decoration-none  {{ request()->routeIs('user.dashboard') ? 'active' : '' }}" style="background-image: linear-gradient(45deg, rgb(6.4465116279, 50.6511627907, 112.3534883721) 25%, #009ee3 90%);background-color: #046cae;border-radius: 5px 10px;padding: 10px 10px;">
 
-            <span class="banner-text">Mon espace</span>
+            <span class="banner-text">Mon Espace</span>
         </a>
 
         {{-- Lien Mes carnets --}}
         <a href="{{ route('user.notebooks.index') }}"
-            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #ef9800;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+            class="banner-link d-flex align-items-center text-white text-decoration-none  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-image: linear-gradient(45deg, rgb(6.4465116279, 50.6511627907, 112.3534883721) 25%, #009ee3 90%);background-color: #046cae;border-radius: 5px 10px;padding: 10px 10px;">
 
             <span class="banner-text">Mes Carnets</span>
         </a>
         {{-- Lien calendar --}}
         <a href="{{ route('user.calendar.index') }}"
-            class="banner-link d-flex align-items-center text-white text-decoration-none px-1 py-1  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-color: #008731;box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.19);">
+            class="banner-link d-flex align-items-center text-white text-decoration-none  {{ request()->routeIs('user.notebooks.*') ? 'active' : '' }}" style="background-image: linear-gradient(45deg, rgb(6.4465116279, 50.6511627907, 112.3534883721) 25%, #009ee3 90%);background-color: #046cae;border-radius: 5px 10px;padding: 10px 10px;">
 
             <span class="banner-text">Ma Planification</span>
         </a>

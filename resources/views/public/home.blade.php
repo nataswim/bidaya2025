@@ -124,7 +124,7 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="align-items-center justify-content-between">
-                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white">
+                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;">
                         <i class="fas fa-eye me-1"></i> Consulter les dossiers
                     </a>
                 </div>
@@ -217,7 +217,7 @@
 <div class="row mb-4">
             <div class="col-12">
                 <div class="align-items-center justify-content-between">
-                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white">
+                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;">
                     <i class="fas fa-eye me-1"></i> Voir les fiches
                     </a>
                 </div>
@@ -558,7 +558,7 @@
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                        <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;width: 100%;">
                         <i class="fas fa-life-ring me-2"></i> Séances
                         </a>
                     </div>
@@ -630,7 +630,7 @@
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                        <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;width: 100%;">
                         <i class="fas fa-life-ring me-2"></i> Documents
                         </a>
                     </div>
@@ -698,7 +698,7 @@
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-light d-block align-items-center px-4" style="width: 100%;text-align: left;">
+                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px; width: 100%;">
                            <i class="fas fa-life-ring me-2"></i> Exercices
                         </a>
                     </div>
@@ -850,70 +850,6 @@
 
 
 
-<!-- Section Credit et Contact -->
-<section class="py-5 nataswim-titre1 text-white">
-
-    <div class="container">
-
-
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Sport Net Systèmes</h3>
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h6 class="text-info mb-2">Developpement & Expertise</h6>
-                        <p class="mb-3">
-                            Contenus et outils developpes par 
-                            <a href="https://www.facebook.com/Sports.Ressources/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="text-warning fw-bold text-decoration-none">
-                                M H El Haouat
-                                <i class="fas fa-external-link-alt ms-1 small"></i>
-                            </a>
-                        </p>
-                        <p class="small text-light opacity-75">
-                            Sciences du sport, physiologie de l'exercice et developpement 
-                            d'outils d'aide A la performance sportive evidence-based.
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="text-success mb-2">Collaboration & Amelioration</h6>
-                        <p class="mb-3 small">
-                            Si vous constatez une erreur dans nos calculateurs ou souhaitez suggerer 
-                            de nouveaux outils, n'hesitez pas A nous contacter.
-                        </p>
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="{{ route('contact') }}" class="btn btn-outline-light btn-sm">
-                                <i class="fas fa-envelope me-2"></i>Nous Contacter
-                            </a>
-                            <a href="https://www.facebook.com/Sports.Ressources/" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="btn btn-outline-info btn-sm">
-                                <i class="fab fa-linkedin me-2"></i>LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 text-center mt-4 mt-lg-0">
-               <a href="{{ route('public.categories.index') }}"> <div class="bg-white bg-opacity-10 rounded-circle p-2 d-inline-flex align-items-center justify-content-center" 
-                     style="width: 150px; height: 150px; overflow: hidden;">
-                    <img src="{{ asset('assets/images/team/med_Hassan_EL_HAOUAT.png') }}" 
-                         alt="Med H El Haouat - Expert en sciences du sport" 
-                         class="w-100 h-100 rounded-circle"
-                         style="object-fit: cover;">
-                </div></a>
-                <div class="mt-3">
-                    <h6 class="text-warning mb-1">Evidence-Based</h6>
-                    <small class="text-light opacity-75">Recherches integrees</small>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 @endsection
 

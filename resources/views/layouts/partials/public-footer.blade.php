@@ -3,7 +3,7 @@ $chiffre1 = mt_rand(55, 188);
 $chiffre2 = mt_rand(79, 123);
 @endphp
 
-<footer class="text-light" style="background-color: #179788 !important;border-top: 20px solid #f9f5f4;margin-top: 50px;background-image: radial-gradient(circle farthest-side at center bottom, #00b8a2, #0e5a51 95%);border-left: 20px solid #034a54;border-right: 20px solid #034a54;">
+<footer class="text-light" style="background-color: #1477c5 !important;border-top: 20px solid #f9f5f4;margin-top: 50px;background-image: radial-gradient(circle farthest-side at center bottom, #1378c5, #1477c4 55%);border-left: 20px solid #00acc1;border-right: 20px solid #00acc1;border-bottom: 20px solid #f9f5f4;">
     <!-- statistiques  -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container-lg">
@@ -17,7 +17,7 @@ $chiffre2 = mt_rand(79, 123);
     </div>
 </section>
 
-    <div class="w-100 text-center py-3" style=" background-color: #034a54; ">
+    <div class="w-100 text-center py-3" style="background-color: #00acc1;">
         <div>
             <p class="mb-0">
                 <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
@@ -32,7 +32,7 @@ $chiffre2 = mt_rand(79, 123);
     </div>
 
 
-    <div class="w-100 text-center" style="background-color: rgb(230.45, 76.55, 76.55);padding: 10px 0px;">
+    <div class="w-100 text-center" style="background-color: #049ee3;padding: 20px 0px;">
 
         <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres : {{ $chiffre2 }}</p>
 
@@ -184,7 +184,7 @@ Nous partageons nos connaissances avec la communauté du sport.
     </div>
 
     <!-- Barre de copyright -->
-    <div style="background-color: #034a54;">
+    <div style="background-color: #00acc1;">
 
 
         <div class="container-lg py-4">

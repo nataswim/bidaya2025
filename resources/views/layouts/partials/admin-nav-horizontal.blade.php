@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #22a696;border-top: 20px solid #22a696;">
+<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #00acc0;border-top: 20px solid #00acc0;">
 
     <div class="container-lg">
         <!-- Logo -->
