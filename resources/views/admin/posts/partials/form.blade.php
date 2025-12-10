@@ -51,7 +51,7 @@
                     </label>
                     
                     <!-- Conteneur pour l'editeur Quill -->
-                    <div id="intro-editor" style="height: 600px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    <div id="intro-editor" style="height: 400px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
                     <!-- Textarea cachee pour Laravel -->
                     <textarea name="intro" 
@@ -72,7 +72,7 @@
                     </label>
                     
                     <!-- Conteneur pour l'editeur Quill -->
-                    <div id="content-editor" style="height: 800px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
+                    <div id="content-editor" style="height: 500px; border: 1px solid #ced4da; border-radius: 0.375rem; background: white;"></div>
                     
                     <!-- Textarea cachee pour Laravel -->
                     <textarea name="content" 

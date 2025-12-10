@@ -60,14 +60,15 @@
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link navurl px-1 py-2 text-primary"
+                    <a class="nav-link px-1 py-2 text-primary"
                         href="{{ route('tools.index') }}">
-                        Outils
+                        <i class="fas fa-stopwatch-20 text-danger" style="font-size: 180%;"></i>
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                            <a class="nav-link navurl px-1 py-2 text-primary" href="{{ route('contact') }}">
-                                Contact
+                            <a class="nav-link px-1 py-2 text-primary" href="{{ route('contact') }}">
+                            <i class="fas fa-solid fa-envelope fa-2x text-success" style="font-size: 160%;"></i>
+
                             </a>
                         </li>
 
@@ -127,11 +128,11 @@
                 </div>
                 @else
                 <div class="d-flex gap-2">
-                    <a href="{{ route('login') }}" class="btn btn-sm btn-secondary text-white px-4">
-                        Se connecter
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-secondary text-white px-4 bg-primary">
+                        Me Connecter
                     </a>
-                    <a href="{{ route('register') }}" class="btn btn-sm btn-primary text-white px-4">
-                        S'inscrire
+                    <a href="{{ route('register') }}" class="btn btn-sm btn-secondary text-white px-4 bg-primary">
+                        M'inscrire
                     </a>
                 </div>
                 @endauth
@@ -175,6 +176,9 @@
     </div>
 </div>
 @endauth
+
+
+
 
 
 {{-- CSS personnalisé pour le bandeau et les dropdowns --}}
