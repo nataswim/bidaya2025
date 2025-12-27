@@ -51,7 +51,7 @@
 <!-- Dernieres Publications -->
 <section class="py-5">
     <div class="container-lg card shadow-lg border-0 bg-white">
-        <div class="row mb-4">
+        <div class="row mb-4 card-header bg-info text-white">
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">
@@ -72,7 +72,12 @@
 
             @forelse($recentArticles as $article)
             <div class="col-md-6 col-lg-3">
+
+
+            
                 <div class="card border-0 h-100 hover-lift">
+
+
                     <div class="bg-primary bg-opacity-10 d-flex align-items-center justify-content-center"
                         style="height: 180px; overflow: hidden;">
                         @if($article->image)
@@ -86,6 +91,9 @@
                     </div>
 
                     <div class="card-body p-3">
+
+
+
                         <span class="badge bg-primary-subtle text-primary mb-2">
                             {{ $article->category->name ?? 'Non catégorisé' }}
                         </span>
@@ -109,6 +117,9 @@
                             </small>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
             @empty
@@ -124,8 +135,8 @@
         <div class="row mb-4">
             <div class="col-12">
                 <div class="align-items-center justify-content-between">
-                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;">
-                        <i class="fas fa-eye me-1"></i> Consulter les dossiers
+                    <a href="{{ route('public.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white bg-primary" style="border-radius: 0px;">
+                        <i class="fas fa-eye me-1"></i> Plus d'articles
                     </a>
                 </div>
             </div>
@@ -140,7 +151,7 @@
 <section class="py-5" >
 
     <div class="container-lg card shadow-lg border-0 bg-white">
-        <div class="row mb-4">
+        <div class="row mb-4 card-header bg-info text-white">
             <div class="col-12">
                 <div class="d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">
@@ -217,8 +228,8 @@
 <div class="row mb-4">
             <div class="col-12">
                 <div class="align-items-center justify-content-between">
-                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;">
-                    <i class="fas fa-eye me-1"></i> Voir les fiches
+                    <a href="{{ route('public.fiches.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white bg-primary" style="border-radius: 0px;">
+                    <i class="fas fa-eye me-1"></i> Plus de fiches
                     </a>
                 </div>
             </div>
@@ -555,7 +566,7 @@
 <section class="py-5 bg-primary text-white">    
 
        <div class="container-lg">
-            <div class="row mb-4">
+            <div class="row mb-4 card-header bg-secondary text-white">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <a href="{{ route('public.workouts.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;width: 100%;">
@@ -627,7 +638,7 @@
 <section class="py-5">    
 
 <div class="container-lg">
-            <div class="row mb-4">
+            <div class="row mb-4 card-header bg-secondary text-white">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
                         <a href="{{ route('ebook.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px;width: 100%;">
@@ -695,10 +706,10 @@
 <section class="py-5 bg-primary text-white">    
 <!-- Derniers Exercices -->
         <div class="container-lg">
-            <div class="row mb-4">
+            <div class="row mb-4 card-header bg-secondary text-white">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white" style="border-radius: 0px; width: 100%;">
+                        <a href="{{ route('exercices.index') }}" class="btn btn-lg btn-secondary d-flex align-items-center px-4 text-white " style="border-radius: 0px; width: 100%;">
                            <i class="fas fa-life-ring me-2"></i> Exercices
                         </a>
                     </div>
@@ -778,9 +789,9 @@
 
 <a href="{{ route('public.catalogue.index') }}" class="text-white fw-bold text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-secondary text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-eye me-3" style="font-size: 2rem;"></i>
+                                <i class="fas fa-folder me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Se Former S'informer</h4>
                                 </div>
@@ -799,9 +810,9 @@
             <div class="col">
                 <a href="{{ route('guideplanif') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-primary text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-eye me-3" style="font-size: 2rem;"></i>
+                                <i class="fas fa-folder me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Outil planification</h4>
                                </div>
@@ -821,9 +832,9 @@
 
                  <a href="{{ route('guidecarnet') }}" class="text-decoration-none">
                     <div class="card h-100 shadow-lg border-0 bg-white hover-lift category-card">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-secondary text-white">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-eye me-3" style="font-size: 2rem;"></i>
+                                <i class="fas fa-folder me-3" style="font-size: 2rem;"></i>
                                 <div class="flex-grow-1">
                                     <h4 class="mb-1">Carnets Personnalisés</h4>
                                </div>

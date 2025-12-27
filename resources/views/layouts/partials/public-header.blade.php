@@ -1,7 +1,7 @@
 
 
 {{-- Navigation principale existante --}}
-<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;background-color: #f9f5f4 !important;border-bottom: 20px solid #00acc0;border-top: 20px solid #00acc0;">
+<nav class="navbar navbar-expand-lg" style="border-left: 20px solid #f9f5f4;border-right: 20px solid #f9f5f4;border-bottom: 20px solid #00acc0;border-top: 20px solid #00acc0;">
     <div class="container-lg">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
@@ -24,53 +24,47 @@
                 <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.index', 'public.show') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.index') }}">
-                        <i class="fas fa-water me-2 text-warning"></i>Dossiers
+                        <i class="fas fa-water me-2"></i>Dossiers
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.fiches.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.fiches.index') }}">
-                        <i class="fas fa-water me-2 text-warning"></i>Fiches
+                        <i class="fas fa-water me-2"></i>Fiches
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.videos.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.videos.index') }}">
-                        <i class="fas fa-water me-2 text-warning"></i>Vidéos
+                        <i class="fas fa-water me-2"></i>Vidéos
                     </a>
                 </li>
 
                 <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('public.workouts.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('public.workouts.index') }}">
-                        <i class="fas fa-water me-2 text-warning"></i>Entrainements
+                        <i class="fas fa-water me-2"></i>Entrainements
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('ebook.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('ebook.index') }}">
-                        <i class="fas fa-water me-2 text-warning" ></i>Ressources
+                        <i class="fas fa-water me-2"></i>Ressources
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
                     <a class="nav-link navurl px-1 py-2 {{ request()->routeIs('exercices.*') ? 'active bg-primary text-white' : 'text-primary' }}"
                         href="{{ route('exercices.index') }}">
-                        <i class="fas fa-water me-2 text-warning"></i>Musculation
+                        <i class="fas fa-water me-2"></i>Musculation
                     </a>
                 </li>
                 <li class="nav-item" style="font-weight: 600;">
-                    <a class="nav-link px-1 py-2 text-primary"
+                    <a class="nav-link navurl px-1 py-2"
                         href="{{ route('tools.index') }}">
-                        <i class="fas fa-stopwatch-20 text-danger" style="font-size: 180%;"></i>
+                        <i class="fas fa-water me-2"></i>Outils
                     </a>
                 </li>
-                <li class="nav-item" style="font-weight: 600;">
-                            <a class="nav-link px-1 py-2 text-primary" href="{{ route('contact') }}">
-                            <i class="fas fa-solid fa-envelope fa-2x text-success" style="font-size: 160%;"></i>
-
-                            </a>
-                        </li>
 
 
         
@@ -128,11 +122,11 @@
                 </div>
                 @else
                 <div class="d-flex gap-2">
-                    <a href="{{ route('login') }}" class="btn btn-sm btn-secondary text-white px-4 bg-primary">
-                        Me Connecter
+                    <a href="{{ route('login') }}" class="btn">
+                        <i class="fas fa-id-card"></i> Connexion
                     </a>
-                    <a href="{{ route('register') }}" class="btn btn-sm btn-secondary text-white px-4 bg-primary">
-                        M'inscrire
+                    <a href="{{ route('register') }}" class="btn">
+                        <i class="fas fa-user-plus"></i> Inscription
                     </a>
                 </div>
                 @endauth

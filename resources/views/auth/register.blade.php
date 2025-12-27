@@ -1,9 +1,9 @@
-@extends('layouts.guest')
+@extends('layouts.public')
 
 @section('content')
 <div class="min-vh-100 d-flex align-items-center bg-light py-5">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="col-lg-8 col-md-10">
                 <div class="card border-0 shadow-lg">
                     <div class="card-body p-5">
@@ -17,7 +17,7 @@
                                             style="max-width: 200px;height: auto;box-shadow: 0 0 40px rgba(255,255,255,.8),0 0 10px #fff;border-radius: 100%;"></a>
                                 </div>
                             </div>
-                            <h2 class="fw-bold">Rejoindre la plateforme</h2>
+                            <h2 class="fw-bold">Inscription</h2>
                             <p class="text-muted">Votre adresse e-mail doit être valide pour confirmer votre inscription. Votre mot de passe est strictement confidentiel : nous ne le stockons jamais en clair et n’y avons pas accès. Vos données sont protégées et chiffrées.</p>
                         </div>
 
@@ -461,18 +461,6 @@
 
 
 
-<section class="py-5 bg-primary text-white text-center">
-
-    <div class="container-lg">
-        <h2 class="mb-4 fw-bold">Des questions ?</h2>
-        <p class="lead mb-4">
-            N'hésitez pas à nous contacter ! Nous sommes là pour y répondre.
-        </p>
-        <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
-            Contactez notre équipe !
-        </a>
-    </div>
-</section>
 
 
 

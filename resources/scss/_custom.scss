@@ -332,21 +332,17 @@ background-color: #fcb900;
 }
 
 .bg-primary {
-    background-image: linear-gradient(45deg, rgb(20, 119, 196) 85%, #00acc0 10%);
-        background-color: #1477c4;
+ background-color: #367f91;
+    background-image: linear-gradient(45deg, #367f91 85%, #00acc0 0);
 }
 .navurl {
-background-color: #fff;
-    box-shadow: 0 10px 20px rgb(249, 245, 244);
-    border-radius: 5px 0px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-    border: 1px dotted #049ee3;
+background-color: #FFFFFF;
+    border-bottom: 6px dotted #f9f5f4;
+    border-left: 6px solid #f9f5f4;
+    border-right: 6px solid #ffffff;
+    border-top: 6px solid #ffffff;
 }
 .navurl:hover {
-    background-color: #ffffff;
-    color: #22a696;
-    border-radius: 0px 10px;
-    margin-right: 5px;
-    border: 1px solid #10b981;;
+  background-color: #ffffff;
+  color: #0f272d;
 }

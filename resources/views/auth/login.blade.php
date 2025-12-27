@@ -1,10 +1,10 @@
-@extends('layouts.guest')
+@extends('layouts.public')
 
 
 @section('content')
 <div class="d-flex align-items-center bg-light">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="col-lg-5 col-md-7">
                 <div class="card border-0 shadow-lg">
                     <div class="card-body p-5">
@@ -113,18 +113,6 @@
 
 
 
-<section class="py-5 bg-primary text-white text-center">
-
-    <div class="container-lg">
-        <h2 class="mb-4 fw-bold">Des questions ?</h2>
-        <p class="lead mb-4">
-            N'hésitez pas à nous contacter ! Nous sommes là pour y répondre.
-        </p>
-        <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
-            Contactez notre équipe !
-        </a>
-    </div>
-</section>
 
 
 

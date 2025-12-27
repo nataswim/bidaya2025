@@ -3,13 +3,12 @@ $chiffre1 = mt_rand(55, 188);
 $chiffre2 = mt_rand(79, 123);
 @endphp
 
-<footer class="text-light" style="background-color: #1477c5 !important;border-top: 20px solid #f9f5f4;margin-top: 50px;background-image: radial-gradient(circle farthest-side at center bottom, #1378c5, #1477c4 55%);border-left: 20px solid #00acc1;border-right: 20px solid #00acc1;border-bottom: 20px solid #f9f5f4;">
+<footer class="text-light" style="background-color: #034047 !important;border-top: 20px solid #f9f5f4;margin-top: 50px;border-left: 20px solid #00acc1;border-right: 20px solid #00acc1;border-bottom: 20px solid #f9f5f4;">
     <!-- statistiques  -->
 <section class="py-5 bg-primary text-white text-center">
     <div class="container-lg">
-        <h2 class="mb-4 fw-bold">Des questions ?</h2>
         <p class="lead mb-4">
-            N'hésitez pas à nous contacter ! Nous sommes là pour y répondre.
+            Nous sommes là pour répondre à vos questions.
         </p>
         <a href="{{ route('contact') }}" class="btn btn-light btn-lg">
             Contactez notre équipe !
@@ -17,25 +16,12 @@ $chiffre2 = mt_rand(79, 123);
     </div>
 </section>
 
-    <div class="w-100 text-center py-3" style="background-color: #00acc1;">
-        <div>
-            <p class="mb-0">
-                <a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="d-inline-block shop-link">
-                    <img src="{{ asset('assets/images/team/nataswim-pays-monde-centre.png') }}"
-                        alt="boutique natation triathlon offres club et promotions"
-                        class="img-fluid shop-image"
-                        style="max-width: 100%; height: auto;">
-                </a>
-            </p>
-        </div>
-
-    </div>
 
 
-    <div class="w-100 text-center" style="background-color: #049ee3;padding: 20px 0px;">
-
+    <div class="w-100 text-center" style="background-color: #00acc1;padding: 20px 0px;">
+<a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="text-light text-decoration-none">
         <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres : {{ $chiffre2 }}</p>
-
+ </a>
     </div>
 
     <!-- Contenu principal du footer -->
@@ -47,9 +33,9 @@ $chiffre2 = mt_rand(79, 123);
                 <!-- A propos -->
                 <div class="col-lg-3 col-md-6">
                     <div class="d-flex align-items-center mb-4">
-                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-3"
                             style="width: 50px; height: 50px;">
-                            <i class="fas fa-water text-white"></i>
+                            <i class="fas fa-star text-primary"></i>
                         </div>
                         <h5 class="mb-0 text-white">Nata'Swim</h5>
                     </div>
@@ -164,16 +150,14 @@ Nous partageons nos connaissances avec la communauté du sport.
                     <div class="mt-4">
                         <h6 class="text-white fw-semibold mb-3">Suivez-nous</h6>
                         <div class="d-flex gap-2">
-                            <a href="https://www.facebook.com/Sports.Ressources/" class="btn btn-outline-light btn-sm" aria-label="Facebook">
+                            <a href="https://www.facebook.com/Sports.Ressources/" class="btn btn-light btn-lg" aria-label="Facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="https://www.facebook.com/profile.php?id=100063768510820" aria-label="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://www.instagram.com/med_hassan_el_haouat/" class="btn btn-outline-light btn-sm" aria-label="Instagram">
+                    
+                            <a href="https://www.instagram.com/med_hassan_el_haouat/" class="btn btn-light btn-lg" aria-label="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.youtube.com/@stevemarshvedravokivish2069" class="btn btn-outline-light btn-sm" aria-label="YouTube">
+                            <a href="https://www.youtube.com/@stevemarshvedravokivish2069" class="btn btn-light btn-lg" aria-label="YouTube">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </div>
