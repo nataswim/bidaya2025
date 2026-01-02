@@ -5,14 +5,29 @@
 
 @section('content')
 <!-- Section titre -->
-<section class="py-5 text-white text-center nataswim-titre3">
-    <div class="container py-3">
-        <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Calculateur Nutritionnel
-        </h1>
-        
+<section class="py-5 text-center nataswim-titre3">
+
+<div class="container-lg">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-2 mb-lg-0" style=" background-color: #f9f5f4; color: #00acc0; padding: 20px 0px; border-radius: 10px; ">
+                <h1 class="display-5 fw-bold mb-3">Calculateur Nutritionnel</h1>
+                <p>Calculez vos besoins caloriques TDEE</p>
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('public.categories.index') }}">
+                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-4.jpg') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 300px; object-fit: cover;">
+                </a>
+
+            </div>
+        </div>
     </div>
 </section>
+
+
 
 <!-- Calculateur -->
 <section class="py-5 bg-light">

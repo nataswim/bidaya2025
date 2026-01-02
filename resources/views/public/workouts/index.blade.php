@@ -1,26 +1,46 @@
 @extends('layouts.public')
 
-@section('title', 'Séances et Plans d\'Entraînement Sportif')
-@section('meta_description', 'Découvrez nos séances d\'entraînement et plans sportifs organisés par discipline : natation, course à pied, musculation. Programmes structurés pour optimiser votre progression.')
+@section('title', 'Séances et Plans d\'Entraînement Natation & Triathlon - Hassan EL HAOUAT')
+@section('meta_description', 'Découvrez nos séances d\'entraînement et plans natation et triathlon organisés par discipline : natation, course à pied, musculation. Programmes structurés pour optimiser votre progression.')
 @section('meta_keywords', 'séances entraînement, plans entraînement sportif, programme natation, workout français, entraînement course à pied, programme musculation')
 
 @section('content')
 
-<section class="py-5 text-white text-center nataswim-titre3">
-    <div class="container-lg">
+
+
+<section class="position-relative text-white py-5 nataswim-titre3 overflow-hidden" style="min-height: 600px;">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
+        <source src="{{ asset('assets/images/team/nataswim-sport-training-4.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Overlay sombre pour meilleure lisibilité -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 2;"></div>
+
+    <!-- Contenu -->
+    <div class="container-lg py-4 position-relative" style="z-index: 3;">
         <div class="row align-items-center">
-            <div class="col-lg mb-4 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-3">
-                    Séances et Plans
-                </h1>
-                <p class="lead mb-0">
-                    <strong>Programmes</strong> pour vous accompagner
+            <div class="col-lg mb-2 mb-lg-0">
+                <div class="d-flex align-items-center mb-3">
+                    <a href="{{ route('public.categories.index') }}" style=" color: #fff; text-decoration: none; ">
+                    
+                    <h1 class="display-4 fw-bold mb-0 shadow-lg border-0" style="text-shadow: 2px 2px 4px rgb(3 64 71);background-color: #00acc0;padding: 10px;border-radius: 10px;"> <i class="fas fa-star me-3"></i>Séances et Plans</h1>
+                    </a>
+                </div>
+
+                <p class="lead mb-4">
+                    <strong>Programmes et Plans d'Entraînement</strong> pour vous accompagner
                     dans votre progression avec des séances organisées par niveau et par discipline.
                 </p>
             </div>
         </div>
     </div>
 </section>
+
+
+
+
+
 
 <!-- Navigation par Disciplines Sportives -->
 <section class="py-5 bg-light">

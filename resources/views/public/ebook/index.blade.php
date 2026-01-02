@@ -56,11 +56,21 @@
 @endpush
 
 @section('content')
-<!-- Section Hero -->
 
 
-<section class="py-5 text-white text-center nataswim-titre3">    <div class="container-lg">
-    <div class="container-lg">
+
+
+<section class="position-relative text-white py-5 nataswim-titre3 overflow-hidden" style="min-height: 600px;">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
+        <source src="{{ asset('assets/images/team/ebooks.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Overlay sombre pour meilleure lisibilité -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 2;"></div>
+
+    <!-- Contenu -->
+    <div class="container-lg py-4 position-relative" style="z-index: 3;">
         <div class="row align-items-center">
             <div class="col-lg-7 mb-4 mb-lg-0">
                 <h1 class="display-4 fw-bold mb-4">Ressources</h1>
@@ -104,7 +114,6 @@
         </div>
     </div>
 </section>
-
 
 
 
@@ -197,7 +206,7 @@
 
 
 <!-- Section Categories -->
-<section id="categories" class="py-5" style="background: linear-gradient(135deg, #0ea5e9 0%, #0f172a 100%);border-left: 20px solid #04adb9;border-right: 20px solid #04adb9;border-top: 20px solid #f9f5f4;border-bottom: 20px solid #f9f5f4;">
+<section id="categories" class="py-5 nataswim-titre3" >
     <div class="container">
         
 

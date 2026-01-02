@@ -1,31 +1,39 @@
 @extends('layouts.public')
 
-@section('title', 'Outils & Calculateurs Sportifs - Collection Evidence-Based')
+@section('title', 'Outils & Calculateurs Sportifs - Hassan EL HAOUAT')
 @section('meta_description', 'Suite complete d\'outils et calculateurs pour optimiser votre sante, performance et entraînement sportif. Organises par categories specialisees, bases sur les recherches scientifiques 2024.')
 
 @section('content')
-<!-- Section titre -->
 
 
 
-<section class="py-5 text-white text-center" style="background: linear-gradient(45deg, rgb(6.4465116279, 50.6511627907, 112.3534883721) 25%, #009ee3 90%);">
+<section class="position-relative text-white py-5 nataswim-titre3 overflow-hidden" style="min-height: 600px;">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
+        <source src="{{ asset('assets/images/team/fitness-nataswim-courir.mp4') }}" type="video/mp4">
+    </video>
 
+    <!-- Overlay sombre pour meilleure lisibilité -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 2;"></div>
 
-<div class="container-lg">
+    <!-- Contenu -->
+    <div class="container-lg py-4 position-relative" style="z-index: 3;">
         <div class="row align-items-center">
-            <div class="col">
-                 <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Outils & Calculateurs
-        </h1>
-        <p class="lead mb-0">
-<strong>Collection</strong> d'outils pour le sport </p>
+            <div class="col-lg mb-2 mb-lg-0">
+                <div class="d-flex align-items-center mb-3">
+                    <a href="{{ route('public.categories.index') }}" style=" color: #fff; text-decoration: none; ">
+                    
+                    <h1 class="display-4 fw-bold mb-0 shadow-lg border-0" style="text-shadow: 2px 2px 4px rgb(3 64 71);background-color: #00acc0;padding: 10px;border-radius: 10px;"> <i class="fas fa-calculator me-3"></i>Outils & Calculateurs</h1>
+                    </a>
+                </div>
 
+                <p class="lead mb-4">
+                    <strong>Collection</strong> d'outils pour le sport et la santé basés sur les dernières recherches.
+                </p>
             </div>
         </div>
     </div>
 </section>
-
-
 
 <!-- Section Outils Individuels -->
 <section class="py-5">

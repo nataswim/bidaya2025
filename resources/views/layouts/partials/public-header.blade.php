@@ -122,12 +122,10 @@
                 </div>
                 @else
                 <div class="d-flex gap-2">
-                    <a href="{{ route('login') }}" class="btn">
-                        <i class="fas fa-id-card"></i> Connexion
+                    <a href="{{ route('login') }}" class="btn btn-sm btn-success d-flex align-items-center px-2 text-white">
+                        <i class="fas fa-user-plus"></i> Connexion
                     </a>
-                    <a href="{{ route('register') }}" class="btn">
-                        <i class="fas fa-user-plus"></i> Inscription
-                    </a>
+
                 </div>
                 @endauth
             </div>

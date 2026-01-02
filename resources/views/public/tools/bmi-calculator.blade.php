@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 {{-- SEO Meta --}}
-@section('title', 'Calculateur IMC & Composition Corporelle - Analyse Scientifique Avancée')
+@section('title', 'Comment Calculer IMC & Composition Corporelle - Hassan EL HAOUAT')
 @section('meta_description', 'Calculez votre IMC et analysez votre composition corporelle avec nos outils avancés, incluant % de graisse, WHtR et BRI. Informations scientifiques récentes.')
 
 {{-- Open Graph / Facebook --}}
@@ -11,14 +11,32 @@
 @section('og_url', route('tools.bmi'))
 
 @section('content')
+
 <!-- Section titre -->
-<section class="py-5 text-white text-center nataswim-titre3">
-    <div class="container py-3">
-        <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Calculateur IMC - Composition Corporelle
-        </h1>
+<section class="py-5 text-center nataswim-titre3">
+
+<div class="container-lg">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-2 mb-lg-0" style=" background-color: #f9f5f4; color: #00acc0; padding: 20px 0px; border-radius: 10px; ">
+                <h1 class="display-5 fw-bold mb-3">Calculateur IMC</h1>
+                <p>Composition Corporelle - Calculez votre IMC et analysez votre composition corporelle</p>
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('public.categories.index') }}">
+                    <img src="{{ asset('assets/images/team/nataswim-sport-net-systemes-3.jpg') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 300px; object-fit: cover;">
+                </a>
+
+            </div>
+        </div>
     </div>
 </section>
+
+
+
 
 <!-- Calculateur -->
 <section class="py-5 bg-light">

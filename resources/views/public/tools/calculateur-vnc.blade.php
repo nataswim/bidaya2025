@@ -1,17 +1,34 @@
 @extends('layouts.public')
 
-@section('title', 'Calculateur Vitesse de Nage Critique (VNC) & Zones d\'Entraînement - Outil Pro')
+@section('title', 'Vitesse de Nage Critique (VNC) & Zones d\'Entraînement - Hassan EL HAOUAT')
 @section('meta_description', 'Calculez votre VNC et vos zones d\'entraînement natation avec la methode scientifique validee. Formule : (Temps 400m - Temps 200m) / 2. Simple, rapide, efficace.')
 
 @section('content')
+
+
 <!-- Section titre -->
-<section class="py-5 text-white text-center nataswim-titre3">
-    <div class="container py-3">
-        <h1 class="display-4 fw-bold d-flex align-items-center justify-content-center gap-3 mb-3">
-            Calculateur de Vitesse de Nage Critique (VNC)
-        </h1>
+<section class="py-5 text-center nataswim-titre3">
+
+<div class="container-lg">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-2 mb-lg-0" style=" background-color: #f9f5f4; color: #00acc0; padding: 20px 0px; border-radius: 10px; ">
+                <h1 class="display-5 fw-bold mb-3">Calculateur de Vitesse de Nage Critique (VNC)</h1>
+                <p>VNC et vos zones d\'entraînement natation</p>
+            </div>
+            <div class="col-lg-5 text-center">
+                <a href="{{ route('public.categories.index') }}">
+                    <img src="{{ asset('assets/images/team/nataswim-application-banner-5.jpg') }}"
+                        alt="Guide Nataswim"
+                        class="img-fluid rounded-4"
+                        style="max-height: 300px; object-fit: cover;">
+                </a>
+
+            </div>
+        </div>
     </div>
 </section>
+
 
 <!-- Calculateur Principal -->
 <section class="py-5 bg-light">

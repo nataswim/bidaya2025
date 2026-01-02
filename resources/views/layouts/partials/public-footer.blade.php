@@ -19,7 +19,7 @@ $chiffre2 = mt_rand(79, 123);
 
 
     <div class="w-100 text-center" style="background-color: #00acc1;padding: 20px 0px;">
-<a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="text-light text-decoration-none">
+<a href="https://nataswimshop.com/boutique/" target="_blank" rel="noopener noreferrer" class="text-light text-decoration-none" style="text-shadow: 2px 2px 4px #000;>
         <p class="mb-0">En Ligne : - Visiteurs : {{ $chiffre1 }} | Membres : {{ $chiffre2 }}</p>
  </a>
     </div>

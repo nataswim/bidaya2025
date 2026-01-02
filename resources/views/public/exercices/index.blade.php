@@ -1,18 +1,34 @@
 @extends('layouts.public')
 
-@section('title', 'Exercices d\'Entraînement - Bibliothèque Complète')
-@section('meta_description', 'Découvrez notre bibliothèque complète d\'exercices d\'entraînement pour tous niveaux. Cardio, force, flexibilité et équilibre avec instructions détaillées.')
+@section('title', 'Exercices de Musculation Natation Triathlon - Hassan EL HAOUAT')
+@section('meta_description', 'Découvrez notre bibliothèque complète d\'exercices d\'entraînement pour la musculation la natation et le triathlon tous niveaux. Cardio, force, flexibilité et équilibre avec instructions détaillées.')
 
 @section('content')
 
 <!-- Section titre -->
-<section class="py-5 text-white text-center nataswim-titre3">
-    <div class="container-lg">
+
+<section class="position-relative text-white py-5 nataswim-titre3 overflow-hidden" style="min-height: 600px;">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
+        <source src="{{ asset('assets/images/team/MUSCULATION_NATASWIM.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Overlay sombre pour meilleure lisibilité -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 2;"></div>
+
+    <!-- Contenu -->
+    <div class="container-lg py-4 position-relative" style="z-index: 3;">
         <div class="row align-items-center">
-            <div class="col-lg mb-4 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-3">Bibliothèque d'exercices</h1>
-                <p class="lead mb-0">
-                    Découvrez notre réserve d'exercices pour tous niveaux, avec instructions et conseils
+            <div class="col-lg mb-2 mb-lg-0">
+                <div class="d-flex align-items-center mb-3">
+                    <a href="{{ route('public.categories.index') }}" style=" color: #fff; text-decoration: none; ">
+                    
+                    <h1 class="display-4 fw-bold mb-0 shadow-lg border-0" style="text-shadow: 2px 2px 4px rgb(3 64 71);background-color: #00acc0;padding: 10px;border-radius: 10px;"> <i class="fas fa-file-alt me-3"></i>Bibliothèque d'exercices</h1>
+                    </a>
+                </div>
+
+                <p class="lead mb-4">
+                    Découvrez notre réserve d'exercices pour tous niveaux, avec instructions et conseils.
                 </p>
             </div>
         </div>

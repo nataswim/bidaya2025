@@ -1,19 +1,19 @@
 @extends('layouts.public')
 
-@section('title', 'Plateforme Sportive pour tous - nataswim')
+@section('title', 'Plateforme Sportive pour tous - Natation & Triathlon')
 @section('meta_description', 'Decouvrez notre plateforme dediee A la natation et au triathlon avec articles, plans d\'entrainement, fiches techniques et videos. Rejoignez notre communaute de nageurs, triathletes et coachs.')
 
 @section('content')
 <!--  Section avec Video Background -->
 
-<section class="position-relative text-white py-5 bg-primary overflow-hidden" style="min-height: 600px;">
+<section class="position-relative text-white py-5 nataswim-titre3  overflow-hidden" style="min-height: 600px;">
     <!-- Video Background -->
     <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: 1;">
         <source src="{{ asset('assets/images/team/nataswim.mp4') }}" type="video/mp4">
     </video>
     
     <!-- Overlay sombre pour meilleure lisibilité -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50" style="z-index: 2;"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 2;"></div>
     
     <!-- Contenu -->
     <div class="container-lg py-4 position-relative" style="z-index: 3;">
