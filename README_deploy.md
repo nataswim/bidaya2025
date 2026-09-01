@@ -1,17 +1,14 @@
-# Vérifier les fichiers modifiés
+# 1. Compiler les assets de PRODUCTION en local
+npm run prod
+
+# 2. Vérifier ce qui a changé
 git status
 
-# Ajouter tous les fichiers
+# 3. Committer une seule fois, avec un message clair
 git add .
+git commit -m "chore: mise à jour des dépendances Composer/npm et build de production"
 
-# Commiter avec un message descriptif
-git commit -m "feat: ajout "
-
-# Pousser vers le serveur Git
-git push origin main
-
-git add .
-git commit -m "déploiement"
+# 4. Pousser
 git push origin main
 
 
