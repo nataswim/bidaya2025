@@ -23,3 +23,59 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+# Configuration LiteSpeed pour upload
+<IfModule Litespeed>
+    php_value upload_max_filesize 200M
+    php_value post_max_size 210M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+    php_value memory_limit 512M
+</IfModule>
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 202.46.0.0/16
+deny from 43.173.0.0/16
+deny from 110.54.128.0/24
+deny from 59.78.0.0/16
+deny from 78.47.0.0/16
+deny from 103.20.0.0/22
+deny from 103.25.56.0/24
+deny from 103.1.0.0/17
+deny from 113.160.0.0/11
+deny from 103.1.200.0/22
+deny from 119.2.0.0/16
+deny from 103.13.0.0/16
+deny from 103.3.64.0/18
+deny from 112.160.0.0/11
+deny from 112.55.0.0/16
+deny from 123.160.0.0/12
+deny from 180.117.0.0/16
+deny from 3.0.0.0/9
+deny from 116.14.0.0/16
+deny from 203.116.128.0/18
+deny from 103.1.252.0/22
+deny from 192.241.0.0/16
+deny from 52.5.0.0/16
+deny from 104.254.0.0/16
+deny from 113.160.0.0/12
+deny from 171.224.0.0/12
+deny from 42.112.0.0/12
+deny from 58.246.0.0/15
+deny from 112.64.0.0/16
+deny from 120.204.0.0/14
+deny from 116.14.0.0/15
+deny from 52.77.0.0/16
+deny from 180.240.0.0/13
+deny from 103.11.176.0/22
+deny from 103.10.128.0/17
+deny from 202.169.224.0/19
+deny from 49.44.0.0/14
+deny from 103.20.0.0/16
+deny from 157.119.0.0/16
+deny from 1.186.0.0/16
+deny from 36.72.0.0/14
+deny from 103.20.200.0/22
+deny from 182.253.0.0/16

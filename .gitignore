@@ -22,3 +22,9 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Fichiers générés ou uploadés en production (ne jamais versionner)
+/public/sitemap.xml
+/public/uploadimages
+/public/diffusion
+/public/analytics
